@@ -82,3 +82,22 @@ def test_validation_accepts_c_tier_2r_only_in_weighted_mode(wcfg, scfg):
                       takeProfit=102.0, riskReward=2.0)
     assert not validate_signal(sig, wcfg)
     assert validate_signal(sig, scfg)
+
+
+def test_replay_history_merge_keeps_only_resolved_pre_live_proposals(tmp_path, wcfg, monkeypatch):
+    import json
+    from scanner import persist
+    from scanner.replay import merge_into_history
+    monkeypatch.setattr(persist, "data_dir", lambda: tmp_path / "data")
+    monkeypatch.setattr(persist, "frontend_data_dir", lambda: tmp_path / "frontend" / "data")
+    persist.seed_empty_files()
+    live = make_signal(id="LIVE", generatedAt=5_000, dataSource="live")
+    persist.write_data_file("signals.json", {"generatedAt": 5_000, "signals": [live]})
+    replayed = [make_signal(id="R1", generatedAt=1_000, status="EXPIRED", dataSource="replay"),
+                make_signal(id="R2", generatedAt=2_000, status="WAITING_TRIGGER", dataSource="replay"),
+                make_signal(id="R3", generatedAt=6_000, status="EXPIRED", dataSource="replay")]
+    assert merge_into_history(replayed, wcfg) == 1
+    assert merge_into_history(replayed, wcfg) == 0
+    ids = [s["id"] for s in json.loads((tmp_path / "data" / "signals.json").read_text())["signals"]]
+    assert ids == ["R1", "LIVE"]
+    assert (tmp_path / "frontend" / "data" / "performance.json").exists()

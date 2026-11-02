@@ -30,6 +30,7 @@ from .signals import generate_signals, ACTIVE_STATUSES
 from .outcomes import update_outcomes
 from .performance import compute_performance
 from .main import make_client
+from . import persist
 from .persist import atomic_write_json, data_dir
 
 WARMUP_15M = 240  # bars needed before the first evaluation step (EMA200 etc.)
@@ -117,6 +118,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--config", default=None)
     parser.add_argument("--out", default=None, help="report path (default data/replay-report.json)")
     parser.add_argument("--determinism-check", action="store_true")
+    parser.add_argument("--into-history", action="store_true",
+                        help="merge resolved replay proposals into data/signals.json (tagged replay)")
     args = parser.parse_args(argv)
 
     cfg = Config.load(args.config)
@@ -138,7 +141,27 @@ def main(argv: list[str] | None = None) -> int:
     print(f"signals: {perf['total']}  wins: {perf['wins']}  losses: {perf['losses']}  "
           f"win rate: {perf['winRate']}% (n={perf['resolvedTrades']})  "
           f"profit factor: {perf['profitFactor']}")
+    if args.into_history:
+        print(f"history: {merge_into_history(report['signals'], cfg)} replay proposals added")
     return 0
+
+
+def merge_into_history(replayed: list[dict], cfg: Config) -> int:
+    """Append resolved replay proposals that predate the first live one."""
+    payload = persist.load_json("signals.json", {"generatedAt": 0, "signals": []})
+    existing = payload.get("signals", [])
+    ids = {s["id"] for s in existing}
+    cutoff = min((s["generatedAt"] for s in existing if s.get("dataSource") != "replay"),
+                 default=float("inf"))
+    fresh = [s for s in replayed if s["status"] not in ACTIVE_STATUSES
+             and s["id"] not in ids and s["generatedAt"] < cutoff]
+    if not fresh:
+        return 0
+    signals = sorted(existing + fresh, key=lambda s: s["generatedAt"])
+    now_ms = int(time.time() * 1000)
+    persist.write_data_file("signals.json", {"generatedAt": now_ms, "signals": signals})
+    persist.write_data_file("performance.json", compute_performance(signals, cfg, now_ms))
+    return len(fresh)
 
 
 if __name__ == "__main__":

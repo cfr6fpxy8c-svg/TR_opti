@@ -15,7 +15,7 @@ from .network_security import BASE_URLS
 
 DEFAULTS: dict[str, Any] = {
     "version": 1,
-    "scan": {"intervalMinutes": 15, "scheduleMinutesUtc": [7, 22, 37, 52],
+    "scan": {"intervalMinutes": 15, "scheduleMinutesUtc": [0, 15, 30, 45],
              "timezone": "UTC"},
     "dataSource": {
         "failoverEndpoints": [

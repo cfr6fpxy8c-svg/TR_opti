@@ -21,7 +21,7 @@ const PRICE_ENDPOINTS = [
 ];
 
 const TZ = "Europe/Paris";
-const DEFAULT_SCAN_MINUTES_UTC = [7, 22, 37, 52];
+const DEFAULT_SCAN_MINUTES_UTC = [0, 15, 30, 45];
 const SCAN_GRACE_MS = 5 * 60_000;
 const QUALITIES = ["A+", "A", "B+", "B", "C"];
 const $ = (id) => document.getElementById(id);
@@ -802,7 +802,7 @@ function renderHistory() {
       : (outcomes[s.status] || s.status);
     return `<tr>
       <td>${fmtTime(s.generatedAt)}</td>
-      <td><b>${escapeHtml(s.symbol)}</b></td>
+      <td><b>${escapeHtml(s.symbol)}</b>${s.dataSource === "replay" ? ' <span class="tag">replay</span>' : ""}</td>
       <td class="${s.direction === "LONG" ? "dir-l" : "dir-s"}">${escapeHtml(s.direction)}</td>
       <td>${Number(s.score).toFixed(1)}</td>
       <td class="sig-quality q-${escapeHtml(s.quality)}">${escapeHtml(s.quality)}</td>

@@ -2,7 +2,7 @@ name: scanner
 run-name: BTC scan · ${{ inputs.source || github.event_name }} · run ${{ github.run_number }}
 
 on:
-  # An external cron dispatches source=cron at :07/:22/:37/:52 UTC; GitHub's
+  # An external cron dispatches source=cron at :00/:15/:30/:45 UTC; GitHub's
   # own schedule never delivered on this repository.
   workflow_dispatch:
     inputs:

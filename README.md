@@ -20,7 +20,7 @@ metrics.
 ## 1. Architecture
 
 ```
-External cron → workflow_dispatch (:07/:22/:37/:52 UTC) ← free scheduler; GitHub Actions compute
+External cron → workflow_dispatch (:00/:15/:30/:45 UTC) ← free scheduler; GitHub Actions compute
         ↓
 Python Signal Engine (stdlib only)  ← scanner/ package
         ↓
@@ -132,12 +132,12 @@ repository. The scheduled job runs the scanner with `--symbols BTCUSDT`.
 2. Keep the default workflow token **read-only**. Only the isolated `publish`
    job requests `contents: write`; market scanning and tests receive read access.
 3. The included `.github/workflows/scanner.yml` is dispatched every 15 minutes
-   (UTC minutes 07, 22, 37, 52) by an external cron, plus on every push and manual dispatch. It runs the engine,
+   (UTC minutes 00, 15, 30, 45, right after each 15M candle closes) by an external cron, plus on every push and manual dispatch. It runs the engine,
    validates the JSON, and commits/pushes only when data actually changed.
 4. **No market API keys are needed.** Public market data only.
 
 GitHub's built-in `schedule` never delivered on this repository, so an external
-cron (e.g. cron-job.org, timezone set to UTC) sends at :07/:22/:37/:52:
+cron (e.g. cron-job.org, timezone set to UTC) sends at :00/:15/:30/:45:
 
 ```
 POST https://api.github.com/repos/cfr6fpxy8c-svg/TR_opti/actions/workflows/scanner.yml/dispatches
