@@ -16,7 +16,7 @@ from .network_security import BASE_URLS
 DEFAULTS: dict[str, Any] = {
     "version": 1,
     "scan": {"intervalMinutes": 15, "scheduleMinutesUtc": [7, 22, 37, 52],
-             "timezone": "Asia/Kuala_Lumpur"},
+             "timezone": "UTC"},
     "dataSource": {
         "failoverEndpoints": [
             {"name": "binance-futures", "market": "futures", "base": "https://fapi.binance.com/fapi/v1"},

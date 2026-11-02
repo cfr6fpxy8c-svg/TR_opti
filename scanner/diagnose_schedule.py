@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import argparse
-import base64
 import datetime
 import json
 import os
@@ -31,29 +30,27 @@ def github_get(repo: str, suffix: str):
     return json.loads(raw)
 
 
-def summarize(repo, workflow, schedules, recent, remote_cron, now=None):
+def summarize(repo, workflow, dispatches, recent, now=None):
     now = now or datetime.datetime.now(datetime.timezone.utc)
     findings = []
     if repo.get("archived") or repo.get("disabled"):
         findings.append("REPOSITORY_DISABLED")
     if workflow.get("state") != "active":
         findings.append("WORKFLOW_DISABLED")
-    if not remote_cron:
-        findings.append("NO_CRON_ON_DEFAULT_BRANCH")
-    scheduled = schedules.get("workflow_runs", [])
-    if not scheduled:
-        findings.append("NO_SCHEDULE_EVENTS")
+    dispatched = dispatches.get("workflow_runs", [])
+    if not dispatched:
+        findings.append("NO_DISPATCH_EVENTS")
     else:
-        last = datetime.datetime.fromisoformat(scheduled[0]["created_at"].replace("Z", "+00:00"))
+        last = datetime.datetime.fromisoformat(dispatched[0]["created_at"].replace("Z", "+00:00"))
         if (now - last).total_seconds() > 35 * 60:
-            findings.append("SCHEDULE_OVERDUE")
-        if scheduled[0].get("conclusion") == "failure":
-            findings.append("SCHEDULE_RUN_FAILED")
+            findings.append("DISPATCH_OVERDUE")
+        if dispatched[0].get("conclusion") == "failure":
+            findings.append("DISPATCH_RUN_FAILED")
     return {
         "repository": repo.get("full_name"), "private": repo.get("private"),
         "defaultBranch": repo.get("default_branch"), "workflowState": workflow.get("state"),
-        "remoteCron": remote_cron, "scheduledRunCount": schedules.get("total_count", 0),
-        "lastScheduledRun": scheduled[0].get("html_url") if scheduled else None,
+        "dispatchRunCount": dispatches.get("total_count", 0),
+        "lastDispatchRun": dispatched[0].get("html_url") if dispatched else None,
         "recentEvents": [r.get("event") for r in recent.get("workflow_runs", [])],
         "findings": findings,
     }
@@ -69,13 +66,9 @@ def main(argv=None):
     try:
         repo = github_get(args.repo, "")
         workflow = github_get(args.repo, "actions/workflows/scanner.yml")
-        schedules = github_get(args.repo, "actions/workflows/scanner.yml/runs?event=schedule&per_page=5")
+        dispatches = github_get(args.repo, "actions/workflows/scanner.yml/runs?event=workflow_dispatch&per_page=5")
         recent = github_get(args.repo, "actions/workflows/scanner.yml/runs?per_page=10")
-        # Contents API defaults to the repository's default branch.
-        content = github_get(args.repo, "contents/.github/workflows/scanner.yml")
-        source = base64.b64decode(content["content"]).decode("utf-8-sig")
-        crons = re.findall(r"^\s*-\s*cron:\s*['\"]([^'\"]+)['\"]", source, re.M)
-        result = summarize(repo, workflow, schedules, recent, crons)
+        result = summarize(repo, workflow, dispatches, recent)
     except urllib.error.HTTPError as exc:
         print(f"GitHub HTTP {exc.code}. Check the repository, workflow and access permissions.")
         print("Private repositories need read access via transient GH_TOKEN; it is never saved.")

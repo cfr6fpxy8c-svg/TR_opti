@@ -61,8 +61,7 @@ class ScanLog:
 
 def fmt_clock_badge(ms: int) -> str:
     import datetime
-    return datetime.datetime.fromtimestamp(
-        ms / 1000, datetime.timezone(datetime.timedelta(hours=8))).strftime("%H:%M")
+    return datetime.datetime.fromtimestamp(ms / 1000, datetime.timezone.utc).strftime("%H:%M")
 
 
 def _schedule_minutes(cfg: Config) -> list[int]:
@@ -246,7 +245,7 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
     schedule_minutes_utc = _schedule_minutes(cfg)
     scheduled_ms = _scheduled_now(cfg.get("scan.intervalMinutes", 15), schedule_minutes_utc)
     next_expected_ms = _next_scheduled(now_ms, schedule_minutes_utc)
-    trigger = os.environ.get("GITHUB_EVENT_NAME", "local")
+    trigger = os.environ.get("SCAN_TRIGGER") or os.environ.get("GITHUB_EVENT_NAME", "local")
     client = client or make_client(cfg)
 
     previous_signals_payload = persist.load_json("signals.json", {"generatedAt": 0, "signals": []})
@@ -469,7 +468,7 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
                                       universe.get("source"), now_ms)
                     if btc_analysis and btc_candles else None)
     badge = {"schemaVersion": 1, "label": "scanner",
-             "message": f"{fmt_clock_badge(now_ms)} MYT · {health}",
+             "message": f"{fmt_clock_badge(now_ms)} UTC · {health}",
              "color": "green" if health == "HEALTHY" else ("orange" if health == "DEGRADED" else "red")}
 
     global _STATUS

@@ -1,12 +1,16 @@
 name: scanner
-run-name: BTC scan · ${{ github.event_name }} · run ${{ github.run_number }}
+run-name: BTC scan · ${{ inputs.source || github.event_name }} · run ${{ github.run_number }}
 
 on:
-  schedule:
-    # UTC :07/:22/:37/:52. The cron's commit AUTHOR becomes the schedule actor:
-    # it must be a GitHub account with write access (the repo owner).
-    - cron: "7,22,37,52 * * * *"
+  # An external cron dispatches source=cron at :07/:22/:37/:52 UTC; GitHub's
+  # own schedule never delivered on this repository.
   workflow_dispatch:
+    inputs:
+      source:
+        description: "Dispatch origin"
+        type: choice
+        options: [manual, cron]
+        default: manual
   push:
     branches: [main]
     paths:
@@ -41,14 +45,14 @@ jobs:
       - name: Record trigger
         env:
           TRIGGER_EVENT: ${{ github.event_name }}
-          TRIGGER_CRON: ${{ github.event.schedule }}
+          TRIGGER_SOURCE: ${{ inputs.source }}
           TRIGGER_REF: ${{ github.ref }}
           TRIGGER_ACTOR: ${{ github.actor }}
         run: |
           {
             printf '## BTC scan trigger\n\n'
             printf -- '- Event: %s\n' "$TRIGGER_EVENT"
-            printf -- '- Cron: %s\n' "$TRIGGER_CRON"
+            printf -- '- Source: %s\n' "$TRIGGER_SOURCE"
             printf -- '- Branch: %s\n' "$TRIGGER_REF"
             printf -- '- Actor: %s\n' "$TRIGGER_ACTOR"
             printf -- '- Started at: %s UTC\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
@@ -56,6 +60,8 @@ jobs:
 
       - name: Run BTC scan
         id: scan
+        env:
+          SCAN_TRIGGER: ${{ inputs.source == 'cron' && 'schedule' || github.event_name }}
         run: python -m scanner.main --symbols BTCUSDT
         continue-on-error: true
 
@@ -83,8 +89,6 @@ jobs:
             frontend/data/latest-chart.json
             frontend/data/universe-snapshot.json
             frontend/data/badge.json
-            frontend/dashboard-offline.html
-            frontend/preview.html
 
       - name: Propagate scan failure
         if: steps.scan.outcome == 'failure'

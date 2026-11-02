@@ -18,7 +18,7 @@ DATA_NAMES = (
 )
 APPROVED = {f"data/{name}" for name in DATA_NAMES} | {
     f"frontend/data/{name}" for name in (*DATA_NAMES, "badge.json")
-} | {"frontend/dashboard-offline.html", "frontend/preview.html"}
+}
 
 
 def validated_files(artifact: Path) -> list[str]:

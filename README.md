@@ -20,7 +20,7 @@ metrics.
 ## 1. Architecture
 
 ```
-GitHub Actions (cron :07/:22/:37/:52 UTC) ← free scheduler/compute
+External cron → workflow_dispatch (:07/:22/:37/:52 UTC) ← free scheduler; GitHub Actions compute
         ↓
 Python Signal Engine (stdlib only)  ← scanner/ package
         ↓
@@ -131,15 +131,27 @@ repository. The scheduled job runs the scanner with `--symbols BTCUSDT`.
    ```
 2. Keep the default workflow token **read-only**. Only the isolated `publish`
    job requests `contents: write`; market scanning and tests receive read access.
-3. The included `.github/workflows/scanner.yml` runs at `7,22,37,52 * * * *`
-   (every 15 minutes, offset from the top of the hour) plus on every push and manual dispatch. It runs the engine,
+3. The included `.github/workflows/scanner.yml` is dispatched every 15 minutes
+   (UTC minutes 07, 22, 37, 52) by an external cron, plus on every push and manual dispatch. It runs the engine,
    validates the JSON, and commits/pushes only when data actually changed.
-4. **No secrets are needed.** Public market data only — never add API keys.
+4. **No market API keys are needed.** Public market data only.
 
-The cron expression means UTC minutes 07, 22, 37 and 52. A writer must push the
-changed workflow to the default branch for GitHub to register it. A successful
-manual or push run does **not** prove that the scheduler is firing. The Actions
-run summary now records the event, actor, cron and UTC start time.
+GitHub's built-in `schedule` never delivered on this repository, so an external
+cron (e.g. cron-job.org, timezone set to UTC) sends at :07/:22/:37/:52:
+
+```
+POST https://api.github.com/repos/cfr6fpxy8c-svg/TR_opti/actions/workflows/scanner.yml/dispatches
+Accept: application/vnd.github+json
+Authorization: Bearer <fine-grained token: this repository only, Actions read/write>
+X-GitHub-Api-Version: 2022-11-28
+
+{"ref": "main", "inputs": {"source": "cron"}}
+```
+
+`source=cron` makes the scan record itself as a scheduled run (slot + delay on
+the dashboard); a manual "Run workflow" keeps `source=manual`. The token is
+stored only in the cron service, never in this repository. GitHub answers
+`204` on success.
 
 Check the actual remote state with this read-only command:
 
@@ -147,10 +159,8 @@ Check the actual remote state with this read-only command:
 python -m scanner.diagnose_schedule --repo cfr6fpxy8c-svg/TR_opti --json
 ```
 
-`NO_SCHEDULE_EVENTS` means GitHub has created no scheduled runs. The code cannot
-determine GitHub's internal reason for an undelivered event. Check the workflow
-state, default branch, account policies and billing in GitHub; after updating
-the cron, verify an actual run with event `schedule`. Private repository access
+`NO_DISPATCH_EVENTS` or `DISPATCH_OVERDUE` means the external cron is not
+reaching GitHub (check its execution history and token expiry). Private repository access
 requires an authenticated connection or a token in the process environment
 (`GH_TOKEN`); this command never stores it. Changing the repository to private
 is a GitHub setting, not a property of these files. A deployed Pages site also
@@ -163,8 +173,8 @@ month has 2,880 scan slots, excluding tests and security checks. Consult
 before relying on the free allowance.
 
 Notes:
-- GitHub cron can jitter by a few minutes or skip runs under load. The offset
-  avoids the busiest minute of each hour but does not guarantee exact timing; the engine
+- The external cron fires on time, but the GitHub-hosted runner can still take
+  a few seconds to minutes to start. The engine
   records `scheduledAt` vs `executedAt` and the dashboard shows the **last
   successful scan** when a run fails.
 - Binance geo-blocks some cloud IPs (HTTP 451). The client automatically
@@ -215,11 +225,11 @@ use one of these instead:
 
 | Option | How | Notes |
 |---|---|---|
-| **Offline single file** | Download `frontend/dashboard-offline.html` and double-click it | Fully self-contained: the latest data snapshot is embedded in the file; live prices still refresh in-browser when reachable. Rebuilt automatically on every scan, so re-download (or `raw.githubusercontent.com`) for fresh data. |
+| **Offline single file** | Run `python -m scanner.build_offline` locally, then open `frontend/dashboard-offline.html` | Fully self-contained: the latest data snapshot is embedded in the file; live prices still refresh in-browser when reachable. Generated locally only (not committed). |
 | **GitHub Pages** (free) | Repo **Settings → Pages → Source: Deploy from a branch** → branch `main`, folder `/frontend` | Serves the dashboard at `https://<you>.github.io/crypto-signal-scanner/` — a widely trusted domain. Data updates automatically on every scan commit. |
 | **Cloudflare Pages** | See section 5 above | `https://<project>.pages.dev` free subdomain. |
 | **Local server** | `cd frontend && python -m http.server 8080` | Requires Python on the machine; gives the full auto-refreshing experience locally. |
-| **GitHub itself** | View `frontend/dashboard-offline.html` / `data/*.json` on github.com | Read-only check from anywhere github.com is allowed. |
+| **GitHub itself** | View `data/*.json` on github.com | Read-only check from anywhere github.com is allowed. |
 
 If a company device blocks even these, ask IT, or view from a personal device
 (e.g. phone) — the dashboard is fully responsive.
@@ -414,12 +424,12 @@ pipeline, failure policy, no-lookahead slice stability, replay determinism).
 | "No data changes — skipping commit" | Normal: nothing changed, no empty commits are created. |
 | Dashboard shows `price: scan snapshot` | Browser couldn't reach the Binance ticker (network/region). JSON data is unaffected. |
 | 0 signals for long stretches | Often by design. Run `python -m scanner.diagnose` to see exactly which gate is consuming the candidates, and `--sensitivity` to see what each threshold costs. Loosen deliberately, then replay-test — never tune until the output looks satisfying. |
-| Dashboard says `DATA STALE` / `SCANNER OFFLINE` | The data is older than 45 min / 3 h. The scheduler did not run: check the Actions tab, and remember GitHub disables cron after 60 days of repo inactivity. Re-arm with a manual `workflow_dispatch`. |
+| Dashboard says `DATA STALE` / `SCANNER OFFLINE` | The data is older than 45 min / 3 h. The external cron did not dispatch: check its execution history (HTTP 204 expected) and the token expiry, then the Actions tab. A manual `workflow_dispatch` runs one scan meanwhile. |
 | Scan marked DEGRADED | Some symbols failed or data arrived late; previous valid data retained and warning shown. |
 
 ## 14. Known limitations
 
-- **15-minute cadence**: GitHub cron jitter (minutes) means scans are
+- **15-minute cadence**: runner start-up delay means scans are
   near-quarter-hour, not exact; outcome evaluation uses closed candles, so
   intracandle path order is resolved only via 1M data (else AMBIGUOUS).
 - **Data source concentration**: the primary chain is three Binance-owned
@@ -467,4 +477,3 @@ MIT License. **This software is for market analysis and education only.** It
 does not execute trades, does not provide investment advice, and does not
 guarantee any outcome. Cryptocurrency trading involves substantial risk of
 loss. You are solely responsible for any trading decisions you make.
-frontend/preview.html is committed (auto-generated each scan)
