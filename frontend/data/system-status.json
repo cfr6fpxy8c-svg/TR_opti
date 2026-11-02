@@ -4,10 +4,10 @@
   "version": "1.1.0",
   "lastScan": {
     "scheduledAt": 1793657700000,
-    "executedAt": 1793657928924,
+    "executedAt": 1793658458859,
     "trigger": "push",
-    "jitterSeconds": 228.9,
-    "durationMs": 1494,
+    "jitterSeconds": 758.9,
+    "durationMs": 10618,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -28,23 +28,23 @@
       }
     ],
     "apiStats": {
-      "requests": 6,
-      "errors": 0,
-      "retries": 0,
+      "requests": 10,
+      "errors": 4,
+      "retries": 3,
       "rateLimitHits": 0,
-      "lastError": null,
-      "endpointUsed": "binance-futures",
+      "lastError": "HTTP 451 geo-restricted host=fapi.binance.com",
+      "endpointUsed": "binance-futures-mirror",
       "marketUsed": "futures"
     },
-    "apiHealth": "HEALTHY",
+    "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
       "newestCandleCloseMs": 1793657699999,
-      "ageSeconds": 228.9
+      "ageSeconds": 758.9
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793657928924,
+  "lastSuccessfulScan": 1793658458859,
   "nextExpectedScanAt": 1793658600000,
   "scanScheduleUtcMinutes": [
     0,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: RSI 83.2 outside [45,74]"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: volatility out of band (3.059%)"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.60 < min"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.49 < min"
-    },
     {
       "ts": 1788059769589,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793657930418,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793658458863,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793657700000 actual=1793658458859 (jitter 758.9s)"
+    },
+    {
+      "ts": 1793658469302,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793658469453,
+      "level": "info",
+      "msg": "rejected 2x score_below_threshold (e.g. score 31.6 < 50)"
+    },
+    {
+      "ts": 1793658469453,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
