@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "1.1.0",
   "lastScan": {
-    "scheduledAt": 1793649120000,
-    "executedAt": 1793649206013,
+    "scheduledAt": 1793650920000,
+    "executedAt": 1793651486965,
     "trigger": "push",
-    "jitterSeconds": 86.0,
-    "durationMs": 11122,
+    "jitterSeconds": 567.0,
+    "durationMs": 10817,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -20,7 +20,7 @@
     "signalsGenerated": 0,
     "rejects": {
       "htf_conflict": 1,
-      "no_liquidity_sweep": 1
+      "volume_thin": 1
     },
     "rejectFunnel": [
       {
@@ -28,7 +28,7 @@
         "rejected": 1
       },
       {
-        "stage": "no_liquidity_sweep",
+        "stage": "volume_thin",
         "rejected": 1
       }
     ],
@@ -44,13 +44,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793648699999,
-      "ageSeconds": 506.0
+      "newestCandleCloseMs": 1793651399999,
+      "ageSeconds": 87.0
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793649206013,
-  "nextExpectedScanAt": 1793650020000,
+  "lastSuccessfulScan": 1793651486965,
+  "nextExpectedScanAt": 1793651820000,
   "scanScheduleUtcMinutes": [
     7,
     22,
@@ -58,31 +58,6 @@
     52
   ],
   "logs": [
-    {
-      "ts": 1788059768871,
-      "level": "info",
-      "msg": "klines collected for 100/100 symbols"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 54x: HTF conflict (4H+1H oppose)"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 20x: HTF not aligned (4H=strong_bullish,1H=neutral)"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 13x: 4H regime RANGING"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 12x: HTF not aligned (4H=strong_bullish,1H=bearish)"
-    },
     {
       "ts": 1788059769589,
       "level": "info",
@@ -1055,6 +1030,31 @@
     },
     {
       "ts": 1793649217135,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793651486966,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793650920000 actual=1793651486965 (jitter 567.0s)"
+    },
+    {
+      "ts": 1793651497572,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793651497783,
+      "level": "info",
+      "msg": "rejected 1x htf_conflict (e.g. HTF conflict (4H=strong_bearish,1H=strong_bearish))"
+    },
+    {
+      "ts": 1793651497783,
+      "level": "info",
+      "msg": "rejected 1x volume_thin (e.g. relVol 0.77 < 1.2)"
+    },
+    {
+      "ts": 1793651497783,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
