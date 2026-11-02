@@ -4,10 +4,10 @@
   "version": "1.1.0",
   "lastScan": {
     "scheduledAt": 1793640120000,
-    "executedAt": 1793640628561,
+    "executedAt": 1793640952641,
     "trigger": "push",
-    "jitterSeconds": 508.6,
-    "durationMs": 10557,
+    "jitterSeconds": 832.6,
+    "durationMs": 11070,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -45,11 +45,11 @@
     "dataFreshness": {
       "label": "LIVE",
       "newestCandleCloseMs": 1793640599999,
-      "ageSeconds": 28.6
+      "ageSeconds": 352.6
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793640628561,
+  "lastSuccessfulScan": 1793640952641,
   "nextExpectedScanAt": 1793641020000,
   "scanScheduleUtcMinutes": [
     7,
@@ -58,31 +58,6 @@
     52
   ],
   "logs": [
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: RSI 36.6 outside [45,74]"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: volatility out of band (0.016%)"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.29 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
-    {
-      "ts": 1788059713887,
-      "level": "info",
-      "msg": "scan start v1.0.0 scheduled=1788059700000 actual=1788059713887 (jitter 13.9s)"
-    },
     {
       "ts": 1788059724285,
       "level": "info",
@@ -1055,6 +1030,31 @@
     },
     {
       "ts": 1793640639119,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793640952642,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793640120000 actual=1793640952641 (jitter 832.6s)"
+    },
+    {
+      "ts": 1793640963491,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793640963712,
+      "level": "info",
+      "msg": "rejected 1x htf_conflict (e.g. HTF conflict (4H=strong_bearish,1H=strong_bearish))"
+    },
+    {
+      "ts": 1793640963712,
+      "level": "info",
+      "msg": "rejected 1x volume_thin (e.g. relVol 1.13 < 1.2)"
+    },
+    {
+      "ts": 1793640963712,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
