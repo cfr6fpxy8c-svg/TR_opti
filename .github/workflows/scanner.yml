@@ -3,10 +3,9 @@
 # The 15-minute scheduler.
 #
 # IMPORTANT â€” read before trusting the cadence:
-# GitHub's `schedule` event is best-effort. It is queued like any other Actions
-# job and is documented as "delayed during periods of high load"; community
-# reports describe */15 jobs firing once an hour or worse during busy periods,
-# and a skipped fire is NEVER retried (the next one simply runs when it can).
+# GitHub's `schedule` event is best-effort and can be delayed or dropped under
+# load. Run at :07/:22/:37/:52 UTC instead of at the top of each hour, when
+# GitHub reports Actions load is highest. A missed fire is not retried.
 # The engine therefore records `scheduledAt` vs `executedAt` and the dashboard
 # derives freshness from wall-clock age instead of trusting this cron. If you
 # need a punctual cadence, drive `workflow_dispatch` from an external scheduler
@@ -14,7 +13,7 @@
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
   push:
     branches: [main]

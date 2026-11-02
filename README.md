@@ -20,7 +20,7 @@ metrics.
 ## 1. Architecture
 
 ```
-GitHub Actions (cron */15)          ← free scheduler/compute
+GitHub Actions (cron :07/:22/:37/:52 UTC) ← free scheduler/compute
         ↓
 Python Signal Engine (stdlib only)  ← scanner/ package
         ↓
@@ -79,7 +79,7 @@ crypto-signal-scanner/
 ├── data/                     signals.json · performance.json · system-status.json · market-snapshots.json
 ├── tests/                    191 unit + integration tests (offline, deterministic)
 ├── .github/workflows/
-│   ├── scanner.yml           cron */15 scan → validate → commit → push
+│   ├── scanner.yml           every 15 min → validate → commit → push
 │   └── tests.yml             pytest on every push/PR
 └── README.md
 ```
@@ -131,13 +131,14 @@ repository. The scheduled job runs the scanner with `--symbols BTCUSDT`.
    ```
 2. Go to **Settings → Actions → General → Workflow permissions** and enable
    **Read and write permissions** (the scan workflow commits JSON updates).
-3. The included `.github/workflows/scanner.yml` runs at `*/15 * * * *`
-   (00/15/30/45) plus on every push and manual dispatch. It runs the engine,
+3. The included `.github/workflows/scanner.yml` runs at `7,22,37,52 * * * *`
+   (every 15 minutes, offset from the top of the hour) plus on every push and manual dispatch. It runs the engine,
    validates the JSON, and commits/pushes only when data actually changed.
 4. **No secrets are needed.** Public market data only — never add API keys.
 
 Notes:
-- GitHub cron can jitter by a few minutes or skip runs under load; the engine
+- GitHub cron can jitter by a few minutes or skip runs under load. The offset
+  avoids the busiest minute of each hour but does not guarantee exact timing; the engine
   records `scheduledAt` vs `executedAt` and the dashboard shows the **last
   successful scan** when a run fails.
 - Binance geo-blocks some cloud IPs (HTTP 451). The client automatically
