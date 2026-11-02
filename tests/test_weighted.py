@@ -97,7 +97,7 @@ def test_replay_history_merge_keeps_only_resolved_pre_live_proposals(tmp_path, w
                 make_signal(id="R2", generatedAt=2_000, status="WAITING_TRIGGER", dataSource="replay"),
                 make_signal(id="R3", generatedAt=6_000, status="EXPIRED", dataSource="replay")]
     assert merge_into_history(replayed, wcfg) == 1
-    assert merge_into_history(replayed, wcfg) == 0
+    assert merge_into_history(replayed[:1], wcfg) == 1
     ids = [s["id"] for s in json.loads((tmp_path / "data" / "signals.json").read_text())["signals"]]
     assert ids == ["R1", "LIVE"]
     assert (tmp_path / "frontend" / "data" / "performance.json").exists()

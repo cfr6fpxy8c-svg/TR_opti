@@ -19,12 +19,14 @@ Notes:
 from __future__ import annotations
 
 import argparse
+import bisect
 import json
 import time
+from collections import Counter
 from pathlib import Path
 
 from .config import Config
-from .market_data import MarketDataClient, drop_incomplete
+from .market_data import INTERVAL_MS, MarketDataClient, drop_incomplete
 from .analysis import analyze_symbol
 from .signals import generate_signals, ACTIVE_STATUSES
 from .outcomes import update_outcomes
@@ -36,10 +38,24 @@ from .persist import atomic_write_json, data_dir
 WARMUP_15M = 240  # bars needed before the first evaluation step (EMA200 etc.)
 
 
+def _klines_paged(client: MarketDataClient, symbol: str, tf: str, count: int) -> list:
+    if count <= 1500:
+        return client.klines(symbol, tf, count)
+    step = INTERVAL_MS[tf]
+    start = int(time.time() * 1000) - count * step
+    out: list = []
+    while True:
+        page = client.klines_since(symbol, tf, start)
+        out.extend([c for c in page if not out or c.openTime > out[-1].openTime])
+        if len(page) < 1000:
+            return out
+        start = page[-1].openTime + step
+
+
 def fetch_history(client: MarketDataClient, symbol: str, limits: dict) -> dict:
     frames = {}
     for tf in ("1d", "4h", "1h", "15m"):
-        frames[tf] = drop_incomplete(client.klines(symbol, tf, limits.get(tf, 500)))
+        frames[tf] = drop_incomplete(_klines_paged(client, symbol, tf, limits.get(tf, 500)))
     return frames
 
 
@@ -58,20 +74,34 @@ def slice_frames(frames: dict, until_open_ms: int) -> dict:
     return out
 
 
-def replay_symbol(symbol: str, frames: dict, cfg: Config) -> list[dict]:
+def replay_symbol(symbol: str, frames: dict, cfg: Config,
+                  funnel: Counter | None = None) -> list[dict]:
     """Walk the 15M series; generate + resolve signals exactly as live."""
     candles_15m = frames["15m"]
     signals: list[dict] = []
-    start = max(WARMUP_15M, cfg.get("indicators.emaSlow", 200) + 40)
+    # Same candle window per timeframe as a live scan, so indicators warm up identically.
+    window = cfg.get("dataSource.klineLimits", {})
+    closes = {tf: [c.closeTime for c in cs] for tf, cs in frames.items()}
+    start = max(WARMUP_15M, cfg.get("indicators.emaSlow", 200) + 40, window.get("15m", 0))
     for t in range(start, len(candles_15m)):
         step_candle = candles_15m[t]
         now_ms = step_candle.closeTime + 1
-        sliced = slice_frames(frames, step_candle.openTime)
+        until_close_ms = step_candle.openTime + 900_000
+        sliced = {}
+        for tf, cs in frames.items():
+            end = bisect.bisect_right(closes[tf], until_close_ms)
+            sliced[tf] = cs[max(0, end - window.get(tf, end)):end]
         analysis = analyze_symbol(symbol, sliced, cfg, now_ms)
         if not analysis["ok"]:
+            if funnel is not None:
+                funnel["analysis_not_ok"] += 1
             continue
-        new_signals, _rejects = generate_signals([analysis], cfg, signals, now_ms,
-                                                 data_source="replay")
+        new_signals, rejects = generate_signals([analysis], cfg, signals, now_ms,
+                                                data_source="replay")
+        if funnel is not None:
+            funnel["evaluations"] += 1
+            funnel["proposed"] += len(new_signals)
+            funnel.update(r["code"] for r in rejects)
         signals.extend(new_signals)
         # advance lifecycle with candles closed by now (strictly causal)
         signals = update_outcomes(signals, {symbol: candles_15m}, now_ms,
@@ -81,10 +111,11 @@ def replay_symbol(symbol: str, frames: dict, cfg: Config) -> list[dict]:
 
 def run_replay(cfg: Config, symbols: list[str], candles: int, log=print) -> dict:
     client = make_client(cfg)
-    limits = cfg.get("dataSource.klineLimits", {})
-    limits = {k: max(v, candles) for k, v in limits.items()}
-    limits["15m"] = max(limits.get("15m", 500), candles)
+    base = cfg.get("dataSource.klineLimits", {})
+    limits = {tf: base.get(tf, 500) + candles * 900_000 // INTERVAL_MS[tf] + 1
+              for tf in ("1d", "4h", "1h", "15m")}
     results: list[dict] = []
+    funnel: Counter = Counter()
     for sym in symbols:
         t0 = time.monotonic()
         frames = fetch_history(client, sym, limits)
@@ -95,7 +126,7 @@ def run_replay(cfg: Config, symbols: list[str], candles: int, log=print) -> dict
         if short:
             log(f"{sym}: skipped, insufficient history {short}")
             continue
-        signals = replay_symbol(sym, frames, cfg)
+        signals = replay_symbol(sym, frames, cfg, funnel)
         took = round(time.monotonic() - t0, 1)
         log(f"{sym}: replayed {len(frames['15m'])} 15m candles -> {len(signals)} signals ({took}s)")
         results.extend(signals)
@@ -107,6 +138,7 @@ def run_replay(cfg: Config, symbols: list[str], candles: int, log=print) -> dict
         "generatedAt": int(time.time() * 1000),
         "signals": results,
         "performance": performance,
+        "funnel": dict(funnel.most_common()),
     }
     return report
 
@@ -141,23 +173,20 @@ def main(argv: list[str] | None = None) -> int:
     print(f"signals: {perf['total']}  wins: {perf['wins']}  losses: {perf['losses']}  "
           f"win rate: {perf['winRate']}% (n={perf['resolvedTrades']})  "
           f"profit factor: {perf['profitFactor']}")
+    print(f"funnel: {report['funnel']}")
     if args.into_history:
         print(f"history: {merge_into_history(report['signals'], cfg)} replay proposals added")
     return 0
 
 
 def merge_into_history(replayed: list[dict], cfg: Config) -> int:
-    """Append resolved replay proposals that predate the first live one."""
+    """Replace the replay part of the history with resolved proposals predating live ones."""
     payload = persist.load_json("signals.json", {"generatedAt": 0, "signals": []})
-    existing = payload.get("signals", [])
-    ids = {s["id"] for s in existing}
-    cutoff = min((s["generatedAt"] for s in existing if s.get("dataSource") != "replay"),
-                 default=float("inf"))
+    live = [s for s in payload.get("signals", []) if s.get("dataSource") != "replay"]
+    cutoff = min((s["generatedAt"] for s in live), default=float("inf"))
     fresh = [s for s in replayed if s["status"] not in ACTIVE_STATUSES
-             and s["id"] not in ids and s["generatedAt"] < cutoff]
-    if not fresh:
-        return 0
-    signals = sorted(existing + fresh, key=lambda s: s["generatedAt"])
+             and s["generatedAt"] < cutoff]
+    signals = sorted(live + fresh, key=lambda s: s["generatedAt"])
     now_ms = int(time.time() * 1000)
     persist.write_data_file("signals.json", {"generatedAt": now_ms, "signals": signals})
     persist.write_data_file("performance.json", compute_performance(signals, cfg, now_ms))
