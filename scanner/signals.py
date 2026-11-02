@@ -253,7 +253,7 @@ def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Op
         threshold = min(origin, setup.trigger)
         nearest = max((lv[0] for lv in swing_levels if lv[0] < threshold), default=None)
         if nearest is not None and (setup.trigger - nearest) < room:
-            return None, ["entry too close to opposing structure"]
+            return None, [_reject("entry_blocked_by_structure", "entry too close to opposing structure")]
 
     # ---- derivatives context (display-only unless hardFilter enabled)
     funding = ctx.get("fundingRatePct")
