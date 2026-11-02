@@ -1,13 +1,13 @@
 {
   "systemOnline": true,
   "health": "HEALTHY",
-  "version": "1.1.0",
+  "version": "0.1.0",
   "lastScan": {
     "scheduledAt": 1793658600000,
-    "executedAt": 1793659242009,
+    "executedAt": 1793659440386,
     "trigger": "push",
-    "jitterSeconds": 642.0,
-    "durationMs": 11552,
+    "jitterSeconds": 840.4,
+    "durationMs": 11431,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -40,11 +40,11 @@
     "dataFreshness": {
       "label": "LIVE",
       "newestCandleCloseMs": 1793658599999,
-      "ageSeconds": 642.0
+      "ageSeconds": 840.4
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1793659242009,
+  "lastSuccessfulScan": 1793659440386,
   "nextExpectedScanAt": 1793659500000,
   "scanScheduleUtcMinutes": [
     0,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: ADX 11.7 < min and not emerging"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.90 < min"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.76 < min"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 1x: no liquidity sweep in window"
-    },
     {
       "ts": 1788059769589,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793659253537,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793659440388,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793658600000 actual=1793659440386 (jitter 840.4s)"
+    },
+    {
+      "ts": 1793659451580,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793659451799,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1793659451799,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
