@@ -158,4 +158,4 @@ class TestIds:
 
     def test_signal_id_format(self):
         sid = signal_id("BTCUSDT", "long", T0, 100.0)
-        assert sid.startswith("SIG-") and len(sid) == 14
+        assert sid.startswith("SIG-") and len(sid) == 24

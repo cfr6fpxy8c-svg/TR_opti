@@ -7,6 +7,7 @@ after an update pass.
 from __future__ import annotations
 
 import math
+import re
 
 from .signals import ACTIVE_STATUSES, WIN, LOSS, TRIGGERED
 
@@ -25,22 +26,34 @@ REQUIRED_FIELDS = (
 
 
 def _finite(*values) -> bool:
-    return all(isinstance(v, (int, float)) and math.isfinite(v) for v in values)
+    return all(type(v) in (int, float) and math.isfinite(v) for v in values)
 
 
 def validate_signal(sig: dict, cfg) -> list[str]:
     errors: list[str] = []
+    if not isinstance(sig, dict):
+        return ["signal must be an object"]
     missing = [f for f in REQUIRED_FIELDS if f not in sig]
     if missing:
         return [f"missing fields: {', '.join(missing)}"]
 
-    if not isinstance(sig["symbol"], str) or not sig["symbol"].endswith("USDT"):
+    if not isinstance(sig["symbol"], str) or not re.fullmatch(r"[A-Z0-9]{1,28}USDT", sig["symbol"]):
         errors.append("symbol invalid")
+    if not isinstance(sig["id"], str) or not re.fullmatch(r"[A-Za-z0-9_-]{1,96}", sig["id"]):
+        errors.append("id invalid")
     if sig["direction"] not in ("LONG", "SHORT"):
         errors.append("direction invalid")
-    if not _finite(sig["triggerPrice"], sig["stopLoss"], sig["takeProfit"], sig["score"]):
+    if sig["status"] not in ("WAITING_TRIGGER", "TRIGGERED", "WIN", "LOSS", "EXPIRED", "AMBIGUOUS", "CANCELLED"):
+        errors.append("status invalid")
+    if sig["timeframe"] != "15m":
+        errors.append("timeframe invalid")
+    if not _finite(sig["triggerPrice"], sig["stopLoss"], sig["takeProfit"], sig["score"], sig["riskReward"]):
         errors.append("non-finite prices/score")
         return errors
+    if sig.get("entryPrice") is not None and not _finite(sig["entryPrice"]):
+        return errors + ["entryPrice invalid"]
+    if sig.get("rMultiple") is not None and not _finite(sig["rMultiple"]):
+        errors.append("rMultiple invalid")
     if sig["stopLoss"] == sig["takeProfit"]:
         errors.append("SL == TP")
     # entryPrice is deliberately NOT in REQUIRED_FIELDS: it is null until the
@@ -74,8 +87,8 @@ def validate_signal(sig: dict, cfg) -> list[str]:
     if calc is None or abs(calc - sig["riskReward"]) > 0.02:
         errors.append(f"RR inconsistent (stated {sig['riskReward']}, computed {calc})")
     for ind in ("rsi", "adx", "atr", "relativeVolume"):
-        if sig.get(ind) is None:
-            errors.append(f"indicator {ind} missing")
+        if sig.get(ind) is None or not _finite(sig[ind]):
+            errors.append(f"indicator {ind} missing or non-finite")
     if not isinstance(sig.get("generatedAt"), int) or sig["generatedAt"] <= 0:
         errors.append("generatedAt invalid")
     if sig["status"] == TRIGGERED and not sig.get("entryPrice"):
@@ -88,12 +101,19 @@ def validate_signal(sig: dict, cfg) -> list[str]:
 def validate_signals_payload(payload: dict, cfg, now_ms: int,
                              max_data_age_ms: int = 30 * 60_000) -> list[str]:
     errors: list[str] = []
+    if not isinstance(payload, dict) or not isinstance(payload.get("signals"), list):
+        return ["payload must be an object with a signals list"]
     signals = payload.get("signals", [])
     ids: set[str] = set()
     active_by_key: dict[tuple[str, str], int] = {}
     for i, sig in enumerate(signals):
         for e in validate_signal(sig, cfg):
-            errors.append(f"signals[{i}] ({sig.get('id', '?')}): {e}")
+            errors.append(f"signals[{i}]: {e}")
+        if (not isinstance(sig, dict) or not isinstance(sig.get("id"), str)
+                or not isinstance(sig.get("symbol"), str)
+                or not isinstance(sig.get("direction"), str)
+                or not isinstance(sig.get("status"), str)):
+            continue
         if sig.get("id") in ids:
             errors.append(f"duplicate id {sig.get('id')}")
         ids.add(sig.get("id"))

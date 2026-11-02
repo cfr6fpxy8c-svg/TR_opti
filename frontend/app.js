@@ -24,6 +24,15 @@ const TZ = "Europe/Paris";
 const DEFAULT_SCAN_MINUTES_UTC = [7, 22, 37, 52];
 const SCAN_GRACE_MS = 5 * 60_000;
 const $ = (id) => document.getElementById(id);
+// JSON/API fields are untrusted whenever they are inserted into HTML.
+const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"']/g,
+  c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+// Quoting alone does not stop spreadsheet formulas in exported data.
+const csvCell = (value) => {
+  let text = String(value ?? "");
+  if (/^[\s\uFEFF]*[=+@-]/u.test(text) || /^[\t\r\n]/u.test(text)) text = "'" + text;
+  return /[",\r\n]/.test(text) ? '"' + text.replace(/"/g, '""') + '"' : text;
+};
 const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("fr-FR", {
   timeZone: TZ, hour12: false, day: "2-digit", month: "short",
   hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "—";
@@ -437,12 +446,12 @@ function renderOverview() {
     if (v / total > 0.08) seg.textContent = v;
     bar.appendChild(seg);
     const li = document.createElement("span");
-    li.innerHTML = `<span class="dot" style="background:${colors[k]}"></span>${k.replace("_", " ")} · ${v} (${Math.round(100 * v / total)}%)`;
+    li.innerHTML = `<span class="dot" style="background:${colors[k] || "var(--muted)"}"></span>${escapeHtml(k.replace("_", " "))} · ${Number(v)} (${Math.round(100 * v / total)}%)`;
     legend.appendChild(li);
   }
   const top = snap.topVolume || [];
   $("top-volume").innerHTML = top.slice(0, 10).map((t, i) =>
-    `<li><span><span class="rank">#${i + 1}</span>${t.symbol}</span>
+    `<li><span><span class="rank">#${i + 1}</span>${escapeHtml(t.symbol)}</span>
      <span>$${Number(t.quoteVolume / 1e6).toFixed(1)}M</span></li>`).join("");
 }
 
@@ -469,18 +478,18 @@ function renderScreener() {
     const f = r.fundingRatePct;
     const fCls = f == null ? "" : (Math.abs(f) >= 0.05 ? "funding-hot" : "");
     return `<tr>
-      <td class="muted">${r.rank || ""}</td>
-      <td><b>${r.symbol}</b></td>
+      <td class="muted">${escapeHtml(r.rank ?? "")}</td>
+      <td><b>${escapeHtml(r.symbol)}</b></td>
       <td>${fmtPrice(r.price)}</td>
-      <td class="${biasCls(r.bias1d)}">${(r.bias1d || "—").replace("strong_", "s.").replace("_", " ")}</td>
-      <td class="${biasCls(r.bias4h)}">${(r.bias4h || "—").replace("strong_", "s.").replace("_", " ")}</td>
-      <td class="${biasCls(r.bias1h)}">${(r.bias1h || "—").replace("strong_", "s.").replace("_", " ")}</td>
-      <td>${r.regime || "—"}</td>
-      <td>${r.rsi == null ? "—" : r.rsi.toFixed(0)}</td>
-      <td>${r.adx == null ? "—" : r.adx.toFixed(0)}</td>
-      <td>${r.atrPercent == null ? "—" : r.atrPercent.toFixed(2)}</td>
-      <td>${r.relVolume == null ? "—" : r.relVolume.toFixed(2)}</td>
-      <td class="${fCls}">${f == null ? "—" : f.toFixed(4)}</td>
+      <td class="${escapeHtml(biasCls(r.bias1d))}">${escapeHtml((r.bias1d || "—").replace("strong_", "s.").replace("_", " "))}</td>
+      <td class="${escapeHtml(biasCls(r.bias4h))}">${escapeHtml((r.bias4h || "—").replace("strong_", "s.").replace("_", " "))}</td>
+      <td class="${escapeHtml(biasCls(r.bias1h))}">${escapeHtml((r.bias1h || "—").replace("strong_", "s.").replace("_", " "))}</td>
+      <td>${escapeHtml(r.regime || "—")}</td>
+      <td>${r.rsi == null ? "—" : Number(r.rsi).toFixed(0)}</td>
+      <td>${r.adx == null ? "—" : Number(r.adx).toFixed(0)}</td>
+      <td>${r.atrPercent == null ? "—" : Number(r.atrPercent).toFixed(2)}</td>
+      <td>${r.relVolume == null ? "—" : Number(r.relVolume).toFixed(2)}</td>
+      <td class="${escapeHtml(fCls)}">${f == null ? "—" : Number(f).toFixed(4)}</td>
     </tr>`;
   }).join("");
 }
@@ -503,8 +512,8 @@ function signalCard(s) {
   card.className = `sig-card ${long ? "long" : "short"}`;
   card.innerHTML = `
     <div class="sig-head">
-      <span class="sig-symbol">${s.symbol} <span class="sig-dir">${s.direction}</span></span>
-      <span class="sig-quality q-${s.quality}">${s.quality} · ${Number(s.score).toFixed(1)}/100</span>
+      <span class="sig-symbol">${escapeHtml(s.symbol)} <span class="sig-dir">${escapeHtml(s.direction)}</span></span>
+      <span class="sig-quality q-${escapeHtml(s.quality)}">${escapeHtml(s.quality)} · ${Number(s.score).toFixed(1)}/100</span>
     </div>
     <div class="sig-price-row">
       <div class="price-box">
@@ -522,27 +531,27 @@ function signalCard(s) {
       <div class="lvl tp"><span class="lbl">Take profit</span><div class="val">${fmtPrice(s.takeProfit)}</div></div>
       <div class="lvl sl"><span class="lbl">Stop loss</span><div class="val">${fmtPrice(s.stopLoss)}</div></div>
       <div class="lvl rr"><span class="lbl">Risk / reward</span><div class="val">1 : ${Number(s.riskReward).toFixed(2)}</div></div>
-      <div class="lvl"><span class="lbl">4H bias</span><div class="val">${(s.htf4hBias || "—").replace("_", " ")}</div></div>
-      <div class="lvl"><span class="lbl">1H bias</span><div class="val">${(s.htf1hBias || "—").replace("_", " ")}</div></div>
+      <div class="lvl"><span class="lbl">4H bias</span><div class="val">${escapeHtml((s.htf4hBias || "—").replace("_", " "))}</div></div>
+      <div class="lvl"><span class="lbl">1H bias</span><div class="val">${escapeHtml((s.htf1hBias || "—").replace("_", " "))}</div></div>
     </div>
     <div class="sig-meta">
       <span class="tag on">sweep ${s.liquiditySweep ? "@" + fmtPrice(s.liquiditySweep.level) : "—"}</span>
-      <span class="tag ${s.structure?.event?.startsWith("CHoCH") ? "on" : ""}">${s.structure?.event ?? "—"}</span>
+      <span class="tag ${s.structure?.event?.startsWith("CHoCH") ? "on" : ""}">${escapeHtml(s.structure?.event ?? "—")}</span>
       <span class="tag ${s.displacement ? "on" : "off"}">displacement ${s.displacement ? "✓" : "✗"}</span>
       <span class="tag ${f ? "on" : "off"}">FVG ${f ? "@" + fmtPrice(f.bottom) + "–" + fmtPrice(f.top) : "✗"}</span>
       <span class="tag ${ob ? "on" : "off"}">OB ${ob ? "@" + fmtPrice(ob.bottom) + "–" + fmtPrice(ob.top) : "✗"}</span>
       <span class="tag">vol ${Number(s.relativeVolume).toFixed(2)}×</span>
       <span class="tag">RSI ${Number(s.rsi).toFixed(0)}</span>
       <span class="tag">ADX ${Number(s.adx).toFixed(0)}</span>
-      <span class="tag">${s.marketRegime ?? ""}</span>
-      <span class="tag">1D ${(s.htf1dBias || "unknown").replace("strong_", "s.").replace("_", " ")}</span>
-      ${s.session ? `<span class="tag ${s.session !== "OFF" ? "on" : "off"}">${s.session} KZ</span>` : ""}
-      ${s.fundingRatePct != null ? `<span class="tag ${s.fundingExtreme ? "hot" : ""}">funding ${s.fundingRatePct.toFixed(4)}%/8h${s.fundingExtreme ? " ⚠" : ""}</span>` : ""}
-      ${s.rangeLabel ? `<span class="tag ${s.rangeLabel === "DISCOUNT" || s.rangeLabel === "PREMIUM" ? "on" : ""}">${s.rangeLabel} ${(s.rangePosition * 100).toFixed(0)}%</span>` : ""}
+      <span class="tag">${escapeHtml(s.marketRegime ?? "")}</span>
+      <span class="tag">1D ${escapeHtml((s.htf1dBias || "unknown").replace("strong_", "s.").replace("_", " "))}</span>
+      ${s.session ? `<span class="tag ${s.session !== "OFF" ? "on" : "off"}">${escapeHtml(s.session)} KZ</span>` : ""}
+      ${s.fundingRatePct != null ? `<span class="tag ${s.fundingExtreme ? "hot" : ""}">funding ${Number(s.fundingRatePct).toFixed(4)}%/8h${s.fundingExtreme ? " ⚠" : ""}</span>` : ""}
+      ${s.rangeLabel ? `<span class="tag ${s.rangeLabel === "DISCOUNT" || s.rangeLabel === "PREMIUM" ? "on" : ""}">${escapeHtml(s.rangeLabel)} ${(Number(s.rangePosition) * 100).toFixed(0)}%</span>` : ""}
     </div>
     <div class="sig-status">
-      <span class="status-badge st-${s.status}">${s.status.replace("_", " ")}</span>
-      <span class="sig-time">generated ${fmtTime(s.generatedAt)} · ${s.timeframe}</span>
+      <span class="status-badge st-${escapeHtml(s.status)}">${escapeHtml(String(s.status).replace("_", " "))}</span>
+      <span class="sig-time">generated ${fmtTime(s.generatedAt)} · ${escapeHtml(s.timeframe)}</span>
     </div>`;
   return card;
 }
@@ -568,14 +577,14 @@ function renderRecent() {
   tbody.innerHTML = recent.map(s => `
     <tr>
       <td>${fmtTime(s.generatedAt)}</td>
-      <td><b>${s.symbol}</b></td>
-      <td class="${s.direction === "LONG" ? "dir-l" : "dir-s"}">${s.direction}</td>
-      <td class="sig-quality q-${s.quality}">${s.quality} ${Number(s.score).toFixed(0)}</td>
+      <td><b>${escapeHtml(s.symbol)}</b></td>
+      <td class="${s.direction === "LONG" ? "dir-l" : "dir-s"}">${escapeHtml(s.direction)}</td>
+      <td class="sig-quality q-${escapeHtml(s.quality)}">${escapeHtml(s.quality)} ${Number(s.score).toFixed(0)}</td>
       <td>${fmtPrice(s.triggerPrice)}</td>
       <td>${fmtPrice(s.takeProfit)}</td>
       <td>${fmtPrice(s.stopLoss)}</td>
       <td>1:${Number(s.riskReward).toFixed(2)}</td>
-      <td><span class="status-badge st-${s.status}">${s.status.replace("_", " ")}</span></td>
+      <td><span class="status-badge st-${escapeHtml(s.status)}">${escapeHtml(String(s.status).replace("_", " "))}</span></td>
     </tr>`).join("");
 }
 
@@ -648,14 +657,14 @@ function renderPerformance() {
   const ctbody = document.querySelector("#calibration-table tbody");
   ctbody.innerHTML = ["A+", "A", "B+"].map(q => {
     const c = cal[q];
-    if (!c) return `<tr><td class="sig-quality q-${q}">${q}</td><td colspan="6" class="muted">no data yet</td></tr>`;
+    if (!c) return `<tr><td class="sig-quality q-${escapeHtml(q)}">${escapeHtml(q)}</td><td colspan="6" class="muted">no data yet</td></tr>`;
     const ci = c.wilson95 || {};
     return `<tr>
-      <td class="sig-quality q-${q}">${q}</td>
-      <td>${c.signals}</td><td>${c.resolved}</td><td class="dir-l">${c.wins}</td>
-      <td class="dir-s">${c.losses}</td>
-      <td>${c.winRate == null ? "—" : c.winRate.toFixed(1) + "%"}</td>
-      <td>${ci.lower == null ? "—" : ci.lower + "% – " + ci.upper + "%"}</td>
+      <td class="sig-quality q-${escapeHtml(q)}">${escapeHtml(q)}</td>
+      <td>${Number(c.signals)}</td><td>${Number(c.resolved)}</td><td class="dir-l">${Number(c.wins)}</td>
+      <td class="dir-s">${Number(c.losses)}</td>
+      <td>${c.winRate == null ? "—" : Number(c.winRate).toFixed(1) + "%"}</td>
+      <td>${ci.lower == null ? "—" : Number(ci.lower) + "% – " + Number(ci.upper) + "%"}</td>
     </tr>`;
   }).join("");
 
@@ -788,17 +797,17 @@ function renderHistory() {
       : (outcomes[s.status] || s.status);
     return `<tr>
       <td>${fmtTime(s.generatedAt)}</td>
-      <td><b>${s.symbol}</b></td>
-      <td class="${s.direction === "LONG" ? "dir-l" : "dir-s"}">${s.direction}</td>
+      <td><b>${escapeHtml(s.symbol)}</b></td>
+      <td class="${s.direction === "LONG" ? "dir-l" : "dir-s"}">${escapeHtml(s.direction)}</td>
       <td>${Number(s.score).toFixed(1)}</td>
-      <td class="sig-quality q-${s.quality}">${s.quality}</td>
+      <td class="sig-quality q-${escapeHtml(s.quality)}">${escapeHtml(s.quality)}</td>
       <td>${fmtPrice(s.triggerPrice)}</td>
       <td>${fmtPrice(s.entryZone?.[0])}–${fmtPrice(s.entryZone?.[1])}</td>
       <td>${fmtPrice(s.takeProfit)}</td>
       <td>${fmtPrice(s.stopLoss)}</td>
       <td>1:${Number(s.riskReward).toFixed(2)}</td>
-      <td><span class="status-badge st-${s.status}">${stateLabels[s.status] || s.status}</span></td>
-      <td>${result}</td>
+      <td><span class="status-badge st-${escapeHtml(s.status)}">${escapeHtml(stateLabels[s.status] || s.status)}</span></td>
+      <td>${escapeHtml(result)}</td>
       <td>${fmtDur(dur)}</td>
     </tr>`;
   }).join("");
@@ -825,13 +834,10 @@ function renderLogs() {
   $("log-box").innerHTML = tail.length
     ? tail.map(l => {
         const cls = l.level === "error" ? "lv-error" : l.level === "warn" ? "lv-warn" : "lv-info";
-        return `<span class="${cls}">[${fmtTime(l.ts)}] [${String(l.level).toUpperCase().padEnd(5)}] ${escapeHtml(l.msg)}</span>`;
+        return `<span class="${cls}">[${fmtTime(l.ts)}] [${escapeHtml(String(l.level).toUpperCase().padEnd(5))}] ${escapeHtml(l.msg)}</span>`;
       }).join("\n")
     : "—";
 }
-const escapeHtml = (s) => String(s).replace(/[&<>"']/g,
-  c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-
 /* --------------------------------------------------- interactions */
 function bindPills(containerId, onPick, multi) {
   const root = $(containerId);
@@ -887,7 +893,7 @@ $("csv-export").addEventListener("click", () => {
       if (k === "entryHigh") return s.entryZone?.[1] ?? "";
       const v = s[k];
       return v == null ? "" : String(v);
-    }).map(v => /[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v).join(","));
+    }).map(csvCell).join(","));
   }
   const blob = new Blob([lines.join("\n")], { type: "text/csv" });
   const a = document.createElement("a");
@@ -951,10 +957,10 @@ function renderFunnel() {
   for (const row of funnel) {
     remaining -= row.rejected || 0;
     const tr = document.createElement("tr");
-    const label = FUNNEL_LABELS[row.stage] || row.stage;
+    const label = escapeHtml(FUNNEL_LABELS[row.stage] || row.stage);
     tr.innerHTML =
       `<td>${label}</td>` +
-      `<td class="num">${row.rejected}</td>` +
+      `<td class="num">${Number(row.rejected)}</td>` +
       `<td class="num">${Math.max(0, remaining)}</td>`;
     tbody.appendChild(tr);
   }

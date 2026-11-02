@@ -12,7 +12,18 @@ from pathlib import Path
 from .config import repo_root
 
 DATA_FILES = ("signals.json", "performance.json", "system-status.json",
-              "market-snapshots.json", "latest-chart.json")
+              "market-snapshots.json", "latest-chart.json", "universe-snapshot.json")
+
+
+def _data_path(directory: Path, name: str) -> Path:
+    if name not in DATA_FILES:
+        raise ValueError("unexpected data filename")
+    if any(parent.is_symlink() for parent in (directory, *directory.parents)):
+        raise ValueError("data directories must not contain symlinks")
+    path = directory / name
+    if path.is_symlink() or not path.resolve().is_relative_to(directory.resolve()):
+        raise ValueError("data path must stay within its directory")
+    return path
 
 
 def data_dir() -> Path:
@@ -24,13 +35,14 @@ def frontend_data_dir() -> Path:
 
 
 def load_json(name: str, default):
-    path = data_dir() / name
+    path = _data_path(data_dir(), name)
     if not path.exists():
         return default
     try:
         return json.loads(path.read_text(encoding="utf-8"))
-    except (json.JSONDecodeError, OSError):
-        return default
+    except (json.JSONDecodeError, OSError, UnicodeDecodeError) as exc:
+        # Never silently replace a corrupted trade history with an empty one.
+        raise ValueError(f"refusing to reset unreadable data file: {name}") from exc
 
 
 def atomic_write_json(path: Path, payload) -> None:
@@ -38,7 +50,7 @@ def atomic_write_json(path: Path, payload) -> None:
     fd, tmp = tempfile.mkstemp(dir=str(path.parent), suffix=".tmp")
     try:
         with os.fdopen(fd, "w", encoding="utf-8") as fh:
-            json.dump(payload, fh, indent=2, sort_keys=False, default=str)
+            json.dump(payload, fh, indent=2, sort_keys=False, default=str, allow_nan=False)
             fh.flush()
             os.fsync(fh.fileno())
         os.replace(tmp, path)
@@ -48,8 +60,11 @@ def atomic_write_json(path: Path, payload) -> None:
 
 
 def write_data_file(name: str, payload) -> None:
-    atomic_write_json(data_dir() / name, payload)
-    atomic_write_json(frontend_data_dir() / name, payload)
+    # Validate both destinations before writing either copy.
+    target = _data_path(data_dir(), name)
+    mirror = _data_path(frontend_data_dir(), name)
+    atomic_write_json(target, payload)
+    atomic_write_json(mirror, payload)
 
 
 def seed_empty_files() -> None:

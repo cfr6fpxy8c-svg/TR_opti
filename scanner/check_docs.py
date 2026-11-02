@@ -16,7 +16,8 @@ methodology is out of scope.
 from __future__ import annotations
 
 import re
-import subprocess
+# This checker only launches this interpreter with fixed pytest arguments.
+import subprocess  # nosec B404
 import sys
 from pathlib import Path
 
@@ -26,7 +27,7 @@ from .config import repo_root
 def _count_tests() -> int:
     """Number of collected tests, straight from pytest."""
     proc = subprocess.run(
-        [sys.executable, "-m", "pytest", "tests/", "--collect-only", "-q"],
+        [sys.executable, "-m", "pytest", "tests/", "--collect-only", "-q"],  # nosec B603
         cwd=repo_root(), capture_output=True, text=True,
     )
     match = re.search(r"(\d+)\s+tests?\s+collected", proc.stdout)
@@ -70,9 +71,9 @@ def check() -> list[str]:
     if re.search(r"every 15 minutes|\*/15", readme) and not workflows:
         problems.append("README claims a 15-minute schedule but no workflow files exist")
     # ...and that scheduler must really carry the cron it advertises.
-    if workflows and re.search(r"7,22,37,52 \* \* \* \*", readme):
+    if workflows and re.search(r"7-59/15 \* \* \* \*", readme):
         crons = "\n".join(w.read_text(encoding="utf-8") for w in workflows)
-        if "7,22,37,52 * * * *" not in crons:
+        if "7-59/15 * * * *" not in crons:
             problems.append("README documents an offset 15-minute cron that no workflow declares")
 
     # 3. Test counts quoted in the README must match the real suite.

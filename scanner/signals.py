@@ -91,12 +91,12 @@ def _reject(code: str, detail: str = "") -> dict:
 
 def setup_hash(symbol: str, direction: str, trigger: float, stop: float, target: float) -> str:
     payload = f"{symbol}|{direction}|{trigger:.6f}|{stop:.6f}|{target:.6f}"
-    return hashlib.sha1(payload.encode()).hexdigest()
+    return hashlib.sha256(payload.encode()).hexdigest()
 
 
 def signal_id(symbol: str, direction: str, generated_ms: int, trigger: float) -> str:
     payload = f"{symbol}|{direction}|{generated_ms}|{trigger:.8f}"
-    return "SIG-" + hashlib.sha1(payload.encode()).hexdigest()[:10]
+    return "SIG-" + hashlib.sha256(payload.encode()).hexdigest()[:20]
 
 
 def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Optional[dict], list[str]]:

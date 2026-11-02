@@ -11,6 +11,8 @@ import json
 from pathlib import Path
 from typing import Any
 
+from .network_security import BASE_URLS
+
 DEFAULTS: dict[str, Any] = {
     "version": 1,
     "scan": {"intervalMinutes": 15, "scheduleMinutesUtc": [7, 22, 37, 52],
@@ -142,6 +144,15 @@ class Config:
         endpoints = self.get("dataSource.failoverEndpoints", [])
         if not endpoints:
             errors.append("dataSource.failoverEndpoints must not be empty")
+        if not isinstance(endpoints, list):
+            errors.append("dataSource.failoverEndpoints must be a list")
+        else:
+            for ep in endpoints:
+                if (not isinstance(ep, dict) or not isinstance(ep.get("base"), str)
+                        or ep["base"].rstrip("/") not in BASE_URLS):
+                    errors.append("dataSource endpoint is not an approved public HTTPS API")
+                elif ep.get("root") not in (None, "https://api.bybit.com"):
+                    errors.append("dataSource endpoint root is not allowed")
         return errors
 
 

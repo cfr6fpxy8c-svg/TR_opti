@@ -15,11 +15,14 @@
 from __future__ import annotations
 
 import json
+import ssl
 import time
 import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass, field
+
+from .network_security import MAX_RESPONSE_BYTES, NoRedirects, validate_market_url
 
 INTERVAL_MS = {"15m": 900_000, "1h": 3_600_000, "4h": 14_400_000, "1d": 86_400_000, "1m": 60_000}
 
@@ -190,19 +193,28 @@ class MarketDataClient:
         raise MarketDataError(f"all {dialect} endpoints failed: {last_exc}")
 
     def _fetch(self, url: str) -> dict | list:
+        try:
+            validate_market_url(url)
+        except ValueError as exc:
+            raise MarketDataError(f"blocked market API URL: {exc}") from exc
         request = urllib.request.Request(url, headers={
             "User-Agent": "crypto-signal-scanner/1.0 (public market data only)",
             "Accept": "application/json",
         })
         try:
-            with urllib.request.urlopen(request, timeout=self.timeout) as response:
-                payload = response.read().decode("utf-8")
+            opener = urllib.request.build_opener(
+                urllib.request.HTTPSHandler(context=ssl.create_default_context()), NoRedirects())
+            with opener.open(request, timeout=self.timeout) as response:
+                raw = response.read(MAX_RESPONSE_BYTES + 1)
+                if len(raw) > MAX_RESPONSE_BYTES:
+                    raise MarketDataError("market API response exceeds size limit")
+                payload = raw.decode("utf-8")
         except urllib.error.HTTPError as exc:
             body = ""
             try:
-                body = exc.read().decode("utf-8", errors="replace")[:200]
+                body = exc.read(200).decode("utf-8", errors="replace")
             except Exception:
-                pass
+                body = "unreadable error body"
             if exc.code in (429, 418):
                 raise MarketDataError(f"HTTP {exc.code} rate limited: {body}", rate_limited=True) from exc
             if exc.code in (400, 404, 422):
@@ -210,12 +222,14 @@ class MarketDataClient:
             if exc.code == 451:
                 raise MarketDataError(f"HTTP 451 geo-restricted host={url.split('//')[1].split('/')[0]}") from exc
             raise MarketDataError(f"HTTP {exc.code}: {body}") from exc
-        except (urllib.error.URLError, TimeoutError, OSError) as exc:
+        except (urllib.error.URLError, TimeoutError, OSError, UnicodeDecodeError) as exc:
             raise MarketDataError(f"network error: {exc}") from exc
         try:
             data = json.loads(payload)
         except json.JSONDecodeError as exc:
             raise MarketDataError(f"malformed JSON: {exc}") from exc
+        if not isinstance(data, (dict, list)):
+            raise MarketDataError("market API returned a non-object JSON value")
         if isinstance(data, dict) and data.get("code") not in (None, 0, 200):
             if data.get("code") == -1121:
                 raise SymbolUnavailableError(str(data.get("msg", "invalid symbol")))

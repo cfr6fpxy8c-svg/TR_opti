@@ -21,7 +21,7 @@ def main() -> int:
     errors: list[str] = []
     data = repo_root() / "data"
     files = ["signals.json", "performance.json", "system-status.json",
-             "market-snapshots.json", "latest-chart.json"]
+             "market-snapshots.json", "latest-chart.json", "universe-snapshot.json"]
     payloads: dict[str, object] = {}
     for name in files:
         path = data / name
@@ -29,8 +29,17 @@ def main() -> int:
             errors.append(f"{name}: missing")
             continue
         try:
-            payloads[name] = json.loads(path.read_text(encoding="utf-8"))
-        except json.JSONDecodeError as exc:
+            if path.is_symlink() or path.stat().st_size > 50 * 1024 * 1024:
+                raise ValueError("unsafe path or excessive file size")
+            payload = json.loads(path.read_text(encoding="utf-8"))
+            expected = list if name == "market-snapshots.json" else dict
+            if not isinstance(payload, expected):
+                raise ValueError("unexpected JSON root type")
+            mirror = repo_root() / "frontend" / "data" / name
+            if mirror.is_symlink() or mirror.read_bytes() != path.read_bytes():
+                raise ValueError("frontend mirror differs or is unsafe")
+            payloads[name] = payload
+        except (ValueError, OSError, UnicodeDecodeError) as exc:
             errors.append(f"{name}: invalid JSON ({exc})")
 
     if "signals.json" in payloads:
@@ -38,13 +47,15 @@ def main() -> int:
         errs = validate_signals_payload(payloads["signals.json"], cfg, int(time.time() * 1000))
         errors.extend(f"signals.json: {e}" for e in errs)
         signals = payloads["signals.json"].get("signals", [])
-        statuses = [s.get("status") for s in signals]
+        if not isinstance(signals, list):
+            signals = []
+        statuses = [s.get("status") for s in signals if isinstance(s, dict)]
         print(f"signals.json: {len(signals)} signals, "
-              f"{sum(1 for s in statuses if s in ACTIVE_STATUSES)} active")
+              f"{sum(1 for s in statuses if isinstance(s, str) and s in ACTIVE_STATUSES)} active")
         allowed = {"WAITING_TRIGGER", "TRIGGERED", "WIN", "LOSS", "EXPIRED", "AMBIGUOUS", "CANCELLED"}
-        bad = [s for s in statuses if s not in allowed]
+        bad = [s for s in statuses if not isinstance(s, str) or s not in allowed]
         if bad:
-            errors.append(f"signals.json: unknown statuses {sorted(set(bad))}")
+            errors.append("signals.json: unknown or malformed statuses")
 
     if "universe-snapshot.json" in payloads:
         snap = payloads["universe-snapshot.json"]

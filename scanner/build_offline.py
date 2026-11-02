@@ -19,6 +19,7 @@ from pathlib import Path
 from typing import Optional
 
 from .config import repo_root
+from .html_security import inline_script, authorize_inline_scripts
 
 
 def _read_json(path, default):
@@ -65,8 +66,9 @@ def build(frontend_dir: Optional[Path] = None, data_dir: Optional[Path] = None) 
                   lambda _m: style_block, html, count=1)
 
     inject = ("<script>window.__EMBEDDED_DATA__ = " + blob + ";</script>\n"
-              "<script>\n" + js.replace("</script>", "<\\/script>") + "\n</script>")
+              "<script>\n" + inline_script(js) + "\n</script>")
     html = re.sub(r'<script src="app\.js"></script>', lambda _m: inject, html, count=1)
+    html = authorize_inline_scripts(html)
 
     (fe / "dashboard-offline.html").write_text(html, encoding="utf-8")
     print(f"dashboard-offline.html built ({len(html) // 1024} KB, "

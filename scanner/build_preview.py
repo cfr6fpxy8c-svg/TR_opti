@@ -14,6 +14,7 @@ from pathlib import Path
 from typing import Optional
 
 from .config import repo_root
+from .html_security import inline_script, authorize_inline_scripts
 
 
 def build(frontend_dir: Optional[Path] = None) -> None:
@@ -29,12 +30,13 @@ def build(frontend_dir: Optional[Path] = None) -> None:
 
     html = re.sub(
         r'<link rel="stylesheet" href="styles.css">',
-        "<style>\n" + css.replace("</", "<\\/") + "\n</style>",
+        lambda _m: "<style>\n" + css.replace("</", "<\\/") + "\n</style>",
         html, count=1)
     html = re.sub(
         r'<script src="app\.js"></script>',
-        "<script>\n" + js.replace("</script>", "<\\/script>") + "\n</script>",
+        lambda _m: "<script>\n" + inline_script(js) + "\n</script>",
         html, count=1)
+    html = authorize_inline_scripts(html)
     (fe / "preview.html").write_text(html, encoding="utf-8")
     print(f"preview.html built ({len(html) // 1024} KB)")
 

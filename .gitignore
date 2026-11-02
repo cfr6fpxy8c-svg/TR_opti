@@ -25,3 +25,15 @@ data/replay-report.json
 # Local scratch
 /tmp/
 *.log
+
+# Local audits and credentials must never enter Git.
+.audit/
+.scan-output/
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials.json

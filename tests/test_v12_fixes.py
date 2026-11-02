@@ -443,7 +443,7 @@ class TestDocsConsistency:
                 break
         else:
             pytest.fail("scanner.yml not found in either location")
-        assert "7,22,37,52 * * * *" in wf
+        assert 'cron: "7-59/15 * * * *"' in wf
         assert "workflow_dispatch" in wf, "needed to recover from skipped cron fires"
 
 

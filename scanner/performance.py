@@ -65,7 +65,8 @@ def _monte_carlo(r_sequence, paths=500, seed=1337, block=None):
     n = len(r_sequence)
     if n < 5:
         return None
-    rng = random.Random(seed)  # fixed seed -> reproducible
+    # Statistical resampling only: never used for credentials or identifiers.
+    rng = random.Random(seed)  # nosec B311
     if block is None:
         block = max(1, min(max(1, n // 2), round(n ** (1.0 / 3.0))))
     block = max(1, min(block, n))

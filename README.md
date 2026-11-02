@@ -3,7 +3,7 @@
 [![scanner](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FAcekiller88%2Fcrypto-signal-scanner%2Fmain%2Ffrontend%2Fdata%2Fbadge.json)](https://github.com/Acekiller88/crypto-signal-scanner/actions)
 [![Tests](https://github.com/Acekiller88/crypto-signal-scanner/actions/workflows/tests.yml/badge.svg)](https://github.com/Acekiller88/crypto-signal-scanner/actions/workflows/tests.yml)
 
-A **zero-cost crypto market-analysis and signal-generation system**. This checkout is configured
+A **crypto market-analysis and signal-generation system**. This checkout is configured
 to scan **BTCUSDT only** through GitHub Actions every 15 minutes; running the scanner without a
 symbol override still selects the top-100 liquid Binance USDT-perpetual pairs. It identifies high-confluence
 LONG/SHORT setups using multi-timeframe technical analysis (4H macro → 1H directional → 15M
@@ -47,8 +47,8 @@ JSON persistence → git commit       ← data/*.json mirrored to frontend/data
 Cloudflare Pages (free)             ← static dark dashboard, auto-refresh
 ```
 
-**No paid service anywhere**: GitHub Actions (free tier) + Cloudflare Pages (free) + Binance
-public market data + JSON-in-git storage. Total cost: **RM0 / USD0 per month**.
+The engine uses free public market data and has no paid API dependency.
+Hosting and GitHub Actions costs depend on repository visibility and plan quotas.
 
 ### Repository layout
 
@@ -77,7 +77,7 @@ crypto-signal-scanner/
 │   └── data/                 ← mirror of /data served statically by Cloudflare Pages
 ├── config/strategy.json      ALL strategy parameters (nothing hard-coded)
 ├── data/                     signals.json · performance.json · system-status.json · market-snapshots.json
-├── tests/                    192 unit + integration tests (offline, deterministic)
+├── tests/                    228 unit + integration tests (offline, deterministic)
 ├── .github/workflows/
 │   ├── scanner.yml           every 15 min → validate → commit → push
 │   └── tests.yml             pytest on every push/PR
@@ -91,8 +91,8 @@ crypto-signal-scanner/
 ```bash
 git clone <your-repo-url> crypto-signal-scanner
 cd crypto-signal-scanner
-pip install -r requirements.txt      # pytest only; the engine is stdlib-only
-python -m pytest tests/ -q           # 192 tests must pass
+python -m pip install --require-hashes -r requirements.txt  # locked QA tooling
+python -m pytest tests/ -q           # 228 tests must pass
 ```
 
 ## 3. Local execution
@@ -129,12 +129,38 @@ repository. The scheduled job runs the scanner with `--symbols BTCUSDT`.
    git commit -m "feat: configure BTC-only scheduled scanner"
    git push -u origin main
    ```
-2. Go to **Settings → Actions → General → Workflow permissions** and enable
-   **Read and write permissions** (the scan workflow commits JSON updates).
-3. The included `.github/workflows/scanner.yml` runs at `7,22,37,52 * * * *`
+2. Keep the default workflow token **read-only**. Only the isolated `publish`
+   job requests `contents: write`; market scanning and tests receive read access.
+3. The included `.github/workflows/scanner.yml` runs at `7-59/15 * * * *`
    (every 15 minutes, offset from the top of the hour) plus on every push and manual dispatch. It runs the engine,
    validates the JSON, and commits/pushes only when data actually changed.
 4. **No secrets are needed.** Public market data only — never add API keys.
+
+The cron expression means UTC minutes 07, 22, 37 and 52. A writer must push the
+changed workflow to the default branch for GitHub to register it. A successful
+manual or push run does **not** prove that the scheduler is firing. The Actions
+run summary now records the event, actor, cron and UTC start time.
+
+Check the actual remote state with this read-only command:
+
+```bash
+python -m scanner.diagnose_schedule --repo cfr6fpxy8c-svg/TR_opti --json
+```
+
+`NO_SCHEDULE_EVENTS` means GitHub has created no scheduled runs. The code cannot
+determine GitHub's internal reason for an undelivered event. Check the workflow
+state, default branch, account policies and billing in GitHub; after updating
+the cron, verify an actual run with event `schedule`. Private repository access
+requires an authenticated connection or a token in the process environment
+(`GH_TOKEN`); this command never stores it. Changing the repository to private
+is a GitHub setting, not a property of these files. A deployed Pages site also
+needs its own access policy if its contents must remain private.
+
+The scanner uses two hosted jobs per scan to isolate write permission. On a
+private repository, include both jobs in the Actions minute budget; a 30-day
+month has 2,880 scan slots, excluding tests and security checks. Consult
+[GitHub Actions billing](https://docs.github.com/en/billing/concepts/product-billing/github-actions)
+before relying on the free allowance.
 
 Notes:
 - GitHub cron can jitter by a few minutes or skip runs under load. The offset
@@ -146,6 +172,21 @@ Notes:
   futures API mirror → official spot market-data mirror, clearly flagged as a
   degraded source in System Status). See `dataSource.failoverEndpoints` in
   `config/strategy.json`.
+
+Security controls run on pushes, pull requests and weekly through
+`.github/workflows/security.yml`: Bandit, pip-audit, Gitleaks across Git history,
+actionlint and frontend injection regressions. Dependencies and Actions are
+pinned with hashes. Refresh Python locks from the `.in` files using pip-compile
+with `--generate-hashes --allow-unsafe` before upgrades; Dependabot proposes
+updates for review.
+
+Market requests use verified TLS, an endpoint/route allowlist, no redirects and
+bounded responses. Publication checks exact filenames, symlinks and matching
+JSON mirrors. Repository credentials are never written to Git config. Browser
+CSP blocks unknown scripts; generated inline scripts are authorized by SHA256.
+`frontend/_headers` adds Cloudflare's HTTP security headers; another host must
+configure equivalent headers. These controls cover the audited risks and do
+not guarantee the absence of every unknown vulnerability.
 
 ## 5. Cloudflare Pages deployment (free hosting)
 
@@ -351,7 +392,7 @@ live behaviour.
 ## 12. Testing
 
 ```bash
-python -m pytest tests/ -v          # 192 tests, fully offline
+python -m pytest tests/ -v          # 228 tests, fully offline
 ```
 
 Coverage: EMA/RSI/ATR/ADX/RelVol/VWAP (hand-computed vectors) · swing
