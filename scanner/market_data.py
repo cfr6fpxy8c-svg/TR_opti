@@ -198,7 +198,7 @@ class MarketDataClient:
         except ValueError as exc:
             raise MarketDataError(f"blocked market API URL: {exc}") from exc
         request = urllib.request.Request(url, headers={
-            "User-Agent": "crypto-signal-scanner/1.0 (public market data only)",
+            "User-Agent": "tr-opti-scanner/1.0 (public market data only)",
             "Accept": "application/json",
         })
         try:

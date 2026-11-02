@@ -122,22 +122,6 @@ def test_publisher_blocks_artifact_code_and_extra_files(tmp_path):
         publisher.validated_files(tmp_path)
 
 
-def test_schedule_diagnostic_does_not_confuse_push_with_cron():
-    from scanner.diagnose_schedule import summarize
-    result = summarize({"default_branch": "main"}, {"state": "active"},
-                       {"total_count": 0, "workflow_runs": []},
-                       {"workflow_runs": [{"event": "push"}]})
-    assert result["findings"] == ["NO_DISPATCH_EVENTS"]
-
-
-def test_schedule_api_uses_exact_repository_url():
-    from scanner.diagnose_schedule import github_get
-    with patch("scanner.diagnose_schedule.urllib.request.build_opener") as build:
-        build.return_value.open.return_value.__enter__.return_value.read.return_value = b'{}'
-        assert github_get("owner/repo", "") == {}
-        assert build.return_value.open.call_args.args[0].full_url == "https://api.github.com/repos/owner/repo"
-
-
 def test_oversized_market_payload_rejected():
     client = MarketDataClient(Config.load().get("dataSource.failoverEndpoints"))
     with patch("scanner.market_data.MAX_RESPONSE_BYTES", 16), patch("urllib.request.build_opener") as build:

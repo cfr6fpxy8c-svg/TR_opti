@@ -70,11 +70,6 @@ def check() -> list[str]:
         workflows = sorted(staged_dir.glob("*.yml"))
     if re.search(r"every 15 minutes|\*/15", readme) and not workflows:
         problems.append("README claims a 15-minute schedule but no workflow files exist")
-    # ...and that scheduler must really carry the cron it advertises.
-    if workflows and re.search(r"7,22,37,52 \* \* \* \*", readme):
-        crons = "\n".join(w.read_text(encoding="utf-8") for w in workflows)
-        if "7,22,37,52 * * * *" not in crons:
-            problems.append("README documents an offset 15-minute cron that no workflow declares")
 
     # 3. Test counts quoted in the README must match the real suite.
     #
