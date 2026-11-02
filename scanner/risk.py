@@ -33,6 +33,7 @@ from dataclasses import dataclass
 from typing import Optional
 
 from .costs import CostModel
+from .scoring import effective_min_rr, is_weighted
 
 
 @dataclass
@@ -105,15 +106,22 @@ def build_setup(direction: str, price: float, atr: float,
         return None, (f"transaction cost too high ({cost_r:.2f}R of risk per round "
                       f"trip > {max_cost_r}R cap)")
 
-    min_rr = risk.get("minRr", 2.5)
+    min_rr = effective_min_rr(cfg)
     pref_rr = risk.get("preferredRr", 3.0)
+    weighted = is_weighted(cfg)
     chosen = None
     for level, idx, kind in candidates:
         rr = _rr(direction, trigger, stop, level)
         if rr is not None and rr >= min_rr:
             chosen = (level, idx, kind, rr)
-            if rr >= pref_rr:
-                break  # nearest target that also reaches preferred RR
+            # Weighted proposals take the nearest qualifying target: the 4h time stop rarely reaches 3R+.
+            if rr >= pref_rr or weighted:
+                break
+    if chosen is None and weighted:
+        # No structural target far enough: weighted proposals use a fixed-R target.
+        rr = float(cfg.get("weighted.fallbackRr", 2.0))
+        sign = 1 if direction == "long" else -1
+        chosen = (trigger + sign * rr * stop_dist, None, "fixed_rr", round(rr, 4))
     if chosen is None:
         return None, "no opposing structure offers >= min RR"
 

@@ -184,6 +184,8 @@
         <button class="pill active" data-q="A+">A+</button>
         <button class="pill active" data-q="A">A</button>
         <button class="pill active" data-q="B+">B+</button>
+        <button class="pill active" data-q="B">B</button>
+        <button class="pill active" data-q="C">C</button>
       </div>
     </div>
     <div id="active-empty" class="card empty hidden">No active signals. The engine publishes only
@@ -307,7 +309,12 @@
         <p>HTF alignment 20 · market structure 20 · liquidity/SMC 20 · momentum 15 · volume 10 ·
         volatility 5 · risk/reward 10. Tiers: <strong>A+ ≥ 90, A ≥ 85, B+ ≥ 80</strong> — anything
         below 80 is never published. The score ranks confluence quality; it is NOT a win
-        probability.</p></details>
+        probability.</p>
+        <p><strong>Weighted mode (active):</strong> the SMC gates above become points instead of
+        rejections, plus 10 context points (1D bias, session), rescaled to 100. The best-scoring
+        direction is proposed when the score reaches 50 (tiers <strong>B ≥ 70, C ≥ 50</strong>), with a
+        structural target (RR ≥ 1.5) or a fixed 2R target. The % shown on a proposal is the
+        historical win rate of its tier, with its sample size.</p></details>
       <details><summary>Hard rejection rules</summary>
         <p>Regardless of score, a setup is rejected when: 4H and 1H both oppose the direction;
         RR &lt; 2.5; 4H regime is RANGING; ADX &lt; 15 with no emerging-trend evidence (DI aligned
@@ -360,6 +367,8 @@
           <button class="pill" data-q="A+">A+</button>
           <button class="pill" data-q="A">A</button>
           <button class="pill" data-q="B+">B+</button>
+          <button class="pill" data-q="B">B</button>
+          <button class="pill" data-q="C">C</button>
         </div>
         <div class="filter-pills" id="hist-outcome">
           <button class="pill active" data-o="all">Tous résultats</button>

@@ -37,7 +37,7 @@ WARMUP_15M = 240  # bars needed before the first evaluation step (EMA200 etc.)
 
 def fetch_history(client: MarketDataClient, symbol: str, limits: dict) -> dict:
     frames = {}
-    for tf in ("4h", "1h", "15m"):
+    for tf in ("1d", "4h", "1h", "15m"):
         frames[tf] = drop_incomplete(client.klines(symbol, tf, limits.get(tf, 500)))
     return frames
 

@@ -46,6 +46,7 @@ DEFAULTS: dict[str, Any] = {
     },
     "smc": {"fvgMinGapAtrMultiple": 0.10, "obLookback": 10, "setupWindowBars": 12},
     "signalModel": {
+        "mode": "strict",
         "rsiLongMin": 50, "rsiLongMax": 72, "rsiShortMin": 28, "rsiShortMax": 50,
         "minAdx15m": 18, "minRelVolume": 1.20, "minAtrPercent": 0.10, "maxAtrPercent": 3.00,
         # ADX does not mean the same thing on every timeframe; higher
@@ -72,6 +73,10 @@ DEFAULTS: dict[str, Any] = {
     },
     "lifecycle": {"triggerExpiryCandles": 12, "tradeExpiryCandles": 16, "resolveAmbiguousWith1m": True, "candleMs": 900_000},
     "dedupe": {"symbolCooldownMinutes": 240, "sameDirectionOnly": True, "maxActiveSignalsTotal": 12},
+    "weighted": {
+        "minScore": 50, "bThreshold": 70, "minRr": 1.5, "fallbackRr": 2.0,
+        "cooldownMinutes": 60, "contextWeight": 10,
+    },
     "performance": {"monteCarloBlockLength": None},
     "retention": {"marketSnapshots": 288, "logEntries": 200},
 }
@@ -130,6 +135,13 @@ class Config:
         risk = self.get("risk", {})
         if risk.get("minRr", 0) <= 0 or risk.get("preferredRr", 0) < risk.get("minRr", 0):
             errors.append("risk.minRr/preferredRr invalid")
+        if self.get("signalModel.mode", "strict") not in ("strict", "weighted"):
+            errors.append("signalModel.mode must be 'strict' or 'weighted'")
+        w = self.get("weighted", {})
+        if not (0 < w.get("minScore", 0) <= w.get("bThreshold", 0) <= s.get("bPlusThreshold", 0)):
+            errors.append("weighted thresholds must satisfy 0 < minScore <= bThreshold <= bPlus")
+        if not (0 < w.get("minRr", 0) <= w.get("fallbackRr", 0)):
+            errors.append("weighted.minRr/fallbackRr invalid")
         min_stop = risk.get("minStopAtrMultiple", 0)
         if min_stop <= 0 or min_stop > risk.get("maxStopAtrMultiple", 0):
             errors.append("risk.minStopAtrMultiple must be > 0 and <= maxStopAtrMultiple")

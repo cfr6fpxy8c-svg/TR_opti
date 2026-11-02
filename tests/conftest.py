@@ -10,10 +10,25 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import pytest
+
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from scanner.market_data import Candle  # noqa: E402
 from scanner.config import Config  # noqa: E402
+
+
+@pytest.fixture(autouse=True)
+def _strict_engine_by_default(monkeypatch):
+    """Legacy suites assert the strict SMC engine; weighted tests set the mode explicitly."""
+    real_load = Config.load.__func__
+
+    def load(cls, path=None):
+        cfg = real_load(cls, path)
+        cfg._data["signalModel"]["mode"] = "strict"
+        return cfg
+
+    monkeypatch.setattr(Config, "load", classmethod(load))
 
 T0 = 1_700_000_000_000
 MS_15M, MS_1H, MS_4H, MS_1M = 900_000, 3_600_000, 14_400_000, 60_000

@@ -21,10 +21,44 @@ Sub-allocation (documented, deterministic):
 
 The score is a *quality-of-confluence ranking*, NOT a probability. Tier
 boundaries: A+ >= 90, A >= 85, B+ >= 80, below 80 -> rejected.
+
+Weighted mode (signalModel.mode = "weighted") keeps the same components,
+adds a context component (1D bias + session, weighted.contextWeight), rescales
+the total to 100 and publishes two extra tiers: B >= weighted.bThreshold and
+C >= weighted.minScore.
 """
 from __future__ import annotations
 
 from typing import Optional
+
+QUALITY_TIERS = ("A+", "A", "B+", "B", "C")
+
+
+def is_weighted(cfg) -> bool:
+    return cfg.get("signalModel.mode", "strict") == "weighted"
+
+
+def effective_min_rr(cfg) -> float:
+    if is_weighted(cfg):
+        return cfg.get("weighted.minRr", 1.5)
+    return cfg.get("risk.minRr", 2.5)
+
+
+def context_points(direction: str, bias1d: Optional[str], session: Optional[str], cfg) -> float:
+    """1D bias alignment + trading session, both reproducible in replay."""
+    half = cfg.get("weighted.contextWeight", 10) / 2.0
+    bull = direction.lower() == "long"
+    want = ("strong_bullish", "bullish") if bull else ("strong_bearish", "bearish")
+    pts = 0.0
+    if bias1d in want:
+        pts += half
+    elif bias1d in ("neutral", "unknown", None):
+        pts += half * 0.4
+    if session in ("LONDON", "NEW_YORK"):
+        pts += half
+    elif session == "ASIA":
+        pts += half * 0.4
+    return round(pts, 1)
 
 
 def _clamp(v: float, lo: float, hi: float) -> float:
@@ -117,7 +151,7 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
 
     # ---------------- risk / reward (10)
     rr_score = 0.0
-    min_rr = risk.get("minRr", 2.5)
+    min_rr = effective_min_rr(cfg)
     pref_rr = risk.get("preferredRr", 3.0)
     if rr is not None and rr >= pref_rr:
         rr_score = 10.0
@@ -126,18 +160,20 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
     rr_score = min(rr_score, w.get("riskReward", 10))
 
     total = round(htf + struct + liq + momentum + volume + volatility + rr_score, 1)
-    return {
-        "score": total,
-        "components": {
-            "htfAlignment": round(htf, 1),
-            "marketStructure": round(struct, 1),
-            "liquiditySmc": round(liq, 1),
-            "momentum": round(momentum, 1),
-            "volume": round(volume, 1),
-            "volatility": round(volatility, 1),
-            "riskReward": round(rr_score, 1),
-        },
+    components = {
+        "htfAlignment": round(htf, 1),
+        "marketStructure": round(struct, 1),
+        "liquiditySmc": round(liq, 1),
+        "momentum": round(momentum, 1),
+        "volume": round(volume, 1),
+        "volatility": round(volatility, 1),
+        "riskReward": round(rr_score, 1),
     }
+    if is_weighted(cfg):
+        ctx = context_points(d, parts.get("bias1d"), parts.get("session"), cfg)
+        components["context"] = ctx
+        total = round((total + ctx) * 100.0 / (100.0 + cfg.get("weighted.contextWeight", 10)), 1)
+    return {"score": total, "components": components}
 
 
 def quality_tier(score: float, cfg: Config_like) -> Optional[str]:
@@ -148,6 +184,11 @@ def quality_tier(score: float, cfg: Config_like) -> Optional[str]:
         return "A"
     if score >= s.get("bPlusThreshold", 80):
         return "B+"
+    if is_weighted(cfg):
+        if score >= cfg.get("weighted.bThreshold", 70):
+            return "B"
+        if score >= cfg.get("weighted.minScore", 50):
+            return "C"
     return None
 
 

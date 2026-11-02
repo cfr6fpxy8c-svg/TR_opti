@@ -20,6 +20,7 @@ from collections import defaultdict
 
 from .signals import (WAITING_TRIGGER, TRIGGERED, WIN, LOSS, EXPIRED,
                       AMBIGUOUS, CANCELLED)
+from .scoring import QUALITY_TIERS, is_weighted, quality_tier
 
 
 def _pct(numerator: int, denominator: int) -> float | None:
@@ -128,14 +129,7 @@ def _duration_ms(sig: dict, from_ms: int, to_ms: int) -> int | None:
 
 
 def _bucket_by_score(score: float, cfg) -> str:
-    s = cfg.get("scoring", {})
-    if score >= s.get("aPlusThreshold", 90):
-        return "A+"
-    if score >= s.get("aThreshold", 85):
-        return "A"
-    if score >= s.get("bPlusThreshold", 80):
-        return "B+"
-    return "below B+"
+    return quality_tier(score, cfg) or "below B+"
 
 
 def _agg(items: list[dict]) -> dict:
@@ -252,7 +246,7 @@ def compute_performance(signals: list[dict], cfg, now_ms: int,
     # empirical score calibration: historical win rate per quality bucket with
     # Wilson 95% CI -- descriptive statistics, NOT probabilities of future wins
     calibration = {}
-    for bucket in ("A+", "A", "B+"):
+    for bucket in (QUALITY_TIERS if is_weighted(cfg) else ("A+", "A", "B+")):
         bucket_signals = [s for s in window if s.get("quality") == bucket]
         bw = sum(1 for s in bucket_signals if s["status"] == WIN)
         bl = sum(1 for s in bucket_signals if s["status"] == LOSS)

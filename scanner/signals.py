@@ -30,7 +30,7 @@ from typing import Optional
 
 from .analysis import analyze_symbol  # noqa: F401  (re-exported for convenience)
 from .risk import build_setup
-from .scoring import score_setup, quality_tier
+from .scoring import score_setup, quality_tier, is_weighted
 
 BULLISH = ("strong_bullish", "bullish")
 BEARISH = ("strong_bearish", "bearish")
@@ -77,6 +77,7 @@ REJECT_STAGES = (
     "funding_extreme",
     "score_below_threshold",
     "rr_below_min",
+    "weaker_direction",
     "duplicate_active",
     "symbol_cooldown",
     "duplicate_setup_hash",
@@ -110,6 +111,8 @@ def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Op
     ctx = ctx or {}
     if not a.get("ok"):
         return None, [_reject("data_incomplete", "data insufficient")]
+    if is_weighted(cfg):
+        return _try_weighted_setup(direction, a, cfg, ctx)
     bull = direction == "long"
     f15 = a["frames"]["15m"]
     n = a["last15mIndex"]
@@ -216,21 +219,7 @@ def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Op
         confirm_high, confirm_low = highs[n], min(lows[event.index:n + 1])
 
     # ---- opposing structure levels (real liquidity targets + rule 7)
-    swing_levels = []
-    if bull:
-        for s in f15["swingHighs"][-cfg.get("structure.maxStructureSwings", 40):]:
-            if s.confirmIndex <= n and s.price > price:
-                swing_levels.append((s.price, s.index, "swing_high"))
-        for eq in f15["equalHighs"]:
-            if eq["confirmIndex"] <= n and eq["level"] > price:
-                swing_levels.append((eq["level"], eq["indexB"], "equal_highs"))
-    else:
-        for s in f15["swingLows"][-cfg.get("structure.maxStructureSwings", 40):]:
-            if s.confirmIndex <= n and s.price < price:
-                swing_levels.append((s.price, s.index, "swing_low"))
-        for eq in f15["equalLows"]:
-            if eq["confirmIndex"] <= n and eq["level"] < price:
-                swing_levels.append((eq["level"], eq["indexB"], "equal_lows"))
+    swing_levels = _opposing_levels(bull, f15, price, n, cfg)
 
     setup, risk_reason = build_setup(direction, price, atr, confirm_high, confirm_low,
                                      invalidation, swing_levels, cfg)
@@ -303,10 +292,37 @@ def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Op
     if setup.rr < cfg.get("risk.minRr", 2.5):
         return None, [_reject("rr_below_min", f"RR {setup.rr} < min")]  # belt & braces
 
+    return _payload(direction, a, cfg, ctx, setup, scored, tier, n, event, sweep,
+                    fvgs, obs, True, range_pos, range_label), []
+
+
+def _opposing_levels(bull: bool, f15: dict, price: float, n: int, cfg) -> list:
+    levels = []
+    if bull:
+        for s in f15["swingHighs"][-cfg.get("structure.maxStructureSwings", 40):]:
+            if s.confirmIndex <= n and s.price > price:
+                levels.append((s.price, s.index, "swing_high"))
+        for eq in f15["equalHighs"]:
+            if eq["confirmIndex"] <= n and eq["level"] > price:
+                levels.append((eq["level"], eq["indexB"], "equal_highs"))
+    else:
+        for s in f15["swingLows"][-cfg.get("structure.maxStructureSwings", 40):]:
+            if s.confirmIndex <= n and s.price < price:
+                levels.append((s.price, s.index, "swing_low"))
+        for eq in f15["equalLows"]:
+            if eq["confirmIndex"] <= n and eq["level"] < price:
+                levels.append((eq["level"], eq["indexB"], "equal_lows"))
+    return levels
+
+
+def _payload(direction: str, a: dict, cfg, ctx: dict, setup, scored: dict, tier: str,
+             n: int, event, sweep, fvgs: list, obs: list, displacement: bool,
+             range_pos: Optional[float] = None, range_label: Optional[str] = None) -> dict:
     # Show the freshest available zone rather than merely the most recent.
     fvg = next((g for g in reversed(fvgs) if g.is_fresh(n)), fvgs[-1] if fvgs else None)
     ob = next((b for b in reversed(obs) if b.is_fresh(n)), obs[-1] if obs else None)
-    payload = {
+    funding = ctx.get("fundingRatePct")
+    return {
         "direction": direction,
         "score": scored["score"],
         "quality": tier,
@@ -318,10 +334,11 @@ def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Op
         "riskReward": setup.rr,
         "invalidation": setup.invalidation,
         "targetKind": setup.targetKind,
-        "structure": {"event": event.type, "ageBars": n - event.index, "level": event.level},
-        "liquiditySweep": {"type": sweep.direction, "level": sweep.level,
-                           "barsAgo": n - sweep.index},
-        "displacement": True,
+        "structure": ({"event": event.type, "ageBars": n - event.index, "level": event.level}
+                      if event else None),
+        "liquiditySweep": ({"type": sweep.direction, "level": sweep.level,
+                            "barsAgo": n - sweep.index} if sweep else None),
+        "displacement": displacement,
         "fvg": {"bottom": fvg.bottom, "top": fvg.top,
                 "fresh": fvg.is_fresh(n),
                 "mitigatedBarsAgo": (n - fvg.mitigatedIndex)
@@ -335,17 +352,103 @@ def try_setup(direction: str, a: dict, cfg, ctx: dict | None = None) -> tuple[Op
         "relativeVolume": round(a["relVolume"], 3),
         "vwap": round(a["vwap"], 10) if a.get("vwap") is not None else None,
         "marketRegime": a["regime"],
-        "htf1dBias": b1d,
-        "htf4hBias": b4, "htf1hBias": b1,
+        "htf1dBias": (a.get("bias1d") or {}).get("bias", "unknown"),
+        "htf4hBias": a["bias4h"]["bias"], "htf1hBias": a["bias1h"]["bias"],
         "session": ctx.get("session"),
         "fundingRatePct": funding,
         "fundingExtreme": bool(funding is not None and abs(funding) >=
-                               float(dcfg.get("fundingExtremePct", 0.05))),
+                               float(cfg.get("derivatives.fundingExtremePct", 0.05))),
         "openInterest": ctx.get("openInterest"),
         "rangePosition": round(range_pos, 3) if range_pos is not None else None,
         "rangeLabel": range_label,
     }
-    return payload, []
+
+
+def _try_weighted_setup(direction: str, a: dict, cfg, ctx: dict) -> tuple[Optional[dict], list]:
+    """Weighted proposal: every gate except data, volatility and risk/cost becomes points."""
+    bull = direction == "long"
+    side = "bullish" if bull else "bearish"
+    f15 = a["frames"]["15m"]
+    n = a["last15mIndex"]
+    model = cfg.get("signalModel", {})
+    window = int(cfg.get("smc.setupWindowBars", 12))
+    lo = max(2, n - window)
+    atr, price = a.get("atr"), a.get("price")
+    for key in ("rsi", "adx", "atr", "relVolume", "atrPercent"):
+        if a.get(key) is None:
+            return None, [_reject("data_incomplete", f"{key} missing")]
+    if atr <= 0:
+        return None, [_reject("data_incomplete", "atr invalid")]
+    atr_pct = a["atrPercent"]
+    if not (model.get("minAtrPercent", 0.1) <= atr_pct <= model.get("maxAtrPercent", 3.0)):
+        return None, [_reject("volatility_out_of_band", f"volatility out of band ({atr_pct:.3f}%)")]
+
+    sweeps = [s for s in f15["sweeps"] if s.direction == side and lo <= s.index <= n]
+    sweep = sweeps[-1] if sweeps else None
+    start = sweep.index if sweep else lo
+    ev_types = ("CHoCH_up", "BOS_up") if bull else ("CHoCH_down", "BOS_down")
+    events = [e for e in f15["events"] if e.type in ev_types and start <= e.index <= n]
+    event = events[-1] if events else None
+    disp_from = event.index if event else start
+    displacement = any(d.direction == side and disp_from <= d.index <= n
+                       for d in f15["displacements"])
+    fvgs = [g for g in f15["fvgs"] if g.direction == side and start <= g.index <= n
+            and (g.invalidatedIndex is None or g.invalidatedIndex > n)]
+    obs = [ob for ob in f15["orderBlocks"] if ob.direction == side
+           and start <= ob.displacementIndex <= n
+           and (ob.invalidatedIndex is None or ob.invalidatedIndex > n)]
+
+    lows, highs = f15["l"], f15["h"]
+    trigger_buffer = cfg.get("risk.triggerBufferAtrMultiple", 0.1) * atr
+    # Cap the structural invalidation so the stop stays inside maxStopAtrMultiple.
+    cap = (cfg.get("risk.maxStopAtrMultiple", 3.0)
+           - cfg.get("risk.stopBufferAtrMultiple", 0.5) - 0.5) * atr
+    if bull:
+        confirm_high = max(highs[event.index:n + 1]) if event else highs[n]
+        confirm_low = lows[n]
+        invalidation = min(lows[start:n + 1])
+        if sweep:
+            invalidation = min(invalidation, sweep.level)
+        invalidation = max(invalidation, confirm_high + trigger_buffer - cap)
+    else:
+        confirm_high = highs[n]
+        confirm_low = min(lows[event.index:n + 1]) if event else lows[n]
+        invalidation = max(highs[start:n + 1])
+        if sweep:
+            invalidation = max(invalidation, sweep.level)
+        invalidation = min(invalidation, confirm_low - trigger_buffer + cap)
+
+    setup, risk_reason = build_setup(direction, price, atr, confirm_high, confirm_low,
+                                     invalidation, _opposing_levels(bull, f15, price, n, cfg), cfg)
+    if setup is None:
+        return None, [_reject("risk_model_rejected", f"risk model rejected: {risk_reason}")]
+
+    adx_tail = [v for v in f15["adx"][-5:] if v is not None]
+    parts = {
+        "bias4h": a["bias4h"], "bias1h": a["bias1h"],
+        "bias1d": (a.get("bias1d") or {}).get("bias", "unknown"),
+        "session": ctx.get("session"),
+        "structureEventAgeBars": (n - event.index) if event else None,
+        "additionalBos": bool(event) and any(
+            e.type == ("BOS_up" if bull else "BOS_down") and start <= e.index < event.index
+            for e in f15["events"]),
+        "displacement": displacement,
+        "sweep": bool(sweep), "fvg": bool(fvgs), "orderBlock": bool(obs),
+        "fvgFresh": any(g.is_fresh(n) for g in fvgs),
+        "orderBlockFresh": any(ob.is_fresh(n) for ob in obs),
+        "rsi": a["rsi"], "adx": a["adx"],
+        "adxRising": len(adx_tail) >= 2 and adx_tail[-1] > adx_tail[0],
+        "diSpread": abs((a.get("plusDi") or 0) - (a.get("minusDi") or 0)),
+        "plusDi": a.get("plusDi") or 0.0, "minusDi": a.get("minusDi") or 0.0,
+        "relVolume": a["relVolume"], "atrPercent": a["atrPercent"],
+    }
+    scored = score_setup(direction, parts, setup.rr, cfg)
+    tier = quality_tier(scored["score"], cfg)
+    if tier is None:
+        return None, [_reject("score_below_threshold",
+                              f"score {scored['score']} < {cfg.get('weighted.minScore', 50)}")]
+    return _payload(direction, a, cfg, ctx, setup, scored, tier, n, event, sweep,
+                    fvgs, obs, displacement), []
 
 
 def generate_signals(analyses: list[dict], cfg, existing: list[dict],
@@ -361,7 +464,10 @@ def generate_signals(analyses: list[dict], cfg, existing: list[dict],
     new_signals: list[dict] = []
     rejects: list[dict] = []
     dedupe = cfg.get("dedupe", {})
-    cooldown_ms = int(dedupe.get("symbolCooldownMinutes", 240)) * 60_000
+    weighted = is_weighted(cfg)
+    cooldown_minutes = (cfg.get("weighted.cooldownMinutes", 60) if weighted
+                        else dedupe.get("symbolCooldownMinutes", 240))
+    cooldown_ms = int(cooldown_minutes) * 60_000
     same_dir_only = bool(dedupe.get("sameDirectionOnly", True))
     max_active = int(dedupe.get("maxActiveSignalsTotal", 12))
     candle_ms = cfg.get("lifecycle.candleMs", 900_000)
@@ -382,12 +488,20 @@ def generate_signals(analyses: list[dict], cfg, existing: list[dict],
         seen_hashes[h] = max(seen_hashes.get(h, 0), s.get("generatedAt", 0))
 
     active_symbols_dir = {(s["symbol"], s["direction"]) for s in active}
+    active_symbols = {s["symbol"] for s in active}
 
     for a in analyses:
+        sym = a["symbol"]
+        dctx = derivatives.get(sym, {})
+        ctx = {"fundingRatePct": dctx.get("fundingRatePct"),
+               "openInterest": dctx.get("openInterest"),
+               "session": session_at(now_ms, kill_zones) if kill_zones else None}
+        candidates: list[tuple[str, dict]] = []
         for direction in ("long", "short"):
-            sym = a["symbol"]
             dir_upper = direction.upper()
-            if (sym, dir_upper) in active_symbols_dir:
+            # Weighted mode keeps one live proposal per symbol so outcomes stay independent.
+            if ((sym, dir_upper) in active_symbols_dir
+                    or (weighted and sym in active_symbols)):
                 rejects.append(dict(_reject("duplicate_active",
                                             "duplicate active signal (rule 11)"),
                                     symbol=sym, direction=direction))
@@ -398,10 +512,6 @@ def generate_signals(analyses: list[dict], cfg, existing: list[dict],
                                             "symbol cooldown (rule 12)"),
                                     symbol=sym, direction=direction))
                 continue
-            dctx = derivatives.get(sym, {})
-            ctx = {"fundingRatePct": dctx.get("fundingRatePct"),
-                   "openInterest": dctx.get("openInterest"),
-                   "session": session_at(now_ms, kill_zones) if kill_zones else None}
             payload, reasons = try_setup(direction, a, cfg, ctx)
             if payload is None:
                 rejects.append(dict(reasons[0], symbol=sym, direction=direction))
@@ -413,7 +523,15 @@ def generate_signals(analyses: list[dict], cfg, existing: list[dict],
                                             "duplicate setup hash in cooldown (rule 12)"),
                                     symbol=sym, direction=direction))
                 continue
-
+            candidates.append((direction, payload))
+        if weighted and len(candidates) > 1:
+            candidates.sort(key=lambda c: c[1]["score"], reverse=True)
+            for direction, _ in candidates[1:]:
+                rejects.append(dict(_reject("weaker_direction",
+                                            "opposite direction scored higher"),
+                                    symbol=sym, direction=direction))
+            candidates = candidates[:1]
+        for direction, payload in candidates:
             expiry_ms = int(cfg.get("lifecycle.triggerExpiryCandles", 12)) * candle_ms
             hold_ms = int(cfg.get("lifecycle.tradeExpiryCandles", 16)) * candle_ms
             sig = {
@@ -449,8 +567,8 @@ def generate_signals(analyses: list[dict], cfg, existing: list[dict],
                 "rangeLabel": payload.get("rangeLabel"),
                 "structure": payload["structure"],
                 "liquiditySweep": payload["liquiditySweep"],
-                "bos": payload["structure"]["event"].startswith("BOS"),
-                "choch": payload["structure"]["event"].startswith("CHoCH"),
+                "bos": bool(payload["structure"]) and payload["structure"]["event"].startswith("BOS"),
+                "choch": bool(payload["structure"]) and payload["structure"]["event"].startswith("CHoCH"),
                 "displacement": payload["displacement"],
                 "fvg": payload["fvg"],
                 "orderBlock": payload["orderBlock"],

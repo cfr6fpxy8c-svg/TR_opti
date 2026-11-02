@@ -88,6 +88,8 @@
     "setupWindowBars": 12
   },
   "signalModel": {
+    "mode": "weighted",
+    "_modeDoc": "weighted = always propose the best-scoring BTC setup (score >= weighted.minScore) with entry/SL/TP; the historical win rate per tier is the % shown. strict = original hard-gate SMC model (score >= 80, RR >= 2.5).",
     "rsiLongMin": 45,
     "rsiLongMax": 74,
     "rsiShortMin": 26,
@@ -142,6 +144,15 @@
     "symbolCooldownMinutes": 240,
     "sameDirectionOnly": true,
     "maxActiveSignalsTotal": 12
+  },
+  "weighted": {
+    "minScore": 50,
+    "bThreshold": 70,
+    "minRr": 1.5,
+    "fallbackRr": 2.0,
+    "cooldownMinutes": 60,
+    "contextWeight": 10,
+    "_doc": "Tiers: A+ >= 90, A >= 85, B+ >= 80, B >= bThreshold, C >= minScore. Target = nearest structure with RR >= minRr, else fallbackRr. One live proposal per symbol. contextWeight = 1D bias + session points, total rescaled to 100."
   },
   "retention": {
     "marketSnapshots": 288,

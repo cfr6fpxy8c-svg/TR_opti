@@ -10,6 +10,7 @@ import math
 import re
 
 from .signals import ACTIVE_STATUSES, WIN, LOSS, TRIGGERED
+from .scoring import effective_min_rr, quality_tier
 
 IMMUTABLE_FIELDS = (
     "id", "symbol", "direction", "timeframe", "generatedAt", "signalCandleCloseTime",
@@ -66,15 +67,12 @@ def validate_signal(sig: dict, cfg) -> list[str]:
         errors.append("SHORT requires TP < entry < SL")
     if not (0 <= sig["score"] <= 100):
         errors.append("score outside 0..100")
-    thresholds = cfg.get("scoring", {})
-    expected = ("A+" if sig["score"] >= thresholds.get("aPlusThreshold", 90)
-                else "A" if sig["score"] >= thresholds.get("aThreshold", 85)
-                else "B+" if sig["score"] >= thresholds.get("bPlusThreshold", 80) else None)
+    expected = quality_tier(sig["score"], cfg)
     if expected is None:
         errors.append(f"score {sig['score']} below publishable threshold")
     elif sig["quality"] != expected:
         errors.append(f"quality {sig['quality']} != expected {expected} for score {sig['score']}")
-    if sig["riskReward"] < cfg.get("risk.minRr", 2.5):
+    if sig["riskReward"] < effective_min_rr(cfg):
         errors.append(f"RR {sig['riskReward']} below minimum")
     # RR math must be self-consistent
     entry_ref = sig["triggerPrice"]

@@ -23,6 +23,7 @@ const PRICE_ENDPOINTS = [
 const TZ = "Europe/Paris";
 const DEFAULT_SCAN_MINUTES_UTC = [7, 22, 37, 52];
 const SCAN_GRACE_MS = 5 * 60_000;
+const QUALITIES = ["A+", "A", "B+", "B", "C"];
 const $ = (id) => document.getElementById(id);
 // JSON/API fields are untrusted whenever they are inserted into HTML.
 const escapeHtml = (value) => String(value ?? "").replace(/[&<>\"']/g,
@@ -57,7 +58,7 @@ const state = {
   signals: [], status: null, snapshots: [], performance: null, screener: null, latestChart: null,
   lastDataUpdate: null, embeddedLoaded: false,
   livePrices: {}, liveOk: false, liveAt: null,
-  activeFilter: new Set(["A+", "A", "B+"]),
+  activeFilter: new Set(QUALITIES),
   perfRange: 7, histRange: 0, histDir: "all", histQuality: "all",
   histOutcome: "all", histSearch: "",
   screenerSearch: "", screenerSort: { key: "rank", dir: 1 },
@@ -508,12 +509,16 @@ function signalCard(s) {
       : `filled @ ${fmtPrice(s.entryPrice)}`);
   const zone = Array.isArray(s.entryZone) ? s.entryZone : [null, null];
   const f = s.fvg, ob = s.orderBlock;
+  const cal = state.performance?.scoreCalibration?.[s.quality];
+  const histTxt = cal && cal.resolved
+    ? `hist. ${Number(cal.winRate).toFixed(0)}% gagnants (n=${Number(cal.resolved)})`
+    : "hist. — (n=0)";
   const card = document.createElement("div");
   card.className = `sig-card ${long ? "long" : "short"}`;
   card.innerHTML = `
     <div class="sig-head">
       <span class="sig-symbol">${escapeHtml(s.symbol)} <span class="sig-dir">${escapeHtml(s.direction)}</span></span>
-      <span class="sig-quality q-${escapeHtml(s.quality)}">${escapeHtml(s.quality)} · ${Number(s.score).toFixed(1)}/100</span>
+      <span class="sig-quality q-${escapeHtml(s.quality)}">${escapeHtml(s.quality)} · ${Number(s.score).toFixed(1)}/100 · ${escapeHtml(histTxt)}</span>
     </div>
     <div class="sig-price-row">
       <div class="price-box">
@@ -535,7 +540,7 @@ function signalCard(s) {
       <div class="lvl"><span class="lbl">1H bias</span><div class="val">${escapeHtml((s.htf1hBias || "—").replace("_", " "))}</div></div>
     </div>
     <div class="sig-meta">
-      <span class="tag on">sweep ${s.liquiditySweep ? "@" + fmtPrice(s.liquiditySweep.level) : "—"}</span>
+      <span class="tag ${s.liquiditySweep ? "on" : "off"}">sweep ${s.liquiditySweep ? "@" + fmtPrice(s.liquiditySweep.level) : "✗"}</span>
       <span class="tag ${s.structure?.event?.startsWith("CHoCH") ? "on" : ""}">${escapeHtml(s.structure?.event ?? "—")}</span>
       <span class="tag ${s.displacement ? "on" : "off"}">displacement ${s.displacement ? "✓" : "✗"}</span>
       <span class="tag ${f ? "on" : "off"}">FVG ${f ? "@" + fmtPrice(f.bottom) + "–" + fmtPrice(f.top) : "✗"}</span>
@@ -565,7 +570,7 @@ function renderActive() {
   grid.innerHTML = "";
   empty.classList.toggle("hidden", state.signals
     .filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED").length > 0);
-  const order = { "A+": 0, "A": 1, "B+": 2 };
+  const order = Object.fromEntries(QUALITIES.map((q, i) => [q, i]));
   active.sort((a, b) => (order[a.quality] ?? 9) - (order[b.quality] ?? 9) || b.score - a.score);
   active.forEach(s => grid.appendChild(signalCard(s)));
 }
@@ -619,7 +624,7 @@ function perfFor(rangeDays) {
     avgRr: sigs.length ? sigs.reduce((a, s) => a + (s.riskReward || 0), 0) / sigs.length : null,
     avgScore: sigs.length ? sigs.reduce((a, s) => a + (s.score || 0), 0) / sigs.length : null,
     long: byDir("LONG"), short: byDir("SHORT"),
-    q: { "A+": byQ("A+"), "A": byQ("A"), "B+": byQ("B+") },
+    q: Object.fromEntries(QUALITIES.map(q => [q, byQ(q)])),
     sigs,
   };
 }
@@ -655,7 +660,7 @@ function renderPerformance() {
 
   const cal = eng.scoreCalibration || {};
   const ctbody = document.querySelector("#calibration-table tbody");
-  ctbody.innerHTML = ["A+", "A", "B+"].map(q => {
+  ctbody.innerHTML = QUALITIES.map(q => {
     const c = cal[q];
     if (!c) return `<tr><td class="sig-quality q-${escapeHtml(q)}">${escapeHtml(q)}</td><td colspan="6" class="muted">no data yet</td></tr>`;
     const ci = c.wilson95 || {};
@@ -717,8 +722,8 @@ function drawEquityChart(sigs) {
 
 function drawQualityChart(p) {
   const box = $("chart-quality"); box.innerHTML = "";
-  const rows = ["A+", "A", "B+"].map(q => ({ q, ...p.q[q] }));
-  const W = 560, H = 190, rowH = 44, pad = 46, barW = W - pad - 90;
+  const rows = QUALITIES.map(q => ({ q, ...p.q[q] }));
+  const rowH = 44, pad = 46, W = 560, H = 16 + rows.length * rowH, barW = W - pad - 90;
   const svg = svgEl("svg", { viewBox: `0 0 ${W} ${H}` });
   rows.forEach((r, i) => {
     const y0 = 16 + i * rowH;
@@ -926,6 +931,7 @@ const FUNNEL_LABELS = {
   funding_extreme: "Funding extreme (crowd positioned)",
   score_below_threshold: "Confluence score below threshold",
   rr_below_min: "Risk/reward below minimum",
+  weaker_direction: "Opposite direction scored higher",
   duplicate_active: "Duplicate of an active signal",
   symbol_cooldown: "Symbol in cooldown",
   duplicate_setup_hash: "Identical setup already seen",
