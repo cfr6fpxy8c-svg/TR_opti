@@ -3,10 +3,10 @@
   "health": "HEALTHY",
   "version": "1.1.0",
   "lastScan": {
-    "scheduledAt": 1793625300000,
-    "executedAt": 1793625854733,
-    "jitterSeconds": 554.7,
-    "durationMs": 11142,
+    "scheduledAt": 1793627100000,
+    "executedAt": 1793627602920,
+    "jitterSeconds": 502.9,
+    "durationMs": 10820,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -19,7 +19,7 @@
     "signalsGenerated": 0,
     "rejects": {
       "htf_not_aligned": 1,
-      "no_displacement": 1
+      "momentum_rsi_out_of_band": 1
     },
     "rejectFunnel": [
       {
@@ -27,7 +27,7 @@
         "rejected": 1
       },
       {
-        "stage": "no_displacement",
+        "stage": "momentum_rsi_out_of_band",
         "rejected": 1
       }
     ],
@@ -43,39 +43,14 @@
     "apiHealth": "FAILED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793625299999,
-      "ageSeconds": 554.7
+      "newestCandleCloseMs": 1793627099999,
+      "ageSeconds": 502.9
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793625854733,
-  "nextExpectedScanAt": 1793626200000,
+  "lastSuccessfulScan": 1793627602920,
+  "nextExpectedScanAt": 1793628000000,
   "logs": [
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.70 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.92 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.61 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: RSI 35.9 outside [45,74]"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: RSI 56.4 outside [26,55]"
-    },
     {
       "ts": 1788059153282,
       "level": "info",
@@ -1048,6 +1023,31 @@
     },
     {
       "ts": 1793625865876,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793627602920,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793627100000 actual=1793627602920 (jitter 502.9s)"
+    },
+    {
+      "ts": 1793627613565,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793627613740,
+      "level": "info",
+      "msg": "rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"
+    },
+    {
+      "ts": 1793627613740,
+      "level": "info",
+      "msg": "rejected 1x momentum_rsi_out_of_band (e.g. RSI 56.2 outside [26,55])"
+    },
+    {
+      "ts": 1793627613740,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
