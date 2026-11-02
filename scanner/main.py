@@ -97,6 +97,17 @@ def _next_scheduled(after_ms: int, schedule_minutes_utc: list[int]) -> int:
     return hour_start + hour_ms + minutes[0] * 60_000
 
 
+def _api_health(stats: dict, has_valid_data: bool) -> str:
+    """Distinguish a recovered API error from a complete connection failure."""
+    requests = stats.get("requests", 0)
+    errors = stats.get("errors", 0)
+    if not errors:
+        return "HEALTHY" if requests or has_valid_data else "UNKNOWN"
+    if has_valid_data or requests > errors:
+        return "DEGRADED"
+    return "FAILED"
+
+
 def make_client(cfg: Config) -> MarketDataClient:
     ds = cfg.get("dataSource", {})
     return MarketDataClient(
@@ -370,10 +381,11 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
     duration_ms = int((time.monotonic() - t0) * 1000)
     freshness = _freshness(analyses, now_ms)
     health = "HEALTHY"
-    if failed_symbols or universe.get("market") not in ("futures", "manual") or freshness["label"] != "LIVE":
+    if (failed_symbols or universe.get("market") not in ("futures", "manual")
+            or stats.get("marketUsed") not in (None, "futures")
+            or freshness["label"] != "LIVE"):
         health = "DEGRADED"
-    api_health = "HEALTHY" if stats["errors"] == 0 else (
-        "DEGRADED" if stats["errors"] < len(scan_symbols) else "FAILED")
+    api_health = _api_health(stats, has_valid_data=True)
 
     breadth = {"TRENDING_UP": 0, "TRENDING_DOWN": 0, "RANGING": 0, "MIXED": 0}
     for a in analyses:
@@ -513,6 +525,7 @@ def _write_failed_status(log: ScanLog, previous_status: dict, previous_logs: lis
             "scheduledAt": scheduled_ms, "executedAt": now_ms, "trigger": trigger,
             "durationMs": int((time.monotonic() - t0) * 1000), "status": "FAILED",
             "reason": reason, "apiStats": stats,
+            "apiHealth": _api_health(stats, has_valid_data=False),
         },
         "lastSuccessfulScan": previous_status.get("lastSuccessfulScan"),
         "nextExpectedScanAt": next_expected_ms,

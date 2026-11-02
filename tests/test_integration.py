@@ -8,7 +8,7 @@ import pytest
 from conftest import FakeClient  # noqa: F401
 
 from scanner.config import Config
-from scanner.main import scan_once, ScanLog, _next_scheduled, _scheduled_now
+from scanner.main import scan_once, ScanLog, _api_health, _next_scheduled, _scheduled_now
 from scanner.market_data import MarketDataError
 from scanner.analysis import analyze_symbol
 from scanner.signals import generate_signals, ACTIVE_STATUSES, WIN
@@ -78,6 +78,39 @@ def test_full_scan_pipeline(tmp_path, cfg, client, monkeypatch):
     assert status["lastScan"]["signalsGenerated"] >= 1
     assert status["nextExpectedScanAt"] > status["lastScan"]["executedAt"]
     assert status["scanScheduleUtcMinutes"] == cfg.get("scan.scheduleMinutesUtc")
+
+
+def test_api_health_distinguishes_recovery_and_total_failure():
+    assert _api_health({"requests": 10, "errors": 4}, has_valid_data=True) == "DEGRADED"
+    assert _api_health({"requests": 4, "errors": 4}, has_valid_data=False) == "FAILED"
+    assert _api_health({"requests": 4, "errors": 0}, has_valid_data=True) == "HEALTHY"
+    assert _api_health({"requests": 0, "errors": 0}, has_valid_data=False) == "UNKNOWN"
+
+
+def test_recovered_btc_scan_reports_degraded_api(tmp_path, cfg, client, monkeypatch):
+    monkeypatch.setattr(persist, "data_dir", lambda: tmp_path / "data")
+    monkeypatch.setattr(persist, "frontend_data_dir", lambda: tmp_path / "frontend" / "data")
+    client.stats.requests = 10
+    client.stats.errors = 4
+    persist.seed_empty_files()
+    assert scan_once(cfg, ScanLog(), client=client, symbols=["TESTUSDT"]) == 0
+    status = json.loads((tmp_path / "data" / "system-status.json").read_text())
+    assert status["lastScan"]["symbolsValid"] == 1
+    assert status["lastScan"]["apiHealth"] == "DEGRADED"
+    assert status["lastScan"]["apiStats"]["errors"] == 4
+
+
+def test_spot_fallback_marks_system_degraded_even_with_manual_btc(tmp_path, cfg, client, monkeypatch):
+    monkeypatch.setattr(persist, "data_dir", lambda: tmp_path / "data")
+    monkeypatch.setattr(persist, "frontend_data_dir", lambda: tmp_path / "frontend" / "data")
+    monkeypatch.setattr("scanner.main._freshness", lambda *_: {"label": "LIVE"})
+    monkeypatch.setattr(client, "endpoint_info", lambda: {"name": "spot", "market": "spot"})
+    persist.seed_empty_files()
+    assert scan_once(cfg, ScanLog(), client=client, symbols=["TESTUSDT"]) == 0
+    status = json.loads((tmp_path / "data" / "system-status.json").read_text())
+    assert status["lastScan"]["symbolsValid"] == 1
+    assert status["lastScan"]["apiStats"]["marketUsed"] == "spot"
+    assert status["health"] == "DEGRADED"
 
 
 def test_scan_failure_retains_previous_data(tmp_path, cfg, monkeypatch):
