@@ -3,10 +3,10 @@
   "health": "HEALTHY",
   "version": "1.1.0",
   "lastScan": {
-    "scheduledAt": 1793623500000,
-    "executedAt": 1793623952412,
-    "jitterSeconds": 452.4,
-    "durationMs": 2953,
+    "scheduledAt": 1793625300000,
+    "executedAt": 1793625854733,
+    "jitterSeconds": 554.7,
+    "durationMs": 11142,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -19,7 +19,7 @@
     "signalsGenerated": 0,
     "rejects": {
       "htf_not_aligned": 1,
-      "no_structure_event": 1
+      "no_displacement": 1
     },
     "rejectFunnel": [
       {
@@ -27,55 +27,30 @@
         "rejected": 1
       },
       {
-        "stage": "no_structure_event",
+        "stage": "no_displacement",
         "rejected": 1
       }
     ],
     "apiStats": {
-      "requests": 6,
-      "errors": 0,
-      "retries": 0,
+      "requests": 10,
+      "errors": 4,
+      "retries": 3,
       "rateLimitHits": 0,
-      "lastError": null,
-      "endpointUsed": "binance-futures",
+      "lastError": "HTTP 451 geo-restricted host=fapi.binance.com",
+      "endpointUsed": "binance-futures-mirror",
       "marketUsed": "futures"
     },
-    "apiHealth": "HEALTHY",
+    "apiHealth": "FAILED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793623499999,
-      "ageSeconds": 452.4
+      "newestCandleCloseMs": 1793625299999,
+      "ageSeconds": 554.7
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793623952412,
-  "nextExpectedScanAt": 1793624400000,
+  "lastSuccessfulScan": 1793625854733,
+  "nextExpectedScanAt": 1793626200000,
   "logs": [
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: ADX 12.8 < min and not emerging"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: ADX 11.5 < min and not emerging"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: RSI 74.1 outside [45,74]"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 1.13 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: ADX 12.1 < min and not emerging"
-    },
     {
       "ts": 1788059153282,
       "level": "info",
@@ -1048,6 +1023,31 @@
     },
     {
       "ts": 1793623955353,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793625854733,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793625300000 actual=1793625854733 (jitter 554.7s)"
+    },
+    {
+      "ts": 1793625865496,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793625865876,
+      "level": "info",
+      "msg": "rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"
+    },
+    {
+      "ts": 1793625865876,
+      "level": "info",
+      "msg": "rejected 1x no_displacement (e.g. no displacement after structure event)"
+    },
+    {
+      "ts": 1793625865876,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
