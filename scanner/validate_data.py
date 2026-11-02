@@ -20,7 +20,8 @@ def main() -> int:
     cfg = Config.load()
     errors: list[str] = []
     data = repo_root() / "data"
-    files = ["signals.json", "performance.json", "system-status.json", "market-snapshots.json"]
+    files = ["signals.json", "performance.json", "system-status.json",
+             "market-snapshots.json", "latest-chart.json"]
     payloads: dict[str, object] = {}
     for name in files:
         path = data / name
@@ -57,6 +58,15 @@ def main() -> int:
         st = payloads["system-status.json"]
         if not isinstance(st.get("health"), str):
             errors.append("system-status.json: health missing")
+
+    if "latest-chart.json" in payloads:
+        chart = payloads["latest-chart.json"]
+        if not isinstance(chart.get("candles"), list):
+            errors.append("latest-chart.json: candles must be a list")
+        elif chart["candles"]:
+            required = {"openTime", "open", "high", "low", "close"}
+            if not required.issubset(chart["candles"][-1]):
+                errors.append("latest-chart.json: last candle is missing OHLC fields")
 
     if errors:
         for e in errors:

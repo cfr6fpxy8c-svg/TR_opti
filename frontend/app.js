@@ -20,20 +20,20 @@ const PRICE_ENDPOINTS = [
   "https://www.binance.com/fapi/v1/ticker/price",
 ];
 
-const TZ = "Asia/Kuala_Lumpur";
+const TZ = "Europe/Paris";
 const $ = (id) => document.getElementById(id);
-const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("en-MY", {
+const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("fr-FR", {
   timeZone: TZ, hour12: false, day: "2-digit", month: "short",
   hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "—";
-const fmtClock = (ms) => ms ? new Date(ms).toLocaleTimeString("en-MY", {
+const fmtClock = (ms) => ms ? new Date(ms).toLocaleTimeString("fr-FR", {
   timeZone: TZ, hour12: false }) : "—";
-const fmtPrice = (v) => v == null ? "—" : Number(v).toLocaleString("en-US", { maximumFractionDigits: 6 });
+const fmtPrice = (v) => v == null ? "—" : Number(v).toLocaleString("fr-FR", { maximumFractionDigits: 2 });
 const fmtAgo = (ms) => {
   if (!ms) return "—";
   const s = Math.max(0, (Date.now() - ms) / 1000);
-  if (s < 90) return `${Math.round(s)}s ago`;
-  if (s < 5400) return `${Math.round(s / 60)} min ago`;
-  return `${(s / 3600).toFixed(1)} h ago`;
+  if (s < 90) return `il y a ${Math.round(s)} s`;
+  if (s < 5400) return `il y a ${Math.round(s / 60)} min`;
+  return `il y a ${(s / 3600).toFixed(1)} h`;
 };
 const fmtDur = (ms) => {
   if (ms == null) return "—";
@@ -43,11 +43,11 @@ const fmtDur = (ms) => {
 };
 
 const state = {
-  signals: [], status: null, snapshots: [], performance: null, screener: null,
+  signals: [], status: null, snapshots: [], performance: null, screener: null, latestChart: null,
   lastDataUpdate: null, embeddedLoaded: false,
   livePrices: {}, liveOk: false, liveAt: null,
   activeFilter: new Set(["A+", "A", "B+"]),
-  perfRange: 7, histRange: 7, histDir: "all", histQuality: "all",
+  perfRange: 7, histRange: 0, histDir: "all", histQuality: "all",
   histOutcome: "all", histSearch: "",
   screenerSearch: "", screenerSort: { key: "rank", dir: 1 },
 };
@@ -61,17 +61,19 @@ async function loadJSON(name) {
 
 async function refreshData() {
   try {
-    const [signals, status, snapshots, performance, screener] = await Promise.all([
+    const [signals, status, snapshots, performance, screener, latestChart] = await Promise.all([
       loadJSON("signals.json"), loadJSON("system-status.json"),
       loadJSON("market-snapshots.json").catch(() => []),
       loadJSON("performance.json").catch(() => null),
       loadJSON("universe-snapshot.json").catch(() => null),
+      loadJSON("latest-chart.json").catch(() => null),
     ]);
     state.signals = Array.isArray(signals?.signals) ? signals.signals : [];
     state.status = status || null;
     state.snapshots = Array.isArray(snapshots) ? snapshots : [];
     state.performance = performance;
     state.screener = screener;
+    state.latestChart = latestChart;
     state.lastDataUpdate = Date.now();
     state.embeddedLoaded = false;
     $("preview-notice").classList.add("hidden");
@@ -86,6 +88,7 @@ async function refreshData() {
       state.snapshots = Array.isArray(d.snapshots) ? d.snapshots : [];
       state.performance = d.performance || null;
       state.screener = d.screener || null;
+      state.latestChart = d.chart || null;
       state.lastDataUpdate = d.builtAt || null;
       state.embeddedLoaded = true;
       renderAll();
@@ -97,10 +100,9 @@ async function refreshData() {
 
 /* live prices from the browser (Binance public ticker, CORS-enabled) */
 async function refreshPrices() {
-  const symbols = [...new Set(state.signals
+  const symbols = [...new Set(["BTCUSDT", ...state.signals
     .filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED")
-    .map(s => s.symbol))];
-  if (!symbols.length) { state.liveOk = false; renderTopChips(); return; }
+    .map(s => s.symbol)])];
   for (const base of PRICE_ENDPOINTS) {
     try {
       const qs = encodeURIComponent(JSON.stringify(symbols.slice(0, 40)));
@@ -111,18 +113,19 @@ async function refreshPrices() {
       rows.forEach(r => { state.livePrices[r.symbol] = parseFloat(r.price); });
       state.liveOk = true;
       state.liveAt = Date.now();
-      renderTopChips(); renderActive(); renderRecent();
+      renderTopChips(); renderActive(); renderRecent(); renderLatestAnalysis();
       return;
     } catch (_) { /* try next endpoint */ }
   }
   state.liveOk = false;
-  renderTopChips(); renderActive(); renderRecent();
+  renderTopChips(); renderActive(); renderRecent(); renderLatestAnalysis();
 }
 
 /* ------------------------------------------------------------------ render */
 function renderAll() {
   renderTopChips();
   renderStatus();
+  renderLatestAnalysis();
   renderOverview();
   renderScreener();
   renderActive();
@@ -131,6 +134,7 @@ function renderAll() {
   renderPerformance();
   renderHistory();
   renderLogs();
+  $("tab-signal-count").textContent = state.signals.length;
   $("ft-version").textContent = state.status?.version ? `engine v${state.status.version}` : "";
 }
 
@@ -163,48 +167,46 @@ function renderTopChips() {
   const { level: health, age, stale } = effectiveHealth();
   const chip = $("chip-health");
   chip.textContent =
-    health === "HEALTHY" ? "SYSTEM ONLINE" :
-    health === "DEGRADED" ? "DEGRADED" :
-    health === "STALE" ? "DATA STALE" :
-    health === "OFFLINE" ? "SCANNER OFFLINE" :
-    health === "FAILED" ? "SYSTEM OFFLINE" : "…";
+    health === "HEALTHY" ? "SCANNER EN LIGNE" :
+    health === "DEGRADED" ? "DÉGRADÉ" :
+    health === "STALE" ? "DONNÉES EN RETARD" :
+    health === "OFFLINE" ? "SCANNER HORS LIGNE" :
+    health === "FAILED" ? "SYSTÈME HORS LIGNE" : "…";
   chip.className = "chip " + (health === "HEALTHY" ? "chip-ok" :
     (health === "DEGRADED" || health === "STALE") ? "chip-warn" : "chip-bad");
   const last = st?.lastScan?.executedAt;
   // Always show how old the data is, not just when the scan happened -- a
   // bare timestamp reads as "current" to anyone who does not check the date.
   $("chip-lastscan").textContent = last
-    ? `last scan ${fmtClock(last)} MYT · ${fmtAgo(last)}`
-    : "last scan —";
+    ? `scan ${fmtClock(last)} · ${fmtAgo(last)}`
+    : "scan —";
   const next = st?.nextExpectedScanAt;
-  $("chip-nextscan").textContent = next ? `next ~${fmtClock(next)} MYT` : "next —";
+  if ($("chip-nextscan")) $("chip-nextscan").textContent = next ? `prochain ~${fmtClock(next)}` : "prochain —";
   const pm = $("chip-price-mode");
   if (state.liveOk) {
-    pm.textContent = `LIVE PRICE ${fmtClock(state.liveAt)}`;
+    pm.textContent = `BTC en direct · ${fmtClock(state.liveAt)}`;
     pm.className = "chip chip-ok";
   } else {
-    pm.textContent = "price: scan snapshot";
+    pm.textContent = "cours du scan";
     pm.className = "chip";
   }
   $("data-updated").textContent = state.lastDataUpdate
-    ? `Last data update: ${fmtTime(state.lastDataUpdate)}${state.embeddedLoaded ? " (embedded snapshot — offline file)" : ""}`
-    : "Last data update: —";
+    ? `Données actualisées ${fmtTime(state.lastDataUpdate)}${state.embeddedLoaded ? " (copie locale)" : ""}`
+    : "Données actualisées —";
 
   const notice = $("health-notice");
   const ageTxt = age != null ? fmtDur(age) : "unknown";
   if (health === "OFFLINE") {
-    notice.textContent = `⛔ No successful scan for ${ageTxt}. The scheduler appears to be stopped — ` +
-      `everything below is a historical snapshot, NOT the current market. Do not act on these levels.`;
+    notice.textContent = `Aucun scan réussi depuis ${ageTxt}. Les éléments ci-dessous sont historiques, pas les cours actuels.`;
     notice.classList.remove("hidden");
   } else if (health === "STALE") {
-    notice.textContent = `⚠ Data is ${ageTxt} old (scans are expected every 15 min). ` +
-      `Scheduled runs were delayed or skipped — treat prices and signals as out of date.`;
+    notice.textContent = `Données âgées de ${ageTxt}. Le scan prévu toutes les 15 min a été retardé ou manqué.`;
     notice.classList.remove("hidden");
   } else if (health === "FAILED") {
-    notice.textContent = "⚠ Last scan FAILED — API unreachable. Showing the last successful scan data. No simulated data is ever shown.";
+    notice.textContent = "Le dernier scan a échoué. Affichage du dernier scan réussi ; aucune donnée simulée n’est affichée.";
     notice.classList.remove("hidden");
   } else if (health === "DEGRADED") {
-    notice.textContent = "⚠ Last scan completed with degraded data quality (some symbols failed or data delayed).";
+    notice.textContent = "Le dernier scan est terminé avec des données dégradées ou retardées.";
     notice.classList.remove("hidden");
   } else notice.classList.add("hidden");
   document.body.classList.toggle("data-stale", stale);
@@ -214,27 +216,151 @@ function renderStatus() {
   const st = state.status; if (!st) return;
   const ls = st.lastScan || {};
   const eff = effectiveHealth();
-  $("st-system").textContent = eff.level;
+  const healthLabel = { HEALTHY: "EN LIGNE", DEGRADED: "DÉGRADÉ", STALE: "EN RETARD", OFFLINE: "HORS LIGNE", FAILED: "ÉCHEC" };
+  $("st-system").textContent = healthLabel[eff.level] || eff.level;
   $("st-health-sub").textContent = eff.stale
-    ? `data ${fmtDur(eff.age)} old · scan reported ${st.health ?? "—"}`
-    : (ls.status ? `scan ${ls.status}` : "—");
+    ? `données âgées de ${fmtDur(eff.age)}`
+    : (ls.status ? `dernier résultat : ${ls.status === "OK" ? "réussi" : ls.status}` : "—");
   $("st-lastscan").textContent = ls.executedAt
-    ? `${fmtClock(ls.executedAt)} (${fmtAgo(ls.executedAt)})` : "—";
-  $("st-jitter").textContent = ls.jitterSeconds != null ? `scheduled ${fmtClock(ls.scheduledAt)} · jitter ${ls.jitterSeconds}s` : "—";
+    ? `${fmtClock(ls.executedAt)} · ${fmtAgo(ls.executedAt)}` : "—";
+  $("st-jitter").textContent = ls.jitterSeconds != null ? `prévu ${fmtClock(ls.scheduledAt)} · écart ${Math.round(ls.jitterSeconds)} s` : "—";
   $("st-nextscan").textContent = st.nextExpectedScanAt ? fmtClock(st.nextExpectedScanAt) : "—";
   $("st-duration").textContent = ls.durationMs != null ? (ls.durationMs / 1000).toFixed(1) + "s" : "—";
-  $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valid · ${ls.dataFailures ?? 0} failed`;
-  $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} pairs`;
-  $("st-universe-src").textContent = ls.universeSource ? `via ${ls.universeSource}` : "—";
+  $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valides · ${ls.dataFailures ?? 0} échec(s)`;
+  $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} paire(s)`;
+  $("st-universe-src").textContent = ls.universeSource ? `source : ${ls.universeSource}` : "—";
   const api = ls.apiHealth ?? "—";
   $("st-api").textContent = api;
-  $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} req · ${ls.apiStats.errors ?? 0} err · ${ls.apiStats.retries ?? 0} retry` : "—";
+  $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} requête(s) · ${ls.apiStats.errors ?? 0} erreur(s) · ${ls.apiStats.retries ?? 0} reprise(s)` : "—";
   const fresh = ls.dataFreshness ?? {};
-  $("st-fresh").textContent = fresh.label ?? "—";
-  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `candle age ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
+  $("st-fresh").textContent = ({ LIVE: "À JOUR", DELAYED: "RETARDÉES", STALE: "PÉRIMÉES" })[fresh.label] || fresh.label || "—";
+  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `bougie âgée de ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
   const active = state.signals.filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED");
   $("st-active").textContent = active.length;
-  $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} triggered · ${active.filter(s => s.status === "WAITING_TRIGGER").length} waiting`;
+  $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} déclenché(s) · ${active.filter(s => s.status === "WAITING_TRIGGER").length} en attente`;
+}
+
+function renderLatestAnalysis() {
+  const chart = state.latestChart || {};
+  const context = chart.context || {};
+  const indicators = chart.indicators || {};
+  const active = state.signals
+    .filter(s => s.symbol === "BTCUSDT" && (s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED"))
+    .sort((a, b) => b.generatedAt - a.generatedAt)[0] || null;
+  const signal = active;
+  const score = signal?.score == null ? null : Math.max(0, Math.min(100, Number(signal.score)));
+
+  $("setup-state").textContent = signal
+    ? `${signal.direction} · ${signal.status === "TRIGGERED" ? "DÉCLENCHÉ" : "EN ATTENTE"}`
+    : "AUCUN SETUP";
+  $("setup-state").className = `setup-state ${signal ? signal.direction.toLowerCase() : "idle"}`;
+  $("latest-score").textContent = score == null ? "—" : `${score.toFixed(0)} / 100`;
+  $("latest-tier").textContent = signal?.quality || "—";
+  $("latest-score-fill").style.width = `${score ?? 0}%`;
+  $("latest-score-fill").className = signal ? signal.direction.toLowerCase() : "";
+  $("latest-entry").textContent = signal ? fmtPrice(signal.entryPrice ?? signal.triggerPrice) : "—";
+  const zone = signal?.entryZone;
+  $("latest-entry-zone").textContent = zone?.length === 2
+    ? `Zone : ${fmtPrice(zone[0])} – ${fmtPrice(zone[1])}` : "Zone d’entrée —";
+  $("latest-tp").textContent = signal ? fmtPrice(signal.takeProfit) : "—";
+  $("latest-sl").textContent = signal ? fmtPrice(signal.stopLoss) : "—";
+  $("latest-rr").textContent = signal?.riskReward != null ? `1 : ${Number(signal.riskReward).toFixed(2)}` : "—";
+  $("setup-explanation").textContent = signal
+    ? `Setup retenu · score de confluence ${score.toFixed(0)}/100 · suivi automatique du déclenchement et de l’issue.`
+    : "Aucun setup BTC n’a validé les règles lors du dernier scan. Les niveaux restent volontairement vides.";
+
+  const lastCandle = chart.lastClosedAt || chart.generatedAt;
+  $("chart-updated").textContent = lastCandle
+    ? `Bougie analysée · ${fmtTime(lastCandle)}` : "En attente du prochain scan";
+  const livePrice = state.liveOk ? state.livePrices.BTCUSDT : null;
+  $("chart-price-label").textContent = livePrice != null ? "Cours en direct" : "Clôture analysée";
+  $("chart-price").textContent = fmtPrice(livePrice ?? chart.price);
+  $("chart-source").textContent = chart.source ? `Données du scan · ${chart.source}` : "Données du scan";
+
+  const m15 = indicators["15m"] || {};
+  $("metric-rsi").textContent = m15.rsi == null ? "—" : Number(m15.rsi).toFixed(1);
+  $("metric-adx").textContent = m15.adx == null ? "—" : Number(m15.adx).toFixed(1);
+  $("metric-atr").textContent = m15.atrPercent == null ? "—" : `${Number(m15.atrPercent).toFixed(2)} %`;
+  $("metric-relvol").textContent = m15.relativeVolume == null ? "—" : `${Number(m15.relativeVolume).toFixed(2)}×`;
+  $("metric-regime").textContent = String(context.regime || "—").replaceAll("_", " ");
+  $("metric-bias").textContent = `${String(context.bias4h || "—").replaceAll("_", " ")} / ${String(context.bias1h || "—").replaceAll("_", " ")}`;
+
+  const tfNames = { "4h": "4 h", "1h": "1 h", "15m": "15 min" };
+  $("latest-indicators-body").innerHTML = ["4h", "1h", "15m"].map(tf => {
+    const m = indicators[tf] || {};
+    const cell = (value, digits = 2) => value == null ? "—" : Number(value).toLocaleString("fr-FR", { maximumFractionDigits: digits });
+    return `<tr><td>${tfNames[tf]}</td><td>${cell(m.ema20)}</td><td>${cell(m.ema50)}</td><td>${cell(m.ema200)}</td>
+      <td>${cell(m.rsi, 1)}</td><td>${cell(m.adx, 1)}</td><td>${cell(m.plusDi, 1)} / ${cell(m.minusDi, 1)}</td>
+      <td>${cell(m.atr)}</td><td>${cell(m.atrPercent, 3)}%</td><td>${cell(m.relativeVolume, 2)}×</td><td>${cell(m.vwap)}</td></tr>`;
+  }).join("");
+  const structure = chart.structure || {};
+  const structureNames = { events: "BOS/CHoCH", sweeps: "sweeps", displacements: "déplacements", fvgs: "FVG", orderBlocks: "OB" };
+  $("latest-structure").textContent = ["4h", "1h", "15m"].map(tf => {
+    const row = structure[tf] || {};
+    const counts = Object.keys(structureNames).map(key => `${structureNames[key]} : ${(row[key] || []).length}`);
+    return `${tfNames[tf]} — ${counts.join(" · ")}`;
+  }).join("\n");
+
+  drawBtcCandles(chart, signal, livePrice);
+}
+
+function drawBtcCandles(chart, signal, livePrice) {
+  const svg = $("btc-candle-chart");
+  const empty = $("chart-empty");
+  svg.replaceChildren();
+  const candles = (chart.candles || []).slice(-80);
+  empty.classList.toggle("hidden", candles.length > 0);
+  if (!candles.length) return;
+
+  const W = 900, H = 340, left = 76, right = 82, top = 18, bottom = 34;
+  const plotW = W - left - right, plotH = H - top - bottom;
+  const minLow = Math.min(...candles.map(c => Number(c.low)));
+  const maxHigh = Math.max(...candles.map(c => Number(c.high)));
+  const pad = Math.max((maxHigh - minLow) * 0.08, maxHigh * 0.0002);
+  const min = minLow - pad, max = maxHigh + pad;
+  const y = value => top + ((max - value) / (max - min)) * plotH;
+  const slot = plotW / candles.length;
+  const x = index => left + (index + 0.5) * slot;
+
+  for (let i = 0; i <= 4; i++) {
+    const value = max - (i / 4) * (max - min), yy = y(value);
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: yy, y2: yy, class: "chart-grid-line" }));
+    const label = svgEl("text", { x: left - 9, y: yy + 4, "text-anchor": "end", class: "chart-axis-label" });
+    label.textContent = fmtPrice(value);
+    svg.appendChild(label);
+  }
+
+  candles.forEach((candle, index) => {
+    const xx = x(index), openY = y(Number(candle.open)), closeY = y(Number(candle.close));
+    const up = Number(candle.close) >= Number(candle.open);
+    const cls = up ? "candle-up" : "candle-down";
+    svg.appendChild(svgEl("line", { x1: xx, x2: xx, y1: y(Number(candle.high)), y2: y(Number(candle.low)), class: cls }));
+    const bodyTop = Math.min(openY, closeY), bodyHeight = Math.max(1.3, Math.abs(closeY - openY));
+    svg.appendChild(svgEl("rect", { x: xx - Math.max(1.4, slot * 0.31), y: bodyTop,
+      width: Math.max(2.8, slot * 0.62), height: bodyHeight, rx: 0.8, class: cls }));
+  });
+
+  [0, Math.floor((candles.length - 1) / 2), candles.length - 1].forEach(index => {
+    const text = svgEl("text", { x: x(index), y: H - 8, "text-anchor": "middle", class: "chart-axis-label" });
+    text.textContent = new Date(candles[index].openTime).toLocaleTimeString("fr-FR", { timeZone: TZ, hour: "2-digit", minute: "2-digit" });
+    svg.appendChild(text);
+  });
+
+  const overlays = [
+    { value: livePrice, label: "LIVE", cls: "chart-live-line" },
+    { value: signal?.triggerPrice, label: "ENTRÉE", cls: "chart-entry-line" },
+    { value: signal?.takeProfit, label: "TP", cls: "chart-tp-line" },
+    { value: signal?.stopLoss, label: "SL", cls: "chart-sl-line" },
+  ];
+  overlays.forEach(item => {
+    const value = Number(item.value);
+    if (!Number.isFinite(value) || value < min || value > max) return;
+    const yy = y(value);
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: yy, y2: yy, class: item.cls }));
+    const label = svgEl("text", { x: W - right + 7, y: yy + 4, class: "chart-axis-label chart-level-label" });
+    label.textContent = item.label;
+    svg.appendChild(label);
+  });
 }
 
 function renderOverview() {
@@ -587,10 +713,23 @@ function renderHistory() {
   rows.sort((a, b) => b.generatedAt - a.generatedAt);
   const tbody = document.querySelector("#history-table tbody");
   $("history-empty").classList.toggle("hidden", rows.length > 0);
-  $("history-count").textContent = `${rows.length} signal(s) shown of ${state.signals.length} total`;
+  $("history-count").textContent = `${rows.length} / ${state.signals.length} signal${state.signals.length === 1 ? "" : "s"}`;
   tbody.innerHTML = rows.slice(0, 300).map(s => {
     const dur = s.closedAt && s.triggeredAt ? s.closedAt - s.triggeredAt :
       (s.closedAt ? s.closedAt - s.generatedAt : null);
+    const stateLabels = {
+      WAITING_TRIGGER: "En attente d’entrée", TRIGGERED: "Entrée déclenchée",
+      WIN: "Terminé", LOSS: "Terminé", EXPIRED: "Entrée expirée",
+      AMBIGUOUS: "Terminé", CANCELLED: "Terminé",
+    };
+    const outcomes = {
+      WAITING_TRIGGER: "En attente d’entrée", TRIGGERED: "En cours",
+      WIN: "TP atteint", LOSS: "SL touché", EXPIRED: "Entrée non déclenchée",
+      AMBIGUOUS: "Indéterminé (TP et SL touchés)", CANCELLED: "Temps maximal atteint",
+    };
+    const result = s.rMultiple != null
+      ? `${outcomes[s.status] || s.status} · ${s.rMultiple > 0 ? "+" : ""}${Number(s.rMultiple).toFixed(2)}R`
+      : (outcomes[s.status] || s.status);
     return `<tr>
       <td>${fmtTime(s.generatedAt)}</td>
       <td><b>${s.symbol}</b></td>
@@ -602,12 +741,27 @@ function renderHistory() {
       <td>${fmtPrice(s.takeProfit)}</td>
       <td>${fmtPrice(s.stopLoss)}</td>
       <td>1:${Number(s.riskReward).toFixed(2)}</td>
-      <td><span class="status-badge st-${s.status}">${s.status.replace("_", " ")}</span></td>
-      <td>${s.rMultiple != null ? (s.rMultiple > 0 ? "+" : "") + Number(s.rMultiple).toFixed(2) + "R" : "—"}</td>
+      <td><span class="status-badge st-${s.status}">${stateLabels[s.status] || s.status}</span></td>
+      <td>${result}</td>
       <td>${fmtDur(dur)}</td>
     </tr>`;
   }).join("");
 }
+
+function selectView(view) {
+  const analysis = view === "analysis";
+  $("view-analysis").classList.toggle("hidden", !analysis);
+  $("view-signals").classList.toggle("hidden", analysis);
+  $("tab-analysis").classList.toggle("active", analysis);
+  $("tab-signals").classList.toggle("active", !analysis);
+  $("tab-analysis").setAttribute("aria-selected", String(analysis));
+  $("tab-signals").setAttribute("aria-selected", String(!analysis));
+  if (!analysis) renderHistory();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+$("tab-analysis").addEventListener("click", () => selectView("analysis"));
+$("tab-signals").addEventListener("click", () => selectView("signals"));
 
 function renderLogs() {
   const logs = state.status?.logs ?? [];

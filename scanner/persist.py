@@ -11,7 +11,8 @@ from pathlib import Path
 
 from .config import repo_root
 
-DATA_FILES = ("signals.json", "performance.json", "system-status.json", "market-snapshots.json")
+DATA_FILES = ("signals.json", "performance.json", "system-status.json",
+              "market-snapshots.json", "latest-chart.json")
 
 
 def data_dir() -> Path:
@@ -59,6 +60,9 @@ def seed_empty_files() -> None:
                                "lastSuccessfulScan": None, "logs": []},
         "market-snapshots.json": [],
         "universe-snapshot.json": {"generatedAt": 0, "rows": []},
+        "latest-chart.json": {"symbol": "BTCUSDT", "timeframe": "15m",
+                              "generatedAt": 0, "candles": [], "indicators": {},
+                              "context": {}, "structure": {}},
     }
     for name, payload in defaults.items():
         if not (data_dir() / name).exists():

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crypto 15M Signal Scanner — SMC Confluence Dashboard</title>
+<title>Scanner Bitcoin — Analyse BTCUSDT</title>
 <meta name="description" content="Rule-based multi-timeframe crypto signal scanner. Analytical signals only — not financial advice.">
 <style>
 /* Crypto 15M Signal Scanner — dark professional theme (no external assets) */
@@ -59,6 +59,14 @@ body {
 .brand h1 { font-size: 17px; margin: 0; letter-spacing: .2px; }
 .brand-sub { margin: 0; color: var(--muted); font-size: 11.5px; }
 .top-status { display: flex; gap: 8px; flex-wrap: wrap; }
+.view-tabs { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; gap: 6px; border-bottom: 1px solid var(--line); }
+.view-tab { position: relative; border: 0; border-bottom: 2px solid transparent; padding: 11px 14px 10px; background: transparent; color: var(--muted); font: 600 13px var(--font); cursor: pointer; }
+.view-tab:hover, .view-tab.active { color: var(--text); }
+.view-tab.active { border-bottom-color: var(--blue); }
+.view-tab span { display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 5px; padding: 0 5px; border-radius: 10px; background: var(--card-2); color: var(--muted); font: 11px var(--mono); }
+.view-tab.active span { color: var(--blue); }
+.history-total { color: var(--blue); font: 600 12px var(--mono); }
+.history-footnote { margin-top: 12px; }
 .chip {
   font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 999px;
   border: 1px solid var(--line); background: var(--card); color: var(--muted); white-space: nowrap;
@@ -251,6 +259,104 @@ body.data-stale #health-notice {
 .funnel-card .num { text-align: right; font-variant-numeric: tabular-nums; }
 .funnel-card table { width: 100%; margin-top: 10px; }
 
+/* Focused BTC view */
+.container { max-width: 1440px; }
+.section { margin-bottom: 22px; }
+.section-head h2 { font-size: 18px; }
+.status-primary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.status-primary .card { min-height: 92px; }
+.system-more { margin-top: 9px; }
+.system-more > summary,
+.analysis-details > summary {
+  color: var(--muted); cursor: pointer; font-size: 12px; padding: 5px 2px;
+}
+.system-detail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; }
+.analysis-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(300px, .8fr); gap: 14px; }
+.btc-chart-card { min-width: 0; padding: 16px 18px 12px; }
+.chart-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.chart-heading > div:first-child strong { font: 700 16px var(--mono); }
+.chart-price { display: flex; align-items: baseline; gap: 10px; font-family: var(--mono); }
+.chart-price strong { font-size: 21px; }
+.candlestick-wrap { position: relative; min-height: 300px; margin-top: 8px; }
+.candlestick-chart { display: block; width: 100%; height: 340px; overflow: visible; }
+.chart-empty { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(11,14,20,.5); }
+.chart-grid-line { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }
+.chart-axis-label { fill: var(--muted); font: 10px var(--mono); }
+.candle-up { stroke: var(--green); fill: var(--green); stroke-width: 1.2; }
+.candle-down { stroke: var(--red); fill: var(--red); stroke-width: 1.2; }
+.chart-live-line { stroke: var(--blue); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-entry-line { stroke: var(--amber); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-tp-line { stroke: var(--green); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-sl-line { stroke: var(--red); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-level-label { font-weight: 700; }
+.chart-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; color: var(--muted); font-size: 11px; }
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+.legend-swatch.up { background: var(--green); }
+.legend-swatch.down { background: var(--red); }
+.setup-card { padding: 17px 18px; }
+.setup-title-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.setup-title-row h3 { margin: 0; }
+.setup-state { border: 1px solid var(--line); border-radius: 999px; padding: 4px 9px; color: var(--muted); font: 700 10px var(--mono); white-space: nowrap; }
+.setup-state.long { color: var(--green); border-color: rgba(34,195,131,.4); background: var(--green-dim); }
+.setup-state.short { color: var(--red); border-color: rgba(240,84,108,.4); background: var(--red-dim); }
+.score-block { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+.score-value { font: 700 30px var(--mono); line-height: 1.2; }
+.score-tier { color: var(--blue); font: 700 14px var(--mono); }
+.score-track { height: 6px; overflow: hidden; border-radius: 99px; background: var(--line); margin-top: 10px; }
+.score-track > span { display: block; height: 100%; width: 0; background: var(--muted); transition: width .2s ease; }
+.score-track > span.long { background: var(--green); }
+.score-track > span.short { background: var(--red); }
+.score-note { margin: 7px 0 14px; }
+.trade-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.trade-level { display: flex; flex-direction: column; gap: 4px; min-width: 0; border: 1px solid var(--line); border-radius: 9px; padding: 9px 10px; background: var(--card-2); }
+.trade-level.entry { grid-column: 1 / -1; }
+.trade-level span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .45px; }
+.trade-level strong { font: 700 16px var(--mono); overflow-wrap: anywhere; }
+.trade-level small { color: var(--muted); font: 11px var(--mono); }
+.trade-level.tp strong { color: var(--green); }
+.trade-level.sl strong { color: var(--red); }
+.setup-foot { display: flex; justify-content: space-between; padding: 11px 1px 0; color: var(--muted); font-size: 12px; }
+.setup-foot strong { color: var(--amber); font: 700 13px var(--mono); }
+.setup-explanation { margin: 12px 0 0; border-top: 1px solid var(--line); padding-top: 10px; color: var(--muted); font-size: 12px; }
+.metric-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.metric-pill { display: flex; flex-direction: column; gap: 3px; border: 1px solid var(--line); background: var(--card); border-radius: 9px; padding: 9px 11px; min-width: 0; }
+.metric-pill span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .4px; }
+.metric-pill strong { font: 600 13px var(--mono); overflow-wrap: anywhere; }
+.analysis-details { margin-top: 9px; padding: 0 2px; }
+.analysis-details[open] { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2); }
+.indicator-table { min-width: 900px; margin-top: 8px; }
+.structure-summary { white-space: pre-line; margin-top: 10px; padding: 10px 12px; background: var(--card); border-radius: 8px; color: var(--muted); font: 11px/1.8 var(--mono); }
+.advanced-panel { padding: 0; border: 0; background: none; }
+.advanced-panel > summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 11px; background: var(--card); cursor: pointer; list-style: none; font-weight: 650; }
+.advanced-panel > summary::-webkit-details-marker { display: none; }
+.advanced-panel > summary::after { content: "+"; margin-left: auto; color: var(--blue); font: 700 20px var(--mono); }
+.advanced-panel[open] > summary { margin-bottom: 16px; }
+.advanced-panel[open] > summary::after { content: "−"; }
+.advanced-panel > summary small { color: var(--muted); font-weight: 400; }
+.advanced-panel > section { margin-top: 20px; }
+
+@media (max-width: 1080px) {
+  .analysis-layout { grid-template-columns: minmax(0, 1.35fr) minmax(270px, .9fr); }
+  .metric-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .analysis-layout { grid-template-columns: 1fr; }
+  .setup-card { order: -1; }
+  .status-primary, .system-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .advanced-panel > summary { align-items: flex-start; flex-wrap: wrap; }
+}
+@media (max-width: 520px) {
+  .view-tabs { padding: 0 10px; }
+  .view-tab { flex: 1; padding-inline: 7px; font-size: 12px; }
+  .status-primary, .system-detail-grid, .metric-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .candlestick-wrap { min-height: 240px; }
+  .candlestick-chart { height: 260px; }
+  .chart-price { flex-direction: column; align-items: flex-end; gap: 1px; }
+  .chart-price strong { font-size: 16px; }
+  .setup-card { order: initial; }
+}
+
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -261,22 +367,26 @@ body.data-stale #health-notice {
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brand">
-      <span class="brand-icon">📡</span>
+      <span class="brand-icon">₿</span>
       <div>
-        <h1>Crypto 15M Signal Scanner</h1>
-        <p class="brand-sub">SMC / Confluence · Top-100 USDT Perpetuals · 4H → 1H → 15M</p>
+        <h1>Scanner Bitcoin</h1>
+        <p class="brand-sub">BTCUSDT · Analyse 4H → 1H → 15M</p>
       </div>
     </div>
     <div class="top-status" id="top-status">
       <span class="chip chip-idle" id="chip-health">…</span>
-      <span class="chip" id="chip-lastscan">last scan —</span>
-      <span class="chip" id="chip-nextscan">next —</span>
-      <span class="chip" id="chip-price-mode">price feed —</span>
+      <span class="chip" id="chip-lastscan">dernier scan —</span>
+      <span class="chip" id="chip-price-mode">cours —</span>
     </div>
   </div>
+<nav class="view-tabs" aria-label="Navigation principale">
+  <button class="view-tab active" id="tab-analysis" type="button" aria-selected="true">Analyse BTC</button>
+  <button class="view-tab" id="tab-signals" type="button" aria-selected="false">Historique des signaux <span id="tab-signal-count">0</span></button>
+</nav>
 </header>
 
 <main class="container">
+<div class="tab-view" id="view-analysis">
 
   <div class="notice hidden" id="preview-notice">
     Data files can't be fetched in this context (opened as an offline file or a sandboxed
@@ -285,30 +395,89 @@ body.data-stale #health-notice {
     fully auto-refreshing data.
   </div>
   <div class="notice warn hidden" id="health-notice"></div>
-  <div class="notice disclaimer">
-    <strong>Analysis tool, not advice.</strong> This system generates rule-based analytical
-    signals from public market data. It does <strong>not</strong> execute trades and does
-    <strong>not</strong> guarantee profitability. The confluence score is a quality ranking,
-    <strong>not</strong> a probability.
-  </div>
-
   <!-- ============ SYSTEM STATUS ============ -->
   <section id="system-status" class="section">
     <div class="section-head">
-      <h2>1 · System Status</h2>
-      <span class="muted" id="data-updated">Last data update: —</span>
+      <h2>État du système</h2>
+      <span class="muted" id="data-updated">Données actualisées —</span>
     </div>
-    <div class="grid grid-status">
-      <div class="card stat"><span class="stat-label">System</span><span class="stat-value" id="st-system">—</span><span class="stat-sub" id="st-health-sub">—</span></div>
-      <div class="card stat"><span class="stat-label">Last Scan</span><span class="stat-value" id="st-lastscan">—</span><span class="stat-sub" id="st-jitter">—</span></div>
-      <div class="card stat"><span class="stat-label">Next Expected</span><span class="stat-value" id="st-nextscan">—</span><span class="stat-sub">every 15 min</span></div>
-      <div class="card stat"><span class="stat-label">Scan Duration</span><span class="stat-value" id="st-duration">—</span><span class="stat-sub" id="st-symbols">—</span></div>
-      <div class="card stat"><span class="stat-label">Universe</span><span class="stat-value" id="st-universe">—</span><span class="stat-sub" id="st-universe-src">—</span></div>
-      <div class="card stat"><span class="stat-label">API</span><span class="stat-value" id="st-api">—</span><span class="stat-sub" id="st-api-reqs">—</span></div>
-      <div class="card stat"><span class="stat-label">Data Freshness</span><span class="stat-value" id="st-fresh">—</span><span class="stat-sub" id="st-fresh-age">—</span></div>
-      <div class="card stat"><span class="stat-label">Active Signals</span><span class="stat-value" id="st-active">—</span><span class="stat-sub" id="st-active-sub">—</span></div>
+    <div class="grid grid-status status-primary">
+      <div class="card stat"><span class="stat-label">Scanner</span><span class="stat-value" id="st-system">—</span><span class="stat-sub" id="st-health-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Dernier scan</span><span class="stat-value" id="st-lastscan">—</span><span class="stat-sub" id="st-jitter">—</span></div>
+      <div class="card stat"><span class="stat-label">Prochain scan prévu</span><span class="stat-value" id="st-nextscan">—</span><span class="stat-sub">cadence visée : 15 min</span></div>
+      <div class="card stat"><span class="stat-label">Fraîcheur des données</span><span class="stat-value" id="st-fresh">—</span><span class="stat-sub" id="st-fresh-age">—</span></div>
     </div>
+    <details class="system-more">
+      <summary>Détails techniques du scan</summary>
+      <div class="grid system-detail-grid">
+        <div class="card stat"><span class="stat-label">Durée</span><span class="stat-value" id="st-duration">—</span><span class="stat-sub" id="st-symbols">—</span></div>
+        <div class="card stat"><span class="stat-label">Univers</span><span class="stat-value" id="st-universe">—</span><span class="stat-sub" id="st-universe-src">—</span></div>
+        <div class="card stat"><span class="stat-label">API</span><span class="stat-value" id="st-api">—</span><span class="stat-sub" id="st-api-reqs">—</span></div>
+        <div class="card stat"><span class="stat-label">Signaux actifs</span><span class="stat-value" id="st-active">—</span><span class="stat-sub" id="st-active-sub">—</span></div>
+      </div>
+    </details>
   </section>
+
+  <!-- ============ BTC LATEST ANALYSIS ============ -->
+  <section id="btc-analysis" class="section">
+    <div class="section-head">
+      <div><h2>Dernière analyse BTC</h2><p class="muted small">Graphique en bougies de 15 min · données du dernier scan</p></div>
+      <span class="muted small" id="chart-updated">En attente du prochain scan</span>
+    </div>
+    <div class="analysis-layout">
+      <div class="card btc-chart-card">
+        <div class="chart-heading">
+          <div><strong>BTCUSDT</strong><span class="muted small"> · 15 min</span></div>
+          <div class="chart-price"><span class="muted small" id="chart-price-label">Clôture analysée</span><strong id="chart-price">—</strong></div>
+        </div>
+        <div class="candlestick-wrap">
+          <svg id="btc-candle-chart" class="candlestick-chart" viewBox="0 0 900 340" role="img" aria-label="Graphique Bitcoin 15 minutes"></svg>
+          <div class="empty chart-empty hidden" id="chart-empty">Le graphique apparaîtra après un scan BTC réussi.</div>
+        </div>
+        <div class="chart-legend">
+          <span><i class="legend-swatch up"></i>Hausse</span><span><i class="legend-swatch down"></i>Baisse</span>
+          <span id="chart-source">Source —</span>
+        </div>
+      </div>
+      <aside class="card setup-card">
+        <div class="setup-title-row"><h3>Setup détecté</h3><span id="setup-state" class="setup-state">—</span></div>
+        <div class="score-block">
+          <div><span class="muted small">Score de confluence</span><div class="score-value" id="latest-score">—</div></div>
+          <span class="score-tier" id="latest-tier">—</span>
+        </div>
+        <div class="score-track"><span id="latest-score-fill"></span></div>
+        <p class="muted small score-note">Indice de qualité du setup, pas une probabilité de gain.</p>
+        <div class="trade-levels">
+          <div class="trade-level entry"><span>Entrée / déclencheur</span><strong id="latest-entry">—</strong><small id="latest-entry-zone">Zone d’entrée —</small></div>
+          <div class="trade-level tp"><span>Take profit</span><strong id="latest-tp">—</strong></div>
+          <div class="trade-level sl"><span>Stop loss</span><strong id="latest-sl">—</strong></div>
+        </div>
+        <div class="setup-foot"><span>Risque / rendement</span><strong id="latest-rr">—</strong></div>
+        <p class="setup-explanation" id="setup-explanation">Aucun setup validé lors du dernier scan.</p>
+      </aside>
+    </div>
+    <div class="metric-strip" id="current-metrics">
+      <div class="metric-pill"><span>RSI 15m</span><strong id="metric-rsi">—</strong></div>
+      <div class="metric-pill"><span>ADX 15m</span><strong id="metric-adx">—</strong></div>
+      <div class="metric-pill"><span>ATR 15m</span><strong id="metric-atr">—</strong></div>
+      <div class="metric-pill"><span>Volume relatif</span><strong id="metric-relvol">—</strong></div>
+      <div class="metric-pill"><span>Régime 4h</span><strong id="metric-regime">—</strong></div>
+      <div class="metric-pill"><span>Biais 4h / 1h</span><strong id="metric-bias">—</strong></div>
+    </div>
+    <details class="analysis-details" id="indicator-details">
+      <summary>Voir le détail des calculs et de la structure</summary>
+      <div class="table-wrap">
+        <table class="table compact indicator-table">
+          <thead><tr><th>Unité</th><th>EMA 20</th><th>EMA 50</th><th>EMA 200</th><th>RSI</th><th>ADX</th><th>DI+ / DI−</th><th>ATR</th><th>ATR %</th><th>Vol. relatif</th><th>VWAP</th></tr></thead>
+          <tbody id="latest-indicators-body"></tbody>
+        </table>
+      </div>
+      <div class="structure-summary" id="latest-structure">Structure —</div>
+    </details>
+  </section>
+
+  <details class="advanced-panel section" id="advanced-dashboard">
+    <summary><span>Tout l’historique et les métriques</span><small>Signaux, performances, screener, méthodologie et journaux</small></summary>
 
   <!-- ============ MARKET OVERVIEW ============ -->
   <section id="market-overview" class="section">
@@ -449,53 +618,6 @@ body.data-stale #health-notice {
       statistically meaningful. No probability claims are made.</p>
   </section>
 
-  <!-- ============ SIGNAL HISTORY ============ -->
-  <section id="signal-history" class="section">
-    <div class="section-head"><h2>7 · Signal History</h2></div>
-    <div class="card">
-      <div class="history-controls">
-        <input type="search" id="hist-search" placeholder="Filter symbol…">
-        <div class="filter-pills" id="hist-direction">
-          <button class="pill active" data-d="all">All</button>
-          <button class="pill" data-d="long">LONG</button>
-          <button class="pill" data-d="short">SHORT</button>
-        </div>
-        <div class="filter-pills" id="hist-quality">
-          <button class="pill active" data-q="all">All</button>
-          <button class="pill" data-q="A+">A+</button>
-          <button class="pill" data-q="A">A</button>
-          <button class="pill" data-q="B+">B+</button>
-        </div>
-        <div class="filter-pills" id="hist-outcome">
-          <button class="pill active" data-o="all">All</button>
-          <button class="pill" data-o="WIN">WIN</button>
-          <button class="pill" data-o="LOSS">LOSS</button>
-          <button class="pill" data-o="EXPIRED">EXPIRED</button>
-          <button class="pill" data-o="AMBIGUOUS">AMBIGUOUS</button>
-        </div>
-        <div class="filter-pills" id="hist-range">
-          <button class="pill active" data-range="7">7D</button>
-          <button class="pill" data-range="30">30D</button>
-          <button class="pill" data-range="90">90D</button>
-          <button class="pill" data-range="0">ALL</button>
-        </div>
-        <button class="pill" id="csv-export" title="Export the filtered history to CSV">⬇ Export CSV</button>
-      </div>
-      <div class="table-wrap">
-        <table class="table" id="history-table">
-          <thead><tr>
-            <th>Time</th><th>Symbol</th><th>Dir</th><th>Score</th><th>Quality</th>
-            <th>Trigger</th><th>Entry Zone</th><th>TP</th><th>SL</th><th>RR</th>
-            <th>Status</th><th>Outcome</th><th>Duration</th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-        <div class="empty small hidden" id="history-empty">No signals match the current filters.</div>
-      </div>
-      <div class="muted small" id="history-count"></div>
-    </div>
-  </section>
-
   <!-- ============ METHODOLOGY ============ -->
   <section id="methodology" class="section">
     <div class="section-head"><h2>8 · Methodology</h2></div>
@@ -565,6 +687,61 @@ body.data-stale #health-notice {
     <div class="card log-box"><pre id="log-box">—</pre></div>
   </section>
 
+  </details>
+
+</div>
+
+<div class="tab-view hidden" id="view-signals">
+  <section id="signal-history" class="section">
+    <div class="section-head">
+      <div><h2>Historique des signaux</h2><p class="muted small">Chaque setup publié et son évolution simulée à partir des bougies Binance.</p></div>
+      <strong class="history-total" id="history-count">0 signal</strong>
+    </div>
+    <div class="card">
+      <div class="history-controls">
+        <input type="search" id="hist-search" placeholder="Filtrer par symbole…">
+        <div class="filter-pills" id="hist-direction">
+          <button class="pill active" data-d="all">Tous</button>
+          <button class="pill" data-d="long">LONG</button>
+          <button class="pill" data-d="short">SHORT</button>
+        </div>
+        <div class="filter-pills" id="hist-quality">
+          <button class="pill active" data-q="all">Toutes qualités</button>
+          <button class="pill" data-q="A+">A+</button>
+          <button class="pill" data-q="A">A</button>
+          <button class="pill" data-q="B+">B+</button>
+        </div>
+        <div class="filter-pills" id="hist-outcome">
+          <button class="pill active" data-o="all">Tous résultats</button>
+          <button class="pill" data-o="WIN">TP atteint</button>
+          <button class="pill" data-o="LOSS">SL touché</button>
+          <button class="pill" data-o="EXPIRED">Expiré</button>
+          <button class="pill" data-o="AMBIGUOUS">Indéterminé</button>
+        </div>
+        <div class="filter-pills" id="hist-range">
+          <button class="pill" data-range="7">7 j</button>
+          <button class="pill" data-range="30">30 j</button>
+          <button class="pill" data-range="90">90 j</button>
+          <button class="pill active" data-range="0">Tout</button>
+        </div>
+        <button class="pill" id="csv-export" title="Exporter les signaux filtrés au format CSV">⬇ Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="history-table">
+          <thead><tr>
+            <th>Créé le</th><th>Symbole</th><th>Sens</th><th>Score</th><th>Qualité</th>
+            <th>Entrée</th><th>Zone d’entrée</th><th>TP</th><th>SL</th><th>R/R</th>
+            <th>État</th><th>Résultat simulé</th><th>Durée</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="empty small hidden" id="history-empty">Aucun signal pour le moment. Le tableau se remplira lorsqu’un setup validera les règles.</div>
+      </div>
+      <div class="muted small history-footnote">Les résultats sont simulés sur les données de marché ; aucun ordre réel n’est passé. « Indéterminé » signifie que TP et SL ont été touchés dans la même bougie sans ordre résolvable.</div>
+    </div>
+  </section>
+</div>
+
   <footer class="footer">
     <p>Crypto 15M Signal Scanner · deterministic rule-based engine · zero-cost infrastructure
       (GitHub Actions + Cloudflare Pages) · <span id="ft-version"></span></p>
@@ -596,20 +773,20 @@ const PRICE_ENDPOINTS = [
   "https://www.binance.com/fapi/v1/ticker/price",
 ];
 
-const TZ = "Asia/Kuala_Lumpur";
+const TZ = "Europe/Paris";
 const $ = (id) => document.getElementById(id);
-const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("en-MY", {
+const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("fr-FR", {
   timeZone: TZ, hour12: false, day: "2-digit", month: "short",
   hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "—";
-const fmtClock = (ms) => ms ? new Date(ms).toLocaleTimeString("en-MY", {
+const fmtClock = (ms) => ms ? new Date(ms).toLocaleTimeString("fr-FR", {
   timeZone: TZ, hour12: false }) : "—";
-const fmtPrice = (v) => v == null ? "—" : Number(v).toLocaleString("en-US", { maximumFractionDigits: 6 });
+const fmtPrice = (v) => v == null ? "—" : Number(v).toLocaleString("fr-FR", { maximumFractionDigits: 2 });
 const fmtAgo = (ms) => {
   if (!ms) return "—";
   const s = Math.max(0, (Date.now() - ms) / 1000);
-  if (s < 90) return `${Math.round(s)}s ago`;
-  if (s < 5400) return `${Math.round(s / 60)} min ago`;
-  return `${(s / 3600).toFixed(1)} h ago`;
+  if (s < 90) return `il y a ${Math.round(s)} s`;
+  if (s < 5400) return `il y a ${Math.round(s / 60)} min`;
+  return `il y a ${(s / 3600).toFixed(1)} h`;
 };
 const fmtDur = (ms) => {
   if (ms == null) return "—";
@@ -619,11 +796,11 @@ const fmtDur = (ms) => {
 };
 
 const state = {
-  signals: [], status: null, snapshots: [], performance: null, screener: null,
+  signals: [], status: null, snapshots: [], performance: null, screener: null, latestChart: null,
   lastDataUpdate: null, embeddedLoaded: false,
   livePrices: {}, liveOk: false, liveAt: null,
   activeFilter: new Set(["A+", "A", "B+"]),
-  perfRange: 7, histRange: 7, histDir: "all", histQuality: "all",
+  perfRange: 7, histRange: 0, histDir: "all", histQuality: "all",
   histOutcome: "all", histSearch: "",
   screenerSearch: "", screenerSort: { key: "rank", dir: 1 },
 };
@@ -637,17 +814,19 @@ async function loadJSON(name) {
 
 async function refreshData() {
   try {
-    const [signals, status, snapshots, performance, screener] = await Promise.all([
+    const [signals, status, snapshots, performance, screener, latestChart] = await Promise.all([
       loadJSON("signals.json"), loadJSON("system-status.json"),
       loadJSON("market-snapshots.json").catch(() => []),
       loadJSON("performance.json").catch(() => null),
       loadJSON("universe-snapshot.json").catch(() => null),
+      loadJSON("latest-chart.json").catch(() => null),
     ]);
     state.signals = Array.isArray(signals?.signals) ? signals.signals : [];
     state.status = status || null;
     state.snapshots = Array.isArray(snapshots) ? snapshots : [];
     state.performance = performance;
     state.screener = screener;
+    state.latestChart = latestChart;
     state.lastDataUpdate = Date.now();
     state.embeddedLoaded = false;
     $("preview-notice").classList.add("hidden");
@@ -662,6 +841,7 @@ async function refreshData() {
       state.snapshots = Array.isArray(d.snapshots) ? d.snapshots : [];
       state.performance = d.performance || null;
       state.screener = d.screener || null;
+      state.latestChart = d.chart || null;
       state.lastDataUpdate = d.builtAt || null;
       state.embeddedLoaded = true;
       renderAll();
@@ -673,10 +853,9 @@ async function refreshData() {
 
 /* live prices from the browser (Binance public ticker, CORS-enabled) */
 async function refreshPrices() {
-  const symbols = [...new Set(state.signals
+  const symbols = [...new Set(["BTCUSDT", ...state.signals
     .filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED")
-    .map(s => s.symbol))];
-  if (!symbols.length) { state.liveOk = false; renderTopChips(); return; }
+    .map(s => s.symbol)])];
   for (const base of PRICE_ENDPOINTS) {
     try {
       const qs = encodeURIComponent(JSON.stringify(symbols.slice(0, 40)));
@@ -687,18 +866,19 @@ async function refreshPrices() {
       rows.forEach(r => { state.livePrices[r.symbol] = parseFloat(r.price); });
       state.liveOk = true;
       state.liveAt = Date.now();
-      renderTopChips(); renderActive(); renderRecent();
+      renderTopChips(); renderActive(); renderRecent(); renderLatestAnalysis();
       return;
     } catch (_) { /* try next endpoint */ }
   }
   state.liveOk = false;
-  renderTopChips(); renderActive(); renderRecent();
+  renderTopChips(); renderActive(); renderRecent(); renderLatestAnalysis();
 }
 
 /* ------------------------------------------------------------------ render */
 function renderAll() {
   renderTopChips();
   renderStatus();
+  renderLatestAnalysis();
   renderOverview();
   renderScreener();
   renderActive();
@@ -707,6 +887,7 @@ function renderAll() {
   renderPerformance();
   renderHistory();
   renderLogs();
+  $("tab-signal-count").textContent = state.signals.length;
   $("ft-version").textContent = state.status?.version ? `engine v${state.status.version}` : "";
 }
 
@@ -739,48 +920,46 @@ function renderTopChips() {
   const { level: health, age, stale } = effectiveHealth();
   const chip = $("chip-health");
   chip.textContent =
-    health === "HEALTHY" ? "SYSTEM ONLINE" :
-    health === "DEGRADED" ? "DEGRADED" :
-    health === "STALE" ? "DATA STALE" :
-    health === "OFFLINE" ? "SCANNER OFFLINE" :
-    health === "FAILED" ? "SYSTEM OFFLINE" : "…";
+    health === "HEALTHY" ? "SCANNER EN LIGNE" :
+    health === "DEGRADED" ? "DÉGRADÉ" :
+    health === "STALE" ? "DONNÉES EN RETARD" :
+    health === "OFFLINE" ? "SCANNER HORS LIGNE" :
+    health === "FAILED" ? "SYSTÈME HORS LIGNE" : "…";
   chip.className = "chip " + (health === "HEALTHY" ? "chip-ok" :
     (health === "DEGRADED" || health === "STALE") ? "chip-warn" : "chip-bad");
   const last = st?.lastScan?.executedAt;
   // Always show how old the data is, not just when the scan happened -- a
   // bare timestamp reads as "current" to anyone who does not check the date.
   $("chip-lastscan").textContent = last
-    ? `last scan ${fmtClock(last)} MYT · ${fmtAgo(last)}`
-    : "last scan —";
+    ? `scan ${fmtClock(last)} · ${fmtAgo(last)}`
+    : "scan —";
   const next = st?.nextExpectedScanAt;
-  $("chip-nextscan").textContent = next ? `next ~${fmtClock(next)} MYT` : "next —";
+  if ($("chip-nextscan")) $("chip-nextscan").textContent = next ? `prochain ~${fmtClock(next)}` : "prochain —";
   const pm = $("chip-price-mode");
   if (state.liveOk) {
-    pm.textContent = `LIVE PRICE ${fmtClock(state.liveAt)}`;
+    pm.textContent = `BTC en direct · ${fmtClock(state.liveAt)}`;
     pm.className = "chip chip-ok";
   } else {
-    pm.textContent = "price: scan snapshot";
+    pm.textContent = "cours du scan";
     pm.className = "chip";
   }
   $("data-updated").textContent = state.lastDataUpdate
-    ? `Last data update: ${fmtTime(state.lastDataUpdate)}${state.embeddedLoaded ? " (embedded snapshot — offline file)" : ""}`
-    : "Last data update: —";
+    ? `Données actualisées ${fmtTime(state.lastDataUpdate)}${state.embeddedLoaded ? " (copie locale)" : ""}`
+    : "Données actualisées —";
 
   const notice = $("health-notice");
   const ageTxt = age != null ? fmtDur(age) : "unknown";
   if (health === "OFFLINE") {
-    notice.textContent = `⛔ No successful scan for ${ageTxt}. The scheduler appears to be stopped — ` +
-      `everything below is a historical snapshot, NOT the current market. Do not act on these levels.`;
+    notice.textContent = `Aucun scan réussi depuis ${ageTxt}. Les éléments ci-dessous sont historiques, pas les cours actuels.`;
     notice.classList.remove("hidden");
   } else if (health === "STALE") {
-    notice.textContent = `⚠ Data is ${ageTxt} old (scans are expected every 15 min). ` +
-      `Scheduled runs were delayed or skipped — treat prices and signals as out of date.`;
+    notice.textContent = `Données âgées de ${ageTxt}. Le scan prévu toutes les 15 min a été retardé ou manqué.`;
     notice.classList.remove("hidden");
   } else if (health === "FAILED") {
-    notice.textContent = "⚠ Last scan FAILED — API unreachable. Showing the last successful scan data. No simulated data is ever shown.";
+    notice.textContent = "Le dernier scan a échoué. Affichage du dernier scan réussi ; aucune donnée simulée n’est affichée.";
     notice.classList.remove("hidden");
   } else if (health === "DEGRADED") {
-    notice.textContent = "⚠ Last scan completed with degraded data quality (some symbols failed or data delayed).";
+    notice.textContent = "Le dernier scan est terminé avec des données dégradées ou retardées.";
     notice.classList.remove("hidden");
   } else notice.classList.add("hidden");
   document.body.classList.toggle("data-stale", stale);
@@ -790,27 +969,152 @@ function renderStatus() {
   const st = state.status; if (!st) return;
   const ls = st.lastScan || {};
   const eff = effectiveHealth();
-  $("st-system").textContent = eff.level;
+  const healthLabel = { HEALTHY: "EN LIGNE", DEGRADED: "DÉGRADÉ", STALE: "EN RETARD", OFFLINE: "HORS LIGNE", FAILED: "ÉCHEC" };
+  $("st-system").textContent = healthLabel[eff.level] || eff.level;
   $("st-health-sub").textContent = eff.stale
-    ? `data ${fmtDur(eff.age)} old · scan reported ${st.health ?? "—"}`
-    : (ls.status ? `scan ${ls.status}` : "—");
+    ? `données âgées de ${fmtDur(eff.age)}`
+    : (ls.status ? `dernier résultat : ${ls.status === "OK" ? "réussi" : ls.status}` : "—");
   $("st-lastscan").textContent = ls.executedAt
-    ? `${fmtClock(ls.executedAt)} (${fmtAgo(ls.executedAt)})` : "—";
-  $("st-jitter").textContent = ls.jitterSeconds != null ? `scheduled ${fmtClock(ls.scheduledAt)} · jitter ${ls.jitterSeconds}s` : "—";
+    ? `${fmtClock(ls.executedAt)} · ${fmtAgo(ls.executedAt)}` : "—";
+  $("st-jitter").textContent = ls.jitterSeconds != null ? `prévu ${fmtClock(ls.scheduledAt)} · écart ${Math.round(ls.jitterSeconds)} s` : "—";
   $("st-nextscan").textContent = st.nextExpectedScanAt ? fmtClock(st.nextExpectedScanAt) : "—";
   $("st-duration").textContent = ls.durationMs != null ? (ls.durationMs / 1000).toFixed(1) + "s" : "—";
-  $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valid · ${ls.dataFailures ?? 0} failed`;
-  $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} pairs`;
-  $("st-universe-src").textContent = ls.universeSource ? `via ${ls.universeSource}` : "—";
+  $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valides · ${ls.dataFailures ?? 0} échec(s)`;
+  $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} paire(s)`;
+  $("st-universe-src").textContent = ls.universeSource ? `source : ${ls.universeSource}` : "—";
   const api = ls.apiHealth ?? "—";
   $("st-api").textContent = api;
-  $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} req · ${ls.apiStats.errors ?? 0} err · ${ls.apiStats.retries ?? 0} retry` : "—";
+  $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} requête(s) · ${ls.apiStats.errors ?? 0} erreur(s) · ${ls.apiStats.retries ?? 0} reprise(s)` : "—";
   const fresh = ls.dataFreshness ?? {};
-  $("st-fresh").textContent = fresh.label ?? "—";
-  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `candle age ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
+  $("st-fresh").textContent = ({ LIVE: "À JOUR", DELAYED: "RETARDÉES", STALE: "PÉRIMÉES" })[fresh.label] || fresh.label || "—";
+  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `bougie âgée de ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
   const active = state.signals.filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED");
   $("st-active").textContent = active.length;
-  $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} triggered · ${active.filter(s => s.status === "WAITING_TRIGGER").length} waiting`;
+  $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} déclenché(s) · ${active.filter(s => s.status === "WAITING_TRIGGER").length} en attente`;
+}
+
+function renderLatestAnalysis() {
+  const chart = state.latestChart || {};
+  const context = chart.context || {};
+  const indicators = chart.indicators || {};
+  const active = state.signals
+    .filter(s => s.symbol === "BTCUSDT" && (s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED"))
+    .sort((a, b) => b.generatedAt - a.generatedAt)[0] || null;
+  const signal = active;
+  const score = signal?.score == null ? null : Math.max(0, Math.min(100, Number(signal.score)));
+
+  $("setup-state").textContent = signal
+    ? `${signal.direction} · ${signal.status === "TRIGGERED" ? "DÉCLENCHÉ" : "EN ATTENTE"}`
+    : "AUCUN SETUP";
+  $("setup-state").className = `setup-state ${signal ? signal.direction.toLowerCase() : "idle"}`;
+  $("latest-score").textContent = score == null ? "—" : `${score.toFixed(0)} / 100`;
+  $("latest-tier").textContent = signal?.quality || "—";
+  $("latest-score-fill").style.width = `${score ?? 0}%`;
+  $("latest-score-fill").className = signal ? signal.direction.toLowerCase() : "";
+  $("latest-entry").textContent = signal ? fmtPrice(signal.entryPrice ?? signal.triggerPrice) : "—";
+  const zone = signal?.entryZone;
+  $("latest-entry-zone").textContent = zone?.length === 2
+    ? `Zone : ${fmtPrice(zone[0])} – ${fmtPrice(zone[1])}` : "Zone d’entrée —";
+  $("latest-tp").textContent = signal ? fmtPrice(signal.takeProfit) : "—";
+  $("latest-sl").textContent = signal ? fmtPrice(signal.stopLoss) : "—";
+  $("latest-rr").textContent = signal?.riskReward != null ? `1 : ${Number(signal.riskReward).toFixed(2)}` : "—";
+  $("setup-explanation").textContent = signal
+    ? `Setup retenu · score de confluence ${score.toFixed(0)}/100 · suivi automatique du déclenchement et de l’issue.`
+    : "Aucun setup BTC n’a validé les règles lors du dernier scan. Les niveaux restent volontairement vides.";
+
+  const lastCandle = chart.lastClosedAt || chart.generatedAt;
+  $("chart-updated").textContent = lastCandle
+    ? `Bougie analysée · ${fmtTime(lastCandle)}` : "En attente du prochain scan";
+  const livePrice = state.liveOk ? state.livePrices.BTCUSDT : null;
+  $("chart-price-label").textContent = livePrice != null ? "Cours en direct" : "Clôture analysée";
+  $("chart-price").textContent = fmtPrice(livePrice ?? chart.price);
+  $("chart-source").textContent = chart.source ? `Données du scan · ${chart.source}` : "Données du scan";
+
+  const m15 = indicators["15m"] || {};
+  $("metric-rsi").textContent = m15.rsi == null ? "—" : Number(m15.rsi).toFixed(1);
+  $("metric-adx").textContent = m15.adx == null ? "—" : Number(m15.adx).toFixed(1);
+  $("metric-atr").textContent = m15.atrPercent == null ? "—" : `${Number(m15.atrPercent).toFixed(2)} %`;
+  $("metric-relvol").textContent = m15.relativeVolume == null ? "—" : `${Number(m15.relativeVolume).toFixed(2)}×`;
+  $("metric-regime").textContent = String(context.regime || "—").replaceAll("_", " ");
+  $("metric-bias").textContent = `${String(context.bias4h || "—").replaceAll("_", " ")} / ${String(context.bias1h || "—").replaceAll("_", " ")}`;
+
+  const tfNames = { "4h": "4 h", "1h": "1 h", "15m": "15 min" };
+  $("latest-indicators-body").innerHTML = ["4h", "1h", "15m"].map(tf => {
+    const m = indicators[tf] || {};
+    const cell = (value, digits = 2) => value == null ? "—" : Number(value).toLocaleString("fr-FR", { maximumFractionDigits: digits });
+    return `<tr><td>${tfNames[tf]}</td><td>${cell(m.ema20)}</td><td>${cell(m.ema50)}</td><td>${cell(m.ema200)}</td>
+      <td>${cell(m.rsi, 1)}</td><td>${cell(m.adx, 1)}</td><td>${cell(m.plusDi, 1)} / ${cell(m.minusDi, 1)}</td>
+      <td>${cell(m.atr)}</td><td>${cell(m.atrPercent, 3)}%</td><td>${cell(m.relativeVolume, 2)}×</td><td>${cell(m.vwap)}</td></tr>`;
+  }).join("");
+  const structure = chart.structure || {};
+  const structureNames = { events: "BOS/CHoCH", sweeps: "sweeps", displacements: "déplacements", fvgs: "FVG", orderBlocks: "OB" };
+  $("latest-structure").textContent = ["4h", "1h", "15m"].map(tf => {
+    const row = structure[tf] || {};
+    const counts = Object.keys(structureNames).map(key => `${structureNames[key]} : ${(row[key] || []).length}`);
+    return `${tfNames[tf]} — ${counts.join(" · ")}`;
+  }).join("
+");
+
+  drawBtcCandles(chart, signal, livePrice);
+}
+
+function drawBtcCandles(chart, signal, livePrice) {
+  const svg = $("btc-candle-chart");
+  const empty = $("chart-empty");
+  svg.replaceChildren();
+  const candles = (chart.candles || []).slice(-80);
+  empty.classList.toggle("hidden", candles.length > 0);
+  if (!candles.length) return;
+
+  const W = 900, H = 340, left = 76, right = 82, top = 18, bottom = 34;
+  const plotW = W - left - right, plotH = H - top - bottom;
+  const minLow = Math.min(...candles.map(c => Number(c.low)));
+  const maxHigh = Math.max(...candles.map(c => Number(c.high)));
+  const pad = Math.max((maxHigh - minLow) * 0.08, maxHigh * 0.0002);
+  const min = minLow - pad, max = maxHigh + pad;
+  const y = value => top + ((max - value) / (max - min)) * plotH;
+  const slot = plotW / candles.length;
+  const x = index => left + (index + 0.5) * slot;
+
+  for (let i = 0; i <= 4; i++) {
+    const value = max - (i / 4) * (max - min), yy = y(value);
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: yy, y2: yy, class: "chart-grid-line" }));
+    const label = svgEl("text", { x: left - 9, y: yy + 4, "text-anchor": "end", class: "chart-axis-label" });
+    label.textContent = fmtPrice(value);
+    svg.appendChild(label);
+  }
+
+  candles.forEach((candle, index) => {
+    const xx = x(index), openY = y(Number(candle.open)), closeY = y(Number(candle.close));
+    const up = Number(candle.close) >= Number(candle.open);
+    const cls = up ? "candle-up" : "candle-down";
+    svg.appendChild(svgEl("line", { x1: xx, x2: xx, y1: y(Number(candle.high)), y2: y(Number(candle.low)), class: cls }));
+    const bodyTop = Math.min(openY, closeY), bodyHeight = Math.max(1.3, Math.abs(closeY - openY));
+    svg.appendChild(svgEl("rect", { x: xx - Math.max(1.4, slot * 0.31), y: bodyTop,
+      width: Math.max(2.8, slot * 0.62), height: bodyHeight, rx: 0.8, class: cls }));
+  });
+
+  [0, Math.floor((candles.length - 1) / 2), candles.length - 1].forEach(index => {
+    const text = svgEl("text", { x: x(index), y: H - 8, "text-anchor": "middle", class: "chart-axis-label" });
+    text.textContent = new Date(candles[index].openTime).toLocaleTimeString("fr-FR", { timeZone: TZ, hour: "2-digit", minute: "2-digit" });
+    svg.appendChild(text);
+  });
+
+  const overlays = [
+    { value: livePrice, label: "LIVE", cls: "chart-live-line" },
+    { value: signal?.triggerPrice, label: "ENTRÉE", cls: "chart-entry-line" },
+    { value: signal?.takeProfit, label: "TP", cls: "chart-tp-line" },
+    { value: signal?.stopLoss, label: "SL", cls: "chart-sl-line" },
+  ];
+  overlays.forEach(item => {
+    const value = Number(item.value);
+    if (!Number.isFinite(value) || value < min || value > max) return;
+    const yy = y(value);
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: yy, y2: yy, class: item.cls }));
+    const label = svgEl("text", { x: W - right + 7, y: yy + 4, class: "chart-axis-label chart-level-label" });
+    label.textContent = item.label;
+    svg.appendChild(label);
+  });
 }
 
 function renderOverview() {
@@ -1163,10 +1467,23 @@ function renderHistory() {
   rows.sort((a, b) => b.generatedAt - a.generatedAt);
   const tbody = document.querySelector("#history-table tbody");
   $("history-empty").classList.toggle("hidden", rows.length > 0);
-  $("history-count").textContent = `${rows.length} signal(s) shown of ${state.signals.length} total`;
+  $("history-count").textContent = `${rows.length} / ${state.signals.length} signal${state.signals.length === 1 ? "" : "s"}`;
   tbody.innerHTML = rows.slice(0, 300).map(s => {
     const dur = s.closedAt && s.triggeredAt ? s.closedAt - s.triggeredAt :
       (s.closedAt ? s.closedAt - s.generatedAt : null);
+    const stateLabels = {
+      WAITING_TRIGGER: "En attente d’entrée", TRIGGERED: "Entrée déclenchée",
+      WIN: "Terminé", LOSS: "Terminé", EXPIRED: "Entrée expirée",
+      AMBIGUOUS: "Terminé", CANCELLED: "Terminé",
+    };
+    const outcomes = {
+      WAITING_TRIGGER: "En attente d’entrée", TRIGGERED: "En cours",
+      WIN: "TP atteint", LOSS: "SL touché", EXPIRED: "Entrée non déclenchée",
+      AMBIGUOUS: "Indéterminé (TP et SL touchés)", CANCELLED: "Temps maximal atteint",
+    };
+    const result = s.rMultiple != null
+      ? `${outcomes[s.status] || s.status} · ${s.rMultiple > 0 ? "+" : ""}${Number(s.rMultiple).toFixed(2)}R`
+      : (outcomes[s.status] || s.status);
     return `<tr>
       <td>${fmtTime(s.generatedAt)}</td>
       <td><b>${s.symbol}</b></td>
@@ -1178,12 +1495,27 @@ function renderHistory() {
       <td>${fmtPrice(s.takeProfit)}</td>
       <td>${fmtPrice(s.stopLoss)}</td>
       <td>1:${Number(s.riskReward).toFixed(2)}</td>
-      <td><span class="status-badge st-${s.status}">${s.status.replace("_", " ")}</span></td>
-      <td>${s.rMultiple != null ? (s.rMultiple > 0 ? "+" : "") + Number(s.rMultiple).toFixed(2) + "R" : "—"}</td>
+      <td><span class="status-badge st-${s.status}">${stateLabels[s.status] || s.status}</span></td>
+      <td>${result}</td>
       <td>${fmtDur(dur)}</td>
     </tr>`;
   }).join("");
 }
+
+function selectView(view) {
+  const analysis = view === "analysis";
+  $("view-analysis").classList.toggle("hidden", !analysis);
+  $("view-signals").classList.toggle("hidden", analysis);
+  $("tab-analysis").classList.toggle("active", analysis);
+  $("tab-signals").classList.toggle("active", !analysis);
+  $("tab-analysis").setAttribute("aria-selected", String(analysis));
+  $("tab-signals").setAttribute("aria-selected", String(!analysis));
+  if (!analysis) renderHistory();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+$("tab-analysis").addEventListener("click", () => selectView("analysis"));
+$("tab-signals").addEventListener("click", () => selectView("signals"));
 
 function renderLogs() {
   const logs = state.status?.logs ?? [];

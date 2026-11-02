@@ -143,6 +143,63 @@ def collect_derivatives(client: MarketDataClient, symbols: list[str], cfg: Confi
     return out
 
 
+def make_latest_chart(analysis: dict, candles: list[Candle], derivatives: dict,
+                      source: str | None, generated_ms: int) -> dict:
+    """Build a compact, auditable BTC chart payload from the exact scan inputs."""
+    def last(frame: dict, key: str):
+        values = frame.get(key) or []
+        return values[-1] if values else None
+
+    indicators: dict[str, dict] = {}
+    structure: dict[str, dict] = {}
+    for timeframe in ("4h", "1h", "15m"):
+        frame = analysis["frames"][timeframe]
+        close = last(frame, "c")
+        atr_value = last(frame, "atr")
+        indicators[timeframe] = {
+            "ema20": last(frame, "emaFast"),
+            "ema50": last(frame, "emaMid"),
+            "ema200": last(frame, "emaSlow"),
+            "rsi": last(frame, "rsi"),
+            "adx": last(frame, "adx"),
+            "plusDi": last(frame, "plusDi"),
+            "minusDi": last(frame, "minusDi"),
+            "atr": atr_value,
+            "atrPercent": atr_value / close * 100 if atr_value is not None and close else None,
+            "relativeVolume": last(frame, "relVol"),
+            "vwap": last(frame, "vwap"),
+        }
+        structure[timeframe] = {
+            key: (frame.get(key) or [])[-12:]
+            for key in ("events", "sweeps", "displacements", "equalHighs", "equalLows", "fvgs", "orderBlocks")
+        }
+
+    funding = derivatives.get("BTCUSDT", {})
+    return {
+        "symbol": "BTCUSDT",
+        "timeframe": "15m",
+        "source": source,
+        "generatedAt": generated_ms,
+        "lastClosedAt": candles[-1].closeTime if candles else None,
+        "price": analysis.get("price"),
+        "context": {
+            "regime": analysis.get("regime"),
+            "bias1d": analysis.get("bias1d", {}).get("bias", "unknown"),
+            "bias4h": analysis.get("bias4h", {}).get("bias", "unknown"),
+            "bias1h": analysis.get("bias1h", {}).get("bias", "unknown"),
+            "fundingRatePct": funding.get("fundingRatePct"),
+            "openInterest": funding.get("openInterest"),
+        },
+        "indicators": indicators,
+        "structure": structure,
+        "candles": [{
+            "openTime": c.openTime, "closeTime": c.closeTime,
+            "open": c.open, "high": c.high, "low": c.low,
+            "close": c.close, "volume": c.volume,
+        } for c in candles[-96:]],
+    }
+
+
 def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
               max_symbols: int | None = None, symbols: list[str] | None = None,
               dry_run: bool = False) -> int:
@@ -360,6 +417,11 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
     screener_rows.sort(key=lambda r: r["rank"] or 999)
     screener_payload = {"generatedAt": now_ms, "universeSource": universe.get("source"),
                         "rows": screener_rows}
+    btc_analysis = next((a for a in analyses if a.get("symbol") == "BTCUSDT"), None)
+    btc_candles = candle_map.get("BTCUSDT", [])
+    latest_chart = (make_latest_chart(btc_analysis, btc_candles, derivatives,
+                                      universe.get("source"), now_ms)
+                    if btc_analysis and btc_candles else None)
     badge = {"schemaVersion": 1, "label": "scanner",
              "message": f"{fmt_clock_badge(now_ms)} MYT · {health}",
              "color": "green" if health == "HEALTHY" else ("orange" if health == "DEGRADED" else "red")}
@@ -376,6 +438,8 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
     persist.write_data_file("system-status.json", status)
     persist.write_data_file("market-snapshots.json", snapshots)
     persist.write_data_file("universe-snapshot.json", screener_payload)  # overwritten each scan
+    if latest_chart is not None:
+        persist.write_data_file("latest-chart.json", latest_chart)
     atomic_write_json(persist.frontend_data_dir() / "badge.json", badge)
 
     # Self-contained dashboards. README/§5 and build_offline's own docstring

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crypto 15M Signal Scanner — SMC Confluence Dashboard</title>
+<title>Scanner Bitcoin — Analyse BTCUSDT</title>
 <meta name="description" content="Rule-based multi-timeframe crypto signal scanner. Analytical signals only — not financial advice.">
 <style>
 /* Crypto 15M Signal Scanner — dark professional theme (no external assets) */
@@ -59,6 +59,14 @@ body {
 .brand h1 { font-size: 17px; margin: 0; letter-spacing: .2px; }
 .brand-sub { margin: 0; color: var(--muted); font-size: 11.5px; }
 .top-status { display: flex; gap: 8px; flex-wrap: wrap; }
+.view-tabs { max-width: 1280px; margin: 0 auto; padding: 0 20px; display: flex; gap: 6px; border-bottom: 1px solid var(--line); }
+.view-tab { position: relative; border: 0; border-bottom: 2px solid transparent; padding: 11px 14px 10px; background: transparent; color: var(--muted); font: 600 13px var(--font); cursor: pointer; }
+.view-tab:hover, .view-tab.active { color: var(--text); }
+.view-tab.active { border-bottom-color: var(--blue); }
+.view-tab span { display: inline-grid; place-items: center; min-width: 20px; height: 20px; margin-left: 5px; padding: 0 5px; border-radius: 10px; background: var(--card-2); color: var(--muted); font: 11px var(--mono); }
+.view-tab.active span { color: var(--blue); }
+.history-total { color: var(--blue); font: 600 12px var(--mono); }
+.history-footnote { margin-top: 12px; }
 .chip {
   font-family: var(--mono); font-size: 11px; padding: 4px 9px; border-radius: 999px;
   border: 1px solid var(--line); background: var(--card); color: var(--muted); white-space: nowrap;
@@ -251,6 +259,104 @@ body.data-stale #health-notice {
 .funnel-card .num { text-align: right; font-variant-numeric: tabular-nums; }
 .funnel-card table { width: 100%; margin-top: 10px; }
 
+/* Focused BTC view */
+.container { max-width: 1440px; }
+.section { margin-bottom: 22px; }
+.section-head h2 { font-size: 18px; }
+.status-primary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.status-primary .card { min-height: 92px; }
+.system-more { margin-top: 9px; }
+.system-more > summary,
+.analysis-details > summary {
+  color: var(--muted); cursor: pointer; font-size: 12px; padding: 5px 2px;
+}
+.system-detail-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 8px; }
+.analysis-layout { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(300px, .8fr); gap: 14px; }
+.btc-chart-card { min-width: 0; padding: 16px 18px 12px; }
+.chart-heading { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.chart-heading > div:first-child strong { font: 700 16px var(--mono); }
+.chart-price { display: flex; align-items: baseline; gap: 10px; font-family: var(--mono); }
+.chart-price strong { font-size: 21px; }
+.candlestick-wrap { position: relative; min-height: 300px; margin-top: 8px; }
+.candlestick-chart { display: block; width: 100%; height: 340px; overflow: visible; }
+.chart-empty { position: absolute; inset: 0; display: grid; place-items: center; background: rgba(11,14,20,.5); }
+.chart-grid-line { stroke: var(--line); stroke-width: 1; stroke-dasharray: 3 5; }
+.chart-axis-label { fill: var(--muted); font: 10px var(--mono); }
+.candle-up { stroke: var(--green); fill: var(--green); stroke-width: 1.2; }
+.candle-down { stroke: var(--red); fill: var(--red); stroke-width: 1.2; }
+.chart-live-line { stroke: var(--blue); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-entry-line { stroke: var(--amber); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-tp-line { stroke: var(--green); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-sl-line { stroke: var(--red); stroke-width: 1.2; stroke-dasharray: 5 4; }
+.chart-level-label { font-weight: 700; }
+.chart-legend { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; color: var(--muted); font-size: 11px; }
+.chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend-swatch { width: 9px; height: 9px; border-radius: 2px; display: inline-block; }
+.legend-swatch.up { background: var(--green); }
+.legend-swatch.down { background: var(--red); }
+.setup-card { padding: 17px 18px; }
+.setup-title-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.setup-title-row h3 { margin: 0; }
+.setup-state { border: 1px solid var(--line); border-radius: 999px; padding: 4px 9px; color: var(--muted); font: 700 10px var(--mono); white-space: nowrap; }
+.setup-state.long { color: var(--green); border-color: rgba(34,195,131,.4); background: var(--green-dim); }
+.setup-state.short { color: var(--red); border-color: rgba(240,84,108,.4); background: var(--red-dim); }
+.score-block { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }
+.score-value { font: 700 30px var(--mono); line-height: 1.2; }
+.score-tier { color: var(--blue); font: 700 14px var(--mono); }
+.score-track { height: 6px; overflow: hidden; border-radius: 99px; background: var(--line); margin-top: 10px; }
+.score-track > span { display: block; height: 100%; width: 0; background: var(--muted); transition: width .2s ease; }
+.score-track > span.long { background: var(--green); }
+.score-track > span.short { background: var(--red); }
+.score-note { margin: 7px 0 14px; }
+.trade-levels { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.trade-level { display: flex; flex-direction: column; gap: 4px; min-width: 0; border: 1px solid var(--line); border-radius: 9px; padding: 9px 10px; background: var(--card-2); }
+.trade-level.entry { grid-column: 1 / -1; }
+.trade-level span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .45px; }
+.trade-level strong { font: 700 16px var(--mono); overflow-wrap: anywhere; }
+.trade-level small { color: var(--muted); font: 11px var(--mono); }
+.trade-level.tp strong { color: var(--green); }
+.trade-level.sl strong { color: var(--red); }
+.setup-foot { display: flex; justify-content: space-between; padding: 11px 1px 0; color: var(--muted); font-size: 12px; }
+.setup-foot strong { color: var(--amber); font: 700 13px var(--mono); }
+.setup-explanation { margin: 12px 0 0; border-top: 1px solid var(--line); padding-top: 10px; color: var(--muted); font-size: 12px; }
+.metric-strip { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin-top: 10px; }
+.metric-pill { display: flex; flex-direction: column; gap: 3px; border: 1px solid var(--line); background: var(--card); border-radius: 9px; padding: 9px 11px; min-width: 0; }
+.metric-pill span { color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .4px; }
+.metric-pill strong { font: 600 13px var(--mono); overflow-wrap: anywhere; }
+.analysis-details { margin-top: 9px; padding: 0 2px; }
+.analysis-details[open] { padding: 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--bg-2); }
+.indicator-table { min-width: 900px; margin-top: 8px; }
+.structure-summary { white-space: pre-line; margin-top: 10px; padding: 10px 12px; background: var(--card); border-radius: 8px; color: var(--muted); font: 11px/1.8 var(--mono); }
+.advanced-panel { padding: 0; border: 0; background: none; }
+.advanced-panel > summary { display: flex; align-items: center; justify-content: space-between; gap: 14px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 11px; background: var(--card); cursor: pointer; list-style: none; font-weight: 650; }
+.advanced-panel > summary::-webkit-details-marker { display: none; }
+.advanced-panel > summary::after { content: "+"; margin-left: auto; color: var(--blue); font: 700 20px var(--mono); }
+.advanced-panel[open] > summary { margin-bottom: 16px; }
+.advanced-panel[open] > summary::after { content: "−"; }
+.advanced-panel > summary small { color: var(--muted); font-weight: 400; }
+.advanced-panel > section { margin-top: 20px; }
+
+@media (max-width: 1080px) {
+  .analysis-layout { grid-template-columns: minmax(0, 1.35fr) minmax(270px, .9fr); }
+  .metric-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 800px) {
+  .analysis-layout { grid-template-columns: 1fr; }
+  .setup-card { order: -1; }
+  .status-primary, .system-detail-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .advanced-panel > summary { align-items: flex-start; flex-wrap: wrap; }
+}
+@media (max-width: 520px) {
+  .view-tabs { padding: 0 10px; }
+  .view-tab { flex: 1; padding-inline: 7px; font-size: 12px; }
+  .status-primary, .system-detail-grid, .metric-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .candlestick-wrap { min-height: 240px; }
+  .candlestick-chart { height: 260px; }
+  .chart-price { flex-direction: column; align-items: flex-end; gap: 1px; }
+  .chart-price strong { font-size: 16px; }
+  .setup-card { order: initial; }
+}
+
 </style>
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" type="image/svg+xml" href="icon.svg">
@@ -262,22 +368,26 @@ body.data-stale #health-notice {
 <header class="topbar">
   <div class="topbar-inner">
     <div class="brand">
-      <span class="brand-icon">📡</span>
+      <span class="brand-icon">₿</span>
       <div>
-        <h1>Crypto 15M Signal Scanner</h1>
-        <p class="brand-sub">SMC / Confluence · Top-100 USDT Perpetuals · 4H → 1H → 15M</p>
+        <h1>Scanner Bitcoin</h1>
+        <p class="brand-sub">BTCUSDT · Analyse 4H → 1H → 15M</p>
       </div>
     </div>
     <div class="top-status" id="top-status">
       <span class="chip chip-idle" id="chip-health">…</span>
-      <span class="chip" id="chip-lastscan">last scan —</span>
-      <span class="chip" id="chip-nextscan">next —</span>
-      <span class="chip" id="chip-price-mode">price feed —</span>
+      <span class="chip" id="chip-lastscan">dernier scan —</span>
+      <span class="chip" id="chip-price-mode">cours —</span>
     </div>
   </div>
+<nav class="view-tabs" aria-label="Navigation principale">
+  <button class="view-tab active" id="tab-analysis" type="button" aria-selected="true">Analyse BTC</button>
+  <button class="view-tab" id="tab-signals" type="button" aria-selected="false">Historique des signaux <span id="tab-signal-count">0</span></button>
+</nav>
 </header>
 
 <main class="container">
+<div class="tab-view" id="view-analysis">
 
   <div class="notice hidden" id="preview-notice">
     Data files can't be fetched in this context (opened as an offline file or a sandboxed
@@ -286,30 +396,89 @@ body.data-stale #health-notice {
     fully auto-refreshing data.
   </div>
   <div class="notice warn hidden" id="health-notice"></div>
-  <div class="notice disclaimer">
-    <strong>Analysis tool, not advice.</strong> This system generates rule-based analytical
-    signals from public market data. It does <strong>not</strong> execute trades and does
-    <strong>not</strong> guarantee profitability. The confluence score is a quality ranking,
-    <strong>not</strong> a probability.
-  </div>
-
   <!-- ============ SYSTEM STATUS ============ -->
   <section id="system-status" class="section">
     <div class="section-head">
-      <h2>1 · System Status</h2>
-      <span class="muted" id="data-updated">Last data update: —</span>
+      <h2>État du système</h2>
+      <span class="muted" id="data-updated">Données actualisées —</span>
     </div>
-    <div class="grid grid-status">
-      <div class="card stat"><span class="stat-label">System</span><span class="stat-value" id="st-system">—</span><span class="stat-sub" id="st-health-sub">—</span></div>
-      <div class="card stat"><span class="stat-label">Last Scan</span><span class="stat-value" id="st-lastscan">—</span><span class="stat-sub" id="st-jitter">—</span></div>
-      <div class="card stat"><span class="stat-label">Next Expected</span><span class="stat-value" id="st-nextscan">—</span><span class="stat-sub">every 15 min</span></div>
-      <div class="card stat"><span class="stat-label">Scan Duration</span><span class="stat-value" id="st-duration">—</span><span class="stat-sub" id="st-symbols">—</span></div>
-      <div class="card stat"><span class="stat-label">Universe</span><span class="stat-value" id="st-universe">—</span><span class="stat-sub" id="st-universe-src">—</span></div>
-      <div class="card stat"><span class="stat-label">API</span><span class="stat-value" id="st-api">—</span><span class="stat-sub" id="st-api-reqs">—</span></div>
-      <div class="card stat"><span class="stat-label">Data Freshness</span><span class="stat-value" id="st-fresh">—</span><span class="stat-sub" id="st-fresh-age">—</span></div>
-      <div class="card stat"><span class="stat-label">Active Signals</span><span class="stat-value" id="st-active">—</span><span class="stat-sub" id="st-active-sub">—</span></div>
+    <div class="grid grid-status status-primary">
+      <div class="card stat"><span class="stat-label">Scanner</span><span class="stat-value" id="st-system">—</span><span class="stat-sub" id="st-health-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Dernier scan</span><span class="stat-value" id="st-lastscan">—</span><span class="stat-sub" id="st-jitter">—</span></div>
+      <div class="card stat"><span class="stat-label">Prochain scan prévu</span><span class="stat-value" id="st-nextscan">—</span><span class="stat-sub">cadence visée : 15 min</span></div>
+      <div class="card stat"><span class="stat-label">Fraîcheur des données</span><span class="stat-value" id="st-fresh">—</span><span class="stat-sub" id="st-fresh-age">—</span></div>
     </div>
+    <details class="system-more">
+      <summary>Détails techniques du scan</summary>
+      <div class="grid system-detail-grid">
+        <div class="card stat"><span class="stat-label">Durée</span><span class="stat-value" id="st-duration">—</span><span class="stat-sub" id="st-symbols">—</span></div>
+        <div class="card stat"><span class="stat-label">Univers</span><span class="stat-value" id="st-universe">—</span><span class="stat-sub" id="st-universe-src">—</span></div>
+        <div class="card stat"><span class="stat-label">API</span><span class="stat-value" id="st-api">—</span><span class="stat-sub" id="st-api-reqs">—</span></div>
+        <div class="card stat"><span class="stat-label">Signaux actifs</span><span class="stat-value" id="st-active">—</span><span class="stat-sub" id="st-active-sub">—</span></div>
+      </div>
+    </details>
   </section>
+
+  <!-- ============ BTC LATEST ANALYSIS ============ -->
+  <section id="btc-analysis" class="section">
+    <div class="section-head">
+      <div><h2>Dernière analyse BTC</h2><p class="muted small">Graphique en bougies de 15 min · données du dernier scan</p></div>
+      <span class="muted small" id="chart-updated">En attente du prochain scan</span>
+    </div>
+    <div class="analysis-layout">
+      <div class="card btc-chart-card">
+        <div class="chart-heading">
+          <div><strong>BTCUSDT</strong><span class="muted small"> · 15 min</span></div>
+          <div class="chart-price"><span class="muted small" id="chart-price-label">Clôture analysée</span><strong id="chart-price">—</strong></div>
+        </div>
+        <div class="candlestick-wrap">
+          <svg id="btc-candle-chart" class="candlestick-chart" viewBox="0 0 900 340" role="img" aria-label="Graphique Bitcoin 15 minutes"></svg>
+          <div class="empty chart-empty hidden" id="chart-empty">Le graphique apparaîtra après un scan BTC réussi.</div>
+        </div>
+        <div class="chart-legend">
+          <span><i class="legend-swatch up"></i>Hausse</span><span><i class="legend-swatch down"></i>Baisse</span>
+          <span id="chart-source">Source —</span>
+        </div>
+      </div>
+      <aside class="card setup-card">
+        <div class="setup-title-row"><h3>Setup détecté</h3><span id="setup-state" class="setup-state">—</span></div>
+        <div class="score-block">
+          <div><span class="muted small">Score de confluence</span><div class="score-value" id="latest-score">—</div></div>
+          <span class="score-tier" id="latest-tier">—</span>
+        </div>
+        <div class="score-track"><span id="latest-score-fill"></span></div>
+        <p class="muted small score-note">Indice de qualité du setup, pas une probabilité de gain.</p>
+        <div class="trade-levels">
+          <div class="trade-level entry"><span>Entrée / déclencheur</span><strong id="latest-entry">—</strong><small id="latest-entry-zone">Zone d’entrée —</small></div>
+          <div class="trade-level tp"><span>Take profit</span><strong id="latest-tp">—</strong></div>
+          <div class="trade-level sl"><span>Stop loss</span><strong id="latest-sl">—</strong></div>
+        </div>
+        <div class="setup-foot"><span>Risque / rendement</span><strong id="latest-rr">—</strong></div>
+        <p class="setup-explanation" id="setup-explanation">Aucun setup validé lors du dernier scan.</p>
+      </aside>
+    </div>
+    <div class="metric-strip" id="current-metrics">
+      <div class="metric-pill"><span>RSI 15m</span><strong id="metric-rsi">—</strong></div>
+      <div class="metric-pill"><span>ADX 15m</span><strong id="metric-adx">—</strong></div>
+      <div class="metric-pill"><span>ATR 15m</span><strong id="metric-atr">—</strong></div>
+      <div class="metric-pill"><span>Volume relatif</span><strong id="metric-relvol">—</strong></div>
+      <div class="metric-pill"><span>Régime 4h</span><strong id="metric-regime">—</strong></div>
+      <div class="metric-pill"><span>Biais 4h / 1h</span><strong id="metric-bias">—</strong></div>
+    </div>
+    <details class="analysis-details" id="indicator-details">
+      <summary>Voir le détail des calculs et de la structure</summary>
+      <div class="table-wrap">
+        <table class="table compact indicator-table">
+          <thead><tr><th>Unité</th><th>EMA 20</th><th>EMA 50</th><th>EMA 200</th><th>RSI</th><th>ADX</th><th>DI+ / DI−</th><th>ATR</th><th>ATR %</th><th>Vol. relatif</th><th>VWAP</th></tr></thead>
+          <tbody id="latest-indicators-body"></tbody>
+        </table>
+      </div>
+      <div class="structure-summary" id="latest-structure">Structure —</div>
+    </details>
+  </section>
+
+  <details class="advanced-panel section" id="advanced-dashboard">
+    <summary><span>Tout l’historique et les métriques</span><small>Signaux, performances, screener, méthodologie et journaux</small></summary>
 
   <!-- ============ MARKET OVERVIEW ============ -->
   <section id="market-overview" class="section">
@@ -450,53 +619,6 @@ body.data-stale #health-notice {
       statistically meaningful. No probability claims are made.</p>
   </section>
 
-  <!-- ============ SIGNAL HISTORY ============ -->
-  <section id="signal-history" class="section">
-    <div class="section-head"><h2>7 · Signal History</h2></div>
-    <div class="card">
-      <div class="history-controls">
-        <input type="search" id="hist-search" placeholder="Filter symbol…">
-        <div class="filter-pills" id="hist-direction">
-          <button class="pill active" data-d="all">All</button>
-          <button class="pill" data-d="long">LONG</button>
-          <button class="pill" data-d="short">SHORT</button>
-        </div>
-        <div class="filter-pills" id="hist-quality">
-          <button class="pill active" data-q="all">All</button>
-          <button class="pill" data-q="A+">A+</button>
-          <button class="pill" data-q="A">A</button>
-          <button class="pill" data-q="B+">B+</button>
-        </div>
-        <div class="filter-pills" id="hist-outcome">
-          <button class="pill active" data-o="all">All</button>
-          <button class="pill" data-o="WIN">WIN</button>
-          <button class="pill" data-o="LOSS">LOSS</button>
-          <button class="pill" data-o="EXPIRED">EXPIRED</button>
-          <button class="pill" data-o="AMBIGUOUS">AMBIGUOUS</button>
-        </div>
-        <div class="filter-pills" id="hist-range">
-          <button class="pill active" data-range="7">7D</button>
-          <button class="pill" data-range="30">30D</button>
-          <button class="pill" data-range="90">90D</button>
-          <button class="pill" data-range="0">ALL</button>
-        </div>
-        <button class="pill" id="csv-export" title="Export the filtered history to CSV">⬇ Export CSV</button>
-      </div>
-      <div class="table-wrap">
-        <table class="table" id="history-table">
-          <thead><tr>
-            <th>Time</th><th>Symbol</th><th>Dir</th><th>Score</th><th>Quality</th>
-            <th>Trigger</th><th>Entry Zone</th><th>TP</th><th>SL</th><th>RR</th>
-            <th>Status</th><th>Outcome</th><th>Duration</th>
-          </tr></thead>
-          <tbody></tbody>
-        </table>
-        <div class="empty small hidden" id="history-empty">No signals match the current filters.</div>
-      </div>
-      <div class="muted small" id="history-count"></div>
-    </div>
-  </section>
-
   <!-- ============ METHODOLOGY ============ -->
   <section id="methodology" class="section">
     <div class="section-head"><h2>8 · Methodology</h2></div>
@@ -566,6 +688,61 @@ body.data-stale #health-notice {
     <div class="card log-box"><pre id="log-box">—</pre></div>
   </section>
 
+  </details>
+
+</div>
+
+<div class="tab-view hidden" id="view-signals">
+  <section id="signal-history" class="section">
+    <div class="section-head">
+      <div><h2>Historique des signaux</h2><p class="muted small">Chaque setup publié et son évolution simulée à partir des bougies Binance.</p></div>
+      <strong class="history-total" id="history-count">0 signal</strong>
+    </div>
+    <div class="card">
+      <div class="history-controls">
+        <input type="search" id="hist-search" placeholder="Filtrer par symbole…">
+        <div class="filter-pills" id="hist-direction">
+          <button class="pill active" data-d="all">Tous</button>
+          <button class="pill" data-d="long">LONG</button>
+          <button class="pill" data-d="short">SHORT</button>
+        </div>
+        <div class="filter-pills" id="hist-quality">
+          <button class="pill active" data-q="all">Toutes qualités</button>
+          <button class="pill" data-q="A+">A+</button>
+          <button class="pill" data-q="A">A</button>
+          <button class="pill" data-q="B+">B+</button>
+        </div>
+        <div class="filter-pills" id="hist-outcome">
+          <button class="pill active" data-o="all">Tous résultats</button>
+          <button class="pill" data-o="WIN">TP atteint</button>
+          <button class="pill" data-o="LOSS">SL touché</button>
+          <button class="pill" data-o="EXPIRED">Expiré</button>
+          <button class="pill" data-o="AMBIGUOUS">Indéterminé</button>
+        </div>
+        <div class="filter-pills" id="hist-range">
+          <button class="pill" data-range="7">7 j</button>
+          <button class="pill" data-range="30">30 j</button>
+          <button class="pill" data-range="90">90 j</button>
+          <button class="pill active" data-range="0">Tout</button>
+        </div>
+        <button class="pill" id="csv-export" title="Exporter les signaux filtrés au format CSV">⬇ Export CSV</button>
+      </div>
+      <div class="table-wrap">
+        <table class="table" id="history-table">
+          <thead><tr>
+            <th>Créé le</th><th>Symbole</th><th>Sens</th><th>Score</th><th>Qualité</th>
+            <th>Entrée</th><th>Zone d’entrée</th><th>TP</th><th>SL</th><th>R/R</th>
+            <th>État</th><th>Résultat simulé</th><th>Durée</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="empty small hidden" id="history-empty">Aucun signal pour le moment. Le tableau se remplira lorsqu’un setup validera les règles.</div>
+      </div>
+      <div class="muted small history-footnote">Les résultats sont simulés sur les données de marché ; aucun ordre réel n’est passé. « Indéterminé » signifie que TP et SL ont été touchés dans la même bougie sans ordre résolvable.</div>
+    </div>
+  </section>
+</div>
+
   <footer class="footer">
     <p>Crypto 15M Signal Scanner · deterministic rule-based engine · zero-cost infrastructure
       (GitHub Actions + Cloudflare Pages) · <span id="ft-version"></span></p>
@@ -574,7 +751,7 @@ body.data-stale #health-notice {
   </footer>
 </main>
 
-<script>window.__EMBEDDED_DATA__ = {"builtAt":1793627613754,"signals":{"generatedAt":1793627602920,"signals":[]},"status":{"systemOnline":true,"health":"HEALTHY","version":"1.1.0","lastScan":{"scheduledAt":1793627100000,"executedAt":1793627602920,"jitterSeconds":502.9,"durationMs":10820,"status":"OK","universeSize":1,"universeSource":"manual","market":"manual","symbolsScanned":1,"symbolsValid":1,"dataFailures":0,"failedSymbols":[],"candidates":0,"signalsGenerated":0,"rejects":{"htf_not_aligned":1,"momentum_rsi_out_of_band":1},"rejectFunnel":[{"stage":"htf_not_aligned","rejected":1},{"stage":"momentum_rsi_out_of_band","rejected":1}],"apiStats":{"requests":10,"errors":4,"retries":3,"rateLimitHits":0,"lastError":"HTTP 451 geo-restricted host=fapi.binance.com","endpointUsed":"binance-futures-mirror","marketUsed":"futures"},"apiHealth":"FAILED","dataFreshness":{"label":"LIVE","newestCandleCloseMs":1793627099999,"ageSeconds":502.9},"activeSignals":0},"lastSuccessfulScan":1793627602920,"nextExpectedScanAt":1793628000000,"logs":[{"ts":1788059153282,"level":"info","msg":"rejected 1x: volatility out of band (3.273%)"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.82 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 37.5 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.96 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.32 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 43.5 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.26 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 75.3 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 44.5 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 41.2 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 44.0 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 33.7 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.44 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: ADX 11.6 \u003c min and not emerging"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 38.8 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.89 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: ADX 14.3 \u003c min and not emerging"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.88 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 31.0 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: ADX 13.4 \u003c min and not emerging"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 36.6 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: volatility out of band (0.016%)"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.29 \u003c min"},{"ts":1788059153282,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1788059713887,"level":"info","msg":"scan start v1.0.0 scheduled=1788059700000 actual=1788059713887 (jitter 13.9s)"},{"ts":1788059724285,"level":"info","msg":"universe: 100 symbols selected from 518 USDT perp candidates (binance-futures-mirror)"},{"ts":1788059733117,"level":"info","msg":"klines collected for 20/100 symbols"},{"ts":1788059741615,"level":"info","msg":"klines collected for 40/100 symbols"},{"ts":1788059751068,"level":"info","msg":"klines collected for 60/100 symbols"},{"ts":1788059759913,"level":"info","msg":"klines collected for 80/100 symbols"},{"ts":1788059768871,"level":"info","msg":"klines collected for 100/100 symbols"},{"ts":1788059769589,"level":"info","msg":"rejected 54x: HTF conflict (4H+1H oppose)"},{"ts":1788059769589,"level":"info","msg":"rejected 20x: HTF not aligned (4H=strong_bullish,1H=neutral)"},{"ts":1788059769589,"level":"info","msg":"rejected 13x: 4H regime RANGING"},{"ts":1788059769589,"level":"info","msg":"rejected 12x: HTF not aligned (4H=strong_bullish,1H=bearish)"},{"ts":1788059769589,"level":"info","msg":"rejected 10x: HTF not aligned (4H=neutral,1H=strong_bearish)"},{"ts":1788059769589,"level":"info","msg":"rejected 6x: HTF not aligned (4H=strong_bullish,1H=strong_bearish)"},{"ts":1788059769589,"level":"info","msg":"rejected 4x: no CHoCH/BOS after sweep"},{"ts":1788059769589,"level":"info","msg":"rejected 4x: HTF not aligned (4H=strong_bearish,1H=bullish)"},{"ts":1788059769589,"level":"info","msg":"rejected 3x: no displacement after structure event"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: relVol 0.79 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: ADX 13.6 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: RSI 41.7 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: relVol 1.13 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: HTF not aligned (4H=neutral,1H=strong_bullish)"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: relVol 0.44 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: HTF not aligned (4H=neutral,1H=neutral)"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: HTF not aligned (4H=strong_bearish,1H=strong_bullish)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.55 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 11.4 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 44.3 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 34.7 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (5.026%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 44.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.727%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.712%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.402%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 42.7 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: late entry (runup 3.9x ATR)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 44.6 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: HTF not aligned (4H=strong_bearish,1H=neutral)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 66.3 outside [26,55]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.68 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 83.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.059%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.60 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.49 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.037%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 13.1 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.66 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 10.3 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.70 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 12.1 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.78 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 75.6 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 11.7 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.90 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.76 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: no liquidity sweep in window"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.84 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 34.1 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 59.6 outside [26,55]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 40.4 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.291%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.85 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 26.5 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.48 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 77.4 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.26 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.94 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.74 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 43.4 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 38.8 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 29.8 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 11.3 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.83 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.80 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 1.04 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.65 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.54 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 28.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 13.9 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 36.3 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (0.016%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 42.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.28 \u003c min"},{"ts":1788059769589,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1788067003292,"level":"info","msg":"scan start v1.1.0 scheduled=1788066900000 actual=1788067003291 (jitter 103.3s)"},{"ts":1788067013042,"level":"info","msg":"universe: 100 symbols selected from 518 USDT perp candidates (binance-futures-mirror)"},{"ts":1788067024128,"level":"info","msg":"klines collected for 20/100 symbols"},{"ts":1788067035074,"level":"info","msg":"klines collected for 40/100 symbols"},{"ts":1788067045621,"level":"info","msg":"klines collected for 60/100 symbols"},{"ts":1788067056771,"level":"info","msg":"klines collected for 80/100 symbols"},{"ts":1788067067688,"level":"info","msg":"klines collected for 100/100 symbols"},{"ts":1788067067929,"level":"info","msg":"derivatives: funding rates for 885 symbols"},{"ts":1788067071205,"level":"info","msg":"rejected 54x: HTF conflict (4H+1H oppose)"},{"ts":1788067071205,"level":"info","msg":"rejected 19x: HTF not aligned (4H=strong_bullish,1H=neutral)"},{"ts":1788067071205,"level":"info","msg":"rejected 14x: HTF not aligned (4H=strong_bullish,1H=bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 12x: 4H regime RANGING"},{"ts":1788067071205,"level":"info","msg":"rejected 9x: HTF not aligned (4H=neutral,1H=strong_bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 8x: no CHoCH/BOS after sweep"},{"ts":1788067071205,"level":"info","msg":"rejected 6x: HTF not aligned (4H=strong_bullish,1H=strong_bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 4x: HTF not aligned (4H=neutral,1H=neutral)"},{"ts":1788067071205,"level":"info","msg":"rejected 3x: relVol 1.05 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: relVol 1.12 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: relVol 0.83 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=strong_bearish,1H=bullish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: no displacement after structure event"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: relVol 0.77 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=neutral,1H=strong_bullish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: ADX 13.9 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=bullish,1H=strong_bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: RSI 41.4 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=strong_bearish,1H=strong_bullish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: RSI 44.5 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.20 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 42.2 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 42.4 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.677%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.846%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.90 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.895%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 40.9 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.378%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 40.2 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 13.7 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 55.7 outside [26,55]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.512%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.73 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 12.4 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 11.9 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.19 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.95 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 35.9 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.562%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 75.1 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.225%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.03 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 10.1 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.65 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 9.3 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 38.0 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.63 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.805%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 79.3 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.93 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 34.7 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 58.0 outside [26,55]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 42.9 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.182%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: no liquidity sweep in window"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: HTF not aligned (4H=strong_bearish,1H=neutral)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.37 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.00 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 10.9 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 13.2 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.60 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.09 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 76.1 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 11.0 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 39.6 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 39.5 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 43.3 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 35.3 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1793623952424,"level":"info","msg":"scan start v1.1.0 scheduled=1793623500000 actual=1793623952412 (jitter 452.4s)"},{"ts":1793623954930,"level":"info","msg":"derivatives: funding rates for 945 symbols"},{"ts":1793623955353,"level":"info","msg":"rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"},{"ts":1793623955353,"level":"info","msg":"rejected 1x no_structure_event (e.g. no CHoCH/BOS after sweep)"},{"ts":1793623955353,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1793625854733,"level":"info","msg":"scan start v1.1.0 scheduled=1793625300000 actual=1793625854733 (jitter 554.7s)"},{"ts":1793625865496,"level":"info","msg":"derivatives: funding rates for 945 symbols"},{"ts":1793625865876,"level":"info","msg":"rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"},{"ts":1793625865876,"level":"info","msg":"rejected 1x no_displacement (e.g. no displacement after structure event)"},{"ts":1793625865876,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1793627602920,"level":"info","msg":"scan start v1.1.0 scheduled=1793627100000 actual=1793627602920 (jitter 502.9s)"},{"ts":1793627613565,"level":"info","msg":"derivatives: funding rates for 945 symbols"},{"ts":1793627613740,"level":"info","msg":"rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"},{"ts":1793627613740,"level":"info","msg":"rejected 1x momentum_rsi_out_of_band (e.g. RSI 56.2 outside [26,55])"},{"ts":1793627613740,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"}]},"snapshots":[{"ts":1788059098973,"universeSize":100,"source":"binance-futures-mirror","breadth":{"TRENDING_UP":63,"TRENDING_DOWN":11,"RANGING":16,"MIXED":10},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":3667680887.19,"rank":1},{"symbol":"ETHUSDT","quoteVolume":2621999606.82,"rank":2},{"symbol":"SOLUSDT","quoteVolume":1210732771.17,"rank":3},{"symbol":"ZECUSDT","quoteVolume":887400547.25,"rank":4},{"symbol":"TRUMPUSDT","quoteVolume":774000443.15,"rank":5},{"symbol":"BTRUSDT","quoteVolume":483894692.46,"rank":6},{"symbol":"XRPUSDT","quoteVolume":481147132.99,"rank":7},{"symbol":"HYPEUSDT","quoteVolume":459456376.95,"rank":8},{"symbol":"PROMUSDT","quoteVolume":404908238.22,"rank":9},{"symbol":"4USDT","quoteVolume":268346479.11,"rank":10}]},{"ts":1788059713887,"universeSize":100,"source":"binance-futures-mirror","breadth":{"TRENDING_UP":63,"TRENDING_DOWN":11,"RANGING":16,"MIXED":10},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":3668771042.78,"rank":1},{"symbol":"ETHUSDT","quoteVolume":2623764866.49,"rank":2},{"symbol":"SOLUSDT","quoteVolume":1206777477.53,"rank":3},{"symbol":"ZECUSDT","quoteVolume":886471229.31,"rank":4},{"symbol":"TRUMPUSDT","quoteVolume":772561085.45,"rank":5},{"symbol":"BTRUSDT","quoteVolume":486961852.18,"rank":6},{"symbol":"XRPUSDT","quoteVolume":480867418.51,"rank":7},{"symbol":"HYPEUSDT","quoteVolume":458458867.75,"rank":8},{"symbol":"PROMUSDT","quoteVolume":413999113.92,"rank":9},{"symbol":"4USDT","quoteVolume":270192175.24,"rank":10}]},{"ts":1788067003291,"universeSize":100,"source":"binance-futures-mirror","breadth":{"TRENDING_UP":65,"TRENDING_DOWN":11,"RANGING":15,"MIXED":9},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":3660241456.52,"rank":1},{"symbol":"ETHUSDT","quoteVolume":2635302760.36,"rank":2},{"symbol":"SOLUSDT","quoteVolume":1174417395.88,"rank":3},{"symbol":"ZECUSDT","quoteVolume":886195291.87,"rank":4},{"symbol":"TRUMPUSDT","quoteVolume":622291845.44,"rank":5},{"symbol":"XRPUSDT","quoteVolume":474710648.51,"rank":6},{"symbol":"PROMUSDT","quoteVolume":474392467.72,"rank":7},{"symbol":"BTRUSDT","quoteVolume":472682656.07,"rank":8},{"symbol":"HYPEUSDT","quoteVolume":418579463.41,"rank":9},{"symbol":"4USDT","quoteVolume":307769375.86,"rank":10}]},{"ts":1793623952412,"universeSize":1,"source":"manual","breadth":{"TRENDING_UP":0,"TRENDING_DOWN":1,"RANGING":0,"MIXED":0},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":0,"rank":1}]},{"ts":1793625854733,"universeSize":1,"source":"manual","breadth":{"TRENDING_UP":0,"TRENDING_DOWN":1,"RANGING":0,"MIXED":0},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":0,"rank":1}]},{"ts":1793627602920,"universeSize":1,"source":"manual","breadth":{"TRENDING_UP":0,"TRENDING_DOWN":1,"RANGING":0,"MIXED":0},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":0,"rank":1}]}],"screener":{"generatedAt":1793627602920,"universeSource":"manual","rows":[{"symbol":"BTCUSDT","rank":1,"price":78127.4,"bias1d":"strong_bullish","bias4h":"strong_bearish","bias1h":"neutral","regime":"TRENDING_DOWN","rsi":56.2,"adx":18.8,"atrPercent":0.234,"relVolume":6.37,"fundingRatePct":0.01,"openInterest":96156.067}]},"performance":{"total":0,"waiting":0,"triggered":0,"wins":0,"losses":0,"expired":0,"ambiguous":0,"cancelled":0,"winRate":null,"resolvedTrades":0,"avgRr":null,"avgWinR":null,"profitFactor":null,"avgScore":null,"avgTimeToTpMs":null,"avgTimeToSlMs":null,"expectancyR":null,"sharpeR":null,"slippage":{"avgPct":null,"maxPct":null,"fills":0},"costsModelled":false,"avgCostR":null,"totalCostR":null,"netWins":null,"netLosses":null,"winRateNet":null,"expectancyNetR":null,"profitFactorNet":null,"maxWinningStreak":0,"maxLosingStreak":0,"maxDrawdownR":null,"monteCarlo":null,"scoreCalibration":{"A+":{"signals":0,"resolved":0,"wins":0,"losses":0,"winRate":null,"wilson95":{"lower":null,"upper":null}},"A":{"signals":0,"resolved":0,"wins":0,"losses":0,"winRate":null,"wilson95":{"lower":null,"upper":null}},"B+":{"signals":0,"resolved":0,"wins":0,"losses":0,"winRate":null,"wilson95":{"lower":null,"upper":null}}},"byDirection":{},"byQuality":{},"byRegime":{},"bySymbol":{},"byScoreRange":{},"window":{"since":null,"until":null,"signalsInWindow":0},"generatedAt":1793627602920,"disclaimer":"Win rate = wins / (wins + losses); waiting/expired/ambiguous/cancelled signals are excluded from the denominator. Gross figures (winRate, expectancyR, profitFactor, sharpeR, monteCarlo) EXCLUDE fees and funding; the *Net figures include them and are the ones to read. The confluence score is a quality ranking, not a probability. Past performance does not guarantee future results."}};</script>
+<script>window.__EMBEDDED_DATA__ = {"builtAt":1793629015968,"signals":{"generatedAt":1793627602920,"signals":[]},"status":{"systemOnline":true,"health":"HEALTHY","version":"1.1.0","lastScan":{"scheduledAt":1793627100000,"executedAt":1793627602920,"jitterSeconds":502.9,"durationMs":10820,"status":"OK","universeSize":1,"universeSource":"manual","market":"manual","symbolsScanned":1,"symbolsValid":1,"dataFailures":0,"failedSymbols":[],"candidates":0,"signalsGenerated":0,"rejects":{"htf_not_aligned":1,"momentum_rsi_out_of_band":1},"rejectFunnel":[{"stage":"htf_not_aligned","rejected":1},{"stage":"momentum_rsi_out_of_band","rejected":1}],"apiStats":{"requests":10,"errors":4,"retries":3,"rateLimitHits":0,"lastError":"HTTP 451 geo-restricted host=fapi.binance.com","endpointUsed":"binance-futures-mirror","marketUsed":"futures"},"apiHealth":"FAILED","dataFreshness":{"label":"LIVE","newestCandleCloseMs":1793627099999,"ageSeconds":502.9},"activeSignals":0},"lastSuccessfulScan":1793627602920,"nextExpectedScanAt":1793628000000,"logs":[{"ts":1788059153282,"level":"info","msg":"rejected 1x: volatility out of band (3.273%)"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.82 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 37.5 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.96 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.32 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 43.5 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.26 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 75.3 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 44.5 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 41.2 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 44.0 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 33.7 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.44 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: ADX 11.6 \u003c min and not emerging"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 38.8 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.89 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: ADX 14.3 \u003c min and not emerging"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.88 \u003c min"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 31.0 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: ADX 13.4 \u003c min and not emerging"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: RSI 36.6 outside [45,74]"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: volatility out of band (0.016%)"},{"ts":1788059153282,"level":"info","msg":"rejected 1x: relVol 0.29 \u003c min"},{"ts":1788059153282,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1788059713887,"level":"info","msg":"scan start v1.0.0 scheduled=1788059700000 actual=1788059713887 (jitter 13.9s)"},{"ts":1788059724285,"level":"info","msg":"universe: 100 symbols selected from 518 USDT perp candidates (binance-futures-mirror)"},{"ts":1788059733117,"level":"info","msg":"klines collected for 20/100 symbols"},{"ts":1788059741615,"level":"info","msg":"klines collected for 40/100 symbols"},{"ts":1788059751068,"level":"info","msg":"klines collected for 60/100 symbols"},{"ts":1788059759913,"level":"info","msg":"klines collected for 80/100 symbols"},{"ts":1788059768871,"level":"info","msg":"klines collected for 100/100 symbols"},{"ts":1788059769589,"level":"info","msg":"rejected 54x: HTF conflict (4H+1H oppose)"},{"ts":1788059769589,"level":"info","msg":"rejected 20x: HTF not aligned (4H=strong_bullish,1H=neutral)"},{"ts":1788059769589,"level":"info","msg":"rejected 13x: 4H regime RANGING"},{"ts":1788059769589,"level":"info","msg":"rejected 12x: HTF not aligned (4H=strong_bullish,1H=bearish)"},{"ts":1788059769589,"level":"info","msg":"rejected 10x: HTF not aligned (4H=neutral,1H=strong_bearish)"},{"ts":1788059769589,"level":"info","msg":"rejected 6x: HTF not aligned (4H=strong_bullish,1H=strong_bearish)"},{"ts":1788059769589,"level":"info","msg":"rejected 4x: no CHoCH/BOS after sweep"},{"ts":1788059769589,"level":"info","msg":"rejected 4x: HTF not aligned (4H=strong_bearish,1H=bullish)"},{"ts":1788059769589,"level":"info","msg":"rejected 3x: no displacement after structure event"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: relVol 0.79 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: ADX 13.6 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: RSI 41.7 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: relVol 1.13 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: HTF not aligned (4H=neutral,1H=strong_bullish)"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: relVol 0.44 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: HTF not aligned (4H=neutral,1H=neutral)"},{"ts":1788059769589,"level":"info","msg":"rejected 2x: HTF not aligned (4H=strong_bearish,1H=strong_bullish)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.55 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 11.4 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 44.3 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 34.7 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (5.026%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 44.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.727%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.712%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.402%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 42.7 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: late entry (runup 3.9x ATR)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 44.6 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: HTF not aligned (4H=strong_bearish,1H=neutral)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 66.3 outside [26,55]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.68 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 83.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.059%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.60 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.49 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.037%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 13.1 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.66 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 10.3 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.70 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 12.1 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.78 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 75.6 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 11.7 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.90 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.76 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: no liquidity sweep in window"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.84 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 34.1 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 59.6 outside [26,55]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 40.4 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (3.291%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.85 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 26.5 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.48 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 77.4 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.26 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.94 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.74 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 43.4 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 38.8 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 29.8 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 11.3 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.83 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.80 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 1.04 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.65 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.54 \u003c min"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 28.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: ADX 13.9 \u003c min and not emerging"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 36.3 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: volatility out of band (0.016%)"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: RSI 42.2 outside [45,74]"},{"ts":1788059769589,"level":"info","msg":"rejected 1x: relVol 0.28 \u003c min"},{"ts":1788059769589,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1788067003292,"level":"info","msg":"scan start v1.1.0 scheduled=1788066900000 actual=1788067003291 (jitter 103.3s)"},{"ts":1788067013042,"level":"info","msg":"universe: 100 symbols selected from 518 USDT perp candidates (binance-futures-mirror)"},{"ts":1788067024128,"level":"info","msg":"klines collected for 20/100 symbols"},{"ts":1788067035074,"level":"info","msg":"klines collected for 40/100 symbols"},{"ts":1788067045621,"level":"info","msg":"klines collected for 60/100 symbols"},{"ts":1788067056771,"level":"info","msg":"klines collected for 80/100 symbols"},{"ts":1788067067688,"level":"info","msg":"klines collected for 100/100 symbols"},{"ts":1788067067929,"level":"info","msg":"derivatives: funding rates for 885 symbols"},{"ts":1788067071205,"level":"info","msg":"rejected 54x: HTF conflict (4H+1H oppose)"},{"ts":1788067071205,"level":"info","msg":"rejected 19x: HTF not aligned (4H=strong_bullish,1H=neutral)"},{"ts":1788067071205,"level":"info","msg":"rejected 14x: HTF not aligned (4H=strong_bullish,1H=bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 12x: 4H regime RANGING"},{"ts":1788067071205,"level":"info","msg":"rejected 9x: HTF not aligned (4H=neutral,1H=strong_bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 8x: no CHoCH/BOS after sweep"},{"ts":1788067071205,"level":"info","msg":"rejected 6x: HTF not aligned (4H=strong_bullish,1H=strong_bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 4x: HTF not aligned (4H=neutral,1H=neutral)"},{"ts":1788067071205,"level":"info","msg":"rejected 3x: relVol 1.05 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: relVol 1.12 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: relVol 0.83 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=strong_bearish,1H=bullish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: no displacement after structure event"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: relVol 0.77 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=neutral,1H=strong_bullish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: ADX 13.9 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=bullish,1H=strong_bearish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: RSI 41.4 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: HTF not aligned (4H=strong_bearish,1H=strong_bullish)"},{"ts":1788067071205,"level":"info","msg":"rejected 2x: RSI 44.5 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.20 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 42.2 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 42.4 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.677%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.846%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.90 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.895%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 40.9 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.378%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 40.2 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 13.7 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 55.7 outside [26,55]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.512%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.73 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 12.4 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 11.9 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.19 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.95 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 35.9 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.562%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 75.1 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.225%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.03 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 10.1 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.65 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 9.3 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 38.0 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.63 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.805%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 79.3 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.93 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 34.7 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 58.0 outside [26,55]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 42.9 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: volatility out of band (3.182%)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: no liquidity sweep in window"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: HTF not aligned (4H=strong_bearish,1H=neutral)"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.37 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.00 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 10.9 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 13.2 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 0.60 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: relVol 1.09 \u003c min"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 76.1 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: ADX 11.0 \u003c min and not emerging"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 39.6 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 39.5 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 43.3 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"rejected 1x: RSI 35.3 outside [45,74]"},{"ts":1788067071205,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1793623952424,"level":"info","msg":"scan start v1.1.0 scheduled=1793623500000 actual=1793623952412 (jitter 452.4s)"},{"ts":1793623954930,"level":"info","msg":"derivatives: funding rates for 945 symbols"},{"ts":1793623955353,"level":"info","msg":"rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"},{"ts":1793623955353,"level":"info","msg":"rejected 1x no_structure_event (e.g. no CHoCH/BOS after sweep)"},{"ts":1793623955353,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1793625854733,"level":"info","msg":"scan start v1.1.0 scheduled=1793625300000 actual=1793625854733 (jitter 554.7s)"},{"ts":1793625865496,"level":"info","msg":"derivatives: funding rates for 945 symbols"},{"ts":1793625865876,"level":"info","msg":"rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"},{"ts":1793625865876,"level":"info","msg":"rejected 1x no_displacement (e.g. no displacement after structure event)"},{"ts":1793625865876,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"},{"ts":1793627602920,"level":"info","msg":"scan start v1.1.0 scheduled=1793627100000 actual=1793627602920 (jitter 502.9s)"},{"ts":1793627613565,"level":"info","msg":"derivatives: funding rates for 945 symbols"},{"ts":1793627613740,"level":"info","msg":"rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"},{"ts":1793627613740,"level":"info","msg":"rejected 1x momentum_rsi_out_of_band (e.g. RSI 56.2 outside [26,55])"},{"ts":1793627613740,"level":"info","msg":"no qualifying setups this scan -- zero signals generated"}]},"snapshots":[{"ts":1788059098973,"universeSize":100,"source":"binance-futures-mirror","breadth":{"TRENDING_UP":63,"TRENDING_DOWN":11,"RANGING":16,"MIXED":10},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":3667680887.19,"rank":1},{"symbol":"ETHUSDT","quoteVolume":2621999606.82,"rank":2},{"symbol":"SOLUSDT","quoteVolume":1210732771.17,"rank":3},{"symbol":"ZECUSDT","quoteVolume":887400547.25,"rank":4},{"symbol":"TRUMPUSDT","quoteVolume":774000443.15,"rank":5},{"symbol":"BTRUSDT","quoteVolume":483894692.46,"rank":6},{"symbol":"XRPUSDT","quoteVolume":481147132.99,"rank":7},{"symbol":"HYPEUSDT","quoteVolume":459456376.95,"rank":8},{"symbol":"PROMUSDT","quoteVolume":404908238.22,"rank":9},{"symbol":"4USDT","quoteVolume":268346479.11,"rank":10}]},{"ts":1788059713887,"universeSize":100,"source":"binance-futures-mirror","breadth":{"TRENDING_UP":63,"TRENDING_DOWN":11,"RANGING":16,"MIXED":10},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":3668771042.78,"rank":1},{"symbol":"ETHUSDT","quoteVolume":2623764866.49,"rank":2},{"symbol":"SOLUSDT","quoteVolume":1206777477.53,"rank":3},{"symbol":"ZECUSDT","quoteVolume":886471229.31,"rank":4},{"symbol":"TRUMPUSDT","quoteVolume":772561085.45,"rank":5},{"symbol":"BTRUSDT","quoteVolume":486961852.18,"rank":6},{"symbol":"XRPUSDT","quoteVolume":480867418.51,"rank":7},{"symbol":"HYPEUSDT","quoteVolume":458458867.75,"rank":8},{"symbol":"PROMUSDT","quoteVolume":413999113.92,"rank":9},{"symbol":"4USDT","quoteVolume":270192175.24,"rank":10}]},{"ts":1788067003291,"universeSize":100,"source":"binance-futures-mirror","breadth":{"TRENDING_UP":65,"TRENDING_DOWN":11,"RANGING":15,"MIXED":9},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":3660241456.52,"rank":1},{"symbol":"ETHUSDT","quoteVolume":2635302760.36,"rank":2},{"symbol":"SOLUSDT","quoteVolume":1174417395.88,"rank":3},{"symbol":"ZECUSDT","quoteVolume":886195291.87,"rank":4},{"symbol":"TRUMPUSDT","quoteVolume":622291845.44,"rank":5},{"symbol":"XRPUSDT","quoteVolume":474710648.51,"rank":6},{"symbol":"PROMUSDT","quoteVolume":474392467.72,"rank":7},{"symbol":"BTRUSDT","quoteVolume":472682656.07,"rank":8},{"symbol":"HYPEUSDT","quoteVolume":418579463.41,"rank":9},{"symbol":"4USDT","quoteVolume":307769375.86,"rank":10}]},{"ts":1793623952412,"universeSize":1,"source":"manual","breadth":{"TRENDING_UP":0,"TRENDING_DOWN":1,"RANGING":0,"MIXED":0},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":0,"rank":1}]},{"ts":1793625854733,"universeSize":1,"source":"manual","breadth":{"TRENDING_UP":0,"TRENDING_DOWN":1,"RANGING":0,"MIXED":0},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":0,"rank":1}]},{"ts":1793627602920,"universeSize":1,"source":"manual","breadth":{"TRENDING_UP":0,"TRENDING_DOWN":1,"RANGING":0,"MIXED":0},"activeSignals":0,"signalsGenerated":0,"avgScore":null,"topVolume":[{"symbol":"BTCUSDT","quoteVolume":0,"rank":1}]}],"screener":{"generatedAt":1793627602920,"universeSource":"manual","rows":[{"symbol":"BTCUSDT","rank":1,"price":78127.4,"bias1d":"strong_bullish","bias4h":"strong_bearish","bias1h":"neutral","regime":"TRENDING_DOWN","rsi":56.2,"adx":18.8,"atrPercent":0.234,"relVolume":6.37,"fundingRatePct":0.01,"openInterest":96156.067}]},"performance":{"total":0,"waiting":0,"triggered":0,"wins":0,"losses":0,"expired":0,"ambiguous":0,"cancelled":0,"winRate":null,"resolvedTrades":0,"avgRr":null,"avgWinR":null,"profitFactor":null,"avgScore":null,"avgTimeToTpMs":null,"avgTimeToSlMs":null,"expectancyR":null,"sharpeR":null,"slippage":{"avgPct":null,"maxPct":null,"fills":0},"costsModelled":false,"avgCostR":null,"totalCostR":null,"netWins":null,"netLosses":null,"winRateNet":null,"expectancyNetR":null,"profitFactorNet":null,"maxWinningStreak":0,"maxLosingStreak":0,"maxDrawdownR":null,"monteCarlo":null,"scoreCalibration":{"A+":{"signals":0,"resolved":0,"wins":0,"losses":0,"winRate":null,"wilson95":{"lower":null,"upper":null}},"A":{"signals":0,"resolved":0,"wins":0,"losses":0,"winRate":null,"wilson95":{"lower":null,"upper":null}},"B+":{"signals":0,"resolved":0,"wins":0,"losses":0,"winRate":null,"wilson95":{"lower":null,"upper":null}}},"byDirection":{},"byQuality":{},"byRegime":{},"bySymbol":{},"byScoreRange":{},"window":{"since":null,"until":null,"signalsInWindow":0},"generatedAt":1793627602920,"disclaimer":"Win rate = wins / (wins + losses); waiting/expired/ambiguous/cancelled signals are excluded from the denominator. Gross figures (winRate, expectancyR, profitFactor, sharpeR, monteCarlo) EXCLUDE fees and funding; the *Net figures include them and are the ones to read. The confluence score is a quality ranking, not a probability. Past performance does not guarantee future results."},"chart":{"symbol":"BTCUSDT","timeframe":"15m","source":"manual","generatedAt":1793626948356,"lastClosedAt":1793626199999,"price":77679.1,"context":{"regime":"TRENDING_DOWN","bias1d":"strong_bullish","bias4h":"strong_bearish","bias1h":"neutral","fundingRatePct":0.01,"openInterest":96043.295},"indicators":{"4h":{"ema20":78176.26510994758,"ema50":79105.73519361454,"ema200":81621.83497881785,"rsi":43.912219654301275,"adx":22.336730998824816,"plusDi":18.14685336357011,"minusDi":22.03349881061273,"atr":732.4992854200024,"atrPercent":0.9407189609572385,"relativeVolume":0.5612226343433799,"vwap":79285.07194433967},"1h":{"ema20":78049.69393622168,"ema50":78002.28280097383,"ema200":79145.35069460499,"rsi":42.44710150134729,"adx":16.194122193169346,"plusDi":18.458612920904418,"minusDi":23.487205309889475,"atr":288.5103974458909,"atrPercent":0.37093467985169687,"relativeVolume":1.8075443981326211,"vwap":77979.22093141882},"15m":{"ema20":77930.12500468382,"ema50":78047.84011171231,"ema200":78026.93834595416,"rsi":30.5700164616228,"adx":19.16782047801946,"plusDi":15.418809181960317,"minusDi":31.825199862061677,"atr":147.60600227260844,"atrPercent":0.19002022715583525,"relativeVolume":1.9407240642423562,"vwap":78186.09143604343}},"structure":{"4h":{"events":["StructureEvent(index=127, type='CHoCH_up', level=83137.2, swingIndex=122, trendAfter='up')","StructureEvent(index=133, type='CHoCH_down', level=82751.1, swingIndex=125, trendAfter='down')","StructureEvent(index=145, type='BOS_down', level=82912.8, swingIndex=140, trendAfter='down')","StructureEvent(index=157, type='BOS_down', level=81637.7, swingIndex=154, trendAfter='down')","StructureEvent(index=172, type='CHoCH_up', level=82268.7, swingIndex=168, trendAfter='up')","StructureEvent(index=186, type='BOS_up', level=83420.0, swingIndex=181, trendAfter='up')","StructureEvent(index=205, type='CHoCH_down', level=80461.6, swingIndex=201, trendAfter='down')","StructureEvent(index=214, type='BOS_down', level=80059.0, swingIndex=210, trendAfter='down')","StructureEvent(index=225, type='CHoCH_up', level=80819.4, swingIndex=217, trendAfter='up')","StructureEvent(index=228, type='BOS_up', level=81270.6, swingIndex=225, trendAfter='up')","StructureEvent(index=237, type='CHoCH_down', level=79666.9, swingIndex=232, trendAfter='down')","StructureEvent(index=255, type='CHoCH_up', level=78231.3, swingIndex=252, trendAfter='up')"],"sweeps":["Sweep(index=201, direction='bullish', level=80888.9, swingIndex=194, wick=427.3)","Sweep(index=204, direction='bullish', level=80461.6, swingIndex=201, wick=57.0)","Sweep(index=205, direction='bullish', level=79732.3, swingIndex=151, wick=553.7)","Sweep(index=213, direction='bullish', level=80059.0, swingIndex=210, wick=249.8)","Sweep(index=225, direction='bearish', level=80999.9, swingIndex=208, wick=270.7)","Sweep(index=225, direction='bearish', level=80920.0, swingIndex=212, wick=350.6)","Sweep(index=229, direction='bearish', level=80819.4, swingIndex=217, wick=484.0)","Sweep(index=229, direction='bearish', level=81270.6, swingIndex=225, wick=32.8)","Sweep(index=235, direction='bearish', level=81800.0, swingIndex=228, wick=98.7)","Sweep(index=235, direction='bearish', level=81759.0, swingIndex=231, wick=139.7)","Sweep(index=242, direction='bullish', level=76444.0, swingIndex=238, wick=174.0)","Sweep(index=257, direction='bearish', level=78231.3, swingIndex=252, wick=460.9)"],"displacements":["Displacement(index=87, direction='bullish', body=1095.300000000003, atr=676.3450441907454, strength=1.6194)","Displacement(index=100, direction='bearish', body=1402.7000000000116, atr=829.1446120748515, strength=1.6917)","Displacement(index=109, direction='bearish', body=1473.699999999997, atr=886.3213298012253, strength=1.6627)","Displacement(index=136, direction='bullish', body=1486.3999999999942, atr=839.5526301287521, strength=1.7705)","Displacement(index=145, direction='bearish', body=1824.0999999999913, atr=931.0312580535129, strength=1.9592)","Displacement(index=171, direction='bullish', body=1237.1000000000058, atr=810.4672776442841, strength=1.5264)","Displacement(index=232, direction='bearish', body=1494.7999999999884, atr=818.0116443633245, strength=1.8274)","Displacement(index=235, direction='bullish', body=1613.9000000000087, atr=881.3032006801111, strength=1.8313)","Displacement(index=237, direction='bearish', body=2847.2999999999884, atr=1063.4655148721374, strength=2.6774)"],"equalHighs":[{"kind":"high","priceA":86683.9,"priceB":86664.9,"indexA":91,"indexB":97,"level":86674.4,"confirmIndex":99},{"kind":"high","priceA":84134.2,"priceB":84117.6,"indexA":138,"indexB":144,"level":84125.9,"confirmIndex":146},{"kind":"high","priceA":82008.7,"priceB":82035.3,"indexA":196,"indexB":199,"level":82022.0,"confirmIndex":201},{"kind":"high","priceA":81800.0,"priceB":81759.0,"indexA":228,"indexB":231,"level":81779.5,"confirmIndex":233}],"equalLows":[{"kind":"low","priceA":82851.5,"priceB":82901.3,"indexA":56,"indexB":59,"level":82876.4,"confirmIndex":61},{"kind":"low","priceA":80780.0,"priceB":80751.0,"indexA":158,"indexB":165,"level":80765.5,"confirmIndex":167},{"kind":"low","priceA":79429.0,"priceB":79468.3,"indexA":217,"indexB":222,"level":79448.65,"confirmIndex":224}],"fvgs":["FVG(index=172, direction='bullish', bottom=81244.1, top=81978.2, size=734.0999999999913, midpoint=81611.15, mitigatedIndex=175, invalidatedIndex=178)","FVG(index=173, direction='bullish', bottom=82200.0, top=82450.0, size=250.0, midpoint=82325.0, mitigatedIndex=174, invalidatedIndex=174)","FVG(index=182, direction='bullish', bottom=81626.4, top=82308.0, size=681.6000000000058, midpoint=81967.2, mitigatedIndex=191, invalidatedIndex=192)","FVG(index=188, direction='bullish', bottom=83686.2, top=84135.9, size=449.6999999999971, midpoint=83911.04999999999, mitigatedIndex=189, invalidatedIndex=190)","FVG(index=191, direction='bearish', bottom=82955.0, top=84019.2, size=1064.199999999997, midpoint=83487.1, mitigatedIndex=None, invalidatedIndex=None)","FVG(index=192, direction='bearish', bottom=82227.6, top=82624.1, size=396.5, midpoint=82425.85, mitigatedIndex=None, invalidatedIndex=None)","FVG(index=208, direction='bullish', bottom=80620.1, top=80739.2, size=119.09999999999127, midpoint=80679.65, mitigatedIndex=209, invalidatedIndex=209)","FVG(index=214, direction='bearish', bottom=80356.6, top=80487.5, size=130.89999999999418, midpoint=80422.05, mitigatedIndex=216, invalidatedIndex=216)","FVG(index=224, direction='bullish', bottom=80132.2, top=80413.3, size=281.1000000000058, midpoint=80272.75, mitigatedIndex=229, invalidatedIndex=232)","FVG(index=233, direction='bearish', bottom=80497.7, top=80945.0, size=447.3000000000029, midpoint=80721.35, mitigatedIndex=235, invalidatedIndex=235)","FVG(index=236, direction='bullish', bottom=80345.0, top=80549.9, size=204.89999999999418, midpoint=80447.45, mitigatedIndex=237, invalidatedIndex=237)","FVG(index=238, direction='bearish', bottom=78242.4, top=80549.9, size=2307.5, midpoint=79396.15, mitigatedIndex=239, invalidatedIndex=None)"],"orderBlocks":["OrderBlock(index=235, direction='bearish', bottom=79878.5, top=81898.7, displacementIndex=237, bosIndex=237, mitigatedIndex=None, invalidatedIndex=None)","OrderBlock(index=170, direction='bullish', bottom=80752.9, top=81244.1, displacementIndex=171, bosIndex=172, mitigatedIndex=178, invalidatedIndex=203)","OrderBlock(index=142, direction='bearish', bottom=83125.7, top=83942.1, displacementIndex=145, bosIndex=145, mitigatedIndex=173, invalidatedIndex=187)","OrderBlock(index=96, direction='bearish', bottom=85500.1, top=86349.3, displacementIndex=100, bosIndex=100, mitigatedIndex=None, invalidatedIndex=None)"]},"1h":{"events":["StructureEvent(index=157, type='BOS_up', level=80483.4, swingIndex=154, trendAfter='up')","StructureEvent(index=163, type='BOS_up', level=80807.2, swingIndex=159, trendAfter='up')","StructureEvent(index=174, type='BOS_up', level=81199.9, swingIndex=169, trendAfter='up')","StructureEvent(index=178, type='CHoCH_down', level=80822.6, swingIndex=172, trendAfter='down')","StructureEvent(index=191, type='BOS_down', level=80355.4, swingIndex=182, trendAfter='down')","StructureEvent(index=204, type='CHoCH_up', level=80345.0, swingIndex=200, trendAfter='up')","StructureEvent(index=210, type='CHoCH_down', level=79878.5, swingIndex=203, trendAfter='down')","StructureEvent(index=213, type='BOS_down', level=78210.3, swingIndex=210, trendAfter='down')","StructureEvent(index=265, type='CHoCH_up', level=77722.6, swingIndex=260, trendAfter='up')","StructureEvent(index=267, type='BOS_up', level=77868.0, swingIndex=264, trendAfter='up')","StructureEvent(index=285, type='BOS_up', level=78134.0, swingIndex=279, trendAfter='up')","StructureEvent(index=297, type='CHoCH_down', level=77891.4, swingIndex=293, trendAfter='down')"],"sweeps":["Sweep(index=232, direction='bullish', level=76444.0, swingIndex=216, wick=174.0)","Sweep(index=232, direction='bullish', level=76600.0, swingIndex=227, wick=330.0)","Sweep(index=249, direction='bearish', level=77615.1, swingIndex=239, wick=49.8)","Sweep(index=255, direction='bearish', level=77723.3, swingIndex=250, wick=30.0)","Sweep(index=263, direction='bearish', level=77722.6, swingIndex=260, wick=11.9)","Sweep(index=264, direction='bearish', level=77753.3, swingIndex=255, wick=114.7)","Sweep(index=272, direction='bearish', level=78081.3, swingIndex=229, wick=43.1)","Sweep(index=274, direction='bearish', level=77868.0, swingIndex=264, wick=119.1)","Sweep(index=281, direction='bullish', level=77715.1, swingIndex=274, wick=137.5)","Sweep(index=284, direction='bullish', level=77577.6, swingIndex=281, wick=15.7)","Sweep(index=286, direction='bearish', level=78231.3, swingIndex=271, wick=257.5)","Sweep(index=289, direction='bearish', level=78776.5, swingIndex=220, wick=77.0)"],"displacements":["Displacement(index=23, direction='bearish', body=801.6999999999971, atr=438.8810284215682, strength=1.8267)","Displacement(index=131, direction='bearish', body=628.2000000000116, atr=411.2899235507229, strength=1.5274)","Displacement(index=132, direction='bullish', body=713.5, atr=442.9406432970994, strength=1.6108)","Displacement(index=178, direction='bearish', body=590.0, atr=333.1307823592994, strength=1.7711)","Displacement(index=191, direction='bearish', body=1091.6000000000058, atr=441.162272495076, strength=2.4744)","Displacement(index=204, direction='bullish', body=880.1999999999971, atr=440.1420796296083, strength=1.9998)","Displacement(index=210, direction='bearish', body=1990.2999999999884, atr=616.654445364882, strength=3.2276)","Displacement(index=285, direction='bullish', body=521.6999999999971, atr=245.84802718063227, strength=2.122)"],"equalHighs":[{"kind":"high","priceA":80548.8,"priceB":80540.2,"indexA":127,"indexB":130,"level":80544.5,"confirmIndex":132},{"kind":"high","priceA":81800.0,"priceB":81759.0,"indexA":174,"indexB":186,"level":81779.5,"confirmIndex":188},{"kind":"high","priceA":77723.3,"priceB":77753.3,"indexA":250,"indexB":255,"level":77738.3,"confirmIndex":257},{"kind":"high","priceA":78144.4,"priceB":78134.0,"indexA":276,"indexB":279,"level":78139.2,"confirmIndex":281}],"equalLows":[{"kind":"low","priceA":80387.9,"priceB":80355.4,"indexA":179,"indexB":182,"level":80371.65,"confirmIndex":184},{"kind":"low","priceA":77577.6,"priceB":77561.9,"indexA":281,"indexB":284,"level":77569.75,"confirmIndex":286}],"fvgs":["FVG(index=208, direction='bearish', bottom=80912.1, top=81137.6, size=225.5, midpoint=81024.85, mitigatedIndex=209, invalidatedIndex=None)","FVG(index=211, direction='bearish', bottom=79765.3, top=80735.0, size=969.6999999999971, midpoint=80250.15, mitigatedIndex=None, invalidatedIndex=None)","FVG(index=214, direction='bearish', bottom=78242.4, top=78600.1, size=357.70000000001164, midpoint=78421.25, mitigatedIndex=218, invalidatedIndex=219)","FVG(index=215, direction='bearish', bottom=77342.8, top=77868.4, size=525.5999999999913, midpoint=77605.6, mitigatedIndex=216, invalidatedIndex=217)","FVG(index=218, direction='bullish', bottom=77535.2, top=77889.9, size=354.6999999999971, midpoint=77712.54999999999, mitigatedIndex=222, invalidatedIndex=223)","FVG(index=222, direction='bearish', bottom=78200.0, top=78377.9, size=177.89999999999418, midpoint=78288.95, mitigatedIndex=270, invalidatedIndex=285)","FVG(index=224, direction='bearish', bottom=77800.0, top=77868.0, size=68.0, midpoint=77834.0, mitigatedIndex=225, invalidatedIndex=229)","FVG(index=238, direction='bullish', bottom=76973.8, top=77220.3, size=246.5, midpoint=77097.05, mitigatedIndex=241, invalidatedIndex=None)","FVG(index=263, direction='bullish', bottom=77545.0, top=77610.0, size=65.0, midpoint=77577.5, mitigatedIndex=264, invalidatedIndex=None)","FVG(index=268, direction='bullish', bottom=77813.0, top=77845.4, size=32.39999999999418, midpoint=77829.2, mitigatedIndex=269, invalidatedIndex=269)","FVG(index=281, direction='bearish', bottom=77869.6, top=77928.0, size=58.39999999999418, midpoint=77898.8, mitigatedIndex=282, invalidatedIndex=283)","FVG(index=286, direction='bullish', bottom=77878.8, top=78000.0, size=121.19999999999709, midpoint=77939.4, mitigatedIndex=293, invalidatedIndex=297)"],"orderBlocks":["OrderBlock(index=284, direction='bullish', bottom=77561.9, top=77878.8, displacementIndex=285, bosIndex=285, mitigatedIndex=297, invalidatedIndex=None)","OrderBlock(index=205, direction='bearish', bottom=81155.4, top=81898.7, displacementIndex=210, bosIndex=210, mitigatedIndex=None, invalidatedIndex=None)","OrderBlock(index=202, direction='bullish', bottom=79982.9, top=80236.2, displacementIndex=204, bosIndex=204, mitigatedIndex=210, invalidatedIndex=210)","OrderBlock(index=189, direction='bearish', bottom=81114.7, top=81333.0, displacementIndex=191, bosIndex=191, mitigatedIndex=204, invalidatedIndex=205)","OrderBlock(index=175, direction='bearish', bottom=81311.5, top=81527.7, displacementIndex=178, bosIndex=178, mitigatedIndex=185, invalidatedIndex=185)"]},"15m":{"events":["StructureEvent(index=404, type='CHoCH_up', level=77987.1, swingIndex=397, trendAfter='up')","StructureEvent(index=416, type='BOS_up', level=78098.2, swingIndex=411, trendAfter='up')","StructureEvent(index=421, type='CHoCH_down', level=77929.3, swingIndex=413, trendAfter='down')","StructureEvent(index=437, type='BOS_down', level=77795.6, swingIndex=434, trendAfter='down')","StructureEvent(index=441, type='CHoCH_up', level=77943.0, swingIndex=436, trendAfter='up')","StructureEvent(index=451, type='BOS_up', level=78488.8, swingIndex=445, trendAfter='up')","StructureEvent(index=458, type='BOS_up', level=78598.0, swingIndex=450, trendAfter='up')","StructureEvent(index=465, type='CHoCH_down', level=78316.7, swingIndex=453, trendAfter='down')","StructureEvent(index=470, type='BOS_down', level=78203.3, swingIndex=465, trendAfter='down')","StructureEvent(index=479, type='CHoCH_up', level=78234.8, swingIndex=473, trendAfter='up')","StructureEvent(index=489, type='CHoCH_down', level=77938.6, swingIndex=485, trendAfter='down')","StructureEvent(index=497, type='BOS_down', level=77756.3, swingIndex=492, trendAfter='down')"],"sweeps":["Sweep(index=441, direction='bullish', level=77795.6, swingIndex=434, wick=11.2)","Sweep(index=450, direction='bearish', level=78488.8, swingIndex=445, wick=109.2)","Sweep(index=460, direction='bearish', level=78776.5, swingIndex=183, wick=77.0)","Sweep(index=466, direction='bullish', level=78316.7, swingIndex=453, wick=92.7)","Sweep(index=476, direction='bullish', level=78000.0, swingIndex=447, wick=108.6)","Sweep(index=477, direction='bearish', level=78234.8, swingIndex=473, wick=7.3)","Sweep(index=479, direction='bullish', level=78203.3, swingIndex=465, wick=76.3)","Sweep(index=488, direction='bullish', level=77938.6, swingIndex=485, wick=12.1)","Sweep(index=489, direction='bearish', level=77943.0, swingIndex=436, wick=51.0)","Sweep(index=489, direction='bullish', level=77891.4, swingIndex=476, wick=19.9)","Sweep(index=494, direction='bearish', level=78033.9, swingIndex=488, wick=46.1)","Sweep(index=495, direction='bullish', level=77756.3, swingIndex=492, wick=88.7)"],"displacements":["Displacement(index=143, direction='bearish', body=1530.0, atr=368.4462161140809, strength=4.1526)","Displacement(index=158, direction='bearish', body=900.7999999999884, atr=486.6637634780951, strength=1.851)","Displacement(index=217, direction='bullish', body=506.3999999999942, atr=335.25316175565837, strength=1.5105)","Displacement(index=299, direction='bullish', body=152.0, atr=97.81019451511621, strength=1.554)","Displacement(index=340, direction='bullish', body=133.20000000001164, atr=74.0660132586096, strength=1.7984)","Displacement(index=344, direction='bearish', body=116.39999999999418, atr=76.77263652330201, strength=1.5162)","Displacement(index=383, direction='bullish', body=174.0, atr=96.38246973007207, strength=1.8053)","Displacement(index=386, direction='bearish', body=172.79999999998836, atr=107.66621209801974, strength=1.605)","Displacement(index=425, direction='bearish', body=164.6999999999971, atr=97.81521720493026, strength=1.6838)","Displacement(index=441, direction='bullish', body=317.8999999999942, atr=123.52918898932278, strength=2.5735)","Displacement(index=443, direction='bullish', body=230.29999999998836, atr=137.4914945877328, strength=1.675)","Displacement(index=449, direction='bullish', body=345.3000000000029, atr=170.78206125842493, strength=2.0219)"],"equalHighs":[{"kind":"high","priceA":80731.9,"priceB":80726.8,"indexA":26,"indexB":32,"level":80729.35,"confirmIndex":34},{"kind":"high","priceA":81417.9,"priceB":81397.4,"indexA":50,"indexB":55,"level":81407.65,"confirmIndex":57},{"kind":"high","priceA":81333.0,"priceB":81344.0,"indexA":58,"indexB":61,"level":81338.5,"confirmIndex":63},{"kind":"high","priceA":80241.8,"priceB":80236.2,"indexA":108,"indexB":111,"level":80239.0,"confirmIndex":113},{"kind":"high","priceA":80912.1,"priceB":80916.8,"indexA":134,"indexB":139,"level":80914.45,"confirmIndex":141}],"equalLows":[{"kind":"low","priceA":81105.4,"priceB":81100.5,"indexA":51,"indexB":54,"level":81102.95,"confirmIndex":56},{"kind":"low","priceA":81100.5,"priceB":81114.7,"indexA":54,"indexB":57,"level":81107.6,"confirmIndex":59},{"kind":"low","priceA":77366.4,"priceB":77369.0,"indexA":293,"indexB":296,"level":77367.7,"confirmIndex":298},{"kind":"low","priceA":77512.0,"priceB":77510.5,"indexA":321,"indexB":332,"level":77511.25,"confirmIndex":334}],"fvgs":["FVG(index=459, direction='bullish', bottom=78548.0, top=78571.7, size=23.69999999999709, midpoint=78559.85, mitigatedIndex=461, invalidatedIndex=461)","FVG(index=464, direction='bearish', bottom=78496.8, top=78550.0, size=53.19999999999709, midpoint=78523.4, mitigatedIndex=None, invalidatedIndex=None)","FVG(index=465, direction='bearish', bottom=78409.7, top=78435.2, size=25.5, midpoint=78422.45, mitigatedIndex=467, invalidatedIndex=467)","FVG(index=466, direction='bearish', bottom=78338.9, top=78368.0, size=29.10000000000582, midpoint=78353.45, mitigatedIndex=467, invalidatedIndex=467)","FVG(index=470, direction='bearish', bottom=78288.9, top=78333.5, size=44.60000000000582, midpoint=78311.2, mitigatedIndex=479, invalidatedIndex=479)","FVG(index=471, direction='bearish', bottom=78188.9, top=78256.0, size=67.10000000000582, midpoint=78222.45, mitigatedIndex=472, invalidatedIndex=479)","FVG(index=475, direction='bearish', bottom=78082.0, top=78102.0, size=20.0, midpoint=78092.0, mitigatedIndex=476, invalidatedIndex=476)","FVG(index=480, direction='bullish', bottom=78148.6, top=78205.5, size=56.89999999999418, midpoint=78177.05, mitigatedIndex=482, invalidatedIndex=482)","FVG(index=483, direction='bearish', bottom=78111.8, top=78207.5, size=95.69999999999709, midpoint=78159.65, mitigatedIndex=484, invalidatedIndex=None)","FVG(index=486, direction='bearish', bottom=78009.6, top=78041.9, size=32.29999999998836, midpoint=78025.75, mitigatedIndex=487, invalidatedIndex=494)","FVG(index=494, direction='bullish', bottom=77876.8, top=77964.2, size=87.39999999999418, midpoint=77920.5, mitigatedIndex=495, invalidatedIndex=495)","FVG(index=496, direction='bearish', bottom=77886.3, top=77964.2, size=77.89999999999418, midpoint=77925.25, mitigatedIndex=None, invalidatedIndex=None)"],"orderBlocks":["OrderBlock(index=447, direction='bullish', bottom=78000.0, top=78176.9, displacementIndex=449, bosIndex=451, mitigatedIndex=470, invalidatedIndex=485)","OrderBlock(index=438, direction='bullish', bottom=77561.9, top=77785.5, displacementIndex=441, bosIndex=441, mitigatedIndex=491, invalidatedIndex=None)","OrderBlock(index=381, direction='bullish', bottom=77868.0, top=77968.6, displacementIndex=383, bosIndex=383, mitigatedIndex=386, invalidatedIndex=398)","OrderBlock(index=337, direction='bullish', bottom=77395.8, top=77524.3, displacementIndex=340, bosIndex=340, mitigatedIndex=344, invalidatedIndex=None)","OrderBlock(index=296, direction='bullish', bottom=77369.0, top=77455.6, displacementIndex=299, bosIndex=299, mitigatedIndex=305, invalidatedIndex=None)","OrderBlock(index=213, direction='bullish', bottom=76719.0, top=77154.2, displacementIndex=217, bosIndex=217, mitigatedIndex=224, invalidatedIndex=231)"]}},"candles":[{"openTime":1793539800000,"closeTime":1793540699999,"open":77945.5,"high":78012.2,"low":77906.1,"close":77926.4,"volume":454.11},{"openTime":1793540700000,"closeTime":1793541599999,"open":77926.4,"high":78000.0,"low":77880.0,"close":78000.0,"volume":560.03},{"openTime":1793541600000,"closeTime":1793542499999,"open":77999.9,"high":78045.0,"low":77881.1,"close":78045.0,"volume":899.507},{"openTime":1793542500000,"closeTime":1793543399999,"open":78045.0,"high":78144.4,"low":77958.4,"close":77990.1,"volume":1643.945},{"openTime":1793543400000,"closeTime":1793544299999,"open":77990.0,"high":78032.0,"low":77988.0,"close":78025.4,"volume":230.551},{"openTime":1793544300000,"closeTime":1793545199999,"open":78025.4,"high":78064.0,"low":77992.0,"close":78015.3,"volume":682.184},{"openTime":1793545200000,"closeTime":1793546099999,"open":78015.2,"high":78044.0,"low":77982.3,"close":78043.5,"volume":354.158},{"openTime":1793546100000,"closeTime":1793546999999,"open":78043.5,"high":78069.1,"low":77960.1,"close":78032.6,"volume":635.298},{"openTime":1793547000000,"closeTime":1793547899999,"open":78032.5,"high":78098.2,"low":77993.0,"close":78016.5,"volume":801.606},{"openTime":1793547900000,"closeTime":1793548799999,"open":78016.5,"high":78038.0,"low":77946.2,"close":77949.0,"volume":450.684},{"openTime":1793548800000,"closeTime":1793549699999,"open":77949.0,"high":77992.4,"low":77929.3,"close":77971.9,"volume":715.274},{"openTime":1793549700000,"closeTime":1793550599999,"open":77971.9,"high":78098.0,"low":77971.9,"close":78068.7,"volume":851.244},{"openTime":1793550600000,"closeTime":1793551499999,"open":78068.8,"high":78068.8,"low":78016.0,"close":78051.9,"volume":217.237},{"openTime":1793551500000,"closeTime":1793552399999,"open":78051.9,"high":78115.5,"low":78044.4,"close":78111.2,"volume":230.805},{"openTime":1793552400000,"closeTime":1793553299999,"open":78111.2,"high":78126.0,"low":78069.5,"close":78126.0,"volume":308.503},{"openTime":1793553300000,"closeTime":1793554199999,"open":78126.0,"high":78134.0,"low":78054.0,"close":78104.0,"volume":251.895},{"openTime":1793554200000,"closeTime":1793555099999,"open":78104.0,"high":78110.0,"low":78038.9,"close":78038.9,"volume":153.354},{"openTime":1793555100000,"closeTime":1793555999999,"open":78039.0,"high":78048.9,"low":77928.0,"close":77948.8,"volume":335.104},{"openTime":1793556000000,"closeTime":1793556899999,"open":77948.8,"high":77960.8,"low":77906.0,"close":77928.0,"volume":406.239},{"openTime":1793556900000,"closeTime":1793557799999,"open":77928.0,"high":77946.0,"low":77902.0,"close":77911.3,"volume":229.018},{"openTime":1793557800000,"closeTime":1793558699999,"open":77911.4,"high":77940.0,"low":77908.0,"close":77925.7,"volume":185.865},{"openTime":1793558700000,"closeTime":1793559599999,"open":77925.6,"high":77939.9,"low":77830.6,"close":77852.9,"volume":456.52},{"openTime":1793559600000,"closeTime":1793560499999,"open":77852.9,"high":77869.6,"low":77577.6,"close":77688.2,"volume":2960.168},{"openTime":1793560500000,"closeTime":1793561399999,"open":77688.2,"high":77818.9,"low":77660.6,"close":77792.0,"volume":682.51},{"openTime":1793561400000,"closeTime":1793562299999,"open":77792.0,"high":77805.5,"low":77706.0,"close":77749.5,"volume":307.381},{"openTime":1793562300000,"closeTime":1793563199999,"open":77749.5,"high":77789.0,"low":77691.8,"close":77770.6,"volume":267.044},{"openTime":1793563200000,"closeTime":1793564099999,"open":77770.6,"high":77820.0,"low":77734.6,"close":77748.3,"volume":303.042},{"openTime":1793564100000,"closeTime":1793564999999,"open":77748.4,"high":77771.1,"low":77680.0,"close":77771.1,"volume":371.325},{"openTime":1793565000000,"closeTime":1793565899999,"open":77771.1,"high":77861.8,"low":77771.0,"close":77839.2,"volume":201.466},{"openTime":1793565900000,"closeTime":1793566799999,"open":77839.2,"high":77893.1,"low":77839.1,"close":77871.4,"volume":152.39},{"openTime":1793566800000,"closeTime":1793567699999,"open":77871.5,"high":77922.2,"low":77852.6,"close":77871.5,"volume":252.826},{"openTime":1793567700000,"closeTime":1793568599999,"open":77871.5,"high":77890.1,"low":77795.6,"close":77890.0,"volume":217.854},{"openTime":1793568600000,"closeTime":1793569499999,"open":77890.0,"high":77925.1,"low":77890.0,"close":77925.1,"volume":162.075},{"openTime":1793569500000,"closeTime":1793570399999,"open":77925.1,"high":77943.0,"low":77855.4,"close":77855.6,"volume":247.506},{"openTime":1793570400000,"closeTime":1793571299999,"open":77855.6,"high":77878.8,"low":77753.2,"close":77785.5,"volume":405.099},{"openTime":1793571300000,"closeTime":1793572199999,"open":77785.5,"high":77785.5,"low":77561.9,"close":77660.0,"volume":806.442},{"openTime":1793572200000,"closeTime":1793573099999,"open":77660.0,"high":77781.6,"low":77653.9,"close":77781.6,"volume":450.607},{"openTime":1793573100000,"closeTime":1793573999999,"open":77781.6,"high":77851.9,"low":77770.3,"close":77791.4,"volume":176.599},{"openTime":1793574000000,"closeTime":1793574899999,"open":77791.3,"high":78188.6,"low":77784.4,"close":78109.2,"volume":1543.693},{"openTime":1793574900000,"closeTime":1793575799999,"open":78109.2,"high":78146.0,"low":78035.5,"close":78066.1,"volume":565.979},{"openTime":1793575800000,"closeTime":1793576699999,"open":78066.1,"high":78388.0,"low":78056.9,"close":78296.4,"volume":2305.643},{"openTime":1793576700000,"closeTime":1793577599999,"open":78296.4,"high":78336.9,"low":78242.0,"close":78313.0,"volume":528.192},{"openTime":1793577600000,"closeTime":1793578499999,"open":78313.0,"high":78488.8,"low":78120.0,"close":78120.0,"volume":2213.16},{"openTime":1793578500000,"closeTime":1793579399999,"open":78120.0,"high":78180.8,"low":78010.9,"close":78169.3,"volume":1246.303},{"openTime":1793579400000,"closeTime":1793580299999,"open":78169.5,"high":78176.9,"low":78000.0,"close":78081.4,"volume":568.987},{"openTime":1793580300000,"closeTime":1793581199999,"open":78081.4,"high":78174.2,"low":78043.1,"close":78104.8,"volume":671.868},{"openTime":1793581200000,"closeTime":1793582099999,"open":78104.8,"high":78473.2,"low":78066.2,"close":78450.1,"volume":1538.564},{"openTime":1793582100000,"closeTime":1793582999999,"open":78450.1,"high":78598.0,"low":78297.4,"close":78462.8,"volume":1880.243},{"openTime":1793583000000,"closeTime":1793583899999,"open":78462.8,"high":78575.0,"low":78406.7,"close":78551.9,"volume":929.503},{"openTime":1793583900000,"closeTime":1793584799999,"open":78551.8,"high":78551.9,"low":78363.2,"close":78373.4,"volume":674.623},{"openTime":1793584800000,"closeTime":1793585699999,"open":78373.4,"high":78462.0,"low":78316.7,"close":78350.0,"volume":690.431},{"openTime":1793585700000,"closeTime":1793586599999,"open":78350.0,"high":78488.0,"low":78341.1,"close":78488.0,"volume":414.803},{"openTime":1793586600000,"closeTime":1793587499999,"open":78487.9,"high":78520.0,"low":78356.6,"close":78418.9,"volume":484.705},{"openTime":1793587500000,"closeTime":1793588399999,"open":78418.9,"high":78487.9,"low":78376.3,"close":78424.3,"volume":456.33},{"openTime":1793588400000,"closeTime":1793589299999,"open":78424.3,"high":78548.0,"low":78407.6,"close":78495.4,"volume":488.625},{"openTime":1793589300000,"closeTime":1793590199999,"open":78495.5,"high":78745.9,"low":78482.5,"close":78642.0,"volume":2007.418},{"openTime":1793590200000,"closeTime":1793591099999,"open":78642.1,"high":78706.6,"low":78571.7,"close":78621.0,"volume":1228.998},{"openTime":1793591100000,"closeTime":1793591999999,"open":78621.0,"high":78853.5,"low":78588.0,"close":78593.3,"volume":2719.834},{"openTime":1793592000000,"closeTime":1793592899999,"open":78593.3,"high":78682.8,"low":78533.4,"close":78645.0,"volume":934.034},{"openTime":1793592900000,"closeTime":1793593799999,"open":78645.0,"high":78692.2,"low":78550.0,"close":78571.9,"volume":564.102},{"openTime":1793593800000,"closeTime":1793594699999,"open":78571.9,"high":78593.3,"low":78435.2,"close":78435.3,"volume":898.975},{"openTime":1793594700000,"closeTime":1793595599999,"open":78435.2,"high":78496.8,"low":78368.0,"close":78377.0,"volume":710.988},{"openTime":1793595600000,"closeTime":1793596499999,"open":78377.0,"high":78409.7,"low":78203.3,"close":78286.7,"volume":1141.273},{"openTime":1793596500000,"closeTime":1793597399999,"open":78286.7,"high":78338.9,"low":78224.0,"close":78330.0,"volume":709.073},{"openTime":1793597400000,"closeTime":1793598299999,"open":78330.0,"high":78436.4,"low":78279.8,"close":78435.2,"volume":609.842},{"openTime":1793598300000,"closeTime":1793599199999,"open":78435.2,"high":78435.2,"low":78333.5,"close":78339.9,"volume":451.124},{"openTime":1793599200000,"closeTime":1793600099999,"open":78339.9,"high":78379.0,"low":78256.0,"close":78282.4,"volume":621.674},{"openTime":1793600100000,"closeTime":1793600999999,"open":78282.4,"high":78288.9,"low":78162.5,"close":78162.8,"volume":711.701},{"openTime":1793601000000,"closeTime":1793601899999,"open":78162.7,"high":78188.9,"low":78122.0,"close":78122.2,"volume":522.814},{"openTime":1793601900000,"closeTime":1793602799999,"open":78122.3,"high":78198.0,"low":78111.0,"close":78134.0,"volume":741.231},{"openTime":1793602800000,"closeTime":1793603699999,"open":78134.1,"high":78234.8,"low":78102.0,"close":78102.0,"volume":631.594},{"openTime":1793603700000,"closeTime":1793604599999,"open":78102.1,"high":78180.0,"low":78055.0,"close":78080.2,"volume":828.547},{"openTime":1793604600000,"closeTime":1793605499999,"open":78080.2,"high":78082.0,"low":78011.0,"close":78025.0,"volume":753.128},{"openTime":1793605500000,"closeTime":1793606399999,"open":78024.9,"high":78136.6,"low":77891.4,"close":78082.9,"volume":1917.812},{"openTime":1793606400000,"closeTime":1793607299999,"open":78082.9,"high":78242.1,"low":78040.1,"close":78109.9,"volume":939.837},{"openTime":1793607300000,"closeTime":1793608199999,"open":78109.9,"high":78148.6,"low":78058.0,"close":78135.8,"volume":537.673},{"openTime":1793608200000,"closeTime":1793609099999,"open":78135.8,"high":78376.3,"low":78127.0,"close":78260.3,"volume":1144.923},{"openTime":1793609100000,"closeTime":1793609999999,"open":78260.3,"high":78349.7,"low":78205.5,"close":78207.5,"volume":578.331},{"openTime":1793610000000,"closeTime":1793610899999,"open":78207.5,"high":78317.6,"low":78207.5,"close":78220.8,"volume":597.601},{"openTime":1793610900000,"closeTime":1793611799999,"open":78220.9,"high":78259.4,"low":78101.5,"close":78101.5,"volume":566.913},{"openTime":1793611800000,"closeTime":1793612699999,"open":78101.6,"high":78111.8,"low":78000.0,"close":78062.4,"volume":768.926},{"openTime":1793612700000,"closeTime":1793613599999,"open":78062.4,"high":78164.4,"low":78041.9,"close":78041.9,"volume":463.472},{"openTime":1793613600000,"closeTime":1793614499999,"open":78042.0,"high":78042.0,"low":77938.6,"close":77962.2,"volume":851.035},{"openTime":1793614500000,"closeTime":1793615399999,"open":77962.2,"high":78009.6,"low":77945.2,"close":77952.6,"volume":390.533},{"openTime":1793615400000,"closeTime":1793616299999,"open":77952.6,"high":78014.9,"low":77945.1,"close":77960.4,"volume":357.973},{"openTime":1793616300000,"closeTime":1793617199999,"open":77960.5,"high":78033.9,"low":77926.5,"close":77945.3,"volume":356.015},{"openTime":1793617200000,"closeTime":1793618099999,"open":77945.4,"high":77994.0,"low":77871.5,"close":77929.8,"volume":505.106},{"openTime":1793618100000,"closeTime":1793618999999,"open":77929.8,"high":77930.3,"low":77819.3,"close":77824.9,"volume":748.878},{"openTime":1793619000000,"closeTime":1793619899999,"open":77824.9,"high":77927.8,"low":77784.7,"close":77850.0,"volume":1030.29},{"openTime":1793619900000,"closeTime":1793620799999,"open":77850.0,"high":77876.8,"low":77756.3,"close":77865.9,"volume":782.197},{"openTime":1793620800000,"closeTime":1793621699999,"open":77866.0,"high":78024.5,"low":77838.2,"close":78014.7,"volume":969.693},{"openTime":1793621700000,"closeTime":1793622599999,"open":78014.7,"high":78080.0,"low":77964.2,"close":77964.3,"volume":687.377},{"openTime":1793622600000,"closeTime":1793623499999,"open":77964.2,"high":77982.3,"low":77667.6,"close":77847.9,"volume":2002.677},{"openTime":1793623500000,"closeTime":1793624399999,"open":77848.0,"high":77886.3,"low":77690.7,"close":77779.3,"volume":1657.227},{"openTime":1793624400000,"closeTime":1793625299999,"open":77779.3,"high":77788.6,"low":77644.5,"close":77719.4,"volume":1714.191},{"openTime":1793625300000,"closeTime":1793626199999,"open":77719.5,"high":77719.5,"low":77580.0,"close":77679.1,"volume":1621.575}]}};</script>
 <script>
 /* Crypto 15M Signal Scanner — dashboard logic (vanilla JS, no dependencies).
  *
@@ -598,20 +775,20 @@ const PRICE_ENDPOINTS = [
   "https://www.binance.com/fapi/v1/ticker/price",
 ];
 
-const TZ = "Asia/Kuala_Lumpur";
+const TZ = "Europe/Paris";
 const $ = (id) => document.getElementById(id);
-const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("en-MY", {
+const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("fr-FR", {
   timeZone: TZ, hour12: false, day: "2-digit", month: "short",
   hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "—";
-const fmtClock = (ms) => ms ? new Date(ms).toLocaleTimeString("en-MY", {
+const fmtClock = (ms) => ms ? new Date(ms).toLocaleTimeString("fr-FR", {
   timeZone: TZ, hour12: false }) : "—";
-const fmtPrice = (v) => v == null ? "—" : Number(v).toLocaleString("en-US", { maximumFractionDigits: 6 });
+const fmtPrice = (v) => v == null ? "—" : Number(v).toLocaleString("fr-FR", { maximumFractionDigits: 2 });
 const fmtAgo = (ms) => {
   if (!ms) return "—";
   const s = Math.max(0, (Date.now() - ms) / 1000);
-  if (s < 90) return `${Math.round(s)}s ago`;
-  if (s < 5400) return `${Math.round(s / 60)} min ago`;
-  return `${(s / 3600).toFixed(1)} h ago`;
+  if (s < 90) return `il y a ${Math.round(s)} s`;
+  if (s < 5400) return `il y a ${Math.round(s / 60)} min`;
+  return `il y a ${(s / 3600).toFixed(1)} h`;
 };
 const fmtDur = (ms) => {
   if (ms == null) return "—";
@@ -621,11 +798,11 @@ const fmtDur = (ms) => {
 };
 
 const state = {
-  signals: [], status: null, snapshots: [], performance: null, screener: null,
+  signals: [], status: null, snapshots: [], performance: null, screener: null, latestChart: null,
   lastDataUpdate: null, embeddedLoaded: false,
   livePrices: {}, liveOk: false, liveAt: null,
   activeFilter: new Set(["A+", "A", "B+"]),
-  perfRange: 7, histRange: 7, histDir: "all", histQuality: "all",
+  perfRange: 7, histRange: 0, histDir: "all", histQuality: "all",
   histOutcome: "all", histSearch: "",
   screenerSearch: "", screenerSort: { key: "rank", dir: 1 },
 };
@@ -639,17 +816,19 @@ async function loadJSON(name) {
 
 async function refreshData() {
   try {
-    const [signals, status, snapshots, performance, screener] = await Promise.all([
+    const [signals, status, snapshots, performance, screener, latestChart] = await Promise.all([
       loadJSON("signals.json"), loadJSON("system-status.json"),
       loadJSON("market-snapshots.json").catch(() => []),
       loadJSON("performance.json").catch(() => null),
       loadJSON("universe-snapshot.json").catch(() => null),
+      loadJSON("latest-chart.json").catch(() => null),
     ]);
     state.signals = Array.isArray(signals?.signals) ? signals.signals : [];
     state.status = status || null;
     state.snapshots = Array.isArray(snapshots) ? snapshots : [];
     state.performance = performance;
     state.screener = screener;
+    state.latestChart = latestChart;
     state.lastDataUpdate = Date.now();
     state.embeddedLoaded = false;
     $("preview-notice").classList.add("hidden");
@@ -664,6 +843,7 @@ async function refreshData() {
       state.snapshots = Array.isArray(d.snapshots) ? d.snapshots : [];
       state.performance = d.performance || null;
       state.screener = d.screener || null;
+      state.latestChart = d.chart || null;
       state.lastDataUpdate = d.builtAt || null;
       state.embeddedLoaded = true;
       renderAll();
@@ -675,10 +855,9 @@ async function refreshData() {
 
 /* live prices from the browser (Binance public ticker, CORS-enabled) */
 async function refreshPrices() {
-  const symbols = [...new Set(state.signals
+  const symbols = [...new Set(["BTCUSDT", ...state.signals
     .filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED")
-    .map(s => s.symbol))];
-  if (!symbols.length) { state.liveOk = false; renderTopChips(); return; }
+    .map(s => s.symbol)])];
   for (const base of PRICE_ENDPOINTS) {
     try {
       const qs = encodeURIComponent(JSON.stringify(symbols.slice(0, 40)));
@@ -689,18 +868,19 @@ async function refreshPrices() {
       rows.forEach(r => { state.livePrices[r.symbol] = parseFloat(r.price); });
       state.liveOk = true;
       state.liveAt = Date.now();
-      renderTopChips(); renderActive(); renderRecent();
+      renderTopChips(); renderActive(); renderRecent(); renderLatestAnalysis();
       return;
     } catch (_) { /* try next endpoint */ }
   }
   state.liveOk = false;
-  renderTopChips(); renderActive(); renderRecent();
+  renderTopChips(); renderActive(); renderRecent(); renderLatestAnalysis();
 }
 
 /* ------------------------------------------------------------------ render */
 function renderAll() {
   renderTopChips();
   renderStatus();
+  renderLatestAnalysis();
   renderOverview();
   renderScreener();
   renderActive();
@@ -709,6 +889,7 @@ function renderAll() {
   renderPerformance();
   renderHistory();
   renderLogs();
+  $("tab-signal-count").textContent = state.signals.length;
   $("ft-version").textContent = state.status?.version ? `engine v${state.status.version}` : "";
 }
 
@@ -741,48 +922,46 @@ function renderTopChips() {
   const { level: health, age, stale } = effectiveHealth();
   const chip = $("chip-health");
   chip.textContent =
-    health === "HEALTHY" ? "SYSTEM ONLINE" :
-    health === "DEGRADED" ? "DEGRADED" :
-    health === "STALE" ? "DATA STALE" :
-    health === "OFFLINE" ? "SCANNER OFFLINE" :
-    health === "FAILED" ? "SYSTEM OFFLINE" : "…";
+    health === "HEALTHY" ? "SCANNER EN LIGNE" :
+    health === "DEGRADED" ? "DÉGRADÉ" :
+    health === "STALE" ? "DONNÉES EN RETARD" :
+    health === "OFFLINE" ? "SCANNER HORS LIGNE" :
+    health === "FAILED" ? "SYSTÈME HORS LIGNE" : "…";
   chip.className = "chip " + (health === "HEALTHY" ? "chip-ok" :
     (health === "DEGRADED" || health === "STALE") ? "chip-warn" : "chip-bad");
   const last = st?.lastScan?.executedAt;
   // Always show how old the data is, not just when the scan happened -- a
   // bare timestamp reads as "current" to anyone who does not check the date.
   $("chip-lastscan").textContent = last
-    ? `last scan ${fmtClock(last)} MYT · ${fmtAgo(last)}`
-    : "last scan —";
+    ? `scan ${fmtClock(last)} · ${fmtAgo(last)}`
+    : "scan —";
   const next = st?.nextExpectedScanAt;
-  $("chip-nextscan").textContent = next ? `next ~${fmtClock(next)} MYT` : "next —";
+  if ($("chip-nextscan")) $("chip-nextscan").textContent = next ? `prochain ~${fmtClock(next)}` : "prochain —";
   const pm = $("chip-price-mode");
   if (state.liveOk) {
-    pm.textContent = `LIVE PRICE ${fmtClock(state.liveAt)}`;
+    pm.textContent = `BTC en direct · ${fmtClock(state.liveAt)}`;
     pm.className = "chip chip-ok";
   } else {
-    pm.textContent = "price: scan snapshot";
+    pm.textContent = "cours du scan";
     pm.className = "chip";
   }
   $("data-updated").textContent = state.lastDataUpdate
-    ? `Last data update: ${fmtTime(state.lastDataUpdate)}${state.embeddedLoaded ? " (embedded snapshot — offline file)" : ""}`
-    : "Last data update: —";
+    ? `Données actualisées ${fmtTime(state.lastDataUpdate)}${state.embeddedLoaded ? " (copie locale)" : ""}`
+    : "Données actualisées —";
 
   const notice = $("health-notice");
   const ageTxt = age != null ? fmtDur(age) : "unknown";
   if (health === "OFFLINE") {
-    notice.textContent = `⛔ No successful scan for ${ageTxt}. The scheduler appears to be stopped — ` +
-      `everything below is a historical snapshot, NOT the current market. Do not act on these levels.`;
+    notice.textContent = `Aucun scan réussi depuis ${ageTxt}. Les éléments ci-dessous sont historiques, pas les cours actuels.`;
     notice.classList.remove("hidden");
   } else if (health === "STALE") {
-    notice.textContent = `⚠ Data is ${ageTxt} old (scans are expected every 15 min). ` +
-      `Scheduled runs were delayed or skipped — treat prices and signals as out of date.`;
+    notice.textContent = `Données âgées de ${ageTxt}. Le scan prévu toutes les 15 min a été retardé ou manqué.`;
     notice.classList.remove("hidden");
   } else if (health === "FAILED") {
-    notice.textContent = "⚠ Last scan FAILED — API unreachable. Showing the last successful scan data. No simulated data is ever shown.";
+    notice.textContent = "Le dernier scan a échoué. Affichage du dernier scan réussi ; aucune donnée simulée n’est affichée.";
     notice.classList.remove("hidden");
   } else if (health === "DEGRADED") {
-    notice.textContent = "⚠ Last scan completed with degraded data quality (some symbols failed or data delayed).";
+    notice.textContent = "Le dernier scan est terminé avec des données dégradées ou retardées.";
     notice.classList.remove("hidden");
   } else notice.classList.add("hidden");
   document.body.classList.toggle("data-stale", stale);
@@ -792,27 +971,151 @@ function renderStatus() {
   const st = state.status; if (!st) return;
   const ls = st.lastScan || {};
   const eff = effectiveHealth();
-  $("st-system").textContent = eff.level;
+  const healthLabel = { HEALTHY: "EN LIGNE", DEGRADED: "DÉGRADÉ", STALE: "EN RETARD", OFFLINE: "HORS LIGNE", FAILED: "ÉCHEC" };
+  $("st-system").textContent = healthLabel[eff.level] || eff.level;
   $("st-health-sub").textContent = eff.stale
-    ? `data ${fmtDur(eff.age)} old · scan reported ${st.health ?? "—"}`
-    : (ls.status ? `scan ${ls.status}` : "—");
+    ? `données âgées de ${fmtDur(eff.age)}`
+    : (ls.status ? `dernier résultat : ${ls.status === "OK" ? "réussi" : ls.status}` : "—");
   $("st-lastscan").textContent = ls.executedAt
-    ? `${fmtClock(ls.executedAt)} (${fmtAgo(ls.executedAt)})` : "—";
-  $("st-jitter").textContent = ls.jitterSeconds != null ? `scheduled ${fmtClock(ls.scheduledAt)} · jitter ${ls.jitterSeconds}s` : "—";
+    ? `${fmtClock(ls.executedAt)} · ${fmtAgo(ls.executedAt)}` : "—";
+  $("st-jitter").textContent = ls.jitterSeconds != null ? `prévu ${fmtClock(ls.scheduledAt)} · écart ${Math.round(ls.jitterSeconds)} s` : "—";
   $("st-nextscan").textContent = st.nextExpectedScanAt ? fmtClock(st.nextExpectedScanAt) : "—";
   $("st-duration").textContent = ls.durationMs != null ? (ls.durationMs / 1000).toFixed(1) + "s" : "—";
-  $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valid · ${ls.dataFailures ?? 0} failed`;
-  $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} pairs`;
-  $("st-universe-src").textContent = ls.universeSource ? `via ${ls.universeSource}` : "—";
+  $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valides · ${ls.dataFailures ?? 0} échec(s)`;
+  $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} paire(s)`;
+  $("st-universe-src").textContent = ls.universeSource ? `source : ${ls.universeSource}` : "—";
   const api = ls.apiHealth ?? "—";
   $("st-api").textContent = api;
-  $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} req · ${ls.apiStats.errors ?? 0} err · ${ls.apiStats.retries ?? 0} retry` : "—";
+  $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} requête(s) · ${ls.apiStats.errors ?? 0} erreur(s) · ${ls.apiStats.retries ?? 0} reprise(s)` : "—";
   const fresh = ls.dataFreshness ?? {};
-  $("st-fresh").textContent = fresh.label ?? "—";
-  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `candle age ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
+  $("st-fresh").textContent = ({ LIVE: "À JOUR", DELAYED: "RETARDÉES", STALE: "PÉRIMÉES" })[fresh.label] || fresh.label || "—";
+  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `bougie âgée de ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
   const active = state.signals.filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED");
   $("st-active").textContent = active.length;
-  $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} triggered · ${active.filter(s => s.status === "WAITING_TRIGGER").length} waiting`;
+  $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} déclenché(s) · ${active.filter(s => s.status === "WAITING_TRIGGER").length} en attente`;
+}
+
+function renderLatestAnalysis() {
+  const chart = state.latestChart || {};
+  const context = chart.context || {};
+  const indicators = chart.indicators || {};
+  const active = state.signals
+    .filter(s => s.symbol === "BTCUSDT" && (s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED"))
+    .sort((a, b) => b.generatedAt - a.generatedAt)[0] || null;
+  const signal = active;
+  const score = signal?.score == null ? null : Math.max(0, Math.min(100, Number(signal.score)));
+
+  $("setup-state").textContent = signal
+    ? `${signal.direction} · ${signal.status === "TRIGGERED" ? "DÉCLENCHÉ" : "EN ATTENTE"}`
+    : "AUCUN SETUP";
+  $("setup-state").className = `setup-state ${signal ? signal.direction.toLowerCase() : "idle"}`;
+  $("latest-score").textContent = score == null ? "—" : `${score.toFixed(0)} / 100`;
+  $("latest-tier").textContent = signal?.quality || "—";
+  $("latest-score-fill").style.width = `${score ?? 0}%`;
+  $("latest-score-fill").className = signal ? signal.direction.toLowerCase() : "";
+  $("latest-entry").textContent = signal ? fmtPrice(signal.entryPrice ?? signal.triggerPrice) : "—";
+  const zone = signal?.entryZone;
+  $("latest-entry-zone").textContent = zone?.length === 2
+    ? `Zone : ${fmtPrice(zone[0])} – ${fmtPrice(zone[1])}` : "Zone d’entrée —";
+  $("latest-tp").textContent = signal ? fmtPrice(signal.takeProfit) : "—";
+  $("latest-sl").textContent = signal ? fmtPrice(signal.stopLoss) : "—";
+  $("latest-rr").textContent = signal?.riskReward != null ? `1 : ${Number(signal.riskReward).toFixed(2)}` : "—";
+  $("setup-explanation").textContent = signal
+    ? `Setup retenu · score de confluence ${score.toFixed(0)}/100 · suivi automatique du déclenchement et de l’issue.`
+    : "Aucun setup BTC n’a validé les règles lors du dernier scan. Les niveaux restent volontairement vides.";
+
+  const lastCandle = chart.lastClosedAt || chart.generatedAt;
+  $("chart-updated").textContent = lastCandle
+    ? `Bougie analysée · ${fmtTime(lastCandle)}` : "En attente du prochain scan";
+  const livePrice = state.liveOk ? state.livePrices.BTCUSDT : null;
+  $("chart-price-label").textContent = livePrice != null ? "Cours en direct" : "Clôture analysée";
+  $("chart-price").textContent = fmtPrice(livePrice ?? chart.price);
+  $("chart-source").textContent = chart.source ? `Données du scan · ${chart.source}` : "Données du scan";
+
+  const m15 = indicators["15m"] || {};
+  $("metric-rsi").textContent = m15.rsi == null ? "—" : Number(m15.rsi).toFixed(1);
+  $("metric-adx").textContent = m15.adx == null ? "—" : Number(m15.adx).toFixed(1);
+  $("metric-atr").textContent = m15.atrPercent == null ? "—" : `${Number(m15.atrPercent).toFixed(2)} %`;
+  $("metric-relvol").textContent = m15.relativeVolume == null ? "—" : `${Number(m15.relativeVolume).toFixed(2)}×`;
+  $("metric-regime").textContent = String(context.regime || "—").replaceAll("_", " ");
+  $("metric-bias").textContent = `${String(context.bias4h || "—").replaceAll("_", " ")} / ${String(context.bias1h || "—").replaceAll("_", " ")}`;
+
+  const tfNames = { "4h": "4 h", "1h": "1 h", "15m": "15 min" };
+  $("latest-indicators-body").innerHTML = ["4h", "1h", "15m"].map(tf => {
+    const m = indicators[tf] || {};
+    const cell = (value, digits = 2) => value == null ? "—" : Number(value).toLocaleString("fr-FR", { maximumFractionDigits: digits });
+    return `<tr><td>${tfNames[tf]}</td><td>${cell(m.ema20)}</td><td>${cell(m.ema50)}</td><td>${cell(m.ema200)}</td>
+      <td>${cell(m.rsi, 1)}</td><td>${cell(m.adx, 1)}</td><td>${cell(m.plusDi, 1)} / ${cell(m.minusDi, 1)}</td>
+      <td>${cell(m.atr)}</td><td>${cell(m.atrPercent, 3)}%</td><td>${cell(m.relativeVolume, 2)}×</td><td>${cell(m.vwap)}</td></tr>`;
+  }).join("");
+  const structure = chart.structure || {};
+  const structureNames = { events: "BOS/CHoCH", sweeps: "sweeps", displacements: "déplacements", fvgs: "FVG", orderBlocks: "OB" };
+  $("latest-structure").textContent = ["4h", "1h", "15m"].map(tf => {
+    const row = structure[tf] || {};
+    const counts = Object.keys(structureNames).map(key => `${structureNames[key]} : ${(row[key] || []).length}`);
+    return `${tfNames[tf]} — ${counts.join(" · ")}`;
+  }).join("\n");
+
+  drawBtcCandles(chart, signal, livePrice);
+}
+
+function drawBtcCandles(chart, signal, livePrice) {
+  const svg = $("btc-candle-chart");
+  const empty = $("chart-empty");
+  svg.replaceChildren();
+  const candles = (chart.candles || []).slice(-80);
+  empty.classList.toggle("hidden", candles.length > 0);
+  if (!candles.length) return;
+
+  const W = 900, H = 340, left = 76, right = 82, top = 18, bottom = 34;
+  const plotW = W - left - right, plotH = H - top - bottom;
+  const minLow = Math.min(...candles.map(c => Number(c.low)));
+  const maxHigh = Math.max(...candles.map(c => Number(c.high)));
+  const pad = Math.max((maxHigh - minLow) * 0.08, maxHigh * 0.0002);
+  const min = minLow - pad, max = maxHigh + pad;
+  const y = value => top + ((max - value) / (max - min)) * plotH;
+  const slot = plotW / candles.length;
+  const x = index => left + (index + 0.5) * slot;
+
+  for (let i = 0; i <= 4; i++) {
+    const value = max - (i / 4) * (max - min), yy = y(value);
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: yy, y2: yy, class: "chart-grid-line" }));
+    const label = svgEl("text", { x: left - 9, y: yy + 4, "text-anchor": "end", class: "chart-axis-label" });
+    label.textContent = fmtPrice(value);
+    svg.appendChild(label);
+  }
+
+  candles.forEach((candle, index) => {
+    const xx = x(index), openY = y(Number(candle.open)), closeY = y(Number(candle.close));
+    const up = Number(candle.close) >= Number(candle.open);
+    const cls = up ? "candle-up" : "candle-down";
+    svg.appendChild(svgEl("line", { x1: xx, x2: xx, y1: y(Number(candle.high)), y2: y(Number(candle.low)), class: cls }));
+    const bodyTop = Math.min(openY, closeY), bodyHeight = Math.max(1.3, Math.abs(closeY - openY));
+    svg.appendChild(svgEl("rect", { x: xx - Math.max(1.4, slot * 0.31), y: bodyTop,
+      width: Math.max(2.8, slot * 0.62), height: bodyHeight, rx: 0.8, class: cls }));
+  });
+
+  [0, Math.floor((candles.length - 1) / 2), candles.length - 1].forEach(index => {
+    const text = svgEl("text", { x: x(index), y: H - 8, "text-anchor": "middle", class: "chart-axis-label" });
+    text.textContent = new Date(candles[index].openTime).toLocaleTimeString("fr-FR", { timeZone: TZ, hour: "2-digit", minute: "2-digit" });
+    svg.appendChild(text);
+  });
+
+  const overlays = [
+    { value: livePrice, label: "LIVE", cls: "chart-live-line" },
+    { value: signal?.triggerPrice, label: "ENTRÉE", cls: "chart-entry-line" },
+    { value: signal?.takeProfit, label: "TP", cls: "chart-tp-line" },
+    { value: signal?.stopLoss, label: "SL", cls: "chart-sl-line" },
+  ];
+  overlays.forEach(item => {
+    const value = Number(item.value);
+    if (!Number.isFinite(value) || value < min || value > max) return;
+    const yy = y(value);
+    svg.appendChild(svgEl("line", { x1: left, x2: W - right, y1: yy, y2: yy, class: item.cls }));
+    const label = svgEl("text", { x: W - right + 7, y: yy + 4, class: "chart-axis-label chart-level-label" });
+    label.textContent = item.label;
+    svg.appendChild(label);
+  });
 }
 
 function renderOverview() {
@@ -1165,10 +1468,23 @@ function renderHistory() {
   rows.sort((a, b) => b.generatedAt - a.generatedAt);
   const tbody = document.querySelector("#history-table tbody");
   $("history-empty").classList.toggle("hidden", rows.length > 0);
-  $("history-count").textContent = `${rows.length} signal(s) shown of ${state.signals.length} total`;
+  $("history-count").textContent = `${rows.length} / ${state.signals.length} signal${state.signals.length === 1 ? "" : "s"}`;
   tbody.innerHTML = rows.slice(0, 300).map(s => {
     const dur = s.closedAt && s.triggeredAt ? s.closedAt - s.triggeredAt :
       (s.closedAt ? s.closedAt - s.generatedAt : null);
+    const stateLabels = {
+      WAITING_TRIGGER: "En attente d’entrée", TRIGGERED: "Entrée déclenchée",
+      WIN: "Terminé", LOSS: "Terminé", EXPIRED: "Entrée expirée",
+      AMBIGUOUS: "Terminé", CANCELLED: "Terminé",
+    };
+    const outcomes = {
+      WAITING_TRIGGER: "En attente d’entrée", TRIGGERED: "En cours",
+      WIN: "TP atteint", LOSS: "SL touché", EXPIRED: "Entrée non déclenchée",
+      AMBIGUOUS: "Indéterminé (TP et SL touchés)", CANCELLED: "Temps maximal atteint",
+    };
+    const result = s.rMultiple != null
+      ? `${outcomes[s.status] || s.status} · ${s.rMultiple > 0 ? "+" : ""}${Number(s.rMultiple).toFixed(2)}R`
+      : (outcomes[s.status] || s.status);
     return `<tr>
       <td>${fmtTime(s.generatedAt)}</td>
       <td><b>${s.symbol}</b></td>
@@ -1180,12 +1496,27 @@ function renderHistory() {
       <td>${fmtPrice(s.takeProfit)}</td>
       <td>${fmtPrice(s.stopLoss)}</td>
       <td>1:${Number(s.riskReward).toFixed(2)}</td>
-      <td><span class="status-badge st-${s.status}">${s.status.replace("_", " ")}</span></td>
-      <td>${s.rMultiple != null ? (s.rMultiple > 0 ? "+" : "") + Number(s.rMultiple).toFixed(2) + "R" : "—"}</td>
+      <td><span class="status-badge st-${s.status}">${stateLabels[s.status] || s.status}</span></td>
+      <td>${result}</td>
       <td>${fmtDur(dur)}</td>
     </tr>`;
   }).join("");
 }
+
+function selectView(view) {
+  const analysis = view === "analysis";
+  $("view-analysis").classList.toggle("hidden", !analysis);
+  $("view-signals").classList.toggle("hidden", analysis);
+  $("tab-analysis").classList.toggle("active", analysis);
+  $("tab-signals").classList.toggle("active", !analysis);
+  $("tab-analysis").setAttribute("aria-selected", String(analysis));
+  $("tab-signals").setAttribute("aria-selected", String(!analysis));
+  if (!analysis) renderHistory();
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+$("tab-analysis").addEventListener("click", () => selectView("analysis"));
+$("tab-signals").addEventListener("click", () => selectView("signals"));
 
 function renderLogs() {
   const logs = state.status?.logs ?? [];
