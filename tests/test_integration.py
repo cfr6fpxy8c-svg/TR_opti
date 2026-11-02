@@ -1,13 +1,14 @@
 """Integration tests: full scan pipeline offline (FakeClient), failure policy,
 no-lookahead guarantees, replay determinism (§34, §35, §38)."""
 import json
+from datetime import datetime, timezone
 
 import pytest
 
 from conftest import FakeClient  # noqa: F401
 
 from scanner.config import Config
-from scanner.main import scan_once, ScanLog
+from scanner.main import scan_once, ScanLog, _next_scheduled, _scheduled_now
 from scanner.market_data import MarketDataError
 from scanner.analysis import analyze_symbol
 from scanner.signals import generate_signals, ACTIVE_STATUSES, WIN
@@ -28,6 +29,18 @@ def cfg(tmp_path):
 def client():
     frames = build_frames("long")
     return FakeClient({"TESTUSDT": frames})
+
+
+def test_scheduler_uses_offset_utc_slots(monkeypatch):
+    slots = [7, 22, 37, 52]
+    now = datetime(2026, 11, 2, 16, 4, tzinfo=timezone.utc)
+    now_ms = int(now.timestamp() * 1000)
+    monkeypatch.setattr("scanner.main.time.time", lambda: now.timestamp())
+
+    expected_last = datetime(2026, 11, 2, 15, 52, tzinfo=timezone.utc)
+    expected_next = datetime(2026, 11, 2, 16, 7, tzinfo=timezone.utc)
+    assert _scheduled_now(15, slots) == int(expected_last.timestamp() * 1000)
+    assert _next_scheduled(now_ms, slots) == int(expected_next.timestamp() * 1000)
 
 
 def test_full_scan_pipeline(tmp_path, cfg, client, monkeypatch):
@@ -64,6 +77,7 @@ def test_full_scan_pipeline(tmp_path, cfg, client, monkeypatch):
     assert status["lastScan"]["symbolsScanned"] == 1
     assert status["lastScan"]["signalsGenerated"] >= 1
     assert status["nextExpectedScanAt"] > status["lastScan"]["executedAt"]
+    assert status["scanScheduleUtcMinutes"] == cfg.get("scan.scheduleMinutesUtc")
 
 
 def test_scan_failure_retains_previous_data(tmp_path, cfg, monkeypatch):

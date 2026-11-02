@@ -13,6 +13,7 @@ from __future__ import annotations
 import argparse
 import copy
 import json
+import os
 import sys
 import time
 
@@ -64,10 +65,36 @@ def fmt_clock_badge(ms: int) -> str:
         ms / 1000, datetime.timezone(datetime.timedelta(hours=8))).strftime("%H:%M")
 
 
-def _scheduled_now(interval_min: int) -> int:
+def _schedule_minutes(cfg: Config) -> list[int]:
+    minutes = cfg.get("scan.scheduleMinutesUtc")
+    if isinstance(minutes, list) and minutes and all(isinstance(m, int) and 0 <= m < 60 for m in minutes):
+        return sorted(set(minutes))
+    interval = max(1, int(cfg.get("scan.intervalMinutes", 15)))
+    return list(range(0, 60, interval))
+
+
+def _scheduled_now(interval_min: int, schedule_minutes_utc: list[int] | None = None) -> int:
     now = int(time.time() * 1000)
+    if schedule_minutes_utc:
+        hour_ms = 60 * 60_000
+        hour_start = now - (now % hour_ms)
+        minutes = sorted(set(schedule_minutes_utc))
+        candidates = [hour_start + minute * 60_000 for minute in minutes
+                      if hour_start + minute * 60_000 <= now]
+        return max(candidates) if candidates else hour_start - hour_ms + minutes[-1] * 60_000
     interval_ms = interval_min * 60_000
     return now - (now % interval_ms)
+
+
+def _next_scheduled(after_ms: int, schedule_minutes_utc: list[int]) -> int:
+    hour_ms = 60 * 60_000
+    hour_start = after_ms - (after_ms % hour_ms)
+    minutes = sorted(set(schedule_minutes_utc))
+    candidates = [hour_start + minute * 60_000 for minute in minutes
+                  if hour_start + minute * 60_000 > after_ms]
+    if candidates:
+        return min(candidates)
+    return hour_start + hour_ms + minutes[0] * 60_000
 
 
 def make_client(cfg: Config) -> MarketDataClient:
@@ -205,7 +232,10 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
               dry_run: bool = False) -> int:
     t0 = time.monotonic()
     now_ms = int(time.time() * 1000)
-    scheduled_ms = _scheduled_now(cfg.get("scan.intervalMinutes", 15))
+    schedule_minutes_utc = _schedule_minutes(cfg)
+    scheduled_ms = _scheduled_now(cfg.get("scan.intervalMinutes", 15), schedule_minutes_utc)
+    next_expected_ms = _next_scheduled(now_ms, schedule_minutes_utc)
+    trigger = os.environ.get("GITHUB_EVENT_NAME", "local")
     client = client or make_client(cfg)
 
     previous_signals_payload = persist.load_json("signals.json", {"generatedAt": 0, "signals": []})
@@ -243,7 +273,8 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
 
     if failure_reason or not scan_symbols:
         status = _write_failed_status(log, previous_status, previous_logs, now_ms, scheduled_ms,
-                                      stats, t0, failure_reason or "empty universe")
+                                      next_expected_ms, schedule_minutes_utc, trigger, stats, t0,
+                                      failure_reason or "empty universe")
         if not dry_run:
             persist.write_data_file("system-status.json", status)
         return 1
@@ -266,7 +297,8 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
     if not analyses:
         log.error("no valid symbol data -- marking scan FAILED, retaining previous data")
         status = _write_failed_status(log, previous_status, previous_logs, now_ms, scheduled_ms,
-                                      stats, t0, "no valid market data")
+                                      next_expected_ms, schedule_minutes_utc, trigger, stats, t0,
+                                      "no valid market data")
         if not dry_run:
             persist.write_data_file("system-status.json", status)
         return 1
@@ -354,6 +386,7 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
         "lastScan": {
             "scheduledAt": scheduled_ms,
             "executedAt": now_ms,
+            "trigger": trigger,
             "jitterSeconds": round((now_ms - scheduled_ms) / 1000, 1),
             "durationMs": duration_ms,
             "status": "OK" if health == "HEALTHY" else "DEGRADED",
@@ -380,7 +413,8 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
             "activeSignals": sum(1 for s in all_signals if s["status"] in ACTIVE_STATUSES),
         },
         "lastSuccessfulScan": now_ms,
-        "nextExpectedScanAt": scheduled_ms + cfg.get("scan.intervalMinutes", 15) * 60_000,
+        "nextExpectedScanAt": next_expected_ms,
+        "scanScheduleUtcMinutes": schedule_minutes_utc,
         "logs": (previous_logs + log.entries)[-cfg.get("retention.logEntries", 200):],
     }
     snapshot = {
@@ -468,18 +502,21 @@ def scan_once(cfg: Config, log: ScanLog, client: MarketDataClient | None = None,
 
 
 def _write_failed_status(log: ScanLog, previous_status: dict, previous_logs: list,
-                         now_ms: int, scheduled_ms: int, stats: dict, t0, reason: str) -> dict:
+                         now_ms: int, scheduled_ms: int, next_expected_ms: int,
+                         schedule_minutes_utc: list[int], trigger: str,
+                         stats: dict, t0, reason: str) -> dict:
     log.error("scan FAILED -- retaining previous dashboard data")
     status = {
         "systemOnline": False,
         "health": "FAILED",
         "lastScan": {
-            "scheduledAt": scheduled_ms, "executedAt": now_ms,
+            "scheduledAt": scheduled_ms, "executedAt": now_ms, "trigger": trigger,
             "durationMs": int((time.monotonic() - t0) * 1000), "status": "FAILED",
             "reason": reason, "apiStats": stats,
         },
         "lastSuccessfulScan": previous_status.get("lastSuccessfulScan"),
-        "nextExpectedScanAt": scheduled_ms + 15 * 60_000,
+        "nextExpectedScanAt": next_expected_ms,
+        "scanScheduleUtcMinutes": schedule_minutes_utc,
         "logs": (previous_logs + log.entries)[-200:],
     }
     global _STATUS

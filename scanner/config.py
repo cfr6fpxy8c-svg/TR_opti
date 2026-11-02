@@ -13,7 +13,8 @@ from typing import Any
 
 DEFAULTS: dict[str, Any] = {
     "version": 1,
-    "scan": {"intervalMinutes": 15, "timezone": "Asia/Kuala_Lumpur"},
+    "scan": {"intervalMinutes": 15, "scheduleMinutesUtc": [7, 22, 37, 52],
+             "timezone": "Asia/Kuala_Lumpur"},
     "dataSource": {
         "failoverEndpoints": [
             {"name": "binance-futures", "market": "futures", "base": "https://fapi.binance.com/fapi/v1"},

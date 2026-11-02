@@ -404,7 +404,7 @@ body.data-stale #health-notice {
     <div class="grid grid-status status-primary">
       <div class="card stat"><span class="stat-label">Scanner</span><span class="stat-value" id="st-system">—</span><span class="stat-sub" id="st-health-sub">—</span></div>
       <div class="card stat"><span class="stat-label">Dernier scan</span><span class="stat-value" id="st-lastscan">—</span><span class="stat-sub" id="st-jitter">—</span></div>
-      <div class="card stat"><span class="stat-label">Prochain scan prévu</span><span class="stat-value" id="st-nextscan">—</span><span class="stat-sub">cadence visée : 15 min</span></div>
+      <div class="card stat"><span class="stat-label">Prochain créneau théorique</span><span class="stat-value" id="st-nextscan">—</span><span class="stat-sub" id="st-nextscan-sub">Toutes les 15 min</span></div>
       <div class="card stat"><span class="stat-label">Fraîcheur des données</span><span class="stat-value" id="st-fresh">—</span><span class="stat-sub" id="st-fresh-age">—</span></div>
     </div>
     <details class="system-more">
@@ -774,6 +774,8 @@ const PRICE_ENDPOINTS = [
 ];
 
 const TZ = "Europe/Paris";
+const DEFAULT_SCAN_MINUTES_UTC = [7, 22, 37, 52];
+const SCAN_GRACE_MS = 5 * 60_000;
 const $ = (id) => document.getElementById(id);
 const fmtTime = (ms) => ms ? new Date(ms).toLocaleString("fr-FR", {
   timeZone: TZ, hour12: false, day: "2-digit", month: "short",
@@ -899,6 +901,30 @@ function renderAll() {
 const STALE_AFTER_MS = 45 * 60_000;    // 3 missed 15-minute scans
 const OFFLINE_AFTER_MS = 3 * 3600_000; // no successful scan for 3 hours
 
+function nextScanSlot(afterMs, minutes = state.status?.scanScheduleUtcMinutes || DEFAULT_SCAN_MINUTES_UTC) {
+  if (!Number.isFinite(afterMs) || !Array.isArray(minutes) || !minutes.length) return null;
+  const hourMs = 60 * 60_000;
+  const hourStart = Math.floor(afterMs / hourMs) * hourMs;
+  let slots = [...new Set(minutes)].filter(m => Number.isInteger(m) && m >= 0 && m < 60).sort((a, b) => a - b);
+  if (!slots.length) slots = DEFAULT_SCAN_MINUTES_UTC;
+  for (let offset = 0; offset <= 1; offset++) {
+    for (const minute of slots) {
+      const candidate = hourStart + offset * hourMs + minute * 60_000;
+      if (candidate > afterMs) return candidate;
+    }
+  }
+  return null;
+}
+
+function scheduleState(now = Date.now()) {
+  const st = state.status;
+  const last = st?.lastScan?.executedAt ?? st?.lastSuccessfulScan;
+  const next = nextScanSlot(now);
+  const missedAt = last ? nextScanSlot(last) : null;
+  const overdueMs = missedAt && now > missedAt ? now - missedAt : 0;
+  return { next, missedAt, overdueMs, late: overdueMs > SCAN_GRACE_MS };
+}
+
 function dataAgeMs() {
   const st = state.status;
   const last = st?.lastScan?.executedAt ?? st?.lastSuccessfulScan;
@@ -909,14 +935,29 @@ function dataAgeMs() {
 function effectiveHealth() {
   const stored = state.status?.health ?? "UNKNOWN";
   const age = dataAgeMs();
+  const schedule = scheduleState();
   if (age == null) return { level: stored, age, stale: false };
   if (age >= OFFLINE_AFTER_MS) return { level: "OFFLINE", age, stale: true };
-  if (age >= STALE_AFTER_MS) return { level: "STALE", age, stale: true };
+  if (schedule.late || age >= STALE_AFTER_MS) return { level: "STALE", age, stale: true };
   return { level: stored, age, stale: false };
+}
+
+function renderScheduleStatus() {
+  const target = $("st-nextscan");
+  if (!target) return;
+  const schedule = scheduleState();
+  target.textContent = schedule.next ? fmtClock(schedule.next) : "—";
+  const subtitle = $("st-nextscan-sub");
+  if (!subtitle) return;
+  subtitle.textContent = schedule.late
+    ? `créneau ${fmtClock(schedule.missedAt)} dépassé de ${fmtDur(schedule.overdueMs)}`
+    : schedule.next ? `prochain créneau théorique · dans ${fmtDur(schedule.next - Date.now())}`
+      : "Cadence visée : 15 min";
 }
 
 function renderTopChips() {
   const st = state.status;
+  renderScheduleStatus();
   const { level: health, age, stale } = effectiveHealth();
   const chip = $("chip-health");
   chip.textContent =
@@ -953,7 +994,10 @@ function renderTopChips() {
     notice.textContent = `Aucun scan réussi depuis ${ageTxt}. Les éléments ci-dessous sont historiques, pas les cours actuels.`;
     notice.classList.remove("hidden");
   } else if (health === "STALE") {
-    notice.textContent = `Données âgées de ${ageTxt}. Le scan prévu toutes les 15 min a été retardé ou manqué.`;
+    const schedule = scheduleState();
+    notice.textContent = schedule.late
+      ? `Créneau de scan ${fmtClock(schedule.missedAt)} dépassé de ${fmtDur(schedule.overdueMs)}. Dernier scan il y a ${ageTxt} ; prochain créneau théorique : ${fmtClock(schedule.next)}.`
+      : `Données âgées de ${ageTxt}. Le scan prévu toutes les 15 min a été retardé ou manqué.`;
     notice.classList.remove("hidden");
   } else if (health === "FAILED") {
     notice.textContent = "Le dernier scan a échoué. Affichage du dernier scan réussi ; aucune donnée simulée n’est affichée.";
@@ -976,8 +1020,13 @@ function renderStatus() {
     : (ls.status ? `dernier résultat : ${ls.status === "OK" ? "réussi" : ls.status}` : "—");
   $("st-lastscan").textContent = ls.executedAt
     ? `${fmtClock(ls.executedAt)} · ${fmtAgo(ls.executedAt)}` : "—";
-  $("st-jitter").textContent = ls.jitterSeconds != null ? `prévu ${fmtClock(ls.scheduledAt)} · écart ${Math.round(ls.jitterSeconds)} s` : "—";
-  $("st-nextscan").textContent = st.nextExpectedScanAt ? fmtClock(st.nextExpectedScanAt) : "—";
+  const triggerNames = { schedule: "par cron", workflow_dispatch: "manuellement", push: "par push", local: "en local" };
+  $("st-jitter").textContent = ls.trigger === "schedule" && ls.jitterSeconds != null
+    ? `créneau ${fmtClock(ls.scheduledAt)} · retard ${Math.max(0, Math.round(ls.jitterSeconds))} s`
+    : ls.trigger ? `déclenché ${triggerNames[ls.trigger] || ls.trigger}`
+      : ls.jitterSeconds != null ? `horaire enregistré ${fmtClock(ls.scheduledAt)} · décalage ${Math.round(ls.jitterSeconds)} s`
+        : "—";
+  renderScheduleStatus();
   $("st-duration").textContent = ls.durationMs != null ? (ls.durationMs / 1000).toFixed(1) + "s" : "—";
   $("st-symbols").textContent = `${ls.symbolsValid ?? 0}/${ls.symbolsScanned ?? 0} valides · ${ls.dataFailures ?? 0} échec(s)`;
   $("st-universe").textContent = `${ls.universeSize ?? st.universeSize ?? "—"} paire(s)`;
@@ -986,8 +1035,15 @@ function renderStatus() {
   $("st-api").textContent = api;
   $("st-api-reqs").textContent = ls.apiStats ? `${ls.apiStats.requests ?? 0} requête(s) · ${ls.apiStats.errors ?? 0} erreur(s) · ${ls.apiStats.retries ?? 0} reprise(s)` : "—";
   const fresh = ls.dataFreshness ?? {};
-  $("st-fresh").textContent = ({ LIVE: "À JOUR", DELAYED: "RETARDÉES", STALE: "PÉRIMÉES" })[fresh.label] || fresh.label || "—";
-  $("st-fresh-age").textContent = fresh.ageSeconds != null ? `bougie âgée de ${fmtDur(fresh.ageSeconds * 1000)}` : "—";
+  const newestClose = fresh.newestCandleCloseMs;
+  const candleAgeMs = newestClose
+    ? Math.max(0, Date.now() - newestClose)
+    : fresh.ageSeconds != null ? fresh.ageSeconds * 1000 + (dataAgeMs() || 0) : null;
+  const freshLabel = candleAgeMs == null ? (fresh.label || "—")
+    : candleAgeMs <= 16 * 60_000 ? "LIVE"
+      : candleAgeMs <= 30 * 60_000 ? "DELAYED" : "STALE";
+  $("st-fresh").textContent = ({ LIVE: "À JOUR", DELAYED: "RETARDÉES", STALE: "PÉRIMÉES" })[freshLabel] || freshLabel;
+  $("st-fresh-age").textContent = candleAgeMs != null ? `bougie âgée de ${fmtDur(candleAgeMs)}` : "—";
   const active = state.signals.filter(s => s.status === "WAITING_TRIGGER" || s.status === "TRIGGERED");
   $("st-active").textContent = active.length;
   $("st-active-sub").textContent = `${active.filter(s => s.status === "TRIGGERED").length} déclenché(s) · ${active.filter(s => s.status === "WAITING_TRIGGER").length} en attente`;
@@ -1666,7 +1722,7 @@ refreshData();
 refreshPrices();
 setInterval(refreshData, DATA_INTERVAL_MS);
 setInterval(refreshPrices, PRICE_INTERVAL_MS);
-setInterval(renderTopChips, 10_000); // keep "ago" labels fresh
+setInterval(() => { renderTopChips(); renderStatus(); }, 10_000); // keep ages and schedule status current
 
 </script>
 </body>
