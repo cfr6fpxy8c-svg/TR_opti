@@ -103,7 +103,9 @@ def check() -> list[str]:
             problems.append(f"badge URL points at {path}, which the engine does not write")
 
     # 5. Files the README tells a user to open must exist.
-    for rel in set(re.findall(r"`(frontend/[A-Za-z0-9_./-]+\.html)`", readme)):
+    # These are built locally on demand and deliberately not committed.
+    generated = {"frontend/dashboard-offline.html", "frontend/preview.html"}
+    for rel in set(re.findall(r"`(frontend/[A-Za-z0-9_./-]+\.html)`", readme)) - generated:
         if not (root / rel).exists():
             problems.append(f"README references {rel}, which does not exist")
 
