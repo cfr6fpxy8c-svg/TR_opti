@@ -2,10 +2,9 @@ name: schedule-probe
 run-name: Sonde planification · ${{ github.event_name }} · run ${{ github.run_number }}
 
 on:
-  # Diagnostic window: 2 November, 19:00–21:55 UTC. GitHub cron has no
-  # year field, so remove this workflow after the diagnosis.
+  # Temporary probe; remove this workflow after diagnosing the scheduler.
   schedule:
-    - cron: "*/5 19-21 2 11 *"
+    - cron: "*/5 * * * *"
   workflow_dispatch:
   push:
     branches: [main]
@@ -16,21 +15,12 @@ permissions: {}
 
 jobs:
   probe:
+    # The first two runs are from pushes. Limit scheduled runner use while
+    # keeping the workflow run visible if GitHub creates later events.
+    if: github.event_name != 'schedule' || github.run_number <= 5
     runs-on: ubuntu-latest
     timeout-minutes: 3
     steps:
-      - name: Record GitHub trigger
-        env:
-          EVENT_NAME: ${{ github.event_name }}
-          EVENT_SCHEDULE: ${{ github.event.schedule }}
-          EVENT_REF: ${{ github.ref }}
-        run: |
-          echo 'Hello world - test de planification GitHub Actions'
-          {
-            printf '## Diagnostic de planification\n\n'
-            printf -- '- Événement : %s\n' "$EVENT_NAME"
-            printf -- '- Cron : %s\n' "$EVENT_SCHEDULE"
-            printf -- '- Branche : %s\n' "$EVENT_REF"
-            printf -- '- Heure UTC : %s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-          } >> "$GITHUB_STEP_SUMMARY"
+      - name: Hello world
+        run: echo 'Hello world - test de planification GitHub Actions'
 
