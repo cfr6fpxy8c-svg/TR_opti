@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "1.1.0",
   "lastScan": {
-    "scheduledAt": 1793640120000,
-    "executedAt": 1793640952641,
+    "scheduledAt": 1793649120000,
+    "executedAt": 1793649206013,
     "trigger": "push",
-    "jitterSeconds": 832.6,
-    "durationMs": 11070,
+    "jitterSeconds": 86.0,
+    "durationMs": 11122,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -20,7 +20,7 @@
     "signalsGenerated": 0,
     "rejects": {
       "htf_conflict": 1,
-      "volume_thin": 1
+      "no_liquidity_sweep": 1
     },
     "rejectFunnel": [
       {
@@ -28,7 +28,7 @@
         "rejected": 1
       },
       {
-        "stage": "volume_thin",
+        "stage": "no_liquidity_sweep",
         "rejected": 1
       }
     ],
@@ -41,16 +41,16 @@
       "endpointUsed": "binance-futures-mirror",
       "marketUsed": "futures"
     },
-    "apiHealth": "FAILED",
+    "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793640599999,
-      "ageSeconds": 352.6
+      "newestCandleCloseMs": 1793648699999,
+      "ageSeconds": 506.0
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793640952641,
-  "nextExpectedScanAt": 1793641020000,
+  "lastSuccessfulScan": 1793649206013,
+  "nextExpectedScanAt": 1793650020000,
   "scanScheduleUtcMinutes": [
     7,
     22,
@@ -58,31 +58,6 @@
     52
   ],
   "logs": [
-    {
-      "ts": 1788059724285,
-      "level": "info",
-      "msg": "universe: 100 symbols selected from 518 USDT perp candidates (binance-futures-mirror)"
-    },
-    {
-      "ts": 1788059733117,
-      "level": "info",
-      "msg": "klines collected for 20/100 symbols"
-    },
-    {
-      "ts": 1788059741615,
-      "level": "info",
-      "msg": "klines collected for 40/100 symbols"
-    },
-    {
-      "ts": 1788059751068,
-      "level": "info",
-      "msg": "klines collected for 60/100 symbols"
-    },
-    {
-      "ts": 1788059759913,
-      "level": "info",
-      "msg": "klines collected for 80/100 symbols"
-    },
     {
       "ts": 1788059768871,
       "level": "info",
@@ -1055,6 +1030,31 @@
     },
     {
       "ts": 1793640963712,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793649206014,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793649120000 actual=1793649206013 (jitter 86.0s)"
+    },
+    {
+      "ts": 1793649216889,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793649217135,
+      "level": "info",
+      "msg": "rejected 1x htf_conflict (e.g. HTF conflict (4H=strong_bearish,1H=strong_bearish))"
+    },
+    {
+      "ts": 1793649217135,
+      "level": "info",
+      "msg": "rejected 1x no_liquidity_sweep (e.g. no liquidity sweep in window)"
+    },
+    {
+      "ts": 1793649217135,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
