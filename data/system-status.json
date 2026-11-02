@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "1.1.0",
   "lastScan": {
-    "scheduledAt": 1793633820000,
-    "executedAt": 1793634276632,
+    "scheduledAt": 1793640120000,
+    "executedAt": 1793640628561,
     "trigger": "push",
-    "jitterSeconds": 456.6,
-    "durationMs": 11385,
+    "jitterSeconds": 508.6,
+    "durationMs": 10557,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -19,12 +19,12 @@
     "candidates": 0,
     "signalsGenerated": 0,
     "rejects": {
-      "htf_not_aligned": 1,
+      "htf_conflict": 1,
       "volume_thin": 1
     },
     "rejectFunnel": [
       {
-        "stage": "htf_not_aligned",
+        "stage": "htf_conflict",
         "rejected": 1
       },
       {
@@ -44,13 +44,13 @@
     "apiHealth": "FAILED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793633399999,
-      "ageSeconds": 876.6
+      "newestCandleCloseMs": 1793640599999,
+      "ageSeconds": 28.6
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793634276632,
-  "nextExpectedScanAt": 1793634720000,
+  "lastSuccessfulScan": 1793640628561,
+  "nextExpectedScanAt": 1793641020000,
   "scanScheduleUtcMinutes": [
     7,
     22,
@@ -58,31 +58,6 @@
     52
   ],
   "logs": [
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.89 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: ADX 14.3 < min and not emerging"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: relVol 0.88 < min"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: RSI 31.0 outside [45,74]"
-    },
-    {
-      "ts": 1788059153282,
-      "level": "info",
-      "msg": "rejected 1x: ADX 13.4 < min and not emerging"
-    },
     {
       "ts": 1788059153282,
       "level": "info",
@@ -1055,6 +1030,31 @@
     },
     {
       "ts": 1793634288017,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793640628562,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793640120000 actual=1793640628561 (jitter 508.6s)"
+    },
+    {
+      "ts": 1793640638955,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793640639119,
+      "level": "info",
+      "msg": "rejected 1x htf_conflict (e.g. HTF conflict (4H=strong_bearish,1H=strong_bearish))"
+    },
+    {
+      "ts": 1793640639119,
+      "level": "info",
+      "msg": "rejected 1x volume_thin (e.g. relVol 1.13 < 1.2)"
+    },
+    {
+      "ts": 1793640639119,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
