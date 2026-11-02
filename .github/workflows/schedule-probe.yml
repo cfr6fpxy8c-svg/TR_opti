@@ -4,7 +4,7 @@ run-name: Sonde planification · ${{ github.event_name }} · run ${{ github.run_
 on:
   # Temporary probe; remove this workflow after diagnosing the scheduler.
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "3,8,13,18,23,28,33,38,43,48,53,58 * * * *"
   workflow_dispatch:
   push:
     branches: [main]

@@ -131,7 +131,7 @@ repository. The scheduled job runs the scanner with `--symbols BTCUSDT`.
    ```
 2. Keep the default workflow token **read-only**. Only the isolated `publish`
    job requests `contents: write`; market scanning and tests receive read access.
-3. The included `.github/workflows/scanner.yml` runs at `7-59/15 * * * *`
+3. The included `.github/workflows/scanner.yml` runs at `7,22,37,52 * * * *`
    (every 15 minutes, offset from the top of the hour) plus on every push and manual dispatch. It runs the engine,
    validates the JSON, and commits/pushes only when data actually changed.
 4. **No secrets are needed.** Public market data only — never add API keys.

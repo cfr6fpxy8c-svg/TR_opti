@@ -3,9 +3,9 @@ run-name: BTC scan · ${{ github.event_name }} · run ${{ github.run_number }}
 
 on:
   schedule:
-    # Same :07/:22/:37/:52 slots. A writer pushing this changed expression
-    # to the default branch re-registers the schedule and its actor.
-    - cron: "7-59/15 * * * *"
+    # UTC :07/:22/:37/:52. The cron's commit AUTHOR becomes the schedule actor:
+    # it must be a GitHub account with write access (the repo owner).
+    - cron: "7,22,37,52 * * * *"
   workflow_dispatch:
   push:
     branches: [main]

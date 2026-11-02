@@ -126,7 +126,7 @@ def test_schedule_diagnostic_does_not_confuse_push_with_cron():
     from scanner.diagnose_schedule import summarize
     result = summarize({"default_branch": "main"}, {"state": "active"},
                        {"total_count": 0, "workflow_runs": []},
-                       {"workflow_runs": [{"event": "push"}]}, ["7-59/15 * * * *"])
+                       {"workflow_runs": [{"event": "push"}]}, ["7,22,37,52 * * * *"])
     assert result["findings"] == ["NO_SCHEDULE_EVENTS"]
 
 
