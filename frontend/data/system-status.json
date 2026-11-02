@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "1.1.0",
   "lastScan": {
-    "scheduledAt": 1793651820000,
-    "executedAt": 1793652022143,
+    "scheduledAt": 1793653620000,
+    "executedAt": 1793654193482,
     "trigger": "push",
-    "jitterSeconds": 202.1,
-    "durationMs": 11847,
+    "jitterSeconds": 573.5,
+    "durationMs": 10765,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -44,13 +44,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793651399999,
-      "ageSeconds": 622.1
+      "newestCandleCloseMs": 1793654099999,
+      "ageSeconds": 93.5
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793652022143,
-  "nextExpectedScanAt": 1793652720000,
+  "lastSuccessfulScan": 1793654193482,
+  "nextExpectedScanAt": 1793654520000,
   "scanScheduleUtcMinutes": [
     7,
     22,
@@ -58,31 +58,6 @@
     52
   ],
   "logs": [
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 2x: relVol 0.79 < min"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 2x: ADX 13.6 < min and not emerging"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 2x: RSI 41.7 outside [45,74]"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 2x: relVol 1.13 < min"
-    },
-    {
-      "ts": 1788059769589,
-      "level": "info",
-      "msg": "rejected 2x: HTF not aligned (4H=neutral,1H=strong_bullish)"
-    },
     {
       "ts": 1788059769589,
       "level": "info",
@@ -1055,6 +1030,31 @@
     },
     {
       "ts": 1793652033991,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793654193483,
+      "level": "info",
+      "msg": "scan start v1.1.0 scheduled=1793653620000 actual=1793654193482 (jitter 573.5s)"
+    },
+    {
+      "ts": 1793654204045,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793654204247,
+      "level": "info",
+      "msg": "rejected 1x htf_conflict (e.g. HTF conflict (4H=strong_bearish,1H=strong_bearish))"
+    },
+    {
+      "ts": 1793654204247,
+      "level": "info",
+      "msg": "rejected 1x volume_thin (e.g. relVol 0.65 < 1.2)"
+    },
+    {
+      "ts": 1793654204247,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
