@@ -152,6 +152,8 @@
     "fallbackRr": 2.0,
     "cooldownMinutes": 60,
     "contextWeight": 10,
+    "standby": ["bias4h", "bias1d", "session", "sweep", "structureEvent", "fvg"],
+    "_standbyDoc": "Metrics still computed and displayed but scoring 0 (no stable effect, or an inverse one, in the 90-day BTC 15m study of 2026-11-03). Names: bias4h, bias1h, structureEvent, additionalBos, displacement, sweep, fvg, orderBlock, rsi, adx, volume, volatility, riskReward, bias1d, session.",
     "_doc": "Tiers: A+ >= 90, A >= 85, B+ >= 80, B >= bThreshold, C >= minScore. Target = nearest structure with RR >= minRr, else fallbackRr. One live proposal per symbol. contextWeight = 1D bias + session points, total rescaled to 100."
   },
   "retention": {

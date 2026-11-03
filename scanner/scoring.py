@@ -25,13 +25,20 @@ boundaries: A+ >= 90, A >= 85, B+ >= 80, below 80 -> rejected.
 Weighted mode (signalModel.mode = "weighted") keeps the same components,
 adds a context component (1D bias + session, weighted.contextWeight), rescales
 the total to 100 and publishes two extra tiers: B >= weighted.bThreshold and
-C >= weighted.minScore.
+C >= weighted.minScore. Metrics listed in weighted.standby score 0 and the
+scale is re-normalised over the remaining metrics.
 """
 from __future__ import annotations
 
 from typing import Optional
 
 QUALITY_TIERS = ("A+", "A", "B+", "B", "C")
+# Maximum points per metric before weighted re-normalisation (bias1d/session = contextWeight / 2).
+METRIC_MAX = {
+    "bias4h": 10, "bias1h": 10, "structureEvent": 10, "additionalBos": 5, "displacement": 5,
+    "sweep": 10, "fvg": 5, "orderBlock": 5, "rsi": 8, "adx": 7, "volume": 10,
+    "volatility": 5, "riskReward": 10, "bias1d": None, "session": None,
+}
 
 
 def is_weighted(cfg) -> bool:
@@ -44,21 +51,34 @@ def effective_min_rr(cfg) -> float:
     return cfg.get("risk.minRr", 2.5)
 
 
-def context_points(direction: str, bias1d: Optional[str], session: Optional[str], cfg) -> float:
+def context_points(direction: str, bias1d: Optional[str], session: Optional[str], cfg,
+                   standby=()) -> float:
     """1D bias alignment + trading session, both reproducible in replay."""
     half = cfg.get("weighted.contextWeight", 10) / 2.0
     bull = direction.lower() == "long"
     want = ("strong_bullish", "bullish") if bull else ("strong_bearish", "bearish")
     pts = 0.0
-    if bias1d in want:
-        pts += half
-    elif bias1d in ("neutral", "unknown", None):
-        pts += half * 0.4
-    if session in ("LONDON", "NEW_YORK"):
-        pts += half
-    elif session == "ASIA":
-        pts += half * 0.4
+    if "bias1d" not in standby:
+        if bias1d in want:
+            pts += half
+        elif bias1d in ("neutral", "unknown", None):
+            pts += half * 0.4
+    if "session" not in standby:
+        if session in ("LONDON", "NEW_YORK"):
+            pts += half
+        elif session == "ASIA":
+            pts += half * 0.4
     return round(pts, 1)
+
+
+def standby_metrics(cfg) -> set:
+    return set(cfg.get("weighted.standby", []) or []) if is_weighted(cfg) else set()
+
+
+def active_max(cfg) -> float:
+    off = standby_metrics(cfg)
+    half = cfg.get("weighted.contextWeight", 10) / 2.0
+    return sum(half if m is None else m for name, m in METRIC_MAX.items() if name not in off)
 
 
 def _clamp(v: float, lo: float, hi: float) -> float:
@@ -71,6 +91,7 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
     model = cfg.get("signalModel", {})
     d = direction.lower()  # 'long' | 'short'
     bull = d == "long"
+    off = standby_metrics(cfg)
 
     # ---------------- HTF alignment (20)
     htf = 0.0
@@ -78,11 +99,15 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
     b1 = parts.get("bias1h", {}).get("bias", "unknown")
     want4 = ("strong_bullish", "bullish") if bull else ("strong_bearish", "bearish")
     strong4 = "strong_" + ("bullish" if bull else "bearish")
-    if b4 == strong4:
+    if "bias4h" in off:
+        pass
+    elif b4 == strong4:
         htf += 10
     elif b4 in want4:
         htf += 6
-    if b1 == strong4:
+    if "bias1h" in off:
+        pass
+    elif b1 == strong4:
         htf += 10
     elif b1 in want4:
         htf += 6
@@ -93,11 +118,11 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
     # ---------------- market structure (20)
     struct = 0.0
     choch_age = parts.get("structureEventAgeBars")
-    if choch_age is not None:
+    if choch_age is not None and "structureEvent" not in off:
         struct += 10 if choch_age <= 6 else 6
-    if parts.get("additionalBos"):
+    if parts.get("additionalBos") and "additionalBos" not in off:
         struct += 5
-    if parts.get("displacement"):
+    if parts.get("displacement") and "displacement" not in off:
         struct += 5
     struct = min(struct, w.get("marketStructure", 20))
 
@@ -106,17 +131,17 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
     # it is weaker evidence than an untouched one and must not score the same.
     # Fully-invalidated zones never reach here (signals.py drops them).
     liq = 0.0
-    if parts.get("sweep"):
+    if parts.get("sweep") and "sweep" not in off:
         liq += 10
-    if parts.get("fvg"):
+    if parts.get("fvg") and "fvg" not in off:
         liq += 5 if parts.get("fvgFresh", True) else 2.5
-    if parts.get("orderBlock"):
+    if parts.get("orderBlock") and "orderBlock" not in off:
         liq += 5 if parts.get("orderBlockFresh", True) else 2.5
     liq = min(liq, w.get("liquiditySmc", 20))
 
     # ---------------- momentum (15)
     momentum = 0.0
-    rsi_v = parts.get("rsi")
+    rsi_v = parts.get("rsi") if "rsi" not in off else None
     band = (model.get("rsiLongMin", 50), model.get("rsiLongMax", 72)) if bull \
         else (model.get("rsiShortMin", 28), model.get("rsiShortMax", 50))
     if rsi_v is not None:
@@ -126,7 +151,7 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
         else:  # proportional credit, decaying with distance from the band
             dist = (lo - rsi_v) if rsi_v < lo else (rsi_v - hi)
             momentum += 8 * _clamp(1 - dist / 15.0, 0, 1)
-    adx_v = parts.get("adx")
+    adx_v = parts.get("adx") if "adx" not in off else None
     if adx_v is not None:
         di_ok = (parts.get("plusDi", 0) > parts.get("minusDi", 0)) if bull else \
                 (parts.get("minusDi", 0) > parts.get("plusDi", 0))
@@ -139,21 +164,24 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
     # ---------------- volume (10)
     rv = parts.get("relVolume")
     volume = 0.0
-    if rv is not None:
+    if rv is not None and "volume" not in off:
         volume = 10.0 * _clamp((rv - 1.0) / 1.0, 0, 1)
     volume = min(volume, w.get("volume", 10))
 
     # ---------------- volatility (5)
     atr_pct = parts.get("atrPercent")
     volatility = 0.0
-    if atr_pct is not None and model.get("minAtrPercent", 0.1) <= atr_pct <= model.get("maxAtrPercent", 3.0):
+    if (atr_pct is not None and "volatility" not in off
+            and model.get("minAtrPercent", 0.1) <= atr_pct <= model.get("maxAtrPercent", 3.0)):
         volatility = w.get("volatility", 5)
 
     # ---------------- risk / reward (10)
     rr_score = 0.0
     min_rr = effective_min_rr(cfg)
     pref_rr = risk.get("preferredRr", 3.0)
-    if rr is not None and rr >= pref_rr:
+    if "riskReward" in off:
+        pass
+    elif rr is not None and rr >= pref_rr:
         rr_score = 10.0
     elif rr is not None and rr >= min_rr:
         rr_score = 5.0 + 5.0 * (rr - min_rr) / max(pref_rr - min_rr, 1e-9)
@@ -170,9 +198,9 @@ def score_setup(direction: str, parts: dict, rr: Optional[float], cfg: Config_li
         "riskReward": round(rr_score, 1),
     }
     if is_weighted(cfg):
-        ctx = context_points(d, parts.get("bias1d"), parts.get("session"), cfg)
+        ctx = context_points(d, parts.get("bias1d"), parts.get("session"), cfg, off)
         components["context"] = ctx
-        total = round((total + ctx) * 100.0 / (100.0 + cfg.get("weighted.contextWeight", 10)), 1)
+        total = round((total + ctx) * 100.0 / active_max(cfg), 1)
     return {"score": total, "components": components}
 
 

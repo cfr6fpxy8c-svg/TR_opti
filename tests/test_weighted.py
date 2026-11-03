@@ -14,6 +14,7 @@ from conftest import long_analysis, short_analysis, make_signal
 def wcfg():
     cfg = Config.load()
     cfg._data["signalModel"]["mode"] = "weighted"
+    cfg._data["weighted"]["standby"] = []
     return cfg
 
 
@@ -28,6 +29,23 @@ def test_tiers_extend_below_80_only_in_weighted_mode(wcfg, scfg):
     assert quality_tier(55, wcfg) == "C"
     assert quality_tier(45, wcfg) is None
     assert quality_tier(75, scfg) is None
+
+
+def test_standby_metric_scores_zero_and_scale_stays_100(wcfg):
+    from scanner.scoring import score_setup
+    parts = {"bias4h": {"bias": "strong_bullish"}, "bias1h": {"bias": "strong_bullish"},
+             "structureEventAgeBars": 2, "additionalBos": True, "displacement": True,
+             "sweep": True, "fvg": True, "orderBlock": True, "rsi": 60, "adx": 30,
+             "plusDi": 30, "minusDi": 10, "relVolume": 2.5, "atrPercent": 0.5,
+             "bias1d": "strong_bullish", "session": "LONDON"}
+    full = score_setup("long", parts, 3.5, wcfg)
+    assert full["score"] == pytest.approx(100.0)
+    wcfg._data["weighted"]["standby"] = ["sweep", "session"]
+    reduced = score_setup("long", parts, 3.5, wcfg)
+    assert reduced["components"]["liquiditySmc"] == full["components"]["liquiditySmc"] - 10
+    assert reduced["score"] == pytest.approx(100.0)
+    parts["fvg"] = False
+    assert score_setup("long", parts, 3.5, wcfg)["score"] < 100.0
 
 
 def test_fixed_rr_target_when_no_structure(wcfg, scfg):

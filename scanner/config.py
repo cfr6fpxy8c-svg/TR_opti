@@ -75,7 +75,7 @@ DEFAULTS: dict[str, Any] = {
     "dedupe": {"symbolCooldownMinutes": 240, "sameDirectionOnly": True, "maxActiveSignalsTotal": 12},
     "weighted": {
         "minScore": 50, "bThreshold": 70, "minRr": 1.5, "fallbackRr": 2.0,
-        "cooldownMinutes": 60, "contextWeight": 10,
+        "cooldownMinutes": 60, "contextWeight": 10, "standby": [],
     },
     "performance": {"monteCarloBlockLength": None},
     "retention": {"marketSnapshots": 288, "logEntries": 200},
@@ -142,6 +142,10 @@ class Config:
             errors.append("weighted thresholds must satisfy 0 < minScore <= bThreshold <= bPlus")
         if not (0 < w.get("minRr", 0) <= w.get("fallbackRr", 0)):
             errors.append("weighted.minRr/fallbackRr invalid")
+        from .scoring import METRIC_MAX
+        unknown = [m for m in w.get("standby", []) if m not in METRIC_MAX]
+        if unknown:
+            errors.append(f"weighted.standby has unknown metrics: {unknown}")
         min_stop = risk.get("minStopAtrMultiple", 0)
         if min_stop <= 0 or min_stop > risk.get("maxStopAtrMultiple", 0):
             errors.append("risk.minStopAtrMultiple must be > 0 and <= maxStopAtrMultiple")
