@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1793681100000,
-    "executedAt": 1793681143689,
+    "scheduledAt": 1793682000000,
+    "executedAt": 1793682078207,
     "trigger": "schedule",
-    "jitterSeconds": 43.7,
-    "durationMs": 10973,
+    "jitterSeconds": 78.2,
+    "durationMs": 11023,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793681099999,
-      "ageSeconds": 43.7
+      "newestCandleCloseMs": 1793681999999,
+      "ageSeconds": 78.2
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1793681143689,
-  "nextExpectedScanAt": 1793682000000,
+  "lastSuccessfulScan": 1793682078207,
+  "nextExpectedScanAt": 1793682900000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 1x: ADX 11.0 < min and not emerging"
-    },
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 1x: RSI 39.6 outside [45,74]"
-    },
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 1x: RSI 39.5 outside [45,74]"
-    },
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 1x: RSI 43.3 outside [45,74]"
-    },
     {
       "ts": 1788067071205,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793681154641,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793682078210,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793682000000 actual=1793682078207 (jitter 78.2s)"
+    },
+    {
+      "ts": 1793682089000,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793682089205,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1793682089205,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
