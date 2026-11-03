@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1793689200000,
-    "executedAt": 1793689288213,
+    "scheduledAt": 1793690100000,
+    "executedAt": 1793690144509,
     "trigger": "schedule",
-    "jitterSeconds": 88.2,
-    "durationMs": 12228,
+    "jitterSeconds": 44.5,
+    "durationMs": 14339,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793689199999,
-      "ageSeconds": 88.2
+      "newestCandleCloseMs": 1793690099999,
+      "ageSeconds": 44.5
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1793689288213,
-  "nextExpectedScanAt": 1793690100000,
+  "lastSuccessfulScan": 1793690144509,
+  "nextExpectedScanAt": 1793691000000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1793640628562,
-      "level": "info",
-      "msg": "scan start v1.1.0 scheduled=1793640120000 actual=1793640628561 (jitter 508.6s)"
-    },
-    {
-      "ts": 1793640638955,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1793640639119,
-      "level": "info",
-      "msg": "rejected 1x htf_conflict (e.g. HTF conflict (4H=strong_bearish,1H=strong_bearish))"
-    },
-    {
-      "ts": 1793640639119,
-      "level": "info",
-      "msg": "rejected 1x volume_thin (e.g. relVol 1.13 < 1.2)"
-    },
     {
       "ts": 1793640639119,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793689300417,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793690144513,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793690100000 actual=1793690144509 (jitter 44.5s)"
+    },
+    {
+      "ts": 1793690158175,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793690158825,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1793690158825,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
