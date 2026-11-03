@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1793668500000,
-    "executedAt": 1793668544909,
+    "scheduledAt": 1793669400000,
+    "executedAt": 1793669465551,
     "trigger": "schedule",
-    "jitterSeconds": 44.9,
-    "durationMs": 10906,
+    "jitterSeconds": 65.6,
+    "durationMs": 12723,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793668499999,
-      "ageSeconds": 44.9
+      "newestCandleCloseMs": 1793669399999,
+      "ageSeconds": 65.6
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1793668544909,
-  "nextExpectedScanAt": 1793669400000,
+  "lastSuccessfulScan": 1793669465551,
+  "nextExpectedScanAt": 1793670300000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 3x: relVol 1.05 < min"
-    },
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 2x: relVol 1.12 < min"
-    },
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 2x: relVol 0.83 < min"
-    },
-    {
-      "ts": 1788067071205,
-      "level": "info",
-      "msg": "rejected 2x: HTF not aligned (4H=strong_bearish,1H=bullish)"
-    },
     {
       "ts": 1788067071205,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793668555791,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793669465555,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793669400000 actual=1793669465551 (jitter 65.6s)"
+    },
+    {
+      "ts": 1793669477648,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793669478254,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1793669478254,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
