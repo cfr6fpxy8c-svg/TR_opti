@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1793702700000,
-    "executedAt": 1793702749245,
+    "scheduledAt": 1793703600000,
+    "executedAt": 1793703678263,
     "trigger": "schedule",
-    "jitterSeconds": 49.2,
-    "durationMs": 10446,
+    "jitterSeconds": 78.3,
+    "durationMs": 11014,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -44,13 +44,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793702699999,
-      "ageSeconds": 49.2
+      "newestCandleCloseMs": 1793703599999,
+      "ageSeconds": 78.3
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1793702749245,
-  "nextExpectedScanAt": 1793703600000,
+  "lastSuccessfulScan": 1793703678263,
+  "nextExpectedScanAt": 1793704500000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -58,31 +58,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1793659543764,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1793659500000 actual=1793659543761 (jitter 43.8s)"
-    },
-    {
-      "ts": 1793659554797,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1793659555062,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1793659555062,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
-    {
-      "ts": 1793660478626,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1793660400000 actual=1793660478623 (jitter 78.6s)"
-    },
     {
       "ts": 1793660488997,
       "level": "info",
@@ -1055,6 +1030,31 @@
     },
     {
       "ts": 1793702759675,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793703678267,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793703600000 actual=1793703678263 (jitter 78.3s)"
+    },
+    {
+      "ts": 1793703688967,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793703689253,
+      "level": "info",
+      "msg": "rejected 1x score_below_threshold (e.g. score 38.9 < 50)"
+    },
+    {
+      "ts": 1793703689253,
+      "level": "info",
+      "msg": "rejected 1x risk_model_rejected (e.g. risk model rejected: transaction cost too high (0.32R of risk per round trip > 0.25R cap))"
+    },
+    {
+      "ts": 1793703689253,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
