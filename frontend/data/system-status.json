@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1793682900000,
-    "executedAt": 1793682944818,
+    "scheduledAt": 1793683800000,
+    "executedAt": 1793683863596,
     "trigger": "schedule",
-    "jitterSeconds": 44.8,
-    "durationMs": 10706,
+    "jitterSeconds": 63.6,
+    "durationMs": 10424,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1793682899999,
-      "ageSeconds": 44.8
+      "newestCandleCloseMs": 1793683799999,
+      "ageSeconds": 63.6
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1793682944818,
-  "nextExpectedScanAt": 1793683800000,
+  "lastSuccessfulScan": 1793683863596,
+  "nextExpectedScanAt": 1793684700000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1793623955353,
-      "level": "info",
-      "msg": "rejected 1x htf_not_aligned (e.g. HTF not aligned (4H=strong_bearish,1H=neutral))"
-    },
-    {
-      "ts": 1793623955353,
-      "level": "info",
-      "msg": "rejected 1x no_structure_event (e.g. no CHoCH/BOS after sweep)"
-    },
-    {
-      "ts": 1793623955353,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
-    {
-      "ts": 1793625854733,
-      "level": "info",
-      "msg": "scan start v1.1.0 scheduled=1793625300000 actual=1793625854733 (jitter 554.7s)"
-    },
     {
       "ts": 1793625865496,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793682955500,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793683863599,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793683800000 actual=1793683863596 (jitter 63.6s)"
+    },
+    {
+      "ts": 1793683873830,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793683873997,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1793683873997,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
