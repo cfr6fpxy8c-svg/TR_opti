@@ -1,16 +1,82 @@
 {
   "version": 1,
   "startedAt": 1793822562699,
-  "analyses": [],
+  "analyses": [
+    {
+      "barClose": 1793822400000,
+      "analyzedAt": 1793823368080,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Congr\u00e8s d\u00e9mocrate apr\u00e8s les midterms du 3 nov. 2026, pesant sur le dollar mais dopant les actions. La Fed maintient ses taux \u00e0 3,75%-4%. L'inqui\u00e9tude persiste apr\u00e8s le piratage g\u00e9ant de Binance (6,3 Mds$), entra\u00eenant de fortes sorties d'ETF spot (1,16 Md$ en 3 sessions).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 51,
+          "reason": "Rebond post-midterms au-dessus de 78k$ malgr\u00e9 la victoire d\u00e9mocrate. Les sorties d'ETF spot diminuent (115M$ le 3 nov) et l'activit\u00e9 des options montre un biais haussier, mais la EMA200 4H \u00e0 80,4k$ fait office de forte r\u00e9sistance technique.",
+          "risks": "La poursuite des retraits d'ETF, l'impact psychologique du piratage de Binance, et le rejet sous les 80k$.",
+          "price0": 79956.8,
+          "breakout": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "Rebond \u00e0 2405$, mais la pression vendeuse domine. Les ETF Ethereum spot ont subi des sorties massives (1,6 Md$ en octobre) et le hacker de Mercado Bitcoin convertit activement ses jetons vol\u00e9s en ETH pour les liquider (18M$).",
+          "risks": "Sorties continues de l'ETF ETHA de BlackRock, liquidation par les hackers, et r\u00e9sistance forte \u00e0 2415$.",
+          "price0": 2405.01,
+          "breakout": null
+        },
+        "XRPUSDT": {
+          "direction": "UP",
+          "probUp": 55,
+          "reason": "Accumulation record par les baleines (portefeuilles >1M XRP au plus haut de 2026 \u00e0 2147). L'activation de fixCleanup3_4_0 sur le XRPL et l'offre de garde de RLUSD par Standard Chartered soutiennent l'\u00e9cosyst\u00e8me.",
+          "risks": "Lib\u00e9ration mensuelle d'un milliard de jetons XRP de l'escrow de Ripple et retour de la volatilit\u00e9 globale.",
+          "price0": 1.2994,
+          "breakout": null
+        },
+        "BNBUSDT": {
+          "direction": "UP",
+          "probUp": 53,
+          "reason": "Rebond solide sur le support des 680$. Binance montre sa r\u00e9silience en confirmant des r\u00e9serves \u00e0 1:1, en remboursant 95% des actifs affect\u00e9s par le piratage de 6,3 Mds$ et en restaurant progressivement les retraits.",
+          "risks": "Retraits massifs persistants hors de l'\u00e9change (d\u00e9j\u00e0 3,6 Mds$ de sorties nettes) et crise de confiance.",
+          "price0": 714.36,
+          "breakout": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 49,
+          "reason": "Stabilisation fragile autour de 94$. Les flux des ETF SOL sont au point mort (44M$ de sorties sur 5 jours) et les hackers de Binance convertissent du SOL vol\u00e9 en BTC. Une faille Linux critique cible aussi les validateurs.",
+          "risks": "Chute vers le support des 88,8$ si la faille n'est pas corrig\u00e9e, et ventes de SOL par les pirates.",
+          "price0": 94.48,
+          "breakout": null
+        }
+      },
+      "queries": [
+        "FOMC meeting November 2026 schedule",
+        "US midterm elections November 3 2026",
+        "crypto news November 2024 election ETF flows",
+        "BNB news November 2026",
+        "SOL news November 2026",
+        "XRP news November 2026",
+        "ETH news November 2026"
+      ],
+      "sources": [],
+      "usage": {
+        "promptTokenCount": 1096,
+        "candidatesTokenCount": 859,
+        "totalTokenCount": 6763
+      }
+    }
+  ],
   "attempts": {
-    "1793822400000": 1
+    "1793822400000": 2
   },
-  "generatedAt": 1793822562699,
+  "generatedAt": 1793823368080,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 0,
-    "totalTokens": 0,
+    "analyses": 1,
+    "totalTokens": 6763,
     "direction": {
       "scored": 0,
       "called": 0,
@@ -68,9 +134,9 @@
     }
   },
   "lastRun": {
-    "at": 1793822562699,
-    "status": "error",
-    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"This API method requires billing to be enabled. Please enable billing on project #opti-trade-513710 by visiting https://console.developers.google.com/billing/enab",
+    "at": 1793823368080,
+    "status": "ok",
+    "error": null,
     "barClose": 1793822400000
   }
 }
