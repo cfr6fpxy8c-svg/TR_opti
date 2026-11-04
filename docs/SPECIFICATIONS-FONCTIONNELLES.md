@@ -142,7 +142,7 @@ Indicateurs de performance :
 
 ## 9. Dashboard
 
-Deux vues :
+Trois vues :
 
 **Analyse BTC**
 - État du système : dernier scan, prochain créneau, santé des données et de l'API.
@@ -155,6 +155,10 @@ Deux vues :
 **Historique des signaux**
 - Tableau filtrable (période, sens, palier, résultat, recherche) avec entrée, TP, SL, gain/risque,
   statut, résultat en R et durée ; marqueur « replay » ; export CSV.
+
+**Tendance 4H · simulation** (voir § 13)
+- Capital fictif valorisé, positions ouvertes (entrée, stop initial, niveau de sortie, résultat latent,
+  financement), journal des trades, dernières cassures prises ou écartées avec le motif, règles appliquées.
 
 Les heures sont affichées en heure de Paris ; les créneaux de scan sont calculés en UTC.
 
@@ -183,3 +187,27 @@ aucun signal sur BTC dans les conditions actuelles.
   sont pas significatifs (le nombre de trades est toujours affiché).
 - Données : Binance en priorité ; en cas de blocage, bascule possible vers un miroir ou une autre
   plateforme (indiqué dans l'état du système).
+
+## 13. Tendance 4H (simulation)
+
+Stratégie de suivi de tendance retenue après les études de recherche (seule approche positive sur
+2019-2026 après frais, glissement et financement). Elle tourne **en simulation** : capital fictif de
+500 €, aucun ordre réel. Période de test prévue : 1 mois, puis comparaison avec le backtest.
+
+- **Cryptos** : BTC, ETH, XRP, BNB, SOL (contrats perpétuels USDT).
+- **Signal** : une bougie 4H clôture au-dessus du plus haut (achat) ou sous le plus bas (vente) des
+  20 bougies précédentes.
+- **Filtres** : dans le sens de BTC par rapport à sa moyenne mobile 200 en 4H ; volume de la bougie
+  de signal > 2 × la moyenne des 20 précédentes ; pas d'entrée si le financement dépasse 0,03 % par
+  8 h dans le sens du trade.
+- **Entrée** à l'ouverture de la bougie suivante ; **stop initial** à 2 × ATR(14).
+- **Sortie** : clôture 4H sous le plus bas (achat) ou au-dessus du plus haut (vente) des 10 dernières
+  bougies, ou stop touché (au prix d'ouverture si le marché saute le stop).
+- **Taille** : 1 % du capital réalisé perdu si le stop est touché ; une position par crypto,
+  5 au maximum ; exposition totale ≤ 5 × le capital.
+- **Coûts simulés** : frais 0,05 % et glissement 0,025 % par ordre, financement à chaque
+  règlement de 8 h (dernier taux publié).
+- **Démarrage** sans reconstitution du passé ; si des scans manquent, les bougies 4H clôturées
+  entre-temps sont traitées au scan suivant, sans doublon.
+- Profil attendu (backtest) : environ 3 trades par semaine, environ 1/3 de trades gagnants, séries de
+  pertes de 10 à 15 trades possibles, pire baisse historique d'environ −30 à −40 %.

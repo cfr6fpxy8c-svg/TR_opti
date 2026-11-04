@@ -65,6 +65,11 @@ jobs:
         run: python -m scanner.main --symbols BTCUSDT
         continue-on-error: true
 
+      - name: Run Tendance 4H (paper trading)
+        id: trend4h
+        run: python -m scanner.trend4h
+        continue-on-error: true
+
       - name: Validate published JSON
         run: python -m scanner.validate_data
 
@@ -82,12 +87,14 @@ jobs:
             data/market-snapshots.json
             data/latest-chart.json
             data/universe-snapshot.json
+            data/trend4h-paper.json
             frontend/data/signals.json
             frontend/data/performance.json
             frontend/data/system-status.json
             frontend/data/market-snapshots.json
             frontend/data/latest-chart.json
             frontend/data/universe-snapshot.json
+            frontend/data/trend4h-paper.json
             frontend/data/badge.json
 
       - name: Propagate scan failure

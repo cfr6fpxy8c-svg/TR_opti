@@ -32,6 +32,7 @@
 <nav class="view-tabs" aria-label="Navigation principale">
   <button class="view-tab active" id="tab-analysis" type="button" aria-selected="true">Analyse BTC</button>
   <button class="view-tab" id="tab-signals" type="button" aria-selected="false">Historique des signaux <span id="tab-signal-count">0</span></button>
+  <button class="view-tab" id="tab-trend" type="button" aria-selected="false">Tendance 4H · simulation</button>
 </nav>
 </header>
 
@@ -398,6 +399,64 @@
       </div>
       <div class="muted small history-footnote">Les résultats sont simulés sur les données de marché ; aucun ordre réel n’est passé. « Indéterminé » signifie que TP et SL ont été touchés dans la même bougie sans ordre résolvable.</div>
     </div>
+  </section>
+</div>
+
+<div class="tab-view hidden" id="view-trend">
+  <section id="trend-summary" class="section">
+    <div class="section-head">
+      <div><h2>Tendance 4H · simulation</h2>
+        <p class="muted small" id="trend-subtitle">Capital fictif · aucun ordre réel n’est passé.</p></div>
+      <span class="muted" id="trend-updated">—</span>
+    </div>
+    <div class="notice hidden" id="trend-notice"></div>
+    <div class="grid grid-status">
+      <div class="card stat"><span class="stat-label">Capital (positions valorisées)</span><span class="stat-value" id="tr-equity">—</span><span class="stat-sub" id="tr-equity-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Positions ouvertes</span><span class="stat-value" id="tr-open">—</span><span class="stat-sub" id="tr-open-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Trades clôturés</span><span class="stat-value" id="tr-trades">—</span><span class="stat-sub" id="tr-trades-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Pire baisse</span><span class="stat-value" id="tr-dd">—</span><span class="stat-sub" id="tr-started">—</span></div>
+    </div>
+  </section>
+
+  <section id="trend-positions" class="section">
+    <div class="section-head"><h2>Positions ouvertes</h2></div>
+    <div class="card table-wrap">
+      <table class="table" id="trend-positions-table">
+        <thead><tr><th>Ouverte le</th><th>Symbole</th><th>Sens</th><th>Entrée</th><th>Stop initial</th>
+          <th>Niveau de sortie</th><th>Dernier cours</th><th>Résultat latent</th><th>Financement</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty small hidden" id="trend-positions-empty">Aucune position ouverte.</div>
+    </div>
+  </section>
+
+  <section id="trend-journal" class="section">
+    <div class="section-head"><h2>Journal des trades</h2></div>
+    <div class="card table-wrap">
+      <table class="table" id="trend-trades-table">
+        <thead><tr><th>Clôturé le</th><th>Symbole</th><th>Sens</th><th>Entrée</th><th>Sortie</th>
+          <th>Motif</th><th>Durée</th><th>Résultat</th><th>Gain / perte</th><th>Capital après</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty small hidden" id="trend-trades-empty">Aucun trade clôturé pour le moment.</div>
+    </div>
+  </section>
+
+  <section id="trend-evaluations" class="section">
+    <div class="section-head"><h2>Dernières cassures détectées <span class="muted small">(prises ou écartées par les filtres)</span></h2></div>
+    <div class="card table-wrap">
+      <table class="table" id="trend-evaluations-table">
+        <thead><tr><th>Bougie 4H</th><th>Symbole</th><th>Sens</th><th>Clôture</th><th>Volume</th>
+          <th>Sens de BTC</th><th>Décision</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty small hidden" id="trend-evaluations-empty">Aucune cassure détectée depuis le démarrage.</div>
+    </div>
+  </section>
+
+  <section id="trend-rules" class="section">
+    <div class="section-head"><h2>Règles appliquées</h2></div>
+    <div class="card"><ul class="small" id="trend-rules-list"></ul></div>
   </section>
 </div>
 

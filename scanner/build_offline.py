@@ -49,6 +49,7 @@ def build(frontend_dir: Optional[Path] = None, data_dir: Optional[Path] = None) 
         "screener": _read_json(data / "universe-snapshot.json", {"rows": []}),
         "performance": _read_json(data / "performance.json", None),
         "chart": _read_json(data / "latest-chart.json", None),
+        "trend": _read_json(data / "trend4h-paper.json", None),
     }
     # safe for embedding inside a <script> tag
     blob = json.dumps(payload, separators=(",", ":")).replace("<", "\\u003c")

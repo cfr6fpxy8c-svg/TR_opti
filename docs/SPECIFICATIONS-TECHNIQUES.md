@@ -92,6 +92,7 @@ Déroulé d'un scan (`scanner/main.py`, `scan_once`) :
 | `market-snapshots.json` | Instantanés de marché (rétention 288). |
 | `latest-chart.json` | Bougies 15 min et niveaux pour le graphique BTC. |
 | `universe-snapshot.json` | Tableau de l'univers scanné. |
+| `trend4h-paper.json` | État de la simulation Tendance 4H : capital, positions, ordres en attente, trades, cassures évaluées, courbe de capital, statistiques, dernier passage. |
 | `frontend/data/badge.json` | Badge d'état (heure UTC, santé). |
 
 Champs principaux d'une proposition : `id`, `symbol`, `direction`, `timeframe`, `quality`, `score`,
@@ -115,7 +116,7 @@ Les champs de définition (prix, niveaux, biais, horaires) sont **immuables** ap
 
 | Workflow | Déclencheurs | Contenu |
 |---|---|---|
-| `scanner.yml` | `workflow_dispatch` (source `manual`/`cron`), push sur `scanner/**`, `config/**` | Job **scan** (lecture seule) : scan BTC, validation, artefact. Job **publish** (`contents: write`) : copie de la liste blanche de fichiers, commit `github-actions[bot]`, push avec reprise. `SCAN_TRIGGER=schedule` si `source=cron`. |
+| `scanner.yml` | `workflow_dispatch` (source `manual`/`cron`), push sur `scanner/**`, `config/**` | Job **scan** (lecture seule) : scan BTC, simulation Tendance 4H, validation, artefact. Job **publish** (`contents: write`) : copie de la liste blanche de fichiers, commit `github-actions[bot]`, push avec reprise. `SCAN_TRIGGER=schedule` si `source=cron`. |
 | `tests.yml` | push, pull request, manuel | Outils QA verrouillés par hash, contrôles frontend, pytest (3.11, 3.12), compilation, validation des données, cohérence du README. |
 | `security.yml` | push, pull request, manuel, planification hebdomadaire GitHub (non fiable sur ce dépôt) | Bandit, pip-audit, contrôles frontend, actionlint, gitleaks (binaires vérifiés par SHA-256). |
 | Dependabot | hebdomadaire | Mises à jour pip et GitHub Actions. |
@@ -156,6 +157,25 @@ TP/SL, ambiguïté résolue en 1 min en direct (sinon `AMBIGUOUS`), expiration, 
 Taux de réussite (gagnées / résolues), profit factor, espérance, Sharpe en R, séries, drawdown,
 calibration par palier avec **intervalle de Wilson 95 %**, Monte Carlo par blocs (conserve les séries
 de pertes), tout en brut et en net.
+
+### 8.5 Tendance 4H en simulation (`scanner/trend4h.py`)
+- Étape distincte du workflow (`python -m scanner.trend4h`, `continue-on-error`), indépendante du scan
+  BTC 15 min ; configuration `trend4h` (validée par `Config.validate`).
+- À chaque passage : bougies 4H (`klineLimit` = 1 000) des symboles + `trendSymbol`, taux de
+  financement (`premiumIndex`, un appel). `step()` est une fonction pure : elle traite dans l'ordre
+  chronologique toutes les bougies clôturées après `lastBarClose[symbole]` (rattrapage des scans
+  manqués, aucun doublon en cas de relance).
+- Par bougie : exécution des entrées en attente à l'ouverture, gestion de la position (stop sur
+  plus haut / plus bas, prix d'ouverture en cas de saut après la bougie d'entrée ; sortie suiveuse
+  sur la clôture à partir de la bougie suivant l'entrée), puis évaluation d'une cassure (pas sur la
+  bougie de sortie) avec filtres tendance / volume / financement et limites positions / levier.
+- Premier passage : point de départ fixé à l'avant-dernière bougie clôturée (pas de backfill).
+- Si le flux de `trendSymbol` est indisponible, aucune bougie n'est consommée ; l'état est conservé
+  avec `lastRun.status = "degraded"`.
+- Résultat d'un trade : `R brut − 2 × (frais + glissement) × entrée / risque`, moins le financement
+  cumulé ; le capital réalisé sert de base au risque suivant.
+- Le moteur reproduit à l'identique le backtest de recherche sur la même période (contrôle effectué
+  sur les 30 derniers jours au déploiement).
 
 ## 9. Replay / backtest (`scanner/replay.py`)
 

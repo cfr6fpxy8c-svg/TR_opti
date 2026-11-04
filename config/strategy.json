@@ -194,5 +194,26 @@
     "enabled": true,
     "requireAlignment": false,
     "_doc": "1D macro bias is fetched, stored and displayed. requireAlignment=true would hard-reject signals against a strong 1D bias (OFF by default to preserve current behaviour)."
+  },
+  "trend4h": {
+    "enabled": true,
+    "symbols": ["BTCUSDT", "ETHUSDT", "XRPUSDT", "BNBUSDT", "SOLUSDT"],
+    "trendSymbol": "BTCUSDT",
+    "channelBars": 20,
+    "trailBars": 10,
+    "atrPeriod": 14,
+    "stopAtr": 2.0,
+    "trendEma": 200,
+    "volumeLookback": 20,
+    "volumeMultiple": 2.0,
+    "maxFundingRate": 0.0003,
+    "riskPct": 1.0,
+    "maxPositions": 5,
+    "maxLeverage": 5.0,
+    "startCapital": 500.0,
+    "takerFeePct": 0.05,
+    "slippagePct": 0.025,
+    "klineLimit": 1000,
+    "_doc": "Tendance 4H en simulation (aucun ordre). Signal = cloture 4H au-dela du canal channelBars, dans le sens de trendSymbol vs EMA trendEma, volume > volumeMultiple x moyenne, financement < maxFundingRate dans le sens du trade. Entree a l'ouverture suivante, stop stopAtr x ATR, sortie a la cloture au-dela du canal trailBars oppose. Risque riskPct % du capital realise par trade, maxPositions, exposition <= maxLeverage x capital."
   }
 }

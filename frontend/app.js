@@ -56,6 +56,7 @@ const fmtDur = (ms) => {
 
 const state = {
   signals: [], status: null, snapshots: [], performance: null, screener: null, latestChart: null,
+  trend: null,
   lastDataUpdate: null, embeddedLoaded: false,
   livePrices: {}, liveOk: false, liveAt: null,
   activeFilter: new Set(QUALITIES),
@@ -73,12 +74,13 @@ async function loadJSON(name) {
 
 async function refreshData() {
   try {
-    const [signals, status, snapshots, performance, screener, latestChart] = await Promise.all([
+    const [signals, status, snapshots, performance, screener, latestChart, trend] = await Promise.all([
       loadJSON("signals.json"), loadJSON("system-status.json"),
       loadJSON("market-snapshots.json").catch(() => []),
       loadJSON("performance.json").catch(() => null),
       loadJSON("universe-snapshot.json").catch(() => null),
       loadJSON("latest-chart.json").catch(() => null),
+      loadJSON("trend4h-paper.json").catch(() => null),
     ]);
     state.signals = Array.isArray(signals?.signals) ? signals.signals : [];
     state.status = status || null;
@@ -86,6 +88,7 @@ async function refreshData() {
     state.performance = performance;
     state.screener = screener;
     state.latestChart = latestChart;
+    state.trend = trend;
     state.lastDataUpdate = Date.now();
     state.embeddedLoaded = false;
     $("preview-notice").classList.add("hidden");
@@ -101,6 +104,7 @@ async function refreshData() {
       state.performance = d.performance || null;
       state.screener = d.screener || null;
       state.latestChart = d.chart || null;
+      state.trend = d.trend || null;
       state.lastDataUpdate = d.builtAt || null;
       state.embeddedLoaded = true;
       renderAll();
@@ -146,6 +150,7 @@ function renderAll() {
   renderPerformance();
   renderHistory();
   renderLogs();
+  renderTrend();
   $("tab-signal-count").textContent = state.signals.length;
   $("ft-version").textContent = state.status?.version ? `engine v${state.status.version}` : "";
 }
@@ -819,19 +824,112 @@ function renderHistory() {
 }
 
 function selectView(view) {
-  const analysis = view === "analysis";
-  $("view-analysis").classList.toggle("hidden", !analysis);
-  $("view-signals").classList.toggle("hidden", analysis);
-  $("tab-analysis").classList.toggle("active", analysis);
-  $("tab-signals").classList.toggle("active", !analysis);
-  $("tab-analysis").setAttribute("aria-selected", String(analysis));
-  $("tab-signals").setAttribute("aria-selected", String(!analysis));
-  if (!analysis) renderHistory();
+  for (const name of ["analysis", "signals", "trend"]) {
+    const on = name === view;
+    $(`view-${name}`).classList.toggle("hidden", !on);
+    $(`tab-${name}`).classList.toggle("active", on);
+    $(`tab-${name}`).setAttribute("aria-selected", String(on));
+  }
+  if (view === "signals") renderHistory();
+  if (view === "trend") renderTrend();
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 $("tab-analysis").addEventListener("click", () => selectView("analysis"));
 $("tab-signals").addEventListener("click", () => selectView("signals"));
+$("tab-trend").addEventListener("click", () => selectView("trend"));
+
+/* ------------------------------------------------- Tendance 4H (simulation) */
+const fmtEur = (v) => v == null || !Number.isFinite(Number(v)) ? "—"
+  : Number(v).toLocaleString("fr-FR", { style: "currency", currency: "EUR", maximumFractionDigits: 2 });
+const fmtSigned = (v, digits = 2, suffix = "") => v == null || !Number.isFinite(Number(v)) ? "—"
+  : `${Number(v) > 0 ? "+" : ""}${Number(v).toFixed(digits)}${suffix}`;
+const sideClass = (side) => side === "LONG" ? "dir-l" : "dir-s";
+const EXIT_LABELS = { STOP: "Stop touché", TRAIL: "Sortie suiveuse" };
+
+function renderTrend() {
+  const t = state.trend;
+  const notice = $("trend-notice");
+  if (!t || !t.version) {
+    notice.textContent = "La simulation démarrera au prochain scan : aucune donnée pour le moment.";
+    notice.classList.remove("hidden");
+    return;
+  }
+  const p = t.params || {};
+  const s = t.stats || {};
+  const run = t.lastRun || {};
+  const errors = Array.isArray(run.errors) ? run.errors : [];
+  notice.textContent = errors.length ? `Dernier passage dégradé : ${errors.join(" · ")}` : "";
+  notice.classList.toggle("hidden", !errors.length);
+  $("trend-updated").textContent = `Mis à jour ${fmtAgo(t.generatedAt)}`;
+  $("trend-subtitle").textContent = `Capital fictif de départ ${fmtEur(t.startCapital)} · risque ${Number(p.riskPct)} % par trade · aucun ordre réel n’est passé.`;
+  $("tr-equity").textContent = fmtEur(s.equityMarked);
+  $("tr-equity-sub").textContent = `${fmtSigned(s.returnPct, 2, " %")} · réalisé ${fmtEur(t.equity)}`;
+  $("tr-open").textContent = `${Number(s.openPositions ?? 0)} / ${Number(p.maxPositions ?? 0)}`;
+  $("tr-open-sub").textContent = s.exposure != null ? `exposition ${Number(s.exposure).toFixed(2)}× le capital` : "—";
+  $("tr-trades").textContent = String(Number(s.trades ?? 0));
+  $("tr-trades-sub").textContent = s.trades
+    ? `${Math.round(100 * Number(s.winRate))} % gagnants · ${fmtSigned(s.avgR)}R en moyenne` : "aucun pour le moment";
+  $("tr-dd").textContent = `${Number(s.maxDrawdownPct ?? 0).toFixed(1)} %`;
+  $("tr-started").textContent = `démarrée le ${fmtTime(t.startedAt)}`;
+
+  const positions = Array.isArray(t.positions) ? t.positions : [];
+  $("trend-positions-empty").classList.toggle("hidden", positions.length > 0);
+  document.querySelector("#trend-positions-table tbody").innerHTML = positions.map(pos => `<tr>
+      <td>${fmtTime(pos.entryTime)}</td>
+      <td><b>${escapeHtml(pos.symbol)}</b></td>
+      <td class="${sideClass(pos.side)}">${escapeHtml(pos.side)}</td>
+      <td>${fmtPrice(pos.entryPrice)}</td>
+      <td>${fmtPrice(pos.initialStop)}</td>
+      <td>${fmtPrice(pos.trailLevel)}</td>
+      <td>${fmtPrice(pos.markPrice)}</td>
+      <td>${fmtSigned(pos.unrealizedR)}R</td>
+      <td>${fmtEur(-Number(pos.fundingPaid || 0))}</td>
+    </tr>`).join("");
+
+  const trades = (Array.isArray(t.trades) ? t.trades : []).slice().reverse();
+  $("trend-trades-empty").classList.toggle("hidden", trades.length > 0);
+  document.querySelector("#trend-trades-table tbody").innerHTML = trades.slice(0, 300).map(tr => `<tr>
+      <td>${fmtTime(tr.exitTime)}</td>
+      <td><b>${escapeHtml(tr.symbol)}</b></td>
+      <td class="${sideClass(tr.side)}">${escapeHtml(tr.side)}</td>
+      <td>${fmtPrice(tr.entryPrice)}</td>
+      <td>${fmtPrice(tr.exitPrice)}</td>
+      <td>${escapeHtml(EXIT_LABELS[tr.exitReason] || tr.exitReason)}</td>
+      <td>${fmtDur(Number(tr.exitTime) - Number(tr.entryTime))}</td>
+      <td>${fmtSigned(tr.rNet)}R</td>
+      <td>${fmtEur(tr.pnl)}</td>
+      <td>${fmtEur(tr.equityAfter)}</td>
+    </tr>`).join("");
+
+  const evals = (Array.isArray(t.evaluations) ? t.evaluations : []).slice().reverse();
+  $("trend-evaluations-empty").classList.toggle("hidden", evals.length > 0);
+  document.querySelector("#trend-evaluations-table tbody").innerHTML = evals.slice(0, 50).map(e => {
+    const reasons = Array.isArray(e.reasons) ? e.reasons : [];
+    return `<tr>
+      <td>${fmtTime(e.barClose)}</td>
+      <td><b>${escapeHtml(e.symbol)}</b></td>
+      <td class="${sideClass(e.side)}">${escapeHtml(e.side)}</td>
+      <td>${fmtPrice(e.close)}</td>
+      <td>${e.relVolume != null ? `${Number(e.relVolume).toFixed(2)}×` : "—"}</td>
+      <td>${e.trendAligned == null ? "—" : (e.trendAligned ? "dans le sens" : "contre")}</td>
+      <td>${e.taken ? "<b>Prise</b>" : escapeHtml(`Écartée : ${reasons.join(", ")}`)}</td>
+    </tr>`;
+  }).join("");
+
+  const symbols = Array.isArray(p.symbols) ? p.symbols.map(escapeHtml).join(", ") : "—";
+  $("trend-rules-list").innerHTML = [
+    `Cryptos suivies : ${symbols}.`,
+    `Signal : une bougie 4H clôture au-dessus du plus haut (achat) ou sous le plus bas (vente) des ${Number(p.channelBars)} bougies précédentes.`,
+    `Filtre 1 : uniquement dans le sens de ${escapeHtml(p.trendSymbol)} par rapport à sa moyenne mobile ${Number(p.trendEma)} en 4H.`,
+    `Filtre 2 : volume de la bougie de signal supérieur à ${Number(p.volumeMultiple)} × la moyenne des ${Number(p.volumeLookback)} précédentes.`,
+    `Filtre 3 : pas d’entrée si le financement dépasse ${(Number(p.maxFundingRate) * 100).toFixed(3)} % par 8 h dans le sens du trade.`,
+    `Entrée à l’ouverture de la bougie suivante, stop initial à ${Number(p.stopAtr)} × ATR(${Number(p.atrPeriod)}).`,
+    `Sortie : clôture 4H sous le plus bas (achat) ou au-dessus du plus haut (vente) des ${Number(p.trailBars)} dernières bougies.`,
+    `Taille : ${Number(p.riskPct)} % du capital perdu si le stop est touché · ${Number(p.maxPositions)} positions maximum · exposition limitée à ${Number(p.maxLeverage)}× le capital.`,
+    `Coûts simulés : frais ${Number(p.takerFeePct)} % et glissement ${Number(p.slippagePct)} % par ordre, financement des contrats perpétuels.`,
+  ].map(line => `<li>${line}</li>`).join("");
+}
 
 function renderLogs() {
   const logs = state.status?.logs ?? [];

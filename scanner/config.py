@@ -79,6 +79,13 @@ DEFAULTS: dict[str, Any] = {
     },
     "performance": {"monteCarloBlockLength": None},
     "retention": {"marketSnapshots": 288, "logEntries": 200},
+    "trend4h": {
+        "enabled": False, "symbols": ["BTCUSDT"], "trendSymbol": "BTCUSDT",
+        "channelBars": 20, "trailBars": 10, "atrPeriod": 14, "stopAtr": 2.0,
+        "trendEma": 200, "volumeLookback": 20, "volumeMultiple": 2.0, "maxFundingRate": 0.0003,
+        "riskPct": 1.0, "maxPositions": 5, "maxLeverage": 5.0, "startCapital": 500.0,
+        "takerFeePct": 0.05, "slippagePct": 0.025, "klineLimit": 1000,
+    },
 }
 
 
@@ -169,6 +176,37 @@ class Config:
                     errors.append("dataSource endpoint is not an approved public HTTPS API")
                 elif ep.get("root") not in (None, "https://api.bybit.com"):
                     errors.append("dataSource endpoint root is not allowed")
+        errors.extend(self._validate_trend4h())
+        return errors
+
+    def _validate_trend4h(self) -> list[str]:
+        t = self.get("trend4h", {})
+        if not t.get("enabled", False):
+            return []
+        errors = []
+        symbols = t.get("symbols")
+        if (not isinstance(symbols, list) or not symbols
+                or not all(isinstance(x, str) and x.isalnum() and x.isupper() for x in symbols)):
+            errors.append("trend4h.symbols must be a non-empty list of symbols like BTCUSDT")
+        trend = t.get("trendSymbol")
+        if not (isinstance(trend, str) and trend.isalnum() and trend.isupper()):
+            errors.append("trend4h.trendSymbol must be a symbol like BTCUSDT")
+        positive_ints = ("channelBars", "trailBars", "atrPeriod", "trendEma", "volumeLookback", "maxPositions")
+        for key in positive_ints:
+            if not isinstance(t.get(key), int) or t[key] < 1:
+                errors.append(f"trend4h.{key} must be a positive integer")
+        for key in ("stopAtr", "volumeMultiple", "riskPct", "maxLeverage", "startCapital"):
+            if not isinstance(t.get(key), (int, float)) or t[key] <= 0:
+                errors.append(f"trend4h.{key} must be > 0")
+        if isinstance(t.get("riskPct"), (int, float)) and t["riskPct"] > 5:
+            errors.append("trend4h.riskPct must not exceed 5")
+        for key in ("maxFundingRate", "takerFeePct", "slippagePct"):
+            if not isinstance(t.get(key), (int, float)) or t[key] < 0:
+                errors.append(f"trend4h.{key} must be >= 0")
+        limit = t.get("klineLimit")
+        need = max(v for v in (t.get("trendEma"), t.get("channelBars"), 0) if isinstance(v, int)) + 50
+        if not isinstance(limit, int) or not need <= limit <= 1500:
+            errors.append("trend4h.klineLimit must cover trendEma + 50 candles and be <= 1500")
         return errors
 
 

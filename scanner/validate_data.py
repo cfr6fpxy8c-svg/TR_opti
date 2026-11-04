@@ -21,7 +21,8 @@ def main() -> int:
     errors: list[str] = []
     data = repo_root() / "data"
     files = ["signals.json", "performance.json", "system-status.json",
-             "market-snapshots.json", "latest-chart.json", "universe-snapshot.json"]
+             "market-snapshots.json", "latest-chart.json", "universe-snapshot.json",
+             "trend4h-paper.json"]
     payloads: dict[str, object] = {}
     for name in files:
         path = data / name
@@ -64,6 +65,18 @@ def main() -> int:
             errors.append("universe-snapshot.json: rows must be a list")
         else:
             print(f"universe-snapshot.json: {len(rows)} screener rows")
+
+    if "trend4h-paper.json" in payloads:
+        paper = payloads["trend4h-paper.json"]
+        if not isinstance(paper.get("positions"), list) or not isinstance(paper.get("trades"), list):
+            errors.append("trend4h-paper.json: positions and trades must be lists")
+        elif paper.get("version"):
+            equity = paper.get("equity")
+            if not isinstance(equity, (int, float)) or equity != equity:
+                errors.append("trend4h-paper.json: equity must be a number")
+            else:
+                print(f"trend4h-paper.json: equity {equity:.2f}, {len(paper['positions'])} open, "
+                      f"{len(paper['trades'])} closed")
 
     if "system-status.json" in payloads:
         st = payloads["system-status.json"]
