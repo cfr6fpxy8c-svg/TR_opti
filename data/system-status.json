@@ -4,10 +4,10 @@
   "version": "0.1.0",
   "lastScan": {
     "scheduledAt": 1793808000000,
-    "executedAt": 1793808081415,
-    "trigger": "schedule",
-    "jitterSeconds": 81.4,
-    "durationMs": 10282,
+    "executedAt": 1793808461415,
+    "trigger": "push",
+    "jitterSeconds": 461.4,
+    "durationMs": 11390,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -40,11 +40,11 @@
     "dataFreshness": {
       "label": "LIVE",
       "newestCandleCloseMs": 1793807999999,
-      "ageSeconds": 81.4
+      "ageSeconds": 461.4
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1793808081415,
+  "lastSuccessfulScan": 1793808461415,
   "nextExpectedScanAt": 1793808900000,
   "scanScheduleUtcMinutes": [
     0,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1793763943151,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1793763900000 actual=1793763943146 (jitter 43.1s)"
-    },
-    {
-      "ts": 1793763953875,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1793763954080,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1793763954080,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1793764876549,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1793808091684,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1793808461420,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1793808000000 actual=1793808461415 (jitter 461.4s)"
+    },
+    {
+      "ts": 1793808472531,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1793808472781,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1793808472781,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
