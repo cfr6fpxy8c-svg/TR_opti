@@ -281,7 +281,8 @@ function renderAi() {
   const sources = Array.isArray(last?.sources) ? last.sources : [];
   $("ai-sources").innerHTML = [
     queries.length ? `Recherches Google : ${queries.map(q => `<a href="https://www.google.com/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener noreferrer">${escapeHtml(q)}</a>`).join(" · ")}` : "",
-    sources.length ? `Sources : ${sources.filter(s => httpsUrl(s?.uri)).map(s => `<a href="${escapeHtml(s.uri)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || "source")}</a>`).join(" · ")}` : "",
+    sources.length ? `Sources : ${sources.filter(s => httpsUrl(s?.uri)).map(s => `<a href="${escapeHtml(s.uri)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || "source")}</a>`).join(" · ")}`
+      : queries.length ? "Sources : non transmises par Google pour cette analyse." : "",
   ].filter(Boolean).map(x => `<p>${x}</p>`).join("");
 }
 

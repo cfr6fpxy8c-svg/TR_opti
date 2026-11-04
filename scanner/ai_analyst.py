@@ -139,7 +139,7 @@ def parse_view(text: str, facts: dict) -> dict:
     return {"macro": _text(raw.get("macro"), 300), "assets": assets}
 
 
-def _grounding(candidate: dict) -> tuple[list, list]:
+def _grounding(candidate: dict) -> tuple[list, list, dict]:
     meta = candidate.get("groundingMetadata") if isinstance(candidate.get("groundingMetadata"), dict) else {}
     queries = [_text(q, 200) for q in meta.get("webSearchQueries") or [] if isinstance(q, str)][:10]
     sources = []
@@ -148,7 +148,9 @@ def _grounding(candidate: dict) -> tuple[list, list]:
         uri = web.get("uri") if isinstance(web, dict) else None
         if isinstance(uri, str) and uri.startswith("https://") and len(uri) <= 1000:
             sources.append({"title": _text(web.get("title") or web.get("domain"), 120), "uri": uri})
-    return queries, sources[:12]
+    info = {"keys": sorted(k for k in meta if isinstance(k, str))[:10],
+            "chunks": len(meta.get("groundingChunks") or []), "supports": len(meta.get("groundingSupports") or [])}
+    return queries, sources[:12], info
 
 
 def _post(url: str, token: str, body: dict, timeout: float) -> dict:
@@ -187,12 +189,13 @@ def analyse(p: dict, trend: dict, bar_close: int, now: int, project: str, token:
     parts = (candidate.get("content") or {}).get("parts") or []
     text = "".join(x["text"] for x in parts if isinstance(x, dict) and isinstance(x.get("text"), str) and not x.get("thought"))
     view = parse_view(text, facts)
-    queries, sources = _grounding(candidate)
+    queries, sources, grounding = _grounding(candidate)
     usage = response.get("usageMetadata") if isinstance(response.get("usageMetadata"), dict) else {}
     return {
         "barClose": bar_close, "analyzedAt": now, "model": p["model"],
         "modelVersion": _text(response.get("modelVersion"), 80), "horizonHours": int(p["horizonHours"]),
         "macro": view["macro"], "assets": view["assets"], "queries": queries, "sources": sources,
+        "grounding": grounding,
         "usage": {k: int(usage[k]) for k in ("promptTokenCount", "candidatesTokenCount", "totalTokenCount")
                   if isinstance(usage.get(k), int)},
     }
