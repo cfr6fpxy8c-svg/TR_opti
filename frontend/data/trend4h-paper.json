@@ -1,6 +1,91 @@
 {
-  "version": 0,
-  "generatedAt": 0,
+  "version": 1,
+  "mode": "paper",
+  "generatedAt": 1793805526609,
+  "startedAt": 1793805526609,
+  "startCapital": 500.0,
+  "equity": 500.0,
+  "params": {
+    "enabled": true,
+    "symbols": [
+      "BTCUSDT",
+      "ETHUSDT",
+      "XRPUSDT",
+      "BNBUSDT",
+      "SOLUSDT"
+    ],
+    "trendSymbol": "BTCUSDT",
+    "channelBars": 20,
+    "trailBars": 10,
+    "atrPeriod": 14,
+    "stopAtr": 2.0,
+    "trendEma": 200,
+    "volumeLookback": 20,
+    "volumeMultiple": 2.0,
+    "maxFundingRate": 0.0003,
+    "riskPct": 1.0,
+    "maxPositions": 5,
+    "maxLeverage": 5.0,
+    "startCapital": 500.0,
+    "takerFeePct": 0.05,
+    "slippagePct": 0.025,
+    "klineLimit": 1000,
+    "_doc": "Tendance 4H en simulation (aucun ordre). Signal = cloture 4H au-dela du canal channelBars, dans le sens de trendSymbol vs EMA trendEma, volume > volumeMultiple x moyenne, financement < maxFundingRate dans le sens du trade. Entree a l'ouverture suivante, stop stopAtr x ATR, sortie a la cloture au-dela du canal trailBars oppose. Risque riskPct % du capital realise par trade, maxPositions, exposition <= maxLeverage x capital."
+  },
+  "lastBarClose": {
+    "BTCUSDT": 1793793599999,
+    "ETHUSDT": 1793793599999,
+    "XRPUSDT": 1793793599999,
+    "BNBUSDT": 1793793599999,
+    "SOLUSDT": 1793793599999
+  },
   "positions": [],
-  "trades": []
+  "pending": [],
+  "trades": [],
+  "evaluations": [
+    {
+      "symbol": "ETHUSDT",
+      "barClose": 1793793600000,
+      "side": "LONG",
+      "close": 2327.26,
+      "channelLevel": 2317.59,
+      "relVolume": 1.445,
+      "trendAligned": false,
+      "fundingRate": 0.0001,
+      "taken": false,
+      "reasons": [
+        "contre la tendance BTCUSDT",
+        "volume 1.45x <= 2x"
+      ]
+    }
+  ],
+  "equityCurve": [
+    {
+      "t": 1793805526609,
+      "equity": 500.0
+    },
+    {
+      "t": 1793805526609,
+      "equity": 500.0
+    }
+  ],
+  "stats": {
+    "trades": 0,
+    "wins": 0,
+    "winRate": null,
+    "avgR": null,
+    "totalR": 0,
+    "realizedPnl": 0.0,
+    "unrealizedPnl": 0,
+    "equityMarked": 500.0,
+    "returnPct": 0.0,
+    "maxDrawdownPct": 0.0,
+    "openPositions": 0,
+    "exposure": 0.0
+  },
+  "lastRun": {
+    "at": 1793805526609,
+    "status": "ok",
+    "errors": []
+  }
 }
