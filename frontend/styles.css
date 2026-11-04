@@ -295,6 +295,20 @@ body.data-stale #health-notice {
 .setup-state.long { color: var(--green); border-color: rgba(34,195,131,.4); background: var(--green-dim); }
 .setup-state.short { color: var(--red); border-color: rgba(240,84,108,.4); background: var(--red-dim); }
 .setup-state.wait { color: var(--amber); border-color: rgba(245,185,92,.4); background: var(--amber-dim); }
+.stat-value.ok { color: var(--green); }
+.stat-value.warn { color: var(--amber); }
+.stat-value.bad { color: var(--red); }
+.mini-chart { display: block; width: 100%; height: 150px; margin: 12px 0 4px; }
+.mini-chart .candle-up, .mini-chart .candle-down { stroke-width: 1; }
+.lvl-entry, .lvl-stop, .lvl-trail { stroke-width: 1.2; stroke-dasharray: 5 4; vector-effect: non-scaling-stroke; }
+.lvl-entry { stroke: var(--blue); }
+.lvl-stop { stroke: var(--red); }
+.lvl-trail { stroke: var(--green); }
+.mini-legend { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 10px; color: var(--muted); font-size: 11px; }
+.mini-legend span::before { content: ""; display: inline-block; width: 12px; height: 0; margin: 0 5px 3px 0; border-top: 2px dashed currentColor; }
+.lg-entry { color: var(--blue); }
+.lg-stop { color: var(--red); }
+.lg-trail { color: var(--green); }
 details.card > summary { cursor: pointer; font-weight: 600; color: var(--muted); }
 details.card[open] > summary { margin-bottom: 10px; }
 .score-block { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; }

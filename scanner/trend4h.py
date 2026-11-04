@@ -32,6 +32,7 @@ FUNDING_PERIOD_MS = 8 * 3_600_000
 STATE_VERSION = 1
 MAX_EVALUATIONS = 100
 MAX_CURVE_POINTS = 2000
+CHART_BARS = 60
 
 
 def _new_state(params: dict, now_ms: int) -> dict:
@@ -238,6 +239,8 @@ def _watch(st: dict, params: dict, data: dict, trend: dict, funding: dict) -> di
             "plannedStake": round(stake, 6),
             "plannedNotional": round(notional, 6) if notional else None,
             "plannedLeverage": round(notional / st["equity"], 4) if notional and st["equity"] > 0 else None,
+            "candles": [[c.openTime, c.open, c.high, c.low, c.close]
+                        for c in closed[-CHART_BARS:] + ([d["live"]] if d["live"] else [])],
         }
     return out
 

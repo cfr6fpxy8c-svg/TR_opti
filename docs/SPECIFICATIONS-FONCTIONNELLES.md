@@ -145,8 +145,11 @@ Indicateurs de performance :
 Une seule page, consacrée à la Tendance 4H (voir § 13). Les résultats du scanner BTC 15 min restent
 publiés dans `data/` mais ne sont plus affichés.
 
+- État du système : santé du moteur (OK / dégradé / en retard après 45 min / hors ligne après 3 h),
+  dernier passage, prochain passage, prochaine clôture 4H.
 - Capital fictif valorisé, positions ouvertes, nombre de trades, pire baisse.
-- Une carte par crypto : si un trade est ouvert, entrée, stop loss, sortie suiveuse (pas de TP fixe),
+- Une carte par crypto avec un graphique des 60 dernières bougies 4H (seuils d'achat / de vente, ou
+  entrée, stop et sortie suiveuse si un trade est ouvert) : si un trade est ouvert, entrée, stop loss, sortie suiveuse (pas de TP fixe),
   risque en € et en %, taille, levier, résultat latent et financement ; si une entrée est en attente,
   le sens et le risque prévus ; sinon les niveaux de cassure (achat / vente, écart en %) et une phrase
   expliquant pourquoi aucun trade n'est pris (pas de cassure, filtre tendance, volume, financement,

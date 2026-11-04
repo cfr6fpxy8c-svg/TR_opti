@@ -29,7 +29,8 @@ run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500
   stats: { equityMarked: 500, trades: 1, winRate: 1, avgR: 1 }, lastRun: { errors: [hostile] },
   positions: [{ symbol: hostile, side: hostile, entryTime: 1 }],
   pending: [{ symbol: "ETHUSDT", side: hostile, signalClose: 1 }],
-  watch: { BTCUSDT: { price: hostile, channelHigh: hostile, trendSide: hostile, relVolume: hostile } },
+  watch: { BTCUSDT: { price: hostile, channelHigh: hostile, trendSide: hostile, relVolume: hostile,
+    candles: [[1, 1, 2, 0.5, 1.5], [2, hostile, 2, 1, 1], hostile, [3, 1.5, 2.5, 1, 2]] } },
   trades: [{ symbol: hostile, side: hostile, exitReason: hostile, exitTime: 2, entryTime: 1 }],
   evaluations: [{ symbol: hostile, side: hostile, taken: false, reasons: [hostile] },
     { symbol: "BTCUSDT", side: hostile, taken: false, reasons: [hostile] }] };
@@ -38,5 +39,6 @@ for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
   "#trend-evaluations-table tbody", "trend-rules-list"]) {
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }
+assert.ok(get("trend-cryptos-grid").innerHTML.includes("<svg"), "chart drawn from the valid candles");
 assert.ok(!context.compromised);
 console.log("Frontend security checks passed: trend cards, trade history, evaluations, rules.");

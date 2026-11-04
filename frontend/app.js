@@ -75,6 +75,72 @@ async function refreshData() {
 }
 
 /* ------------------------------------------------------------- rendering */
+const SCAN_EVERY_MS = 15 * 60_000;
+const H4_MS = 4 * 3_600_000;
+const LATE_AFTER_MS = 45 * 60_000;
+const OFFLINE_AFTER_MS = 3 * 3_600_000;
+const fmtClock = (ms) => new Date(ms).toLocaleTimeString("fr-FR", { timeZone: TZ, hour: "2-digit", minute: "2-digit" });
+const fmtIn = (ms) => {
+  const m = Math.max(0, Math.round(ms / 60_000));
+  return m < 60 ? `dans ${m} min` : `dans ${Math.floor(m / 60)} h ${String(m % 60).padStart(2, "0")}`;
+};
+
+function renderSystem(t) {
+  const now = Date.now();
+  const run = t?.lastRun || {};
+  const at = Number(run.at) || 0;
+  const age = at ? now - at : Infinity;
+  const errors = Array.isArray(run.errors) ? run.errors.length : 0;
+  const [label, cls, sub] = !at ? ["En attente", "warn", "aucun passage enregistré"]
+    : age > OFFLINE_AFTER_MS ? ["Hors ligne", "bad", "aucun passage depuis plus de 3 h"]
+    : age > LATE_AFTER_MS ? ["En retard", "warn", "au moins 3 passages manqués"]
+    : run.status !== "ok" ? ["Dégradé", "warn", `${errors} erreur(s) de données`]
+    : ["OK", "ok", "données Binance reçues"];
+  $("sy-health").textContent = label;
+  $("sy-health").className = `stat-value ${cls}`;
+  $("sy-health-sub").textContent = sub;
+  $("sy-last").textContent = at ? fmtClock(at) : "—";
+  $("sy-last-sub").textContent = at ? fmtAgo(at) : "—";
+  const next = Math.max(Math.floor(now / SCAN_EVERY_MS) + 1, at ? Math.floor(at / SCAN_EVERY_MS) + 1 : 0) * SCAN_EVERY_MS;
+  $("sy-next").textContent = `~${fmtClock(next)}`;
+  const bar = (Math.floor(now / H4_MS) + 1) * H4_MS;
+  $("sy-bar").textContent = fmtClock(bar);
+  $("sy-bar-sub").textContent = `${fmtIn(bar - now)} · décisions à chaque clôture`;
+}
+
+// Last 4H candles with the levels that matter for this crypto (all values are coerced to numbers).
+function miniChart(w, pos, p) {
+  const rows = (Array.isArray(w?.candles) ? w.candles : [])
+    .map(r => Array.isArray(r) ? r.slice(0, 5).map(Number) : [])
+    .filter(r => r.length === 5 && r.every(Number.isFinite));
+  if (rows.length < 2) return "";
+  const W = 360, H = 150, PAD = 6, n = rows.length;
+  const step = (W - 2 * PAD) / n;
+  const channel = Math.min(n, Number(p.channelBars) + 1 || n);
+  const entryIdx = pos ? Math.max(0, rows.findIndex(r => r[0] >= Number(pos.entryTime))) : 0;
+  const levels = (pos
+    ? [[pos.entryPrice, "lvl-entry", entryIdx], [pos.stop, "lvl-stop", entryIdx], [pos.trailLevel, "lvl-trail", entryIdx]]
+    : [[w.channelHigh, "lvl-trail", n - channel], [w.channelLow, "lvl-stop", n - channel]])
+    .map(([v, cls, from]) => [Number(v), cls, from]).filter(([v]) => v != null && Number.isFinite(v) && v > 0);
+  const vals = rows.flatMap(r => [r[2], r[3]]).concat(levels.map(l => l[0]));
+  const lo = Math.min(...vals), hi = Math.max(...vals), span = hi - lo || 1;
+  const y = v => (PAD + (hi - v) / span * (H - 2 * PAD)).toFixed(1);
+  const x = i => PAD + i * step + step / 2;
+  const bodyW = Math.max(1, step * 0.6).toFixed(1);
+  const candles = rows.map(([, o, h, l, c], i) => {
+    const cls = c >= o ? "candle-up" : "candle-down";
+    const top = y(Math.max(o, c)), bot = y(Math.min(o, c));
+    return `<line class="${cls}" x1="${x(i).toFixed(1)}" x2="${x(i).toFixed(1)}" y1="${y(h)}" y2="${y(l)}"/>`
+      + `<rect class="${cls}" x="${(x(i) - bodyW / 2).toFixed(1)}" y="${top}" width="${bodyW}" height="${Math.max(1, bot - top).toFixed(1)}"/>`;
+  }).join("");
+  const lines = levels.map(([v, cls, from]) =>
+    `<line class="${cls}" x1="${(PAD + from * step).toFixed(1)}" x2="${W - PAD}" y1="${y(v)}" y2="${y(v)}"/>`).join("");
+  const legend = pos
+    ? `<span class="lg-entry">entrée</span><span class="lg-stop">stop</span><span class="lg-trail">sortie suiveuse</span>`
+    : `<span class="lg-trail">seuil d’achat</span><span class="lg-stop">seuil de vente</span>`;
+  return `<svg class="mini-chart" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Bougies 4H">${candles}${lines}</svg>
+    <div class="mini-legend">${n} bougies 4H · ${legend}</div>`;
+}
 const levelNote = (level, price, dir, allowed) => {
   if (!allowed) return "bloqué par le filtre tendance";
   const gap = pctFrom(level, price);
@@ -152,6 +218,7 @@ function trendCard(sym, t, p) {
   return `<article class="card setup-card">
       <div class="setup-title-row"><h3>${name} <span class="muted small">${fmtPrice(price)}</span></h3>
         <span class="setup-state ${badgeCls}">${escapeHtml(badge)}</span></div>
+      ${miniChart(w, pos, p)}
       ${body}
     </article>`;
 }
@@ -159,6 +226,7 @@ function trendCard(sym, t, p) {
 function renderTrend() {
   const t = state.trend;
   const notice = $("trend-notice");
+  renderSystem(t);
   if (!t || !t.version) {
     notice.textContent = "La simulation démarrera au prochain scan : aucune donnée pour le moment.";
     notice.classList.remove("hidden");

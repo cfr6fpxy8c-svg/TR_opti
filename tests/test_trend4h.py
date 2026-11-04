@@ -64,6 +64,7 @@ def test_watch_reports_channel_trend_and_planned_size(params):
     assert w["plannedStake"] == pytest.approx(5.0)
     assert w["plannedNotional"] == pytest.approx(5.0 / 4.0 * 105)
     assert w["plannedLeverage"] == pytest.approx(5.0 / 4.0 * 105 / 500)
+    assert len(w["candles"]) == 31 and w["candles"][-1] == [T0 + 30 * H4, 105, 105.2, 104.8, 105]
 
 
 @pytest.mark.parametrize("change, funding, reason", [

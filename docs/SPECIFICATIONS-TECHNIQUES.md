@@ -172,7 +172,9 @@ de pertes), tout en brut et en net.
 - Premier passage : point de départ fixé à l'avant-dernière bougie clôturée (pas de backfill).
 - `watch[symbole]` : cours, canal des `channelBars` dernières bougies clôturées (niveaux à casser),
   volume relatif et financement de la dernière bougie, sens de `trendSymbol`, et dimensionnement
-  d'un trade immédiat (distance du stop, risque, notionnel, levier) ; alimente les cartes du dashboard.
+  d'un trade immédiat (distance du stop, risque, notionnel, levier), et `candles` (60 dernières
+  bougies 4H clôturées + bougie en cours, `[openTime, open, high, low, close]`) ; alimente les cartes
+  et graphiques du dashboard.
 - Si le flux de `trendSymbol` est indisponible, aucune bougie n'est consommée ; l'état est conservé
   avec `lastRun.status = "degraded"`.
 - Résultat d'un trade : `R brut − 2 × (frais + glissement) × entrée / risque`, moins le financement
