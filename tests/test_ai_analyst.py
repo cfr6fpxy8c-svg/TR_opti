@@ -36,7 +36,8 @@ def answer(view, grounding=None):
 
 GOOD = {"macro": "Fed calme", "assets": {"AAAUSDT": {
     "direction24h": "UP", "probUp24h": 64, "reason": "ETF en hausse", "risks": "CPI demain",
-    "breakout": {"decision": "GO", "probTarget": 41, "reason": "volume et news"}}}}
+    "breakout": {"decision": "GO", "probTarget": 41, "reason": "volume et news"},
+    "trade": {"action": "LONG", "conviction": 70, "stop": 146, "target": 160, "maxHoldHours": 48, "reason": "flux ETF"}}}}
 
 
 def test_facts_carry_our_numbers_but_not_the_filter_verdict(trend):
@@ -56,7 +57,7 @@ def test_parse_keeps_only_valid_views_and_clamps(trend):
                           "EVILUSDT": {"direction24h": "UP", "probUp24h": 50}}}
     view = ai_analyst.parse_view(json.dumps(hostile), facts)
     v = view["assets"]["AAAUSDT"]
-    assert set(view["assets"]) == {"AAAUSDT"} and v["probUp"] == 100 and len(v["reason"]) == 300
+    assert set(view["assets"]) == {"AAAUSDT"} and v["probUp"] == 100 and len(v["reason"]) == 400
     assert v["breakout"]["probTarget"] == 0 and v["breakout"]["side"] == "LONG"
     with pytest.raises(ai_analyst.AnalystError):
         ai_analyst.parse_view('{"assets": {"AAAUSDT": {"direction24h": "MOON"}}}', facts)
@@ -143,6 +144,53 @@ def test_run_gives_up_after_repeated_failures(stores):
     for i in range(4):
         st = ai_analyst.run(CFG, BAR + (i + 1) * 60_000, log=lambda *_: None, post=post, env=ENV)
     assert st["lastRun"]["status"] == "gave-up" and st["attempts"] == {str(BAR): 3}
+
+
+@pytest.mark.parametrize("trade, valid, status", [
+    ({"action": "LONG", "stop": 146, "target": 160}, True, None),               # 1.5 ATR below the close
+    ({"action": "LONG", "stop": 148.5, "target": 160}, False, "invalid-stop"),  # 0.25 ATR: too tight
+    ({"action": "LONG", "stop": 152, "target": 160}, False, "invalid-stop"),    # wrong side
+    ({"action": "SHORT", "stop": 152, "target": 155}, False, "invalid-target"),
+    ({"action": "SHORT", "stop": float("nan"), "target": None}, False, "invalid-stop"),
+])
+def test_ai_trade_levels_are_validated(trend, trade, valid, status):
+    fact = ai_analyst.build_facts(trend, BAR)["assets"]["AAAUSDT"]
+    assert fact["atr14"] == pytest.approx(2.0)
+    view = ai_analyst._trade_view(dict(trade, conviction=60, maxHoldHours=999), fact)
+    assert view["valid"] is valid and view.get("status") == status and view["maxHoldHours"] == 168
+
+
+def ai_with_trade(trade, bar=BAR):
+    return {"analyses": [{"barClose": bar, "analyzedAt": bar, "horizonHours": 24, "assets": {"AAAUSDT": {
+        "direction": "UP", "probUp": 60, "price0": 149,
+        "trade": dict({"action": "LONG", "conviction": 70, "reason": "x", "valid": True}, **trade)}}}]}
+
+
+def test_ai_portfolio_opens_at_next_open_and_hits_target(trend):
+    trend["params"].update(startCapital=500, riskPct=1.0, takerFeePct=0.05, slippagePct=0.025)
+    trend["watch"]["AAAUSDT"]["candles"] = candles(n=56)  # candle 54 reaches 155
+    ai = ai_with_trade({"stop": 146, "target": 155, "maxHoldHours": 72})
+    now = T0 + 56 * H4
+    ai_analyst.simulate(ai, trend, now)
+    assert ai["analyses"][0]["assets"]["AAAUSDT"]["trade"]["status"] == "opened"
+    ai_analyst.simulate(ai, trend, now)
+    pf = ai["portfolio"]
+    (trade,) = pf["trades"]
+    assert (trade["entryPrice"], trade["exitReason"], trade["exitPrice"]) == (150, "TARGET", 155)
+    assert trade["rNet"] == pytest.approx(5 / 4 - 0.0015 * 150 / 4, abs=1e-4)
+    assert pf["equity"] == pytest.approx(500 + 5 * trade["rNet"], abs=1e-3) and pf["positions"] == []
+    assert ai_analyst._portfolio_stats(pf)["wins"] == 1
+
+
+def test_ai_portfolio_time_exit_and_one_position_per_asset(trend):
+    trend["watch"]["AAAUSDT"]["candles"] = candles(n=53)
+    ai = ai_with_trade({"stop": 146, "target": None, "maxHoldHours": 8})
+    ai["analyses"].append(ai_with_trade({"stop": 147, "target": None, "maxHoldHours": 8}, BAR + H4)["analyses"][0])
+    ai_analyst.simulate(ai, trend, BAR + 60_000)
+    assert ai["analyses"][1]["assets"]["AAAUSDT"]["trade"]["status"] == "skipped-open"
+    ai_analyst.simulate(ai, trend, T0 + 53 * H4)
+    (trade,) = ai["portfolio"]["trades"]
+    assert (trade["exitReason"], trade["exitPrice"]) == ("TIME", 151)
 
 
 def test_ai_config_is_validated():

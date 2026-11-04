@@ -202,7 +202,11 @@ de pertes), tout en brut et en net.
 - Réponse du modèle traitée comme non fiable : JSON extrait puis validé (symboles connus seulement,
   directions et décisions dans une liste fermée, probabilités bornées 0-100, textes tronqués), sources
   conservées seulement en `https://`. Le dashboard échappe tout texte et n'émet que des liens https.
-- `ai-analyst.json` : analyses (avis par crypto, cassures, requêtes, sources, jetons consommés),
+- `ai-analyst.json` : analyses (avis par crypto, cassures, trade proposé et son statut, requêtes,
+  sources, forme des métadonnées de recherche, jetons consommés), `portfolio` (positions et trades de
+  l'IA, simulés sur `watch.candles` clôturées : stop prioritaire sur l'objectif dans une même bougie,
+  prix d'ouverture en cas de saut, sortie à la clôture à la durée maximale ; risque `trend4h.riskPct`
+  du capital réalisé, coûts `takerFeePct` + `slippagePct` × 2),
   notation (`outcome` à 24 h depuis `watch.candles`, `ours` / `result` depuis le trade fantôme),
   `stats` (réussite, Brier, tableau prise/écartée × GO/NO-GO). Au-delà de 7 jours les textes sont
   retirés ; 1 200 analyses conservées.

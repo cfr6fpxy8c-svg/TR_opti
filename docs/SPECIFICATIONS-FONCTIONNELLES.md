@@ -216,12 +216,18 @@ pas. Son avis est consigné et noté, il ne déclenche ni ne bloque aucun trade.
 
 - **Quand** : une fois par clôture 4H (au premier passage qui suit), jamais plus de 90 min après la
   clôture.
-- **Ce qu'elle reçoit** : nos faits (cours, variation 24 h / 7 j, volatilité, canal 20 bougies, volume,
-  financement, tendance BTC, cassures de cette clôture) mais **pas** la décision de nos filtres.
-- **Ce qu'elle fait** : recherche Google (macro, Fed, inflation, actualité de chaque crypto,
-  régulation, sentiment) puis rend, par crypto, une direction à 24 h avec la probabilité de hausse, et
-  pour chaque cassure un GO / NO-GO avec la probabilité d'atteindre +2R, une raison, les risques, les
-  recherches et sources utilisées.
+- **Ce qu'elle reçoit** : nos faits (cours, variation 24 h / 7 j, ATR, moyennes 20 / 50, RSI, plus haut / bas
+  10 jours, canal 20 bougies, volume, financement, tendance BTC, 12 dernières bougies 4H, cassures de
+  cette clôture, sa propre position ouverte) mais **pas** la décision de nos filtres.
+- **Ce qu'elle fait** : recherche Google (macro et calendrier, dollar, taux, actions, flux des ETF et des
+  plateformes, positions sur dérivés et options, liquidations, actualité de chaque crypto, régulation,
+  sentiment) puis rend, par crypto, une direction à 24 h avec la probabilité de hausse, pour chaque
+  cassure un GO / NO-GO avec la probabilité d'atteindre +2R, et **son propre trade** (achat, vente ou
+  aucun, conviction, stop, objectif, durée maximale, raison).
+- **Portefeuille IA** (fictif) : ses trades sont simulés avec les mêmes règles de risque et de coûts
+  que le système (500 €, 1 % par trade, entrée à l'ouverture 4H suivante, sortie au stop, à l'objectif
+  ou à la durée maximale, une position par crypto). Stop rejeté s'il est du mauvais côté ou hors
+  0,5-5 ATR. Les deux capitaux sont comparés sur le tableau de bord.
 - **Notation** : directions comparées à la clôture 24 h plus tard (taux de réussite, score de Brier,
   hasard = 0,25) ; GO / NO-GO comparés au résultat du trade fantôme de la même cassure, dans un
   tableau « nous : prise / écartée » × « IA : GO / NO-GO ».

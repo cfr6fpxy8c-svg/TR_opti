@@ -245,9 +245,24 @@ function aiCardView(sym) {
   const v = a?.assets?.[sym];
   if (!v || typeof v !== "object") return "";
   const [label, cls] = DIRECTION_LABELS[v.direction] || ["—", "muted"];
+  const open = (Array.isArray(state.ai?.portfolio?.positions) ? state.ai.portfolio.positions : []).find(x => x.symbol === sym);
   return `<div class="ai-view"><div><span class="ai-tag">Avis IA</span> ${fmtTime(a.barClose)} ·
       <b class="${cls}">${label} sur 24 h</b> · P(hausse) ${Number(v.probUp)} %${v.breakout ? ` · cassure : ${decisionHtml(v.breakout)}` : ""}</div>
-      <p>${escapeHtml(v.breakout?.reason || v.reason)}${v.risks ? ` <span class="muted">Risques : ${escapeHtml(v.risks)}</span>` : ""}</p></div>`;
+      <p>${escapeHtml(v.breakout?.reason || v.reason)}${v.risks ? ` <span class="muted">Risques : ${escapeHtml(v.risks)}</span>` : ""}</p>
+      ${aiTradeLine(v.trade)}${open ? `<p><b>Position IA ouverte</b> : ${escapeHtml(sideWord(open.side))} depuis ${fmtPrice(open.entryPrice)} · stop ${fmtPrice(open.stop)}${open.target != null ? ` · objectif ${fmtPrice(open.target)}` : ""} · ${fmtSigned(open.markR)}R</p>` : ""}</div>`;
+}
+
+const AI_EXIT_LABELS = { STOP: "stop", TARGET: "objectif", TIME: "durée max" };
+const AI_TRADE_STATUS = { opened: "ouvert dans le portefeuille IA", "skipped-open": "ignoré : position IA déjà ouverte",
+  "invalid-stop": "rejeté : stop incohérent", "invalid-target": "rejeté : objectif incohérent",
+  "cancelled-gap": "annulé : le prix d’ouverture dépassait le stop", expired: "expiré" };
+function aiTradeLine(t) {
+  if (!t || typeof t !== "object") return "";
+  if (t.action === "NONE") return `<p><b>Trade IA</b> : aucun${t.reason ? ` — ${escapeHtml(t.reason)}` : ""}</p>`;
+  return `<p><b>Trade IA</b> : <b class="${t.action === "LONG" ? "dir-l" : "dir-s"}">${escapeHtml(sideWord(t.action))}</b>
+    (conviction ${Number(t.conviction)} %) · stop ${fmtPrice(t.stop)}${t.target != null ? ` · objectif ${fmtPrice(t.target)}` : ""}
+    · ${Number(t.maxHoldHours)} h max${t.status ? ` · <i>${escapeHtml(AI_TRADE_STATUS[t.status] || t.status)}</i>` : ""}
+    ${t.reason ? `— ${escapeHtml(t.reason)}` : ""}</p>`;
 }
 
 function aiBreakoutCell(e) {
@@ -278,6 +293,30 @@ function renderAi() {
   document.querySelector("#ai-matrix tbody").innerHTML = [["taken", "Nous : prise"], ["rejected", "Nous : écartée"]]
     .map(([k, label]) => `<tr><th>${label}</th><td>${cell(m[`${k}_GO`])}</td><td>${cell(m[`${k}_NO_GO`])}</td></tr>`).join("");
   const queries = Array.isArray(last?.queries) ? last.queries : [];
+  const ps = ai?.stats?.portfolio;
+  const sys = state.trend?.stats || {};
+  $("ai-portfolio").textContent = ps
+    ? `Portefeuille IA : ${fmtEur(ps.equityMarked)} (${fmtSigned(ps.returnPct, 2, " %")}) · ${Number(ps.trades)} trade(s) clos`
+      + `${ps.trades ? `, ${Math.round(100 * Number(ps.winRate))} % gagnants, moyenne ${fmtSigned(ps.avgR)}R` : ""} · ${Number(ps.open)} ouvert(s)`
+      + ` — Système : ${fmtEur(sys.equityMarked)} (${fmtSigned(sys.returnPct, 2, " %")}).`
+    : "Portefeuille IA : démarre avec la prochaine analyse.";
+  const pf = ai?.portfolio || {};
+  const rows = [
+    ...(Array.isArray(pf.positions) ? pf.positions : []).map(x => ({ ...x, open: true })),
+    ...(Array.isArray(pf.trades) ? pf.trades : []).slice().reverse(),
+  ].slice(0, 100);
+  $("ai-trades-empty").classList.toggle("hidden", rows.length > 0);
+  document.querySelector("#ai-trades-table tbody").innerHTML = rows.map(x => `<tr>
+      <td>${fmtTime(x.entryTime)}</td>
+      <td><b>${escapeHtml(x.symbol)}</b></td>
+      <td class="${sideClass(x.side)}">${escapeHtml(sideWord(x.side))}</td>
+      <td>${fmtPrice(x.entryPrice)}</td>
+      <td>${fmtPrice(x.stop)}</td>
+      <td>${x.target != null ? fmtPrice(x.target) : "—"}</td>
+      <td>${x.open ? "en cours" : `${fmtPrice(x.exitPrice)} · ${escapeHtml(AI_EXIT_LABELS[x.exitReason] || x.exitReason)}`}</td>
+      <td>${fmtSigned(x.open ? x.markR : x.rNet)}R</td>
+      <td title="${escapeHtml(x.reason)}">${Number(x.conviction)} %</td>
+    </tr>`).join("");
   const sources = Array.isArray(last?.sources) ? last.sources : [];
   $("ai-sources").innerHTML = [
     queries.length ? `Recherches Google : ${queries.map(q => `<a href="https://www.google.com/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener noreferrer">${escapeHtml(q)}</a>`).join(" · ")}` : "",

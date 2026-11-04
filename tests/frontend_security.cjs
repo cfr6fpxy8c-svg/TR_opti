@@ -29,7 +29,10 @@ run(`state.ai = { version: 1, model: hostile, lastRun: { status: hostile, error:
   analyses: [{ barClose: 1, macro: hostile, queries: [hostile], sources: [{ uri: "javascript:alert(1)", title: hostile },
     { uri: 'https://x.org/" onmouseover="globalThis.compromised=true', title: hostile }],
     assets: { BTCUSDT: { direction: hostile, probUp: hostile, reason: hostile, risks: hostile,
-      breakout: { decision: hostile, probTarget: hostile, reason: hostile } } } }] };`);
+      trade: { action: "LONG", conviction: hostile, stop: hostile, target: hostile, status: hostile, reason: hostile },
+      breakout: { decision: hostile, probTarget: hostile, reason: hostile } } } }],
+  portfolio: { positions: [{ symbol: "BTCUSDT", side: hostile, reason: hostile, conviction: hostile, stop: hostile }],
+    trades: [{ symbol: hostile, side: hostile, exitReason: hostile, reason: hostile, rNet: hostile }] } };`);
 run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500, equity: 500,
   params: { symbols: [hostile, "BTCUSDT", "ETHUSDT"], trendSymbol: hostile, riskPct: 1, maxPositions: 5 },
   stats: { equityMarked: 500, trades: 1, winRate: 1, avgR: 1 }, lastRun: { errors: [hostile] },
@@ -45,7 +48,7 @@ run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500
   renderTrend();`);
 for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
   "#trend-evaluations-table tbody", "trend-rules-list", "trend-shadow-summary",
-  "#ai-matrix tbody", "ai-sources", "ai-status"]) {
+  "#ai-matrix tbody", "ai-sources", "ai-status", "#ai-trades-table tbody"]) {
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }
 assert.ok(!get("ai-sources").innerHTML.includes("javascript:"), "only https sources become links");
