@@ -66,10 +66,20 @@ const state = {
 };
 
 /* ------------------------------------------------------------------ data */
+// Data is read from the repo so the static host need not redeploy on every scan commit.
+const DATA_SOURCES = [document.querySelector('meta[name="data-source"]')?.content, "data/"]
+  .filter(Boolean);
+
 async function loadJSON(name) {
-  const res = await fetch(`data/${name}?t=${Date.now()}`, { cache: "no-store" });
-  if (!res.ok) throw new Error(`${name}: HTTP ${res.status}`);
-  return res.json();
+  let lastErr;
+  for (const base of DATA_SOURCES) {
+    try {
+      const res = await fetch(`${base}${name}?t=${Date.now()}`, { cache: "no-store" });
+      if (res.ok) return await res.json();
+      lastErr = new Error(`${name}: HTTP ${res.status}`);
+    } catch (err) { lastErr = err; }
+  }
+  throw lastErr;
 }
 
 async function refreshData() {

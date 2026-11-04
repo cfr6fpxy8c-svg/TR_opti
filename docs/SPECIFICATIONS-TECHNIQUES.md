@@ -12,7 +12,7 @@ Version : novembre 2026.
 | Planification | cron-job.org → API GitHub `workflow_dispatch` (toutes les 15 min). |
 | Données de marché | API publiques Binance USDⓈ-M (sans clé), repli Bybit. |
 | Stockage | Fichiers JSON versionnés dans le dépôt (`data/` et miroir `frontend/data/`). |
-| Hébergement du dashboard | Statique (`frontend/`) : GitHub Pages ou Cloudflare Pages. |
+| Hébergement du dashboard | Statique (`frontend/`) sur Cloudflare Pages, redéployé uniquement sur changement de code (`frontend/data/*` exclu des chemins surveillés). Les JSON sont lus sur `raw.githubusercontent.com` (balise `<meta name="data-source">`), avec repli sur `data/` local. |
 
 ## 2. Architecture et flux
 
