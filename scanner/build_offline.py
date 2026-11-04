@@ -2,8 +2,7 @@
 
 Embeds the latest /data JSON snapshot directly into a single HTML file so the
 dashboard can be opened by double-click from disk (file://), from a USB stick,
-or inside sandboxed previews — no server, no network fetches for data. Live
-prices from Binance are still attempted in-browser and degrade gracefully.
+or inside sandboxed previews — no server, no network fetches for data.
 
 Rebuilt automatically on every scan (see .github/workflows/scanner.yml), so
 downloading the latest copy from GitHub always gives current data.
@@ -43,12 +42,6 @@ def build(frontend_dir: Optional[Path] = None, data_dir: Optional[Path] = None) 
 
     payload = {
         "builtAt": int(time.time() * 1000),
-        "signals": _read_json(data / "signals.json", {"generatedAt": 0, "signals": []}),
-        "status": _read_json(data / "system-status.json", None),
-        "snapshots": _read_json(data / "market-snapshots.json", []),
-        "screener": _read_json(data / "universe-snapshot.json", {"rows": []}),
-        "performance": _read_json(data / "performance.json", None),
-        "chart": _read_json(data / "latest-chart.json", None),
         "trend": _read_json(data / "trend4h-paper.json", None),
     }
     # safe for embedding inside a <script> tag
@@ -57,8 +50,7 @@ def build(frontend_dir: Optional[Path] = None, data_dir: Optional[Path] = None) 
     banner = (
         '<div style="margin:0;padding:9px 16px;background:#3b2f11;color:#ffd166;'
         "font:600 12px/1.4 'Segoe UI',system-ui,sans-serif;text-align:center;\">"
-        "OFFLINE SNAPSHOT MODE — data embedded at build time. Live prices still "
-        "refresh in-browser when reachable. Host over HTTP for auto-refreshing data.</div>"
+        "COPIE HORS LIGNE — données intégrées au moment de la génération du fichier.</div>"
     )
     html = html.replace("<body>", "<body>\n" + banner, 1)
 
@@ -72,8 +64,7 @@ def build(frontend_dir: Optional[Path] = None, data_dir: Optional[Path] = None) 
     html = authorize_inline_scripts(html)
 
     (fe / "dashboard-offline.html").write_text(html, encoding="utf-8")
-    print(f"dashboard-offline.html built ({len(html) // 1024} KB, "
-          f"{len(payload['signals'].get('signals', []))} signals embedded)")
+    print(f"dashboard-offline.html built ({len(html) // 1024} KB, trend data embedded)")
 
 
 if __name__ == "__main__":

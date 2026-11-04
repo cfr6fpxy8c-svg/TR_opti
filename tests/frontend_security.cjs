@@ -23,27 +23,6 @@ const run = code => vm.runInContext(code, context);
 const attack = '<img src=x onerror="globalThis.compromised=true">';
 context.hostile = attack;
 assert.equal(run("escapeHtml(hostile)"), "&lt;img src=x onerror=&quot;globalThis.compromised=true&quot;&gt;");
-for (const value of ["=1+1", "+SUM(A1)", "@SUM(A1)", "-1+1", "  =1", "\t=1"]) {
-  context.cell = value;
-  const exported = run("csvCell(cell)");
-  assert.ok(exported.startsWith("'") || exported.startsWith('"\''));
-}
-assert.equal(run("csvCell('BTCUSDT')"), "BTCUSDT");
-assert.equal(run("csvCell(12.5)"), "12.5");
-run(`state.status = { logs: [{ ts: 0, level: hostile, msg: hostile }],
-  lastScan: { symbolsValid: 1, rejectFunnel: [{ stage: hostile, rejected: hostile }] } };
-  renderLogs(); renderFunnel();`);
-assert.ok(!get("log-box").innerHTML.includes("<img"));
-// Signals/history must render hostile attributes and strings as text.
-run(`state.signals = [{ symbol: hostile, direction: hostile, quality: hostile,
-  score: 90, generatedAt: 1, status: hostile, htf4hBias: hostile, htf1hBias: hostile,
-  timeframe: hostile, structure: { event: hostile }, marketRegime: hostile,
-  relativeVolume: 1, rsi: 50, adx: 20 }];
-  globalThis.cardHTML = signalCard(state.signals[0]).innerHTML;
-  renderHistory(); renderRecent();`);
-assert.ok(!context.cardHTML.includes("<img"));
-assert.ok(!get("#history-table tbody").innerHTML.includes("<img"));
-assert.ok(!get("#recent-table tbody").innerHTML.includes("<img"));
 // Paper-trading view must escape every string coming from trend4h-paper.json.
 run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500, equity: 500,
   params: { symbols: [hostile, "BTCUSDT", "ETHUSDT"], trendSymbol: hostile, riskPct: 1, maxPositions: 5 },
@@ -60,4 +39,4 @@ for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }
 assert.ok(!context.compromised);
-console.log("Frontend security checks passed: HTML text, attributes, log levels, CSV formulas.");
+console.log("Frontend security checks passed: trend cards, trade history, evaluations, rules.");

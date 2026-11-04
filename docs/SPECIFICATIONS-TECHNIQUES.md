@@ -199,8 +199,8 @@ python -m scanner.replay --symbols BTCUSDT --candles 2880 --into-history
   internes, taille de réponse limitée, aucune clé d'API.
 - Données : chemins d'écriture confinés, JSON validé (valeurs finies, cohérence des niveaux et du
   gain/risque), immuabilité vérifiée, publication limitée à une liste blanche de fichiers.
-- Interface : échappement systématique, neutralisation des formules CSV, en-têtes de sécurité
-  (`frontend/_headers` : CSP, no-referrer, X-Frame-Options, HSTS).
+- Interface : échappement systématique, CSP limitant les connexions à `raw.githubusercontent.com`,
+  en-têtes de sécurité (`frontend/_headers` : CSP, no-referrer, X-Frame-Options, HSTS).
 - Chaîne CI : actions épinglées, dépendances verrouillées par hash, analyse de secrets et de
   vulnérabilités, jeton d'écriture réservé au job de publication.
 - Identité Git : commits signés avec l'adresse *noreply* du compte propriétaire ; aucune donnée

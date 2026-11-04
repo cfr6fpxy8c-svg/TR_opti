@@ -488,34 +488,3 @@ class TestValidatorAndMetricHonesty:
             assert perf["monteCarlo"]["basis"] == "gross"
         assert perf.get("monteCarloNet") is None, \
             "monteCarloNet must stay null when there is no net series"
-
-
-class TestFunnelIsRenderable:
-    """The dashboard label map must cover every code the engine can emit.
-
-    A stage the engine emits but the frontend cannot name would render as a
-    raw identifier like 'no_fvg_or_order_block' to the user.
-    """
-
-    def test_every_reject_stage_has_a_dashboard_label(self):
-        import re
-        from scanner.config import repo_root
-        from scanner.signals import REJECT_STAGES
-
-        app_js = (repo_root() / "frontend" / "app.js").read_text(encoding="utf-8")
-        block = re.search(r"const FUNNEL_LABELS = \{(.*?)\n\};", app_js, re.S)
-        assert block, "FUNNEL_LABELS map missing from app.js"
-        labelled = set(re.findall(r"(\w+):\s*\"", block.group(1)))
-        missing = [s for s in REJECT_STAGES if s not in labelled]
-        assert not missing, f"stages with no dashboard label: {missing}"
-
-    def test_no_stale_labels_for_codes_the_engine_dropped(self):
-        import re
-        from scanner.config import repo_root
-        from scanner.signals import REJECT_STAGES
-
-        app_js = (repo_root() / "frontend" / "app.js").read_text(encoding="utf-8")
-        block = re.search(r"const FUNNEL_LABELS = \{(.*?)\n\};", app_js, re.S)
-        labelled = set(re.findall(r"(\w+):\s*\"", block.group(1)))
-        orphans = labelled - set(REJECT_STAGES)
-        assert not orphans, f"labels for codes the engine no longer emits: {orphans}"

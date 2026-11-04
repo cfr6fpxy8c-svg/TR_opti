@@ -142,30 +142,18 @@ Indicateurs de performance :
 
 ## 9. Dashboard
 
-Trois vues :
+Une seule page, consacrée à la Tendance 4H (voir § 13). Les résultats du scanner BTC 15 min restent
+publiés dans `data/` mais ne sont plus affichés.
 
-**Tendance 4H · 5 cryptos** (vue par défaut, voir § 13)
 - Capital fictif valorisé, positions ouvertes, nombre de trades, pire baisse.
 - Une carte par crypto : si un trade est ouvert, entrée, stop loss, sortie suiveuse (pas de TP fixe),
   risque en € et en %, taille, levier, résultat latent et financement ; si une entrée est en attente,
   le sens et le risque prévus ; sinon les niveaux de cassure (achat / vente, écart en %) et une phrase
   expliquant pourquoi aucun trade n'est pris (pas de cassure, filtre tendance, volume, financement,
   dernière cassure écartée), avec le stop, la taille et le levier qu'aurait un trade immédiat.
-- Historique des trades, dernières cassures prises ou écartées avec le motif, règles appliquées.
+- Historique des trades ; en sections repliées : cassures prises ou écartées avec le motif, règles.
 
-**Archive · scanner BTC 15 min**
-- État du système : dernier scan, prochain créneau, santé des données et de l'API.
-- Dernière analyse BTC : graphique 15 min, biais, régime, indicateurs, niveaux.
-- Propositions actives : cartes avec sens, prix, déclencheur, zone, TP, SL, gain/risque, score, palier,
-  % historique, éléments de structure.
-- Propositions récentes, entonnoir de rejet, performance (taux de réussite, profit factor, espérance,
-  Monte Carlo, calibration par palier), méthodologie, journal du système.
-
-**Archive · signaux 15 min**
-- Tableau filtrable (période, sens, palier, résultat, recherche) avec entrée, TP, SL, gain/risque,
-  statut, résultat en R et durée ; marqueur « replay » ; export CSV.
-
-Les heures sont affichées en heure de Paris ; les créneaux de scan sont calculés en UTC.
+Les heures sont affichées en heure de Paris.
 
 ## 10. Calibration (en cours)
 
