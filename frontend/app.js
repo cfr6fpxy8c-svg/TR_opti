@@ -834,7 +834,7 @@ function renderHistory() {
 }
 
 function selectView(view) {
-  for (const name of ["analysis", "signals", "trend"]) {
+  for (const name of ["trend", "analysis", "signals"]) {
     const on = name === view;
     $(`view-${name}`).classList.toggle("hidden", !on);
     $(`tab-${name}`).classList.toggle("active", on);
@@ -856,6 +856,89 @@ const fmtSigned = (v, digits = 2, suffix = "") => v == null || !Number.isFinite(
   : `${Number(v) > 0 ? "+" : ""}${Number(v).toFixed(digits)}${suffix}`;
 const sideClass = (side) => side === "LONG" ? "dir-l" : "dir-s";
 const EXIT_LABELS = { STOP: "Stop touché", TRAIL: "Sortie suiveuse" };
+const pctFrom = (a, b) => Number(b) ? 100 * (Number(a) - Number(b)) / Number(b) : null;
+const fmtLev = (v) => v == null || !Number.isFinite(Number(v)) ? "—" : `${Number(v).toFixed(2)}×`;
+const sideWord = (side) => side === "LONG" ? "ACHAT" : "VENTE";
+const levelNote = (level, price, dir, allowed) => {
+  if (!allowed) return "bloqué par le filtre tendance";
+  const gap = pctFrom(level, price);
+  if (gap == null) return "—";
+  return dir * gap <= 0 ? "cours déjà au-delà : à confirmer à la clôture" : `${fmtSigned(gap, 2, " %")} du cours`;
+};
+
+function trendCard(sym, t, p) {
+  const w = (t.watch && typeof t.watch === "object" ? t.watch[sym] : null) || null;
+  const pos = (Array.isArray(t.positions) ? t.positions : []).find(x => x.symbol === sym);
+  const pend = (Array.isArray(t.pending) ? t.pending : []).find(x => x.symbol === sym);
+  const lastEval = (Array.isArray(t.evaluations) ? t.evaluations : []).filter(e => e.symbol === sym).slice(-1)[0];
+  const equity = Number(t.equity);
+  const name = escapeHtml(String(sym).replace(/USDT$/, ""));
+  const price = pos ? pos.markPrice : w?.price;
+  let badge, badgeCls, body;
+  if (pos) {
+    const side = pos.side === "LONG" ? 1 : -1;
+    const pnl = Number(pos.stake) * Number(pos.unrealizedR) - Number(pos.fundingPaid || 0);
+    badge = `${sideWord(pos.side)} en cours`;
+    badgeCls = side > 0 ? "long" : "short";
+    body = `<div class="trade-levels">
+        <div class="trade-level entry"><span>Entrée</span><strong>${fmtPrice(pos.entryPrice)}</strong>
+          <small>${fmtTime(pos.entryTime)} · cours ${fmtPrice(pos.markPrice)} (${fmtSigned(side * pctFrom(pos.markPrice, pos.entryPrice), 2, " %")})</small></div>
+        <div class="trade-level sl"><span>Stop loss</span><strong>${fmtPrice(pos.stop)}</strong>
+          <small>${fmtSigned(pctFrom(pos.stop, pos.entryPrice), 2, " %")} depuis l’entrée</small></div>
+        <div class="trade-level tp"><span>Sortie suiveuse (pas de TP fixe)</span><strong>${pos.trailLevel == null ? "—" : fmtPrice(pos.trailLevel)}</strong>
+          <small>${pos.trailLevel == null ? "calculée à la prochaine clôture" : `si clôture 4H ${side > 0 ? "sous" : "au-dessus de"} ce niveau`}</small></div>
+      </div>
+      <div class="setup-foot"><span>Risque si stop</span><strong>${fmtEur(pos.stake)} (${Number(p.riskPct)} %)</strong></div>
+      <div class="setup-foot"><span>Taille · levier</span><strong>${fmtEur(pos.notional)} · ${fmtLev(equity > 0 ? Number(pos.notional) / equity : null)}</strong></div>
+      <div class="setup-foot"><span>Résultat latent</span><strong>${fmtSigned(pos.unrealizedR)}R · ${fmtEur(pnl)}</strong></div>
+      <p class="setup-explanation">Financement payé : ${fmtEur(pos.fundingPaid)}. Le trade reste ouvert tant que la tendance tient ; il n’y a pas d’objectif fixe.</p>`;
+  } else if (pend) {
+    badge = `${sideWord(pend.side)} à l’ouverture`;
+    badgeCls = "wait";
+    body = `<p class="setup-explanation">Cassure ${pend.side === "LONG" ? "haussière" : "baissière"} validée à la clôture de
+      ${fmtTime(Number(pend.signalClose) + 1)} : entrée à l’ouverture de la bougie suivante, stop à ${fmtPrice(pend.riskPerUnit)} du prix d’entrée,
+      risque ${fmtEur(pend.stake)}.</p>`;
+  } else if (!w) {
+    badge = "En attente"; badgeCls = "";
+    body = `<p class="setup-explanation">Données disponibles au prochain passage du moteur.</p>`;
+  } else {
+    badge = "Pas de trade"; badgeCls = "";
+    const longOk = w.trendSide !== "SHORT", shortOk = w.trendSide !== "LONG";
+    const why = [`Aucune cassure exploitable : il faut une clôture 4H hors du canal des ${Number(p.channelBars)} dernières bougies.`];
+    if (w.trendSide) {
+      why.push(`${escapeHtml(p.trendSymbol)} est ${w.trendSide === "LONG" ? "au-dessus" : "en dessous"} de sa moyenne ${Number(p.trendEma)} : ${w.trendSide === "LONG" ? "seuls les achats sont autorisés" : "seules les ventes sont autorisées"}.`);
+    }
+    if (w.relVolume != null) {
+      why.push(`Il faudra aussi un volume supérieur à ${Number(p.volumeMultiple)}× la moyenne (dernière bougie : ${Number(w.relVolume).toFixed(2)}×).`);
+    }
+    const rate = Number(w.fundingRate);
+    if (w.fundingRate != null && Math.abs(rate) >= Number(p.maxFundingRate)) {
+      why.push(`Financement déjà saturé côté ${rate > 0 ? "achat" : "vente"}.`);
+    }
+    if (Number(t.stats?.openPositions ?? 0) + (Array.isArray(t.pending) ? t.pending.length : 0) >= Number(p.maxPositions)) {
+      why.push("Nombre maximal de positions atteint.");
+    }
+    if (lastEval) {
+      const reasons = Array.isArray(lastEval.reasons) ? lastEval.reasons : [];
+      why.push(`Dernière cassure (${sideWord(lastEval.side)}, ${fmtTime(lastEval.barClose)}) ${lastEval.taken ? "prise" : `écartée : ${escapeHtml(reasons.join(", "))}`}.`);
+    }
+    const stopPct = w.stopDistance && w.price ? 100 * Number(w.stopDistance) / Number(w.price) : null;
+    body = `<div class="trade-levels">
+        <div class="trade-level tp"><span>Achat si clôture 4H &gt;</span><strong>${fmtPrice(w.channelHigh)}</strong>
+          <small>${levelNote(w.channelHigh, w.price, 1, longOk)}</small></div>
+        <div class="trade-level sl"><span>Vente si clôture 4H &lt;</span><strong>${fmtPrice(w.channelLow)}</strong>
+          <small>${levelNote(w.channelLow, w.price, -1, shortOk)}</small></div>
+      </div>
+      <div class="setup-foot"><span>Si trade maintenant : stop</span><strong>${stopPct == null ? "—" : `±${stopPct.toFixed(2)} %`}</strong></div>
+      <div class="setup-foot"><span>Risque · taille · levier</span><strong>${fmtEur(w.plannedStake)} · ${fmtEur(w.plannedNotional)} · ${fmtLev(w.plannedLeverage)}</strong></div>
+      <p class="setup-explanation">${why.join(" ")}</p>`;
+  }
+  return `<article class="card setup-card">
+      <div class="setup-title-row"><h3>${name} <span class="muted small">${fmtPrice(price)}</span></h3>
+        <span class="setup-state ${badgeCls}">${escapeHtml(badge)}</span></div>
+      ${body}
+    </article>`;
+}
 
 function renderTrend() {
   const t = state.trend;
@@ -883,19 +966,8 @@ function renderTrend() {
   $("tr-dd").textContent = `${Number(s.maxDrawdownPct ?? 0).toFixed(1)} %`;
   $("tr-started").textContent = `démarrée le ${fmtTime(t.startedAt)}`;
 
-  const positions = Array.isArray(t.positions) ? t.positions : [];
-  $("trend-positions-empty").classList.toggle("hidden", positions.length > 0);
-  document.querySelector("#trend-positions-table tbody").innerHTML = positions.map(pos => `<tr>
-      <td>${fmtTime(pos.entryTime)}</td>
-      <td><b>${escapeHtml(pos.symbol)}</b></td>
-      <td class="${sideClass(pos.side)}">${escapeHtml(pos.side)}</td>
-      <td>${fmtPrice(pos.entryPrice)}</td>
-      <td>${fmtPrice(pos.initialStop)}</td>
-      <td>${fmtPrice(pos.trailLevel)}</td>
-      <td>${fmtPrice(pos.markPrice)}</td>
-      <td>${fmtSigned(pos.unrealizedR)}R</td>
-      <td>${fmtEur(-Number(pos.fundingPaid || 0))}</td>
-    </tr>`).join("");
+  const symbols = Array.isArray(p.symbols) ? p.symbols : [];
+  $("trend-cryptos-grid").innerHTML = symbols.map(sym => trendCard(sym, t, p)).join("");
 
   const trades = (Array.isArray(t.trades) ? t.trades : []).slice().reverse();
   $("trend-trades-empty").classList.toggle("hidden", trades.length > 0);
@@ -927,9 +999,9 @@ function renderTrend() {
     </tr>`;
   }).join("");
 
-  const symbols = Array.isArray(p.symbols) ? p.symbols.map(escapeHtml).join(", ") : "—";
+  const symbolList = symbols.length ? symbols.map(escapeHtml).join(", ") : "—";
   $("trend-rules-list").innerHTML = [
-    `Cryptos suivies : ${symbols}.`,
+    `Cryptos suivies : ${symbolList}.`,
     `Signal : une bougie 4H clôture au-dessus du plus haut (achat) ou sous le plus bas (vente) des ${Number(p.channelBars)} bougies précédentes.`,
     `Filtre 1 : uniquement dans le sens de ${escapeHtml(p.trendSymbol)} par rapport à sa moyenne mobile ${Number(p.trendEma)} en 4H.`,
     `Filtre 2 : volume de la bougie de signal supérieur à ${Number(p.volumeMultiple)} × la moyenne des ${Number(p.volumeLookback)} précédentes.`,

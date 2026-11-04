@@ -212,6 +212,36 @@ def _stats(st: dict) -> dict:
     }
 
 
+def _watch(st: dict, params: dict, data: dict, trend: dict, funding: dict) -> dict:
+    """What the next 4H close must do on each symbol, and the size a trade would get now."""
+    channel = int(params["channelBars"])
+    t_close, t_ema = trend[max(trend)] if trend else (None, None)
+    trend_side = None if t_ema is None else ("LONG" if t_close > t_ema else "SHORT" if t_close < t_ema else None)
+    stake = st["equity"] * float(params["riskPct"]) / 100.0
+    out = {}
+    for sym, d in data.items():
+        closed = d["closed"]
+        if len(closed) < channel:
+            continue
+        price = (d["live"] or closed[-1]).close
+        last_atr, rel_vol = d["atr"][-1], d["relVol"][-1]
+        risk = float(params["stopAtr"]) * last_atr if last_atr else None
+        notional = stake / risk * price if risk else None
+        out[sym] = {
+            "price": price, "barClose": closed[-1].closeTime + 1,
+            "channelHigh": max(c.high for c in closed[-channel:]),
+            "channelLow": min(c.low for c in closed[-channel:]),
+            "relVolume": round(rel_vol, 3) if rel_vol is not None else None,
+            "fundingRate": funding.get(sym), "trendSide": trend_side,
+            "trendClose": t_close, "trendEma": round(t_ema, 6) if t_ema is not None else None,
+            "stopDistance": round(risk, 8) if risk else None,
+            "plannedStake": round(stake, 6),
+            "plannedNotional": round(notional, 6) if notional else None,
+            "plannedLeverage": round(notional / st["equity"], 4) if notional and st["equity"] > 0 else None,
+        }
+    return out
+
+
 def step(state: dict | None, params: dict, candles: dict[str, list[Candle]],
          funding: dict[str, float], now_ms: int) -> dict:
     """Advance the simulation with every 4H candle closed since the previous call."""
@@ -250,6 +280,7 @@ def step(state: dict | None, params: dict, candles: dict[str, list[Candle]],
                 pos["markPrice"] = last.close
                 pos["unrealizedR"] = round(side * (last.close - pos["entryPrice"]) / pos["riskPerUnit"], 4)
     st["stats"] = _stats(st)
+    st["watch"] = _watch(st, params, data, trend, funding)
     if events:
         st["equityCurve"].append({"t": now_ms, "equity": st["stats"]["equityMarked"]})
         st["equityCurve"] = st["equityCurve"][-MAX_CURVE_POINTS:]

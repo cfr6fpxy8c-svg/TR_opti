@@ -46,13 +46,16 @@ assert.ok(!get("#history-table tbody").innerHTML.includes("<img"));
 assert.ok(!get("#recent-table tbody").innerHTML.includes("<img"));
 // Paper-trading view must escape every string coming from trend4h-paper.json.
 run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500, equity: 500,
-  params: { symbols: [hostile], trendSymbol: hostile, riskPct: 1, maxPositions: 5 },
+  params: { symbols: [hostile, "BTCUSDT", "ETHUSDT"], trendSymbol: hostile, riskPct: 1, maxPositions: 5 },
   stats: { equityMarked: 500, trades: 1, winRate: 1, avgR: 1 }, lastRun: { errors: [hostile] },
   positions: [{ symbol: hostile, side: hostile, entryTime: 1 }],
+  pending: [{ symbol: "ETHUSDT", side: hostile, signalClose: 1 }],
+  watch: { BTCUSDT: { price: hostile, channelHigh: hostile, trendSide: hostile, relVolume: hostile } },
   trades: [{ symbol: hostile, side: hostile, exitReason: hostile, exitTime: 2, entryTime: 1 }],
-  evaluations: [{ symbol: hostile, side: hostile, taken: false, reasons: [hostile] }] };
+  evaluations: [{ symbol: hostile, side: hostile, taken: false, reasons: [hostile] },
+    { symbol: "BTCUSDT", side: hostile, taken: false, reasons: [hostile] }] };
   renderTrend();`);
-for (const id of ["#trend-positions-table tbody", "#trend-trades-table tbody",
+for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
   "#trend-evaluations-table tbody", "trend-rules-list"]) {
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }

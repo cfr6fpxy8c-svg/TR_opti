@@ -55,6 +55,17 @@ def test_first_run_does_not_backfill_history(params):
     assert st["positions"] == [] and st["evaluations"] == []
 
 
+def test_watch_reports_channel_trend_and_planned_size(params):
+    st = trend4h.step(None, params, {"AAAUSDT": bars(FLAT + [LIVE])}, {"AAAUSDT": 0.0001}, after_close(30))
+    w = st["watch"]["AAAUSDT"]
+    assert (w["channelHigh"], w["channelLow"], w["price"]) == (101, 99, 105)
+    assert w["barClose"] == T0 + 30 * H4 and w["fundingRate"] == 0.0001
+    assert w["stopDistance"] == pytest.approx(4.0)  # 2 x ATR(3) of 2
+    assert w["plannedStake"] == pytest.approx(5.0)
+    assert w["plannedNotional"] == pytest.approx(5.0 / 4.0 * 105)
+    assert w["plannedLeverage"] == pytest.approx(5.0 / 4.0 * 105 / 500)
+
+
 @pytest.mark.parametrize("change, funding, reason", [
     ({"breakout": (100, 105.5, 100, 105, 150)}, None, "volume"),
     ({}, {"AAAUSDT": 0.001}, "financement"),

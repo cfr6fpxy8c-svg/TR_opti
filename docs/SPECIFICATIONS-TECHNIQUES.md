@@ -92,7 +92,7 @@ Déroulé d'un scan (`scanner/main.py`, `scan_once`) :
 | `market-snapshots.json` | Instantanés de marché (rétention 288). |
 | `latest-chart.json` | Bougies 15 min et niveaux pour le graphique BTC. |
 | `universe-snapshot.json` | Tableau de l'univers scanné. |
-| `trend4h-paper.json` | État de la simulation Tendance 4H : capital, positions, ordres en attente, trades, cassures évaluées, courbe de capital, statistiques, dernier passage. |
+| `trend4h-paper.json` | État de la simulation Tendance 4H : capital, positions, ordres en attente, trades, cassures évaluées, situation par crypto (`watch`), courbe de capital, statistiques, dernier passage. |
 | `frontend/data/badge.json` | Badge d'état (heure UTC, santé). |
 
 Champs principaux d'une proposition : `id`, `symbol`, `direction`, `timeframe`, `quality`, `score`,
@@ -170,6 +170,9 @@ de pertes), tout en brut et en net.
   sur la clôture à partir de la bougie suivant l'entrée), puis évaluation d'une cassure (pas sur la
   bougie de sortie) avec filtres tendance / volume / financement et limites positions / levier.
 - Premier passage : point de départ fixé à l'avant-dernière bougie clôturée (pas de backfill).
+- `watch[symbole]` : cours, canal des `channelBars` dernières bougies clôturées (niveaux à casser),
+  volume relatif et financement de la dernière bougie, sens de `trendSymbol`, et dimensionnement
+  d'un trade immédiat (distance du stop, risque, notionnel, levier) ; alimente les cartes du dashboard.
 - Si le flux de `trendSymbol` est indisponible, aucune bougie n'est consommée ; l'état est conservé
   avec `lastRun.status = "degraded"`.
 - Résultat d'un trade : `R brut − 2 × (frais + glissement) × entrée / risque`, moins le financement

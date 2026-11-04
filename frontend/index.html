@@ -6,7 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <meta name="data-source" content="https://raw.githubusercontent.com/cfr6fpxy8c-svg/TR_opti/main/frontend/data/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scanner Bitcoin — Analyse BTCUSDT</title>
+<title>Scanner crypto — Tendance 4H</title>
 <meta name="description" content="Rule-based multi-timeframe crypto signal scanner. Analytical signals only — not financial advice.">
 <link rel="stylesheet" href="styles.css">
 <link rel="manifest" href="manifest.webmanifest">
@@ -20,8 +20,8 @@
     <div class="brand">
       <span class="brand-icon">₿</span>
       <div>
-        <h1>Scanner Bitcoin</h1>
-        <p class="brand-sub">BTCUSDT · Analyse 4H → 1H → 15M</p>
+        <h1>Scanner crypto</h1>
+        <p class="brand-sub">Tendance 4H · BTC · ETH · XRP · BNB · SOL</p>
       </div>
     </div>
     <div class="top-status" id="top-status">
@@ -31,21 +31,21 @@
     </div>
   </div>
 <nav class="view-tabs" aria-label="Navigation principale">
-  <button class="view-tab active" id="tab-analysis" type="button" aria-selected="true">Analyse BTC</button>
-  <button class="view-tab" id="tab-signals" type="button" aria-selected="false">Historique des signaux <span id="tab-signal-count">0</span></button>
-  <button class="view-tab" id="tab-trend" type="button" aria-selected="false">Tendance 4H · simulation</button>
+  <button class="view-tab active" id="tab-trend" type="button" aria-selected="true">Tendance 4H · 5 cryptos</button>
+  <button class="view-tab" id="tab-analysis" type="button" aria-selected="false">Archive · scanner BTC 15 min</button>
+  <button class="view-tab" id="tab-signals" type="button" aria-selected="false">Archive · signaux 15 min <span id="tab-signal-count">0</span></button>
 </nav>
 </header>
 
 <main class="container">
-<div class="tab-view" id="view-analysis">
-
   <div class="notice hidden" id="preview-notice">
     Data files can't be fetched in this context (opened as an offline file or a sandboxed
     preview). Showing the embedded snapshot instead — live prices still refresh in-browser
     when reachable. Host over HTTP (Cloudflare Pages / GitHub Pages / a local server) for
     fully auto-refreshing data.
   </div>
+<div class="tab-view hidden" id="view-analysis">
+
   <div class="notice warn hidden" id="health-notice"></div>
   <!-- ============ SYSTEM STATUS ============ -->
   <section id="system-status" class="section">
@@ -403,7 +403,7 @@
   </section>
 </div>
 
-<div class="tab-view hidden" id="view-trend">
+<div class="tab-view" id="view-trend">
   <section id="trend-summary" class="section">
     <div class="section-head">
       <div><h2>Tendance 4H · simulation</h2>
@@ -419,20 +419,16 @@
     </div>
   </section>
 
-  <section id="trend-positions" class="section">
-    <div class="section-head"><h2>Positions ouvertes</h2></div>
-    <div class="card table-wrap">
-      <table class="table" id="trend-positions-table">
-        <thead><tr><th>Ouverte le</th><th>Symbole</th><th>Sens</th><th>Entrée</th><th>Stop initial</th>
-          <th>Niveau de sortie</th><th>Dernier cours</th><th>Résultat latent</th><th>Financement</th></tr></thead>
-        <tbody></tbody>
-      </table>
-      <div class="empty small hidden" id="trend-positions-empty">Aucune position ouverte.</div>
+  <section id="trend-cryptos" class="section">
+    <div class="section-head">
+      <div><h2>Les 5 cryptos</h2>
+        <p class="muted small">Situation à la dernière clôture 4H : le trade en cours, ou pourquoi aucun trade n’est pris.</p></div>
     </div>
+    <div class="signal-grid" id="trend-cryptos-grid"></div>
   </section>
 
   <section id="trend-journal" class="section">
-    <div class="section-head"><h2>Journal des trades</h2></div>
+    <div class="section-head"><h2>Historique des trades</h2></div>
     <div class="card table-wrap">
       <table class="table" id="trend-trades-table">
         <thead><tr><th>Clôturé le</th><th>Symbole</th><th>Sens</th><th>Entrée</th><th>Sortie</th>

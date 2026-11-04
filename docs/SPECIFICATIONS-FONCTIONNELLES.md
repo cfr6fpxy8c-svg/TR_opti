@@ -144,7 +144,16 @@ Indicateurs de performance :
 
 Trois vues :
 
-**Analyse BTC**
+**Tendance 4H · 5 cryptos** (vue par défaut, voir § 13)
+- Capital fictif valorisé, positions ouvertes, nombre de trades, pire baisse.
+- Une carte par crypto : si un trade est ouvert, entrée, stop loss, sortie suiveuse (pas de TP fixe),
+  risque en € et en %, taille, levier, résultat latent et financement ; si une entrée est en attente,
+  le sens et le risque prévus ; sinon les niveaux de cassure (achat / vente, écart en %) et une phrase
+  expliquant pourquoi aucun trade n'est pris (pas de cassure, filtre tendance, volume, financement,
+  dernière cassure écartée), avec le stop, la taille et le levier qu'aurait un trade immédiat.
+- Historique des trades, dernières cassures prises ou écartées avec le motif, règles appliquées.
+
+**Archive · scanner BTC 15 min**
 - État du système : dernier scan, prochain créneau, santé des données et de l'API.
 - Dernière analyse BTC : graphique 15 min, biais, régime, indicateurs, niveaux.
 - Propositions actives : cartes avec sens, prix, déclencheur, zone, TP, SL, gain/risque, score, palier,
@@ -152,13 +161,9 @@ Trois vues :
 - Propositions récentes, entonnoir de rejet, performance (taux de réussite, profit factor, espérance,
   Monte Carlo, calibration par palier), méthodologie, journal du système.
 
-**Historique des signaux**
+**Archive · signaux 15 min**
 - Tableau filtrable (période, sens, palier, résultat, recherche) avec entrée, TP, SL, gain/risque,
   statut, résultat en R et durée ; marqueur « replay » ; export CSV.
-
-**Tendance 4H · simulation** (voir § 13)
-- Capital fictif valorisé, positions ouvertes (entrée, stop initial, niveau de sortie, résultat latent,
-  financement), journal des trades, dernières cassures prises ou écartées avec le motif, règles appliquées.
 
 Les heures sont affichées en heure de Paris ; les créneaux de scan sont calculés en UTC.
 
