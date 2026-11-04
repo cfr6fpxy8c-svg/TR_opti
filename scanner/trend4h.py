@@ -30,7 +30,7 @@ FILE = "trend4h-paper.json"
 H4_MS = 14_400_000
 FUNDING_PERIOD_MS = 8 * 3_600_000
 STATE_VERSION = 1
-MAX_EVALUATIONS = 100
+MAX_EVALUATIONS = 1000
 MAX_CURVE_POINTS = 2000
 CHART_BARS = 60
 
@@ -190,6 +190,64 @@ def _fill_pending(st: dict, sym: str, d: dict, params: dict) -> None:
         })
 
 
+def _shadow_bar(sh: dict, d: dict, k: int, params: dict) -> None:
+    """Same entry / stop / trailing rules as a real position, on closed candle k."""
+    bar = d["closed"][k]
+    side = 1 if sh["side"] == "LONG" else -1
+    if sh["status"] == "pending":
+        if bar.openTime != sh["entryTime"]:
+            return
+        sh.update(status="open", entryPrice=bar.open, stop=bar.open - side * sh["riskPerUnit"])
+    stop, trail, exit_price, reason = sh["stop"], int(params["trailBars"]), None, None
+    if (bar.low <= stop) if side > 0 else (bar.high >= stop):
+        gapped = (bar.open <= stop) if side > 0 else (bar.open >= stop)
+        exit_price, reason = (bar.open if gapped and bar.openTime > sh["entryTime"] else stop), "STOP"
+    elif bar.openTime > sh["entryTime"] and k >= trail:
+        window = d["closed"][k - trail:k]
+        level = min(c.low for c in window) if side > 0 else max(c.high for c in window)
+        if (bar.close < level) if side > 0 else (bar.close > level):
+            exit_price, reason = bar.close, "TRAIL"
+    if exit_price is None:
+        sh["markR"] = round(side * (bar.close - sh["entryPrice"]) / sh["riskPerUnit"], 4)
+        return
+    cost_pct = 2 * (float(params["takerFeePct"]) + float(params["slippagePct"])) / 100.0
+    r_gross = side * (exit_price - sh["entryPrice"]) / sh["riskPerUnit"]
+    sh.update(status="closed", exitTime=bar.closeTime + 1, exitPrice=exit_price, exitReason=reason,
+              rNet=round(r_gross - cost_pct * sh["entryPrice"] / sh["riskPerUnit"], 4))
+    sh.pop("markR", None)
+
+
+def _update_shadows(st: dict, data: dict, params: dict) -> None:
+    """Follow every breakout as if it had been taken (no capital, no funding), on closed candles only."""
+    for e in st["evaluations"]:
+        d = data.get(e["symbol"])
+        if d is None or "close" not in e:
+            continue
+        sh = e.get("shadow")
+        if sh is None:
+            sig = d["index"].get(e["barClose"] - H4_MS)
+            if sig is None or d["atr"][sig] is None:
+                continue
+            sh = e["shadow"] = {"status": "pending", "side": e["side"], "entryTime": e["barClose"],
+                                 "riskPerUnit": float(params["stopAtr"]) * d["atr"][sig],
+                                 "lastBar": e["barClose"] - 1}
+        k = d["index"].get(sh["lastBar"] + 1)
+        while sh["status"] != "closed" and k is not None and k < len(d["closed"]):
+            _shadow_bar(sh, d, k, params)
+            sh["lastBar"] = d["closed"][k].closeTime
+            k += 1
+
+
+def _shadow_stats(evaluations: list) -> dict:
+    out = {}
+    for key, taken in (("taken", True), ("rejected", False)):
+        rows = [e["shadow"] for e in evaluations if e.get("taken") is taken and e.get("shadow")]
+        r = [s["rNet"] for s in rows if s["status"] == "closed"]
+        out[key] = {"count": len(rows), "closed": len(r), "wins": sum(1 for x in r if x > 0),
+                    "avgR": round(sum(r) / len(r), 4) if r else None, "totalR": round(sum(r), 4)}
+    return out
+
+
 def _stats(st: dict) -> dict:
     trades = st["trades"]
     r = [t["rNet"] for t in trades]
@@ -283,6 +341,8 @@ def step(state: dict | None, params: dict, candles: dict[str, list[Candle]],
                 pos["markPrice"] = last.close
                 pos["unrealizedR"] = round(side * (last.close - pos["entryPrice"]) / pos["riskPerUnit"], 4)
     st["stats"] = _stats(st)
+    _update_shadows(st, data, params)
+    st["shadowStats"] = _shadow_stats(st["evaluations"])
     st["watch"] = _watch(st, params, data, trend, funding)
     if events:
         st["equityCurve"].append({"t": now_ms, "equity": st["stats"]["equityMarked"]})

@@ -32,11 +32,13 @@ run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500
   watch: { BTCUSDT: { price: hostile, channelHigh: hostile, trendSide: hostile, relVolume: hostile,
     candles: [[1, 1, 2, 0.5, 1.5], [2, hostile, 2, 1, 1], hostile, [3, 1.5, 2.5, 1, 2]] } },
   trades: [{ symbol: hostile, side: hostile, exitReason: hostile, exitTime: 2, entryTime: 1 }],
-  evaluations: [{ symbol: hostile, side: hostile, taken: false, reasons: [hostile] },
-    { symbol: "BTCUSDT", side: hostile, taken: false, reasons: [hostile] }] };
+  evaluations: [{ symbol: hostile, side: hostile, taken: false, reasons: [hostile],
+      shadow: { status: "closed", rNet: hostile, exitReason: hostile } },
+    { symbol: "BTCUSDT", side: hostile, taken: false, reasons: [hostile], shadow: { status: "open", markR: hostile } }],
+  shadowStats: { taken: { count: hostile, closed: hostile }, rejected: hostile } };
   renderTrend();`);
 for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
-  "#trend-evaluations-table tbody", "trend-rules-list"]) {
+  "#trend-evaluations-table tbody", "trend-rules-list", "trend-shadow-summary"]) {
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }
 assert.ok(get("trend-cryptos-grid").innerHTML.includes("<svg"), "chart drawn from the valid candles");

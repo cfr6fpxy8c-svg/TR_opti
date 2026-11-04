@@ -76,12 +76,13 @@
     </div>
   </section>
 
-  <details class="card section" id="trend-evaluations">
-    <summary>Cassures détectées (prises ou écartées par les filtres)</summary>
+  <details class="card section" id="trend-evaluations" open>
+    <summary>Cassures détectées (prises ou écartées) et leur résultat si on était entré</summary>
+    <p class="small" id="trend-shadow-summary"></p>
     <div class="table-wrap">
       <table class="table" id="trend-evaluations-table">
         <thead><tr><th>Bougie 4H</th><th>Symbole</th><th>Sens</th><th>Clôture</th><th>Volume</th>
-          <th>Sens de BTC</th><th>Décision</th></tr></thead>
+          <th>Sens de BTC</th><th>Décision</th><th>Résultat si pris</th></tr></thead>
         <tbody></tbody>
       </table>
       <div class="empty small hidden" id="trend-evaluations-empty">Aucune cassure détectée depuis le démarrage.</div>

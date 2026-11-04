@@ -170,6 +170,10 @@ de pertes), tout en brut et en net.
   sur la clôture à partir de la bougie suivant l'entrée), puis évaluation d'une cassure (pas sur la
   bougie de sortie) avec filtres tendance / volume / financement et limites positions / levier.
 - Premier passage : point de départ fixé à l'avant-dernière bougie clôturée (pas de backfill).
+- Trades fantômes : chaque cassure évaluée (prise ou écartée) reçoit `shadow`, suivi avec les mêmes
+  règles d'entrée, de stop et de sortie suiveuse, sur bougies clôturées uniquement, sans capital ni
+  financement (`rNet` après frais et glissement). `shadowStats` agrège prises / écartées. Les
+  1 000 dernières cassures sont conservées.
 - `watch[symbole]` : cours, canal des `channelBars` dernières bougies clôturées (niveaux à casser),
   volume relatif et financement de la dernière bougie, sens de `trendSymbol`, et dimensionnement
   d'un trade immédiat (distance du stop, risque, notionnel, levier), et `candles` (60 dernières

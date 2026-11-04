@@ -37,6 +37,15 @@ const pctFrom = (a, b) => Number(b) ? 100 * (Number(a) - Number(b)) / Number(b) 
 const sideClass = (side) => side === "LONG" ? "dir-l" : "dir-s";
 const sideWord = (side) => side === "LONG" ? "ACHAT" : "VENTE";
 const EXIT_LABELS = { STOP: "Stop touché", TRAIL: "Sortie suiveuse" };
+const shadowCell = (sh) => {
+  if (!sh || typeof sh !== "object") return "—";
+  if (sh.status === "closed") {
+    const r = Number(sh.rNet);
+    return `<b class="${r > 0 ? "dir-l" : "dir-s"}">${fmtSigned(r)}R</b> <span class="muted small">${escapeHtml(EXIT_LABELS[sh.exitReason] || sh.exitReason)}</span>`;
+  }
+  if (sh.status === "open") return `en cours ${fmtSigned(sh.markR)}R`;
+  return "entrée à l’ouverture suivante";
+};
 
 const state = { trend: null, embeddedLoaded: false };
 
@@ -270,7 +279,7 @@ function renderTrend() {
 
   const evals = (Array.isArray(t.evaluations) ? t.evaluations : []).slice().reverse();
   $("trend-evaluations-empty").classList.toggle("hidden", evals.length > 0);
-  document.querySelector("#trend-evaluations-table tbody").innerHTML = evals.slice(0, 50).map(e => {
+  document.querySelector("#trend-evaluations-table tbody").innerHTML = evals.slice(0, 300).map(e => {
     const reasons = Array.isArray(e.reasons) ? e.reasons : [];
     return `<tr>
       <td>${fmtTime(e.barClose)}</td>
@@ -280,8 +289,15 @@ function renderTrend() {
       <td>${e.relVolume != null ? `${Number(e.relVolume).toFixed(2)}×` : "—"}</td>
       <td>${e.trendAligned == null ? "—" : (e.trendAligned ? "dans le sens" : "contre")}</td>
       <td>${e.taken ? "<b>Prise</b>" : escapeHtml(`Écartée : ${reasons.join(", ")}`)}</td>
+      <td>${shadowCell(e.shadow)}</td>
     </tr>`;
   }).join("");
+  const ss = t.shadowStats || {};
+  const line = (label, g) => g && g.count
+    ? `${label} : ${Number(g.count)} (${Number(g.closed)} terminée(s)${g.closed ? `, ${Number(g.wins)} gagnante(s), moyenne ${fmtSigned(g.avgR)}R, total ${fmtSigned(g.totalR)}R` : ""})`
+    : `${label} : aucune`;
+  $("trend-shadow-summary").textContent = `${line("Cassures prises", ss.taken)} · ${line("Cassures écartées", ss.rejected)}. `
+    + "Résultats en R après frais, hors financement.";
 
   const symbolList = symbols.length ? symbols.map(escapeHtml).join(", ") : "—";
   $("trend-rules-list").innerHTML = [

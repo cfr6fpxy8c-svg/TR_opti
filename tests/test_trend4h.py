@@ -115,6 +115,39 @@ def test_rerun_is_idempotent(params):
     assert again["positions"] == st["positions"] and again["evaluations"] == st["evaluations"]
 
 
+def test_shadow_of_taken_breakout_matches_the_real_trade(params):
+    st, rows = opened(params)
+    assert st["evaluations"][-1]["shadow"]["status"] == "pending"
+    rows = rows[:-1] + [(105, 105.2, 98, 99, 100), LIVE]
+    st = trend4h.step(st, params, {"AAAUSDT": bars(rows)}, {}, after_close(32))
+    shadow, (trade,) = st["evaluations"][-1]["shadow"], st["trades"]
+    assert shadow["status"] == "closed" and shadow["exitReason"] == "STOP"
+    assert shadow["rNet"] == pytest.approx(trade["rNet"], abs=1e-4)
+    assert st["shadowStats"]["taken"] == {"count": 1, "closed": 1, "wins": 0,
+                                          "avgR": shadow["rNet"], "totalR": shadow["rNet"]}
+
+
+def test_rejected_breakout_is_followed_as_a_shadow_trade(params):
+    st, rows = opened(params, breakout=(100, 105.5, 100, 105, 150))
+    assert st["positions"] == []
+    path = [(105, 107, 104.5, 106.5, 100), (106.5, 109, 106, 108.5, 100), (108.5, 111, 108, 110.5, 100),
+            (110.5, 113, 110, 112.5, 100), (112.5, 112.6, 105.5, 105.8, 100)]
+    st = trend4h.step(st, params, {"AAAUSDT": bars(rows[:-1] + path + [LIVE])}, {}, after_close(36))
+    shadow = st["evaluations"][0]["shadow"]
+    assert (shadow["status"], shadow["exitReason"], shadow["exitPrice"]) == ("closed", "TRAIL", 105.8)
+    assert shadow["entryPrice"] == 105 and shadow["rNet"] > 0
+    assert st["trades"] == [] and st["shadowStats"]["rejected"]["closed"] >= 1
+
+
+def test_evaluations_recorded_before_shadows_are_backfilled(params):
+    st, rows = opened(params, breakout=(100, 105.5, 100, 105, 150))
+    del st["evaluations"][0]["shadow"]
+    st = trend4h.step(st, params, {"AAAUSDT": bars(rows[:-1] + [(105, 106, 104, 105.5, 100), LIVE])},
+                      {}, after_close(32))
+    shadow = st["evaluations"][0]["shadow"]
+    assert shadow["status"] == "open" and shadow["entryPrice"] == 105 and shadow["markR"] > 0
+
+
 def test_funding_is_charged_to_longs(params):
     st, rows = opened(params, {"AAAUSDT": 0.0001})
     rows = rows[:-1] + [(105, 106, 104, 105.5, 100), LIVE]

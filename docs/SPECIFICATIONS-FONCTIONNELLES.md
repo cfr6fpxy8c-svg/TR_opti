@@ -154,7 +154,8 @@ publiés dans `data/` mais ne sont plus affichés.
   le sens et le risque prévus ; sinon les niveaux de cassure (achat / vente, écart en %) et une phrase
   expliquant pourquoi aucun trade n'est pris (pas de cassure, filtre tendance, volume, financement,
   dernière cassure écartée), avec le stop, la taille et le levier qu'aurait un trade immédiat.
-- Historique des trades ; en sections repliées : cassures prises ou écartées avec le motif, règles.
+- Historique des trades ; cassures prises ou écartées avec le motif et leur résultat « si on était
+  entré » (trade fantôme), avec la synthèse prises / écartées ; règles en section repliée.
 
 Les heures sont affichées en heure de Paris.
 
