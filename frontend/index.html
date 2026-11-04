@@ -82,11 +82,25 @@
     <div class="table-wrap">
       <table class="table" id="trend-evaluations-table">
         <thead><tr><th>Bougie 4H</th><th>Symbole</th><th>Sens</th><th>Clôture</th><th>Volume</th>
-          <th>Sens de BTC</th><th>Décision</th><th>Résultat si pris</th></tr></thead>
+          <th>Sens de BTC</th><th>Décision</th><th>Résultat si pris</th><th>Avis IA</th></tr></thead>
         <tbody></tbody>
       </table>
       <div class="empty small hidden" id="trend-evaluations-empty">Aucune cassure détectée depuis le démarrage.</div>
     </div>
+  </details>
+
+  <details class="card section" id="ai-analyst" open>
+    <summary>Analyste IA (test : son avis n’influence aucun trade)</summary>
+    <p class="small" id="ai-status">—</p>
+    <p class="small" id="ai-macro"></p>
+    <p class="small" id="ai-direction">—</p>
+    <div class="table-wrap">
+      <table class="table compact" id="ai-matrix">
+        <thead><tr><th>Qui avait raison ?</th><th>IA : GO</th><th>IA : NO-GO</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="small muted" id="ai-sources"></div>
   </details>
 
   <details class="card section" id="trend-rules">

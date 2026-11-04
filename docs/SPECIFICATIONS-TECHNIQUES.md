@@ -93,6 +93,7 @@ Déroulé d'un scan (`scanner/main.py`, `scan_once`) :
 | `latest-chart.json` | Bougies 15 min et niveaux pour le graphique BTC. |
 | `universe-snapshot.json` | Tableau de l'univers scanné. |
 | `trend4h-paper.json` | État de la simulation Tendance 4H : capital, positions, ordres en attente, trades, cassures évaluées, situation par crypto (`watch`), courbe de capital, statistiques, dernier passage. |
+| `ai-analyst.json` | Analyste IA en test : avis par clôture 4H, notation, statistiques, dernier passage. |
 | `frontend/data/badge.json` | Badge d'état (heure UTC, santé). |
 
 Champs principaux d'une proposition : `id`, `symbol`, `direction`, `timeframe`, `quality`, `score`,
@@ -116,7 +117,7 @@ Les champs de définition (prix, niveaux, biais, horaires) sont **immuables** ap
 
 | Workflow | Déclencheurs | Contenu |
 |---|---|---|
-| `scanner.yml` | `workflow_dispatch` (source `manual`/`cron`), push sur `scanner/**`, `config/**` | Job **scan** (lecture seule) : scan BTC, simulation Tendance 4H, validation, artefact. Job **publish** (`contents: write`) : copie de la liste blanche de fichiers, commit `github-actions[bot]`, push avec reprise. `SCAN_TRIGGER=schedule` si `source=cron`. |
+| `scanner.yml` | `workflow_dispatch` (source `manual`/`cron`), push sur `scanner/**`, `config/**` | Job **scan** (lecture seule + `id-token: write` pour GCP) : scan BTC, simulation Tendance 4H, analyste IA, validation, artefact. Job **publish** (`contents: write`) : copie de la liste blanche de fichiers, commit `github-actions[bot]`, push avec reprise. `SCAN_TRIGGER=schedule` si `source=cron`. |
 | `tests.yml` | push, pull request, manuel | Outils QA verrouillés par hash, contrôles frontend, pytest (3.11, 3.12), compilation, validation des données, cohérence du README. |
 | `security.yml` | push, pull request, manuel, planification hebdomadaire GitHub (non fiable sur ce dépôt) | Bandit, pip-audit, contrôles frontend, actionlint, gitleaks (binaires vérifiés par SHA-256). |
 | Dependabot | hebdomadaire | Mises à jour pip et GitHub Actions. |
@@ -185,6 +186,26 @@ de pertes), tout en brut et en net.
   cumulé ; le capital réalisé sert de base au risque suivant.
 - Le moteur reproduit à l'identique le backtest de recherche sur la même période (contrôle effectué
   sur les 30 derniers jours au déploiement).
+
+### 8.6 Analyste IA (`scanner/ai_analyst.py`)
+- Étape distincte après la Tendance 4H (`continue-on-error`, 5 min max). Authentification sans clé :
+  `google-github-actions/auth` (épinglée) échange le jeton OIDC GitHub (`id-token: write`, job scan
+  uniquement) via Workload Identity Federation contre un jeton d'accès de 10 min du compte de service
+  `trend-ai` (rôle `roles/aiplatform.user` seul, pool limité à ce dépôt et à `main`). Aucun fichier
+  d'identifiants n'est écrit. Secrets : `GCP_PROJECT`, `GCP_WIF_PROVIDER`, `GCP_SA`. Sans secrets,
+  l'étape publie `status = "not-configured"`.
+- Appel Vertex AI `generateContent` (modèle `aiAnalyst.model`, outil `googleSearch`), sans redirection,
+  réponse ≤ 2 Mo ; identifiants projet / région / modèle validés par expressions régulières avant
+  construction de l'URL.
+- Une analyse par clôture 4H (`watch.barClose`) ; ignorée si la clôture date de plus de
+  `maxDelayMinutes` ; au plus `maxAttemptsPerBar` essais.
+- Réponse du modèle traitée comme non fiable : JSON extrait puis validé (symboles connus seulement,
+  directions et décisions dans une liste fermée, probabilités bornées 0-100, textes tronqués), sources
+  conservées seulement en `https://`. Le dashboard échappe tout texte et n'émet que des liens https.
+- `ai-analyst.json` : analyses (avis par crypto, cassures, requêtes, sources, jetons consommés),
+  notation (`outcome` à 24 h depuis `watch.candles`, `ours` / `result` depuis le trade fantôme),
+  `stats` (réussite, Brier, tableau prise/écartée × GO/NO-GO). Au-delà de 7 jours les textes sont
+  retirés ; 1 200 analyses conservées.
 
 ## 9. Replay / backtest (`scanner/replay.py`)
 

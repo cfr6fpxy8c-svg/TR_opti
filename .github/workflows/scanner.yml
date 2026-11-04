@@ -31,6 +31,12 @@ jobs:
     if: github.ref == format('refs/heads/{0}', github.event.repository.default_branch)
     runs-on: ubuntu-latest
     timeout-minutes: 12
+    permissions:
+      contents: read
+      id-token: write
+    env:
+      # Secrets cannot be tested in step conditions directly.
+      GCP_CONFIGURED: ${{ secrets.GCP_WIF_PROVIDER != '' && secrets.GCP_SA != '' && secrets.GCP_PROJECT != '' }}
     outputs:
       data_ready: ${{ steps.upload.outcome }}
     steps:
@@ -70,6 +76,28 @@ jobs:
         run: python -m scanner.trend4h
         continue-on-error: true
 
+      - name: Authenticate to Google Cloud (keyless)
+        id: gcp
+        if: env.GCP_CONFIGURED == 'true'
+        continue-on-error: true
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA }}
+          token_format: access_token
+          access_token_lifetime: 600s
+          create_credentials_file: false
+          export_environment_variables: false
+
+      - name: Run AI analyst (shadow, no effect on trades)
+        id: ai
+        timeout-minutes: 5
+        continue-on-error: true
+        env:
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_ACCESS_TOKEN: ${{ steps.gcp.outputs.access_token }}
+        run: python -m scanner.ai_analyst
+
       - name: Validate published JSON
         run: python -m scanner.validate_data
 
@@ -88,6 +116,7 @@ jobs:
             data/latest-chart.json
             data/universe-snapshot.json
             data/trend4h-paper.json
+            data/ai-analyst.json
             frontend/data/signals.json
             frontend/data/performance.json
             frontend/data/system-status.json
@@ -95,6 +124,7 @@ jobs:
             frontend/data/latest-chart.json
             frontend/data/universe-snapshot.json
             frontend/data/trend4h-paper.json
+            frontend/data/ai-analyst.json
             frontend/data/badge.json
 
       - name: Propagate scan failure

@@ -47,7 +47,7 @@ const shadowCell = (sh) => {
   return "entrée à l’ouverture suivante";
 };
 
-const state = { trend: null, embeddedLoaded: false };
+const state = { trend: null, ai: null, embeddedLoaded: false };
 
 /* ------------------------------------------------------------------ data */
 // Data is read from the repo so the static host need not redeploy on every scan commit.
@@ -69,6 +69,7 @@ async function loadJSON(name) {
 async function refreshData() {
   try {
     state.trend = await loadJSON("trend4h-paper.json");
+    state.ai = await loadJSON("ai-analyst.json").catch(() => null);
     state.embeddedLoaded = false;
     $("preview-notice").classList.add("hidden");
   } catch (err) {
@@ -229,7 +230,59 @@ function trendCard(sym, t, p) {
         <span class="setup-state ${badgeCls}">${escapeHtml(badge)}</span></div>
       ${miniChart(w, pos, p)}
       ${body}
+      ${aiCardView(sym)}
     </article>`;
+}
+
+/* ------------------------------------------------------- analyste IA */
+const DIRECTION_LABELS = { UP: ["hausse", "dir-l"], DOWN: ["baisse", "dir-s"], NEUTRAL: ["neutre", "muted"] };
+const aiAnalyses = () => Array.isArray(state.ai?.analyses) ? state.ai.analyses : [];
+const httpsUrl = (u) => typeof u === "string" && /^https:\/\//.test(u) ? u : null;
+const decisionHtml = (b) => b ? `<b class="${b.decision === "GO" ? "dir-l" : "dir-s"}">${b.decision === "GO" ? "GO" : "NO-GO"}</b> (${Number(b.probTarget)} % d’atteindre +2R)` : "—";
+
+function aiCardView(sym) {
+  const a = aiAnalyses().slice(-1)[0];
+  const v = a?.assets?.[sym];
+  if (!v || typeof v !== "object") return "";
+  const [label, cls] = DIRECTION_LABELS[v.direction] || ["—", "muted"];
+  return `<div class="ai-view"><div><span class="ai-tag">Avis IA</span> ${fmtTime(a.barClose)} ·
+      <b class="${cls}">${label} sur 24 h</b> · P(hausse) ${Number(v.probUp)} %${v.breakout ? ` · cassure : ${decisionHtml(v.breakout)}` : ""}</div>
+      <p>${escapeHtml(v.breakout?.reason || v.reason)}${v.risks ? ` <span class="muted">Risques : ${escapeHtml(v.risks)}</span>` : ""}</p></div>`;
+}
+
+function aiBreakoutCell(e) {
+  const a = aiAnalyses().find(x => x.barClose === e.barClose);
+  const b = a?.assets?.[e.symbol]?.breakout;
+  return b ? `<span title="${escapeHtml(b.reason)}">${decisionHtml(b)}</span>` : "—";
+}
+
+function renderAi() {
+  const ai = state.ai;
+  const run = ai?.lastRun || {};
+  const STATUS = { ok: "analyse faite", "up-to-date": "à jour", "not-configured": "non configuré",
+    "skipped-late": "clôture trop ancienne, ignorée", "gave-up": "échecs répétés sur cette clôture",
+    error: "erreur", "no-data": "pas de données" };
+  const last = aiAnalyses().slice(-1)[0];
+  $("ai-status").textContent = !ai?.version ? "L’analyste démarrera au prochain passage."
+    : `Modèle ${ai.model || "—"} · dernier passage ${fmtAgo(run.at)} : ${STATUS[run.status] || run.status || "—"}`
+      + `${run.error ? ` (${run.error})` : ""} · dernière analyse ${last ? fmtTime(last.barClose) : "aucune"}.`;
+  $("ai-macro").textContent = last?.macro ? `Macro : ${last.macro}` : "";
+  const d = ai?.stats?.direction || {};
+  $("ai-direction").textContent = d.scored
+    ? `Directions à 24 h notées : ${Number(d.scored)} · réussite ${Math.round(100 * Number(d.hitRate))} % sur ${Number(d.called)} avis hausse/baisse`
+      + ` (${Number(d.neutral)} neutres) · score de Brier ${Number(d.brier).toFixed(3)} (hasard = 0,250, plus bas = mieux).`
+    : "Directions à 24 h : premières notes 24 h après la première analyse.";
+  const m = ai?.stats?.breakouts || {};
+  const cell = (g) => g && g.count
+    ? `${Number(g.count)} cassure(s) · ${g.closed ? `moyenne ${fmtSigned(g.avgR)}R sur ${Number(g.closed)} terminée(s)` : "en cours"}` : "—";
+  document.querySelector("#ai-matrix tbody").innerHTML = [["taken", "Nous : prise"], ["rejected", "Nous : écartée"]]
+    .map(([k, label]) => `<tr><th>${label}</th><td>${cell(m[`${k}_GO`])}</td><td>${cell(m[`${k}_NO_GO`])}</td></tr>`).join("");
+  const queries = Array.isArray(last?.queries) ? last.queries : [];
+  const sources = Array.isArray(last?.sources) ? last.sources : [];
+  $("ai-sources").innerHTML = [
+    queries.length ? `Recherches Google : ${queries.map(q => `<a href="https://www.google.com/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener noreferrer">${escapeHtml(q)}</a>`).join(" · ")}` : "",
+    sources.length ? `Sources : ${sources.filter(s => httpsUrl(s?.uri)).map(s => `<a href="${escapeHtml(s.uri)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || "source")}</a>`).join(" · ")}` : "",
+  ].filter(Boolean).map(x => `<p>${x}</p>`).join("");
 }
 
 function renderTrend() {
@@ -290,6 +343,7 @@ function renderTrend() {
       <td>${e.trendAligned == null ? "—" : (e.trendAligned ? "dans le sens" : "contre")}</td>
       <td>${e.taken ? "<b>Prise</b>" : escapeHtml(`Écartée : ${reasons.join(", ")}`)}</td>
       <td>${shadowCell(e.shadow)}</td>
+      <td>${aiBreakoutCell(e)}</td>
     </tr>`;
   }).join("");
   const ss = t.shadowStats || {};
@@ -298,6 +352,7 @@ function renderTrend() {
     : `${label} : aucune`;
   $("trend-shadow-summary").textContent = `${line("Cassures prises", ss.taken)} · ${line("Cassures écartées", ss.rejected)}. `
     + "Résultats en R après frais, hors financement.";
+  renderAi();
 
   const symbolList = symbols.length ? symbols.map(escapeHtml).join(", ") : "—";
   $("trend-rules-list").innerHTML = [

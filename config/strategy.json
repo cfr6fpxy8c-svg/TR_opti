@@ -215,5 +215,16 @@
     "slippagePct": 0.025,
     "klineLimit": 1000,
     "_doc": "Tendance 4H en simulation (aucun ordre). Signal = cloture 4H au-dela du canal channelBars, dans le sens de trendSymbol vs EMA trendEma, volume > volumeMultiple x moyenne, financement < maxFundingRate dans le sens du trade. Entree a l'ouverture suivante, stop stopAtr x ATR, sortie a la cloture au-dela du canal trailBars oppose. Risque riskPct % du capital realise par trade, maxPositions, exposition <= maxLeverage x capital."
+  },
+  "aiAnalyst": {
+    "enabled": true,
+    "model": "gemini-3.5-flash",
+    "location": "global",
+    "horizonHours": 24,
+    "maxDelayMinutes": 90,
+    "maxAttemptsPerBar": 3,
+    "timeoutSeconds": 150,
+    "maxOutputTokens": 8192,
+    "_doc": "Analyste IA en test (aucun effet sur les trades). A chaque cloture 4H, Gemini (Vertex AI, recherche Google) recoit nos faits sans notre verdict et donne une direction 24 h + P(hausse) par crypto et GO / NO_GO sur chaque cassure. Projet et jeton : secrets GitHub GCP_* (Workload Identity Federation). Pas d'analyse si la cloture date de plus de maxDelayMinutes."
   }
 }

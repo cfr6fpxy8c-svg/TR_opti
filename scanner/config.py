@@ -86,6 +86,10 @@ DEFAULTS: dict[str, Any] = {
         "riskPct": 1.0, "maxPositions": 5, "maxLeverage": 5.0, "startCapital": 500.0,
         "takerFeePct": 0.05, "slippagePct": 0.025, "klineLimit": 1000,
     },
+    "aiAnalyst": {
+        "enabled": False, "model": "gemini-3.5-flash", "location": "global", "horizonHours": 24,
+        "maxDelayMinutes": 90, "maxAttemptsPerBar": 3, "timeoutSeconds": 150, "maxOutputTokens": 8192,
+    },
 }
 
 
@@ -177,6 +181,26 @@ class Config:
                 elif ep.get("root") not in (None, "https://api.bybit.com"):
                     errors.append("dataSource endpoint root is not allowed")
         errors.extend(self._validate_trend4h())
+        errors.extend(self._validate_ai_analyst())
+        return errors
+
+    def _validate_ai_analyst(self) -> list[str]:
+        a = self.get("aiAnalyst", {})
+        if not a.get("enabled", False):
+            return []
+        from .ai_analyst import LOCATION_RE, MODEL_RE
+        errors = []
+        if not isinstance(a.get("model"), str) or not MODEL_RE.match(a["model"]):
+            errors.append("aiAnalyst.model must be a model id like gemini-3.5-flash")
+        if not isinstance(a.get("location"), str) or not LOCATION_RE.match(a["location"]):
+            errors.append("aiAnalyst.location must be 'global' or a region like europe-west1")
+        h = a.get("horizonHours")
+        if not isinstance(h, int) or h % 4 or not 4 <= h <= 168:
+            errors.append("aiAnalyst.horizonHours must be a multiple of 4 within 4..168")
+        for key, low, high in (("maxDelayMinutes", 5, 240), ("maxAttemptsPerBar", 1, 10),
+                               ("timeoutSeconds", 10, 300), ("maxOutputTokens", 512, 65536)):
+            if not isinstance(a.get(key), int) or not low <= a[key] <= high:
+                errors.append(f"aiAnalyst.{key} must be an integer within {low}..{high}")
         return errors
 
     def _validate_trend4h(self) -> list[str]:

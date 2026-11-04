@@ -208,3 +208,23 @@ Stratégie de suivi de tendance retenue après les études de recherche (seule a
   entre-temps sont traitées au scan suivant, sans doublon.
 - Profil attendu (backtest) : environ 3 trades par semaine, environ 1/3 de trades gagnants, séries de
   pertes de 10 à 15 trades possibles, pire baisse historique d'environ −30 à −40 %.
+
+## 14. Analyste IA (test, sans effet sur les trades)
+
+Objectif : mesurer si une IA qui lit l'actualité apporte une information que nos règles ne calculent
+pas. Son avis est consigné et noté, il ne déclenche ni ne bloque aucun trade.
+
+- **Quand** : une fois par clôture 4H (au premier passage qui suit), jamais plus de 90 min après la
+  clôture.
+- **Ce qu'elle reçoit** : nos faits (cours, variation 24 h / 7 j, volatilité, canal 20 bougies, volume,
+  financement, tendance BTC, cassures de cette clôture) mais **pas** la décision de nos filtres.
+- **Ce qu'elle fait** : recherche Google (macro, Fed, inflation, actualité de chaque crypto,
+  régulation, sentiment) puis rend, par crypto, une direction à 24 h avec la probabilité de hausse, et
+  pour chaque cassure un GO / NO-GO avec la probabilité d'atteindre +2R, une raison, les risques, les
+  recherches et sources utilisées.
+- **Notation** : directions comparées à la clôture 24 h plus tard (taux de réussite, score de Brier,
+  hasard = 0,25) ; GO / NO-GO comparés au résultat du trade fantôme de la même cassure, dans un
+  tableau « nous : prise / écartée » × « IA : GO / NO-GO ».
+- **Affichage** : avis sur chaque carte crypto, colonne « Avis IA » dans le tableau des cassures,
+  section « Analyste IA » (état, note macro, scores, tableau qui avait raison, recherches et sources).
+- Une conclusion demande plusieurs mois ; un mois ne donne qu'une tendance.

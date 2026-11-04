@@ -22,7 +22,7 @@ def main() -> int:
     data = repo_root() / "data"
     files = ["signals.json", "performance.json", "system-status.json",
              "market-snapshots.json", "latest-chart.json", "universe-snapshot.json",
-             "trend4h-paper.json"]
+             "trend4h-paper.json", "ai-analyst.json"]
     payloads: dict[str, object] = {}
     for name in files:
         path = data / name
@@ -77,6 +77,13 @@ def main() -> int:
             else:
                 print(f"trend4h-paper.json: equity {equity:.2f}, {len(paper['positions'])} open, "
                       f"{len(paper['trades'])} closed")
+
+    if "ai-analyst.json" in payloads:
+        analyses = payloads["ai-analyst.json"].get("analyses")
+        if not isinstance(analyses, list):
+            errors.append("ai-analyst.json: analyses must be a list")
+        else:
+            print(f"ai-analyst.json: {len(analyses)} analyses")
 
     if "system-status.json" in payloads:
         st = payloads["system-status.json"]

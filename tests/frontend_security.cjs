@@ -24,6 +24,12 @@ const attack = '<img src=x onerror="globalThis.compromised=true">';
 context.hostile = attack;
 assert.equal(run("escapeHtml(hostile)"), "&lt;img src=x onerror=&quot;globalThis.compromised=true&quot;&gt;");
 // Paper-trading view must escape every string coming from trend4h-paper.json.
+run(`state.ai = { version: 1, model: hostile, lastRun: { status: hostile, error: hostile },
+  stats: { direction: { scored: 1, hitRate: hostile, brier: hostile }, breakouts: { taken_GO: { count: hostile, closed: 1, avgR: hostile } } },
+  analyses: [{ barClose: 1, macro: hostile, queries: [hostile], sources: [{ uri: "javascript:alert(1)", title: hostile },
+    { uri: 'https://x.org/" onmouseover="globalThis.compromised=true', title: hostile }],
+    assets: { BTCUSDT: { direction: hostile, probUp: hostile, reason: hostile, risks: hostile,
+      breakout: { decision: hostile, probTarget: hostile, reason: hostile } } } }] };`);
 run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500, equity: 500,
   params: { symbols: [hostile, "BTCUSDT", "ETHUSDT"], trendSymbol: hostile, riskPct: 1, maxPositions: 5 },
   stats: { equityMarked: 500, trades: 1, winRate: 1, avgR: 1 }, lastRun: { errors: [hostile] },
@@ -38,9 +44,12 @@ run(`state.trend = { version: 1, generatedAt: 1, startedAt: 1, startCapital: 500
   shadowStats: { taken: { count: hostile, closed: hostile }, rejected: hostile } };
   renderTrend();`);
 for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
-  "#trend-evaluations-table tbody", "trend-rules-list", "trend-shadow-summary"]) {
+  "#trend-evaluations-table tbody", "trend-rules-list", "trend-shadow-summary",
+  "#ai-matrix tbody", "ai-sources", "ai-status"]) {
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }
+assert.ok(!get("ai-sources").innerHTML.includes("javascript:"), "only https sources become links");
+assert.ok(!get("ai-sources").innerHTML.includes('" onmouseover'), "source URLs are attribute-escaped");
 assert.ok(get("trend-cryptos-grid").innerHTML.includes("<svg"), "chart drawn from the valid candles");
 assert.ok(!context.compromised);
 console.log("Frontend security checks passed: trend cards, trade history, evaluations, rules.");
