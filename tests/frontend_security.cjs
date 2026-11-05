@@ -54,5 +54,29 @@ for (const id of ["trend-cryptos-grid", "#trend-trades-table tbody",
 assert.ok(!get("ai-sources").innerHTML.includes("javascript:"), "only https sources become links");
 assert.ok(!get("ai-sources").innerHTML.includes('" onmouseover'), "source URLs are attribute-escaped");
 assert.ok(get("trend-cryptos-grid").innerHTML.includes("<svg"), "chart drawn from the valid candles");
+// Second portfolio (4H + renfort 1H) and its AI must escape everything as well.
+run(`const book = { params: { symbols: ["BTCUSDT", hostile] },
+    positions: [{ symbol: "BTCUSDT", side: hostile, entryTime: 1, entryPrice: hostile, stop: hostile, unrealizedR: hostile }],
+    trades: [{ symbol: hostile, side: hostile, exitReason: hostile, exitTime: 2, entryTime: 1 }],
+    evaluations: [{ symbol: hostile, side: hostile, taken: false, reasons: [hostile], barClose: 5,
+      shadow: { status: "closed", rNet: hostile, exitReason: hostile } }],
+    watch: { BTCUSDT: { price: hostile, channelHigh: hostile, candles: [[1, 1, 2, 0.5, 1.5], [2, 1.5, 2.5, 1, 2]] } },
+    shadowStats: { taken: { count: hostile }, rejected: hostile }, stats: { trades: hostile } };
+  combo.state = { version: 1, startCapital: 500, startedAt: 1, params: { risk4hPct: hostile, h1ChannelBars: hostile },
+    stats: { equityMarked: hostile }, lastRun: { errors: [hostile] }, book4h: book, book1h: book };
+  combo.ai = { version: 1, model: hostile, lastRun: { status: hostile, error: hostile },
+    stats: { breakouts: { taken_GO: { count: hostile, closed: 1, avgR: hostile } } },
+    analyses: [{ barClose: 5, macro: hostile, queries: [hostile], sources: [{ uri: "javascript:alert(1)", title: hostile }],
+      assets: { BTCUSDT: { direction: hostile, probUp: hostile, reason: hostile, risks: hostile,
+        breakout1h: { decision: hostile, probTarget: hostile, reason: hostile },
+        trade: { action: "SHORT", conviction: hostile, stop: hostile, status: hostile, reason: hostile } },
+        [hostile]: { breakout4h: { decision: hostile, reason: hostile } } } }],
+    portfolio: { positions: [{ symbol: hostile, side: hostile, reason: hostile }], trades: [{ symbol: hostile, exitReason: hostile }] } };
+  renderCombo();`);
+for (const id of ["cb-grid", "#cb-trades-table tbody", "#cb-evaluations-table tbody", "cb-rules-list",
+  "#cb-ai-matrix tbody", "cb-ai-sources", "#cb-ai-trades-table tbody"]) {
+  assert.ok(!get(id).innerHTML.includes("<img"), id);
+}
+assert.ok(!get("cb-ai-sources").innerHTML.includes("javascript:"), "combo: only https sources become links");
 assert.ok(!context.compromised);
 console.log("Frontend security checks passed: trend cards, trade history, evaluations, rules.");

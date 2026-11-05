@@ -90,6 +90,10 @@ DEFAULTS: dict[str, Any] = {
         "enabled": False, "model": "gemini-3.5-flash", "location": "global", "horizonHours": 24,
         "maxDelayMinutes": 90, "maxAttemptsPerBar": 3, "timeoutSeconds": 150, "maxOutputTokens": 8192,
     },
+    "trendCombo": {
+        "enabled": False, "aiEnabled": False, "startCapital": 500.0, "risk4hPct": 1.0, "risk1hPct": 0.5,
+        "h1ChannelBars": 160, "h1TrailBars": 40, "h1StopAtr": 2.0, "h1KlineLimit": 1000,
+    },
 }
 
 
@@ -182,6 +186,28 @@ class Config:
                     errors.append("dataSource endpoint root is not allowed")
         errors.extend(self._validate_trend4h())
         errors.extend(self._validate_ai_analyst())
+        errors.extend(self._validate_trend_combo())
+        return errors
+
+    def _validate_trend_combo(self) -> list[str]:
+        c = self.get("trendCombo", {})
+        if not c.get("enabled", False):
+            return []
+        errors = []
+        if not self.get("trend4h.symbols"):
+            errors.append("trendCombo reuses trend4h.symbols and filters, which must be configured")
+        for key in ("startCapital", "risk4hPct", "risk1hPct", "h1StopAtr"):
+            if not isinstance(c.get(key), (int, float)) or c[key] <= 0:
+                errors.append(f"trendCombo.{key} must be > 0")
+        for key in ("risk4hPct", "risk1hPct"):
+            if isinstance(c.get(key), (int, float)) and c[key] > 5:
+                errors.append(f"trendCombo.{key} must not exceed 5")
+        for key in ("h1ChannelBars", "h1TrailBars"):
+            if not isinstance(c.get(key), int) or c[key] < 1:
+                errors.append(f"trendCombo.{key} must be a positive integer")
+        limit = c.get("h1KlineLimit")
+        if not isinstance(limit, int) or not (c.get("h1ChannelBars") or 0) + 50 <= limit <= 1500:
+            errors.append("trendCombo.h1KlineLimit must cover h1ChannelBars + 50 candles and be <= 1500")
         return errors
 
     def _validate_ai_analyst(self) -> list[str]:

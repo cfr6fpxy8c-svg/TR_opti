@@ -15,7 +15,7 @@ import time
 DATA_NAMES = (
     "signals.json", "performance.json", "system-status.json",
     "market-snapshots.json", "latest-chart.json", "universe-snapshot.json",
-    "trend4h-paper.json", "ai-analyst.json",
+    "trend4h-paper.json", "ai-analyst.json", "trend-combo-paper.json", "ai-combo.json",
 )
 APPROVED = {f"data/{name}" for name in DATA_NAMES} | {
     f"frontend/data/{name}" for name in (*DATA_NAMES, "badge.json")

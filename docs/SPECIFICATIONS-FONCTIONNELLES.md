@@ -234,3 +234,19 @@ pas. Son avis est consigné et noté, il ne déclenche ni ne bloque aucun trade.
 - **Affichage** : avis sur chaque carte crypto, colonne « Avis IA » dans le tableau des cassures,
   section « Analyste IA » (état, note macro, scores, tableau qui avait raison, recherches et sources).
 - Une conclusion demande plusieurs mois ; un mois ne donne qu'une tendance.
+
+## 15. Second portefeuille : 4H + renfort 1H (simulation)
+
+Portefeuille fictif indépendant, affiché dans l'onglet « 4H + renfort 1H » (l'état du système reste commun
+en haut de page). La Tendance 4H (§ 13) et son analyste IA (§ 14) ne sont pas modifiés.
+
+- **Livre 4H** : exactement les règles de la Tendance 4H, risque 1 % par trade.
+- **Renfort 1H** : clôture 1H au-delà du plus haut / plus bas des 160 bougies 1H, mêmes 3 filtres
+  (tendance BTC lue en 4H, volume, financement), **uniquement pendant une position 4H ouverte dans le
+  même sens** ; stop 2 × ATR 1H, sortie suiveuse sur 40 bougies 1H, risque 0,5 % par trade.
+- **Capital commun** de 500 € pour les deux livres, gains réinvestis, mêmes coûts.
+- **Analyste IA dédié** (mêmes réglages que § 14) : analyse à chaque clôture 4H et à chaque clôture 1H
+  où une cassure apparaît, avis GO / NO-GO sur les cassures 4H et 1H, direction à 24 h, et son propre
+  portefeuille fictif suivi sur bougies 1H.
+- Choix issus de la recherche : sur 2019-2026, le renfort 1H pendant une position 4H donne +0,87R par
+  trade (+0,61R sur la période non utilisée pour le choix) ; pire baisse simulée d'environ −41 %.

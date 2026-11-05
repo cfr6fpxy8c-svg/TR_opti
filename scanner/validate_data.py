@@ -22,7 +22,7 @@ def main() -> int:
     data = repo_root() / "data"
     files = ["signals.json", "performance.json", "system-status.json",
              "market-snapshots.json", "latest-chart.json", "universe-snapshot.json",
-             "trend4h-paper.json", "ai-analyst.json"]
+             "trend4h-paper.json", "ai-analyst.json", "trend-combo-paper.json", "ai-combo.json"]
     payloads: dict[str, object] = {}
     for name in files:
         path = data / name
@@ -84,6 +84,16 @@ def main() -> int:
             errors.append("ai-analyst.json: analyses must be a list")
         else:
             print(f"ai-analyst.json: {len(analyses)} analyses")
+
+    if "trend-combo-paper.json" in payloads:
+        combo = payloads["trend-combo-paper.json"]
+        if combo.get("version") and not all(isinstance(combo.get(k), dict) for k in ("book4h", "book1h")):
+            errors.append("trend-combo-paper.json: book4h and book1h must be objects")
+        elif combo.get("version"):
+            print(f"trend-combo-paper.json: equity {combo.get('stats', {}).get('equityMarked')}")
+
+    if "ai-combo.json" in payloads and not isinstance(payloads["ai-combo.json"].get("analyses"), list):
+        errors.append("ai-combo.json: analyses must be a list")
 
     if "system-status.json" in payloads:
         st = payloads["system-status.json"]

@@ -226,5 +226,17 @@
     "timeoutSeconds": 150,
     "maxOutputTokens": 8192,
     "_doc": "Analyste IA en test (aucun effet sur les trades). A chaque cloture 4H, Gemini (Vertex AI, recherche Google) recoit nos faits sans notre verdict et donne une direction 24 h + P(hausse) par crypto et GO / NO_GO sur chaque cassure. Projet et jeton : secrets GitHub GCP_* (Workload Identity Federation). Pas d'analyse si la cloture date de plus de maxDelayMinutes."
+  },
+  "trendCombo": {
+    "enabled": true,
+    "aiEnabled": true,
+    "startCapital": 500,
+    "risk4hPct": 1.0,
+    "risk1hPct": 0.5,
+    "h1ChannelBars": 160,
+    "h1TrailBars": 40,
+    "h1StopAtr": 2.0,
+    "h1KlineLimit": 1000,
+    "_doc": "Second portefeuille en simulation, independant de trend4h-paper.json : livre 4H (regles et filtres de trend4h, risque risk4hPct) + renfort 1H (cassure h1ChannelBars, suiveuse h1TrailBars, stop h1StopAtr x ATR 1H, memes 3 filtres avec la tendance BTC lue en 4H, risque risk1hPct) seulement pendant une position 4H ouverte dans le meme sens. Capital commun startCapital. aiEnabled = analyste IA dedie (ai-combo.json, memes reglages que aiAnalyst)."
   }
 }

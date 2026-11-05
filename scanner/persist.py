@@ -13,7 +13,7 @@ from .config import repo_root
 
 DATA_FILES = ("signals.json", "performance.json", "system-status.json",
               "market-snapshots.json", "latest-chart.json", "universe-snapshot.json",
-              "trend4h-paper.json", "ai-analyst.json")
+              "trend4h-paper.json", "ai-analyst.json", "trend-combo-paper.json", "ai-combo.json")
 
 
 def _data_path(directory: Path, name: str) -> Path:
@@ -78,6 +78,8 @@ def seed_empty_files() -> None:
         "universe-snapshot.json": {"generatedAt": 0, "rows": []},
         "trend4h-paper.json": {"version": 0, "generatedAt": 0, "positions": [], "trades": []},
         "ai-analyst.json": {"version": 0, "generatedAt": 0, "analyses": []},
+        "trend-combo-paper.json": {"version": 0, "generatedAt": 0},
+        "ai-combo.json": {"version": 0, "generatedAt": 0, "analyses": []},
         "latest-chart.json": {"symbol": "BTCUSDT", "timeframe": "15m",
                               "generatedAt": 0, "candles": [], "indicators": {},
                               "context": {}, "structure": {}},

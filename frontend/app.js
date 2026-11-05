@@ -408,6 +408,210 @@ function renderTrend() {
   ].map(line => `<li>${line}</li>`).join("");
 }
 
+/* ------------------------------------------- 4H + renfort 1H (second portfolio) */
+const combo = { state: null, ai: null };
+const BOOK_LABELS = { "4h": "4H", "1h": "renfort 1H" };
+const cbAnalyses = () => Array.isArray(combo.ai?.analyses) ? combo.ai.analyses : [];
+const asList = (v) => Array.isArray(v) ? v : [];
+
+function selectTab(name) {
+  for (const tab of ["main", "combo"]) {
+    const on = tab === name;
+    $(`view-${tab}`).classList.toggle("hidden", !on);
+    $(`tab-${tab}`).classList.toggle("active", on);
+    $(`tab-${tab}`).setAttribute("aria-selected", String(on));
+  }
+}
+
+async function refreshCombo() {
+  combo.state = await loadJSON("trend-combo-paper.json").catch(() => null);
+  combo.ai = await loadJSON("ai-combo.json").catch(() => null);
+  renderCombo();
+}
+
+function positionLine(label, pos) {
+  const side = pos.side === "LONG" ? 1 : -1;
+  return `<p><b>${label}</b> : <b class="${sideClass(pos.side)}">${escapeHtml(sideWord(pos.side))}</b> depuis ${fmtTime(pos.entryTime)}
+    \u00e0 ${fmtPrice(pos.entryPrice)} \u00b7 stop ${fmtPrice(pos.stop)} \u00b7 sortie suiveuse ${fmtPrice(pos.trailLevel)}
+    \u00b7 cours ${fmtPrice(pos.markPrice)} (${fmtSigned(side * pctFrom(pos.markPrice, pos.entryPrice), 2, " %")})
+    \u00b7 <b>${fmtSigned(pos.unrealizedR)}R</b> \u00b7 risque ${fmtEur(pos.stake)}</p>`;
+}
+
+function comboCard(sym, b4, b1) {
+  const w4 = b4.watch?.[sym] || null;
+  const w1 = b1.watch?.[sym] || null;
+  const p4 = asList(b4.positions).find(x => x.symbol === sym);
+  const p1 = asList(b1.positions).find(x => x.symbol === sym);
+  const name = escapeHtml(String(sym).replace(/USDT$/, ""));
+  const lines = [];
+  lines.push(p4 ? positionLine("Position 4H", p4)
+    : `<p><b>Position 4H</b> : aucune${w4 ? ` \u00b7 achat si cl\u00f4ture 4H &gt; ${fmtPrice(w4.channelHigh)}, vente si &lt; ${fmtPrice(w4.channelLow)}` : ""}</p>`);
+  if (p1) lines.push(positionLine("Renfort 1H", p1));
+  else if (p4 && w1) lines.push(`<p><b>Renfort 1H</b> : en attente d\u2019une cl\u00f4ture 1H ${p4.side === "LONG"
+    ? `au-dessus de ${fmtPrice(w1.channelHigh)}` : `sous ${fmtPrice(w1.channelLow)}`} (plus ${p4.side === "LONG" ? "haut" : "bas"} des 160 derni\u00e8res bougies 1H, avec les 3 filtres)</p>`);
+  else lines.push("<p><b>Renfort 1H</b> : possible seulement pendant une position 4H, dans le m\u00eame sens.</p>");
+  const a = cbAnalyses().slice(-1)[0];
+  const v = a?.assets?.[sym];
+  if (v && typeof v === "object") {
+    const [label, cls] = DIRECTION_LABELS[v.direction] || ["\u2014", "muted"];
+    const views = ["4h", "1h"].filter(f => v[`breakout${f}`])
+      .map(f => ` \u00b7 cassure ${BOOK_LABELS[f]} : ${decisionHtml(v[`breakout${f}`])}`).join("");
+    lines.push(`<div class="ai-view"><div><span class="ai-tag">Avis IA</span> ${fmtTime(a.barClose)} \u00b7
+      <b class="${cls}">${label} sur 24 h</b> \u00b7 P(hausse) ${Number(v.probUp)} %${views}</div>
+      <p>${escapeHtml(v.breakout1h?.reason || v.breakout4h?.reason || v.reason)}${v.risks ? ` <span class="muted">Risques : ${escapeHtml(v.risks)}</span>` : ""}</p>
+      ${aiTradeLine(v.trade)}</div>`);
+  }
+  const badge = p4 && p1 ? ["4H + renfort", p4.side === "LONG" ? "long" : "short"]
+    : p4 ? [`${sideWord(p4.side)} 4H`, p4.side === "LONG" ? "long" : "short"] : ["Pas de trade", ""];
+  return `<article class="card setup-card">
+      <div class="setup-title-row"><h3>${name} <span class="muted small">${fmtPrice(w4?.price)}</span></h3>
+        <span class="setup-state ${badge[1]}">${escapeHtml(badge[0])}</span></div>
+      ${w4 ? miniChart(w4, p4, b4.params || {}) : ""}
+      <div class="small">${lines.join("")}</div>
+    </article>`;
+}
+
+function cbAiCell(frame, e) {
+  const a = cbAnalyses().find(x => x.barClose === e.barClose);
+  const b = a?.assets?.[e.symbol]?.[`breakout${frame}`];
+  return b ? `<span title="${escapeHtml(b.reason)}">${decisionHtml(b)}</span>` : "\u2014";
+}
+
+function renderComboAi() {
+  const ai = combo.ai;
+  const run = ai?.lastRun || {};
+  const STATUS = { ok: "analyse faite", "up-to-date": "\u00e0 jour", waiting: "en attente d\u2019une cl\u00f4ture 4H ou d\u2019une cassure",
+    "not-configured": "non configur\u00e9", "skipped-late": "cl\u00f4ture trop ancienne, ignor\u00e9e",
+    "gave-up": "\u00e9checs r\u00e9p\u00e9t\u00e9s sur cette cl\u00f4ture", error: "erreur", "no-data": "pas de donn\u00e9es" };
+  const last = cbAnalyses().slice(-1)[0];
+  $("cb-ai-status").textContent = !ai?.version ? "L\u2019analyste de ce portefeuille d\u00e9marrera au prochain passage."
+    : `Mod\u00e8le ${ai.model || "\u2014"} \u00b7 dernier passage ${fmtAgo(run.at)} : ${STATUS[run.status] || run.status || "\u2014"}`
+      + `${run.error ? ` (${run.error})` : ""} \u00b7 derni\u00e8re analyse ${last ? fmtTime(last.barClose) : "aucune"}.`;
+  $("cb-ai-macro").textContent = last?.macro ? `Macro : ${last.macro}` : "";
+  const d = ai?.stats?.direction || {};
+  $("cb-ai-direction").textContent = d.scored
+    ? `Directions \u00e0 24 h not\u00e9es : ${Number(d.scored)} \u00b7 r\u00e9ussite ${Math.round(100 * Number(d.hitRate))} % sur ${Number(d.called)} avis hausse/baisse`
+      + ` (${Number(d.neutral)} neutres) \u00b7 score de Brier ${Number(d.brier).toFixed(3)} (hasard = 0,250, plus bas = mieux).`
+    : "Directions \u00e0 24 h : premi\u00e8res notes 24 h apr\u00e8s la premi\u00e8re analyse.";
+  const ps = ai?.stats?.portfolio;
+  const sys = combo.state?.stats || {};
+  $("cb-ai-portfolio").textContent = ps
+    ? `Portefeuille IA : ${fmtEur(ps.equityMarked)} (${fmtSigned(ps.returnPct, 2, " %")}) \u00b7 ${Number(ps.trades)} trade(s) clos`
+      + `${ps.trades ? `, ${Math.round(100 * Number(ps.winRate))} % gagnants, moyenne ${fmtSigned(ps.avgR)}R` : ""} \u00b7 ${Number(ps.open)} ouvert(s)`
+      + ` \u2014 4H + renfort 1H : ${fmtEur(sys.equityMarked)} (${fmtSigned(sys.returnPct, 2, " %")}).`
+    : "Portefeuille IA : d\u00e9marre avec la prochaine analyse.";
+  const pf = ai?.portfolio || {};
+  const rows = [...asList(pf.positions).map(x => ({ ...x, open: true })), ...asList(pf.trades).slice().reverse()].slice(0, 100);
+  $("cb-ai-trades-empty").classList.toggle("hidden", rows.length > 0);
+  document.querySelector("#cb-ai-trades-table tbody").innerHTML = rows.map(x => `<tr>
+      <td>${fmtTime(x.entryTime)}</td>
+      <td><b>${escapeHtml(x.symbol)}</b></td>
+      <td class="${sideClass(x.side)}">${escapeHtml(sideWord(x.side))}</td>
+      <td>${fmtPrice(x.entryPrice)}</td>
+      <td>${fmtPrice(x.stop)}</td>
+      <td>${x.target != null ? fmtPrice(x.target) : "\u2014"}</td>
+      <td>${x.open ? "en cours" : `${fmtPrice(x.exitPrice)} \u00b7 ${escapeHtml(AI_EXIT_LABELS[x.exitReason] || x.exitReason)}`}</td>
+      <td>${fmtSigned(x.open ? x.markR : x.rNet)}R</td>
+      <td title="${escapeHtml(x.reason)}">${Number(x.conviction)} %</td>
+    </tr>`).join("");
+  const m = ai?.stats?.breakouts || {};
+  const cell = (g) => g && g.count
+    ? `${Number(g.count)} cassure(s) \u00b7 ${g.closed ? `moyenne ${fmtSigned(g.avgR)}R sur ${Number(g.closed)} termin\u00e9e(s)` : "en cours"}` : "\u2014";
+  document.querySelector("#cb-ai-matrix tbody").innerHTML = [["taken", "Nous : prise"], ["rejected", "Nous : \u00e9cart\u00e9e"]]
+    .map(([k, label]) => `<tr><th>${label}</th><td>${cell(m[`${k}_GO`])}</td><td>${cell(m[`${k}_NO_GO`])}</td></tr>`).join("");
+  const queries = asList(last?.queries);
+  const sources = asList(last?.sources);
+  $("cb-ai-sources").innerHTML = [
+    queries.length ? `Recherches Google : ${queries.map(q => `<a href="https://www.google.com/search?q=${encodeURIComponent(q)}" target="_blank" rel="noopener noreferrer">${escapeHtml(q)}</a>`).join(" \u00b7 ")}` : "",
+    sources.length ? `Sources : ${sources.filter(s => httpsUrl(s?.uri)).map(s => `<a href="${escapeHtml(s.uri)}" target="_blank" rel="noopener noreferrer">${escapeHtml(s.title || "source")}</a>`).join(" \u00b7 ")}`
+      : queries.length ? "Sources : non transmises par Google pour cette analyse." : "",
+  ].filter(Boolean).map(x => `<p>${x}</p>`).join("");
+}
+
+function renderCombo() {
+  const c = combo.state;
+  const notice = $("cb-notice");
+  if (!c || !c.version) {
+    notice.textContent = "Ce portefeuille d\u00e9marrera au prochain passage du moteur : aucune donn\u00e9e pour le moment.";
+    notice.classList.remove("hidden");
+    renderComboAi();
+    return;
+  }
+  const b4 = c.book4h || {}, b1 = c.book1h || {};
+  const p = c.params || {};
+  const s = c.stats || {};
+  const s4 = b4.stats || {}, s1 = b1.stats || {};
+  const errors = asList(c.lastRun?.errors);
+  notice.textContent = errors.length ? `Dernier passage d\u00e9grad\u00e9 : ${errors.join(" \u00b7 ")}` : "";
+  notice.classList.toggle("hidden", !errors.length);
+  $("cb-subtitle").textContent = `Capital fictif de d\u00e9part ${fmtEur(c.startCapital)} \u00b7 risque ${Number(p.risk4hPct)} % par trade 4H`
+    + ` et ${Number(p.risk1hPct)} % par renfort 1H \u00b7 ind\u00e9pendant de la Tendance 4H \u00b7 aucun ordre r\u00e9el.`;
+  const solo = state.trend?.stats;
+  $("cb-equity").textContent = fmtEur(s.equityMarked);
+  $("cb-equity-sub").textContent = `${fmtSigned(s.returnPct, 2, " %")}${solo ? ` \u00b7 Tendance 4H seule : ${fmtSigned(solo.returnPct, 2, " %")}` : ""}`;
+  $("cb-open").textContent = `${Number(s4.openPositions ?? 0)} 4H \u00b7 ${Number(s1.openPositions ?? 0)} 1H`;
+  $("cb-open-sub").textContent = s.exposure != null ? `exposition ${Number(s.exposure).toFixed(2)}\u00d7 le capital` : "\u2014";
+  $("cb-trades").textContent = `${Number(s4.trades ?? 0)} 4H \u00b7 ${Number(s1.trades ?? 0)} 1H`;
+  const wr = (x) => x.trades ? `${Math.round(100 * Number(x.winRate))} % gagnants, ${fmtSigned(x.avgR)}R` : "aucun";
+  $("cb-trades-sub").textContent = `4H : ${wr(s4)} \u00b7 1H : ${wr(s1)}`;
+  $("cb-dd").textContent = `${Number(s.maxDrawdownPct ?? 0).toFixed(1)} %`;
+  $("cb-started").textContent = `d\u00e9marr\u00e9 le ${fmtTime(c.startedAt)}`;
+
+  const symbols = asList(b4.params?.symbols);
+  $("cb-grid").innerHTML = symbols.map(sym => comboCard(sym, b4, b1)).join("");
+
+  const trades = [...asList(b4.trades).map(t => ({ ...t, frame: "4h" })), ...asList(b1.trades).map(t => ({ ...t, frame: "1h" }))]
+    .sort((x, y) => Number(y.exitTime) - Number(x.exitTime));
+  $("cb-trades-empty").classList.toggle("hidden", trades.length > 0);
+  document.querySelector("#cb-trades-table tbody").innerHTML = trades.slice(0, 300).map(tr => `<tr>
+      <td>${fmtTime(tr.exitTime)}</td>
+      <td>${BOOK_LABELS[tr.frame]}</td>
+      <td><b>${escapeHtml(tr.symbol)}</b></td>
+      <td class="${sideClass(tr.side)}">${escapeHtml(sideWord(tr.side))}</td>
+      <td>${fmtPrice(tr.entryPrice)}</td>
+      <td>${fmtPrice(tr.exitPrice)}</td>
+      <td>${escapeHtml(EXIT_LABELS[tr.exitReason] || tr.exitReason)}</td>
+      <td>${fmtDur(Number(tr.exitTime) - Number(tr.entryTime))}</td>
+      <td>${fmtSigned(tr.rNet)}R</td>
+      <td>${fmtEur(tr.pnl)}</td>
+    </tr>`).join("");
+
+  const evals = [...asList(b4.evaluations).map(e => ({ ...e, frame: "4h" })), ...asList(b1.evaluations).map(e => ({ ...e, frame: "1h" }))]
+    .sort((x, y) => Number(y.barClose) - Number(x.barClose));
+  $("cb-evaluations-empty").classList.toggle("hidden", evals.length > 0);
+  document.querySelector("#cb-evaluations-table tbody").innerHTML = evals.slice(0, 300).map(e => `<tr>
+      <td>${fmtTime(e.barClose)}</td>
+      <td>${BOOK_LABELS[e.frame]}</td>
+      <td><b>${escapeHtml(e.symbol)}</b></td>
+      <td class="${sideClass(e.side)}">${escapeHtml(sideWord(e.side))}</td>
+      <td>${fmtPrice(e.close)}</td>
+      <td>${e.relVolume != null ? `${Number(e.relVolume).toFixed(2)}\u00d7` : "\u2014"}</td>
+      <td>${e.taken ? "<b>Prise</b>" : escapeHtml(`\u00c9cart\u00e9e : ${asList(e.reasons).join(", ")}`)}</td>
+      <td>${shadowCell(e.shadow)}</td>
+      <td>${cbAiCell(e.frame, e)}</td>
+    </tr>`).join("");
+  const line = (label, g) => g && g.count
+    ? `${label} : ${Number(g.count)} (${Number(g.closed)} termin\u00e9e(s)${g.closed ? `, moyenne ${fmtSigned(g.avgR)}R, total ${fmtSigned(g.totalR)}R` : ""})`
+    : `${label} : aucune`;
+  $("cb-shadow-summary").textContent = [["4H", b4], ["1H", b1]].map(([f, b]) =>
+    `${f} \u2014 ${line("prises", b.shadowStats?.taken)} \u00b7 ${line("\u00e9cart\u00e9es", b.shadowStats?.rejected)}`).join(" | ")
+    + ". R\u00e9sultats en R apr\u00e8s frais, hors financement.";
+
+  const bp = b4.params || {};
+  $("cb-rules-list").innerHTML = [
+    `Livre 4H : exactement les r\u00e8gles de la Tendance 4H (canal ${Number(bp.channelBars)}, sortie suiveuse ${Number(bp.trailBars)}, stop ${Number(bp.stopAtr)} \u00d7 ATR, 3 filtres), risque ${Number(p.risk4hPct)} % par trade.`,
+    `Renfort 1H : cl\u00f4ture 1H au-del\u00e0 du plus haut / plus bas des ${Number(p.h1ChannelBars)} bougies 1H, avec les m\u00eames 3 filtres (tendance BTC lue en 4H), uniquement pendant une position 4H ouverte dans le m\u00eame sens, risque ${Number(p.risk1hPct)} % par trade.`,
+    `Renfort 1H : stop ${Number(p.h1StopAtr)} \u00d7 ATR 1H, sortie suiveuse sur les ${Number(p.h1TrailBars)} derni\u00e8res bougies 1H.`,
+    `Capital commun de ${fmtEur(c.startCapital)}, gains r\u00e9investis ; m\u00eames frais, glissement et financement que la Tendance 4H.`,
+  ].map(x => `<li>${x}</li>`).join("");
+  renderComboAi();
+}
+
+$("tab-main").addEventListener("click", () => selectTab("main"));
+$("tab-combo").addEventListener("click", () => selectTab("combo"));
+
 /* --------------------------------------------------- boot */
 refreshData();
 setInterval(refreshData, DATA_INTERVAL_MS);
+refreshCombo();
+setInterval(refreshCombo, DATA_INTERVAL_MS);

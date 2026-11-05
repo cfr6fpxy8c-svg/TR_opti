@@ -43,6 +43,12 @@
     </div>
   </section>
 
+  <nav class="view-tabs section" aria-label="Portefeuilles">
+    <button class="view-tab active" id="tab-main" type="button" aria-selected="true">Tendance 4H</button>
+    <button class="view-tab" id="tab-combo" type="button" aria-selected="false">4H + renfort 1H</button>
+  </nav>
+
+<div id="view-main">
   <section id="trend-summary" class="section">
     <div class="section-head">
       <div><h2>Capital</h2>
@@ -116,6 +122,82 @@
     <summary>Règles appliquées</summary>
     <ul class="small" id="trend-rules-list"></ul>
   </details>
+</div>
+
+<div id="view-combo" class="hidden">
+  <div class="notice hidden" id="cb-notice"></div>
+  <section class="section">
+    <div class="section-head">
+      <div><h2>Capital · 4H + renfort 1H</h2>
+        <p class="muted small" id="cb-subtitle">Second portefeuille fictif, indépendant de la Tendance 4H · aucun ordre réel.</p></div>
+    </div>
+    <div class="grid grid-status">
+      <div class="card stat"><span class="stat-label">Capital (positions valorisées)</span><span class="stat-value" id="cb-equity">—</span><span class="stat-sub" id="cb-equity-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Positions ouvertes</span><span class="stat-value" id="cb-open">—</span><span class="stat-sub" id="cb-open-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Trades clôturés</span><span class="stat-value" id="cb-trades">—</span><span class="stat-sub" id="cb-trades-sub">—</span></div>
+      <div class="card stat"><span class="stat-label">Pire baisse</span><span class="stat-value" id="cb-dd">—</span><span class="stat-sub" id="cb-started">—</span></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><div><h2>Les 5 cryptos</h2>
+      <p class="muted small">Position 4H, renfort 1H et avis IA de ce portefeuille. Graphique : 60 dernières bougies 4H.</p></div></div>
+    <div class="signal-grid" id="cb-grid"></div>
+  </section>
+
+  <section class="section">
+    <div class="section-head"><h2>Historique des trades</h2></div>
+    <div class="card table-wrap">
+      <table class="table" id="cb-trades-table">
+        <thead><tr><th>Clôturé le</th><th>Livre</th><th>Symbole</th><th>Sens</th><th>Entrée</th><th>Sortie</th>
+          <th>Motif</th><th>Durée</th><th>Résultat</th><th>Gain / perte</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty small hidden" id="cb-trades-empty">Aucun trade clôturé pour le moment.</div>
+    </div>
+  </section>
+
+  <details class="card section" open>
+    <summary>Cassures détectées (4H et 1H) et leur résultat si on était entré</summary>
+    <p class="small" id="cb-shadow-summary"></p>
+    <div class="table-wrap">
+      <table class="table" id="cb-evaluations-table">
+        <thead><tr><th>Bougie</th><th>Livre</th><th>Symbole</th><th>Sens</th><th>Clôture</th><th>Volume</th>
+          <th>Décision</th><th>Résultat si pris</th><th>Avis IA</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty small hidden" id="cb-evaluations-empty">Aucune cassure détectée depuis le démarrage.</div>
+    </div>
+  </details>
+
+  <details class="card section" open>
+    <summary>Analyste IA de ce portefeuille (test : son avis n’influence aucun trade)</summary>
+    <p class="small" id="cb-ai-status">—</p>
+    <p class="small" id="cb-ai-macro"></p>
+    <p class="small" id="cb-ai-direction">—</p>
+    <p class="small"><b id="cb-ai-portfolio">—</b></p>
+    <div class="table-wrap">
+      <table class="table compact" id="cb-ai-trades-table">
+        <thead><tr><th>Entrée le</th><th>Symbole</th><th>Sens</th><th>Entrée</th><th>Stop</th><th>Objectif</th>
+          <th>Sortie</th><th>Résultat</th><th>Conviction</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="empty small hidden" id="cb-ai-trades-empty">Aucun trade IA pour le moment.</div>
+    </div>
+    <div class="table-wrap">
+      <table class="table compact" id="cb-ai-matrix">
+        <thead><tr><th>Qui avait raison ?</th><th>IA : GO</th><th>IA : NO-GO</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="small muted" id="cb-ai-sources"></div>
+  </details>
+
+  <details class="card section">
+    <summary>Règles appliquées</summary>
+    <ul class="small" id="cb-rules-list"></ul>
+  </details>
+</div>
 
   <footer class="footer">
     <p class="muted small">Simulation sur données publiques Binance · aucun ordre réel · pas un conseil financier.</p>

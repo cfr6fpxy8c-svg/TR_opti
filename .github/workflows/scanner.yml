@@ -98,6 +98,33 @@ jobs:
           GCP_ACCESS_TOKEN: ${{ steps.gcp.outputs.access_token }}
         run: python -m scanner.ai_analyst
 
+      - name: Run Tendance 4H + renfort 1H (second paper portfolio)
+        id: trendcombo
+        run: python -m scanner.trend_combo
+        continue-on-error: true
+
+      - name: Authenticate to Google Cloud for the combo analyst (keyless)
+        id: gcp2
+        if: env.GCP_CONFIGURED == 'true'
+        continue-on-error: true
+        uses: google-github-actions/auth@7c6bc770dae815cd3e89ee6cdf493a5fab2cc093 # v3.0.0
+        with:
+          workload_identity_provider: ${{ secrets.GCP_WIF_PROVIDER }}
+          service_account: ${{ secrets.GCP_SA }}
+          token_format: access_token
+          access_token_lifetime: 600s
+          create_credentials_file: false
+          export_environment_variables: false
+
+      - name: Run AI analyst for 4H + 1H (shadow, no effect on trades)
+        id: aicombo
+        timeout-minutes: 4
+        continue-on-error: true
+        env:
+          GCP_PROJECT: ${{ secrets.GCP_PROJECT }}
+          GCP_ACCESS_TOKEN: ${{ steps.gcp2.outputs.access_token }}
+        run: python -m scanner.ai_combo
+
       - name: Validate published JSON
         run: python -m scanner.validate_data
 
@@ -117,6 +144,8 @@ jobs:
             data/universe-snapshot.json
             data/trend4h-paper.json
             data/ai-analyst.json
+            data/trend-combo-paper.json
+            data/ai-combo.json
             frontend/data/signals.json
             frontend/data/performance.json
             frontend/data/system-status.json
@@ -125,6 +154,8 @@ jobs:
             frontend/data/universe-snapshot.json
             frontend/data/trend4h-paper.json
             frontend/data/ai-analyst.json
+            frontend/data/trend-combo-paper.json
+            frontend/data/ai-combo.json
             frontend/data/badge.json
 
       - name: Propagate scan failure

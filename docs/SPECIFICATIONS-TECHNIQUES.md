@@ -94,6 +94,8 @@ Déroulé d'un scan (`scanner/main.py`, `scan_once`) :
 | `universe-snapshot.json` | Tableau de l'univers scanné. |
 | `trend4h-paper.json` | État de la simulation Tendance 4H : capital, positions, ordres en attente, trades, cassures évaluées, situation par crypto (`watch`), courbe de capital, statistiques, dernier passage. |
 | `ai-analyst.json` | Analyste IA en test : avis par clôture 4H, notation, statistiques, dernier passage. |
+| `trend-combo-paper.json` | Second portefeuille (4H + renfort 1H) : `book4h`, `book1h` (même forme que la Tendance 4H), capital commun, courbe et statistiques. |
+| `ai-combo.json` | Analyste IA dédié au second portefeuille (même forme que `ai-analyst.json`, avis `breakout4h` / `breakout1h`). |
 | `frontend/data/badge.json` | Badge d'état (heure UTC, santé). |
 
 Champs principaux d'une proposition : `id`, `symbol`, `direction`, `timeframe`, `quality`, `score`,
@@ -210,6 +212,21 @@ de pertes), tout en brut et en net.
   notation (`outcome` à 24 h depuis `watch.candles`, `ours` / `result` depuis le trade fantôme),
   `stats` (réussite, Brier, tableau prise/écartée × GO/NO-GO). Au-delà de 7 jours les textes sont
   retirés ; 1 200 analyses conservées.
+
+### 8.7 Second portefeuille 4H + renfort 1H (`scanner/trend_combo.py`, `scanner/ai_combo.py`)
+- Modules distincts, copies volontaires de `trend4h.py` et `ai_analyst.py` : la simulation et l'IA de la
+  Tendance 4H ne sont ni import\u00e9es ni modifi\u00e9es. \u00c9tapes s\u00e9par\u00e9es du workflow (`continue-on-error`), avec
+  leur propre jeton GCP (`gcp2`).
+- `trend_combo` : bougies 4H (`trend4h.klineLimit`) et 1H (`trendCombo.h1KlineLimit`), un appel
+  `premiumIndex`. Livre 4H = r\u00e8gles `trend4h` avec `risk4hPct` ; livre 1H = m\u00eames filtres avec
+  `h1ChannelBars` / `h1TrailBars` / `h1StopAtr` et `risk1hPct`, tendance BTC = derni\u00e8re bougie 4H cl\u00f4tur\u00e9e
+  \u00e0 la cl\u00f4ture 1H, entr\u00e9e autoris\u00e9e seulement si le livre 4H d\u00e9tient la crypto dans le m\u00eame sens \u00e0 cet
+  instant (motif sinon : \u00ab pas de position 4H ouverte dans ce sens \u00bb). Les deux livres dimensionnent sur
+  le capital commun r\u00e9alis\u00e9 (`startCapital` + gains r\u00e9alis\u00e9s des deux livres) ; le plafond de levier
+  s'applique par livre.
+- `ai_combo` : m\u00eames r\u00e9glages que `aiAnalyst` (`trendCombo.aiEnabled`), analyse \u00e0 chaque cl\u00f4ture 4H et \u00e0
+  chaque cl\u00f4ture 1H portant une cassure de l'un des livres ; notation des directions et portefeuille IA
+  sur bougies 1H (`book1h.watch.candles`).
 
 ## 9. Replay / backtest (`scanner/replay.py`)
 
