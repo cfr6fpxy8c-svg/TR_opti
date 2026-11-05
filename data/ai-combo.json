@@ -275,11 +275,168 @@
         "candidatesTokenCount": 1645,
         "totalTokenCount": 12936
       }
+    },
+    {
+      "barClose": 1793908800000,
+      "analyzedAt": 1793909787593,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La chute de 5% du Nasdaq (semi-conducteurs en baisse de 9%) a entra\u00een\u00e9 le BTC sous 76k$, provoquant 1,07Md$ de liquidations (90% longs). Les investisseurs craignent une reprise de l'inflation (Cleveland Fed) limitant les baisses de taux de Warsh. Focus sur le rapport NFP du 06/11.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Le BTC a chut\u00e9 de 80,8k$ \u00e0 75,5k$ suite au plongeon des techs am\u00e9ricaines, d\u00e9clenchant d'importantes liquidations de positions longues. Techniquement, le prix est sous l'EMA200 4H et flirte avec le support majeur \u00e0 75,5k$. Les flux entrants d'ETF spot restent positifs (+148M$ le 05/11), mais le sentiment global reste tr\u00e8s frileux \u00e0 l'approche de l'emploi am\u00e9ricain.",
+          "risks": "Rapport NFP ce vendredi, expiration d'options de fin de semaine et poursuite de la correction du Nasdaq.",
+          "price0": 76336.5,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Les risques macro\u00e9conomiques \u00e9lev\u00e9s (emplois d'octobre) et la forte volatilit\u00e9 suite aux liquidations de 1Md$ incitent \u00e0 rester \u00e0 l'\u00e9cart en l'absence de signal technique haussier clair."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "ETH a subi un rejet violent sous 2400$ vers 2250$ \u00e0 cause de la panique sur le Nasdaq. Malgr\u00e9 des entr\u00e9es ETF de 50M$ et de la pression d'achat induite par les pirates convertissant les fonds vol\u00e9s en ETH (non gelable par Circle), la structure technique 4H reste baissi\u00e8re, avec un RSI affaibli et des prix sous les moyennes mobiles courtes.",
+          "risks": "Rapport NFP, expiration d'options et impact persistant des hacks d'exchanges sur le sentiment.",
+          "price0": 2261.26,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La perte de la moyenne mobile de court terme et les incertitudes pesant sur les actifs \u00e0 risque justifient l'absence de position."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 49,
+          "reason": "XRP a corrig\u00e9 \u00e0 1,24$ apr\u00e8s avoir test\u00e9 1,34$. On-chain, l'accumulation des baleines est forte (portefeuilles >= 1M \u00e0 un sommet annuel de 2147) et Evernorth d\u00e9tient d\u00e9sormais 473M de jetons apr\u00e8s sa fusion. De plus, le correctif de vuln\u00e9rabilit\u00e9 fixCleanup3_4_0 a \u00e9t\u00e9 activ\u00e9 sur le XRPL. Cependant, le jeton reste sous la pression syst\u00e9mique du march\u00e9.",
+          "risks": "Sensibilit\u00e9 aux fluctuations du BTC, rapport NFP et volatilit\u00e9 des volumes sur Binance.",
+          "price0": 1.2438,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le support de 1,24$ tient mais l'absence de dynamique haussi\u00e8re globale limite l'int\u00e9r\u00eat d'une entr\u00e9e imm\u00e9diate."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 44,
+          "reason": "Binance a r\u00e9activ\u00e9 les retraits pour 95% des actifs et reconstitu\u00e9 98% des fonds apr\u00e8s le piratage majeur de 6,3Md$. Bien que cela limite l'h\u00e9morragie, la m\u00e9fiance reste \u00e9lev\u00e9e et le BNB sous-performe le march\u00e9. Techniquement, le prix s'enfonce sous l'EMA20 et l'EMA50 4H avec des volumes de vente \u00e9lev\u00e9s, signalant une poursuite possible de la correction.",
+          "risks": "Nouvelles alertes de s\u00e9curit\u00e9 sur Binance, enqu\u00eates r\u00e9glementaires et fuite des capitaux.",
+          "price0": 693.72,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "La sous-performance et la d\u00e9gradation de la structure technique suite au piratage de Binance rendent risqu\u00e9e toute tentative d'achat."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 41,
+          "reason": "SOL montre une faiblesse technique prononc\u00e9e sous tous ses EMAs, perdant le niveau cl\u00e9 des 100$. Les actifs des ETF Solana spot ont fondu de 1,93Md$ \u00e0 1,40Md$ en un mois. Les int\u00e9grations positives (Samsung Wallet proposant l'USDC sur Solana, b\u00eata de Leap par Solana Labs) ne suffisent pas \u00e0 inverser la tendance face aux blocages d'activit\u00e9s li\u00e9s aux attaques d'API.",
+          "risks": "Sorties de fonds continues des ETF, risque de rupture du support \u00e0 88,7$ et vuln\u00e9rabilit\u00e9s des dApps.",
+          "price0": 90.05,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "SOL reste sous pression avec une tendance baissi\u00e8re marqu\u00e9e et un d\u00e9sint\u00e9r\u00eat des investisseurs institutionnels pour les ETF spot."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"FOMC\" November 2026",
+        "Fed meeting November 2026",
+        "crypto market November 5 2026",
+        "bitcoin news November 5 2026",
+        "\"jobs report\" November 2026",
+        "US employment report November 6 2026",
+        "unemployment rate November 2026 US",
+        "ethereum news November 5 2026",
+        "solana news November 5 2026",
+        "ripple xrp news November 5 2026"
+      ],
+      "sources": [
+        {
+          "title": "cryptoticker.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG_zEnidF4VuXzX5m5T9mzpP-E3K6FVVTZpPv8EmWutWoErul8yg0ugyqo14FBwg4Lbkiz4gxM0pZhrJ2bMxSm_AUjHTDQgxwpmGID8zc4OeHsa9D8G-tbIEkRk9Op0vaxy6f3nflw4for9dJA9TLw-QfkjPsTlBnun9lLYt8DSMlCkATO4eMJH2_I="
+        },
+        {
+          "title": "altcoinbuzz.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF8RQdEj4PWc9Pyb9mjafJGMdI4wIKokSNcbu_SglNV_bYJ6yESw-1HAAjZ_yGqJ7t7uCIHkJxGvncDQIfcJB65BhNTR7O327fCWqDsrZB8_22RSEWpqf5E7jJD-ZXJO0SE6LlK_MdnPGTUwYCo5cTwxUIYpr6SQCeZX0-BcGdBHVGDcDrevw=="
+        },
+        {
+          "title": "jpmorgan.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYsYFn7JIBLoESqqiYzNZOuflT88Qo6GzMU-GbsuBWQNRawdQPB-RJfNEQYVslnlt4l35Aux0w6azkaR3aBLYkTVGf8omR5RaaDOW6HzWkjcdx247ANJNe1zMxHXOS_asASSnxx7rzKdNy52Wy2nHoJm1zaIP_Ex2nPFUnxoPglyO1"
+        },
+        {
+          "title": "fool.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFg4HnKr-ztlVRiUjm61Ab4MWsgimGj2AFzp8jj2Gr3EuK76KZXuzF1mGHyT6XvcLBJJWRMOeFI1QEzTchEDOycTZhYNpklVtyIU-Nt7s-B-qEoRrD-37n2PmrL-RDo58QHVKlaSikopZ95hc6lBn-w88MXpss63AICiqYkethXeuS-wehrWWn0J7GXGN6bMYxL6SNAYtkcze9imq-laun9IB1y71GMHZvMz_cPSfKyfksM2vlq2aXWYAepzSCcCbTYi34Yb_Q="
+        },
+        {
+          "title": "investing.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGoh5vNjEgx-aDyAcra1_3Wq74-TQBapFCr39qWD05_dcC-25CEnVDlXt1s0ULh0bZT6W_SX8ofTJRK6v-YzL4d5l9MuEszTpTi539MAnL41qATFbdZOn_4vY0YyCYWkzukNNzGS9ODQO8e6M_CQshDj18UhLZBlb31qU2gxpg7YAZ6LW3FMdffz8XowCoxZMp5yNq-ZOugZh4WvpNXFK8Cru5h1NfLQu_gub1Yv8VsKJkUkRLkImLt6GAHujS9PeDVeto="
+        },
+        {
+          "title": "theblock.co",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFM8r2L3-OYuep0bqOyxD-duLQttm0GsUslEUr4nOIIrtkSpKPfr_QMVWsu-r_jcdmOtChz7gwuPk4ubTw03GYgWG5DXtAEWjJyandt5V2SvD06EVJzOC56ZqpPav1gKVXsQwZvsj5E7ZQbsH33R_mOI5XXVs-qO7fC4J5BVA1CZpzXnM_9D7yyPnWTZAcW_5iAYiAhjUz-ekDJjaZGNWZmI2olOBZOcjBk8AHQDe-qMkkTO9Ws"
+        },
+        {
+          "title": "cryptopotato.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFReDSwUThxa6ur-29w4JLOfi0OrHmeUO_OiR3JThxcnSFVOpxKZL88JNrvaMH70ihVm_u-geCT0x841qk-moJXxApnL5MLpdp2srsk2gpw-KXOz7y_iDHOKWQ6EJmNcYlrwnFXBpOx2si3M1Cm_uW7Ty9qHTntsnQa5dDAwlggW_FubdY18FJZYFG3SFCKobMcgHA="
+        },
+        {
+          "title": "financefeeds.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG7MR1XS3PKOn8dg661NOfBGchKLSG46qDHz-VnaFFIV0bbMt3GcoQmFn0S7mpBptzF-TIeyOG5wptT6r3fYQaLRS2B6ETX30VsEZoLkrP_SJxQthA4PIS1wKQoXACu4YnDvECjNpHHUNq6M5QiS7yhKL6LNw1N4Rw3Oc3FMOyg"
+        },
+        {
+          "title": "u.today",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGmj1Q-lutM3wZJAn2twkUM6XSjgBXfe8IbP27btcmVFCuSlkMOLuRvF3KASeQ8wOn4PRKDLt0mu5TQbnl_JCKre7XoGJ4tlPOkaaa146YCUDLpIjyuY5Pnxb_s4SmgJqOeT5mv5vn4LumLQdYHdD3lTsE5FSRS4qS-kb-sHtaHBePTCfnUP5MpIBSveaIQOxPdnHg9q-ZBga2Q9ByxfhpgCGGTqQIeQEEpGjtMFjkzNZypzAaqeJU="
+        },
+        {
+          "title": "cryptopotato.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpZfw1s9C3U1jSgf3ZV62M1JQ0m-29_6l3HfFhQ8rckwunRZF2QbDUKNSxFNb6h4TAzBsKGbkZNjYhP-oqkhoxiFvtho9P2Eb4HrOkqsXwqsk-swfDkqxlm6MIzpcwEKjF8UWjWxyaavALAslHjpkqzQE2OQ_2GCJpv6asmhjM7yKC98FijerSwlI="
+        },
+        {
+          "title": "openpr.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEcHh0c_L05txF8mgvi-Ay1n454Q_AyhZDazQa0QMJ8BfFGTqFT3P7zq8Nnl4i8YXXVb7W-HQJXX0fbEYIstRC4IZpGHDveyNzQdzUW6zOwfYDFjLyZB0sKSYIOOwcgnEuFEqEuRrLDMbyFnGRh9KXfdpWkBbDlb46IUP4AJG61qbK1P83xumPHyenjoSrS0LFd0V4uYn_cQJvY7ck="
+        },
+        {
+          "title": "crypto.news",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGWP-bwF13Sy-4cbNgeppT8YOV1xjekOVKqWJQA9wfxjnyLPmq8D-qbc0JwRwvpn5WEUQvr6XbOK6FXURzsAmBou_8Hi3aptVHeghWLJeRPncdcLaqfZneRCazogfbSa2ONRQaW3FXitEtNUtvZjCwZDrQKuXRQNu8P"
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 17,
+        "supports": 33
+      },
+      "usage": {
+        "promptTokenCount": 3998,
+        "candidatesTokenCount": 1808,
+        "totalTokenCount": 13442
+      }
     }
   ],
   "attempts": {
     "1793894400000": 2,
-    "1793908800000": 1
+    "1793908800000": 2
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -324,12 +481,12 @@
       }
     ]
   },
-  "generatedAt": 1793908957634,
+  "generatedAt": 1793909787593,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 2,
-    "totalTokens": 24733,
+    "analyses": 3,
+    "totalTokens": 38175,
     "direction": {
       "scored": 0,
       "called": 0,
@@ -397,9 +554,9 @@
     }
   },
   "lastRun": {
-    "at": 1793908957634,
-    "status": "error",
-    "error": "unparseable JSON: Expecting ',' delimiter",
+    "at": 1793909787593,
+    "status": "ok",
+    "error": null,
     "barClose": 1793908800000
   }
 }
