@@ -208,18 +208,123 @@
         "candidatesTokenCount": 1570,
         "totalTokenCount": 11606
       }
+    },
+    {
+      "barClose": 1793851200000,
+      "analyzedAt": 1793851300487,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Les midterms US (victoire d\u00e9mocrate) l\u00e8vent l'incertitude politique, provoquant un rebond des actions et une baisse des rendements. Le march\u00e9 attend d\u00e9sormais le rapport sur l'emploi US (NFP) ce vendredi 6 novembre, cl\u00e9 pour la trajectoire des taux de la Fed apr\u00e8s le statu quo d'octobre.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "UP",
+          "probUp": 58,
+          "reason": "Fort rebond post-\u00e9lections (effacement des shorts de 560M$), mais les flux ETF spot restent n\u00e9gatifs (116M$ de sorties le 3 novembre). BTC s'\u00e9change juste au-dessus de son EMA200 4H. La r\u00e9sistance de 82k$ reste le principal obstacle technique \u00e0 court terme.",
+          "risks": "Rapport NFP attendu demain, volatilit\u00e9 post-\u00e9lectorale et absence d'afflux nets sur les ETF.",
+          "price0": 80514.9,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucune entr\u00e9e avant le rapport NFP de demain, qui pourrait rebattre les cartes de la politique mon\u00e9taire de la Fed."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "UP",
+          "probUp": 57,
+          "reason": "ETH repasse les 2400$ dans le sillage de la hausse globale. La mise \u00e0 niveau 'Denim' sur Base ce 5 novembre cr\u00e9e du bruit technique mais n'affecte pas le r\u00e9seau principal. Le momentum est haussier mais se heurte \u00e0 des r\u00e9sistances vers 2450$.",
+          "risks": "R\u00e9sistance imm\u00e9diate \u00e0 2450$, flux d'ETF atones et chiffres de l'emploi US demain.",
+          "price0": 2423.42,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Attente d'une cassure confirm\u00e9e au-dessus de 2450$ ou d'un repli sur l'EMA50."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "UP",
+          "probUp": 55,
+          "reason": "Le nombre de portefeuilles baleines d\u00e9tenant plus d'un million de XRP a atteint un sommet annuel \u00e0 2 147, sugg\u00e9rant une accumulation sous-jacente. Cependant, les ETF XRP enregistrent des flux nuls et la r\u00e9sistance de 1,34$ bloque la hausse.",
+          "risks": "Absence de flux institutionnels et rejet sous la r\u00e9sistance cl\u00e9 de 1,34$.",
+          "price0": 1.3094,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le cours reste coinc\u00e9 sous sa r\u00e9sistance majeure de 1,34$, limitant le potentiel de hausse imm\u00e9diat."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "UP",
+          "probUp": 54,
+          "reason": "Rebond solide depuis le support cl\u00e9 des 680$, niveau renforc\u00e9 par la r\u00e9ouverture progressive des retraits de Binance suite au piratage de 6,3 milliards de dollars. N\u00e9anmoins, BNB bute sous son EMA50 journali\u00e8re.",
+          "risks": "S\u00e9quelles de s\u00e9curit\u00e9 post-hack et flux mitig\u00e9s sur le fonds BNB de VanEck.",
+          "price0": 715.4,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bute sous l'EMA50 \u00e0 718$, un franchissement confirm\u00e9 est n\u00e9cessaire pour envisager un trade."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 62,
+          "reason": "Rebond technique solide apr\u00e8s avoir test\u00e9 la moyenne mobile \u00e0 200 jours (88,88$). La perspective de la conf\u00e9rence Solana Breakpoint \u00e0 Londres (15-17 novembre) offre un biais haussier historique (achats pr\u00e9-\u00e9v\u00e9nement), malgr\u00e9 des sorties d'ETF SOL la semaine derni\u00e8re.",
+          "risks": "Chiffres du NFP demain et sorties d'ETF de 71M$ la semaine derni\u00e8re.",
+          "price0": 96.24,
+          "breakout": null,
+          "trade": {
+            "action": "LONG",
+            "conviction": 65,
+            "reason": "Le support de la MM200 jours a tenu et la proximit\u00e9 de Breakpoint London (15 nov) offre un catalyseur haussier historique pour une reprise vers la r\u00e9sistance des 103$.",
+            "stop": 92.2,
+            "target": 103.0,
+            "maxHoldHours": 72,
+            "valid": true,
+            "status": "opened"
+          }
+        }
+      },
+      "queries": [
+        "FOMC meeting schedule 2026",
+        "Fed meeting November 2026",
+        "US CPI November 2026 schedule",
+        "crypto news November 5 2026",
+        "SOL price news November 2026",
+        "XRP price news November 2026",
+        "BNB price news November 2026",
+        "crypto funding rates November 5 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3853,
+        "candidatesTokenCount": 1095,
+        "totalTokenCount": 9369
+      }
     }
   ],
   "attempts": {
-    "1793822400000": 2,
-    "1793836800000": 1
+    "1793836800000": 1,
+    "1793851200000": 1
   },
-  "generatedAt": 1793850370419,
+  "generatedAt": 1793851300487,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 2,
-    "totalTokens": 18369,
+    "analyses": 3,
+    "totalTokens": 27738,
     "direction": {
       "scored": 0,
       "called": 0,
@@ -281,21 +386,39 @@
       "winRate": null,
       "avgR": null,
       "totalR": 0,
-      "open": 0,
-      "equityMarked": 500.0,
-      "returnPct": 0.0
+      "open": 1,
+      "equityMarked": 499.8015,
+      "returnPct": -0.0397
     }
   },
   "lastRun": {
-    "at": 1793850370419,
-    "status": "up-to-date",
+    "at": 1793851300487,
+    "status": "ok",
     "error": null,
-    "barClose": 1793836800000
+    "barClose": 1793851200000
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 500.0,
-    "positions": [],
+    "positions": [
+      {
+        "id": "SOLUSDT-1793851200000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1793851200000,
+        "entryPrice": 96.23,
+        "stop": 92.2,
+        "target": 103.0,
+        "risk": 4.030000000000001,
+        "stake": 5.0,
+        "conviction": 65,
+        "reason": "Le support de la MM200 jours a tenu et la proximit\u00e9 de Breakpoint London (15 nov) offre un catalyseur haussier historique pour une reprise vers la r\u00e9sistance des 103$.",
+        "exitBy": 1794110400000,
+        "lastBar": 1793851199999,
+        "markR": -0.0397,
+        "markPrice": 96.07
+      }
+    ],
     "trades": []
   }
 }
