@@ -16,7 +16,11 @@
           "reason": "Rebond post-midterms au-dessus de 78k$ malgr\u00e9 la victoire d\u00e9mocrate. Les sorties d'ETF spot diminuent (115M$ le 3 nov) et l'activit\u00e9 des options montre un biais haussier, mais la EMA200 4H \u00e0 80,4k$ fait office de forte r\u00e9sistance technique.",
           "risks": "La poursuite des retraits d'ETF, l'impact psychologique du piratage de Binance, et le rejet sous les 80k$.",
           "price0": 79956.8,
-          "breakout": null
+          "breakout": null,
+          "outcome": {
+            "retPct": -4.528,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -24,7 +28,11 @@
           "reason": "Rebond \u00e0 2405$, mais la pression vendeuse domine. Les ETF Ethereum spot ont subi des sorties massives (1,6 Md$ en octobre) et le hacker de Mercado Bitcoin convertit activement ses jetons vol\u00e9s en ETH pour les liquider (18M$).",
           "risks": "Sorties continues de l'ETF ETHA de BlackRock, liquidation par les hackers, et r\u00e9sistance forte \u00e0 2415$.",
           "price0": 2405.01,
-          "breakout": null
+          "breakout": null,
+          "outcome": {
+            "retPct": -5.977,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "UP",
@@ -32,7 +40,11 @@
           "reason": "Accumulation record par les baleines (portefeuilles >1M XRP au plus haut de 2026 \u00e0 2147). L'activation de fixCleanup3_4_0 sur le XRPL et l'offre de garde de RLUSD par Standard Chartered soutiennent l'\u00e9cosyst\u00e8me.",
           "risks": "Lib\u00e9ration mensuelle d'un milliard de jetons XRP de l'escrow de Ripple et retour de la volatilit\u00e9 globale.",
           "price0": 1.2994,
-          "breakout": null
+          "breakout": null,
+          "outcome": {
+            "retPct": -4.279,
+            "hit": false
+          }
         },
         "BNBUSDT": {
           "direction": "UP",
@@ -40,7 +52,11 @@
           "reason": "Rebond solide sur le support des 680$. Binance montre sa r\u00e9silience en confirmant des r\u00e9serves \u00e0 1:1, en remboursant 95% des actifs affect\u00e9s par le piratage de 6,3 Mds$ et en restaurant progressivement les retraits.",
           "risks": "Retraits massifs persistants hors de l'\u00e9change (d\u00e9j\u00e0 3,6 Mds$ de sorties nettes) et crise de confiance.",
           "price0": 714.36,
-          "breakout": null
+          "breakout": null,
+          "outcome": {
+            "retPct": -2.889,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -48,7 +64,11 @@
           "reason": "Stabilisation fragile autour de 94$. Les flux des ETF SOL sont au point mort (44M$ de sorties sur 5 jours) et les hackers de Binance convertissent du SOL vol\u00e9 en BTC. Une faille Linux critique cible aussi les validateurs.",
           "risks": "Chute vers le support des 88,8$ si la faille n'est pas corrig\u00e9e, et ventes de SOL par les pirates.",
           "price0": 94.48,
-          "breakout": null
+          "breakout": null,
+          "outcome": {
+            "retPct": -4.689,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -669,25 +689,135 @@
         "candidatesTokenCount": 1239,
         "totalTokenCount": 9481
       }
+    },
+    {
+      "barClose": 1793908800000,
+      "analyzedAt": 1793908906268,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Nasdaq plomb\u00e9 par les puces/IA entra\u00eenant une baisse g\u00e9n\u00e9rale du risque. Pas de r\u00e9union de la Fed en novembre, mais l'inflation projet\u00e9e (Nowcast Cleveland Fed \u00e0 4,25%) ravive les craintes de taux \u00e9lev\u00e9s. Attention au rapport sur l'emploi am\u00e9ricain (NFP) ce vendredi.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "Le march\u00e9 subit une correction brutale suite au selloff de la tech am\u00e9ricaine qui a liquid\u00e9 plus de 1 milliard $ de positions longues. Bien que les ETF spot BTC affichent des flux entrants r\u00e9silients (+148M$), la structure 4H est r\u00e9solument baissi\u00e8re sous l'EMA200_4H (80 346) et sous les EMA20/50.",
+          "risks": "Rapport NFP vendredi pouvant surprendre; volatilit\u00e9 accrue durant le week-end.",
+          "price0": 76336.5,
+          "breakout": null,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 60,
+            "reason": "La rupture de l'EMA200_4H et la corr\u00e9lation au Nasdaq ouvrent la voie \u00e0 une correction plus profonde. Entr\u00e9e courte avec un stop robuste au-dessus de l'EMA50 4H.",
+            "stop": 78760.0,
+            "target": 71500.0,
+            "maxHoldHours": 48,
+            "valid": true,
+            "status": "opened"
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "L'ETH subit la baisse g\u00e9n\u00e9rale malgr\u00e9 un timide flux entrant de 53M$ dans les ETF mercredi apr\u00e8s 7 jours de sorties. La hausse post-\u00e9lectorale a \u00e9t\u00e9 effac\u00e9e par un short squeeze massif suivi d'une rechute sous les moyennes mobiles cl\u00e9s, montrant un manque de force acheteuse organique.",
+          "risks": "Volatilit\u00e9 du NFP et ventes potentielles si le support des 2200$ c\u00e8de.",
+          "price0": 2261.26,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Structure technique choppy et manque de clart\u00e9 directionnelle \u00e0 court terme."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "Malgr\u00e9 d'excellentes nouvelles fondamentales (accord OCC pour Ripple National Trust, note A2 de Moody's pour RLUSD), XRP a \u00e9t\u00e9 rejet\u00e9 \u00e0 1,34$. L'accumulation massive des baleines (portefeuilles >1M XRP au plus haut) soutient le prix \u00e0 long terme, mais le march\u00e9 d\u00e9riv\u00e9 offshore est domin\u00e9 par les shorts.",
+          "risks": "Forte pression vendeuse sur Binance, risque de baisse sous 1,20$.",
+          "price0": 1.2438,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le positionnement de l'open interest est trop polaris\u00e9 sur les shorts pour garantir un trade propre."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB montre de la r\u00e9silience relative gr\u00e2ce \u00e0 la r\u00e9solution rapide du piratage de 6,3 milliards $ subit par Binance le 29 octobre. 98% des fonds ont \u00e9t\u00e9 reconstitu\u00e9s et les retraits rouvrent progressivement (derni\u00e8re phase le 5 nov). BNB bloque toutefois sous la r\u00e9sistance majeure de 720$.",
+          "risks": "Fragilit\u00e9 persistante suite au hack et incertitude avant le hard fork Jenner le 8 d\u00e9cembre.",
+          "price0": 693.72,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le prix est coinc\u00e9 dans un range \u00e9troit apr\u00e8s la gestion du hack; pas de direction claire."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "SOL est techniquement tr\u00e8s affaibli sous le seuil psychologique de 100$. Les sorties d'ETF (encours chutant de 1,93 \u00e0 1,40 milliard $) p\u00e8sent lourd, \u00e9clipsant l'adoption de Samsung Wallet et de Schroders. La suspension temporaire du protocole Loopscale suite \u00e0 des attaques API alimente la m\u00e9fiance.",
+          "risks": "Perte possible du support des 88$ entra\u00eenant une acc\u00e9l\u00e9ration vers 81$.",
+          "price0": 90.05,
+          "breakout": null,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 65,
+            "reason": "SOL montre la plus grande faiblesse relative des grandes altcoins. Un short est initi\u00e9 avec stop serr\u00e9 pour viser le niveau de support majeur de 81$.",
+            "stop": 94.65,
+            "target": 81.0,
+            "maxHoldHours": 48,
+            "valid": true,
+            "status": "opened"
+          }
+        }
+      },
+      "queries": [
+        "FOMC meeting November 2026",
+        "Fed rate decision November 5 2026",
+        "economic calendar November 5 2026",
+        "crypto news November 5 2026",
+        "\"ETH\" OR \"Ethereum\" news November 5 2026",
+        "\"SOL\" OR \"Solana\" news November 5 2026",
+        "\"BNB\" news November 5 2026",
+        "\"XRP\" news November 5 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3848,
+        "candidatesTokenCount": 1324,
+        "totalTokenCount": 11243
+      }
     }
   ],
   "attempts": {
-    "1793880000000": 2,
-    "1793894400000": 1
+    "1793894400000": 1,
+    "1793908800000": 1
   },
-  "generatedAt": 1793907972502,
+  "generatedAt": 1793908906268,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 6,
-    "totalTokens": 58262,
+    "analyses": 7,
+    "totalTokens": 69505,
     "direction": {
-      "scored": 0,
-      "called": 0,
-      "neutral": 0,
+      "scored": 5,
+      "called": 2,
+      "neutral": 3,
       "hits": 0,
-      "hitRate": null,
-      "brier": null,
+      "hitRate": 0.0,
+      "brier": 0.2609,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -742,21 +872,56 @@
       "winRate": 0.0,
       "avgR": -1.0358,
       "totalR": -1.0358,
-      "open": 0,
-      "equityMarked": 494.820912,
-      "returnPct": -1.0358
+      "open": 2,
+      "equityMarked": 494.985193,
+      "returnPct": -1.003
     }
   },
   "lastRun": {
-    "at": 1793907972502,
-    "status": "up-to-date",
+    "at": 1793908906268,
+    "status": "ok",
     "error": null,
-    "barClose": 1793894400000
+    "barClose": 1793908800000
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 494.820912,
-    "positions": [],
+    "positions": [
+      {
+        "id": "BTCUSDT-1793908800000",
+        "symbol": "BTCUSDT",
+        "side": "SHORT",
+        "entryTime": 1793908800000,
+        "entryPrice": 76336.6,
+        "stop": 78760.0,
+        "target": 71500.0,
+        "risk": 2423.399999999994,
+        "stake": 4.948209,
+        "conviction": 60,
+        "reason": "La rupture de l'EMA200_4H et la corr\u00e9lation au Nasdaq ouvrent la voie \u00e0 une correction plus profonde. Entr\u00e9e courte avec un stop robuste au-dessus de l'EMA50 4H.",
+        "exitBy": 1794081600000,
+        "lastBar": 1793908799999,
+        "markR": 0.0223,
+        "markPrice": 76282.5
+      },
+      {
+        "id": "SOLUSDT-1793908800000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1793908800000,
+        "entryPrice": 90.06,
+        "stop": 94.65,
+        "target": 81.0,
+        "risk": 4.590000000000003,
+        "stake": 4.948209,
+        "conviction": 65,
+        "reason": "SOL montre la plus grande faiblesse relative des grandes altcoins. Un short est initi\u00e9 avec stop serr\u00e9 pour viser le niveau de support majeur de 81$.",
+        "exitBy": 1794081600000,
+        "lastBar": 1793908799999,
+        "markR": 0.0109,
+        "markPrice": 90.01
+      }
+    ],
     "trades": [
       {
         "id": "SOLUSDT-1793851200000",
