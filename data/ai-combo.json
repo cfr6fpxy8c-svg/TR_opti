@@ -125,8 +125,9 @@
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 500.0,
-    "positions": [
+    "equity": 489.513226,
+    "positions": [],
+    "trades": [
       {
         "id": "ETHUSDT-1793880000000",
         "symbol": "ETHUSDT",
@@ -135,14 +136,15 @@
         "entryPrice": 2420.75,
         "stop": 2346.8,
         "target": 2570.0,
-        "risk": 73.94999999999982,
         "stake": 5.0,
         "conviction": 60,
         "reason": "Momentum de short squeeze puissant, flux ETF invers\u00e9s positifs, et accumulation des grands traders de produits d\u00e9riv\u00e9s.",
-        "exitBy": 1794052800000,
-        "lastBar": 1793883600000,
-        "markR": -0.7654,
-        "markPrice": 2364.15
+        "exitTime": 1793890800000,
+        "exitPrice": 2346.8,
+        "exitReason": "STOP",
+        "rNet": -1.0491,
+        "pnl": -5.245512,
+        "equityAfter": 494.754488
       },
       {
         "id": "XRPUSDT-1793880000000",
@@ -152,19 +154,19 @@
         "entryPrice": 1.3189,
         "stop": 1.2779,
         "target": 1.45,
-        "risk": 0.040999999999999925,
         "stake": 5.0,
         "conviction": 65,
         "reason": "Forte accumulation des baleines (record 2026), rar\u00e9faction de l'offre sur les plateformes d'\u00e9change et avanc\u00e9es r\u00e9glementaires/institutionnelles majeures.",
-        "exitBy": 1794052800000,
-        "lastBar": 1793883600000,
-        "markR": -0.7488,
-        "markPrice": 1.2882
+        "exitTime": 1793890800000,
+        "exitPrice": 1.2779,
+        "exitReason": "STOP",
+        "rNet": -1.0483,
+        "pnl": -5.241262,
+        "equityAfter": 489.513226
       }
-    ],
-    "trades": []
+    ]
   },
-  "generatedAt": 1793889988050,
+  "generatedAt": 1793890922559,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -226,20 +228,20 @@
       }
     },
     "portfolio": {
-      "trades": 0,
+      "trades": 2,
       "wins": 0,
-      "winRate": null,
-      "avgR": null,
-      "totalR": 0,
-      "open": 2,
-      "equityMarked": 492.429,
-      "returnPct": -1.5142
+      "winRate": 0.0,
+      "avgR": -1.0487,
+      "totalR": -2.0974,
+      "open": 0,
+      "equityMarked": 489.513226,
+      "returnPct": -2.0974
     }
   },
   "lastRun": {
-    "at": 1793889988050,
+    "at": 1793890922559,
     "status": "waiting",
     "error": null,
-    "barClose": 1793887200000
+    "barClose": 1793890800000
   }
 }
