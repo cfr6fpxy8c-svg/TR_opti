@@ -513,7 +513,11 @@
             "reason": "Pas de breakout valid\u00e9 par le syst\u00e8me. Le prix est proche de son support des 75,5k$, rendant un short de poursuite peu attractif en termes de R/R."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.585,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -527,7 +531,11 @@
             "reason": "La tendance de fond est baissi\u00e8re mais la proximit\u00e9 du support \u00e0 2225$ n'offre pas un ratio rendement/risque int\u00e9ressant pour initier un short."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.913,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -553,6 +561,10 @@
             "probTarget": 55,
             "reason": "Le breakout baissier 1H sous le niveau des 1,2284$ est net et s'accompagne d'un volume relatif de 1,35, align\u00e9 avec la dynamique vendeuse et la liquidation des longs sur le march\u00e9 crypto.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -5.186,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -567,7 +579,11 @@
             "reason": "L'incertitude li\u00e9e \u00e0 la s\u00e9curit\u00e9 de Binance et \u00e0 la reprise des retraits rend le trading de BNB hautement sp\u00e9culatif. Il convient de rester \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.099,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -581,7 +597,11 @@
             "reason": "Le cours teste actuellement le support critique des 88,69$. Vendre ici est risqu\u00e9 face au potentiel de rebond technique, et aucun signal d'achat n'est valid\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.289,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -1994,25 +2014,8 @@
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 489.513226,
+    "equity": 492.255262,
     "positions": [
-      {
-        "id": "XRPUSDT-1793916000000",
-        "symbol": "XRPUSDT",
-        "side": "SHORT",
-        "entryTime": 1793916000000,
-        "entryPrice": 1.2218,
-        "stop": 1.2944,
-        "target": 1.1,
-        "risk": 0.0726,
-        "stake": 4.895132,
-        "conviction": 55,
-        "reason": "Exploitation du breakout baissier 1H. Le stop est positionn\u00e9 \u00e0 2x ATR (1.2944) pour tol\u00e9rer le bruit, et l'objectif vise le support majeur des 1.10$.",
-        "exitBy": 1794002400000,
-        "lastBar": 1793995200000,
-        "markR": 0.6171,
-        "markPrice": 1.177
-      },
       {
         "id": "SOLUSDT-1793995200000",
         "symbol": "SOLUSDT",
@@ -2026,9 +2029,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1793995200000,
-        "markR": 0.0315,
-        "markPrice": 89.99
+        "lastBar": 1793998800000,
+        "markR": -0.0766,
+        "markPrice": 90.47
       }
     ],
     "trades": [
@@ -2067,22 +2070,40 @@
         "rNet": -1.0483,
         "pnl": -5.241262,
         "equityAfter": 489.513226
+      },
+      {
+        "id": "XRPUSDT-1793916000000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1793916000000,
+        "entryPrice": 1.2218,
+        "stop": 1.2944,
+        "target": 1.1,
+        "stake": 4.895132,
+        "conviction": 55,
+        "reason": "Exploitation du breakout baissier 1H. Le stop est positionn\u00e9 \u00e0 2x ATR (1.2944) pour tol\u00e9rer le bruit, et l'objectif vise le support majeur des 1.10$.",
+        "exitTime": 1794002400000,
+        "exitPrice": 1.1793,
+        "exitReason": "TIME",
+        "rNet": 0.5602,
+        "pnl": 2.742036,
+        "equityAfter": 492.255262
       }
     ]
   },
-  "generatedAt": 1794001585113,
+  "generatedAt": 1794002518526,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 14,
     "totalTokens": 168978,
     "direction": {
-      "scored": 15,
-      "called": 10,
+      "scored": 20,
+      "called": 15,
       "neutral": 5,
-      "hits": 3,
-      "hitRate": 0.3,
-      "brier": 0.2762,
+      "hits": 6,
+      "hitRate": 0.4,
+      "brier": 0.2677,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -2132,20 +2153,20 @@
       }
     },
     "portfolio": {
-      "trades": 2,
-      "wins": 0,
-      "winRate": 0.0,
-      "avgR": -1.0487,
-      "totalR": -2.0974,
-      "open": 2,
-      "equityMarked": 492.688209,
-      "returnPct": -1.4624
+      "trades": 3,
+      "wins": 1,
+      "winRate": 0.3333,
+      "avgR": -0.5124,
+      "totalR": -1.5372,
+      "open": 1,
+      "equityMarked": 491.880295,
+      "returnPct": -1.6239
     }
   },
   "lastRun": {
-    "at": 1794001585113,
-    "status": "up-to-date",
+    "at": 1794002518526,
+    "status": "waiting",
     "error": null,
-    "barClose": 1793998800000
+    "barClose": 1794002400000
   }
 }
