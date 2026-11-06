@@ -96,6 +96,7 @@ Déroulé d'un scan (`scanner/main.py`, `scan_once`) :
 | `ai-analyst.json` | Analyste IA en test : avis par clôture 4H, notation, statistiques, dernier passage. |
 | `trend-combo-paper.json` | Second portefeuille (4H + renfort 1H) : `book4h`, `book1h` (même forme que la Tendance 4H), capital commun, courbe et statistiques. |
 | `ai-combo.json` | Analyste IA dédié au second portefeuille (même forme que `ai-analyst.json`, avis `breakout4h` / `breakout1h`). |
+| `trend-opti-paper.json` | Troisième portefeuille (4H + 1H optimisé), même forme que `trend-combo-paper.json`. |
 | `frontend/data/badge.json` | Badge d'état (heure UTC, santé). |
 
 Champs principaux d'une proposition : `id`, `symbol`, `direction`, `timeframe`, `quality`, `score`,
@@ -227,6 +228,15 @@ de pertes), tout en brut et en net.
 - `ai_combo` : m\u00eames r\u00e9glages que `aiAnalyst` (`trendCombo.aiEnabled`), analyse \u00e0 chaque cl\u00f4ture 4H et \u00e0
   chaque cl\u00f4ture 1H portant une cassure de l'un des livres ; notation des directions et portefeuille IA
   sur bougies 1H (`book1h.watch.candles`).
+
+### 8.8 Troisième portefeuille 4H + 1H optimisé (`scanner/trend_opti.py`)
+- Étape séparée du workflow (`continue-on-error`), fichier `trend-opti-paper.json` (même forme que
+  `trend-combo-paper.json`). Réutilise les fonctions internes inchangées de `trend_combo` ; redéfinit
+  `_evaluate` / `step_book` pour que le filtre d'entrée voie le livre et renvoie des motifs.
+- Réglages `trendOpti` : `trendEma` (300) remplace `trend4h.trendEma` pour les deux livres ; `risk4hPct` 2,
+  `risk1hPct` 1 ; `maxSameSide` 3 = positions + entrées en attente du même sens, deux livres comptés
+  ensemble (motif : « deja 3 positions ouvertes dans ce sens »). Le renfort 1H exige toujours une position
+  4H du même sens.
 
 ## 9. Replay / backtest (`scanner/replay.py`)
 

@@ -94,6 +94,10 @@ DEFAULTS: dict[str, Any] = {
         "enabled": False, "aiEnabled": False, "startCapital": 500.0, "risk4hPct": 1.0, "risk1hPct": 0.5,
         "h1ChannelBars": 160, "h1TrailBars": 40, "h1StopAtr": 2.0, "h1KlineLimit": 1000,
     },
+    "trendOpti": {
+        "enabled": False, "startCapital": 500.0, "risk4hPct": 2.0, "risk1hPct": 1.0, "maxSameSide": 3,
+        "trendEma": 300, "h1ChannelBars": 160, "h1TrailBars": 40, "h1StopAtr": 2.0, "h1KlineLimit": 1000,
+    },
 }
 
 
@@ -187,6 +191,30 @@ class Config:
         errors.extend(self._validate_trend4h())
         errors.extend(self._validate_ai_analyst())
         errors.extend(self._validate_trend_combo())
+        errors.extend(self._validate_trend_opti())
+        return errors
+
+    def _validate_trend_opti(self) -> list[str]:
+        c = self.get("trendOpti", {})
+        if not c.get("enabled", False):
+            return []
+        errors = []
+        if not self.get("trend4h.symbols"):
+            errors.append("trendOpti reuses trend4h.symbols and filters, which must be configured")
+        for key in ("startCapital", "risk4hPct", "risk1hPct", "h1StopAtr"):
+            if not isinstance(c.get(key), (int, float)) or c[key] <= 0:
+                errors.append(f"trendOpti.{key} must be > 0")
+        for key in ("risk4hPct", "risk1hPct"):
+            if isinstance(c.get(key), (int, float)) and c[key] > 5:
+                errors.append(f"trendOpti.{key} must not exceed 5")
+        for key in ("h1ChannelBars", "h1TrailBars", "maxSameSide", "trendEma"):
+            if not isinstance(c.get(key), int) or c[key] < 1:
+                errors.append(f"trendOpti.{key} must be a positive integer")
+        if isinstance(c.get("trendEma"), int) and c["trendEma"] + 50 > int(self.get("trend4h.klineLimit", 0)):
+            errors.append("trendOpti.trendEma needs trend4h.klineLimit >= trendEma + 50")
+        limit = c.get("h1KlineLimit")
+        if not isinstance(limit, int) or not (c.get("h1ChannelBars") or 0) + 50 <= limit <= 1500:
+            errors.append("trendOpti.h1KlineLimit must cover h1ChannelBars + 50 candles and be <= 1500")
         return errors
 
     def _validate_trend_combo(self) -> list[str]:

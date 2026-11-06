@@ -238,5 +238,18 @@
     "h1StopAtr": 2.0,
     "h1KlineLimit": 1000,
     "_doc": "Second portefeuille en simulation, independant de trend4h-paper.json : livre 4H (regles et filtres de trend4h, risque risk4hPct) + renfort 1H (cassure h1ChannelBars, suiveuse h1TrailBars, stop h1StopAtr x ATR 1H, memes 3 filtres avec la tendance BTC lue en 4H, risque risk1hPct) seulement pendant une position 4H ouverte dans le meme sens. Capital commun startCapital. aiEnabled = analyste IA dedie (ai-combo.json, memes reglages que aiAnalyst)."
+  },
+  "trendOpti": {
+    "enabled": true,
+    "startCapital": 500,
+    "risk4hPct": 2.0,
+    "risk1hPct": 1.0,
+    "maxSameSide": 3,
+    "trendEma": 300,
+    "h1ChannelBars": 160,
+    "h1TrailBars": 40,
+    "h1StopAtr": 2.0,
+    "h1KlineLimit": 1000,
+    "_doc": "Troisieme portefeuille en simulation (trend-opti-paper.json), independant des deux autres : memes regles que trendCombo avec 3 reglages issus de la recherche : tendance BTC 4H vs EMA trendEma, au plus maxSameSide positions ouvertes dans le meme sens (4H et 1H comptes ensemble), risque risk4hPct / risk1hPct. Pas d'analyste IA."
   }
 }

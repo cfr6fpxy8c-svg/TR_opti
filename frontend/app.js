@@ -415,7 +415,7 @@ const cbAnalyses = () => Array.isArray(combo.ai?.analyses) ? combo.ai.analyses :
 const asList = (v) => Array.isArray(v) ? v : [];
 
 function selectTab(name) {
-  for (const tab of ["main", "combo"]) {
+  for (const tab of ["main", "combo", "opti"]) {
     const on = tab === name;
     $(`view-${tab}`).classList.toggle("hidden", !on);
     $(`tab-${tab}`).classList.toggle("active", on);
@@ -610,8 +610,122 @@ function renderCombo() {
 $("tab-main").addEventListener("click", () => selectTab("main"));
 $("tab-combo").addEventListener("click", () => selectTab("combo"));
 
+/* ------------------------------------------- 4H + 1H optimisé (third portfolio) */
+const opti = { state: null };
+
+async function refreshOpti() {
+  opti.state = await loadJSON("trend-opti-paper.json").catch(() => null);
+  renderOpti();
+}
+
+function optiCard(sym, b4, b1) {
+  const w4 = b4.watch?.[sym] || null;
+  const w1 = b1.watch?.[sym] || null;
+  const p4 = asList(b4.positions).find(x => x.symbol === sym);
+  const p1 = asList(b1.positions).find(x => x.symbol === sym);
+  const name = escapeHtml(String(sym).replace(/USDT$/, ""));
+  const lines = [];
+  lines.push(p4 ? positionLine("Position 4H", p4)
+    : `<p><b>Position 4H</b> : aucune${w4 ? ` \u00b7 achat si cl\u00f4ture 4H &gt; ${fmtPrice(w4.channelHigh)}, vente si &lt; ${fmtPrice(w4.channelLow)}` : ""}</p>`);
+  if (p1) lines.push(positionLine("Renfort 1H", p1));
+  else if (p4 && w1) lines.push(`<p><b>Renfort 1H</b> : en attente d\u2019une cl\u00f4ture 1H ${p4.side === "LONG"
+    ? `au-dessus de ${fmtPrice(w1.channelHigh)}` : `sous ${fmtPrice(w1.channelLow)}`}</p>`);
+  else lines.push("<p><b>Renfort 1H</b> : possible seulement pendant une position 4H, dans le m\u00eame sens.</p>");
+  const badge = p4 && p1 ? ["4H + renfort", p4.side === "LONG" ? "long" : "short"]
+    : p4 ? [`${sideWord(p4.side)} 4H`, p4.side === "LONG" ? "long" : "short"] : ["Pas de trade", ""];
+  return `<article class="card setup-card">
+      <div class="setup-title-row"><h3>${name} <span class="muted small">${fmtPrice(w4?.price)}</span></h3>
+        <span class="setup-state ${badge[1]}">${escapeHtml(badge[0])}</span></div>
+      ${w4 ? miniChart(w4, p4, b4.params || {}) : ""}
+      <div class="small">${lines.join("")}</div>
+    </article>`;
+}
+
+function renderOpti() {
+  const c = opti.state;
+  const notice = $("op-notice");
+  if (!c || !c.version) {
+    notice.textContent = "Ce portefeuille d\u00e9marrera au prochain passage du moteur : aucune donn\u00e9e pour le moment.";
+    notice.classList.remove("hidden");
+    return;
+  }
+  const b4 = c.book4h || {}, b1 = c.book1h || {};
+  const p = c.params || {};
+  const s = c.stats || {};
+  const s4 = b4.stats || {}, s1 = b1.stats || {};
+  const errors = asList(c.lastRun?.errors);
+  notice.textContent = errors.length ? `Dernier passage d\u00e9grad\u00e9 : ${errors.join(" \u00b7 ")}` : "";
+  notice.classList.toggle("hidden", !errors.length);
+  $("op-subtitle").textContent = `Capital fictif de d\u00e9part ${fmtEur(c.startCapital)} \u00b7 risque ${Number(p.risk4hPct)} % par trade 4H`
+    + ` et ${Number(p.risk1hPct)} % par renfort 1H \u00b7 ${Number(p.maxSameSide)} positions maximum dans le m\u00eame sens`
+    + ` \u00b7 ind\u00e9pendant des deux autres \u00b7 aucun ordre r\u00e9el.`;
+  const others = [["Tendance 4H", state.trend?.stats], ["4H + renfort 1H", combo.state?.stats]]
+    .filter(([, x]) => x).map(([label, x]) => `${label} : ${fmtSigned(x.returnPct, 2, " %")}`).join(" \u00b7 ");
+  $("op-equity").textContent = fmtEur(s.equityMarked);
+  $("op-equity-sub").textContent = `${fmtSigned(s.returnPct, 2, " %")}${others ? ` \u00b7 ${others}` : ""}`;
+  $("op-open").textContent = `${Number(s4.openPositions ?? 0)} 4H \u00b7 ${Number(s1.openPositions ?? 0)} 1H`;
+  $("op-open-sub").textContent = s.exposure != null ? `exposition ${Number(s.exposure).toFixed(2)}\u00d7 le capital` : "\u2014";
+  $("op-trades").textContent = `${Number(s4.trades ?? 0)} 4H \u00b7 ${Number(s1.trades ?? 0)} 1H`;
+  const wr = (x) => x.trades ? `${Math.round(100 * Number(x.winRate))} % gagnants, ${fmtSigned(x.avgR)}R` : "aucun";
+  $("op-trades-sub").textContent = `4H : ${wr(s4)} \u00b7 1H : ${wr(s1)}`;
+  $("op-dd").textContent = `${Number(s.maxDrawdownPct ?? 0).toFixed(1)} %`;
+  $("op-started").textContent = `d\u00e9marr\u00e9 le ${fmtTime(c.startedAt)}`;
+
+  $("op-grid").innerHTML = asList(b4.params?.symbols).map(sym => optiCard(sym, b4, b1)).join("");
+
+  const trades = [...asList(b4.trades).map(t => ({ ...t, frame: "4h" })), ...asList(b1.trades).map(t => ({ ...t, frame: "1h" }))]
+    .sort((x, y) => Number(y.exitTime) - Number(x.exitTime));
+  $("op-trades-empty").classList.toggle("hidden", trades.length > 0);
+  document.querySelector("#op-trades-table tbody").innerHTML = trades.slice(0, 300).map(tr => `<tr>
+      <td>${fmtTime(tr.exitTime)}</td>
+      <td>${BOOK_LABELS[tr.frame]}</td>
+      <td><b>${escapeHtml(tr.symbol)}</b></td>
+      <td class="${sideClass(tr.side)}">${escapeHtml(sideWord(tr.side))}</td>
+      <td>${fmtPrice(tr.entryPrice)}</td>
+      <td>${fmtPrice(tr.exitPrice)}</td>
+      <td>${escapeHtml(EXIT_LABELS[tr.exitReason] || tr.exitReason)}</td>
+      <td>${fmtDur(Number(tr.exitTime) - Number(tr.entryTime))}</td>
+      <td>${fmtSigned(tr.rNet)}R</td>
+      <td>${fmtEur(tr.pnl)}</td>
+    </tr>`).join("");
+
+  const evals = [...asList(b4.evaluations).map(e => ({ ...e, frame: "4h" })), ...asList(b1.evaluations).map(e => ({ ...e, frame: "1h" }))]
+    .sort((x, y) => Number(y.barClose) - Number(x.barClose));
+  $("op-evaluations-empty").classList.toggle("hidden", evals.length > 0);
+  document.querySelector("#op-evaluations-table tbody").innerHTML = evals.slice(0, 300).map(e => `<tr>
+      <td>${fmtTime(e.barClose)}</td>
+      <td>${BOOK_LABELS[e.frame]}</td>
+      <td><b>${escapeHtml(e.symbol)}</b></td>
+      <td class="${sideClass(e.side)}">${escapeHtml(sideWord(e.side))}</td>
+      <td>${fmtPrice(e.close)}</td>
+      <td>${e.relVolume != null ? `${Number(e.relVolume).toFixed(2)}\u00d7` : "\u2014"}</td>
+      <td>${e.taken ? "<b>Prise</b>" : escapeHtml(`\u00c9cart\u00e9e : ${asList(e.reasons).join(", ")}`)}</td>
+      <td>${shadowCell(e.shadow)}</td>
+    </tr>`).join("");
+  const line = (label, g) => g && g.count
+    ? `${label} : ${Number(g.count)} (${Number(g.closed)} termin\u00e9e(s)${g.closed ? `, moyenne ${fmtSigned(g.avgR)}R, total ${fmtSigned(g.totalR)}R` : ""})`
+    : `${label} : aucune`;
+  $("op-shadow-summary").textContent = [["4H", b4], ["1H", b1]].map(([f, b]) =>
+    `${f} \u2014 ${line("prises", b.shadowStats?.taken)} \u00b7 ${line("\u00e9cart\u00e9es", b.shadowStats?.rejected)}`).join(" | ")
+    + ". R\u00e9sultats en R apr\u00e8s frais, hors financement.";
+
+  const bp = b4.params || {};
+  $("op-rules-list").innerHTML = [
+    `M\u00eames r\u00e8gles que \u00ab 4H + renfort 1H \u00bb (canal 4H ${Number(bp.channelBars)}, sortie suiveuse ${Number(bp.trailBars)}, stop ${Number(bp.stopAtr)} \u00d7 ATR, volume &gt; ${Number(bp.volumeMultiple)}\u00d7, financement), avec 3 r\u00e9glages issus de la recherche :`,
+    `<b>Tendance BTC plus lente</b> : on suit le sens de BTC par rapport \u00e0 sa moyenne des ${Number(p.trendEma)} derni\u00e8res bougies 4H (au lieu de 200), moins d\u2019allers-retours.`,
+    `<b>Pas plus de ${Number(p.maxSameSide)} positions dans le m\u00eame sens</b> (4H et 1H compt\u00e9es ensemble) : les 5 cryptos bougent ensemble, 5 achats en m\u00eame temps reviennent \u00e0 un seul gros pari.`,
+    `<b>Mise doubl\u00e9e</b> : ${Number(p.risk4hPct)} % du capital risqu\u00e9 par trade 4H et ${Number(p.risk1hPct)} % par renfort 1H, rendu possible par la limite ci-dessus.`,
+    `Renfort 1H : cl\u00f4ture 1H au-del\u00e0 des ${Number(p.h1ChannelBars)} derni\u00e8res bougies 1H, uniquement pendant une position 4H ouverte dans le m\u00eame sens, stop ${Number(p.h1StopAtr)} \u00d7 ATR 1H, sortie suiveuse sur ${Number(p.h1TrailBars)} bougies 1H.`,
+    `Capital commun de ${fmtEur(c.startCapital)}, gains r\u00e9investis ; m\u00eames frais, glissement et financement que les autres portefeuilles. Pas d\u2019analyste IA.`,
+  ].map(x => `<li>${x}</li>`).join("");
+}
+
+$("tab-opti").addEventListener("click", () => selectTab("opti"));
+
 /* --------------------------------------------------- boot */
 refreshData();
 setInterval(refreshData, DATA_INTERVAL_MS);
 refreshCombo();
 setInterval(refreshCombo, DATA_INTERVAL_MS);
+refreshOpti();
+setInterval(refreshOpti, DATA_INTERVAL_MS);

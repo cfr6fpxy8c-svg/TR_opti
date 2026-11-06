@@ -78,5 +78,15 @@ for (const id of ["cb-grid", "#cb-trades-table tbody", "#cb-evaluations-table tb
   assert.ok(!get(id).innerHTML.includes("<img"), id);
 }
 assert.ok(!get("cb-ai-sources").innerHTML.includes("javascript:"), "combo: only https sources become links");
+// Third portfolio (4H + 1H optimise) reuses the same book shape.
+run(`opti.state = { version: 1, startCapital: 500, startedAt: 1,
+    params: { risk4hPct: hostile, maxSameSide: hostile, trendEma: hostile },
+    stats: { equityMarked: hostile, returnPct: hostile }, lastRun: { errors: [hostile] },
+    book4h: combo.state.book4h, book1h: combo.state.book1h };
+  renderOpti();`);
+for (const id of ["op-grid", "#op-trades-table tbody", "#op-evaluations-table tbody", "op-rules-list"]) {
+  assert.ok(!get(id).innerHTML.includes("<img"), id);
+}
+assert.ok(get("op-grid").innerHTML.includes("<svg"), "opti: chart drawn");
 assert.ok(!context.compromised);
 console.log("Frontend security checks passed: trend cards, trade history, evaluations, rules.");

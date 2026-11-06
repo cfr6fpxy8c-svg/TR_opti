@@ -250,3 +250,15 @@ en haut de page). La Tendance 4H (§ 13) et son analyste IA (§ 14) ne sont pas 
   portefeuille fictif suivi sur bougies 1H.
 - Choix issus de la recherche : sur 2019-2026, le renfort 1H pendant une position 4H donne +0,87R par
   trade (+0,61R sur la période non utilisée pour le choix) ; pire baisse simulée d'environ −41 %.
+
+## 16. Troisième portefeuille : 4H + 1H optimisé (simulation)
+
+Portefeuille fictif indépendant (onglet « 4H + 1H optimisé »), démarré le 6 novembre 2026. Mêmes règles
+que le § 15, avec trois réglages issus de la recherche (choisis sur 2019 → 10/2024, vérifiés sur 11/2024 →) :
+
+- **Tendance BTC plus lente** : clôture 4H de BTC comparée à sa moyenne des 300 dernières bougies (au lieu de 200).
+- **Au plus 3 positions dans le même sens**, 4H et 1H comptées ensemble (les 5 cryptos sont très corrélées).
+- **Mise doublée** : 2 % du capital par trade 4H, 1 % par renfort 1H.
+- Capital commun de 500 €, mêmes coûts ; pas d'analyste IA.
+- Simulation 2019 → 11/2026 : 500 € → environ 549 000 € (pire baisse −39 %) contre 118 000 € (−41 %) pour le § 15 ;
+  sur la seule période de vérification : 2 047 € contre 1 424 €.

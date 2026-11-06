@@ -125,6 +125,11 @@ jobs:
           GCP_ACCESS_TOKEN: ${{ steps.gcp2.outputs.access_token }}
         run: python -m scanner.ai_combo
 
+      - name: Run 4H + 1H optimise (third paper portfolio)
+        id: trendopti
+        run: python -m scanner.trend_opti
+        continue-on-error: true
+
       - name: Validate published JSON
         run: python -m scanner.validate_data
 
@@ -146,6 +151,7 @@ jobs:
             data/ai-analyst.json
             data/trend-combo-paper.json
             data/ai-combo.json
+            data/trend-opti-paper.json
             frontend/data/signals.json
             frontend/data/performance.json
             frontend/data/system-status.json
@@ -156,6 +162,7 @@ jobs:
             frontend/data/ai-analyst.json
             frontend/data/trend-combo-paper.json
             frontend/data/ai-combo.json
+            frontend/data/trend-opti-paper.json
             frontend/data/badge.json
 
       - name: Propagate scan failure
