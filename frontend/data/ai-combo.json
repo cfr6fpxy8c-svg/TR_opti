@@ -159,7 +159,11 @@
             "reason": "BTC est entr\u00e9 dans une zone de support cl\u00e9 (75k$-76k$). Avec l'incertitude du rapport NFP US de demain et le crack soudain des actions Tech de Wall Street, le ratio rendement/risque sur un short ou un long est m\u00e9diocre."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.23,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -173,7 +177,11 @@
             "reason": "ETH montre une faiblesse relative importante, mais s'approche d'un support technique \u00e0 2200$-2250$. L'absence de catalyseur acheteur et le risque li\u00e9 au rapport NFP de demain incitent \u00e0 rester \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.974,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -187,7 +195,11 @@
             "reason": "Bien que les indicateurs on-chain et fondamentaux soient tr\u00e8s haussiers pour XRP, la volatilit\u00e9 macro\u00e9conomique actuelle (crack Tech + NFP demain) rend l'ouverture d'un trade risqu\u00e9e \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.666,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -201,7 +213,11 @@
             "reason": "La crise li\u00e9e au m\u00e9ga-hack de Binance est g\u00e9r\u00e9e mais laisse des traces sur la part de march\u00e9 de l'\u00e9change. BNB consolide sous ses moyennes mobiles de court terme, pas de signal d'achat ou de vente franc."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.043,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -215,7 +231,11 @@
             "reason": "SOL subit une forte pression baissi\u00e8re et le gel de Loopscale p\u00e8se \u00e0 court terme. De nombreuses liquidations de positions longues sont encore \u00e0 craindre sous 90$, ce qui rend tout achat pr\u00e9matur\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.599,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -1578,7 +1598,8 @@
     }
   ],
   "attempts": {
-    "1793966400000": 1
+    "1793966400000": 1,
+    "1793980800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -1597,9 +1618,9 @@
         "conviction": 55,
         "reason": "Exploitation du breakout baissier 1H. Le stop est positionn\u00e9 \u00e0 2x ATR (1.2944) pour tol\u00e9rer le bruit, et l'objectif vise le support majeur des 1.10$.",
         "exitBy": 1794002400000,
-        "lastBar": 1793973600000,
-        "markR": 0.4876,
-        "markPrice": 1.1864
+        "lastBar": 1793977200000,
+        "markR": 0.4353,
+        "markPrice": 1.1902
       }
     ],
     "trades": [
@@ -1641,19 +1662,19 @@
       }
     ]
   },
-  "generatedAt": 1793979982701,
+  "generatedAt": 1793980965203,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 11,
     "totalTokens": 133322,
     "direction": {
-      "scored": 5,
-      "called": 3,
+      "scored": 10,
+      "called": 8,
       "neutral": 2,
-      "hits": 0,
-      "hitRate": 0.0,
-      "brier": 0.3048,
+      "hits": 3,
+      "hitRate": 0.375,
+      "brier": 0.279,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -1709,14 +1730,14 @@
       "avgR": -1.0487,
       "totalR": -2.0974,
       "open": 1,
-      "equityMarked": 491.900092,
-      "returnPct": -1.62
+      "equityMarked": 491.644077,
+      "returnPct": -1.6712
     }
   },
   "lastRun": {
-    "at": 1793979982701,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1793977200000
+    "at": 1793980965203,
+    "status": "error",
+    "error": "no JSON object in the model answer",
+    "barClose": 1793980800000
   }
 }
