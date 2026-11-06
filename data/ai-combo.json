@@ -1281,13 +1281,132 @@
         "candidatesTokenCount": 1521,
         "totalTokenCount": 12891
       }
+    },
+    {
+      "barClose": 1793952000000,
+      "analyzedAt": 1793952984727,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La pause de la Fed \u00e0 3,75-4% fin octobre est \u00e9clips\u00e9e par le krach de 5,5% du Nasdaq le 5 nov., d\u00e9clench\u00e9 par les techs/IA (NVIDIA -9,3%). L'aversion au risque mondiale fait plonger le Crypto Fear & Greed \u00e0 28. Pas de r\u00e9union Fed en novembre, l'attention se tourne vers l'inflation et les flux ETF.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "La chute de 5,5% du Nasdaq due aux valeurs technologiques li\u00e9es \u00e0 l'IA a entra\u00een\u00e9 le BTC sous ses EMA20/50. Le BTC teste le support critique des 75k$-76k$ (co\u00fbt moyen des d\u00e9tenteurs \u00e0 court terme) dans un contexte de sorties nettes massives d'ETF (643M$ le 30 oct.) et d'un sentiment g\u00e9n\u00e9ral d\u00e9grad\u00e9 (Fear \u00e0 28).",
+          "risks": "La rupture de la zone de support des 75k$ pourrait d\u00e9clencher de nouvelles liquidations en cascade vers les 73k$ (MM200) puis 71k$.",
+          "price0": 75572.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La rupture des EMA de court terme et la proximit\u00e9 du support majeur des 75k$ cr\u00e9ent une situation d'attentisme. Aucun signal clair de retournement n'est pr\u00e9sent."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "ETH montre une faiblesse persistante, accentu\u00e9e par des sorties de pr\u00e8s de 100M$ de l'ETF spot le 5 novembre et plus de 179M$ de liquidations de positions longues \u00e0 effet de levier. Le cours teste d\u00e9sormais la zone de support critique des 2200$ sous ses EMA20 et 50 qui convergent \u00e0 la baisse.",
+          "risks": "La perte d\u00e9finitive des 2200$ validerait une poursuite vers les plus bas de l'\u00e9t\u00e9 sous les 2100$.",
+          "price0": 2227.61,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le sentiment est tr\u00e8s baissier avec de fortes sorties d'ETF, mais l'approche du support des 2200$ limite l'int\u00e9r\u00eat d'initier un short \u00e0 ce niveau de prix."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "XRP subit la baisse g\u00e9n\u00e9rale mais montre des signes d'accumulation majeure : les portefeuilles de plus d'un million d'XRP ont atteint leur plus haut niveau de 2026. L'activit\u00e9 r\u00e9seau est forte et les avanc\u00e9es sur le RLUSD (partenariats) limitent la baisse face \u00e0 la lib\u00e9ration mensuelle d'un milliard d'escrow.",
+          "risks": "Une poursuite de la panique sur le Nasdaq pourrait casser le support \u00e0 1,17$ et invalider l'accumulation des baleines.",
+          "price0": 1.1855,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier, emp\u00eachant toute nouvelle entr\u00e9e selon nos r\u00e8gles."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 1.1993,
+            "decision": "NO_GO",
+            "probTarget": 40,
+            "reason": "Le breakout SHORT se produit sur un niveau de survente extr\u00eame (RSI 4H \u00e0 28.7) et pr\u00e8s du support de 1.18$. De plus, l'accumulation record des baleines sur XRP \u00e0 ce prix limite le potentiel de baisse imm\u00e9diat.",
+            "ours": "rejected"
+          },
+          "breakout1h": {
+            "side": "SHORT",
+            "level": 1.1888,
+            "decision": "NO_GO",
+            "probTarget": 42,
+            "reason": "La survente extr\u00eame \u00e0 court terme et le fait que les supports majeurs soient tr\u00e8s proches incitent \u00e0 la prudence, d'autant que le march\u00e9 traditionnel montre des signes d'exc\u00e8s de panique.",
+            "ours": "rejected"
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "BNB d\u00e9montre une r\u00e9silience sup\u00e9rieure en d\u00e9fendant fermement le support cl\u00e9 des 680$. Binance a rassur\u00e9 le march\u00e9 en couvrant 95% des pertes du piratage de 6,3 milliards via son fonds SAFU, et en confirmant des r\u00e9serves \u00e0 100% sur les actifs majeurs, ce qui stabilise la confiance des utilisateurs.",
+          "risks": "La d\u00e9pendance \u00e0 la solvabilit\u00e9 g\u00e9n\u00e9rale de Binance et au sentiment du march\u00e9 si le BTC casse les 75k$.",
+          "price0": 690.75,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que BNB montre de la force relative en tenant les 680$, entrer long dans un march\u00e9 en capitulation globale pr\u00e9sente un ratio risque/rendement d\u00e9favorable."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "SOL a gliss\u00e9 sous ses EMA de court terme et teste sa moyenne mobile 200 jours vers 89$. Bien que la TVL en termes de jetons SOL ait augment\u00e9 de 3,7% en 30 jours, d\u00e9montrant que les utilisateurs ne retirent pas leurs capitaux des applications, la pression vendeuse g\u00e9n\u00e9rale p\u00e8se sur l'actif.",
+          "risks": "La rupture confirm\u00e9e des 89$ (MM200) pourrait entra\u00eener une baisse rapide vers le niveau psychologique des 80$.",
+          "price0": 89.65,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "SOL teste sa MM200 \u00e0 89$. C'est un niveau technique crucial mais dangereux pour prendre position avant d'observer si ce support majeur tient ou c\u00e8de."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "FOMC meeting November 2026",
+        "Fed interest rate decision November 2026",
+        "crypto news November 6 2026",
+        "Bitcoin price November 2026",
+        "\"SOL\" OR \"Solana\" news November 2026",
+        "\"BNB\" OR \"Binance\" news November 2026",
+        "\"XRP\" OR \"Ripple\" news November 2026",
+        "Fear and Greed Index November 6 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4162,
+        "candidatesTokenCount": 1671,
+        "totalTokenCount": 12649
+      }
     }
   ],
   "attempts": {
     "1793937600000": 2,
     "1793944800000": 1,
     "1793948400000": 2,
-    "1793952000000": 1
+    "1793952000000": 2
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -1307,8 +1426,8 @@
         "reason": "Exploitation du breakout baissier 1H. Le stop est positionn\u00e9 \u00e0 2x ATR (1.2944) pour tol\u00e9rer le bruit, et l'objectif vise le support majeur des 1.10$.",
         "exitBy": 1794002400000,
         "lastBar": 1793948400000,
-        "markR": 0.5014,
-        "markPrice": 1.1854
+        "markR": 0.4435,
+        "markPrice": 1.1896
       }
     ],
     "trades": [
@@ -1350,12 +1469,12 @@
       }
     ]
   },
-  "generatedAt": 1793952145190,
+  "generatedAt": 1793952984727,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 9,
-    "totalTokens": 109366,
+    "analyses": 10,
+    "totalTokens": 122015,
     "direction": {
       "scored": 0,
       "called": 0,
@@ -1388,7 +1507,7 @@
         "totalR": 0
       },
       "rejected_NO_GO": {
-        "count": 2,
+        "count": 4,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -1404,7 +1523,7 @@
         "totalR": 0
       },
       "NO_GO": {
-        "count": 2,
+        "count": 4,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -1418,14 +1537,14 @@
       "avgR": -1.0487,
       "totalR": -2.0974,
       "open": 1,
-      "equityMarked": 491.967645,
-      "returnPct": -1.6065
+      "equityMarked": 491.684217,
+      "returnPct": -1.6632
     }
   },
   "lastRun": {
-    "at": 1793952145190,
-    "status": "error",
-    "error": "no JSON object in the model answer",
+    "at": 1793952984727,
+    "status": "ok",
+    "error": null,
     "barClose": 1793952000000
   }
 }
