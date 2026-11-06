@@ -336,7 +336,11 @@
             "reason": "Les risques macro\u00e9conomiques \u00e9lev\u00e9s (emplois d'octobre) et la forte volatilit\u00e9 suite aux liquidations de 1Md$ incitent \u00e0 rester \u00e0 l'\u00e9cart en l'absence de signal technique haussier clair."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.619,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -350,7 +354,11 @@
             "reason": "La perte de la moyenne mobile de court terme et les incertitudes pesant sur les actifs \u00e0 risque justifient l'absence de position."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.166,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -364,7 +372,11 @@
             "reason": "Le support de 1,24$ tient mais l'absence de dynamique haussi\u00e8re globale limite l'int\u00e9r\u00eat d'une entr\u00e9e imm\u00e9diate."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.687,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -378,7 +390,11 @@
             "reason": "La sous-performance et la d\u00e9gradation de la structure technique suite au piratage de Binance rendent risqu\u00e9e toute tentative d'achat."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.114,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -392,7 +408,11 @@
             "reason": "SOL reste sous pression avec une tendance baissi\u00e8re marqu\u00e9e et un d\u00e9sint\u00e9r\u00eat des investisseurs institutionnels pour les ETF spot."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.1,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -1744,10 +1764,121 @@
         "candidatesTokenCount": 1567,
         "totalTokenCount": 12029
       }
+    },
+    {
+      "barClose": 1793995200000,
+      "analyzedAt": 1793995362743,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La victoire d\u00e9mocrate aux Midterms US suscite des craintes r\u00e9glementaires sur l'IA, provoquant un krach du Nasdaq (-5,5%) qui a contamin\u00e9 les cryptos (1 Md$ de liquidations). Le rapport sur l'emploi d'octobre est solide (165k), maintenant la Fed ferme. Sorties massives d'ETF (430M$ sur le BTC).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "La chute de Wall Street a d\u00e9clench\u00e9 un deleveraging massif (1 Md$ de positions longues liquid\u00e9es). Les ETF Spot ont enregistr\u00e9 430M$ de sorties nettes le 5 novembre. Techniquement, le BTC est pass\u00e9 sous sa EMA200 4H (80k$) et teste le support critique des 75k$. Le sentiment est tomb\u00e9 dans la peur (Fear \u00e0 28) apr\u00e8s l'\u00e9chec de la hausse vers 80k$.",
+          "risks": "Rebond technique sur support (75k$), d\u00e9tente des taux US ou stabilisation surprise du Nasdaq.",
+          "price0": 75863.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le prix teste un support majeur \u00e0 75k$ apr\u00e8s une forte baisse; le ratio risque/rendement pour initier de nouveaux shorts ici est sous-optimal en l'absence de cassure confirm\u00e9e."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "L'ETH subit une pression vendeuse accrue, accentu\u00e9e par des sorties nettes de 100M$ sur les ETF Spot Ethereum. Le cours s'enfonce sous ses EMA20/50 4H et teste le bas de son canal \u00e0 2200$. La corr\u00e9lation \u00e9troite avec le Nasdaq et la faiblesse de la demande institutionnelle limitent toute tentative de rebond \u00e0 court terme.",
+          "risks": "Sursaut technique sur support psychologique, rachat de shorts surcharg\u00e9s.",
+          "price0": 2234.89,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le prix est proche du support majeur des 2200$. Bien que la tendance soit baissi\u00e8re, une consolidation sur ces niveaux est probable \u00e0 court terme."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "Le XRP a chut\u00e9 \u00e0 un plus bas de 11 semaines sous 1,19$, effa\u00e7ant son rebond \u00e0 1,35$ en raison de l'absence d'entr\u00e9es sur les ETF XRP depuis 3 jours. De plus, les hackers de Binance ont commenc\u00e9 \u00e0 convertir environ 50M$ de XRP vol\u00e9s en BTC via THORChain. Les votes pour XLS-66 (lending DeFi) progressent (23/35) mais sont \u00e9clips\u00e9s par ces flux vendeurs.",
+          "risks": "Adoption finale de XLS-66, survente technique (RSI 30,7) provoquant un short squeeze.",
+          "price0": 1.1855,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position vendeuse (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif. Aucune nouvelle transaction n'est initi\u00e9e tant que la position actuelle reste active."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "Le BNB montre une relative r\u00e9silience par rapport au march\u00e9 (RSI 44,5) mais reste sous pression sous ses EMA 20/50 4H. Le sentiment est plomb\u00e9 par les retomb\u00e9es du hack historique de Binance (6,3 Md$) et les craintes r\u00e9glementaires post-Midterms US sur les exchanges, bien que le support des 680$ tienne pour l'instant.",
+          "risks": "Poursuite de la panique li\u00e9e au hack de Binance, rupture des 680$ entra\u00eenant une capitulation.",
+          "price0": 694.51,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "BNB fait preuve de r\u00e9silience relative et consolide dans un range \u00e9troit. Pas de signal directionnel clair pour justifier une entr\u00e9e imm\u00e9diate."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "SOL fait face \u00e0 un catalyseur baissier majeur : la Banque Centrale de Chine (PBOC) a annul\u00e9 l'\u00e9v\u00e9nement Solana \u00e0 Shanghai et ouvert une enqu\u00eate sur les entit\u00e9s locales pour violation des r\u00e8gles crypto de f\u00e9v. 2026. Cela \u00e9clipse le record de 5 Md$ d'actifs r\u00e9els (RWA) sur le r\u00e9seau en octobre. Techniquement sous ses EMA20/50, SOL menace le support des 88$.",
+          "risks": "Attrait sp\u00e9culatif persistant sur les RWA, rachat de positions courtes sur le support des 88$.",
+          "price0": 90.14,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 75,
+            "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
+            "stop": 94.57,
+            "target": 80.0,
+            "maxHoldHours": 48,
+            "valid": true,
+            "status": "opened"
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"FOMC\" \"November 2026\" OR \"Federal Reserve\" November 2026",
+        "\"CPI\" OR \"jobs report\" \"November 2026\" OR \"employment\"",
+        "\"crypto\" news \"November 6 2026\" OR \"November 2026\"",
+        "Bitcoin \"November 6 2026\" OR \"November 2026\" price news",
+        "\"Binance Hackers Swap About $50 Million of Stolen XRP Mostly Into Bitcoin\"",
+        "\"Gopax\" hack OR \"hacking\" \"November 2026\"",
+        "\"XRP\" news \"November 2026\" OR \"November 6 2026\"",
+        "\"Solana\" OR \"SOL\" OR \"BNB\" news \"November 6 2026\""
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4073,
+        "candidatesTokenCount": 1363,
+        "totalTokenCount": 11443
+      }
     }
   ],
   "attempts": {
-    "1793980800000": 3
+    "1793980800000": 3,
+    "1793995200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -1766,9 +1897,26 @@
         "conviction": 55,
         "reason": "Exploitation du breakout baissier 1H. Le stop est positionn\u00e9 \u00e0 2x ATR (1.2944) pour tol\u00e9rer le bruit, et l'objectif vise le support majeur des 1.10$.",
         "exitBy": 1794002400000,
-        "lastBar": 1793988000000,
-        "markR": 0.5317,
-        "markPrice": 1.1832
+        "lastBar": 1793991600000,
+        "markR": 0.4917,
+        "markPrice": 1.1861
+      },
+      {
+        "id": "SOLUSDT-1793995200000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1793995200000,
+        "entryPrice": 90.13,
+        "stop": 94.57,
+        "target": 80.0,
+        "risk": 4.439999999999998,
+        "stake": 4.895132,
+        "conviction": 75,
+        "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
+        "exitBy": 1794168000000,
+        "lastBar": 1793995199999,
+        "markR": -0.0495,
+        "markPrice": 90.35
       }
     ],
     "trades": [
@@ -1810,19 +1958,19 @@
       }
     ]
   },
-  "generatedAt": 1793994383942,
+  "generatedAt": 1793995362743,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 12,
-    "totalTokens": 145351,
+    "analyses": 13,
+    "totalTokens": 156794,
     "direction": {
-      "scored": 10,
-      "called": 8,
-      "neutral": 2,
+      "scored": 15,
+      "called": 10,
+      "neutral": 5,
       "hits": 3,
-      "hitRate": 0.375,
-      "brier": 0.279,
+      "hitRate": 0.3,
+      "brier": 0.2762,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -1877,15 +2025,15 @@
       "winRate": 0.0,
       "avgR": -1.0487,
       "totalR": -2.0974,
-      "open": 1,
-      "equityMarked": 492.115968,
-      "returnPct": -1.5768
+      "open": 2,
+      "equityMarked": 491.677853,
+      "returnPct": -1.6644
     }
   },
   "lastRun": {
-    "at": 1793994383942,
-    "status": "waiting",
+    "at": 1793995362743,
+    "status": "ok",
     "error": null,
-    "barClose": 1793991600000
+    "barClose": 1793995200000
   }
 }
