@@ -676,7 +676,11 @@
             "reason": "March\u00e9 trop incertain et bruit\u00e9 apr\u00e8s un flush massif; pas d'avantage clair pour acheter ou vendre ici."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.609,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -690,7 +694,11 @@
             "reason": "Dynamique baissi\u00e8re install\u00e9e mais proche de supports locaux majeurs, limitant le ratio risque/rendement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.088,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -711,6 +719,10 @@
             "probTarget": 45,
             "reason": "La rupture baissi\u00e8re de 1H s'est produite sur un volume relatif faible, manquant de force vendeuse institutionnelle. De plus, l'accumulation extr\u00eame par les baleines et le fort taux de shorts offshore cr\u00e9ent un risque asym\u00e9trique \u00e9lev\u00e9 de squeeze.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -5.491,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -725,7 +737,11 @@
             "reason": "Le prix consolide apr\u00e8s le choc du hack et manque de direction claire \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.062,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -739,7 +755,11 @@
             "reason": "Le prix est pos\u00e9 sur un support critique \u00e0 long terme (MM200). Vendre ici est risqu\u00e9, et acheter est trop pr\u00e9coce sans signal de retournement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.1,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -2029,9 +2049,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1793998800000,
-        "markR": -0.0,
-        "markPrice": 90.13
+        "lastBar": 1794002400000,
+        "markR": 0.0383,
+        "markPrice": 89.96
       }
     ],
     "trades": [
@@ -2091,19 +2111,19 @@
       }
     ]
   },
-  "generatedAt": 1794005182733,
+  "generatedAt": 1794006116632,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 14,
     "totalTokens": 168978,
     "direction": {
-      "scored": 20,
-      "called": 15,
-      "neutral": 5,
-      "hits": 6,
-      "hitRate": 0.4,
-      "brier": 0.2677,
+      "scored": 25,
+      "called": 17,
+      "neutral": 8,
+      "hits": 8,
+      "hitRate": 0.4706,
+      "brier": 0.2608,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -2159,14 +2179,14 @@
       "avgR": -0.5124,
       "totalR": -1.5372,
       "open": 1,
-      "equityMarked": 492.255262,
-      "returnPct": -1.5489
+      "equityMarked": 492.442746,
+      "returnPct": -1.5115
     }
   },
   "lastRun": {
-    "at": 1794005182733,
+    "at": 1794006116632,
     "status": "waiting",
     "error": null,
-    "barClose": 1794002400000
+    "barClose": 1794006000000
   }
 }
