@@ -2095,7 +2095,11 @@
             "reason": "La tendance 4H est baissi\u00e8re et sous la moyenne mobile 200, mais la baisse r\u00e9cente est d\u00e9j\u00e0 prononc\u00e9e et l'indicateur Fear & Greed \u00e0 28 sugg\u00e8re une extension baissi\u00e8re risqu\u00e9e \u00e0 court terme. On reste \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.272,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -2109,7 +2113,11 @@
             "reason": "La dynamique d'ETH est lourde et sous-performe le march\u00e9 global. Bien que la tendance soit baissi\u00e8re, le RSI est proche du survente et l'absence de cassure nette imm\u00e9diate nous incite \u00e0 la prudence sans signal clair."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.309,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -2130,6 +2138,10 @@
             "probTarget": 65,
             "reason": "La cassure du support de 1,1735$ sur fond de ventes massives des hackers de Binance (qui convertissent leurs XRP en BTC) et d'absence de flux ETF offre un excellent momentum baissier. Le volume est robuste (1,29), confirmant la force de la cassure.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -2.514,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -2144,7 +2156,11 @@
             "reason": "BNB reste neutre et coinc\u00e9 dans son range actuel (680$ - 720$). Malgr\u00e9 sa force relative, l'absence de tendance claire et le contexte macro\u00e9conomique tr\u00e8s d\u00e9grad\u00e9 ne justifient pas d'exposition pour le moment."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.18,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -2158,7 +2174,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur SOL (entr\u00e9e \u00e0 90,13$). Nous ne prenons pas de nouvelle position tant que celle-ci est active."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.265,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -3048,7 +3068,6 @@
     }
   ],
   "attempts": {
-    "1794067200000": 1,
     "1794081600000": 1
   },
   "portfolio": {
@@ -3068,9 +3087,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1794078000000,
-        "markR": 0.2027,
-        "markPrice": 89.23
+        "lastBar": 1794081600000,
+        "markR": 0.25,
+        "markPrice": 89.02
       },
       {
         "id": "XRPUSDT-1794009600000",
@@ -3085,9 +3104,9 @@
         "conviction": 65,
         "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
         "exitBy": 1794182400000,
-        "lastBar": 1794078000000,
-        "markR": 0.4302,
-        "markPrice": 1.1562
+        "lastBar": 1794081600000,
+        "markR": 0.4593,
+        "markPrice": 1.1547
       },
       {
         "id": "BNBUSDT-1794024000000",
@@ -3102,9 +3121,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794078000000,
-        "markR": 0.0665,
-        "markPrice": 695.86
+        "lastBar": 1794081600000,
+        "markR": 0.0537,
+        "markPrice": 695.61
       },
       {
         "id": "BTCUSDT-1794052800000",
@@ -3119,9 +3138,9 @@
         "conviction": 65,
         "reason": "La cassure du support psychologique et on-chain des 76k$ ouvre la voie \u00e0 un retest de la zone de support majeure des 73k$-74k$.",
         "exitBy": 1794225600000,
-        "lastBar": 1794078000000,
-        "markR": 0.1964,
-        "markPrice": 75672.1
+        "lastBar": 1794081600000,
+        "markR": 0.2069,
+        "markPrice": 75657.6
       },
       {
         "id": "ETHUSDT-1794052800000",
@@ -3136,9 +3155,9 @@
         "conviction": 60,
         "reason": "La faiblesse technique due au report de Glamsterdam et la perte des EMA court terme augmentent la probabilit\u00e9 d'une correction vers le support psychologique.",
         "exitBy": 1794225600000,
-        "lastBar": 1794078000000,
-        "markR": 0.2893,
-        "markPrice": 2229.04
+        "lastBar": 1794081600000,
+        "markR": 0.3219,
+        "markPrice": 2227.33
       }
     ],
     "trades": [
@@ -3198,19 +3217,19 @@
       }
     ]
   },
-  "generatedAt": 1794084384191,
+  "generatedAt": 1794085321525,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 21,
     "totalTokens": 249954,
     "direction": {
-      "scored": 65,
-      "called": 48,
-      "neutral": 17,
-      "hits": 22,
-      "hitRate": 0.4583,
-      "brier": 0.2664,
+      "scored": 70,
+      "called": 51,
+      "neutral": 19,
+      "hits": 25,
+      "hitRate": 0.4902,
+      "brier": 0.2608,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -3266,14 +3285,14 @@
       "avgR": -0.5124,
       "totalR": -1.5372,
       "open": 5,
-      "equityMarked": 498.083421,
-      "returnPct": -0.3833
+      "equityMarked": 498.607361,
+      "returnPct": -0.2785
     }
   },
   "lastRun": {
-    "at": 1794084384191,
-    "status": "up-to-date",
+    "at": 1794085321525,
+    "status": "waiting",
     "error": null,
-    "barClose": 1794081600000
+    "barClose": 1794085200000
   }
 }
