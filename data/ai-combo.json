@@ -1965,7 +1965,11 @@
             "reason": "Le prix teste un support majeur \u00e0 75k$ apr\u00e8s une forte baisse; le ratio risque/rendement pour initier de nouveaux shorts ici est sous-optimal en l'absence de cassure confirm\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.12,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -1979,7 +1983,11 @@
             "reason": "Le prix est proche du support majeur des 2200$. Bien que la tendance soit baissi\u00e8re, une consolidation sur ces niveaux est probable \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.021,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -1993,7 +2001,11 @@
             "reason": "Une position vendeuse (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif. Aucune nouvelle transaction n'est initi\u00e9e tant que la position actuelle reste active."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.008,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -2007,7 +2019,11 @@
             "reason": "BNB fait preuve de r\u00e9silience relative et consolide dans un range \u00e9troit. Pas de signal directionnel clair pour justifier une entr\u00e9e imm\u00e9diate."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.416,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -2026,7 +2042,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.61,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -2921,10 +2941,115 @@
         "candidatesTokenCount": 1355,
         "totalTokenCount": 10259
       }
+    },
+    {
+      "barClose": 1794081600000,
+      "analyzedAt": 1794081744957,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Les taux d'int\u00e9r\u00eat maintenus fin octobre et le NFP solide du 6 nov propulsent les attentes de hausse de la Fed en d\u00e9cembre, renfor\u00e7ant le dollar. Les actions US ont corrig\u00e9 s\u00e9v\u00e8rement. L'inflation CPI d'octobre (10 nov) est le prochain catalyseur. Sentiment d'extr\u00eame peur (F&G \u00e0 25).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "BTC teste le support cl\u00e9 de sa base STH (~76k$) sous l'effet de ventes massives d'ETF (-430M$ le 5 nov) et de la hausse des taux anticip\u00e9e apr\u00e8s un NFP solide. Les suites du piratage record de Binance (6,3G$ vol\u00e9s) et la sanction du Tr\u00e9sor US contre MEXC Global pour 16G$ de flux illicites amplifient l'extr\u00eame peur (F&G \u00e0 25) et p\u00e8sent sur les flux spot.",
+          "risks": "Un rebond technique vigoureux sur le support psychologique majeur des 75 000 $.",
+          "price0": 75772.5,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "ETH reste fragile sous les EMA 20 et 50. Les sorties massives des ETF Ether ont atteint 1,2G$ en octobre. Le report de la mise \u00e0 niveau Glamsterdam et la faiblesse g\u00e9n\u00e9rale des altcoins plombent la confiance. La corr\u00e9lation avec la chute des actions technologiques accentue la baisse.",
+          "risks": "Rebond technique sur le support \u00e0 2200 $ favoris\u00e9 par un fort levier nettoy\u00e9.",
+          "price0": 2234.43,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "Malgr\u00e9 l'approbation finale de l'OCC pour sa banque fiduciaire, XRP subit le contrecoup du piratage de Binance (296M$ de XRP d\u00e9rob\u00e9s). Le momentum est fortement baissier, l'actif glissant vers le support critique de 1,15 $ dans un climat d'aversion totale pour le risque.",
+          "risks": "RSI en survente (30.8) incitant \u00e0 des rachats de shorts ou r\u00e9action sur support.",
+          "price0": 1.1617,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "BNB montre une r\u00e9silience sup\u00e9rieure aux autres actifs gr\u00e2ce au remboursement par Binance de 98% des fonds d\u00e9rob\u00e9s lors du piratage massif de 6,3G$. La r\u00e9ouverture des retraits apporte un soulagement. Le support des $680-$690 tient bon, maintenant l'actif dans sa zone de retest macro.",
+          "risks": "Nouvelle panique r\u00e9glementaire ou fuite de capitaux massive hors de Binance.",
+          "price0": 697.4,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position acheteuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "SOL souffre de la faiblesse globale des altcoins et de l'impact du piratage de Binance (96M$ de SOL vol\u00e9s). La proximit\u00e9 de la conf\u00e9rence Breakpoint (15 nov) n'arrive pas \u00e0 inverser la tendance baissi\u00e8re domin\u00e9e par un dollar fort et des taux r\u00e9els \u00e9lev\u00e9s.",
+          "risks": "Support solide \u00e0 88$ et rachat de shorts sp\u00e9culatifs \u00e0 l'approche de Breakpoint.",
+          "price0": 89.59,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"BTC\" November 2026 price",
+        "\"FOMC\" November 2026",
+        "crypto news November 2026",
+        "US CPI November 2026",
+        "\"MEXC\" illicit activity \"16 billion\" 2026",
+        "Binance hack October 2026",
+        "BNB price prediction November 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4335,
+        "candidatesTokenCount": 1315,
+        "totalTokenCount": 12141
+      }
     }
   ],
   "attempts": {
-    "1794067200000": 1
+    "1794067200000": 1,
+    "1794081600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -2943,9 +3068,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1794074400000,
-        "markR": 0.1284,
-        "markPrice": 89.56
+        "lastBar": 1794078000000,
+        "markR": 0.1239,
+        "markPrice": 89.58
       },
       {
         "id": "XRPUSDT-1794009600000",
@@ -2960,9 +3085,9 @@
         "conviction": 65,
         "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
         "exitBy": 1794182400000,
-        "lastBar": 1794074400000,
-        "markR": 0.3333,
-        "markPrice": 1.1612
+        "lastBar": 1794078000000,
+        "markR": 0.3353,
+        "markPrice": 1.1611
       },
       {
         "id": "BNBUSDT-1794024000000",
@@ -2977,9 +3102,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794074400000,
-        "markR": 0.1186,
-        "markPrice": 696.88
+        "lastBar": 1794078000000,
+        "markR": 0.1488,
+        "markPrice": 697.47
       },
       {
         "id": "BTCUSDT-1794052800000",
@@ -2994,9 +3119,9 @@
         "conviction": 65,
         "reason": "La cassure du support psychologique et on-chain des 76k$ ouvre la voie \u00e0 un retest de la zone de support majeure des 73k$-74k$.",
         "exitBy": 1794225600000,
-        "lastBar": 1794074400000,
-        "markR": 0.162,
-        "markPrice": 75720.0
+        "lastBar": 1794078000000,
+        "markR": 0.1272,
+        "markPrice": 75768.4
       },
       {
         "id": "ETHUSDT-1794052800000",
@@ -3011,9 +3136,9 @@
         "conviction": 60,
         "reason": "La faiblesse technique due au report de Glamsterdam et la perte des EMA court terme augmentent la probabilit\u00e9 d'une correction vers le support psychologique.",
         "exitBy": 1794225600000,
-        "lastBar": 1794074400000,
-        "markR": 0.2177,
-        "markPrice": 2232.79
+        "lastBar": 1794078000000,
+        "markR": 0.1863,
+        "markPrice": 2234.44
       }
     ],
     "trades": [
@@ -3073,19 +3198,19 @@
       }
     ]
   },
-  "generatedAt": 1794080781143,
+  "generatedAt": 1794081744957,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 20,
-    "totalTokens": 237813,
+    "analyses": 21,
+    "totalTokens": 249954,
     "direction": {
-      "scored": 60,
-      "called": 44,
-      "neutral": 16,
-      "hits": 18,
-      "hitRate": 0.4091,
-      "brier": 0.2737,
+      "scored": 65,
+      "called": 48,
+      "neutral": 17,
+      "hits": 22,
+      "hitRate": 0.4583,
+      "brier": 0.2664,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -3141,14 +3266,14 @@
       "avgR": -0.5124,
       "totalR": -1.5372,
       "open": 5,
-      "equityMarked": 496.977392,
-      "returnPct": -0.6045
+      "equityMarked": 496.787997,
+      "returnPct": -0.6424
     }
   },
   "lastRun": {
-    "at": 1794080781143,
-    "status": "waiting",
+    "at": 1794081744957,
+    "status": "ok",
     "error": null,
-    "barClose": 1794078000000
+    "barClose": 1794081600000
   }
 }
