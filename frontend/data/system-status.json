@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794066300000,
-    "executedAt": 1794066347409,
+    "scheduledAt": 1794067200000,
+    "executedAt": 1794067283848,
     "trigger": "schedule",
-    "jitterSeconds": 47.4,
-    "durationMs": 10647,
+    "jitterSeconds": 83.8,
+    "durationMs": 10672,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794066299999,
-      "ageSeconds": 47.4
+      "newestCandleCloseMs": 1794067199999,
+      "ageSeconds": 83.8
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1794066347409,
-  "nextExpectedScanAt": 1794067200000,
+  "lastSuccessfulScan": 1794067283848,
+  "nextExpectedScanAt": 1794068100000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794022264287,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794022200000 actual=1794022264282 (jitter 64.3s)"
-    },
-    {
-      "ts": 1794022275903,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794022276144,
-      "level": "info",
-      "msg": "rejected 2x risk_model_rejected (e.g. risk model rejected: transaction cost too high (0.54R of risk per round trip > 0.25R cap))"
-    },
-    {
-      "ts": 1794022276144,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1794023144431,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794066358031,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794067283852,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794067200000 actual=1794067283848 (jitter 83.8s)"
+    },
+    {
+      "ts": 1794067294357,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794067294501,
+      "level": "info",
+      "msg": "rejected 2x volatility_out_of_band (e.g. volatility out of band (0.096%))"
+    },
+    {
+      "ts": 1794067294501,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }

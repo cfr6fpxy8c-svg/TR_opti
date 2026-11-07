@@ -1796,7 +1796,11 @@
             "reason": "Entr\u00e9e SHORT risqu\u00e9e directement sur le support majeur des 75 000 $ qui co\u00efncide avec le co\u00fbt moyen des d\u00e9tenteurs \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.138,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -1810,7 +1814,11 @@
             "reason": "Bien que la tendance soit fortement baissi\u00e8re, le cours approche de la zone de support critique \u00e0 2 200 $, ce qui r\u00e9duit le ratio risque/rendement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.296,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -1824,7 +1832,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 en cours dans le portefeuille r\u00e9el, interdisant toute nouvelle entr\u00e9e selon nos r\u00e8gles de gestion des risques."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.443,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -1838,7 +1850,11 @@
             "reason": "La structure technique est neutre et en consolidation serr\u00e9e apr\u00e8s le choc, n'offrant aucun avantage directionnel clair \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.35,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -1852,7 +1868,11 @@
             "reason": "Le prix teste le support horizontal critique de 88,24 $, ce qui rend un SHORT risqu\u00e9 malgr\u00e9 la tendance de fond baissi\u00e8re."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.312,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -2746,10 +2766,166 @@
         "candidatesTokenCount": 1523,
         "totalTokenCount": 11656
       }
+    },
+    {
+      "barClose": 1794067200000,
+      "analyzedAt": 1794067346875,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le rapport NFP fort relance les attentes de hausse des taux de la Fed en d\u00e9cembre, renfor\u00e7ant le dollar. La victoire d\u00e9mocrate aux mi-mandats fait craindre un durcissement r\u00e9glementaire, tandis que les suites du hack de 6,3 Mds $ de Binance p\u00e8sent sur la confiance.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "La victoire d\u00e9mocrate aux \u00e9lections de mi-mandat fait craindre un durcissement de la r\u00e9gulation sous l'\u00e9gide de la SEC. De plus, un rapport NFP solide renforce l'hypoth\u00e8se d'une hausse des taux de la Fed en d\u00e9cembre, propulsant le dollar et bridant l'app\u00e9tit pour le risque, tandis que les suites du hack g\u00e9ant de Binance p\u00e8sent sur le sentiment global.",
+          "risks": "Durcissement de la SEC post-\u00e9lections, pouss\u00e9e continue du dollar et rendements am\u00e9ricains \u00e9lev\u00e9s.",
+          "price0": 75728.0,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 43,
+          "reason": "Ethereum subit des pressions baissi\u00e8res apr\u00e8s l'\u00e9chec de son rebond post-\u00e9lections, l'exposant au support des 2230 $. La d\u00e9collecte continue des ETF spot ETH (23 jours cons\u00e9cutifs de sorties nettes en octobre) s'ajoute aux craintes r\u00e9glementaires am\u00e9ricaines et aux sorties de fonds pass\u00e9es des plateformes d'\u00e9change suite \u00e0 l'incident de Binance.",
+          "risks": "Rupture du support critique \u00e0 2230 $ et intensification des sorties nettes des ETF spot.",
+          "price0": 2236.19,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "XRP a heurt\u00e9 un plus bas de 11 semaines suite \u00e0 une cascade de liquidations de positions longues (environ 30M$ sur 5 jours). Le d\u00e9blocage mensuel d'un milliard de XRP le 1er novembre par Ripple accentue la pression de l'offre face \u00e0 une demande d'ETF spot inexistante, maintenant la structure technique \u00e0 court terme fortement d\u00e9grad\u00e9e.",
+          "risks": "Risque de nouvelles liquidations en cascade de positions longues \u00e0 effet de levier.",
+          "price0": 1.1582,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "BNB tente de se stabiliser apr\u00e8s avoir chut\u00e9 suite au piratage de 6,3 Mds $ subi par Binance le 29 octobre. Bien que l'exchange ait prouv\u00e9 ses r\u00e9serves 1:1 et que les retraits soient restaur\u00e9s avec des flux nets redevenus positifs, l'image de la plateforme reste entach\u00e9e et le cours \u00e9volue sous ses moyennes de court terme.",
+          "risks": "Retour de la panique ou des retraits de l'exchange, surveillance r\u00e9glementaire accrue de Binance.",
+          "price0": 694.31,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position LONG d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "Solana est plomb\u00e9 par des actions r\u00e9glementaires majeures en Chine, o\u00f9 la banque centrale (PBOC) a interrompu l'\u00e9v\u00e9nement Solana Shanghai et ouvert une enqu\u00eate pour promotion ill\u00e9gale de SOL. Techniquement, l'actif est sous pression et teste sa moyenne mobile 200 jours, alors que la Fondation a restreint la dur\u00e9e de son programme de d\u00e9l\u00e9gation de validateurs.",
+          "risks": "Poursuite des actions de la PBOC et rupture confirm\u00e9e de la moyenne mobile 200 jours (88.93$).",
+          "price0": 89.51,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"Fed\" meeting November 2026",
+        "\"FOMC\" November 2026",
+        "crypto market news November 7 2026",
+        "US midterm elections November 2026 date",
+        "\"BNB\" \"Binance\" hack November 2026",
+        "\"SOL\" OR \"Solana\" news November 2026",
+        "\"XRP\" OR \"Ripple\" news November 2026",
+        "\"ETH\" OR \"Ethereum\" news November 2026"
+      ],
+      "sources": [
+        {
+          "title": "stonex.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHY9xDRthBDTZ-OuIscd6cjVTEJ6sJ0-S0S73JY0nz4SaqbW63AUL-0dv-2hHtE1U9ihLL4yxx7Hd6yrRStJyhmQjKcq7KDQqCLl8LRsmZvDgEslxckYSt1paulbF2F7N1CCBNVYeRdArvXvOeqz5IuTKUfE35m6NAMbFVCwf__zVNFg7YHcAuh1gUcR-W2V1_g86BOxyo74IHrLnoj8Zc-54RDhDz45f9xkZ89p7iwwluVGu7ZXqTweJxFVJ4SMpY5C6k="
+        },
+        {
+          "title": "iolite.net",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHw3kqCoZEauKYSFAjGlRDTVJzfDMVng6cCD7QKX91Xun0kw-yDy9X_F1ClXP7HLpSo6nN8aeoB_bsZJJSEPFxfi4iqUtP1rVO5D10sfSOac0mrumceiLAB70lMoVN6qtH4nmdxe7V6FqAIgSeuxRrW8hKpIivjaA0_D7WitqAEjuD8vIvM7ZoYkE6acdGqts1yZWDk9XMR"
+        },
+        {
+          "title": "maaal.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEX3TARz9doj0J6T395JqMZYcQdH701snyXldE29LbechskZKE0sEd7KSD9it9ZcLymvA8jTtM1vBzlPhOWc89x5axDuRwbrXTigPFRj9zSfvYr6MrIHm_VDXpsZX8X_6GwHfLDW1vKGApZTAQxVHtPFhTzYL_Jgg=="
+        },
+        {
+          "title": "tmgm.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFtLaR4ppID6BEPxuaEigVznfagHyZ1nKf2CztDOd6aCCh31WbpLRsSM27HCI6xdAkEQjXRwbLrHHOFf4mWQHVUB8VAEyY6uIiZ9YAxN0OcHfLhRIPEABZCepztc4OvK2ZlQroNedWVO_xDrE--HvfobyqS6kVSaCAGpK7YeQ-UvF0vpebgboNnH3YXxiWEFjVZtjdHkJ6DH22i9nRLtGecS_9wea8a0MTkGn4eXfpAasQ="
+        },
+        {
+          "title": "cryptoquant.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFqOP5CTF77urEDyt-uUKv88q1lRAXgWykuHOhrJxuFwgQuYA_T-a4wlXbqhyXvrI9JwiIQrzCpIEAL4ejq5of1cNIcZ9YpZTWhk8OBegW1bZlcIauuanrU7P83K8IvkPi--4K2nKYKFOBK8nDkVc8cZGCmjGxOCk8ML2oU1VRD9dSvkOlJ7FJk_4Q_ciE2BOsNzRAQKL0ad2jFgl6qk14CnlbAvh_sb8a0aP1uCxFg"
+        },
+        {
+          "title": "mitrade.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF4O_h6adEQag0d50LTpx-wbx28tWI0J1W-AsT53pLoTcwqEZxuB-JM5DzkC1EJY8AC0MRktMMP307eX9oF6jCbWuVAzZsnhSvAM9W6whCLnx0JpXVBYRfNNkez6SOoW_lKmeCpxubBgIu8g8YqquSWf0n0vCHgBDkMYVM9SCButXeddJ9Mi8Ks"
+        },
+        {
+          "title": "openpr.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGnMyrqyt4tC79dPX0bxz5WbJ2nqH3HrgvvspfoUEal0zhI7fp2NUfoslEaWLMnfM6TjW2N5tonUz85JUXoi87QSUkvcgYprZpGZbg_ZEMk__RMRu2cIQIehMzDDWimJWjNF_DxF65wFY4HENxaLSRyADtgzHM2QwW14L1oWupZ6xo0pMNELPzKNV-4yZlJkq1AtdWX6VEy8U7plRMGgQ=="
+        },
+        {
+          "title": "bitcoinfoundation.org",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF11L0uHw-dn1Gg76lJCiKuPgg06K--nazV3wYGxV4AwqdlU4wcUM5d6sT0UMT087FWqoxYNS-pp-teOvNi3sk7gRMpwidJjbr84yGFARt58TZYyokyG2O2wxulBs_cnBe_OKhOJEBddwLjJtF1CUvDWElq_WxWtDKXu8CvEOx9v1r_ZK34Hww7jkeGecObKnml_3b6E0qOzLhqoqIQjTU5drkt3zARGbtwWzw="
+        },
+        {
+          "title": "fool.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEsgR6T0IIiGdO78V51bCFxS7y-8teahtsg73YNxFzrbpTLscOU6evT2C7xwZdC2LICJ85NiKJv8hXDH8Rhu4JWaGaq8mLmArEPEw8-1FBWmpxyFZbdgGRqm48OCuyUeWLPA4g7BByZQobDW38muejm_X2n2R8CcE3NT0E1eJfsiVDA65ApSbRjiwHLlTkeyoePnpHrdYYGOA=="
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvNJRDYznT5DLa_tSxHWaDLGN_jbdbHyj_iVuI_dBGspBhnyL4TVDPzJT7lOAgfNUVa5HzUYWQd_JEF00oJUd9rzUpJOqSUgLitCbSLP6oZh0sK3LecTJf2oNF_b5utzuGhTE4wG0vrv29Quls25P_04ofMhn3SiVqkm_h"
+        },
+        {
+          "title": "bitkub.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHrYTS00bd1RoLayBDdctrjIcUmj0CpLiTL3rETrNMqiqC_1TgVPVg6CHMvZNhiZBOBqcHtZKLpfre4M8TAoH5xUYh3Gyp0NUIZNMgo-O5YmIx_UgN7ep9LuygN51LaI8quBfBGG8uSe3x1-SlNnsoiWgnRr2kQw0jBkM3_KhdGOzMaoZjZ7oEI5pcznsodphvWl7Q9lTpaia77KikdLq9UKXL-664GUxqfixU="
+        },
+        {
+          "title": "bitcoinfoundation.org",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEoD73Rca-v8EVKn7oflBOgCQg2dE3RmiF_fs9ab0fQkdjzdNOk8pjDzeFETa8H_YiVtucVBnLbavwqjdp4e2mrKoZkFY-B3BEMOUQ2uhIx5r0xH8zcVOV3xeZci6G_KAjZMzpGidhBWjY0WYaJO4oErAt5yTTlhuYKbuGWc-ogPsZQQ1g59-WEl4pS0mSUkOjcqnz_U9fR9oBlZwo="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 18,
+        "supports": 26
+      },
+      "usage": {
+        "promptTokenCount": 4342,
+        "candidatesTokenCount": 1355,
+        "totalTokenCount": 10259
+      }
     }
   ],
   "attempts": {
-    "1794052800000": 2
+    "1794052800000": 2,
+    "1794067200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -2768,9 +2944,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1794060000000,
-        "markR": 0.1914,
-        "markPrice": 89.28
+        "lastBar": 1794063600000,
+        "markR": 0.1464,
+        "markPrice": 89.48
       },
       {
         "id": "XRPUSDT-1794009600000",
@@ -2785,9 +2961,9 @@
         "conviction": 65,
         "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
         "exitBy": 1794182400000,
-        "lastBar": 1794060000000,
-        "markR": 0.4651,
-        "markPrice": 1.1544
+        "lastBar": 1794063600000,
+        "markR": 0.4012,
+        "markPrice": 1.1577
       },
       {
         "id": "BNBUSDT-1794024000000",
@@ -2802,9 +2978,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794060000000,
-        "markR": -0.0199,
-        "markPrice": 694.17
+        "lastBar": 1794063600000,
+        "markR": 0.0066,
+        "markPrice": 694.69
       },
       {
         "id": "BTCUSDT-1794052800000",
@@ -2819,9 +2995,9 @@
         "conviction": 65,
         "reason": "La cassure du support psychologique et on-chain des 76k$ ouvre la voie \u00e0 un retest de la zone de support majeure des 73k$-74k$.",
         "exitBy": 1794225600000,
-        "lastBar": 1794060000000,
-        "markR": 0.1829,
-        "markPrice": 75690.9
+        "lastBar": 1794063600000,
+        "markR": 0.1667,
+        "markPrice": 75713.5
       },
       {
         "id": "ETHUSDT-1794052800000",
@@ -2836,9 +3012,9 @@
         "conviction": 60,
         "reason": "La faiblesse technique due au report de Glamsterdam et la perte des EMA court terme augmentent la probabilit\u00e9 d'une correction vers le support psychologique.",
         "exitBy": 1794225600000,
-        "lastBar": 1794060000000,
-        "markR": 0.1872,
-        "markPrice": 2234.39
+        "lastBar": 1794063600000,
+        "markR": 0.1655,
+        "markPrice": 2235.53
       }
     ],
     "trades": [
@@ -2898,19 +3074,19 @@
       }
     ]
   },
-  "generatedAt": 1794066382089,
+  "generatedAt": 1794067346875,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 19,
-    "totalTokens": 227554,
+    "analyses": 20,
+    "totalTokens": 237813,
     "direction": {
-      "scored": 55,
-      "called": 40,
-      "neutral": 15,
-      "hits": 15,
-      "hitRate": 0.375,
-      "brier": 0.2788,
+      "scored": 60,
+      "called": 44,
+      "neutral": 16,
+      "hits": 18,
+      "hitRate": 0.4091,
+      "brier": 0.2737,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -2966,14 +3142,14 @@
       "avgR": -0.5124,
       "totalR": -1.5372,
       "open": 5,
-      "equityMarked": 497.205548,
-      "returnPct": -0.5589
+      "equityMarked": 496.614599,
+      "returnPct": -0.6771
     }
   },
   "lastRun": {
-    "at": 1794066382089,
-    "status": "waiting",
+    "at": 1794067346875,
+    "status": "ok",
     "error": null,
-    "barClose": 1794063600000
+    "barClose": 1794067200000
   }
 }
