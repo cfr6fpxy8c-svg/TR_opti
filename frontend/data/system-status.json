@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794061800000,
-    "executedAt": 1794061867821,
+    "scheduledAt": 1794062700000,
+    "executedAt": 1794062746421,
     "trigger": "schedule",
-    "jitterSeconds": 67.8,
-    "durationMs": 10210,
+    "jitterSeconds": 46.4,
+    "durationMs": 10551,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794061799999,
-      "ageSeconds": 67.8
+      "newestCandleCloseMs": 1794062699999,
+      "ageSeconds": 46.4
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1794061867821,
-  "nextExpectedScanAt": 1794062700000,
+  "lastSuccessfulScan": 1794062746421,
+  "nextExpectedScanAt": 1794063600000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794017744166,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794017700000 actual=1794017744160 (jitter 44.2s)"
-    },
-    {
-      "ts": 1794017755957,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794017756388,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1794017756388,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1794018663197,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794061878005,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794062746426,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794062700000 actual=1794062746421 (jitter 46.4s)"
+    },
+    {
+      "ts": 1794062756741,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794062756947,
+      "level": "info",
+      "msg": "rejected 2x volatility_out_of_band (e.g. volatility out of band (0.078%))"
+    },
+    {
+      "ts": 1794062756948,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
