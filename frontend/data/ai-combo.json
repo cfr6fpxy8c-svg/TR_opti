@@ -1118,7 +1118,11 @@
             "reason": "Forte incertitude \u00e0 l'approche de la publication du NFP d'octobre et proximit\u00e9 du support psychologique cl\u00e9 de 75 000 $ qui pourrait provoquer un rebond technique \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.15,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -1132,7 +1136,11 @@
             "reason": "La volatilit\u00e9 induite par le NFP et les flux de blanchiment li\u00e9s au piratage de Binance rendent le positionnement risqu\u00e9. Mieux vaut attendre la stabilisation sous 2 200 $."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.568,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -1153,6 +1161,10 @@
             "probTarget": 65,
             "reason": "La cassure du support cl\u00e9 de 1,1993 $ \u00e0 court terme (1H) confirme le fort \u00e9lan baissier dans un march\u00e9 globalement averse au risque et affect\u00e9 par les transferts suspects post-piratage.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -3.683,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -1167,7 +1179,11 @@
             "reason": "Malgr\u00e9 la pression baissi\u00e8re li\u00e9e \u00e0 l'affaire Binance, la volatilit\u00e9 extr\u00eame entourant le NFP incite \u00e0 l'attente de signaux techniques de cassure plus nets avant d'ouvrir un trade de vente."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.23,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -1181,7 +1197,11 @@
             "reason": "Le support majeur des 88,30 $ est extr\u00eamement proche. Vendre maintenant pr\u00e9sente un mauvais ratio risque/rendement, tandis que l'achat \u00e0 contre-tendance est trop dangereux avant le rapport NFP."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.535,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -2435,9 +2455,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1794024000000,
-        "markR": 0.0068,
-        "markPrice": 90.1
+        "lastBar": 1794027600000,
+        "markR": -0.027,
+        "markPrice": 90.25
       },
       {
         "id": "XRPUSDT-1794009600000",
@@ -2452,9 +2472,9 @@
         "conviction": 65,
         "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
         "exitBy": 1794182400000,
-        "lastBar": 1794024000000,
-        "markR": 0.3295,
-        "markPrice": 1.1614
+        "lastBar": 1794027600000,
+        "markR": 0.3159,
+        "markPrice": 1.1621
       },
       {
         "id": "BNBUSDT-1794024000000",
@@ -2469,9 +2489,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794024000000,
-        "markR": 0.0706,
-        "markPrice": 695.94
+        "lastBar": 1794027600000,
+        "markR": 0.0741,
+        "markPrice": 696.01
       }
     ],
     "trades": [
@@ -2531,19 +2551,19 @@
       }
     ]
   },
-  "generatedAt": 1794030383355,
+  "generatedAt": 1794031315950,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 17,
     "totalTokens": 203370,
     "direction": {
-      "scored": 35,
-      "called": 27,
+      "scored": 40,
+      "called": 32,
       "neutral": 8,
-      "hits": 12,
-      "hitRate": 0.4444,
-      "brier": 0.2687,
+      "hits": 13,
+      "hitRate": 0.4062,
+      "brier": 0.2763,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -2599,14 +2619,14 @@
       "avgR": -0.5124,
       "totalR": -1.5372,
       "open": 3,
-      "equityMarked": 494.258062,
-      "returnPct": -1.1484
+      "equityMarked": 494.042889,
+      "returnPct": -1.1914
     }
   },
   "lastRun": {
-    "at": 1794030383355,
+    "at": 1794031315950,
     "status": "waiting",
     "error": null,
-    "barClose": 1794027600000
+    "barClose": 1794031200000
   }
 }
