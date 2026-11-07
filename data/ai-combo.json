@@ -858,7 +858,11 @@
             "reason": "Le rapport NFP imminent et la baisse r\u00e9cente de 6% sugg\u00e8rent d'attendre une stabilisation plut\u00f4t que de vendre de fa\u00e7on impulsive."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.316,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -872,7 +876,11 @@
             "reason": "Proximit\u00e9 du support cl\u00e9 de l'\u00e9t\u00e9 et risques de volatilit\u00e9 \u00e9lev\u00e9e avant les chiffres de l'emploi am\u00e9ricain."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.016,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -900,6 +908,10 @@
             "probTarget": 62,
             "reason": "Rupture propre du niveau horaire \u00e0 $1.2144 soutenue par un volume important (1.91), montrant l'urgence des vendeurs.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -2.337,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -914,7 +926,11 @@
             "reason": "La r\u00e9silience relative de BNB et l'absence de rupture sous les $680 incitent \u00e0 observer la r\u00e9action du march\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.581,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -928,7 +944,11 @@
             "reason": "Le ratio gain/risque pour initier un nouveau short est d\u00e9favorable juste au-dessus du support majeur de $88.24 avant le NFP."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.896,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -2026,11 +2046,122 @@
         "candidatesTokenCount": 1582,
         "totalTokenCount": 12184
       }
+    },
+    {
+      "barClose": 1794009600000,
+      "analyzedAt": 1794009750422,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le march\u00e9 dig\u00e8re la victoire d\u00e9mocrate aux midterms et un rapport sur l'emploi US robuste (165k postes). Cependant, le sell-off de la tech \u00e0 Wall Street et les sorties d'ETF spot (430M$ le 5 Nov) ont effac\u00e9 les gains. Le nouveau pr\u00e9sident de la Fed, Kevin Warsh, pr\u00e9voit des r\u00e9formes hawkish.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "Le rejet sous les 80k$ post-\u00e9lections a d\u00e9clench\u00e9 un effacement massif via 1,1 Md$ de liquidations de longs et des sorties d'ETF Bitcoin de 430M$ le 5 nov. BTC se stabilise p\u00e9niblement autour de 75,8k$. Le sentiment g\u00e9n\u00e9ral s'est d\u00e9grad\u00e9 (Fear & Greed \u00e0 41), bloquant l'\u00e9lan haussier \u00e0 court terme.",
+          "risks": "Short squeeze rapide sur retour des flux acheteurs d'ETF ou stabilisation de Wall Street.",
+          "price0": 75810.1,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas d'avantage statistique clair. Le march\u00e9 est en phase de transition instable apr\u00e8s le choc de liquidation de jeudi."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "ETH a effac\u00e9 sa hausse post-\u00e9lections, retombant \u00e0 2237$. Les sorties massives d'ETF (1,2 Md$ en octobre) et la faible r\u00e9action \u00e0 la mise \u00e0 niveau Denim de Base (tarification blobs sans impact sur la demande d'ETH) confirment la faiblesse structurelle face aux concurrents.",
+          "risks": "Rebond technique sur le support majeur des 2150-2200$.",
+          "price0": 2237.55,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Proximit\u00e9 du support psychologique et technique des 2200$, ce qui limite le ratio risque/rendement pour un short imm\u00e9diat."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Rejet net sous la r\u00e9sistance pivot de 1,32 $, confirmant la mainmise des vendeurs. XRP souffre de sous-performance chronique en 2026. Malgr\u00e9 des records d'adresses d\u00e9tenant +1M XRP, la faiblesse des volumes d'achat sugg\u00e8re un retour rapide vers les supports FVG de 1,14 $ puis 1,04 $.",
+          "risks": "Annonces inattendues de Ripple concernant RLUSD ou r\u00e9glementations favorables.",
+          "price0": 1.1785,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 65,
+            "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
+            "stop": 1.23,
+            "target": 1.05,
+            "maxHoldHours": 48,
+            "valid": true,
+            "status": "opened"
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB fait preuve de r\u00e9silience apr\u00e8s le piratage historique de 6,3 Md$ (attribu\u00e9 \u00e0 Lazarus/Cor\u00e9e du Nord) le 29 oct. L'engagement de Binance \u00e0 couvrir 100 % des pertes et la preuve de r\u00e9serves 1:1 stabilisent le cours. Cependant, l'incertitude sur les retraits limite le potentiel de hausse imm\u00e9diat.",
+          "risks": "Panique bancaire si le processus de r\u00e9ouverture des retraits \u00e9choue.",
+          "price0": 694.08,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'incertitude li\u00e9e au piratage massif rend toute prise de position hautement sp\u00e9culative et risqu\u00e9e \u00e0 ce stade."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "SOL est sous forte pression r\u00e9glementaire suite \u00e0 l'annonce par la banque centrale de Chine (PBOC) de l'arr\u00eat des \u00e9v\u00e9nements Solana \u00e0 Shanghai et d'une enqu\u00eate visant ses promoteurs. De plus, Loopscale a suspendu ses op\u00e9rations apr\u00e8s une attaque d'API. Le sentiment est tr\u00e8s d\u00e9grad\u00e9 avant le Breakpoint.",
+          "risks": "Squeeze sp\u00e9culatif violent li\u00e9 aux annonces du Breakpoint \u00e0 Londres (15-17 nov).",
+          "price0": 90.1,
+          "trade": {
+            "action": "NONE",
+            "conviction": 70,
+            "reason": "Position SHORT d\u00e9j\u00e0 active dans notre portefeuille de papier (entr\u00e9e \u00e0 90,13 $)."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "bitcoin news november 2026",
+        "fed meeting november 2026",
+        "crypto market november 2026",
+        "economic calendar november 5 2026 to november 7 2026",
+        "solana news november 2026",
+        "xrp ripple news november 2026",
+        "binance bnb news november 2026",
+        "ethereum news november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4070,
+        "candidatesTokenCount": 1212,
+        "totalTokenCount": 11073
+      }
     }
   ],
   "attempts": {
     "1793995200000": 1,
-    "1793998800000": 1
+    "1793998800000": 1,
+    "1794009600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -2049,9 +2180,26 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1794002400000,
-        "markR": 0.0045,
-        "markPrice": 90.11
+        "lastBar": 1794006000000,
+        "markR": 0.0068,
+        "markPrice": 90.1
+      },
+      {
+        "id": "XRPUSDT-1794009600000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1794009600000,
+        "entryPrice": 1.1784,
+        "stop": 1.23,
+        "target": 1.05,
+        "risk": 0.05160000000000009,
+        "stake": 4.922553,
+        "conviction": 65,
+        "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
+        "exitBy": 1794182400000,
+        "lastBar": 1794009599999,
+        "markR": -0.0252,
+        "markPrice": 1.1797
       }
     ],
     "trades": [
@@ -2111,19 +2259,19 @@
       }
     ]
   },
-  "generatedAt": 1794007873197,
+  "generatedAt": 1794009750422,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 14,
-    "totalTokens": 168978,
+    "analyses": 15,
+    "totalTokens": 180051,
     "direction": {
-      "scored": 25,
-      "called": 17,
+      "scored": 30,
+      "called": 22,
       "neutral": 8,
-      "hits": 8,
-      "hitRate": 0.4706,
-      "brier": 0.2608,
+      "hits": 10,
+      "hitRate": 0.4545,
+      "brier": 0.2663,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -2178,15 +2326,15 @@
       "winRate": 0.3333,
       "avgR": -0.5124,
       "totalR": -1.5372,
-      "open": 1,
-      "equityMarked": 492.27729,
-      "returnPct": -1.5445
+      "open": 2,
+      "equityMarked": 492.164501,
+      "returnPct": -1.5671
     }
   },
   "lastRun": {
-    "at": 1794007873197,
-    "status": "waiting",
+    "at": 1794009750422,
+    "status": "ok",
     "error": null,
-    "barClose": 1794006000000
+    "barClose": 1794009600000
   }
 }
