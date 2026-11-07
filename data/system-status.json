@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794067200000,
-    "executedAt": 1794067283848,
+    "scheduledAt": 1794068100000,
+    "executedAt": 1794068148075,
     "trigger": "schedule",
-    "jitterSeconds": 83.8,
-    "durationMs": 10672,
+    "jitterSeconds": 48.1,
+    "durationMs": 10937,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794067199999,
-      "ageSeconds": 83.8
+      "newestCandleCloseMs": 1794068099999,
+      "ageSeconds": 48.1
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1794067283848,
-  "nextExpectedScanAt": 1794068100000,
+  "lastSuccessfulScan": 1794068148075,
+  "nextExpectedScanAt": 1794069000000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794023144431,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794023100000 actual=1794023144428 (jitter 44.4s)"
-    },
-    {
-      "ts": 1794023155287,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794023155477,
-      "level": "info",
-      "msg": "rejected 1x score_below_threshold (e.g. score 40.3 < 50)"
-    },
-    {
-      "ts": 1794023155477,
-      "level": "info",
-      "msg": "SIGNAL BTCUSDT SHORT B+ score=82.6 trigger=75731.0944025926 TP=75158.0 SL=76067.262324816 RR=1.7048"
-    },
     {
       "ts": 1794024081238,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794067294501,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794068148081,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794068100000 actual=1794068148075 (jitter 48.1s)"
+    },
+    {
+      "ts": 1794068158793,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794068158987,
+      "level": "info",
+      "msg": "rejected 2x volatility_out_of_band (e.g. volatility out of band (0.094%))"
+    },
+    {
+      "ts": 1794068158987,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
