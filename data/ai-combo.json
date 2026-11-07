@@ -1298,7 +1298,11 @@
             "reason": "Pas de signal technique clair en 4H. Entrer juste avant la publication majeure du NFP (dans 6 heures) pr\u00e9sente un ratio risque/rendement tr\u00e8s d\u00e9favorable."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.172,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -1312,7 +1316,11 @@
             "reason": "Pas de breakout valid\u00e9 et forte incertitude macro\u00e9conomique \u00e0 court terme. La structure technique reste baissi\u00e8re mais survendue, incitant \u00e0 l'attente du NFP."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.471,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -1333,6 +1341,10 @@
             "probTarget": 45,
             "reason": "Bien que la cassure de support en 1H s'aligne avec la tendance baissi\u00e8re, la proximit\u00e9 du rapport NFP (6h) risque de d\u00e9clencher de violents whipsaws sur des stops 1H serr\u00e9s.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -3.094,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -1347,7 +1359,11 @@
             "reason": "Aucun signal directionnel clair ou breakout. La fragilit\u00e9 post-piratage et l'attente du NFP imposent de rester \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.141,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -1361,7 +1377,11 @@
             "reason": "SOL est sur un support critique de long terme. Jouer le rebond ou la cassure juste avant le NFP est extr\u00eamement risqu\u00e9. Mieux vaut attendre la stabilisation."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.501,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -2455,9 +2475,9 @@
         "conviction": 75,
         "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
         "exitBy": 1794168000000,
-        "lastBar": 1794027600000,
-        "markR": -0.0135,
-        "markPrice": 90.19
+        "lastBar": 1794031200000,
+        "markR": -0.027,
+        "markPrice": 90.25
       },
       {
         "id": "XRPUSDT-1794009600000",
@@ -2472,9 +2492,9 @@
         "conviction": 65,
         "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
         "exitBy": 1794182400000,
-        "lastBar": 1794027600000,
-        "markR": 0.219,
-        "markPrice": 1.1671
+        "lastBar": 1794031200000,
+        "markR": 0.1686,
+        "markPrice": 1.1697
       },
       {
         "id": "BNBUSDT-1794024000000",
@@ -2489,9 +2509,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794027600000,
-        "markR": 0.0491,
-        "markPrice": 695.52
+        "lastBar": 1794031200000,
+        "markR": 0.044,
+        "markPrice": 695.42
       }
     ],
     "trades": [
@@ -2551,19 +2571,19 @@
       }
     ]
   },
-  "generatedAt": 1794033980505,
+  "generatedAt": 1794034915685,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 17,
     "totalTokens": 203370,
     "direction": {
-      "scored": 40,
-      "called": 32,
+      "scored": 45,
+      "called": 37,
       "neutral": 8,
-      "hits": 13,
-      "hitRate": 0.4062,
-      "brier": 0.2763,
+      "hits": 14,
+      "hitRate": 0.3784,
+      "brier": 0.2809,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -2619,14 +2639,14 @@
       "avgR": -0.5124,
       "totalR": -1.5372,
       "open": 3,
-      "equityMarked": 493.508914,
-      "returnPct": -1.2982
+      "equityMarked": 493.169628,
+      "returnPct": -1.3661
     }
   },
   "lastRun": {
-    "at": 1794033980505,
+    "at": 1794034915685,
     "status": "waiting",
     "error": null,
-    "barClose": 1794031200000
+    "barClose": 1794034800000
   }
 }
