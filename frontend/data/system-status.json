@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794163500000,
-    "executedAt": 1794163548063,
+    "scheduledAt": 1794164400000,
+    "executedAt": 1794164484456,
     "trigger": "schedule",
-    "jitterSeconds": 48.1,
-    "durationMs": 11781,
+    "jitterSeconds": 84.5,
+    "durationMs": 11455,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794163499999,
-      "ageSeconds": 48.1
+      "newestCandleCloseMs": 1794164399999,
+      "ageSeconds": 84.5
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1794163548063,
-  "nextExpectedScanAt": 1794164400000,
+  "lastSuccessfulScan": 1794164484456,
+  "nextExpectedScanAt": 1794165300000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794118547472,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794118500000 actual=1794118547467 (jitter 47.5s)"
-    },
-    {
-      "ts": 1794118558688,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794118558928,
-      "level": "info",
-      "msg": "rejected 2x volatility_out_of_band (e.g. volatility out of band (0.075%))"
-    },
-    {
-      "ts": 1794118558928,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1794119465525,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794163559822,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794164484458,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794164400000 actual=1794164484456 (jitter 84.5s)"
+    },
+    {
+      "ts": 1794164495687,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794164495898,
+      "level": "info",
+      "msg": "rejected 2x risk_model_rejected (e.g. risk model rejected: transaction cost too high (0.29R of risk per round trip > 0.25R cap))"
+    },
+    {
+      "ts": 1794164495898,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
