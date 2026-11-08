@@ -3102,7 +3102,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.161,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -3116,7 +3120,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.137,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -3130,7 +3138,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.861,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -3144,7 +3156,11 @@
             "reason": "Position acheteuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.138,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -3158,7 +3174,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif, aucun nouveau trade initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.056,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -3863,29 +3883,13 @@
     }
   ],
   "attempts": {
-    "1794153600000": 1
+    "1794153600000": 1,
+    "1794168000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 492.255262,
+    "equity": 492.756688,
     "positions": [
-      {
-        "id": "SOLUSDT-1793995200000",
-        "symbol": "SOLUSDT",
-        "side": "SHORT",
-        "entryTime": 1793995200000,
-        "entryPrice": 90.13,
-        "stop": 94.57,
-        "target": 80.0,
-        "risk": 4.439999999999998,
-        "stake": 4.895132,
-        "conviction": 75,
-        "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
-        "exitBy": 1794168000000,
-        "lastBar": 1794160800000,
-        "markR": 0.1149,
-        "markPrice": 89.62
-      },
       {
         "id": "XRPUSDT-1794009600000",
         "symbol": "XRPUSDT",
@@ -3899,9 +3903,9 @@
         "conviction": 65,
         "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
         "exitBy": 1794182400000,
-        "lastBar": 1794160800000,
-        "markR": 0.4612,
-        "markPrice": 1.1546
+        "lastBar": 1794164400000,
+        "markR": 0.5174,
+        "markPrice": 1.1517
       },
       {
         "id": "BNBUSDT-1794024000000",
@@ -3916,9 +3920,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794160800000,
-        "markR": 0.2025,
-        "markPrice": 698.52
+        "lastBar": 1794164400000,
+        "markR": 0.2065,
+        "markPrice": 698.6
       },
       {
         "id": "BTCUSDT-1794052800000",
@@ -3933,9 +3937,9 @@
         "conviction": 65,
         "reason": "La cassure du support psychologique et on-chain des 76k$ ouvre la voie \u00e0 un retest de la zone de support majeure des 73k$-74k$.",
         "exitBy": 1794225600000,
-        "lastBar": 1794160800000,
-        "markR": 0.0427,
-        "markPrice": 75885.8
+        "lastBar": 1794164400000,
+        "markR": 0.0267,
+        "markPrice": 75908.1
       },
       {
         "id": "ETHUSDT-1794052800000",
@@ -3950,9 +3954,9 @@
         "conviction": 60,
         "reason": "La faiblesse technique due au report de Glamsterdam et la perte des EMA court terme augmentent la probabilit\u00e9 d'une correction vers le support psychologique.",
         "exitBy": 1794225600000,
-        "lastBar": 1794160800000,
-        "markR": 0.2269,
-        "markPrice": 2232.31
+        "lastBar": 1794164400000,
+        "markR": 0.2544,
+        "markPrice": 2230.87
       }
     ],
     "trades": [
@@ -4009,22 +4013,40 @@
         "rNet": 0.5602,
         "pnl": 2.742036,
         "equityAfter": 492.255262
+      },
+      {
+        "id": "SOLUSDT-1793995200000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1793995200000,
+        "entryPrice": 90.13,
+        "stop": 94.57,
+        "target": 80.0,
+        "stake": 4.895132,
+        "conviction": 75,
+        "reason": "La r\u00e9pression r\u00e9glementaire de la PBOC en Chine constitue un puissant moteur baissier propre \u00e0 SOL, capable de briser le support de court terme \u00e0 88$ pour viser le niveau psychologique des 80$.",
+        "exitTime": 1794168000000,
+        "exitPrice": 89.54,
+        "exitReason": "TIME",
+        "rNet": 0.1024,
+        "pnl": 0.501426,
+        "equityAfter": 492.756688
       }
     ]
   },
-  "generatedAt": 1794167183960,
+  "generatedAt": 1794168165098,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 26,
     "totalTokens": 311341,
     "direction": {
-      "scored": 100,
-      "called": 70,
-      "neutral": 30,
-      "hits": 39,
-      "hitRate": 0.5571,
-      "brier": 0.2508,
+      "scored": 105,
+      "called": 74,
+      "neutral": 31,
+      "hits": 42,
+      "hitRate": 0.5676,
+      "brier": 0.2493,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -4074,20 +4096,20 @@
       }
     },
     "portfolio": {
-      "trades": 3,
-      "wins": 1,
-      "winRate": 0.3333,
-      "avgR": -0.5124,
-      "totalR": -1.5372,
-      "open": 5,
-      "equityMarked": 497.411931,
-      "returnPct": -0.5176
+      "trades": 4,
+      "wins": 2,
+      "winRate": 0.5,
+      "avgR": -0.3587,
+      "totalR": -1.4348,
+      "open": 4,
+      "equityMarked": 497.703854,
+      "returnPct": -0.4592
     }
   },
   "lastRun": {
-    "at": 1794167183960,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794164400000
+    "at": 1794168165098,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794168000000
   }
 }
