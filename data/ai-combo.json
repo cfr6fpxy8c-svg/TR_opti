@@ -3824,7 +3824,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.709,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -3838,7 +3842,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.215,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -3852,7 +3860,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.617,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -3866,7 +3878,11 @@
             "reason": "Une position LONG est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.096,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -3880,7 +3896,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.007,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -4603,7 +4623,11 @@
             "decision": "NO_GO",
             "probTarget": 40,
             "reason": "RSI 4H \u00e0 18,2 (extr\u00eamement survendu) et proximit\u00e9 imm\u00e9diate du support majeur et bas des 10 jours \u00e0 1,0816$. Risque tr\u00e8s \u00e9lev\u00e9 de rebond technique ou de faux breakout.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0614,
+              "exitReason": "STOP"
+            }
           }
         },
         "BNBUSDT": {
@@ -4628,7 +4652,11 @@
             "decision": "GO",
             "probTarget": 60,
             "reason": "Le breakout 4H s'accompagne d'un volume solide (1,87x) et est soutenu par des catalyseurs fondamentaux n\u00e9gatifs puissants (contrecoup du hack de Binance et d\u00e9mission du CFO). Le RSI \u00e0 31,7 laisse encore de la marge pour une baisse.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0638,
+              "exitReason": "STOP"
+            }
           },
           "breakout1h": {
             "side": "SHORT",
@@ -4802,11 +4830,12 @@
     }
   ],
   "attempts": {
-    "1794225600000": 2
+    "1794225600000": 2,
+    "1794240000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 513.796835,
+    "equity": 508.328172,
     "positions": [
       {
         "id": "SOLUSDT-1794168000000",
@@ -4821,26 +4850,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794232800000,
-        "markR": 0.6194,
-        "markPrice": 87.88
-      },
-      {
-        "id": "BNBUSDT-1794211200000",
-        "symbol": "BNBUSDT",
-        "side": "SHORT",
-        "entryTime": 1794211200000,
-        "entryPrice": 676.24,
-        "stop": 692.0,
-        "target": 644.0,
-        "risk": 15.759999999999991,
-        "stake": 5.137968,
-        "conviction": 70,
-        "reason": "Nous ouvrons un SHORT initi\u00e9 par le double breakout (1H et 4H) soutenu par un volume \u00e9lev\u00e9 et la d\u00e9gradation fondamentale de Binance (d\u00e9mission du CFO, retraits). Stop plac\u00e9 au-dessus de l'EMA20 4H.",
-        "exitBy": 1794384000000,
-        "lastBar": 1794232800000,
-        "markR": -0.9937,
-        "markPrice": 691.9
+        "lastBar": 1794236400000,
+        "markR": 0.6604,
+        "markPrice": 87.77
       }
     ],
     "trades": [
@@ -4987,22 +4999,40 @@
         "rNet": -0.3789,
         "pnl": -1.865295,
         "equityAfter": 513.796835
+      },
+      {
+        "id": "BNBUSDT-1794211200000",
+        "symbol": "BNBUSDT",
+        "side": "SHORT",
+        "entryTime": 1794211200000,
+        "entryPrice": 676.24,
+        "stop": 692.0,
+        "target": 644.0,
+        "stake": 5.137968,
+        "conviction": 70,
+        "reason": "Nous ouvrons un SHORT initi\u00e9 par le double breakout (1H et 4H) soutenu par un volume \u00e9lev\u00e9 et la d\u00e9gradation fondamentale de Binance (d\u00e9mission du CFO, retraits). Stop plac\u00e9 au-dessus de l'EMA20 4H.",
+        "exitTime": 1794240000000,
+        "exitPrice": 692.0,
+        "exitReason": "STOP",
+        "rNet": -1.0644,
+        "pnl": -5.468663,
+        "equityAfter": 508.328172
       }
     ]
   },
-  "generatedAt": 1794239183766,
+  "generatedAt": 1794240120466,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 32,
     "totalTokens": 384740,
     "direction": {
-      "scored": 125,
-      "called": 88,
-      "neutral": 37,
-      "hits": 56,
-      "hitRate": 0.6364,
-      "brier": 0.2372,
+      "scored": 130,
+      "called": 91,
+      "neutral": 39,
+      "hits": 59,
+      "hitRate": 0.6484,
+      "brier": 0.2359,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5022,50 +5052,50 @@
       },
       "rejected_GO": {
         "count": 9,
-        "closed": 1,
+        "closed": 2,
         "wins": 0,
-        "avgR": -1.1119,
-        "totalR": -1.1119
+        "avgR": -1.0878,
+        "totalR": -2.1757
       },
       "rejected_NO_GO": {
         "count": 11,
-        "closed": 5,
+        "closed": 6,
         "wins": 0,
-        "avgR": -1.0923,
-        "totalR": -5.4617
+        "avgR": -1.0872,
+        "totalR": -6.5231
       }
     },
     "byDecision": {
       "GO": {
         "count": 9,
-        "closed": 1,
+        "closed": 2,
         "wins": 0,
-        "avgR": -1.1119,
-        "totalR": -1.1119
+        "avgR": -1.0878,
+        "totalR": -2.1757
       },
       "NO_GO": {
         "count": 14,
-        "closed": 5,
+        "closed": 6,
         "wins": 0,
-        "avgR": -1.0923,
-        "totalR": -5.4617
+        "avgR": -1.0872,
+        "totalR": -6.5231
       }
     },
     "portfolio": {
-      "trades": 8,
+      "trades": 9,
       "wins": 5,
-      "winRate": 0.625,
-      "avgR": 0.3549,
-      "totalR": 2.8395,
-      "open": 2,
-      "equityMarked": 511.743371,
-      "returnPct": 2.3487
+      "winRate": 0.5556,
+      "avgR": 0.1972,
+      "totalR": 1.7751,
+      "open": 1,
+      "equityMarked": 511.582337,
+      "returnPct": 2.3165
     }
   },
   "lastRun": {
-    "at": 1794239183766,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794236400000
+    "at": 1794240120466,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: 2646310458665491075\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794240000000
   }
 }

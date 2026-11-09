@@ -3138,6 +3138,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position de vente (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif. Aucun nouveau trade ne peut \u00eatre initi\u00e9."
+          },
+          "outcome": {
+            "retPct": -0.709,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -3151,6 +3155,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur l'Ether. Nous la laissons courir vers son objectif sans accumuler."
+          },
+          "outcome": {
+            "retPct": -4.215,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -3164,6 +3172,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La position SHORT ouverte est en cours vers l'objectif de 1,105$. Pas de nouvelle entr\u00e9e."
+          },
+          "outcome": {
+            "retPct": -3.617,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -3177,6 +3189,10 @@
             "action": "NONE",
             "conviction": 55,
             "reason": "BNB consolide dans une fourchette \u00e9troite sans tendance claire. Le ratio risque-rendement n'est pas optimal \u00e0 l'approche du CPI."
+          },
+          "outcome": {
+            "retPct": -1.096,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -3195,6 +3211,10 @@
             "maxHoldHours": 40,
             "valid": true,
             "status": "opened"
+          },
+          "outcome": {
+            "retPct": -2.007,
+            "hit": true
           }
         }
       },
@@ -3691,7 +3711,11 @@
             "decision": "GO",
             "probTarget": 60,
             "reason": "Breakout baissier tr\u00e8s propre de BNB sous les 678 USDT avec volume \u00e9lev\u00e9, s'inscrivant parfaitement dans une dynamique de march\u00e9 en forte baisse.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0638,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "SHORT",
@@ -3892,22 +3916,22 @@
     }
   ],
   "attempts": {
-    "1794211200000": 1,
-    "1794225600000": 1
+    "1794225600000": 1,
+    "1794240000000": 1
   },
-  "generatedAt": 1794239171516,
+  "generatedAt": 1794240107390,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 29,
     "totalTokens": 327183,
     "direction": {
-      "scored": 115,
-      "called": 72,
-      "neutral": 43,
-      "hits": 46,
-      "hitRate": 0.6389,
-      "brier": 0.2359,
+      "scored": 120,
+      "called": 75,
+      "neutral": 45,
+      "hits": 49,
+      "hitRate": 0.6533,
+      "brier": 0.2337,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -3927,10 +3951,10 @@
       },
       "rejected_GO": {
         "count": 4,
-        "closed": 0,
+        "closed": 1,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.0638,
+        "totalR": -1.0638
       },
       "rejected_NO_GO": {
         "count": 0,
@@ -3943,10 +3967,10 @@
     "byDecision": {
       "GO": {
         "count": 7,
-        "closed": 0,
+        "closed": 1,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.0638,
+        "totalR": -1.0638
       },
       "NO_GO": {
         "count": 0,
@@ -3957,25 +3981,25 @@
       }
     },
     "portfolio": {
-      "trades": 7,
+      "trades": 8,
       "wins": 5,
-      "winRate": 0.7143,
-      "avgR": 0.3836,
-      "totalR": 2.685,
-      "open": 5,
-      "equityMarked": 509.321915,
-      "returnPct": 1.8644
+      "winRate": 0.625,
+      "avgR": 0.1998,
+      "totalR": 1.5987,
+      "open": 4,
+      "equityMarked": 510.393657,
+      "returnPct": 2.0787
     }
   },
   "lastRun": {
-    "at": 1794239171516,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1794225600000
+    "at": 1794240107390,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: 2646310458665491075\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794240000000
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 513.304985,
+    "equity": 507.729183,
     "positions": [
       {
         "id": "BTCUSDT-1794110400000",
@@ -3990,9 +4014,9 @@
         "conviction": 65,
         "reason": "La tendance 4H est baissi\u00e8re sous l'EMA200, renforc\u00e9e par une pression de vente li\u00e9e au hack et \u00e0 la fuite des capitaux des ETF. Entr\u00e9e au prix actuel avec un stop au-dessus des 77,4k$ (2x ATR).",
         "exitBy": 1794283200000,
-        "lastBar": 1794211200000,
-        "markR": 0.277,
-        "markPrice": 75455.0
+        "lastBar": 1794225600000,
+        "markR": 0.2632,
+        "markPrice": 75476.7
       },
       {
         "id": "SOLUSDT-1794153600000",
@@ -4007,9 +4031,9 @@
         "conviction": 65,
         "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
         "exitBy": 1794297600000,
-        "lastBar": 1794211200000,
-        "markR": 0.4856,
-        "markPrice": 87.84
+        "lastBar": 1794225600000,
+        "markR": 0.4987,
+        "markPrice": 87.79
       },
       {
         "id": "ETHUSDT-1794182400000",
@@ -4024,9 +4048,9 @@
         "conviction": 65,
         "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
         "exitBy": 1794312000000,
-        "lastBar": 1794211200000,
-        "markR": -0.2182,
-        "markPrice": 2144.53
+        "lastBar": 1794225600000,
+        "markR": -0.2263,
+        "markPrice": 2145.21
       },
       {
         "id": "XRPUSDT-1794182400000",
@@ -4041,26 +4065,9 @@
         "conviction": 60,
         "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
         "exitBy": 1794355200000,
-        "lastBar": 1794211200000,
-        "markR": -0.004,
-        "markPrice": 1.1128
-      },
-      {
-        "id": "BNBUSDT-1794211200000",
-        "symbol": "BNBUSDT",
-        "side": "SHORT",
-        "entryTime": 1794211200000,
-        "entryPrice": 676.24,
-        "stop": 688.0,
-        "target": 645.0,
-        "risk": 11.759999999999991,
-        "stake": 5.13305,
-        "conviction": 70,
-        "reason": "Exploitation du breakout baissier sous le support des 678.23 USDT pour viser un retour sur la zone de support suivante des 645 USDT, avec un stop serr\u00e9 au-dessus de l'EMA20.",
-        "exitBy": 1794384000000,
-        "lastBar": 1794211200000,
-        "markR": -1.2917,
-        "markPrice": 691.43
+        "lastBar": 1794225600000,
+        "markR": 0.0081,
+        "markPrice": 1.1122
       }
     ],
     "trades": [
@@ -4189,6 +4196,24 @@
         "rNet": 1.8245,
         "pnl": 9.068486,
         "equityAfter": 513.304985
+      },
+      {
+        "id": "BNBUSDT-1794211200000",
+        "symbol": "BNBUSDT",
+        "side": "SHORT",
+        "entryTime": 1794211200000,
+        "entryPrice": 676.24,
+        "stop": 688.0,
+        "target": 645.0,
+        "stake": 5.13305,
+        "conviction": 70,
+        "reason": "Exploitation du breakout baissier sous le support des 678.23 USDT pour viser un retour sur la zone de support suivante des 645 USDT, avec un stop serr\u00e9 au-dessus de l'EMA20.",
+        "exitTime": 1794240000000,
+        "exitPrice": 688.0,
+        "exitReason": "STOP",
+        "rNet": -1.0863,
+        "pnl": -5.575802,
+        "equityAfter": 507.729183
       }
     ]
   }
