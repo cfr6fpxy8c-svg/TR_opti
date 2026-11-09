@@ -2802,6 +2802,10 @@
             "action": "NONE",
             "conviction": 100,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier."
+          },
+          "outcome": {
+            "retPct": -2.759,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -2820,6 +2824,10 @@
             "maxHoldHours": 48,
             "valid": true,
             "status": "opened"
+          },
+          "outcome": {
+            "retPct": -6.575,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -2838,6 +2846,10 @@
             "maxHoldHours": 48,
             "valid": true,
             "status": "opened"
+          },
+          "outcome": {
+            "retPct": -6.914,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -2851,6 +2863,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Absence de tendance claire sur BNB qui consolide entre ses EMA20 et EMA50 dans un march\u00e9 globalement baissier."
+          },
+          "outcome": {
+            "retPct": -3.495,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -2864,6 +2880,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La proximit\u00e9 imm\u00e9diate du support majeur \u00e0 88$ (bas de 10 jours et MM200 jours) limite le ratio risque/rendement pour initier une position vendeuse maintenant."
+          },
+          "outcome": {
+            "retPct": -4.232,
+            "hit": true
           }
         }
       },
@@ -3591,25 +3611,133 @@
         "candidatesTokenCount": 1208,
         "totalTokenCount": 10240
       }
+    },
+    {
+      "barClose": 1794211200000,
+      "analyzedAt": 1794211310152,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Sentiment plomb\u00e9 par la d\u00e9faite r\u00e9publicaine aux midterms US et des chiffres d'emploi d'octobre forts (ch\u00f4mage \u00e0 4,1%), incitant la Fed \u00e0 rester restrictive. Sorties massives des ETF spot crypto (BTC, ETH, SOL), entra\u00eenant une baisse g\u00e9n\u00e9ralis\u00e9e.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Le BTC a cass\u00e9 les 75,5k$ suite aux ventes post-midterms et aux d\u00e9bits massifs des ETF spot (-411,9M$ le 06/11). Le sentiment Fear & Greed plonge \u00e0 28 (Fear). La structure est fortement baissi\u00e8re sous l'EMA20 (4H) et la moyenne \u00e0 200 p\u00e9riodes (79,4k$), ouvrant la voie vers les 69k$.",
+          "risks": "Un rebond technique de survente (RSI \u00e0 25,1) ou des rachats de shorts \u00e0 l'approche du support cl\u00e9 des 73k$.",
+          "price0": 73844.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif \u00e0 75887.8 USDT, actuellement en plus-value."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "L'Ether subit sa 6\u00e8me semaine cons\u00e9cutive de sorties nettes des ETF spot (-365M$ la semaine derni\u00e8re) et a cass\u00e9 son support oblique \u00e0 2200$. La rupture nette de cette zone oriente l'actif vers le bas, avec les baleines tentant de d\u00e9fendre les 2100$ mais sous pression face aux flux sortants.",
+          "risks": "Survente court terme (RSI 4H \u00e0 22,8) et accumulation agressive de certaines baleines sur la zone des 2100$.",
+          "price0": 2092.95,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 en cours depuis 2126.26 USDT, proche de l'objectif."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Malgr\u00e9 l'activit\u00e9 sur le XRP Ledger (notamment le fonds tokenis\u00e9 JMWH), le XRP a enfonc\u00e9 son support majeur et \u00e9volue d\u00e9sormais bien en dessous de sa moyenne mobile \u00e0 200 jours (1.27$). La pression vendeuse est g\u00e9n\u00e9ralis\u00e9e, avec un RSI \u00e0 18,2 indiquant une capitulation des acheteurs.",
+          "risks": "RSI extr\u00eamement bas (18,2) provoquant un rebond technique violent en cas de stabilisation du BTC.",
+          "price0": 1.0838,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte \u00e0 1.1126 USDT et performe bien."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Le BNB a rompu son canal horizontal de court terme sous les 678.23 USDT avec un volume relatif \u00e9lev\u00e9 (1.87), confirmant un signal de breakout baissier de court terme. Le flux de capitaux global sortant des altcoins et l'absence d'int\u00e9r\u00eat acheteur accentuent la pression vers le bas.",
+          "risks": "R\u00e9silience historique du BNB gr\u00e2ce au launchpool de Binance, et niveau de support psychologique fort \u00e0 650$.",
+          "price0": 676.24,
+          "breakout": {
+            "side": "SHORT",
+            "level": 678.23,
+            "decision": "GO",
+            "probTarget": 60,
+            "reason": "Breakout baissier tr\u00e8s propre de BNB sous les 678 USDT avec volume \u00e9lev\u00e9, s'inscrivant parfaitement dans une dynamique de march\u00e9 en forte baisse.",
+            "ours": "rejected"
+          },
+          "trade": {
+            "action": "SHORT",
+            "conviction": 70,
+            "reason": "Exploitation du breakout baissier sous le support des 678.23 USDT pour viser un retour sur la zone de support suivante des 645 USDT, avec un stop serr\u00e9 au-dessus de l'EMA20.",
+            "stop": 688.0,
+            "target": 645.0,
+            "maxHoldHours": 48,
+            "valid": true,
+            "status": "opened"
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Solana a subi d'importantes sorties nettes d'ETF le mois dernier et a cass\u00e9 son niveau pivot de court terme, glissant sous sa moyenne mobile \u00e0 200 jours de 88.96$. La tendance baissi\u00e8re est solide, renforc\u00e9e par les liquidations de positions longues et l'environnement macro\u00e9conomique adverse.",
+          "risks": "Proximit\u00e9 de l'\u00e9v\u00e9nement Breakpoint mi-novembre pouvant amener des annonces positives.",
+          "price0": 85.53,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 en cours sur l'actif \u00e0 89.69 USDT, proche de son objectif."
+          }
+        }
+      },
+      "queries": [
+        "bitcoin price news november 2024",
+        "fomc fed meeting schedule november 2024",
+        "ethereum etf outflows november 2026",
+        "solana bnb xrp news november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4157,
+        "candidatesTokenCount": 1237,
+        "totalTokenCount": 12816
+      }
     }
   ],
   "attempts": {
-    "1794182400000": 2,
-    "1794196800000": 1
+    "1794196800000": 1,
+    "1794211200000": 1
   },
-  "generatedAt": 1794210373220,
+  "generatedAt": 1794211310152,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 27,
-    "totalTokens": 301418,
+    "analyses": 28,
+    "totalTokens": 314234,
     "direction": {
-      "scored": 105,
-      "called": 64,
-      "neutral": 41,
-      "hits": 38,
-      "hitRate": 0.5938,
-      "brier": 0.2407,
+      "scored": 110,
+      "called": 68,
+      "neutral": 42,
+      "hits": 42,
+      "hitRate": 0.6176,
+      "brier": 0.2383,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -3628,7 +3756,7 @@
         "totalR": 0
       },
       "rejected_GO": {
-        "count": 3,
+        "count": 4,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -3644,7 +3772,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 6,
+        "count": 7,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -3664,16 +3792,16 @@
       "winRate": 0.7143,
       "avgR": 0.3836,
       "totalR": 2.685,
-      "open": 4,
-      "equityMarked": 530.865697,
-      "returnPct": 6.1731
+      "open": 5,
+      "equityMarked": 531.009522,
+      "returnPct": 6.2019
     }
   },
   "lastRun": {
-    "at": 1794210373220,
-    "status": "up-to-date",
+    "at": 1794211310152,
+    "status": "ok",
     "error": null,
-    "barClose": 1794196800000
+    "barClose": 1794211200000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -3692,9 +3820,9 @@
         "conviction": 65,
         "reason": "La tendance 4H est baissi\u00e8re sous l'EMA200, renforc\u00e9e par une pression de vente li\u00e9e au hack et \u00e0 la fuite des capitaux des ETF. Entr\u00e9e au prix actuel avec un stop au-dessus des 77,4k$ (2x ATR).",
         "exitBy": 1794283200000,
-        "lastBar": 1794182400000,
-        "markR": 1.3067,
-        "markPrice": 73846.4
+        "lastBar": 1794196800000,
+        "markR": 1.3502,
+        "markPrice": 73778.5
       },
       {
         "id": "SOLUSDT-1794153600000",
@@ -3709,9 +3837,9 @@
         "conviction": 65,
         "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
         "exitBy": 1794297600000,
-        "lastBar": 1794182400000,
-        "markR": 1.1522,
-        "markPrice": 85.3
+        "lastBar": 1794196800000,
+        "markR": 1.1024,
+        "markPrice": 85.49
       },
       {
         "id": "ETHUSDT-1794182400000",
@@ -3726,9 +3854,9 @@
         "conviction": 65,
         "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
         "exitBy": 1794312000000,
-        "lastBar": 1794182400000,
-        "markR": 0.4797,
-        "markPrice": 2086.09
+        "lastBar": 1794196800000,
+        "markR": 0.4276,
+        "markPrice": 2090.45
       },
       {
         "id": "XRPUSDT-1794182400000",
@@ -3743,9 +3871,26 @@
         "conviction": 60,
         "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
         "exitBy": 1794355200000,
-        "lastBar": 1794182400000,
-        "markR": 0.5628,
-        "markPrice": 1.0848
+        "lastBar": 1794196800000,
+        "markR": 0.587,
+        "markPrice": 1.0836
+      },
+      {
+        "id": "BNBUSDT-1794211200000",
+        "symbol": "BNBUSDT",
+        "side": "SHORT",
+        "entryTime": 1794211200000,
+        "entryPrice": 676.24,
+        "stop": 688.0,
+        "target": 645.0,
+        "risk": 11.759999999999991,
+        "stake": 5.13305,
+        "conviction": 70,
+        "reason": "Exploitation du breakout baissier sous le support des 678.23 USDT pour viser un retour sur la zone de support suivante des 645 USDT, avec un stop serr\u00e9 au-dessus de l'EMA20.",
+        "exitBy": 1794384000000,
+        "lastBar": 1794211199999,
+        "markR": 0.0621,
+        "markPrice": 675.51
       }
     ],
     "trades": [
