@@ -3226,7 +3226,11 @@
             "reason": "Position vendeuse (SHORT) d\u00e9j\u00e0 ouverte \u00e0 75 945,20 $. Le biais technique reste baissier sous la EMA 20, en accord avec l'absence de rebond significatif et les sorties massives d'ETF."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.335,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -3240,7 +3244,11 @@
             "reason": "Position vendeuse (SHORT) d\u00e9j\u00e0 ouverte \u00e0 2 244,20 $. Nous conservons notre biais baissier en raison de la faiblesse flagrante des ETF et de la dynamique de prix d\u00e9grad\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.035,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -3254,7 +3262,11 @@
             "reason": "Une position vendeuse (SHORT) est d\u00e9j\u00e0 ouverte \u00e0 1,1784 $. Le sentiment est lourdement baissier apr\u00e8s le rejet sous 1,28 $ et le tarissement des flux d'ETF."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.375,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -3268,7 +3280,11 @@
             "reason": "Position acheteuse (LONG) d\u00e9j\u00e0 ouverte \u00e0 694,56 $. La structure macro reste d\u00e9fendue tant que le plancher des 680-684 $ tient, justifiant le maintien de la position."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.616,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -3282,7 +3298,11 @@
             "reason": "Position vendeuse (SHORT) d\u00e9j\u00e0 ouverte \u00e0 90,13 $. Le franchissement des moyennes mobiles majeures et l'interdiction de ses \u00e9v\u00e9nements en Chine renforcent la th\u00e8se baissi\u00e8re."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.643,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -4067,7 +4087,11 @@
             "decision": "NO_GO",
             "probTarget": 45,
             "reason": "Le syst\u00e8me de renforcement exige une position 4H active dans le m\u00eame sens, ce qui n'est pas le cas ici. De plus, l'imminence du CPI limite l'int\u00e9r\u00eat d'entrer juste avant.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.1649,
+              "exitReason": "STOP"
+            }
           }
         },
         "ETHUSDT": {
@@ -4088,7 +4112,11 @@
             "decision": "NO_GO",
             "probTarget": 40,
             "reason": "Absence de position 4H courte pour valider le renforcement 1H. L'incertitude macro\u00e9conomique avant le CPI de mardi justifie de rester \u00e0 l'\u00e9cart.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0818,
+              "exitReason": "STOP"
+            }
           }
         },
         "XRPUSDT": {
@@ -4109,7 +4137,11 @@
             "decision": "NO_GO",
             "probTarget": 42,
             "reason": "Pas de position 4H SHORT ouverte pour permettre un renforcement, et le niveau de survente extr\u00eame (RSI 30,2) augmente le risque de faux signal.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0743,
+              "exitReason": "STOP"
+            }
           }
         },
         "BNBUSDT": {
@@ -4144,7 +4176,11 @@
             "decision": "NO_GO",
             "probTarget": 45,
             "reason": "Absence de position 4H courte validant le renforcement, et proximit\u00e9 imm\u00e9diate de la zone de support \u00e0 85-88 USD.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0799,
+              "exitReason": "STOP"
+            }
           }
         }
       },
@@ -4175,29 +4211,13 @@
   ],
   "attempts": {
     "1794168000000": 2,
-    "1794175200000": 3
+    "1794175200000": 3,
+    "1794182400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 509.544007,
+    "equity": 515.66213,
     "positions": [
-      {
-        "id": "XRPUSDT-1794009600000",
-        "symbol": "XRPUSDT",
-        "side": "SHORT",
-        "entryTime": 1794009600000,
-        "entryPrice": 1.1784,
-        "stop": 1.23,
-        "target": 1.05,
-        "risk": 0.05160000000000009,
-        "stake": 4.922553,
-        "conviction": 65,
-        "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
-        "exitBy": 1794182400000,
-        "lastBar": 1794175200000,
-        "markR": 1.2519,
-        "markPrice": 1.1138
-      },
       {
         "id": "BNBUSDT-1794024000000",
         "symbol": "BNBUSDT",
@@ -4211,9 +4231,9 @@
         "conviction": 55,
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
-        "lastBar": 1794175200000,
-        "markR": -0.4371,
-        "markPrice": 686.01
+        "lastBar": 1794178800000,
+        "markR": -0.5092,
+        "markPrice": 684.6
       },
       {
         "id": "SOLUSDT-1794168000000",
@@ -4228,9 +4248,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794175200000,
-        "markR": 1.056,
-        "markPrice": 86.71
+        "lastBar": 1794178800000,
+        "markR": 1.1754,
+        "markPrice": 86.39
       }
     ],
     "trades": [
@@ -4341,22 +4361,40 @@
         "rNet": 1.7335,
         "pnl": 8.533086,
         "equityAfter": 509.544007
+      },
+      {
+        "id": "XRPUSDT-1794009600000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1794009600000,
+        "entryPrice": 1.1784,
+        "stop": 1.23,
+        "target": 1.05,
+        "stake": 4.922553,
+        "conviction": 65,
+        "reason": "Le rejet sous 1,32 $ offre un excellent point d'entr\u00e9e pour viser le support FVG \u00e0 1,05 $, prot\u00e9g\u00e9 par un stop au-dessus de la r\u00e9sistance \u00e0 1,23 $.",
+        "exitTime": 1794182400000,
+        "exitPrice": 1.1125,
+        "exitReason": "TIME",
+        "rNet": 1.2429,
+        "pnl": 6.118123,
+        "equityAfter": 515.66213
       }
     ]
   },
-  "generatedAt": 1794181581794,
+  "generatedAt": 1794182553754,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 28,
     "totalTokens": 336826,
     "direction": {
-      "scored": 105,
-      "called": 74,
-      "neutral": 31,
-      "hits": 42,
-      "hitRate": 0.5676,
-      "brier": 0.2493,
+      "scored": 110,
+      "called": 78,
+      "neutral": 32,
+      "hits": 46,
+      "hitRate": 0.5897,
+      "brier": 0.2452,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -4383,10 +4421,10 @@
       },
       "rejected_NO_GO": {
         "count": 9,
-        "closed": 0,
+        "closed": 4,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.1002,
+        "totalR": -4.4009
       }
     },
     "byDecision": {
@@ -4399,27 +4437,27 @@
       },
       "NO_GO": {
         "count": 9,
-        "closed": 0,
+        "closed": 4,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.1002,
+        "totalR": -4.4009
       }
     },
     "portfolio": {
-      "trades": 6,
-      "wins": 4,
-      "winRate": 0.6667,
-      "avgR": 0.3293,
-      "totalR": 1.9755,
-      "open": 3,
-      "equityMarked": 518.758414,
-      "returnPct": 3.7517
+      "trades": 7,
+      "wins": 5,
+      "winRate": 0.7143,
+      "avgR": 0.4598,
+      "totalR": 3.2184,
+      "open": 2,
+      "equityMarked": 518.947428,
+      "returnPct": 3.7895
     }
   },
   "lastRun": {
-    "at": 1794181581794,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794178800000
+    "at": 1794182553754,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794182400000
   }
 }
