@@ -3294,18 +3294,149 @@
         "candidatesTokenCount": 1392,
         "totalTokenCount": 12086
       }
+    },
+    {
+      "barClose": 1794182400000,
+      "analyzedAt": 1794183374316,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le march\u00e9 crypto capitule face aux sorties d'ETF (1,28 Md$ sur le BTC la semaine pass\u00e9e) et aux craintes r\u00e9glementaires en Chine (SOL cibl\u00e9 par la PBOC). L'attention se tourne vers l'IPC US d'octobre (mardi 10/11), alors que Kalshi \u00e9value \u00e0 77% la probabilit\u00e9 d'une hausse des taux de 25 pb.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "BTC teste le co\u00fbt moyen des acheteurs r\u00e9cents (~75,7k$) apr\u00e8s de lourdes sorties d'ETF et le piratage r\u00e9cent de Binance. La tendance 4H est baissi\u00e8re (sous l'EMA200), et la prudence domine avant la publication tr\u00e8s attendue de l'IPC am\u00e9ricain.",
+          "risks": "Support technique solide dans la zone 73,1k$-73,3k$ (moyenne mobile 200 jours et canal bas) pouvant inciter \u00e0 un rebond technique.",
+          "price0": 74823.5,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position short d\u00e9j\u00e0 ouverte. On conserve l'exposition actuelle en attendant la r\u00e9solution sur le support cl\u00e9 des 73k$."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "ETH montre une faiblesse relative extr\u00eame avec un ratio ETH/BTC sous 0,03. La cassure du support majeur des 2200 $ s'accompagne d'un fort volume (4,3x), confirmant une dynamique de capitulation vers le seuil psychologique de 2000 $.",
+          "risks": "Indicateur RSI quotidien en zone de survente (23,2), ce qui augmente le risque d'un rebond technique violent en cas de rachat de shorts.",
+          "price0": 2126.27,
+          "breakout": {
+            "side": "SHORT",
+            "level": 2205.11,
+            "decision": "GO",
+            "probTarget": 60,
+            "reason": "La rupture du support \u00e0 2205 $ est nette et valid\u00e9e par un volume tr\u00e8s sup\u00e9rieur \u00e0 la moyenne. ETH sous-performe continuellement.",
+            "ours": "taken"
+          },
+          "trade": {
+            "action": "SHORT",
+            "conviction": 65,
+            "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
+            "stop": 2210.0,
+            "target": 1960.0,
+            "maxHoldHours": 36,
+            "valid": true,
+            "status": "opened"
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "XRP a cass\u00e9 son canal de consolidation sous 1,15 $ sur fond de ralentissement g\u00e9n\u00e9ralis\u00e9 des entr\u00e9es de capitaux sur ses ETF spot. Les indicateurs de dynamique (RSI \u00e0 22) et la tendance 4H confirment la force de la pression vendeuse.",
+          "risks": "La zone des 1,08 $ (plus bas r\u00e9cent) pourrait offrir un support temporaire de rebond \u00e0 court terme.",
+          "price0": 1.1125,
+          "breakout": {
+            "side": "SHORT",
+            "level": 1.1477,
+            "decision": "GO",
+            "probTarget": 58,
+            "reason": "Breakout baissier sous 1,1477 $ avec un volume significatif (3,4x). La structure de march\u00e9 s'est d\u00e9grad\u00e9e et valide une extension baissi\u00e8re.",
+            "ours": "taken"
+          },
+          "trade": {
+            "action": "SHORT",
+            "conviction": 60,
+            "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
+            "stop": 1.162,
+            "target": 1.015,
+            "maxHoldHours": 48,
+            "valid": true,
+            "status": "opened"
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "BNB fait preuve d'une relative r\u00e9silience en tenant le support des 680-690 $ malgr\u00e9 l'impact initial du piratage de Binance. Les retraits de la plateforme ayant repris, la pression imm\u00e9diate s'estompe mais la tendance globale reste neutre.",
+          "risks": "Une rupture sous les 680 $ exposerait la moyenne mobile 200 jours vers 657 $.",
+          "price0": 685.51,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Pas de signal clair. BNB consolide sur un support cl\u00e9 sans directionnalit\u00e9 \u00e9vidente \u00e0 court terme, ce qui incite \u00e0 rester \u00e0 l'\u00e9cart."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 32,
+          "reason": "SOL subit de plein fouet des vents contraires r\u00e9glementaires majeurs avec l'interdiction par la PBOC de ses \u00e9v\u00e9nements en Chine et une enqu\u00eate sur ses publicit\u00e9s. De plus, les flux sortants sur ses ETF US se poursuivent.",
+          "risks": "RSI en territoire de survente (27,1) et support de la MM200 jour proche \u00e0 84,6 $.",
+          "price0": 86.5,
+          "breakout": {
+            "side": "SHORT",
+            "level": 88.24,
+            "decision": "GO",
+            "probTarget": 65,
+            "reason": "La cassure du support des 88 $ est pleinement justifi\u00e9e par la d\u00e9gradation fondamentale li\u00e9e \u00e0 l'action de la banque centrale de Chine et aux flux ETF n\u00e9gatifs.",
+            "ours": "taken"
+          },
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Une position short est d\u00e9j\u00e0 active. On maintient cette exposition pour viser 84,50 $ \u00e0 mesure que les risques r\u00e9glementaires s'intensifient."
+          }
+        }
+      },
+      "queries": [
+        "\"crypto\" market november 8 2026 OR november 9 2026",
+        "bitcoin \"november 2026\"",
+        "fomc fed rates november 2026",
+        "cpi jobs november 2026 schedule",
+        "\"ETHUSDT\" \"breakout\" OR \"SOLUSDT\" \"breakout\" \"november 2026\"",
+        "\"XRP\" \"november 2026\" news",
+        "\"BNB\" \"november 2026\" news",
+        "\"SOL\" solana \"november 2026\" news"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4113,
+        "candidatesTokenCount": 1545,
+        "totalTokenCount": 11938
+      }
     }
   ],
   "attempts": {
     "1794168000000": 1,
-    "1794182400000": 1
+    "1794182400000": 2
   },
-  "generatedAt": 1794182504692,
+  "generatedAt": 1794183374316,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 25,
-    "totalTokens": 279240,
+    "analyses": 26,
+    "totalTokens": 291178,
     "direction": {
       "scored": 100,
       "called": 60,
@@ -3317,7 +3448,7 @@
     },
     "breakouts": {
       "taken_GO": {
-        "count": 0,
+        "count": 3,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -3347,7 +3478,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 3,
+        "count": 6,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -3367,15 +3498,15 @@
       "winRate": 0.7143,
       "avgR": 0.3836,
       "totalR": 2.685,
-      "open": 2,
-      "equityMarked": 521.613953,
-      "returnPct": 4.3228
+      "open": 4,
+      "equityMarked": 517.048448,
+      "returnPct": 3.4097
     }
   },
   "lastRun": {
-    "at": 1794182504692,
-    "status": "error",
-    "error": "unparseable JSON: Expecting ',' delimiter",
+    "at": 1794183374316,
+    "status": "ok",
+    "error": null,
     "barClose": 1794182400000
   },
   "portfolio": {
@@ -3396,8 +3527,8 @@
         "reason": "La tendance 4H est baissi\u00e8re sous l'EMA200, renforc\u00e9e par une pression de vente li\u00e9e au hack et \u00e0 la fuite des capitaux des ETF. Entr\u00e9e au prix actuel avec un stop au-dessus des 77,4k$ (2x ATR).",
         "exitBy": 1794283200000,
         "lastBar": 1794168000000,
-        "markR": 0.8044,
-        "markPrice": 74631.1
+        "markR": 0.4901,
+        "markPrice": 75122.2
       },
       {
         "id": "SOLUSDT-1794153600000",
@@ -3413,8 +3544,42 @@
         "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
         "exitBy": 1794297600000,
         "lastBar": 1794168000000,
-        "markR": 0.8688,
-        "markPrice": 86.38
+        "markR": 0.6089,
+        "markPrice": 87.37
+      },
+      {
+        "id": "ETHUSDT-1794182400000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794182400000,
+        "entryPrice": 2126.26,
+        "stop": 2210.0,
+        "target": 1960.0,
+        "risk": 83.73999999999978,
+        "stake": 5.13305,
+        "conviction": 65,
+        "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
+        "exitBy": 1794312000000,
+        "lastBar": 1794182399999,
+        "markR": -0.1822,
+        "markPrice": 2141.52
+      },
+      {
+        "id": "XRPUSDT-1794182400000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1794182400000,
+        "entryPrice": 1.1126,
+        "stop": 1.162,
+        "target": 1.015,
+        "risk": 0.04939999999999989,
+        "stake": 5.13305,
+        "conviction": 60,
+        "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
+        "exitBy": 1794355200000,
+        "lastBar": 1794182399999,
+        "markR": -0.1518,
+        "markPrice": 1.1201
       }
     ],
     "trades": [

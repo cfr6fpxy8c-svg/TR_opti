@@ -4207,12 +4207,188 @@
         "candidatesTokenCount": 1336,
         "totalTokenCount": 12574
       }
+    },
+    {
+      "barClose": 1794182400000,
+      "analyzedAt": 1794183413557,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le soulagement post-midterms a fait place aux craintes r\u00e9glementaires sur l'IA et \u00e0 un rapport de l'emploi am\u00e9ricain tr\u00e8s fort, ravivant les risques de hausse des taux de la Fed. Le Nasdaq chute de 5,5% et corr\u00e8le la crypto. Les flux d'ETF spot sont n\u00e9gatifs (-1,28 Md$). CPI attendu mardi.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "La chute sous les 74k$ a d\u00e9clench\u00e9 plus de 1 Md$ de liquidations de positions longues avec la correction du Nasdaq. Les flux ETF spot de la semaine sont n\u00e9gatifs de 1,28 Md$, men\u00e9s par IBIT. Bien que le march\u00e9 soit d\u00e9levrag\u00e9 et que l'indicateur Fear & Greed soit dans la peur, la tendance sous l'EMA200 4H reste baissi\u00e8re \u00e0 l'approche de l'inflation US (CPI) mardi.",
+          "risks": "Volatilit\u00e9 accrue avec le CPI am\u00e9ricain de mardi; risque de short squeeze technique apr\u00e8s les fortes liquidations de positions longues.",
+          "price0": 74823.5,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas d'avantage clair : le march\u00e9 est fortement survendu \u00e0 court terme mais la tendance globale est baissi\u00e8re sous l'EMA200 4H. Attente du CPI US mardi."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "ETH a subi de lourdes sorties d'ETF (-365M$ sur la semaine) et a cass\u00e9 son support \u00e0 2200$. Vitalik Buterin a tent\u00e9 de calmer le jeu apr\u00e8s un bug sur le testnet Glamsterdam, rappelant que l'ETH est une r\u00e9serve de valeur. Un grand portefeuille accumule de l'ETH, mais la structure technique reste fragile bien que l'indicateur RSI 14 \u00e0 23,2 signale un fort \u00e9tat de survente.",
+          "risks": "La rupture des 2100$ ouvrirait la voie vers 2000$. Risque de volatilit\u00e9 \u00e9lev\u00e9e li\u00e9e au CPI US.",
+          "price0": 2126.27,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le RSI extr\u00eamement bas (23,2) d\u00e9conseille les shorts, tandis que la tendance baissi\u00e8re globale interdit les longs. Neutralit\u00e9 tactique."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 2205.11,
+            "decision": "NO_GO",
+            "probTarget": 40,
+            "reason": "Le RSI 14 \u00e0 23,2 est extr\u00eamement bas, signalant une survente s\u00e9v\u00e8re. Entrer short sur cassure ici pr\u00e9sente un risque de retournement ou de squeeze important, surtout avant le CPI de mardi.",
+            "ours": "taken"
+          },
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "XRP a chut\u00e9 de 7% sur la semaine, les flux ETF s'\u00e9tant taris. Les whales continuent d'accumuler (les adresses > 1M XRP sont au plus haut de 2026), mais le cours subit la pression g\u00e9n\u00e9rale. Le RSI de 22,2 montre une survente extr\u00eame proche du support critique de 1,10$ - 1,08$.",
+          "risks": "Cassure du support cl\u00e9 \u00e0 1,08$ entra\u00eenant une nouvelle vague de ventes; d\u00e9cision r\u00e9glementaire US.",
+          "price0": 1.1125,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le niveau de survente extr\u00eame rend tout nouveau short asym\u00e9triquement dangereux, mais aucun signal d'achat clair n'est encore valid\u00e9."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 1.1477,
+            "decision": "NO_GO",
+            "probTarget": 35,
+            "reason": "Le RSI est en territoire de survente extr\u00eame (22,2) et le cours approche de son plus bas de 10 jours (1,088$). De plus, l'accumulation agressive des baleines augmente le risque d'un rebond rapide de type short squeeze.",
+            "ours": "taken"
+          },
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "BNB a r\u00e9sist\u00e9 relativement mieux gr\u00e2ce \u00e0 la stabilisation des retraits sur Binance apr\u00e8s le hack de 6,3 Md$. La mise \u00e0 jour d'urgence BSC-Reth pour corriger le calcul de l'\u00e9tat de la cha\u00eene a \u00e9t\u00e9 d\u00e9ploy\u00e9e avec succ\u00e8s. Cependant, BNB subit la baisse globale et reste sous pression technique, naviguant pr\u00e8s de ses bas de 10 jours.",
+          "risks": "Impact persistant de la baisse des r\u00e9serves de Binance; contagion si le BTC casse ses plus bas.",
+          "price0": 685.51,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position longue est d\u00e9j\u00e0 ouverte et actuellement sous l'eau. Conform\u00e9ment aux r\u00e8gles, aucune nouvelle position n'est initi\u00e9e."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "SOL souffre de sorties de staking substantielles (4,8 M de SOL retir\u00e9s en 30 jours) et de l'interruption par les r\u00e9gulateurs chinois de son \u00e9v\u00e9nement \u00e0 Shanghai. La cassure des 88$ a provoqu\u00e9 de fortes liquidations de positions longues, entra\u00eenant le cours vers 86,5$. Le RSI \u00e0 27,1 montre une survente prononc\u00e9e.",
+          "risks": "Poursuite des retraits de staking; rupture du support des 84,6$.",
+          "price0": 86.5,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position short est d\u00e9j\u00e0 en cours. Aucune nouvelle transaction n'est autoris\u00e9e sur cet actif."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 88.24,
+            "decision": "NO_GO",
+            "probTarget": 40,
+            "reason": "Le RSI \u00e0 27,1 indique un march\u00e9 d\u00e9j\u00e0 tr\u00e8s \u00e9tir\u00e9 \u00e0 la baisse. Avec le support des 84,6$ juste en dessous et l'incertitude macro (CPI), la probabilit\u00e9 de toucher la cible de +2R sans retracement pr\u00e9alable est faible.",
+            "ours": "taken"
+          },
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "crypto news November 8 2026",
+        "bitcoin news November 9 2026",
+        "macro economic calendar November 9 2026",
+        "spot ETF flows November 2026 crypto",
+        "solana news November 9 2026",
+        "xrp news November 9 2026",
+        "bnb news November 9 2026",
+        "ethereum news November 9 2026"
+      ],
+      "sources": [
+        {
+          "title": "tradingview.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZRuTHe6OgLi_Lg7U7wNlaO_G1gh3PXGSaYTlwXPWOA7bxe5tiJoshUXKfu5_T4XezA5GGAYMkcNUoWghdtvrdJUZAjLE7ljGRdMeGc-fqw9tSEtHN-KNUkX79Gv7i1EsqXGPg_evBfxEm4wkjV_2InpagLcCpVIU3EOUeXuTnxj1HGXMzTIWLp47k388x-YpQWrqAWhiGIM-OFojzmvQOcGQnEx7vTLqPShFaDAW1tmQb7-6k"
+        },
+        {
+          "title": "247wallst.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF-nb4hUaLrOLGBMhSKH13CKaT3m7toPeJgzczuoIgzrg7aBJQlRGsOPqQd5Zsws0mnFUwm4qrfoIWkJjP266b77pq_Qo1-1QsK00bxHpcXo_Ua1qUhyR-bT1NxzUMp6wm-0lEO16lj5ntVtUlqxOdzSItIRELQ_J9wx_nO6wz6lBX3Z-YCOVaohlNG8s7Sy-hpYXavlosF2js1TqYVW0UFJpjAmF7i6IVr-yvABUzvbrkMhj7EruMJeIfXzkXF9Ubx8KEs8VRZHMcmOZgOMhR2mlg0DEERFv4uU6B2CqNsFSIDfqhhDZo="
+        },
+        {
+          "title": "kucoin.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGV0KwcfczC9vBQ4U8nGuvqO0QKhEs0p8OlGgwRwYbYHJ_TcWrn1z9QAPKUAKBOWmk3Xn5s0bQu9ROps84715LpxAqqtSvhz2Grz13G_SVk5Iyzigl3epzyfoiwnlWBO0VYb7YBM2relI7JuKplecasXKo4W9_8LWT8yObcTewCq0tfz0vFyNC__JuowVqD"
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEyOV2kTdUa9tbKTTtANxzOsU5hdPhgl36bjUnX0QgKF2Hmf_9O-O-q9wGSOfZHzPvHs3Vd6dbfkCaX3rypxdgyl6P9m-D6Ngz40Fol-gX-OLdU44eO1w1uYh_FDgfvn1xlICW1b9_H8rDAP-5gnkzIZ-opNG2EWJsm6ni3zUkMRmP5bLNiBieQh7H0GAo6Oa-tboFqtJ2S"
+        },
+        {
+          "title": "kucoin.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEeFDYXntnpapYJgW7opDgYlKDzj6ZHqwWPaPMHiDQ97CInBDE3WLbHWLDIwyyJJhbBOrHIzaBh50tHlmd9ubdsssmY9ANz3fRg1QNUZ7fka1oQeKnaHA7ls7optYTI9DcNaukdXad1ZDoRZbwpfoQNiKkjeT3GO_mRO9jXef40fFPZ5WePsxjH-lckDg44M8x9DOnBByXQ7FZ0sNX_E2euUV7Fo6kXTywk"
+        },
+        {
+          "title": "tradingview.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGy8bbH5q5xLGYOY-kvjXEHXdzeyCF5WqCcp9QiWtp6TRdQBl5VuoeFYSOKDTchJLvRruDMM1GbMcPcAocCdPhYswUfQsj7ygGa7WQSiZoXWSpZNeh2Dy0AUBwsqAsJCdJdu8F7Anxe5wugiVhiE4yzdB5oeXc8yVdRykES9ybiD9HeN0RCN64sxYjUk4dDJRf9N3KtH1mWuCRGQE6yzFIN1Lrnt2fkzKPZaxTh5j9jIWlyTdYmS2XrD_3fdmLmpN1Puwnv11EgxbzS5m18i2flIGBtbal97hosA4mFr_5k0Va80wL3ypfl_naZxZFHxtnGwzcT2sVrEXGKyolX45EFlFHO6yWO"
+        },
+        {
+          "title": "kucoin.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHdR5zGmp8BcwzUVLXIpQN8IbjJ9gDKdo-YoHG5zwnzoRGDYq6t0fZ3MgC-kt8ipfXh1AYawTIIoICOtbilsznqdeoGLj0Mtr7rYmZN-ZPAqiyD7ly78PB14C3luwQTZRePUJ5LJKDuj5TbPUSYpM1h8Aur7PWq9Ek8Ny84WMq5CA6xCtyJu-rmUV2IAHWNvMb9AXcdtwfqJWLN7g=="
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEKAPTMEg3_inPmkPk4NEDVApwqT2b6-cVTrxghpPEMdtUETUEEpfsrJdp9BBl8IQp_pFb6gueD-b4cKOqvsHA200z2BTeLnOP338WLEYzEyK-zVla700-r2L9cr3fdUh7GNPFDMw65h-Atxk-R3OqpqSLsEVjkLtnt_SHaR7ieooU5GKfBRy4dYDVKh51wbujPMsJ7BqhIgqa2M0YotoEWdx1gK8bjgQ=="
+        },
+        {
+          "title": "coinpaper.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFAn4J9tbNrR7tSvXAw0KSLN3kKwAKJcZ-4ErqoMb7SW9lUmRqOBoVRT22O9i5VqUtK5IZ7EJDc_5Vh3713pkRxGLgP9C8XR7Rv8fTZLTsbuQTN8lMLRhX0pnHmHZv0Fs6GmboOS78DYIx_ztzo1Euo6hbqcBBL5hFBeZ5diu9-BX9W-B3SKwSg9OFfnGnfjofCOuwIAgUgCJstVWD6hhO4CWuzDguV4eyeuWHe"
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFYup4EyQREsmEjOpnBVIvHFclEggAJnNrPq2j5P_sZ7UjDGtlSVTCZtALgu-tfuwWkRORq5kv14U6LC5rxmMMAo-gJoukpC93fnGdHtJCTkxM5ScgglPwzlM8vNdtBG3VFp-DRbFmSexOtASxeRQZBTpwfyET1W6eVzkYnQNnw6JYQ3HDCRS8mhTBfONcfbsMJxb3q7dPW4ffsYIhH8_EP12tu41yv"
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQErnKp_wsx78YSkKJcjZc95XUimcbH3jza6yq_yKPRnGeWVLUpO8AzEcZZ7pO9dcaPGi-6WVNta7wRg2KXkMaE4OZu_tqm3If5YsWXt0UkuM7VAUNzN5LIjM9QUFkNhHU07bsFlcf_Y41spADjlVwhYmSM93iCXK-Bdxa4L6gcimdrtZgWcWbA7DdMbNBCadGb4mqTSm7ulD2GA5_Aw4cAzgQ=="
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEwK0VYQP6cW7a5Ycb0Pm1x-h4MoinEgiHfo8MRWIllZpdU1nEgKQkk9foReivPgfIrPUapx9svmgFgLsIsWQW2iO4yNZOvkTIgKlWfzf5Uu_XNg-hrxEbKFwMsLg008lU5iuMsbb5b-QGruJzvh6x692MLPCCoXvte-oqz9BIBN2lf6Ef2rO00W-Ug0zr6KqH5sw7rdZ9pG5lnBCGOcWU="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 15,
+        "supports": 32
+      },
+      "usage": {
+        "promptTokenCount": 4265,
+        "candidatesTokenCount": 2009,
+        "totalTokenCount": 12304
+      }
     }
   ],
   "attempts": {
     "1794168000000": 2,
     "1794175200000": 3,
-    "1794182400000": 1
+    "1794182400000": 2
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4232,8 +4408,8 @@
         "reason": "Rebond prometteur sur support horizontal majeur \u00e0 680$. Bon ratio risque/r\u00e9compense avec un stop serr\u00e9 sous le marteau journalier.",
         "exitBy": 1794196800000,
         "lastBar": 1794178800000,
-        "markR": -0.5092,
-        "markPrice": 684.6
+        "markR": -0.3078,
+        "markPrice": 688.54
       },
       {
         "id": "SOLUSDT-1794168000000",
@@ -4249,8 +4425,8 @@
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
         "lastBar": 1794178800000,
-        "markR": 1.1754,
-        "markPrice": 86.39
+        "markR": 0.8433,
+        "markPrice": 87.28
       }
     ],
     "trades": [
@@ -4382,12 +4558,12 @@
       }
     ]
   },
-  "generatedAt": 1794182553754,
+  "generatedAt": 1794183413557,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 28,
-    "totalTokens": 336826,
+    "analyses": 29,
+    "totalTokens": 349130,
     "direction": {
       "scored": 110,
       "called": 78,
@@ -4406,7 +4582,7 @@
         "totalR": 0
       },
       "taken_NO_GO": {
-        "count": 0,
+        "count": 3,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -4436,7 +4612,7 @@
         "totalR": 0
       },
       "NO_GO": {
-        "count": 9,
+        "count": 12,
         "closed": 4,
         "wins": 0,
         "avgR": -1.1002,
@@ -4450,14 +4626,14 @@
       "avgR": 0.4598,
       "totalR": 3.2184,
       "open": 2,
-      "equityMarked": 518.947428,
-      "returnPct": 3.7895
+      "equityMarked": 518.302385,
+      "returnPct": 3.6605
     }
   },
   "lastRun": {
-    "at": 1794182553754,
-    "status": "error",
-    "error": "unparseable JSON: Expecting ',' delimiter",
+    "at": 1794183413557,
+    "status": "ok",
+    "error": null,
     "barClose": 1794182400000
   }
 }
