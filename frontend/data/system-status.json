@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794221100000,
-    "executedAt": 1794221149752,
+    "scheduledAt": 1794222000000,
+    "executedAt": 1794222088525,
     "trigger": "schedule",
-    "jitterSeconds": 49.8,
-    "durationMs": 11214,
+    "jitterSeconds": 88.5,
+    "durationMs": 10777,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -16,15 +16,15 @@
     "symbolsValid": 1,
     "dataFailures": 0,
     "failedSymbols": [],
-    "candidates": 2,
-    "signalsGenerated": 1,
+    "candidates": 0,
+    "signalsGenerated": 0,
     "rejects": {
-      "score_below_threshold": 1
+      "duplicate_active": 2
     },
     "rejectFunnel": [
       {
-        "stage": "score_below_threshold",
-        "rejected": 1
+        "stage": "duplicate_active",
+        "rejected": 2
       }
     ],
     "apiStats": {
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794221099999,
-      "ageSeconds": 49.8
+      "newestCandleCloseMs": 1794221999999,
+      "ageSeconds": 88.5
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1794221149752,
-  "nextExpectedScanAt": 1794222000000,
+  "lastSuccessfulScan": 1794222088525,
+  "nextExpectedScanAt": 1794222900000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794177065693,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794177000000 actual=1794177065690 (jitter 65.7s)"
-    },
-    {
-      "ts": 1794177076737,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794177076946,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1794177076946,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1794177947089,
       "level": "info",
@@ -1052,6 +1032,26 @@
       "ts": 1794221160941,
       "level": "info",
       "msg": "SIGNAL BTCUSDT SHORT C score=56.5 trigger=73995.8054228513 TP=72310.1307939321 SL=74838.6427373109 RR=2.0"
+    },
+    {
+      "ts": 1794222088531,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794222000000 actual=1794222088525 (jitter 88.5s)"
+    },
+    {
+      "ts": 1794222099119,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794222099276,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1794222099276,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
     }
   ]
 }
