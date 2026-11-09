@@ -4001,7 +4001,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte et active dans le portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.368,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -4015,7 +4019,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.629,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -4029,7 +4037,11 @@
             "reason": "Une position courte est d\u00e9j\u00e0 en cours d'ex\u00e9cution."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.019,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -4043,7 +4055,11 @@
             "reason": "Position acheteuse d\u00e9j\u00e0 ouverte."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.396,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -4062,7 +4078,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.373,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -4830,7 +4850,8 @@
     }
   ],
   "attempts": {
-    "1794240000000": 3
+    "1794240000000": 3,
+    "1794254400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4849,9 +4870,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794247200000,
-        "markR": 1.0299,
-        "markPrice": 86.78
+        "lastBar": 1794250800000,
+        "markR": 1.1493,
+        "markPrice": 86.46
       }
     ],
     "trades": [
@@ -5019,19 +5040,19 @@
       }
     ]
   },
-  "generatedAt": 1794253583460,
+  "generatedAt": 1794254519846,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 32,
     "totalTokens": 384740,
     "direction": {
-      "scored": 130,
-      "called": 91,
-      "neutral": 39,
-      "hits": 59,
-      "hitRate": 0.6484,
-      "brier": 0.2359,
+      "scored": 135,
+      "called": 94,
+      "neutral": 41,
+      "hits": 62,
+      "hitRate": 0.6596,
+      "brier": 0.2341,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5087,14 +5108,14 @@
       "avgR": 0.1972,
       "totalR": 1.7751,
       "open": 1,
-      "equityMarked": 513.403073,
-      "returnPct": 2.6806
+      "equityMarked": 513.991425,
+      "returnPct": 2.7983
     }
   },
   "lastRun": {
-    "at": 1794253583460,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794250800000
+    "at": 1794254519846,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: -7660946267711855862\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794254400000
   }
 }
