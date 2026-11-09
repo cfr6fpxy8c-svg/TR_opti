@@ -4616,7 +4616,11 @@
             "decision": "GO",
             "probTarget": 62,
             "reason": "Breakout 1H tr\u00e8s net soutenu par un fort volume relatif (2,5x). La pression baissi\u00e8re fondamentale sur l'\u00e9cosyst\u00e8me Binance valide la poursuite du mouvement vers de nouveaux plus bas.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.1119,
+              "exitReason": "STOP"
+            }
           }
         },
         "SOLUSDT": {
@@ -4681,9 +4685,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794211200000,
-        "markR": 1.1418,
-        "markPrice": 86.48
+        "lastBar": 1794214800000,
+        "markR": 1.209,
+        "markPrice": 86.3
       },
       {
         "id": "BNBUSDT-1794211200000",
@@ -4698,9 +4702,9 @@
         "conviction": 70,
         "reason": "Nous ouvrons un SHORT initi\u00e9 par le double breakout (1H et 4H) soutenu par un volume \u00e9lev\u00e9 et la d\u00e9gradation fondamentale de Binance (d\u00e9mission du CFO, retraits). Stop plac\u00e9 au-dessus de l'EMA20 4H.",
         "exitBy": 1794384000000,
-        "lastBar": 1794211200000,
-        "markR": -0.3534,
-        "markPrice": 681.81
+        "lastBar": 1794214800000,
+        "markR": -0.3154,
+        "markPrice": 681.21
       }
     ],
     "trades": [
@@ -4850,7 +4854,7 @@
       }
     ]
   },
-  "generatedAt": 1794217586976,
+  "generatedAt": 1794218521398,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -4882,10 +4886,10 @@
       },
       "rejected_GO": {
         "count": 9,
-        "closed": 0,
+        "closed": 1,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.1119,
+        "totalR": -1.1119
       },
       "rejected_NO_GO": {
         "count": 10,
@@ -4898,10 +4902,10 @@
     "byDecision": {
       "GO": {
         "count": 9,
-        "closed": 0,
+        "closed": 1,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.1119,
+        "totalR": -1.1119
       },
       "NO_GO": {
         "count": 13,
@@ -4918,14 +4922,14 @@
       "avgR": 0.3549,
       "totalR": 2.8395,
       "open": 2,
-      "equityMarked": 517.607373,
-      "returnPct": 3.5215
+      "equityMarked": 518.133748,
+      "returnPct": 3.6267
     }
   },
   "lastRun": {
-    "at": 1794217586976,
+    "at": 1794218521398,
     "status": "waiting",
     "error": null,
-    "barClose": 1794214800000
+    "barClose": 1794218400000
   }
 }
