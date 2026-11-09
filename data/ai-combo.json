@@ -3653,7 +3653,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif. Nous la laissons courir vers son objectif sans en ouvrir de nouvelle."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.106,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -3667,7 +3671,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur l'actif, emp\u00eachant toute nouvelle entr\u00e9e selon les r\u00e8gles de notre portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.677,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -3681,7 +3689,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 active sur le XRP, aucun nouveau trade ne peut \u00eatre initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -7.3,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -3695,7 +3707,11 @@
             "reason": "Une position LONG est d\u00e9j\u00e0 en cours. Nous restons expos\u00e9s conform\u00e9ment aux r\u00e8gles du portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.251,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -3709,7 +3725,11 @@
             "reason": "Position SHORT en cours sur l'actif, nous maintenons la position sans en ouvrir d'autre."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.004,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -4666,7 +4686,8 @@
     }
   ],
   "attempts": {
-    "1794211200000": 1
+    "1794211200000": 1,
+    "1794225600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4685,9 +4706,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794218400000,
-        "markR": 1.2313,
-        "markPrice": 86.24
+        "lastBar": 1794222000000,
+        "markR": 1.2724,
+        "markPrice": 86.13
       },
       {
         "id": "BNBUSDT-1794211200000",
@@ -4702,9 +4723,9 @@
         "conviction": 70,
         "reason": "Nous ouvrons un SHORT initi\u00e9 par le double breakout (1H et 4H) soutenu par un volume \u00e9lev\u00e9 et la d\u00e9gradation fondamentale de Binance (d\u00e9mission du CFO, retraits). Stop plac\u00e9 au-dessus de l'EMA20 4H.",
         "exitBy": 1794384000000,
-        "lastBar": 1794218400000,
-        "markR": -0.5419,
-        "markPrice": 684.78
+        "lastBar": 1794222000000,
+        "markR": -0.4956,
+        "markPrice": 684.05
       }
     ],
     "trades": [
@@ -4854,19 +4875,19 @@
       }
     ]
   },
-  "generatedAt": 1794224783476,
+  "generatedAt": 1794225751372,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 31,
     "totalTokens": 373714,
     "direction": {
-      "scored": 120,
-      "called": 85,
-      "neutral": 35,
-      "hits": 53,
-      "hitRate": 0.6235,
-      "brier": 0.2397,
+      "scored": 125,
+      "called": 88,
+      "neutral": 37,
+      "hits": 56,
+      "hitRate": 0.6364,
+      "brier": 0.2372,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -4922,14 +4943,14 @@
       "avgR": 0.3549,
       "totalR": 2.8395,
       "open": 2,
-      "equityMarked": 517.079883,
-      "returnPct": 3.416
+      "equityMarked": 517.520294,
+      "returnPct": 3.5041
     }
   },
   "lastRun": {
-    "at": 1794224783476,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794222000000
+    "at": 1794225751372,
+    "status": "error",
+    "error": "HTTP 429: { \"error\": { \"code\": 429, \"message\": \"Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.\", \"status\": \"RE",
+    "barClose": 1794225600000
   }
 }

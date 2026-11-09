@@ -2974,6 +2974,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif."
+          },
+          "outcome": {
+            "retPct": -2.106,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -2987,6 +2991,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif."
+          },
+          "outcome": {
+            "retPct": -5.677,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -3000,6 +3008,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif."
+          },
+          "outcome": {
+            "retPct": -7.3,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -3013,6 +3025,10 @@
             "action": "NONE",
             "conviction": 60,
             "reason": "Pas de direction claire alors que BNB oscille dans une zone neutre (RSI 49.1) et fait face aux incertitudes li\u00e9es au piratage de Binance."
+          },
+          "outcome": {
+            "retPct": -2.251,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -3026,6 +3042,10 @@
             "action": "NONE",
             "conviction": 65,
             "reason": "Nous \u00e9vitons de shorter directement sur un support majeur (MM200J \u00e0 88.9$ et bas du canal \u00e0 88.24$). Une cassure confirm\u00e9e est requise pour entrer."
+          },
+          "outcome": {
+            "retPct": -4.004,
+            "hit": true
           }
         }
       },
@@ -3719,25 +3739,175 @@
         "candidatesTokenCount": 1237,
         "totalTokenCount": 12816
       }
+    },
+    {
+      "barClose": 1794225600000,
+      "analyzedAt": 1794225705177,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La victoire d\u00e9mocrate aux midterms am\u00e9ricains suscite des craintes de r\u00e9gulation crypto accrue. Le scandale de s\u00e9curit\u00e9 chez Nvidia p\u00e8se sur la tech, tandis que l'inflation CPI d'octobre (attendue le 10/11 \u00e0 3,6%) pourrait renforcer le dollar et prolonger l'aversion au risque.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "La chute sous l'EMA200 4H (79,4k) a d\u00e9clench\u00e9 plus d'un milliard de dollars de liquidations dimanche. Les flux d'ETF spot US sont pass\u00e9s n\u00e9gatifs sur l'ann\u00e9e apr\u00e8s leur pire semaine depuis juin. De plus, l'annonce du d\u00e9part du CFO de Binance apr\u00e8s le piratage historique de 6,3 milliards de dollars fragilise la confiance, alors que l'indice Fear & Greed plonge \u00e0 29 (Peur).",
+          "risks": "Une surprise \u00e0 la baisse sur le CPI am\u00e9ricain d'octobre (mardi) pourrait affaiblir le dollar et provoquer un fort rebond de couverture de shorts.",
+          "price0": 74345.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "L'Ether a chut\u00e9 \u00e0 un plus bas depuis ao\u00fbt (2050$) suite aux ventes forc\u00e9es et au de-risking g\u00e9n\u00e9ralis\u00e9 provoqu\u00e9 par le piratage g\u00e9ant de Binance (dont Ethereum a \u00e9t\u00e9 la cha\u00eene la plus touch\u00e9e avec 3,8 milliards de dollars vol\u00e9s). Le RSI 4H \u00e0 28,4 t\u00e9moigne d'un fort sentiment vendeur, sans catalyseur d'achat \u00e0 court terme avant la publication du CPI am\u00e9ricain.",
+          "risks": "Rebond technique court-terme favoris\u00e9 par des conditions extr\u00eamement survendues sur le RSI 4H, en cas de stabilisation du Bitcoin.",
+          "price0": 2112.37,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Le XRP sous-performe massivement apr\u00e8s avoir perdu le support de 1,12$ et le niveau psychologique de 1,10$. La victoire d\u00e9mocrate bloque les espoirs d'adoption rapide de la loi CLARITY sur les paiements transfrontaliers. Sans flux d'ETF XRP aux \u00c9tats-Unis depuis une semaine et apr\u00e8s 25M$ de liquidations de positions longues, le XRP teste \u00e0 pr\u00e9sent la zone de support critique de 1,00$.",
+          "risks": "D\u00e9fense agressive du seuil psychologique de 1,00$ par les acheteurs spot, pouvant provoquer un squeeze rapide des positions \u00e0 effet de levier.",
+          "price0": 1.0806,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "BNB est sous pression directe suite au piratage sans pr\u00e9c\u00e9dent de 6,3 milliards de dollars sur Binance. Le d\u00e9part du CFO Kaiser Ng, annonc\u00e9 ce week-end, et son remplacement par Justin Yek alimentent les doutes sur la gouvernance et le contr\u00f4le des risques de la plateforme de trading. Le cours a enfonc\u00e9 ses moyennes mobiles rapides, se dirigeant vers ses plus bas de 10 jours \u00e0 673$.",
+          "risks": "Reconstruction rapide de la confiance gr\u00e2ce \u00e0 la garantie de Binance de couvrir \u00e0 100% les pertes via ses fonds d'assurance (SAFU).",
+          "price0": 683.85,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Solana subit un d\u00e9sint\u00e9r\u00eat institutionnel marqu\u00e9 avec 5 semaines cons\u00e9cutives de sorties nettes de ses ETF spot US (~170M$). La perte de son support de long terme \u00e0 87,80$ et la baisse de l'int\u00e9r\u00eat ouvert \u00e0 un plus bas de 2 mois (5,2 milliards USD) s'accompagnent d'un taux de financement n\u00e9gatif. Les propositions visant \u00e0 supprimer les durable nonces suite au hack de Drift p\u00e8sent sur l'actif.",
+          "risks": "Une am\u00e9lioration inattendue de l'activit\u00e9 on-chain (DEX volumes) ou une pause dans les sorties d'ETF institutionnels provoquant un rebond.",
+          "price0": 86.07,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          }
+        }
+      },
+      "queries": [
+        "\"economic calendar\" \"November 2026\"",
+        "US CPI November 2026 release date",
+        "crypto news November 9 2026",
+        "bitcoin news November 9 2026",
+        "\"Binance\" hack October 2026 6 billion",
+        "Binance CFO steps down November 2026",
+        "Why is XRP dropping November 9 2026",
+        "Why is Solana dropping November 9 2026"
+      ],
+      "sources": [
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQED2K2dJKjxOd1aggu62QAVSAVqExM1W9iQmX2S3J8n1JLI9xonJcwBBNcTl2BpRUKfsr9M5O-l23sPRbjgj4DcY_GXKFEgLx-e7zJJWTpVlHvqf4F5T1bdjLult3xqszk0f8gW2HaNfIAj-A_pt1Rd4pAaWu34lV7iFk2l4VeicRvnn8cBEu0aFmDYt0ASlNupkITd6_ZgBdf-Gw=="
+        },
+        {
+          "title": "mlq.ai",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjIwSXTUmzhjNAeRtVetVqFMcuAOwW7sarWva69Sr7vqqcV6iB0hfVTpKAh1ddLd4wiYgemy50j02p3ujt_ACGQdmUCLOFHtKUS-Z-BIVGWeFbXU4nj1-olroxkfGmIPpmq8wIipTWv_niZ7CVNW66MuYGolCalR-Y59D3mW_rjyLv9WYEjDABxC2CZmFb477s-qvbrk7_QRv2W0gZMNABD6cEmxHMZ82k-Q=="
+        },
+        {
+          "title": "thehindu.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEJ21SmfDE4UhJ4V8eFiY8ESCi0_gQNvdbbJqe31-GlIJ5ICF7g-zSAKxn4wMSbOuwhHtpreMxrc197MM2OVFjae-3S7eTfSyXnh1DzQM56BYhrIktBL_QSimYfkev_F_6tl6Xznc017NeRu-mv4_hl8dvlZBBijipYzzv9-Rv_E7_78IM807OweqgEaNtu8HNHVIC5qzGMUivRJxX96fAgty9Biuk9eXwkpGqhRQpVWpz0oLXJfE4Mvd9UX_5drqA="
+        },
+        {
+          "title": "cryptonomist.ch",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFqbj6htDFS4alsY_gDUEZsZT9jlEs7hUvg19V7P1FYS2ZjmrjWo9m-r1TCg89T24BKYACmr6E5lQSPYl9Qun7JP_NKP294L53_1Leh563mWINL5qk8vrd4NnfgU2tJdGybG63lLK-t6DXsJlg0CPQfoHv862Akozu7ilR8Zkr3LWvVT1tdfx7ernwEFQAOCypJ5rXDPHg7e2Gowg=="
+        },
+        {
+          "title": "squawkflow.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGhtSDXcZIiboFLoU4ENOC-Lwb4kl7K4vWs8BnFEj_uvMnLbXi0G6lZSWWMph6unuLi0WIovtlxi1u8Ggn3__9A3rCUEFYaLhdkFxzkFARMHH4AzspItk6CTCLDQijXQAB8qo-tWNlZ0j9bdmo="
+        },
+        {
+          "title": "tradingview.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH_pWg3QqWDVmN-o09DOd0Emih1g5N14Wdz5-UapEwy33wPOuZmg1-oQj7spt79BAZue-S5M8GeQOZFTv1cJA2NdYGaSm8EpAEi2Jjb0w53bVfHAoMKAvXFFISWUn86VYrotMmxEXTRZuwlRoxwIujDKFdXNRcC7Uik_W68I_o3loPv2r17oJ4TjlmBn3n9fnZDtHkrUqt2pW72Ff1EDfGidUG2Apc9y3w5_e1TQNTOmEGggn52QHLy7addiqq5"
+        },
+        {
+          "title": "wikipedia.org",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFEnHF7RzAZ5iRLMqMvDzKCntlUXIItZ3VZ7Bey-L_blimuoGH9iR5W9XtfgWxargWLzuqzW6aYpI-PtEqBAMtD0RIIgfXJCEu27P2RdxsvC6GnESwmRR1xxA-HHVwJyExiGSOt3bT4MT75"
+        },
+        {
+          "title": "dmarketforces.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEaUWe70uezIAvB7PeTlB9X_UGCSvbnFwZNy9xWOstG1UCXOBZKf6-0DrsVqGpzcUGlchn3-fOaHX6c50SWtSL6QUZCibCOdePwJV6n9xEzIFdHqqXuoT7ymB0Kqj7NaOXlqwkaJRlklm7KNv1xXGJk3ZQI6fq4Mdj6rOi4S1wS4fSVRpO3XyNalA=="
+        },
+        {
+          "title": "tradingkey.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFz19bKj8crgBNs7WTTMHfKzx_mmMZXbqvVrgMA1RorMlB8E_A0a1Mxuhm5zToPuKUuOrRzJhX5IbCnJCgqslATHmMJMjTIKoG66azXZObMO4yvash9lyDY70FsaT2iVRmrHHDWdJXh29AAnOafxwdc7BZaOh946b-SSO4XtwzlWdcW4_fPPj8T42lRsQc2LmPRmEPD00f3INZ3GZCS7y6oZoDKhUKorHST6ia7"
+        },
+        {
+          "title": "cryptoticker.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG2JFh0Bg1pwd588vVxt-aibG3tqz_otafG181r83P6p6vjWibOp286MDBRLkw5ZbcA11d6wNF8dC8-ILVN9ue3bLAKfuGQreqbCU_GH_YKJBSNkGSDeirBU3fVx7goNegQEucAOWC4YQH_qoIJaDWYcrm8azS2zaQS"
+        },
+        {
+          "title": "cnn.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDhU2mt-H9UGCZwnBA4MbldlS9SNpm1RftJHLpMKfalZ1ojHBDDT_0OCaE1jifncpYSsPtMlqZun-DHeLDqhCCaMjSr7qPLbwOunw1rGu1K6svqRt16N2YVROMseSnmgfH6GfYi0MEvAI7btsO0k4VLFb56M4xFrfMej5-h1o_7p5GaA=="
+        },
+        {
+          "title": "invezz.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGvYFzpqrEWcAR2HEfdPvT2VQdN58hWQJ4v7zq74HnJReGcDqqTM4DUy-8iVdkoROpBEbJRtoeQdlTrrPve3HkxnXcm79XrOHnPfHPziVZxL-GUQasl1iVt-BYYxTx0-lmXFOmKNuO0LlRodzEKpm5iyDAGSGcO02WUtegi41Yz8qPj0kI5gydHDvFS-XaAuklLCalhTEl5p42dJkVApdr6vRilg7iP8ZgnMlehB2g="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 15,
+        "supports": 24
+      },
+      "usage": {
+        "promptTokenCount": 4181,
+        "candidatesTokenCount": 1421,
+        "totalTokenCount": 12949
+      }
     }
   ],
   "attempts": {
-    "1794196800000": 1,
-    "1794211200000": 1
+    "1794211200000": 1,
+    "1794225600000": 1
   },
-  "generatedAt": 1794224770508,
+  "generatedAt": 1794225705177,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 28,
-    "totalTokens": 314234,
+    "analyses": 29,
+    "totalTokens": 327183,
     "direction": {
-      "scored": 110,
-      "called": 68,
-      "neutral": 42,
-      "hits": 42,
-      "hitRate": 0.6176,
-      "brier": 0.2383,
+      "scored": 115,
+      "called": 72,
+      "neutral": 43,
+      "hits": 46,
+      "hitRate": 0.6389,
+      "brier": 0.2359,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -3793,15 +3963,15 @@
       "avgR": 0.3836,
       "totalR": 2.685,
       "open": 5,
-      "equityMarked": 521.980421,
-      "returnPct": 4.3961
+      "equityMarked": 523.894405,
+      "returnPct": 4.7789
     }
   },
   "lastRun": {
-    "at": 1794224770508,
-    "status": "up-to-date",
+    "at": 1794225705177,
+    "status": "ok",
     "error": null,
-    "barClose": 1794211200000
+    "barClose": 1794225600000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -3820,9 +3990,9 @@
         "conviction": 65,
         "reason": "La tendance 4H est baissi\u00e8re sous l'EMA200, renforc\u00e9e par une pression de vente li\u00e9e au hack et \u00e0 la fuite des capitaux des ETF. Entr\u00e9e au prix actuel avec un stop au-dessus des 77,4k$ (2x ATR).",
         "exitBy": 1794283200000,
-        "lastBar": 1794196800000,
-        "markR": 0.8902,
-        "markPrice": 74497.2
+        "lastBar": 1794211200000,
+        "markR": 0.9771,
+        "markPrice": 74361.3
       },
       {
         "id": "SOLUSDT-1794153600000",
@@ -3837,9 +4007,9 @@
         "conviction": 65,
         "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
         "exitBy": 1794297600000,
-        "lastBar": 1794196800000,
-        "markR": 0.9108,
-        "markPrice": 86.22
+        "lastBar": 1794211200000,
+        "markR": 0.9554,
+        "markPrice": 86.05
       },
       {
         "id": "ETHUSDT-1794182400000",
@@ -3854,9 +4024,9 @@
         "conviction": 65,
         "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
         "exitBy": 1794312000000,
-        "lastBar": 1794196800000,
-        "markR": 0.0958,
-        "markPrice": 2118.24
+        "lastBar": 1794211200000,
+        "markR": 0.163,
+        "markPrice": 2112.61
       },
       {
         "id": "XRPUSDT-1794182400000",
@@ -3871,9 +4041,9 @@
         "conviction": 60,
         "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
         "exitBy": 1794355200000,
-        "lastBar": 1794196800000,
-        "markR": 0.5688,
-        "markPrice": 1.0845
+        "lastBar": 1794211200000,
+        "markR": 0.67,
+        "markPrice": 1.0795
       },
       {
         "id": "BNBUSDT-1794211200000",
@@ -3888,9 +4058,9 @@
         "conviction": 70,
         "reason": "Exploitation du breakout baissier sous le support des 678.23 USDT pour viser un retour sur la zone de support suivante des 645 USDT, avec un stop serr\u00e9 au-dessus de l'EMA20.",
         "exitBy": 1794384000000,
-        "lastBar": 1794211199999,
-        "markR": -0.7168,
-        "markPrice": 684.67
+        "lastBar": 1794211200000,
+        "markR": -0.6395,
+        "markPrice": 683.76
       }
     ],
     "trades": [
