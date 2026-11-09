@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794254400000,
-    "executedAt": 1794254484503,
+    "scheduledAt": 1794255300000,
+    "executedAt": 1794255350674,
     "trigger": "schedule",
-    "jitterSeconds": 84.5,
-    "durationMs": 10275,
+    "jitterSeconds": 50.7,
+    "durationMs": 11078,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794254399999,
-      "ageSeconds": 84.5
+      "newestCandleCloseMs": 1794255299999,
+      "ageSeconds": 50.7
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1794254484503,
-  "nextExpectedScanAt": 1794255300000,
+  "lastSuccessfulScan": 1794255350674,
+  "nextExpectedScanAt": 1794256200000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794209467979,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794209400000 actual=1794209467973 (jitter 68.0s)"
-    },
-    {
-      "ts": 1794209478799,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794209479263,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1794209479263,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1794210350564,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794254494753,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794255350678,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794255300000 actual=1794255350674 (jitter 50.7s)"
+    },
+    {
+      "ts": 1794255361543,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794255361737,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1794255361737,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
