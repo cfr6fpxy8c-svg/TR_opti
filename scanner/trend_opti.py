@@ -23,8 +23,8 @@ from .config import Config
 from .indicators import ema
 from .market_data import Candle, MarketDataError
 from .trend_combo import (GATE_REASON, H1_MS, H4_MS, MAX_CURVE_POINTS, MAX_EVALUATIONS, STATE_VERSION,
-                          _accrue_funding, _book_stats, _fill_pending, _manage, _new_book, _prepare, _realized,
-                          _shadow_stats, _update_shadows, _watch, gate_from)
+                          _accrue_funding, _book_stats, _fill_pending, _manage, _new_book, _notional, _prepare,
+                          _realized, _shadow_stats, _update_shadows, _watch, gate_from)
 
 FILE = "trend-opti-paper.json"
 
@@ -78,7 +78,7 @@ def _evaluate(st: dict, sym: str, d: dict, k: int, trend: dict, funding: dict, p
 
 def step_book(state: dict | None, params: dict, candles: dict[str, list[Candle]], funding: dict[str, float],
               now_ms: int, equity: float, interval_ms: int, gate=None,
-              trend_candles: list[Candle] | None = None) -> dict:
+              trend_candles: list[Candle] | None = None, other_notional: float = 0.0) -> dict:
     """Same as trend_combo.step_book; the gate sees the book and returns rejection reasons."""
     st = copy.deepcopy(state) if state and state.get("version") == STATE_VERSION else _new_book(params, now_ms, equity)
     st["equity"] = equity
@@ -102,14 +102,14 @@ def step_book(state: dict | None, params: dict, candles: dict[str, list[Candle]]
                     if c.closeTime > st["lastBarClose"].get(s, math.inf))
     for _, _, sym, k in events:
         d = data[sym]
-        _fill_pending(st, sym, d, params)
+        _fill_pending(st, sym, d, params, other_notional)
         exited = _manage(st, sym, d, k, params, funding)
         busy = any(p["symbol"] == sym for p in st["positions"] + st["pending"])
         if not exited and not busy:
             _evaluate(st, sym, d, k, trend, funding, params, gate)
         st["lastBarClose"][sym] = d["closed"][k].closeTime
     for sym in symbols:
-        _fill_pending(st, sym, data[sym], params)
+        _fill_pending(st, sym, data[sym], params, other_notional)
     for pos in st["positions"]:
         _accrue_funding(pos, funding.get(pos["symbol"]), now_ms)
         d = data.get(pos["symbol"])
@@ -170,10 +170,11 @@ def combine(state: dict | None, cfg: Config, candles4: dict, candles1: dict, fun
     st = copy.deepcopy(state)
     cash = st["startCapital"] + _realized(st["book4h"]) + _realized(st["book1h"])
     st["book4h"] = step_book(st["book4h"], p4, candles4, funding, now_ms, cash, H4_MS,
-                             gate=cap_gate(st["book1h"], max_same))
+                             gate=cap_gate(st["book1h"], max_same), other_notional=_notional(st["book1h"]))
     cash = st["startCapital"] + _realized(st["book4h"]) + _realized(st["book1h"])
     st["book1h"] = step_book(st["book1h"], p1, candles1, funding, now_ms, cash, H1_MS,
-                             gate=h1_gate(st["book4h"], max_same), trend_candles=candles4.get(p4["trendSymbol"]))
+                             gate=h1_gate(st["book4h"], max_same), trend_candles=candles4.get(p4["trendSymbol"]),
+                             other_notional=_notional(st["book4h"]))
     s4, s1 = st["book4h"]["stats"], st["book1h"]["stats"]
     realized = st["startCapital"] + s4["realizedPnl"] + s1["realizedPnl"]
     marked = realized + s4["unrealizedPnl"] + s1["unrealizedPnl"]

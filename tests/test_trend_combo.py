@@ -67,6 +67,18 @@ def test_shared_capital_sizes_on_both_books_realized_pnl(cfg):
     assert st["equity"] == pytest.approx(600.0) and st["book1h"]["equity"] == pytest.approx(600.0)
 
 
+def test_leverage_cap_counts_both_books(cfg):
+    p4, p1 = trend_combo.book_params(cfg)
+    book1h = trend_combo._new_book(p1, NOW, 500.0)
+    book1h["positions"].append({"symbol": "ZZZUSDT", "side": "LONG", "entryTime": 0, "stake": 2.5, "notional": 2490.0,
+                                "unrealizedR": 0.0, "fundingPaid": 0.0})
+    state = {"version": trend_combo.STATE_VERSION, "startedAt": NOW, "startCapital": 500.0, "book4h": None,
+             "book1h": book1h, "equityCurve": []}
+    st = trend_combo.combine(state, cfg, {"AAAUSDT": h4()}, {"AAAUSDT": h1(breakout=False)}, {}, NOW)
+    assert st["book4h"]["positions"] == []
+    assert st["book4h"]["evaluations"][-1]["reasons"] == ["levier maximal depasse"]
+
+
 class FakeClient:
     def klines(self, symbol, interval, limit):
         return h4() if interval == "4h" else h1()

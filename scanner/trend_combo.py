@@ -162,7 +162,7 @@ def _evaluate(st: dict, sym: str, d: dict, k: int, trend: dict, funding: dict, p
         })
 
 
-def _fill_pending(st: dict, sym: str, d: dict, params: dict) -> None:
+def _fill_pending(st: dict, sym: str, d: dict, params: dict, other_notional: float = 0.0) -> None:
     for p in [p for p in st["pending"] if p["symbol"] == sym]:
         open_ms = p["signalClose"] + 1
         idx = d["index"].get(open_ms)
@@ -173,7 +173,7 @@ def _fill_pending(st: dict, sym: str, d: dict, params: dict) -> None:
         side = 1 if p["side"] == "LONG" else -1
         qty = p["stake"] / p["riskPerUnit"]
         notional = qty * bar.open
-        exposure = sum(x["notional"] for x in st["positions"]) + notional
+        exposure = sum(x["notional"] for x in st["positions"]) + other_notional + notional
         if exposure > float(params["maxLeverage"]) * st["equity"]:
             st["evaluations"].append({"symbol": sym, "barClose": open_ms, "side": p["side"],
                                       "taken": False, "reasons": ["levier maximal depasse"]})
@@ -289,10 +289,11 @@ def _watch(st: dict, params: dict, data: dict, trend: dict, funding: dict) -> di
 
 def step_book(state: dict | None, params: dict, candles: dict[str, list[Candle]], funding: dict[str, float],
               now_ms: int, equity: float, interval_ms: int, gate=None,
-              trend_candles: list[Candle] | None = None) -> dict:
+              trend_candles: list[Candle] | None = None, other_notional: float = 0.0) -> dict:
     """Advance one book with every candle closed since its previous call, sizing on ``equity``.
 
     trend_candles (4H) gives the trend filter to a 1H book: each bar uses the last 4H candle closed by then.
+    other_notional: exposure of the other book, so the leverage cap applies to the whole portfolio.
     """
     st = copy.deepcopy(state) if state and state.get("version") == STATE_VERSION else _new_book(params, now_ms, equity)
     st["equity"] = equity
@@ -316,14 +317,14 @@ def step_book(state: dict | None, params: dict, candles: dict[str, list[Candle]]
                     if c.closeTime > st["lastBarClose"].get(s, math.inf))
     for _, _, sym, k in events:
         d = data[sym]
-        _fill_pending(st, sym, d, params)
+        _fill_pending(st, sym, d, params, other_notional)
         exited = _manage(st, sym, d, k, params, funding)
         busy = any(p["symbol"] == sym for p in st["positions"] + st["pending"])
         if not exited and not busy:
             _evaluate(st, sym, d, k, trend, funding, params, gate)
         st["lastBarClose"][sym] = d["closed"][k].closeTime
     for sym in symbols:
-        _fill_pending(st, sym, data[sym], params)
+        _fill_pending(st, sym, data[sym], params, other_notional)
     for pos in st["positions"]:
         _accrue_funding(pos, funding.get(pos["symbol"]), now_ms)
         d = data.get(pos["symbol"])
@@ -370,6 +371,10 @@ def _realized(book: dict | None) -> float:
     return sum(t["pnl"] for t in (book or {}).get("trades", []))
 
 
+def _notional(book: dict | None) -> float:
+    return sum(p["notional"] for p in (book or {}).get("positions", []))
+
+
 def combine(state: dict | None, cfg: Config, candles4: dict, candles1: dict, funding: dict, now_ms: int) -> dict:
     p4, p1 = book_params(cfg)
     capital = float(cfg.get("trendCombo.startCapital"))
@@ -378,10 +383,12 @@ def combine(state: dict | None, cfg: Config, candles4: dict, candles1: dict, fun
                  "book4h": None, "book1h": None, "equityCurve": [{"t": now_ms, "equity": capital}]}
     st = copy.deepcopy(state)
     cash = st["startCapital"] + _realized(st["book4h"]) + _realized(st["book1h"])
-    st["book4h"] = step_book(st["book4h"], p4, candles4, funding, now_ms, cash, H4_MS)
+    st["book4h"] = step_book(st["book4h"], p4, candles4, funding, now_ms, cash, H4_MS,
+                             other_notional=_notional(st["book1h"]))
     cash = st["startCapital"] + _realized(st["book4h"]) + _realized(st["book1h"])
     st["book1h"] = step_book(st["book1h"], p1, candles1, funding, now_ms, cash, H1_MS,
-                             gate=gate_from(st["book4h"]), trend_candles=candles4.get(p4["trendSymbol"]))
+                             gate=gate_from(st["book4h"]), trend_candles=candles4.get(p4["trendSymbol"]),
+                             other_notional=_notional(st["book4h"]))
     s4, s1 = st["book4h"]["stats"], st["book1h"]["stats"]
     realized = st["startCapital"] + s4["realizedPnl"] + s1["realizedPnl"]
     marked = realized + s4["unrealizedPnl"] + s1["unrealizedPnl"]

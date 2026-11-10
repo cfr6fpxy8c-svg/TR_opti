@@ -289,6 +289,7 @@ def simulate(ai: dict, trend: dict, now: int) -> None:
     """The AI's own trades, paper only: same risk per trade and costs as the system, closed candles only."""
     params = trend.get("params") or {}
     pf = _portfolio(ai, trend)
+    pf.setdefault("entryAfterAnalysisSince", now)  # trades entered before this used the analysed bar's open
     cost_pct = 2 * (float(params.get("takerFeePct", 0.05)) + float(params.get("slippagePct", 0.025))) / 100.0
     risk_pct = float(params.get("riskPct", 1.0))
     candles = {s: sorted(w.get("candles") or [], key=lambda c: c[0]) for s, w in (trend.get("watch") or {}).items()}
@@ -328,7 +329,7 @@ def simulate(ai: dict, trend: dict, now: int) -> None:
             if any(x["symbol"] == sym for x in pf["positions"]):
                 t["status"] = "skipped-open"
                 continue
-            entry_candle = next((c for c in candles.get(sym, []) if c[0] == a["barClose"]), None)
+            entry_candle = next((c for c in candles.get(sym, []) if c[0] >= a.get("analyzedAt", a["barClose"])), None)
             if entry_candle is None:
                 if now - a["barClose"] > ENTRY_EXPIRY_MS:
                     t["status"] = "expired"
@@ -340,11 +341,11 @@ def simulate(ai: dict, trend: dict, now: int) -> None:
                 t["status"] = "cancelled-gap"
                 continue
             pf["positions"].append({
-                "id": f"{sym}-{a['barClose']}", "symbol": sym, "side": t["action"], "entryTime": a["barClose"],
+                "id": f"{sym}-{a['barClose']}", "symbol": sym, "side": t["action"], "entryTime": entry_candle[0],
                 "entryPrice": entry, "stop": t["stop"], "target": t["target"], "risk": risk,
                 "stake": round(pf["equity"] * risk_pct / 100.0, 6), "conviction": t["conviction"],
-                "reason": t["reason"], "exitBy": a["barClose"] + t["maxHoldHours"] * 3_600_000,
-                "lastBar": a["barClose"] - 1, "markR": 0.0})
+                "reason": t["reason"], "exitBy": entry_candle[0] + t["maxHoldHours"] * 3_600_000,
+                "lastBar": entry_candle[0] - 1, "markR": 0.0})
             t["status"] = "opened"
     for pos in pf["positions"]:
         last = candles.get(pos["symbol"], [])[-1:] or [None]

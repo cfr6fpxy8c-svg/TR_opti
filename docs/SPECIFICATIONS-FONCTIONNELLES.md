@@ -225,7 +225,8 @@ pas. Son avis est consigné et noté, il ne déclenche ni ne bloque aucun trade.
   cassure un GO / NO-GO avec la probabilité d'atteindre +2R, et **son propre trade** (achat, vente ou
   aucun, conviction, stop, objectif, durée maximale, raison).
 - **Portefeuille IA** (fictif) : ses trades sont simulés avec les mêmes règles de risque et de coûts
-  que le système (500 €, 1 % par trade, entrée à l'ouverture 4H suivante, sortie au stop, à l'objectif
+  que le système (500 €, 1 % par trade, entrée à l'ouverture de la première bougie qui suit la réponse
+  de l'IA — depuis le 10/11/2026, avant : ouverture suivant la clôture analysée —, sortie au stop, à l'objectif
   ou à la durée maximale, une position par crypto). Stop rejeté s'il est du mauvais côté ou hors
   0,5-5 ATR. Les deux capitaux sont comparés sur le tableau de bord.
 - **Notation** : directions comparées à la clôture 24 h plus tard (taux de réussite, score de Brier,

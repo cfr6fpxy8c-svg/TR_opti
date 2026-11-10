@@ -193,6 +193,16 @@ def test_ai_portfolio_time_exit_and_one_position_per_asset(trend):
     assert (trade["exitReason"], trade["exitPrice"]) == ("TIME", 151)
 
 
+def test_ai_entry_waits_for_the_first_open_after_the_answer(trend):
+    trend["watch"]["AAAUSDT"]["candles"] = candles(n=53)
+    ai = ai_with_trade({"stop": 140, "target": 170, "maxHoldHours": 48})
+    ai["analyses"][0]["analyzedAt"] = BAR + 30 * 60_000  # answer 30 min after the close
+    ai_analyst.simulate(ai, trend, BAR + H4 + 60_000)
+    (pos,) = ai["portfolio"]["positions"]
+    assert pos["entryTime"] == BAR + H4 and pos["entryPrice"] == 151
+    assert pos["exitBy"] == BAR + H4 + 48 * 3_600_000
+
+
 def test_ai_config_is_validated():
     cfg = Config({"aiAnalyst": {"enabled": True, "model": "x/../y", "horizonHours": 5}})
     errors = cfg.validate()
