@@ -203,6 +203,20 @@ def test_ai_entry_waits_for_the_first_open_after_the_answer(trend):
     assert pos["exitBy"] == BAR + H4 + 48 * 3_600_000
 
 
+def test_answer_received_after_an_open_waits_for_the_next_one(trend, monkeypatch):
+    clock = iter([0.0, 60.0])
+    monkeypatch.setattr(ai_analyst.time, "monotonic", lambda: next(clock))
+    sent = BAR + H4 - 30_000  # request 30 s before the next 4H open, answer 30 s after it
+    a = ai_analyst.analyse(CFG.get("aiAnalyst"), trend, BAR, sent, "opti-trade-513710", "t",
+                           post=lambda *args: answer(GOOD))
+    assert (a["requestedAt"], a["analyzedAt"]) == (sent, BAR + H4 + 30_000)
+    trend["watch"]["AAAUSDT"]["candles"] = candles(n=53)
+    ai = {"analyses": [a]}
+    ai_analyst.simulate(ai, trend, BAR + 2 * H4 + 60_000)
+    (pos,) = ai["portfolio"]["positions"]
+    assert pos["entryTime"] == BAR + 2 * H4
+
+
 def test_ai_config_is_validated():
     cfg = Config({"aiAnalyst": {"enabled": True, "model": "x/../y", "horizonHours": 5}})
     errors = cfg.validate()

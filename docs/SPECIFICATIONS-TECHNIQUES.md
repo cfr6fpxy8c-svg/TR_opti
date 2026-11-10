@@ -225,7 +225,8 @@ de pertes), tout en brut et en net.
   instant (motif sinon : \u00ab pas de position 4H ouverte dans ce sens \u00bb). Les deux livres dimensionnent sur
   le capital commun r\u00e9alis\u00e9 (`startCapital` + gains r\u00e9alis\u00e9s des deux livres) ; le plafond de levier
   porte sur les deux livres réunis (depuis le 10/11/2026, avant : par livre). Portefeuilles IA : entrée à la
-  première bougie ouverte après `analyzedAt` (`portfolio.entryAfterAnalysisSince`).
+  première bougie ouverte après `analyzedAt` = réception de la réponse (`requestedAt` = envoi ; depuis le
+  10/11/2026, `portfolio.entryAfterAnalysisSince`), délai décrit dans la consigne du modèle.
 - `ai_combo` : m\u00eames r\u00e9glages que `aiAnalyst` (`trendCombo.aiEnabled`), analyse \u00e0 chaque cl\u00f4ture 4H et \u00e0
   chaque cl\u00f4ture 1H portant une cassure de l'un des livres ; notation des directions et portefeuille IA
   sur bougies 1H (`book1h.watch.candles`).
