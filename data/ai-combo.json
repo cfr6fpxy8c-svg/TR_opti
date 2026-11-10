@@ -4544,7 +4544,11 @@
             "reason": "Proximit\u00e9 imm\u00e9diate du support des 73 300 $ et RSI \u00e0 31 sugg\u00e8rent un risque de rebond technique \u00e0 court terme avant l'IPC de demain."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.384,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -4558,7 +4562,11 @@
             "reason": "Le RSI extr\u00eamement survendu \u00e0 27.5 et le support majeur \u00e0 2050 $ incitent \u00e0 la prudence, malgr\u00e9 une tendance fondamentalement baissi\u00e8re."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.196,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -4572,7 +4580,11 @@
             "reason": "Le RSI en territoire de survente extr\u00eame (21.9) rend toute nouvelle vente \u00e0 d'\u00e9couvert trop risqu\u00e9e malgr\u00e9 l'absence de catalyseur haussier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.612,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -4586,7 +4598,11 @@
             "reason": "La zone des 680-690 $ est un support solide mais le contexte de march\u00e9 baissier global et l'IPC de demain incitent \u00e0 s'abstenir."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.196,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -4600,7 +4616,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur SOL (entr\u00e9e 89.54 $, stop 92.22 $, cible 82.50 $). Aucun nouveau trade n'est initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.921,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -4890,7 +4910,8 @@
     }
   ],
   "attempts": {
-    "1794268800000": 3
+    "1794268800000": 3,
+    "1794283200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4909,9 +4930,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794276000000,
-        "markR": 1.4478,
-        "markPrice": 85.66
+        "lastBar": 1794279600000,
+        "markR": 1.4216,
+        "markPrice": 85.73
       }
     ],
     "trades": [
@@ -5079,19 +5100,19 @@
       }
     ]
   },
-  "generatedAt": 1794282387113,
+  "generatedAt": 1794283315659,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 32,
     "totalTokens": 384740,
     "direction": {
-      "scored": 145,
-      "called": 98,
-      "neutral": 47,
-      "hits": 66,
-      "hitRate": 0.6735,
-      "brier": 0.2337,
+      "scored": 150,
+      "called": 102,
+      "neutral": 48,
+      "hits": 70,
+      "hitRate": 0.6863,
+      "brier": 0.2308,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5147,14 +5168,14 @@
       "avgR": 0.1972,
       "totalR": 1.7751,
       "open": 1,
-      "equityMarked": 515.462304,
-      "returnPct": 3.0925
+      "equityMarked": 515.333201,
+      "returnPct": 3.0666
     }
   },
   "lastRun": {
-    "at": 1794282387113,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794279600000
+    "at": 1794283315659,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: -1973232185656819627\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794283200000
   }
 }
