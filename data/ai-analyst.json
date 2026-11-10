@@ -3731,6 +3731,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif \u00e0 75887.8 USDT, actuellement en plus-value."
+          },
+          "outcome": {
+            "retPct": 1.302,
+            "hit": false
           }
         },
         "ETHUSDT": {
@@ -3744,6 +3748,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position SHORT d\u00e9j\u00e0 en cours depuis 2126.26 USDT, proche de l'objectif."
+          },
+          "outcome": {
+            "retPct": 1.042,
+            "hit": false
           }
         },
         "XRPUSDT": {
@@ -3757,6 +3765,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte \u00e0 1.1126 USDT et performe bien."
+          },
+          "outcome": {
+            "retPct": 1.08,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -3786,6 +3798,10 @@
             "maxHoldHours": 48,
             "valid": true,
             "status": "opened"
+          },
+          "outcome": {
+            "retPct": 2.264,
+            "hit": false
           }
         },
         "SOLUSDT": {
@@ -3799,6 +3815,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position SHORT d\u00e9j\u00e0 en cours sur l'actif \u00e0 89.69 USDT, proche de son objectif."
+          },
+          "outcome": {
+            "retPct": 0.62,
+            "hit": false
           }
         }
       },
@@ -3976,22 +3996,22 @@
     }
   ],
   "attempts": {
-    "1794268800000": 3,
-    "1794283200000": 3
+    "1794283200000": 3,
+    "1794297600000": 1
   },
-  "generatedAt": 1794296775040,
+  "generatedAt": 1794297706863,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 29,
     "totalTokens": 327183,
     "direction": {
-      "scored": 135,
-      "called": 88,
+      "scored": 140,
+      "called": 93,
       "neutral": 47,
       "hits": 58,
-      "hitRate": 0.6591,
-      "brier": 0.2329,
+      "hitRate": 0.6237,
+      "brier": 0.2401,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -4041,43 +4061,26 @@
       }
     },
     "portfolio": {
-      "trades": 9,
-      "wins": 6,
-      "winRate": 0.6667,
-      "avgR": 0.2656,
-      "totalR": 2.3902,
-      "open": 3,
-      "equityMarked": 517.542452,
-      "returnPct": 3.5085
+      "trades": 10,
+      "wins": 7,
+      "winRate": 0.7,
+      "avgR": 0.3308,
+      "totalR": 3.3076,
+      "open": 2,
+      "equityMarked": 518.695676,
+      "returnPct": 3.7391
     }
   },
   "lastRun": {
-    "at": 1794296775040,
-    "status": "skipped-late",
-    "error": null,
-    "barClose": 1794283200000
+    "at": 1794297706863,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: 6760763335945051057\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794297600000
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 511.655773,
+    "equity": 516.2159,
     "positions": [
-      {
-        "id": "SOLUSDT-1794153600000",
-        "symbol": "SOLUSDT",
-        "side": "SHORT",
-        "entryTime": 1794153600000,
-        "entryPrice": 89.69,
-        "stop": 93.5,
-        "target": 84.5,
-        "risk": 3.8100000000000023,
-        "stake": 4.970464,
-        "conviction": 65,
-        "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
-        "exitBy": 1794297600000,
-        "lastBar": 1794268800000,
-        "markR": 0.9055,
-        "markPrice": 86.24
-      },
       {
         "id": "ETHUSDT-1794182400000",
         "symbol": "ETHUSDT",
@@ -4091,9 +4094,9 @@
         "conviction": 65,
         "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
         "exitBy": 1794312000000,
-        "lastBar": 1794268800000,
-        "markR": 0.0453,
-        "markPrice": 2122.47
+        "lastBar": 1794283200000,
+        "markR": 0.1329,
+        "markPrice": 2115.13
       },
       {
         "id": "XRPUSDT-1794182400000",
@@ -4108,9 +4111,9 @@
         "conviction": 60,
         "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
         "exitBy": 1794355200000,
-        "lastBar": 1794268800000,
-        "markR": 0.2247,
-        "markPrice": 1.1015
+        "lastBar": 1794283200000,
+        "markR": 0.3502,
+        "markPrice": 1.0953
       }
     ],
     "trades": [
@@ -4275,6 +4278,24 @@
         "rNet": 0.7915,
         "pnl": 3.92659,
         "equityAfter": 511.655773
+      },
+      {
+        "id": "SOLUSDT-1794153600000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1794153600000,
+        "entryPrice": 89.69,
+        "stop": 93.5,
+        "target": 84.5,
+        "stake": 4.970464,
+        "conviction": 65,
+        "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
+        "exitTime": 1794297600000,
+        "exitPrice": 86.06,
+        "exitReason": "TIME",
+        "rNet": 0.9174,
+        "pnl": 4.560127,
+        "equityAfter": 516.2159
       }
     ]
   }

@@ -4669,7 +4669,11 @@
             "reason": "L'actif est tr\u00e8s survendu \u00e0 court terme (RSI 4H \u00e0 25,1) et proche du bas du canal de 20 jours. Risque \u00e9lev\u00e9 de rebond technique avant le CPI de mardi, rendant l'entr\u00e9e vendeuse peu attrayante ici."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.302,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -4683,7 +4687,11 @@
             "reason": "RSI extr\u00eamement bas (22,8) sur l'unit\u00e9 4H et proximit\u00e9 du support psychologique des 2000$. Le ratio risque/rendement pour initier de nouveaux shorts \u00e0 ces niveaux est d\u00e9favorable."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.042,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -4708,6 +4716,10 @@
               "rNet": -1.0614,
               "exitReason": "STOP"
             }
+          },
+          "outcome": {
+            "retPct": 1.08,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -4749,6 +4761,10 @@
               "rNet": -1.1119,
               "exitReason": "STOP"
             }
+          },
+          "outcome": {
+            "retPct": 2.264,
+            "hit": false
           }
         },
         "SOLUSDT": {
@@ -4763,7 +4779,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte \u00e0 89,54$ avec un stop \u00e0 92,22$ et une cible \u00e0 82,5$. Pas de nouvelle entr\u00e9e conform\u00e9ment aux r\u00e8gles de gestion."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.62,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -4910,7 +4930,8 @@
     }
   ],
   "attempts": {
-    "1794283200000": 3
+    "1794283200000": 3,
+    "1794297600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4929,9 +4950,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794290400000,
-        "markR": 1.2164,
-        "markPrice": 86.28
+        "lastBar": 1794294000000,
+        "markR": 1.2799,
+        "markPrice": 86.11
       }
     ],
     "trades": [
@@ -5099,19 +5120,19 @@
       }
     ]
   },
-  "generatedAt": 1794296788051,
+  "generatedAt": 1794297720440,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 32,
     "totalTokens": 384740,
     "direction": {
-      "scored": 150,
-      "called": 102,
+      "scored": 155,
+      "called": 107,
       "neutral": 48,
       "hits": 70,
-      "hitRate": 0.6863,
-      "brier": 0.2308,
+      "hitRate": 0.6542,
+      "brier": 0.2376,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5167,14 +5188,14 @@
       "avgR": 0.1972,
       "totalR": 1.7751,
       "open": 1,
-      "equityMarked": 514.322064,
-      "returnPct": 2.8644
+      "equityMarked": 514.634965,
+      "returnPct": 2.927
     }
   },
   "lastRun": {
-    "at": 1794296788051,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794294000000
+    "at": 1794297720440,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: 6760763335945051057\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794297600000
   }
 }
