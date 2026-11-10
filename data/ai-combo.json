@@ -4832,7 +4832,11 @@
             "reason": "L'absence de tendance claire \u00e0 tr\u00e8s court terme et la proximit\u00e9 de l'IPC d'octobre demain incitent \u00e0 la prudence sur le BTC."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.06,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -4846,7 +4850,11 @@
             "reason": "Bien que la tendance soit fortement baissi\u00e8re, l'Ether est en zone de survente extr\u00eame (RSI 28,4) \u00e0 la veille d'un \u00e9v\u00e9nement macro majeur."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.884,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -4871,6 +4879,10 @@
               "rNet": -1.0608,
               "exitReason": "STOP"
             }
+          },
+          "outcome": {
+            "retPct": -0.176,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -4885,7 +4897,11 @@
             "reason": "Une position de vente (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif. Nous laissons la strat\u00e9gie suivre son cours."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.772,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -4899,7 +4915,11 @@
             "reason": "Nous d\u00e9tenons d\u00e9j\u00e0 une position SHORT ouverte \u00e0 89,54$ qui performe bien et approche de son objectif \u00e0 82,5$."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.627,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -4931,7 +4951,8 @@
   ],
   "attempts": {
     "1794297600000": 3,
-    "1794308400000": 3
+    "1794308400000": 3,
+    "1794312000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4950,9 +4971,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794304800000,
-        "markR": 1.8433,
-        "markPrice": 84.6
+        "lastBar": 1794308400000,
+        "markR": 1.8396,
+        "markPrice": 84.61
       }
     ],
     "trades": [
@@ -5120,19 +5141,19 @@
       }
     ]
   },
-  "generatedAt": 1794311187362,
+  "generatedAt": 1794312120533,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 32,
     "totalTokens": 384740,
     "direction": {
-      "scored": 155,
-      "called": 107,
-      "neutral": 48,
-      "hits": 70,
-      "hitRate": 0.6542,
-      "brier": 0.2376,
+      "scored": 160,
+      "called": 110,
+      "neutral": 50,
+      "hits": 73,
+      "hitRate": 0.6636,
+      "brier": 0.2369,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5188,14 +5209,14 @@
       "avgR": 0.1972,
       "totalR": 1.7751,
       "open": 1,
-      "equityMarked": 517.411156,
-      "returnPct": 3.4822
+      "equityMarked": 517.392924,
+      "returnPct": 3.4786
     }
   },
   "lastRun": {
-    "at": 1794311187362,
-    "status": "gave-up",
-    "error": null,
-    "barClose": 1794308400000
+    "at": 1794312120533,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: -5483740441136468771\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794312000000
   }
 }

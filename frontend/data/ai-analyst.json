@@ -3863,6 +3863,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          },
+          "outcome": {
+            "retPct": 0.06,
+            "hit": false
           }
         },
         "ETHUSDT": {
@@ -3876,6 +3880,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          },
+          "outcome": {
+            "retPct": -0.884,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -3889,6 +3897,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          },
+          "outcome": {
+            "retPct": -0.176,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -3902,6 +3914,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          },
+          "outcome": {
+            "retPct": 0.772,
+            "hit": false
           }
         },
         "SOLUSDT": {
@@ -3915,6 +3931,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille d'\u00e9valuation, limitant toute nouvelle entr\u00e9e."
+          },
+          "outcome": {
+            "retPct": -1.627,
+            "hit": true
           }
         }
       },
@@ -3996,22 +4016,22 @@
     }
   ],
   "attempts": {
-    "1794283200000": 3,
-    "1794297600000": 3
+    "1794297600000": 3,
+    "1794312000000": 1
   },
-  "generatedAt": 1794311173028,
+  "generatedAt": 1794312107440,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 29,
     "totalTokens": 327183,
     "direction": {
-      "scored": 140,
-      "called": 93,
+      "scored": 145,
+      "called": 98,
       "neutral": 47,
-      "hits": 58,
-      "hitRate": 0.6237,
-      "brier": 0.2401,
+      "hits": 61,
+      "hitRate": 0.6224,
+      "brier": 0.2395,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -4061,43 +4081,26 @@
       }
     },
     "portfolio": {
-      "trades": 10,
-      "wins": 7,
-      "winRate": 0.7,
-      "avgR": 0.3308,
-      "totalR": 3.3076,
-      "open": 2,
-      "equityMarked": 521.675925,
-      "returnPct": 4.3352
+      "trades": 11,
+      "wins": 8,
+      "winRate": 0.7273,
+      "avgR": 0.3326,
+      "totalR": 3.6585,
+      "open": 1,
+      "equityMarked": 521.52889,
+      "returnPct": 4.3058
     }
   },
   "lastRun": {
-    "at": 1794311173028,
-    "status": "skipped-late",
-    "error": null,
-    "barClose": 1794297600000
+    "at": 1794312107440,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: -5483740441136468771\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794312000000
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 516.2159,
+    "equity": 518.016857,
     "positions": [
-      {
-        "id": "ETHUSDT-1794182400000",
-        "symbol": "ETHUSDT",
-        "side": "SHORT",
-        "entryTime": 1794182400000,
-        "entryPrice": 2126.26,
-        "stop": 2210.0,
-        "target": 1960.0,
-        "risk": 83.73999999999978,
-        "stake": 5.13305,
-        "conviction": 65,
-        "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
-        "exitBy": 1794312000000,
-        "lastBar": 1794283200000,
-        "markR": 0.4058,
-        "markPrice": 2092.28
-      },
       {
         "id": "XRPUSDT-1794182400000",
         "symbol": "XRPUSDT",
@@ -4111,9 +4114,9 @@
         "conviction": 60,
         "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
         "exitBy": 1794355200000,
-        "lastBar": 1794283200000,
-        "markR": 0.6579,
-        "markPrice": 1.0801
+        "lastBar": 1794297600000,
+        "markR": 0.6842,
+        "markPrice": 1.0788
       }
     ],
     "trades": [
@@ -4296,6 +4299,24 @@
         "rNet": 0.9174,
         "pnl": 4.560127,
         "equityAfter": 516.2159
+      },
+      {
+        "id": "ETHUSDT-1794182400000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794182400000,
+        "entryPrice": 2126.26,
+        "stop": 2210.0,
+        "target": 1960.0,
+        "stake": 5.13305,
+        "conviction": 65,
+        "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
+        "exitTime": 1794312000000,
+        "exitPrice": 2093.69,
+        "exitReason": "TIME",
+        "rNet": 0.3509,
+        "pnl": 1.800957,
+        "equityAfter": 518.016857
       }
     ]
   }
