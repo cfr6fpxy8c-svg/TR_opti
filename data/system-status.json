@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794278700000,
-    "executedAt": 1794278749012,
+    "scheduledAt": 1794279600000,
+    "executedAt": 1794279681992,
     "trigger": "schedule",
-    "jitterSeconds": 49.0,
-    "durationMs": 10994,
+    "jitterSeconds": 82.0,
+    "durationMs": 11019,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794278699999,
-      "ageSeconds": 49.0
+      "newestCandleCloseMs": 1794279599999,
+      "ageSeconds": 82.0
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1794278749012,
-  "nextExpectedScanAt": 1794279600000,
+  "lastSuccessfulScan": 1794279681992,
+  "nextExpectedScanAt": 1794280500000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794233751422,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794233700000 actual=1794233751418 (jitter 51.4s)"
-    },
-    {
-      "ts": 1794233762198,
-      "level": "info",
-      "msg": "derivatives: funding rates for 945 symbols"
-    },
-    {
-      "ts": 1794233762417,
-      "level": "info",
-      "msg": "rejected 1x score_below_threshold (e.g. score 46.2 < 50)"
-    },
-    {
-      "ts": 1794233762417,
-      "level": "info",
-      "msg": "SIGNAL BTCUSDT SHORT C score=50.3 trigger=74432.9964990812 TP=72850.1544880554 SL=75224.4175045941 RR=2.0"
-    },
     {
       "ts": 1794234670515,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794278759979,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794279681996,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794279600000 actual=1794279681992 (jitter 82.0s)"
+    },
+    {
+      "ts": 1794279692796,
+      "level": "info",
+      "msg": "derivatives: funding rates for 945 symbols"
+    },
+    {
+      "ts": 1794279692991,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1794279692991,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
