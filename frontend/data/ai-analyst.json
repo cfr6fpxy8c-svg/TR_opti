@@ -3414,6 +3414,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position short d\u00e9j\u00e0 ouverte. On conserve l'exposition actuelle en attendant la r\u00e9solution sur le support cl\u00e9 des 73k$."
+          },
+          "outcome": {
+            "retPct": 0.673,
+            "hit": false
           }
         },
         "ETHUSDT": {
@@ -3439,6 +3443,10 @@
             "maxHoldHours": 36,
             "valid": true,
             "status": "opened"
+          },
+          "outcome": {
+            "retPct": 0.364,
+            "hit": false
           }
         },
         "XRPUSDT": {
@@ -3464,6 +3472,10 @@
             "maxHoldHours": 48,
             "valid": true,
             "status": "opened"
+          },
+          "outcome": {
+            "retPct": -1.267,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -3477,6 +3489,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Pas de signal clair. BNB consolide sur un support cl\u00e9 sans directionnalit\u00e9 \u00e9vidente \u00e0 court terme, ce qui incite \u00e0 rester \u00e0 l'\u00e9cart."
+          },
+          "outcome": {
+            "retPct": 0.929,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -3497,6 +3513,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position short est d\u00e9j\u00e0 active. On maintient cette exposition pour viser 84,50 $ \u00e0 mesure que les risques r\u00e9glementaires s'intensifient."
+          },
+          "outcome": {
+            "retPct": 0.22,
+            "hit": false
           }
         }
       },
@@ -3936,22 +3956,22 @@
     }
   ],
   "attempts": {
-    "1794240000000": 3,
-    "1794254400000": 3
+    "1794254400000": 3,
+    "1794268800000": 1
   },
-  "generatedAt": 1794267968811,
+  "generatedAt": 1794268906217,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 29,
     "totalTokens": 327183,
     "direction": {
-      "scored": 125,
-      "called": 79,
-      "neutral": 46,
-      "hits": 53,
-      "hitRate": 0.6709,
-      "brier": 0.2307,
+      "scored": 130,
+      "called": 83,
+      "neutral": 47,
+      "hits": 54,
+      "hitRate": 0.6506,
+      "brier": 0.2349,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -4007,15 +4027,15 @@
       "avgR": 0.1998,
       "totalR": 1.5987,
       "open": 4,
-      "equityMarked": 515.089692,
-      "returnPct": 3.0179
+      "equityMarked": 514.309532,
+      "returnPct": 2.8619
     }
   },
   "lastRun": {
-    "at": 1794267968811,
-    "status": "skipped-late",
-    "error": null,
-    "barClose": 1794254400000
+    "at": 1794268906217,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: 6570735069196178642\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794268800000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4034,9 +4054,9 @@
         "conviction": 65,
         "reason": "La tendance 4H est baissi\u00e8re sous l'EMA200, renforc\u00e9e par une pression de vente li\u00e9e au hack et \u00e0 la fuite des capitaux des ETF. Entr\u00e9e au prix actuel avec un stop au-dessus des 77,4k$ (2x ATR).",
         "exitBy": 1794283200000,
-        "lastBar": 1794240000000,
-        "markR": 0.459,
-        "markPrice": 75170.8
+        "lastBar": 1794254400000,
+        "markR": 0.3889,
+        "markPrice": 75280.3
       },
       {
         "id": "SOLUSDT-1794153600000",
@@ -4051,9 +4071,9 @@
         "conviction": 65,
         "reason": "La configuration est baissi\u00e8re sous l'EMA20 et l'EMA50, avec des flux ETF sortants. Nous visons un test du support cl\u00e9 \u00e0 84.50$ avec un stop serr\u00e9 au-dessus de l'EMA50.",
         "exitBy": 1794297600000,
-        "lastBar": 1794240000000,
-        "markR": 0.8294,
-        "markPrice": 86.53
+        "lastBar": 1794254400000,
+        "markR": 0.7769,
+        "markPrice": 86.73
       },
       {
         "id": "ETHUSDT-1794182400000",
@@ -4068,9 +4088,9 @@
         "conviction": 65,
         "reason": "Entr\u00e9e vendeuse suite \u00e0 la rupture franche des 2205 $. Stop plac\u00e9 juste au-dessus du support bris\u00e9 pour cibler le niveau des 1960 $.",
         "exitBy": 1794312000000,
-        "lastBar": 1794240000000,
-        "markR": -0.0598,
-        "markPrice": 2131.27
+        "lastBar": 1794254400000,
+        "markR": -0.0871,
+        "markPrice": 2133.55
       },
       {
         "id": "XRPUSDT-1794182400000",
@@ -4085,9 +4105,9 @@
         "conviction": 60,
         "reason": "Le momentum baissier et la perte du support \u00e0 1,15 $ ouvrent la voie vers 1,00 $. Le stop est positionn\u00e9 au-dessus de la r\u00e9sistance pour un ratio R:R optimal.",
         "exitBy": 1794355200000,
-        "lastBar": 1794240000000,
-        "markR": 0.247,
-        "markPrice": 1.1004
+        "lastBar": 1794254400000,
+        "markR": 0.2409,
+        "markPrice": 1.1007
       }
     ],
     "trades": [

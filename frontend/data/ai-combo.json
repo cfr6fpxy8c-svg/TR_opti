@@ -4348,7 +4348,11 @@
             "reason": "Pas d'avantage clair : le march\u00e9 est fortement survendu \u00e0 court terme mais la tendance globale est baissi\u00e8re sous l'EMA200 4H. Attente du CPI US mardi."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.673,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -4369,7 +4373,11 @@
             "reason": "Le RSI 14 \u00e0 23,2 est extr\u00eamement bas, signalant une survente s\u00e9v\u00e8re. Entrer short sur cassure ici pr\u00e9sente un risque de retournement ou de squeeze important, surtout avant le CPI de mardi.",
             "ours": "taken"
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.364,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -4390,7 +4398,11 @@
             "reason": "Le RSI est en territoire de survente extr\u00eame (22,2) et le cours approche de son plus bas de 10 jours (1,088$). De plus, l'accumulation agressive des baleines augmente le risque d'un rebond rapide de type short squeeze.",
             "ours": "taken"
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.267,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -4404,7 +4416,11 @@
             "reason": "Une position longue est d\u00e9j\u00e0 ouverte et actuellement sous l'eau. Conform\u00e9ment aux r\u00e8gles, aucune nouvelle position n'est initi\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.929,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -4425,7 +4441,11 @@
             "reason": "Le RSI \u00e0 27,1 indique un march\u00e9 d\u00e9j\u00e0 tr\u00e8s \u00e9tir\u00e9 \u00e0 la baisse. Avec le support des 84,6$ juste en dessous et l'incertitude macro (CPI), la probabilit\u00e9 de toucher la cible de +2R sans retracement pr\u00e9alable est faible.",
             "ours": "taken"
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.22,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -4870,7 +4890,8 @@
     }
   ],
   "attempts": {
-    "1794254400000": 3
+    "1794254400000": 3,
+    "1794268800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -4889,9 +4910,9 @@
         "conviction": 60,
         "reason": "La pression fondamentale (sorties ETF et hack Binance) et technique soutient un sc\u00e9nario de cassure du support des 88$ vers l'objectif de 82,5$.",
         "exitBy": 1794340800000,
-        "lastBar": 1794261600000,
-        "markR": 1.1269,
-        "markPrice": 86.52
+        "lastBar": 1794265200000,
+        "markR": 1.0522,
+        "markPrice": 86.72
       }
     ],
     "trades": [
@@ -5059,19 +5080,19 @@
       }
     ]
   },
-  "generatedAt": 1794267980981,
+  "generatedAt": 1794268920618,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 32,
     "totalTokens": 384740,
     "direction": {
-      "scored": 140,
+      "scored": 145,
       "called": 98,
-      "neutral": 42,
+      "neutral": 47,
       "hits": 66,
       "hitRate": 0.6735,
-      "brier": 0.2321,
+      "brier": 0.2337,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5127,14 +5148,14 @@
       "avgR": 0.1972,
       "totalR": 1.7751,
       "open": 1,
-      "equityMarked": 513.881047,
-      "returnPct": 2.7762
+      "equityMarked": 513.512958,
+      "returnPct": 2.7026
     }
   },
   "lastRun": {
-    "at": 1794267980981,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794265200000
+    "at": 1794268920618,
+    "status": "error",
+    "error": "HTTP 403: { \"error\": { \"code\": 403, \"message\": \"Spend cap breached for project: projects/932412321593 for service: aiplatform.googleapis.com. Correlation id: 6570735069196178642\", \"status\": \"PERMISSION_DENIED\"",
+    "barClose": 1794268800000
   }
 }
