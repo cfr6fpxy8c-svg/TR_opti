@@ -5182,7 +5182,8 @@
             "stop": 80.7,
             "target": 88.53,
             "maxHoldHours": 96,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": null
@@ -5266,13 +5267,30 @@
     }
   ],
   "attempts": {
-    "1794355200000": 1,
     "1794369600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 521.02528,
-    "positions": [],
+    "positions": [
+      {
+        "id": "SOLUSDT-1794369600000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1794373200000,
+        "entryPrice": 82.78,
+        "stop": 80.7,
+        "target": 88.53,
+        "risk": 2.0799999999999983,
+        "stake": 5.210253,
+        "conviction": 65,
+        "reason": "Achat contrarien sur support majeur (81-83$) avant la conf\u00e9rence Solana Breakpoint (15-17 nov). Le RSI proche de 32 montre un \u00e9puisement des vendeurs \u00e0 court terme. Un stop serr\u00e9 sous les plus bas de 10 jours offre un ratio risque-rendement asym\u00e9trique int\u00e9ressant dans l'attente du catalyste.",
+        "exitBy": 1794718800000,
+        "lastBar": 1794373199999,
+        "markR": -0.0288,
+        "markPrice": 82.72
+      }
+    ],
     "trades": [
       {
         "id": "ETHUSDT-1793880000000",
@@ -5457,7 +5475,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794372383620,
+  "generatedAt": 1794373318901,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -5524,15 +5542,15 @@
       "winRate": 0.6,
       "avgR": 0.4352,
       "totalR": 4.3519,
-      "open": 0,
-      "equityMarked": 521.02528,
-      "returnPct": 4.2051
+      "open": 1,
+      "equityMarked": 520.875225,
+      "returnPct": 4.175
     }
   },
   "lastRun": {
-    "at": 1794372383620,
-    "status": "up-to-date",
+    "at": 1794373318901,
+    "status": "waiting",
     "error": null,
-    "barClose": 1794369600000
+    "barClose": 1794373200000
   }
 }
