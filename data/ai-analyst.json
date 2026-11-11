@@ -4429,7 +4429,8 @@
             "stop": 75800.0,
             "target": 70500.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         },
         "ETHUSDT": {
@@ -4446,7 +4447,8 @@
             "stop": 2150.0,
             "target": 1910.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         },
         "XRPUSDT": {
@@ -4463,7 +4465,8 @@
             "stop": 1.115,
             "target": 0.95,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         },
         "BNBUSDT": {
@@ -4493,7 +4496,8 @@
             "stop": 87.8,
             "target": 74.5,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         }
       },
@@ -4525,10 +4529,10 @@
     }
   ],
   "attempts": {
-    "1794369600000": 1,
-    "1794384000000": 1
+    "1794384000000": 1,
+    "1794398400000": 1
   },
-  "generatedAt": 1794397569968,
+  "generatedAt": 1794398508415,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -4595,21 +4599,90 @@
       "winRate": 0.75,
       "avgR": 0.3975,
       "totalR": 4.7705,
-      "open": 0,
-      "equityMarked": 523.724632,
-      "returnPct": 4.7449
+      "open": 4,
+      "equityMarked": 523.981781,
+      "returnPct": 4.7964
     }
   },
   "lastRun": {
-    "at": 1794397569968,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1794384000000
+    "at": 1794398508415,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794398400000
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 523.724632,
-    "positions": [],
+    "positions": [
+      {
+        "id": "BTCUSDT-1794384000000",
+        "symbol": "BTCUSDT",
+        "side": "SHORT",
+        "entryTime": 1794398400000,
+        "entryPrice": 73963.3,
+        "stop": 75800.0,
+        "target": 70500.0,
+        "risk": 1836.699999999997,
+        "stake": 5.237246,
+        "conviction": 65,
+        "reason": "La rupture r\u00e9cente de supports cl\u00e9s et l'environnement macro\u00e9conomique tr\u00e8s d\u00e9favorable (CPI fort, hausse du dollar) favorisent la poursuite de la baisse vers le bas du canal hebdomadaire.",
+        "exitBy": 1794571200000,
+        "lastBar": 1794398399999,
+        "markR": 0.0133,
+        "markPrice": 73938.8
+      },
+      {
+        "id": "ETHUSDT-1794384000000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794398400000,
+        "entryPrice": 2056.41,
+        "stop": 2150.0,
+        "target": 1910.0,
+        "risk": 93.59000000000015,
+        "stake": 5.237246,
+        "conviction": 70,
+        "reason": "La forte pression vendeuse aliment\u00e9e par les sorties massives d'ETF et la structure technique fortement baissi\u00e8re militent pour un enfoncement du support psychologique des 2000$.",
+        "exitBy": 1794571200000,
+        "lastBar": 1794398399999,
+        "markR": 0.0104,
+        "markPrice": 2055.44
+      },
+      {
+        "id": "XRPUSDT-1794384000000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1794398400000,
+        "entryPrice": 1.0582,
+        "stop": 1.115,
+        "target": 0.95,
+        "risk": 0.05679999999999996,
+        "stake": 5.237246,
+        "conviction": 65,
+        "reason": "La rupture des supports interm\u00e9diaires \u00e0 1,15$ sur fond de d\u00e9sengagement institutionnel et de ventes massives rend le test des 1,00$, voire des niveaux inf\u00e9rieurs, tr\u00e8s probable.",
+        "exitBy": 1794571200000,
+        "lastBar": 1794398399999,
+        "markR": 0.0176,
+        "markPrice": 1.0572
+      },
+      {
+        "id": "SOLUSDT-1794384000000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1794398400000,
+        "entryPrice": 83.93,
+        "stop": 87.8,
+        "target": 74.5,
+        "risk": 3.8699999999999903,
+        "stake": 5.237246,
+        "conviction": 68,
+        "reason": "Le franchissement \u00e0 la baisse de supports majeurs et le flux de vente potentiel provenant des cr\u00e9ateurs de tokens accentuent le risque d'une capitulation vers la zone des 70-74$.",
+        "exitBy": 1794571200000,
+        "lastBar": 1794398399999,
+        "markR": 0.0078,
+        "markPrice": 83.9
+      }
+    ],
     "trades": [
       {
         "id": "SOLUSDT-1793851200000",
