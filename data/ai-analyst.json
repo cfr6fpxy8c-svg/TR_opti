@@ -429,13 +429,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Le sweep d\u00e9mocrate aux midterms a lev\u00e9 l'incertitude politique, d\u00e9clenchant un rebond du march\u00e9 apr\u00e8s le hack historique de Binance (6,3 Mds$ r\u00e9solu via fonds propres). Les taux se d\u00e9tendent, mais le rapport mensuel sur l'emploi am\u00e9ricain (NFP) demain appelle \u00e0 la prudence.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 50,
-          "reason": "Apr\u00e8s un short squeeze massif de 380M$ ramenant le cours de 75,6k$ \u00e0 80,4k$, le march\u00e9 a absorb\u00e9 le choc du hack de Binance et salu\u00e9 le d\u00e9nouement des midterms. Les flux d'ETF spot sont redevenus positifs (+74M$). Cependant, la hausse bute sous la MRE200 4H (80,4k$) et les investisseurs attendent le rapport NFP de demain pour prendre une direction claire.",
-          "risks": "Volatilit\u00e9 extr\u00eame li\u00e9e au NFP de vendredi; prises de b\u00e9n\u00e9fices apr\u00e8s le squeeze post-midterms.",
+          "reason": "",
+          "risks": "",
           "price0": 80389.8,
           "breakout": null,
           "trade": {
@@ -451,8 +451,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 51,
-          "reason": "ETH a surperform\u00e9 avec un rebond de pr\u00e8s de 7% vers 2420$, soutenu par la reprise globale et des flux d'ETF spot positifs (+53M$), cassant sa s\u00e9rie de sorties de capitaux. Le RSI 14 remonte \u00e0 69,3, traduisant un fort \u00e9lan \u00e0 court terme, mais la hausse rapide appelle \u00e0 une pause saine avant le catalyseur macro de demain.",
-          "risks": "Correction technique sous l'effet de prises de b\u00e9n\u00e9fices rapides; r\u00e9action n\u00e9gative au NFP de demain.",
+          "reason": "",
+          "risks": "",
           "price0": 2420.75,
           "breakout": null,
           "trade": {
@@ -468,8 +468,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 50,
-          "reason": "XRP s'\u00e9change autour de 1,31$, port\u00e9 par de solides fondamentaux en octobre (partenariats BNY Mellon/Robinhood, banque nationale Ripple) et la validation de l'amendement fixCleanup3_4_0 sur le Ledger le 4 novembre. Malgr\u00e9 la lib\u00e9ration d'un milliard de jetons sous s\u00e9questre le 1er novembre, le cours reste r\u00e9silient dans son range.",
-          "risks": "Pression \u00e0 la vente habituelle de l'escrow; volatilit\u00e9 macro\u00e9conomique li\u00e9e au dollar.",
+          "reason": "",
+          "risks": "",
           "price0": 1.3189,
           "breakout": null,
           "trade": {
@@ -485,8 +485,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "BNB s'est stabilis\u00e9 \u00e0 717$ apr\u00e8s l'annonce par Binance de la couverture int\u00e9grale du hack historique de 6,3Mds$ via ses fonds propres et la reprise r\u00e9ussie des retraits. Bien que les flux sortants des produits BNB se soient calm\u00e9s, la r\u00e9putation de l'exchange a subi un choc temporaire, limitant le potentiel de hausse imm\u00e9diate.",
-          "risks": "Friction persistante li\u00e9e aux retomb\u00e9es de la faille de s\u00e9curit\u00e9; fuyante d'utilisateurs.",
+          "reason": "",
+          "risks": "",
           "price0": 717.41,
           "breakout": null,
           "trade": {
@@ -502,8 +502,8 @@
         "SOLUSDT": {
           "direction": "UP",
           "probUp": 52,
-          "reason": "SOL s'\u00e9tablit \u00e0 96,48$, rebondissant de son support \u00e0 89,8$. Bien que les ETF SOL aient subi des sorties de 71M$ fin octobre, l'activit\u00e9 de pump.fun reste extr\u00eamement forte (62M$ de revenus en octobre). Le biais reste positif suite \u00e0 la d\u00e9tente des taux d'int\u00e9r\u00eat et \u00e0 l'attrait des unlocks d'\u00e9cosyst\u00e8me.",
-          "risks": "Unlocks massifs de jetons de l'\u00e9cosyst\u00e8me en novembre; r\u00e9sistance technique \u00e0 98$.",
+          "reason": "",
+          "risks": "",
           "price0": 96.48,
           "breakout": null,
           "trade": {
@@ -517,18 +517,7 @@
           }
         }
       },
-      "queries": [
-        "\"November 5, 2026\" OR \"November 2026\" \"Fed\" OR \"FOMC\" OR \"interest rate\"",
-        "\"Bitcoin\" OR \"BTC\" price November 2026 OR \"80000\" OR \"80,389\"",
-        "\"crypto\" market news November 2026",
-        "\"ETF\" flows Bitcoin Ethereum November 2026",
-        "\"economic calendar\" \"November 5 2026\" OR \"November 6 2026\"",
-        "\"CPI\" OR \"jobs\" \"November 2026\" release date",
-        "\"Binance\" hack October 2026 OR \"$6.3 billion\" OR \"stolen\" OR \"withdrawal\"",
-        "\"Ripple\" OR \"XRP\" news November 2026 OR October 2026",
-        "\"Solana\" OR \"SOL\" news November 2026",
-        "\"funding rate\" OR \"open interest\" crypto November 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -543,7 +532,8 @@
         "promptTokenCount": 3910,
         "candidatesTokenCount": 1225,
         "totalTokenCount": 10983
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1793894400000,
@@ -5269,7 +5259,7 @@
     "1794470400000": 1,
     "1794484800000": 1
   },
-  "generatedAt": 1794485768604,
+  "generatedAt": 1794486693494,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -5337,12 +5327,12 @@
       "avgR": 0.3975,
       "totalR": 4.7705,
       "open": 5,
-      "equityMarked": 538.382112,
-      "returnPct": 7.6764
+      "equityMarked": 540.815337,
+      "returnPct": 8.1631
     }
   },
   "lastRun": {
-    "at": 1794485768604,
+    "at": 1794486693494,
     "status": "up-to-date",
     "error": null,
     "barClose": 1794484800000
@@ -5365,8 +5355,8 @@
         "reason": "La rupture r\u00e9cente de supports cl\u00e9s et l'environnement macro\u00e9conomique tr\u00e8s d\u00e9favorable (CPI fort, hausse du dollar) favorisent la poursuite de la baisse vers le bas du canal hebdomadaire.",
         "exitBy": 1794571200000,
         "lastBar": 1794470400000,
-        "markR": 0.5039,
-        "markPrice": 73037.8
+        "markR": 0.6061,
+        "markPrice": 72850.0
       },
       {
         "id": "ETHUSDT-1794384000000",
@@ -5382,8 +5372,8 @@
         "reason": "La forte pression vendeuse aliment\u00e9e par les sorties massives d'ETF et la structure technique fortement baissi\u00e8re militent pour un enfoncement du support psychologique des 2000$.",
         "exitBy": 1794571200000,
         "lastBar": 1794470400000,
-        "markR": 0.3221,
-        "markPrice": 2026.26
+        "markR": 0.3686,
+        "markPrice": 2021.91
       },
       {
         "id": "XRPUSDT-1794384000000",
@@ -5399,8 +5389,8 @@
         "reason": "La rupture des supports interm\u00e9diaires \u00e0 1,15$ sur fond de d\u00e9sengagement institutionnel et de ventes massives rend le test des 1,00$, voire des niveaux inf\u00e9rieurs, tr\u00e8s probable.",
         "exitBy": 1794571200000,
         "lastBar": 1794470400000,
-        "markR": 0.368,
-        "markPrice": 1.0373
+        "markR": 0.4067,
+        "markPrice": 1.0351
       },
       {
         "id": "SOLUSDT-1794384000000",
@@ -5416,8 +5406,8 @@
         "reason": "Le franchissement \u00e0 la baisse de supports majeurs et le flux de vente potentiel provenant des cr\u00e9ateurs de tokens accentuent le risque d'une capitulation vers la zone des 70-74$.",
         "exitBy": 1794571200000,
         "lastBar": 1794470400000,
-        "markR": 0.3566,
-        "markPrice": 82.55
+        "markR": 0.4522,
+        "markPrice": 82.18
       },
       {
         "id": "BNBUSDT-1794412800000",
@@ -5433,8 +5423,8 @@
         "reason": "Le BNB est sous pression apr\u00e8s l'IPC et les probl\u00e8mes internes de Binance (hack, d\u00e9part CFO). Le cours reste sous l'EMA50 et une trendline baissi\u00e8re.",
         "exitBy": 1794600000000,
         "lastBar": 1794470400000,
-        "markR": 1.2481,
-        "markPrice": 664.04
+        "markR": 1.4297,
+        "markPrice": 660.73
       }
     ],
     "trades": [
