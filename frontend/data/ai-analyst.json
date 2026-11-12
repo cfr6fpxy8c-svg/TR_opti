@@ -541,13 +541,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Le march\u00e9 subit une forte correction suite \u00e0 un plongeon du Nasdaq (puces et IA) qui a effac\u00e9 2200 milliards de dollars de capitalisation, amplifi\u00e9 par la hausse des taux de la BoE. Les investisseurs restent prudents avant le rapport sur l'emploi am\u00e9ricain (NFP) attendu demain.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "Plongeon de 5% sur la derni\u00e8re bougie 4H, provoqu\u00e9 par la contagion de la baisse des actions tech US (Nasdaq) et les craintes persistantes li\u00e9es au piratage de Binance (6,3 milliards $). Le support des 77k$ a c\u00e9d\u00e9. Les flux ETF spot se sont l\u00e9g\u00e8rement redress\u00e9s hier (+74M$) mais restent insuffisants face \u00e0 la pression vendeuse actuelle. Sentiment neutre \u00e0 pessimiste.",
-          "risks": "Rapport NFP demain qui pourrait accro\u00eetre la volatilit\u00e9 ; liquidation de positions longues si le prix passe sous 75k$.",
+          "reason": "",
+          "risks": "",
           "price0": 76007.4,
           "breakout": null,
           "trade": {
@@ -563,8 +563,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 30,
-          "reason": "ETH souffre particuli\u00e8rement, le piratage de Binance ayant principalement cibl\u00e9 des actifs Ethereum (3,8 milliards $ vol\u00e9s). Techniquement, la cassure brutale sous l'EMA20 et l'EMA50 invalide les tentatives de reprise. Le sentiment reste tr\u00e8s d\u00e9grad\u00e9 et les flux vers les ETF Ether peinent \u00e0 soutenir durablement le cours dans ce climat d'aversion au risque.",
-          "risks": "Nouveau d\u00e9crochage sous le support cl\u00e9 des 2200$ ; pression r\u00e9glementaire accrue suite aux r\u00e9sultats des \u00e9lections de mi-mandat.",
+          "reason": "",
+          "risks": "",
           "price0": 2251.53,
           "breakout": null,
           "trade": {
@@ -580,8 +580,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Malgr\u00e9 d'excellentes nouvelles fondamentales r\u00e9centes (approbation de l'OCC pour Ripple National Trust Bank, notation A2 de Moody's pour RLUSD), XRP a \u00e9t\u00e9 emport\u00e9 par le mouvement de panique g\u00e9n\u00e9ralis\u00e9. Le rejet sous la r\u00e9sistance des 1,32$ confirme la domination des vendeurs \u00e0 court terme malgr\u00e9 une structure globale un peu plus r\u00e9siliente que celle de ses pairs.",
-          "risks": "Poursuite de la baisse vers 1,20$ en cas de panique g\u00e9n\u00e9rale sur les altcoins ; impact du rapport sur l'emploi am\u00e9ricain demain.",
+          "reason": "",
+          "risks": "",
           "price0": 1.2453,
           "breakout": null,
           "trade": {
@@ -597,8 +597,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 30,
-          "reason": "BNB reste sous pression directe suite au hack historique de 6,3 milliards de dollars subi par l'exchange Binance. Bien que la plateforme ait promis de couvrir l'int\u00e9gralit\u00e9 des pertes et que la majorit\u00e9 des retraits ait repris, la crise de confiance et la baisse des parts de march\u00e9 spot au profit d'OKX p\u00e8sent lourdement sur le jeton qui repasse sous ses EMA.",
-          "risks": "Enqu\u00eates r\u00e9glementaires suite au hack ; nouvelles r\u00e9v\u00e9lations sur les failles de s\u00e9curit\u00e9 de Binance.",
+          "reason": "",
+          "risks": "",
           "price0": 689.56,
           "breakout": null,
           "trade": {
@@ -614,8 +614,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "Solana a chut\u00e9 de pr\u00e8s de 7% sur les derni\u00e8res 24h, glissant vers les 90$. Le sentiment sur l'actif est p\u00e9nalis\u00e9 par le siphonnage de fonds lors du hack de Binance (96 millions $ en SOL vol\u00e9s) et les mouvements suspects des hackers sur THORChain. La perte de l'EMA20 et de l'EMA50 en 4H confirme le retour de la tendance baissi\u00e8re \u00e0 court terme.",
-          "risks": "Risque de cassure du support majeur \u00e0 89$ ; pression vendeuse continue de la part des hackers d\u00e9tenant du SOL.",
+          "reason": "",
+          "risks": "",
           "price0": 90.16,
           "breakout": null,
           "trade": {
@@ -629,18 +629,7 @@
           }
         }
       },
-      "queries": [
-        "\"FOMC\" \"November 2026\" OR \"Federal Reserve\" November 2026",
-        "\"Fed\" rate decision \"November 5, 2026\" OR \"November 2026\"",
-        "economic calendar November 5 2026",
-        "crypto news November 5 2026",
-        "\"Fear & Greed Index\" crypto November 5 2026",
-        "bitcoin spot etf flows \"November 4 2026\" OR \"November 5 2026\"",
-        "crypto liquidations \"November 5 2026\"",
-        "\"Binance hack\" \"$6.3 billion\" OR \"$6.3B\" November 2026",
-        "\"November 5 2026\" bitcoin crash OR drop OR fell OR plunges",
-        "\"November 5, 2026\" crypto news"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -655,7 +644,8 @@
         "promptTokenCount": 3849,
         "candidatesTokenCount": 1239,
         "totalTokenCount": 9481
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1793908800000,
@@ -5273,18 +5263,125 @@
         "candidatesTokenCount": 1277,
         "totalTokenCount": 11740
       }
+    },
+    {
+      "barClose": 1794499200000,
+      "requestedAt": 1794500170298,
+      "analyzedAt": 1794500204863,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "L'inflation CPI am\u00e9ricaine d'octobre plus \u00e9lev\u00e9e que pr\u00e9vu (+0,4% MoM) alimente les craintes d'une hausse des taux de la Fed en d\u00e9cembre. Les rendements obligataires flambent (2Y \u00e0 4,75%) et le dollar se renforce, pesant lourdement sur les actifs risqu\u00e9s. S'y ajoutent les incertitudes sur l'IA.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Pression baissi\u00e8re intense suite aux sorties massives des ETF spot (300M$ le 11 nov), \u00e0 la vente de BTC par des mineurs (MARA) et entit\u00e9s (Rumble), ainsi qu'\u00e0 l'exclusion de MicroStrategy (MSTR) des indices MSCI qui provoque des ventes forc\u00e9es. Le sentiment est enfonc\u00e9 dans la peur (Fear \u00e0 28) avec un dollar fort.",
+          "risks": "Un rebond technique court terme d\u00fb \u00e0 des conditions de survente (RSI \u00e0 27.7) ou un apaisement sur le dollar.",
+          "price0": 71677.4,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 85,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 73963.3, on laisse courir l'opportunit\u00e9 conform\u00e9ment aux r\u00e8gles sans initier de doublon."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "ETH souffre de sorties importantes des ETF spot (145M$ le 11 nov), de capitulations de baleines \u00e0 perte et d'une baisse des frais de gaz qui affaiblit le narratif d\u00e9flationniste (EIP-1559). Bien que le staking soit au plus haut (36.3%), la liquidit\u00e9 acheteuse est extr\u00eamement mince sous les 2000$.",
+          "risks": "Soutien psychologique des 2000$ qui pourrait provoquer un rebond technique d\u00fb \u00e0 l'\u00e9tat de survente.",
+          "price0": 2008.11,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 80,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 2056.41. On maintient la position en cours pour viser la baisse sans rajouter de risque."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "XRP fr\u00f4le le support des 1,00$. Les ventes agressives dominent sur Binance (CVD n\u00e9gatif de -4.3M XRP) et la demande ETF s'essouffle. Malgr\u00e9 l'accumulation des baleines et un sentiment de d\u00e9tail excessivement baissier (ratio haussier/baissier \u00e0 0.49), la tendance reste baissi\u00e8re sous l'effet de la macro.",
+          "risks": "Rebond violent possible si le niveau psychologique majeur de 1,00$ tient, aid\u00e9 par l'accumulation des baleines.",
+          "price0": 1.0265,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 75,
+            "reason": "D\u00e9j\u00e0 en position SHORT depuis 1.0582, stop \u00e0 1.115, cible 0.95. On maintient la position actuelle."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "BNB a cass\u00e9 ses supports cl\u00e9s (662.42$) avec un volume \u00e9lev\u00e9 (3x la moyenne) dans un contexte de purge g\u00e9n\u00e9rale. La survente technique est marqu\u00e9e (RSI \u00e0 26.7), mais l'absence de catalyseur propre et la baisse globale du BTC entra\u00eenent l'actif vers de nouveaux plus bas locaux.",
+          "risks": "Rebond technique sur le support des 650$ et retour au-dessus du niveau cass\u00e9 si le march\u00e9 se stabilise.",
+          "price0": 654.61,
+          "breakout": {
+            "side": "SHORT",
+            "level": 662.42,
+            "decision": "GO",
+            "probTarget": 55,
+            "reason": "La rupture de 662.42$ s'est faite avec un volume tr\u00e8s solide (3.08) et s'aligne parfaitement avec la tendance baissi\u00e8re globale du march\u00e9 crypto et du BTC sous sa MM200 4H. C'est un signal de vente \u00e0 haute probabilit\u00e9 de continuation.",
+            "ours": "taken"
+          },
+          "trade": {
+            "action": "NONE",
+            "conviction": 80,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 686.78. Nous ne prenons pas de nouveau trade ind\u00e9pendant car une position est d\u00e9j\u00e0 active sur cet actif."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 36,
+          "reason": "Malgr\u00e9 l'annonce tr\u00e8s haussi\u00e8re de l'int\u00e9gration de Solana par la DTCC pour la tokenisation et l'atteinte de 5,13 Mds$ d'actifs r\u00e9els (RWA), SOL subit de plein fouet la fuite des capitaux \u00e0 risque li\u00e9e \u00e0 la macro. Le prix reste bloqu\u00e9 sous sa MM200 jours (~89$) et ses moyennes mobiles 4H.",
+          "risks": "Les annonces fondamentales positives (DTCC, RWA) pourraient d\u00e9clencher un rebond rapide en cas de stabilisation du BTC.",
+          "price0": 81.65,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 80,
+            "reason": "Position SHORT d\u00e9j\u00e0 active \u00e0 83.93. On laisse le trade se d\u00e9velopper sans ajouter d'exposition."
+          }
+        }
+      },
+      "queries": [
+        "US CPI November 2026",
+        "Fed interest rate November 2026",
+        "crypto news November 12 2026",
+        "bitcoin price news November 12 2026",
+        "\"Solana\" price news November 12 2026",
+        "\"Ethereum\" price news November 12 2026",
+        "crypto fear and greed index November 12 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4260,
+        "candidatesTokenCount": 1321,
+        "totalTokenCount": 11933
+      }
     }
   ],
   "attempts": {
     "1794484800000": 1,
-    "1794499200000": 1
+    "1794499200000": 2
   },
-  "generatedAt": 1794499303046,
+  "generatedAt": 1794500170298,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 40,
-    "totalTokens": 448595,
+    "analyses": 41,
+    "totalTokens": 460528,
     "direction": {
       "scored": 175,
       "called": 126,
@@ -5296,7 +5393,7 @@
     },
     "breakouts": {
       "taken_GO": {
-        "count": 3,
+        "count": 4,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -5326,7 +5423,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 8,
+        "count": 9,
         "closed": 1,
         "wins": 0,
         "avgR": -1.0638,
@@ -5347,14 +5444,14 @@
       "avgR": 0.3975,
       "totalR": 4.7705,
       "open": 5,
-      "equityMarked": 549.041479,
-      "returnPct": 9.8083
+      "equityMarked": 545.505814,
+      "returnPct": 9.1012
     }
   },
   "lastRun": {
-    "at": 1794499303046,
-    "status": "error",
-    "error": "unparseable JSON: Expecting ',' delimiter",
+    "at": 1794500170298,
+    "status": "ok",
+    "error": null,
     "barClose": 1794499200000
   },
   "portfolio": {
@@ -5375,8 +5472,8 @@
         "reason": "La rupture r\u00e9cente de supports cl\u00e9s et l'environnement macro\u00e9conomique tr\u00e8s d\u00e9favorable (CPI fort, hausse du dollar) favorisent la poursuite de la baisse vers le bas du canal hebdomadaire.",
         "exitBy": 1794571200000,
         "lastBar": 1794484800000,
-        "markR": 1.2944,
-        "markPrice": 71585.9
+        "markR": 1.0989,
+        "markPrice": 71945.0
       },
       {
         "id": "ETHUSDT-1794384000000",
@@ -5392,8 +5489,8 @@
         "reason": "La forte pression vendeuse aliment\u00e9e par les sorties massives d'ETF et la structure technique fortement baissi\u00e8re militent pour un enfoncement du support psychologique des 2000$.",
         "exitBy": 1794571200000,
         "lastBar": 1794484800000,
-        "markR": 0.5425,
-        "markPrice": 2005.64
+        "markR": 0.4709,
+        "markPrice": 2012.34
       },
       {
         "id": "XRPUSDT-1794384000000",
@@ -5409,8 +5506,8 @@
         "reason": "La rupture des supports interm\u00e9diaires \u00e0 1,15$ sur fond de d\u00e9sengagement institutionnel et de ventes massives rend le test des 1,00$, voire des niveaux inf\u00e9rieurs, tr\u00e8s probable.",
         "exitBy": 1794571200000,
         "lastBar": 1794484800000,
-        "markR": 0.5845,
-        "markPrice": 1.025
+        "markR": 0.4982,
+        "markPrice": 1.0299
       },
       {
         "id": "SOLUSDT-1794384000000",
@@ -5426,8 +5523,8 @@
         "reason": "Le franchissement \u00e0 la baisse de supports majeurs et le flux de vente potentiel provenant des cr\u00e9ateurs de tokens accentuent le risque d'une capitulation vers la zone des 70-74$.",
         "exitBy": 1794571200000,
         "lastBar": 1794484800000,
-        "markR": 0.6305,
-        "markPrice": 81.49
+        "markR": 0.5349,
+        "markPrice": 81.86
       },
       {
         "id": "BNBUSDT-1794412800000",
@@ -5443,8 +5540,8 @@
         "reason": "Le BNB est sous pression apr\u00e8s l'IPC et les probl\u00e8mes internes de Binance (hack, d\u00e9part CFO). Le cours reste sous l'EMA50 et une trendline baissi\u00e8re.",
         "exitBy": 1794600000000,
         "lastBar": 1794484800000,
-        "markR": 1.7821,
-        "markPrice": 654.31
+        "markR": 1.556,
+        "markPrice": 658.43
       }
     ],
     "trades": [
