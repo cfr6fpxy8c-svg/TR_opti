@@ -5851,7 +5851,11 @@
             "reason": "Position de vente \u00e0 d\u00e9couvert (SHORT) d\u00e9j\u00e0 active dans le portefeuille papier \u00e0 $73699.6."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -6.562,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -5865,7 +5869,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 active sur l'ETH \u00e0 $2057.99."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.871,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -5879,7 +5887,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur le XRP \u00e0 $1.0563."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.019,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -5893,7 +5905,11 @@
             "reason": "Pas de trade initi\u00e9 car le cours est trop proche du support horizontal majeur \u00e0 $670 (bas de 10j \u00e0 670.23), limitant le ratio rendement/risque pour une vente."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -6.636,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -5907,7 +5923,11 @@
             "reason": "Position LONG d\u00e9j\u00e0 ouverte sur le SOL \u00e0 $82.78."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.881,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -6986,29 +7006,13 @@
   ],
   "attempts": {
     "1794528000000": 1,
-    "1794538800000": 1
+    "1794538800000": 1,
+    "1794542400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 523.159553,
+    "equity": 538.22767,
     "positions": [
-      {
-        "id": "ETHUSDT-1794384000000",
-        "symbol": "ETHUSDT",
-        "side": "SHORT",
-        "entryTime": 1794387600000,
-        "entryPrice": 2057.99,
-        "stop": 2143.0,
-        "target": 1920.7,
-        "risk": 85.01000000000022,
-        "stake": 5.210253,
-        "conviction": 60,
-        "reason": "Structure technique tr\u00e8s baissi\u00e8re sous l'EMA50 et l'EMA20, aliment\u00e9e par des ventes institutionnelles (Fondation Ethereum) et des sorties records des ETF spot, malgr\u00e9 une certaine r\u00e9silience des stakers.",
-        "exitBy": 1794560400000,
-        "lastBar": 1794535200000,
-        "markR": 1.2495,
-        "markPrice": 1951.77
-      },
       {
         "id": "XRPUSDT-1794384000000",
         "symbol": "XRPUSDT",
@@ -7022,26 +7026,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794535200000,
-        "markR": 0.9531,
-        "markPrice": 1.0075
-      },
-      {
-        "id": "BNBUSDT-1794484800000",
-        "symbol": "BNBUSDT",
-        "side": "SHORT",
-        "entryTime": 1794488400000,
-        "entryPrice": 659.84,
-        "stop": 678.0,
-        "target": 635.0,
-        "risk": 18.159999999999968,
-        "stake": 5.210253,
-        "conviction": 65,
-        "reason": "Exploitation du breakout baissier 4H/1H. Stop positionn\u00e9 au-dessus de la r\u00e9sistance des 675$ et objectif fix\u00e9 juste au-dessus du support macro cl\u00e9.",
-        "exitBy": 1794661200000,
-        "lastBar": 1794535200000,
-        "markR": 1.2572,
-        "markPrice": 637.01
+        "lastBar": 1794538800000,
+        "markR": 1.0273,
+        "markPrice": 1.0037
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -7056,9 +7043,9 @@
         "conviction": 65,
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
-        "lastBar": 1794535200000,
-        "markR": 0.4967,
-        "markPrice": 78.92
+        "lastBar": 1794538800000,
+        "markR": 0.6313,
+        "markPrice": 78.31
       }
     ],
     "trades": [
@@ -7277,23 +7264,59 @@
         "rNet": 1.4693,
         "pnl": 7.655563,
         "equityAfter": 523.159553
+      },
+      {
+        "id": "ETHUSDT-1794384000000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794387600000,
+        "entryPrice": 2057.99,
+        "stop": 2143.0,
+        "target": 1920.7,
+        "stake": 5.210253,
+        "conviction": 60,
+        "reason": "Structure technique tr\u00e8s baissi\u00e8re sous l'EMA50 et l'EMA20, aliment\u00e9e par des ventes institutionnelles (Fondation Ethereum) et des sorties records des ETF spot, malgr\u00e9 une certaine r\u00e9silience des stakers.",
+        "exitTime": 1794542400000,
+        "exitPrice": 1920.7,
+        "exitReason": "TARGET",
+        "rNet": 1.5787,
+        "pnl": 8.225287,
+        "equityAfter": 531.38484
+      },
+      {
+        "id": "BNBUSDT-1794484800000",
+        "symbol": "BNBUSDT",
+        "side": "SHORT",
+        "entryTime": 1794488400000,
+        "entryPrice": 659.84,
+        "stop": 678.0,
+        "target": 635.0,
+        "stake": 5.210253,
+        "conviction": 65,
+        "reason": "Exploitation du breakout baissier 4H/1H. Stop positionn\u00e9 au-dessus de la r\u00e9sistance des 675$ et objectif fix\u00e9 juste au-dessus du support macro cl\u00e9.",
+        "exitTime": 1794542400000,
+        "exitPrice": 635.0,
+        "exitReason": "TARGET",
+        "rNet": 1.3133,
+        "pnl": 6.84283,
+        "equityAfter": 538.22767
       }
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794541579246,
+  "generatedAt": 1794542564082,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 48,
     "totalTokens": 575944,
     "direction": {
-      "scored": 195,
-      "called": 130,
+      "scored": 200,
+      "called": 135,
       "neutral": 65,
-      "hits": 89,
-      "hitRate": 0.6846,
-      "brier": 0.2289,
+      "hits": 94,
+      "hitRate": 0.6963,
+      "brier": 0.2276,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -7343,20 +7366,20 @@
       }
     },
     "portfolio": {
-      "trades": 12,
-      "wins": 7,
-      "winRate": 0.5833,
-      "avgR": 0.3968,
-      "totalR": 4.7615,
-      "open": 4,
-      "equityMarked": 543.746495,
-      "returnPct": 8.7493
+      "trades": 14,
+      "wins": 9,
+      "winRate": 0.6429,
+      "avgR": 0.5467,
+      "totalR": 7.6535,
+      "open": 2,
+      "equityMarked": 546.83454,
+      "returnPct": 9.3669
     }
   },
   "lastRun": {
-    "at": 1794541579246,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1794538800000
+    "at": 1794542564082,
+    "status": "error",
+    "error": "answer has no assets object",
+    "barClose": 1794542400000
   }
 }

@@ -4956,6 +4956,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant."
+          },
+          "outcome": {
+            "retPct": -6.562,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -4969,6 +4973,10 @@
             "action": "NONE",
             "conviction": 75,
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant."
+          },
+          "outcome": {
+            "retPct": -5.871,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -4982,6 +4990,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant."
+          },
+          "outcome": {
+            "retPct": -4.019,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -4995,6 +5007,10 @@
             "action": "NONE",
             "conviction": 65,
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant."
+          },
+          "outcome": {
+            "retPct": -6.636,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -5008,6 +5024,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant."
+          },
+          "outcome": {
+            "retPct": -5.881,
+            "hit": true
           }
         }
       },
@@ -5544,25 +5564,128 @@
         "candidatesTokenCount": 1308,
         "totalTokenCount": 12002
       }
+    },
+    {
+      "barClose": 1794542400000,
+      "requestedAt": 1794542496012,
+      "analyzedAt": 1794542550183,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le march\u00e9 subit une forte correction : l'inflation US (CPI +0,4% en octobre) et le rapport robuste de l'emploi cimentent une hausse des taux de la Fed en d\u00e9cembre. Les rendements obligataires et le dollar grimpent, tandis que les actions tech et le BTC plongent, d\u00e9clenchant des liquidations massives",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "La chute sous 70k$ a provoqu\u00e9 une cascade de liquidations massives de positions longues (plus de 600M$ au total). Les sorties massives des ETF spot (1,28 Md$ de sorties nettes la semaine pass\u00e9e) et la baisse acc\u00e9l\u00e9r\u00e9e de la masse globale des stablecoins t\u00e9moignent d'une fuite persistante des capitaux, maintenant la pression baissi\u00e8re.",
+          "risks": "Un RSI 4H extr\u00eamement survendu \u00e0 18,2 sugg\u00e8re un \u00e9puisement temporaire des vendeurs, ouvrant la voie \u00e0 un possible rebond technique d'ici l'IPP US.",
+          "price0": 68930.4,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "RSI 4H extr\u00eamement bas (18,2) apr\u00e8s une capitulation massive. Initier un short ici est trop tardif (chasse au creux), et un long est trop risqu\u00e9 face \u00e0 cette dynamique macro baissi\u00e8re."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "ETH subit de plein fouet l'aversion au risque g\u00e9n\u00e9ralis\u00e9e, exacerb\u00e9e par des sorties continues sur les ETF spot et une contraction de la liquidit\u00e9 DeFi. La perte du niveau psychologique des 2000$ a forc\u00e9 l'\u00e9vacuation de plus de 100M$ de leviers haussiers, ancrant le cours bien sous son EMA200.",
+          "risks": "Un fort rebond technique si la r\u00e9sistance de l'IPP US s'att\u00e9nue, ou un squeeze vers 2000$ provoqu\u00e9 par le niveau \u00e9lev\u00e9 de survente (RSI \u00e0 23.0).",
+          "price0": 1933.69,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur ETH (entr\u00e9e \u00e0 2056,41$, stop \u00e0 2150$, cible \u00e0 1910$). Aucune nouvelle position ne sera ouverte tant qu'elle est en cours."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "XRP glisse vers le niveau de 1,00$. Bien que plus r\u00e9silient \u00e0 court terme, l'absence de catalyseur haussier propre et l'environnement macro tendu (rendements US \u00e9lev\u00e9s, dollar fort) favorisent la capitulation des investisseurs particuliers sur les produits d\u00e9riv\u00e9s.",
+          "risks": "D\u00e9fense active du seuil psychologique majeur \u00e0 1,00$, et retour possible de la sp\u00e9culation positive.",
+          "price0": 1.0055,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte (entr\u00e9e \u00e0 1,0582$, stop \u00e0 1,115$, cible \u00e0 0,95$). Pas d'autre trade autoris\u00e9 pour cet actif."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 41,
+          "reason": "BNB casse brutalement ses supports \u00e0 650$ sur un volume \u00e9lev\u00e9 (3,15x la moyenne), p\u00e9nalis\u00e9 par l'atonie du march\u00e9 et le manque de nouveaux lancements g\u00e9n\u00e9rateurs de rendement (Launchpool). La structure technique reste d\u00e9grad\u00e9e sous l'EMA20 avec des flux d'achat spot atones.",
+          "risks": "Rebond technique court-circuitant la baisse en raison d'un RSI 4H tr\u00e8s bas \u00e0 21,0.",
+          "price0": 633.79,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Survente extr\u00eame (RSI 4H \u00e0 21,0) apr\u00e8s une baisse de 6,6% en 24h. Le ratio risque/rendement pour un nouveau short est m\u00e9diocre \u00e0 ces niveaux, et contrer la tendance est pr\u00e9matur\u00e9."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "SOL faiblit nettement et casse son support \u00e0 80$ pour tester ses plus bas trimestriels. L'activit\u00e9 sur les DEX de Solana ralentit avec la fuite des capitaux vers les Treasuries US, ass\u00e9chant la liquidit\u00e9 sp\u00e9culative. Les moyennes mobiles 4H sont fermement orient\u00e9es \u00e0 la baisse.",
+          "risks": "Une r\u00e9action impulsive sur le support majeur proche de 77-78$ et des achats de couverture d'options.",
+          "price0": 78.42,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse existante (entr\u00e9e \u00e0 83,93$, stop \u00e0 87,8$, cible \u00e0 74,5$). Nous laissons la position courir vers sa cible sans ajouter de risque."
+          }
+        }
+      },
+      "queries": [
+        "\"68930.4\" BTC",
+        "\"1933.69\" ETH",
+        "\"1.0055\" XRP",
+        "\"78.42\" SOL",
+        "\"BTC\" \"68930\" OR \"68930.4\" OR \"1933.69\" OR \"78.42\"",
+        "\"68930.4\" \"1933.69\"",
+        "\"633.79\" BNB",
+        "\"1.0055\" XRP \"78.42\"",
+        "\"81188\" BTC",
+        "\"81,188\" bitcoin"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4080,
+        "candidatesTokenCount": 1463,
+        "totalTokenCount": 13641
+      }
     }
   ],
   "attempts": {
-    "1794513600000": 1,
-    "1794528000000": 1
+    "1794528000000": 1,
+    "1794542400000": 1
   },
-  "generatedAt": 1794541566330,
+  "generatedAt": 1794542496012,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 43,
-    "totalTokens": 482722,
+    "analyses": 44,
+    "totalTokens": 496363,
     "direction": {
-      "scored": 185,
-      "called": 135,
+      "scored": 190,
+      "called": 140,
       "neutral": 50,
-      "hits": 90,
-      "hitRate": 0.6667,
-      "brier": 0.2301,
+      "hits": 95,
+      "hitRate": 0.6786,
+      "brier": 0.2272,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5612,43 +5735,26 @@
       }
     },
     "portfolio": {
-      "trades": 12,
-      "wins": 9,
-      "winRate": 0.75,
-      "avgR": 0.3975,
-      "totalR": 4.7705,
-      "open": 5,
-      "equityMarked": 568.739285,
-      "returnPct": 13.7479
+      "trades": 14,
+      "wins": 11,
+      "winRate": 0.7857,
+      "avgR": 0.6309,
+      "totalR": 8.8322,
+      "open": 3,
+      "equityMarked": 564.715769,
+      "returnPct": 12.9432
     }
   },
   "lastRun": {
-    "at": 1794541566330,
-    "status": "up-to-date",
+    "at": 1794542496012,
+    "status": "ok",
     "error": null,
-    "barClose": 1794528000000
+    "barClose": 1794542400000
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 523.724632,
+    "equity": 544.997014,
     "positions": [
-      {
-        "id": "BTCUSDT-1794384000000",
-        "symbol": "BTCUSDT",
-        "side": "SHORT",
-        "entryTime": 1794398400000,
-        "entryPrice": 73963.3,
-        "stop": 75800.0,
-        "target": 70500.0,
-        "risk": 1836.699999999997,
-        "stake": 5.237246,
-        "conviction": 65,
-        "reason": "La rupture r\u00e9cente de supports cl\u00e9s et l'environnement macro\u00e9conomique tr\u00e8s d\u00e9favorable (CPI fort, hausse du dollar) favorisent la poursuite de la baisse vers le bas du canal hebdomadaire.",
-        "exitBy": 1794571200000,
-        "lastBar": 1794513600000,
-        "markR": 2.6218,
-        "markPrice": 69147.8
-      },
       {
         "id": "ETHUSDT-1794384000000",
         "symbol": "ETHUSDT",
@@ -5662,9 +5768,9 @@
         "conviction": 70,
         "reason": "La forte pression vendeuse aliment\u00e9e par les sorties massives d'ETF et la structure technique fortement baissi\u00e8re militent pour un enfoncement du support psychologique des 2000$.",
         "exitBy": 1794571200000,
-        "lastBar": 1794513600000,
-        "markR": 1.1007,
-        "markPrice": 1953.4
+        "lastBar": 1794528000000,
+        "markR": 1.3498,
+        "markPrice": 1930.08
       },
       {
         "id": "XRPUSDT-1794384000000",
@@ -5679,9 +5785,9 @@
         "conviction": 65,
         "reason": "La rupture des supports interm\u00e9diaires \u00e0 1,15$ sur fond de d\u00e9sengagement institutionnel et de ventes massives rend le test des 1,00$, voire des niveaux inf\u00e9rieurs, tr\u00e8s probable.",
         "exitBy": 1794571200000,
-        "lastBar": 1794513600000,
-        "markR": 0.8873,
-        "markPrice": 1.0078
+        "lastBar": 1794528000000,
+        "markR": 0.9683,
+        "markPrice": 1.0032
       },
       {
         "id": "SOLUSDT-1794384000000",
@@ -5696,26 +5802,9 @@
         "conviction": 68,
         "reason": "Le franchissement \u00e0 la baisse de supports majeurs et le flux de vente potentiel provenant des cr\u00e9ateurs de tokens accentuent le risque d'une capitulation vers la zone des 70-74$.",
         "exitBy": 1794571200000,
-        "lastBar": 1794513600000,
-        "markR": 1.2817,
-        "markPrice": 78.97
-      },
-      {
-        "id": "BNBUSDT-1794412800000",
-        "symbol": "BNBUSDT",
-        "side": "SHORT",
-        "entryTime": 1794427200000,
-        "entryPrice": 686.78,
-        "stop": 705.0,
-        "target": 645.0,
-        "risk": 18.220000000000027,
-        "stake": 5.237246,
-        "conviction": 65,
-        "reason": "Le BNB est sous pression apr\u00e8s l'IPC et les probl\u00e8mes internes de Binance (hack, d\u00e9part CFO). Le cours reste sous l'EMA50 et une trendline baissi\u00e8re.",
-        "exitBy": 1794600000000,
-        "lastBar": 1794513600000,
-        "markR": 2.7036,
-        "markPrice": 637.52
+        "lastBar": 1794528000000,
+        "markR": 1.447,
+        "markPrice": 78.33
       }
     ],
     "trades": [
@@ -5934,6 +6023,42 @@
         "rNet": 1.112,
         "pnl": 5.707775,
         "equityAfter": 523.724632
+      },
+      {
+        "id": "BTCUSDT-1794384000000",
+        "symbol": "BTCUSDT",
+        "side": "SHORT",
+        "entryTime": 1794398400000,
+        "entryPrice": 73963.3,
+        "stop": 75800.0,
+        "target": 70500.0,
+        "stake": 5.237246,
+        "conviction": 65,
+        "reason": "La rupture r\u00e9cente de supports cl\u00e9s et l'environnement macro\u00e9conomique tr\u00e8s d\u00e9favorable (CPI fort, hausse du dollar) favorisent la poursuite de la baisse vers le bas du canal hebdomadaire.",
+        "exitTime": 1794542400000,
+        "exitPrice": 70500.0,
+        "exitReason": "TARGET",
+        "rNet": 1.8252,
+        "pnl": 9.559051,
+        "equityAfter": 533.283683
+      },
+      {
+        "id": "BNBUSDT-1794412800000",
+        "symbol": "BNBUSDT",
+        "side": "SHORT",
+        "entryTime": 1794427200000,
+        "entryPrice": 686.78,
+        "stop": 705.0,
+        "target": 645.0,
+        "stake": 5.237246,
+        "conviction": 65,
+        "reason": "Le BNB est sous pression apr\u00e8s l'IPC et les probl\u00e8mes internes de Binance (hack, d\u00e9part CFO). Le cours reste sous l'EMA50 et une trendline baissi\u00e8re.",
+        "exitTime": 1794542400000,
+        "exitPrice": 645.0,
+        "exitReason": "TARGET",
+        "rNet": 2.2365,
+        "pnl": 11.713331,
+        "equityAfter": 544.997014
       }
     ],
     "entryAfterAnalysisSince": 1794345059480
