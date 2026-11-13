@@ -5367,6 +5367,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et tr\u00e8s profitable, aucune nouvelle action requise selon les r\u00e8gles de gestion."
+          },
+          "outcome": {
+            "retPct": -3.668,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -5380,6 +5384,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et en cours d'ex\u00e9cution."
+          },
+          "outcome": {
+            "retPct": -3.161,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -5393,6 +5401,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et active."
+          },
+          "outcome": {
+            "retPct": -0.513,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -5406,6 +5418,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et active."
+          },
+          "outcome": {
+            "retPct": -2.587,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -5419,6 +5435,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et active."
+          },
+          "outcome": {
+            "retPct": -1.642,
+            "hit": true
           }
         }
       },
@@ -6043,25 +6063,126 @@
         "candidatesTokenCount": 1614,
         "totalTokenCount": 10718
       }
+    },
+    {
+      "barClose": 1794600000000,
+      "requestedAt": 1794600099970,
+      "analyzedAt": 1794600128345,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "L'inflation US chaude (CPI 0,4% m/m, PPI) et les discours hawkish (Logan, Waller) poussent les rendements \u00e0 10 ans \u00e0 5,13% et le DXY > 103. Le d\u00e9part surprise du CEO de Nvidia provoque un sell-off tech massif. Le march\u00e9 crypto capitule avec 1,3+ Md$ de liquidations et un Fear & Greed \u00e0 20.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "BTC a capitul\u00e9 sous 70k$ (bas \u00e0 67,4k$) sur fond de ventes de MARA Holdings (1,1 Md$), de retraits massifs d'ETF et de l'exclusion de MSTR des indices MSCI. Bien que l'extr\u00eame survente (RSI 25,5) et le Fear & Greed \u00e0 20 (peur extr\u00eame) sugg\u00e8rent un \u00e9puisement des vendeurs pr\u00e8s du support cl\u00e9 des 67-68k$, la tendance reste lourde.",
+          "risks": "Rebond technique court-circuitant les shorts ; nouvelle baisse vers 64k$ si les taux US continuent de monter.",
+          "price0": 69034.5,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le march\u00e9 est extr\u00eamement volatil apr\u00e8s un flush de liquidations massif. Le ratio risque/r\u00e9compense est m\u00e9diocre pour initier un short sur ces niveaux de survente extr\u00eame, et un long est pr\u00e9matur\u00e9."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 44,
+          "reason": "ETH a enfonc\u00e9 le seuil des 2000$ pour atteindre un bas de 3 mois sous l'effet d'une cascade de liquidations de positions longues (225 M$). Les sorties continues des ETF ETH (144 M$) et la d\u00e9route du secteur technologique accentuent la pression. Les prix tentent de se stabiliser autour du support des 1900-1920$.",
+          "risks": "Rupture des 1900$ ouvrant la voie vers 1830$ ; sursaut technique de survente vers 2000$.",
+          "price0": 1953.09,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Tendance fortement baissi\u00e8re sous la EMA20/50. Malgr\u00e9 la zone de support \u00e0 1900-1920$, l'absence de signal de retournement clair nous incite \u00e0 rester \u00e0 l'\u00e9cart pour le moment."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "XRP a bri\u00e8vement gliss\u00e9 sous 1$ avant d'\u00eatre vigoureusement rachet\u00e9 vers 1,02$. Les baleines accumulent activement (Santiment indique un pic de portefeuilles >10k XRP), ce qui contraste avec les sorties d'ETF (18 M$). Le niveau de 0,99$ (bas d'ao\u00fbt) sert de support majeur o\u00f9 l'int\u00e9r\u00eat acheteur s'est manifest\u00e9.",
+          "risks": "Cl\u00f4ture sous 0,99$ invalidant la structure et risquant 0,80$ ; contagion si BTC reprend sa chute.",
+          "price0": 1.0276,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que XRP montre une relative r\u00e9silience et que les baleines accumulent, la tendance macro\u00e9conomique globale reste trop hostile pour ouvrir un long sp\u00e9culatif sans stabilisation pr\u00e9alable."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 42,
+          "reason": "BNB reste plomb\u00e9 par les incertitudes post-hack de Binance (le DOJ r\u00e9clame 1,2 Md$ de saisie). Le token a bris\u00e9 le support de 650$ pour s'\u00e9changer sous sa EMA 200 jours (658$). Les liquidations longues et la baisse globale du march\u00e9 p\u00e8sent, bien que Binance pr\u00e9pare une preuve de r\u00e9serves pour restaurer la confiance.",
+          "risks": "Poursuite de la baisse vers le support majeur de 580$ ; rebond si la preuve de r\u00e9serves rassure le march\u00e9.",
+          "price0": 639.01,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La structure technique de BNB s'est d\u00e9grad\u00e9e sous sa moyenne mobile de long terme, et les risques r\u00e9glementaires/juridiques li\u00e9s aux retomb\u00e9es du hack rendent tout achat pr\u00e9matur\u00e9."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "SOL subit un death cross quotidien et des sorties continues d'ETF, ramenant le cours vers le support cl\u00e9 de 77-80$. L'int\u00e9r\u00eat ouvert sur les contrats \u00e0 terme a fortement chut\u00e9 (de 7,6 \u00e0 4,8 Mds$), signalant une capitulation des acheteurs. Cette zone de prix a historiquement d\u00e9clench\u00e9 des rebonds majeurs.",
+          "risks": "Enfoncement de 77$ menant \u00e0 une capitulation vers 70$-63$ ; rebond de squeeze en cas de retour au-dessus de 83$.",
+          "price0": 80.26,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "Une position longue est d\u00e9j\u00e0 ouverte \u00e0 80,0$ (stop \u00e0 77,5$, objectif \u00e0 85,5$). Conform\u00e9ment aux r\u00e8gles, aucune nouvelle position n'est initi\u00e9e tant que celle-ci est en cours."
+          }
+        }
+      },
+      "queries": [
+        "crypto market news November 12 2026",
+        "crypto market news November 13 2026",
+        "bitcoin price news November 13 2026",
+        "fomc fed news November 2026",
+        "\"BNB\" price news November 13 2026",
+        "\"Solana\" price news November 13 2026",
+        "\"XRP\" price news November 13 2026",
+        "crypto fear and greed index November 13 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3964,
+        "candidatesTokenCount": 1383,
+        "totalTokenCount": 11212
+      }
     }
   ],
   "attempts": {
-    "1794571200000": 1,
-    "1794585600000": 1
+    "1794585600000": 1,
+    "1794600000000": 1
   },
-  "generatedAt": 1794599173443,
+  "generatedAt": 1794600099970,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 47,
-    "totalTokens": 529289,
+    "analyses": 48,
+    "totalTokens": 540501,
     "direction": {
-      "scored": 205,
-      "called": 155,
+      "scored": 210,
+      "called": 160,
       "neutral": 50,
-      "hits": 110,
-      "hitRate": 0.7097,
-      "brier": 0.2203,
+      "hits": 115,
+      "hitRate": 0.7188,
+      "brier": 0.2181,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -6117,15 +6238,15 @@
       "avgR": 0.6925,
       "totalR": 11.7721,
       "open": 1,
-      "equityMarked": 560.304077,
-      "returnPct": 12.0608
+      "equityMarked": 560.819639,
+      "returnPct": 12.1639
     }
   },
   "lastRun": {
-    "at": 1794599173443,
-    "status": "up-to-date",
+    "at": 1794600099970,
+    "status": "ok",
     "error": null,
-    "barClose": 1794585600000
+    "barClose": 1794600000000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -6144,9 +6265,9 @@
         "conviction": 65,
         "reason": "Achat contrarien sur un niveau de support majeur de 80$ renforc\u00e9 par la conf\u00e9rence Breakpoint \u00e0 venir ce week-end et de l\u00e9g\u00e8res entr\u00e9es d'ETF.",
         "exitBy": 1794758400000,
-        "lastBar": 1794585599999,
-        "markR": -0.016,
-        "markPrice": 79.96
+        "lastBar": 1794585600000,
+        "markR": 0.076,
+        "markPrice": 80.19
       }
     ],
     "trades": [

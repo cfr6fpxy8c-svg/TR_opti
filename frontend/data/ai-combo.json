@@ -6511,7 +6511,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et actuellement en profit. L'environnement macro\u00e9conomique valide la th\u00e8se baissi\u00e8re mais interdit toute nouvelle entr\u00e9e selon les r\u00e8gles du portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.668,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -6525,7 +6529,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 active et en profit, pas de nouvelle entr\u00e9e autoris\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.161,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -6539,7 +6547,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte et en profit, pas d'autre transaction."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.513,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -6553,7 +6565,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 en cours sur BNB, pas de trade suppl\u00e9mentaire."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.587,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -6567,7 +6583,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur SOL, interdisant toute nouvelle entr\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.642,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -7237,7 +7257,8 @@
     }
   ],
   "attempts": {
-    "1794585600000": 1
+    "1794585600000": 1,
+    "1794600000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -7256,9 +7277,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794592800000,
-        "markR": 0.5801,
-        "markPrice": 1.0266
+        "lastBar": 1794596400000,
+        "markR": 0.5762,
+        "markPrice": 1.0268
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -7273,9 +7294,9 @@
         "conviction": 65,
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
-        "lastBar": 1794592800000,
-        "markR": 0.2671,
-        "markPrice": 79.96
+        "lastBar": 1794596400000,
+        "markR": 0.2075,
+        "markPrice": 80.23
       }
     ],
     "trades": [
@@ -7534,19 +7555,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794599186523,
+  "generatedAt": 1794600141141,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 51,
     "totalTokens": 611906,
     "direction": {
-      "scored": 225,
-      "called": 160,
+      "scored": 230,
+      "called": 165,
       "neutral": 65,
-      "hits": 119,
-      "hitRate": 0.7438,
-      "brier": 0.2175,
+      "hits": 124,
+      "hitRate": 0.7515,
+      "brier": 0.2155,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -7602,14 +7623,14 @@
       "avgR": 0.5467,
       "totalR": 7.6535,
       "open": 2,
-      "equityMarked": 542.627049,
-      "returnPct": 8.5254
+      "equityMarked": 542.299489,
+      "returnPct": 8.4599
     }
   },
   "lastRun": {
-    "at": 1794599186523,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794596400000
+    "at": 1794600141141,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794600000000
   }
 }
