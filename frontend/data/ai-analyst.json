@@ -1007,13 +1007,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Balayage d\u00e9mocrate aux midterms US qui ravive les craintes r\u00e9glementaires sur la tech/IA (Nasdaq -5,5% le 5 nov). Le BTC plonge sous les 76k$ entra\u00eenant plus d'1 md$ de liquidations forc\u00e9es. Le march\u00e9 attend aujourd'hui (13h30 UTC) le rapport sur l'emploi US (NFP attendu \u00e0 +65k).",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Le BTC a effac\u00e9 ses gains post-\u00e9lection, chutant de 6% suite \u00e0 la d\u00e9route du Nasdaq face aux craintes sur l'IA et la r\u00e9glementation d\u00e9mocrate. Plus de 250M$ de positions longues sur le BTC ont \u00e9t\u00e9 liquid\u00e9es (sur 1,03Md$ au total). Les ETF spot BTC ont enregistr\u00e9 d'importantes sorties nettes de 430,2M$ le 5 novembre. La tendance reste fortement baissi\u00e8re \u00e0 court terme sous la moyenne mobile 200 (4h",
-          "risks": "Le rapport NFP de cet apr\u00e8s-midi ou un rebond technique de la tech US pourraient provoquer un squeeze massif des shorts.",
+          "reason": "",
+          "risks": "",
           "price0": 75572.8,
           "breakout": null,
           "trade": {
@@ -1029,8 +1029,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "ETH subit une pression de vente intense (-7,8% en 24h), p\u00e9nalis\u00e9 par des sorties nettes massives de ses ETF spot (100M$ le 5 novembre) et de lourdes liquidations de positions longues (164M$). Techniquement, la cassure des supports cl\u00e9s sous 2300$ renforce la dynamique baissi\u00e8re, avec pour prochain objectif le support des 2160$ (MM200j) si le sentiment de risque ne s'am\u00e9liore pas.",
-          "risks": "Squeeze technique si le rapport NFP US s'av\u00e8re tr\u00e8s favorable \u00e0 une baisse des taux de la Fed.",
+          "reason": "",
+          "risks": "",
           "price0": 2227.61,
           "breakout": null,
           "trade": {
@@ -1051,8 +1051,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "XRP c\u00e8de sous les 1,20$ face au d\u00e9sint\u00e9r\u00eat persistant (flux ETF nuls) et \u00e0 l'effet de contagion du march\u00e9 (-9,8% en 24h). N\u00e9anmoins, d'immenses retraits de Binance (418M de tokens le 5 nov) ont propuls\u00e9 l'indice de raret\u00e9 \u00e0 un sommet de 4 ans, r\u00e9v\u00e9lant une accumulation agressive des baleines. Cela limite le potentiel de baisse \u00e0 long terme mais n'emp\u00eache pas la purge court terme.",
-          "risks": "Un retour rapide de la liquidit\u00e9 globale ou des annonces r\u00e9glementaires positives sur le XRP provoqueraient un rebond violent.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1855,
           "breakout": {
             "side": "SHORT",
@@ -1080,8 +1080,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 46,
-          "reason": "BNB fait preuve d'une r\u00e9silience remarquable face \u00e0 la temp\u00eate (-3,1% en 24h), soutenue par la solidit\u00e9 intrins\u00e8que de son \u00e9cosyst\u00e8me d'utilit\u00e9 et de launchpools. Bien que la tendance court terme soit baissi\u00e8re sous ses EMA20/50, la baisse s'est ralentie au-dessus du support psychologique cl\u00e9 des 680$. Le manque de momentum directionnel propre incite \u00e0 la prudence.",
-          "risks": "Contagion si le BTC casse les 75k$ ou si les liquidations reprennent de plus belle sur l'ensemble du march\u00e9.",
+          "reason": "",
+          "risks": "",
           "price0": 690.75,
           "breakout": null,
           "trade": {
@@ -1097,8 +1097,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "SOL est emport\u00e9e par la d\u00e9route des valeurs technologiques et de l'IA, chutant de 6,5% pour tester le bas de son canal \u00e0 88,2$. Les ETF Solana ont \u00e9galement enregistr\u00e9 leurs premi\u00e8res sorties nettes du mois le 5 novembre. La structure technique reste d\u00e9grad\u00e9e sous l'EMA 20 (92,7$), l'absence de rebond sur les supports cl\u00e9s favorisant la continuation de la baisse.",
-          "risks": "Survendu \u00e0 tr\u00e8s court terme, un rebond technique de l'\u00e9cosyst\u00e8me Solana reste possible si le BTC se stabilise.",
+          "reason": "",
+          "risks": "",
           "price0": 89.65,
           "breakout": null,
           "trade": {
@@ -1112,15 +1112,7 @@
           }
         }
       },
-      "queries": [
-        "\"Nov 2026\" \"FOMC\" OR \"Federal Reserve\" OR \"interest rate\"",
-        "crypto news November 5 2026 OR November 6 2026",
-        "BTC price Nov 2026 OR \"Bitcoin\" Nov 5 2026 OR \"Bitcoin\" Nov 6 2026",
-        "US jobs report Nov 2026 OR CPI Nov 2026",
-        "\"BTC ETF\" \"flows\" November 5 2026 OR November 4 2026",
-        "\"crypto\" funding rates liquidations November 5 2026 OR November 6 2026",
-        "XRP news November 5 2026 OR November 6 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -1135,7 +1127,8 @@
         "promptTokenCount": 4033,
         "candidatesTokenCount": 1478,
         "totalTokenCount": 11731
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1793966400000,
@@ -5812,7 +5805,7 @@
     "1794542400000": 1,
     "1794556800000": 1
   },
-  "generatedAt": 1794556900140,
+  "generatedAt": 1794557768100,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -5880,13 +5873,13 @@
       "avgR": 0.6909,
       "totalR": 10.3636,
       "open": 2,
-      "equityMarked": 561.716491,
-      "returnPct": 12.3433
+      "equityMarked": 561.544185,
+      "returnPct": 12.3088
     }
   },
   "lastRun": {
-    "at": 1794556900140,
-    "status": "ok",
+    "at": 1794557768100,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1794556800000
   },
@@ -5908,8 +5901,8 @@
         "reason": "La rupture des supports interm\u00e9diaires \u00e0 1,15$ sur fond de d\u00e9sengagement institutionnel et de ventes massives rend le test des 1,00$, voire des niveaux inf\u00e9rieurs, tr\u00e8s probable.",
         "exitBy": 1794571200000,
         "lastBar": 1794542400000,
-        "markR": 0.5757,
-        "markPrice": 1.0255
+        "markR": 0.5299,
+        "markPrice": 1.0281
       },
       {
         "id": "SOLUSDT-1794384000000",
@@ -5925,8 +5918,8 @@
         "reason": "Le franchissement \u00e0 la baisse de supports majeurs et le flux de vente potentiel provenant des cr\u00e9ateurs de tokens accentuent le risque d'une capitulation vers la zone des 70-74$.",
         "exitBy": 1794571200000,
         "lastBar": 1794542400000,
-        "markR": 1.0853,
-        "markPrice": 79.73
+        "markR": 1.0982,
+        "markPrice": 79.68
       }
     ],
     "trades": [
