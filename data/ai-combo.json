@@ -6059,7 +6059,11 @@
             "reason": "Une position short est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille. Nous la laissons courir vers sa cible sans ajouter d'exposition."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.15,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -6073,7 +6077,11 @@
             "reason": "Une position short est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille. Nous la laissons courir vers sa cible sans ajouter de risque."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.108,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -6087,7 +6095,11 @@
             "reason": "Une position short est d\u00e9j\u00e0 ouverte sur cet actif. Pas de nouvelle entr\u00e9e pour respecter notre gestion des risques."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.792,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -6108,6 +6120,10 @@
             "probTarget": 56,
             "reason": "La cassure du support \u00e0 662.42 se fait sous un volume \u00e9lev\u00e9 (3.26) dans un march\u00e9 globalement sous pression baissi\u00e8re. La dynamique favorise une poursuite vers la zone de support suivante autour de $635-650.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -3.541,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -6122,7 +6138,11 @@
             "reason": "Une position longue est d\u00e9j\u00e0 ouverte sur SOL. Bien que la tendance court terme soit baissi\u00e8re, nous respectons l'inviolabilit\u00e9 du trade en cours."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.171,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -7122,7 +7142,6 @@
     }
   ],
   "attempts": {
-    "1794556800000": 2,
     "1794571200000": 1
   },
   "portfolio": {
@@ -7142,9 +7161,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794567600000,
-        "markR": 0.6836,
-        "markPrice": 1.0213
+        "lastBar": 1794571200000,
+        "markR": 0.7578,
+        "markPrice": 1.0175
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -7159,9 +7178,9 @@
         "conviction": 65,
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
-        "lastBar": 1794567600000,
-        "markR": 0.0949,
-        "markPrice": 80.74
+        "lastBar": 1794571200000,
+        "markR": 0.128,
+        "markPrice": 80.59
       }
     ],
     "trades": [
@@ -7420,19 +7439,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794573979771,
+  "generatedAt": 1794574917088,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 50,
     "totalTokens": 602134,
     "direction": {
-      "scored": 210,
-      "called": 145,
+      "scored": 215,
+      "called": 150,
       "neutral": 65,
-      "hits": 104,
-      "hitRate": 0.7172,
-      "brier": 0.2234,
+      "hits": 109,
+      "hitRate": 0.7267,
+      "brier": 0.2214,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -7488,14 +7507,14 @@
       "avgR": 0.5467,
       "totalR": 7.6535,
       "open": 2,
-      "equityMarked": 542.278612,
-      "returnPct": 8.4557
+      "equityMarked": 542.835845,
+      "returnPct": 8.5672
     }
   },
   "lastRun": {
-    "at": 1794573979771,
-    "status": "up-to-date",
+    "at": 1794574917088,
+    "status": "waiting",
     "error": null,
-    "barClose": 1794571200000
+    "barClose": 1794574800000
   }
 }
