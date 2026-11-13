@@ -5299,6 +5299,10 @@
             "action": "NONE",
             "conviction": 85,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 73963.3, on laisse courir l'opportunit\u00e9 conform\u00e9ment aux r\u00e8gles sans initier de doublon."
+          },
+          "outcome": {
+            "retPct": -3.912,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -5312,6 +5316,10 @@
             "action": "NONE",
             "conviction": 80,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 2056.41. On maintient la position en cours pour viser la baisse sans rajouter de risque."
+          },
+          "outcome": {
+            "retPct": -3.693,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -5325,6 +5333,10 @@
             "action": "NONE",
             "conviction": 75,
             "reason": "D\u00e9j\u00e0 en position SHORT depuis 1.0582, stop \u00e0 1.115, cible 0.95. On maintient la position actuelle."
+          },
+          "outcome": {
+            "retPct": -0.614,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -5345,6 +5357,10 @@
             "action": "NONE",
             "conviction": 80,
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 686.78. Nous ne prenons pas de nouveau trade ind\u00e9pendant car une position est d\u00e9j\u00e0 active sur cet actif."
+          },
+          "outcome": {
+            "retPct": -3.095,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -5358,6 +5374,10 @@
             "action": "NONE",
             "conviction": 80,
             "reason": "Position SHORT d\u00e9j\u00e0 active \u00e0 83.93. On laisse le trade se d\u00e9velopper sans ajouter d'exposition."
+          },
+          "outcome": {
+            "retPct": -2.021,
+            "hit": true
           }
         }
       },
@@ -5888,7 +5908,8 @@
             "stop": 77.5,
             "target": 85.5,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         }
       },
@@ -5966,25 +5987,140 @@
         "candidatesTokenCount": 1537,
         "totalTokenCount": 12357
       }
+    },
+    {
+      "barClose": 1794585600000,
+      "requestedAt": 1794585705149,
+      "analyzedAt": 1794585733538,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "L'inflation US d'octobre plus chaude (CPI +0,4%) et les discours hawkish de la Fed poussent le rendement \u00e0 10 ans \u00e0 5,1% et le dollar (DXY) \u00e0 103,18, renfor\u00e7ant les attentes de hausse en d\u00e9cembre. La d\u00e9mission surprise du CEO de Nvidia accentue la baisse des techs et des actifs risqu\u00e9s.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "L'inflation US \u00e9lev\u00e9e, la d\u00e9mission du CEO de Nvidia et la hausse des rendements obligataires (5,1%) ont d\u00e9clench\u00e9 une correction massive. Les sorties d'ETF Bitcoin ($1,44 milliard en 5 jours) et 1,3 milliard $ de liquidations forc\u00e9es alimentent la baisse. Le Fear & Greed s'effondre \u00e0 20 (peur extr\u00eame). Techniquement, le bull flag a \u00e9chou\u00e9 et le BTC reste sous ses EMA20/50/200.",
+          "risks": "RSI 4H en survente extr\u00eame (23,8) propice \u00e0 un rebond technique, ou un chiffre PPI plus faible permettant une stabilisation sur le support cl\u00e9 des 67k-68k$.",
+          "price0": 68873.2,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le march\u00e9 est extr\u00eamement survendu \u00e0 court terme avec un Fear & Greed \u00e0 20 et des supports de prix solides \u00e0 proximit\u00e9 (67k$). Initier un short ici apr\u00e8s plusieurs jours de baisse cons\u00e9cutifs pr\u00e9sente un profil de risque d\u00e9favorable."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "ETH a enfonc\u00e9 le niveau psychologique majeur de 2000 $ pour la premi\u00e8re fois depuis ao\u00fbt, p\u00e9nalis\u00e9 par des sorties de ses ETF ($696M cumul\u00e9s au 11 nov) et la liquidation de positions longues. La dynamique technique est profond\u00e9ment baissi\u00e8re, avec des prix bloqu\u00e9s sous toutes les moyennes mobiles cl\u00e9s.",
+          "risks": "La zone de support des 1900-1920$ pourrait attirer des acheteurs \u00e0 bon compte (achat de 10k ETH par une baleine ce jour), provoquant un short squeeze.",
+          "price0": 1933.96,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "ETH teste un support critique de long terme \u00e0 1900$. Bien que la tendance globale soit baissi\u00e8re, le risque d'un rebond technique violent sur ce seuil psychologique majeur incite \u00e0 l'attente."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "XRP montre une r\u00e9silience relative \u00e0 court terme (-0,61% sur 24h) en se maintenant au-dessus du support psychologique cl\u00e9 de 1,00 $. Cependant, la tendance reste lourde, sous l'influence de la correction globale et de la contraction de l'offre mondiale de stablecoins de 14,2 milliards $ sur 30 jours.",
+          "risks": "La perte d\u00e9finitive du niveau de support de 1,00 $ pourrait d\u00e9clencher une nouvelle vague de panique et de liquidations massives.",
+          "price0": 1.0202,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "XRP oscille autour du support psychologique crucial de 1,00 $. Bien qu'il montre une force relative sup\u00e9rieure au reste du march\u00e9, le contexte macro\u00e9conomique tr\u00e8s d\u00e9grad\u00e9 n'autorise pas d'achat imm\u00e9diat."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "BNB a corrig\u00e9 de pr\u00e8s de 6% suite \u00e0 la d\u00e9bandade g\u00e9n\u00e9rale, enfon\u00e7ant les 650 $ pour tester la zone de support 622-630 $. La r\u00e9duction drastique de la liquidit\u00e9 globale (baisse de l'offre de stablecoins de 14,2 milliards $ en un mois) limite le pouvoir d'achat et p\u00e8se sur les volumes de l'exchange Binance.",
+          "risks": "Forte d\u00e9pendance \u00e0 la stabilisation du BTC ; un rebond rapide du leader du march\u00e9 entra\u00eenerait une reprise technique instantan\u00e9e vers 650 $.",
+          "price0": 634.35,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le cours approche d'un support solide \u00e0 622 $ (bas de 10 jours). Une entr\u00e9e \u00e0 d\u00e9couvert ici apr\u00e8s une chute prolong\u00e9e comporte un risque \u00e9lev\u00e9 de rebond \u00e0 court terme."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "SOL affiche une r\u00e9silience relative face au repli du BTC en se maintenant au-dessus de 78 $, m\u00eame s'il recule de 11,8% sur une semaine. La pression r\u00e9glementaire post-midterms (victoire d\u00e9mocrate aux Congr\u00e8s) et la tension sur les taux limitent la reprise des flux d'investissements.",
+          "risks": "Une cassure franche du support critique des 78 $ invaliderait la structure \u00e0 moyen terme et propulserait le prix vers 72 $.",
+          "price0": 80.0,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "Une position longue est d\u00e9j\u00e0 en cours sur cet actif \u00e0 80,0 $. Conform\u00e9ment aux r\u00e8gles strictes du portefeuille, aucune nouvelle transaction n'est initi\u00e9e tant que la position existante reste ouverte."
+          }
+        }
+      },
+      "queries": [
+        "\"bitcoin\" news November 2026",
+        "crypto market news November 13 2026",
+        "macro economic calendar November 2026",
+        "fed rate decision november 2026"
+      ],
+      "sources": [
+        {
+          "title": "kucoin.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGoVRcx1asF9MrRN0iJ8Rqb4hi1tYyqRbB546y4BJsoxTiJEtQwmHR5tCtTcgPQhxskppSHUTkRqIuZDjOJ8uTV5RKkFkL4R26Y17bfbx8dI9C9hcSJp57NGF-KNx7vYfzxUGxtcWiie3FP_Cr01Xh1LDiAJWloo38x2B2cfDRMqWUONDwhdn8hfkFf"
+        },
+        {
+          "title": "cryptoticker.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEzV3O3I7UUiRfDuYP3CbE5U8bKGb2HB9w8Q5j33-SwM7OLAnWvwDBmQHuoSchZmg-uw4Pd2zUo8jJReb-XGjpfLqzs8QsKuLpsnCYkw-vEjCB4fMlKRYZLPycGvC6t4SJOGmUek4M6Wa3VSiSVyzeMhd5hgik5OtOBwZspg_s41fi_cS8Uw1QjklEJ551EXghI0ZiW_TMLud1t-Q=="
+        },
+        {
+          "title": "dmarketforces.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEdfQXyKFaIp9rxpraMSwlfNltv84d3fYLjYz6zhHOrqgBJgQAWkFl5V-yu0poy8pCLIxLdT2hThyJaCGC0Uot00N6RFho8ohZy9DX3uUlsEFNDpB7YAy8PoMKI1vU3b5dF2dco-98oZuUSFSKC8LE50WMa5glcJDRDtjJMToFChsP7ObNETZa2LSi0"
+        },
+        {
+          "title": "aa.com.tr",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHCSE4mqXIWew480BKGSVf5n7NDL3jYvCOEtqClnJOW4MmGHCuC4Zr8NfRutDhj_j9S79YsHBZeHEdcKazVDYYM4hroJX7iTiwilFrbhBqhicBKlsEx6LbnfY8pbDLcuM_NaE6yiF3Qr4zgoeSbxf6Nlyj1q1zcGZfm1uIGDF-dF25tFZk54TYF27ZqdNfhCgmNfF1jBHU04A3_Xp_IBMOfgs8cAugOgvwR"
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 4,
+        "supports": 12
+      },
+      "usage": {
+        "promptTokenCount": 3963,
+        "candidatesTokenCount": 1614,
+        "totalTokenCount": 10718
+      }
     }
   ],
   "attempts": {
-    "1794556800000": 1,
-    "1794571200000": 1
+    "1794571200000": 1,
+    "1794585600000": 1
   },
-  "generatedAt": 1794584769572,
+  "generatedAt": 1794585705149,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 46,
-    "totalTokens": 518571,
+    "analyses": 47,
+    "totalTokens": 529289,
     "direction": {
-      "scored": 200,
-      "called": 150,
+      "scored": 205,
+      "called": 155,
       "neutral": 50,
-      "hits": 105,
-      "hitRate": 0.7,
-      "brier": 0.2228,
+      "hits": 110,
+      "hitRate": 0.7097,
+      "brier": 0.2203,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -6039,21 +6175,39 @@
       "winRate": 0.8235,
       "avgR": 0.6925,
       "totalR": 11.7721,
-      "open": 0,
-      "equityMarked": 560.39374,
-      "returnPct": 12.0787
+      "open": 1,
+      "equityMarked": 559.967841,
+      "returnPct": 11.9936
     }
   },
   "lastRun": {
-    "at": 1794584769572,
-    "status": "up-to-date",
+    "at": 1794585705149,
+    "status": "ok",
     "error": null,
-    "barClose": 1794571200000
+    "barClose": 1794585600000
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 560.39374,
-    "positions": [],
+    "positions": [
+      {
+        "id": "SOLUSDT-1794571200000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1794585600000,
+        "entryPrice": 80.0,
+        "stop": 77.5,
+        "target": 85.5,
+        "risk": 2.5,
+        "stake": 5.603937,
+        "conviction": 65,
+        "reason": "Achat contrarien sur un niveau de support majeur de 80$ renforc\u00e9 par la conf\u00e9rence Breakpoint \u00e0 venir ce week-end et de l\u00e9g\u00e8res entr\u00e9es d'ETF.",
+        "exitBy": 1794758400000,
+        "lastBar": 1794585599999,
+        "markR": -0.076,
+        "markPrice": 79.81
+      }
+    ],
     "trades": [
       {
         "id": "SOLUSDT-1793851200000",
