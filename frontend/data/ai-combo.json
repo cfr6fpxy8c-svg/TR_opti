@@ -1613,13 +1613,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "La victoire d\u00e9mocrate aux midterms et des cr\u00e9ations d'emplois am\u00e9ricaines exceptionnelles (165k vs 59k attendus, ch\u00f4mage \u00e0 4,1%) alimentent la crainte de taux \u00e9lev\u00e9s durables. Le Nasdaq s'enfonce en correction, entra\u00eenant une liquidation massive des longs crypto (>1Md$) et des flux ETF n\u00e9gatifs.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "Le choc du rapport de l'emploi US repousse la perspective de baisse des taux, pesant sur les actifs risqu\u00e9s. Les ETF spot Bitcoin ont subi de fortes sorties (-430M$ jeudi), et l'ambiance g\u00e9n\u00e9rale est au risk-off apr\u00e8s l'\u00e9puration des leviers (1Md$ de liquidations forc\u00e9es). Le prix est repass\u00e9 sous les EMA20/50 4H.",
-          "risks": "Rebond technique court-terme apr\u00e8s la purge des leviers ; retour des flux acheteurs sur les ETF si Wall Street se stabilise.",
+          "reason": "",
+          "risks": "",
           "price0": 75863.8,
           "trade": {
             "action": "NONE",
@@ -1636,8 +1636,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "Ethereum continue de sous-performer par rapport au BTC, plomb\u00e9 par des sorties de flux et un biais vendeur marqu\u00e9 sur les options \u00e0 court terme (ratio put/call de 2,41 pour l'\u00e9ch\u00e9ance du 13/11). La tendance reste baissi\u00e8re sous les EMA 20/50 et la structure technique montre peu de force acheteuse.",
-          "risks": "Mise en place de couvertures d'options pouvant provoquer un short squeeze rapide si le BTC se stabilise.",
+          "reason": "",
+          "risks": "",
           "price0": 2234.89,
           "trade": {
             "action": "NONE",
@@ -1654,8 +1654,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "XRP subit une pression structurelle majeure alors que les hackers de l'exploit Binance convertissent ~50M$ de XRP vol\u00e9s en BTC. De plus, les ETF spot XRP am\u00e9ricains enregistrent z\u00e9ro entr\u00e9e depuis trois jours. Le positionnement acheteur tr\u00e8s encombr\u00e9 sur les futures OKX accentue le risque de cascade de liquidations.",
-          "risks": "Retraits massifs de XRP de Binance pouvant indiquer un ass\u00e8chement de l'offre disponible si ce ne sont pas des transferts internes.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1855,
           "trade": {
             "action": "NONE",
@@ -1679,8 +1679,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "BNB montre une r\u00e9silience relative (+0,11% sur 24h), soutenue par la r\u00e9solution rapide du bug du client Reth sur BNB Chain (impact limit\u00e9 selon l'\u00e9quipe). Bien que le piratage historique de Binance par des acteurs nord-cor\u00e9ens jette un froid, le prix se maintient fermement au-dessus du support psychologique cl\u00e9 de 690$.",
-          "risks": "Nouvelles r\u00e9v\u00e9lations sur l'intrusion de long terme dans les syst\u00e8mes de Binance ; panique g\u00e9n\u00e9rale si le BTC enfonce les 74k$.",
+          "reason": "",
+          "risks": "",
           "price0": 694.51,
           "trade": {
             "action": "NONE",
@@ -1697,8 +1697,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "Solana est sous pression apr\u00e8s l'intervention de la Banque centrale de Chine (PBOC) et de la police pour interdire un \u00e9v\u00e9nement promotionnel majeur \u00e0 Shanghai, qualifi\u00e9 d'activit\u00e9 financi\u00e8re ill\u00e9gale. Par ailleurs, le protocole Loopscale sur Solana a d\u00fb suspendre son activit\u00e9 apr\u00e8s des attaques cibl\u00e9es sur ses coffres SOL/USDC.",
-          "risks": "Rebond technique sur le support des 88$ si les validations de mise \u00e0 niveau Agave stabilisent le r\u00e9seau.",
+          "reason": "",
+          "risks": "",
           "price0": 90.14,
           "trade": {
             "action": "NONE",
@@ -1713,16 +1713,7 @@
           }
         }
       },
-      "queries": [
-        "crypto market news November 6 2026",
-        "bitcoin news November 6 2026",
-        "fed interest rate decision november 2026",
-        "fomc meeting november 2026",
-        "XRP news November 6 2026",
-        "BNB news November 6 2026",
-        "SOL news November 6 2026",
-        "\"Maxine Waters\" crypto market structure bill November 6 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -1737,7 +1728,8 @@
         "promptTokenCount": 4183,
         "candidatesTokenCount": 1582,
         "totalTokenCount": 12184
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794009600000,
@@ -7355,7 +7347,6 @@
     }
   ],
   "attempts": {
-    "1794585600000": 1,
     "1794600000000": 2
   },
   "portfolio": {
@@ -7375,9 +7366,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794596400000,
-        "markR": 0.6328,
-        "markPrice": 1.0239
+        "lastBar": 1794600000000,
+        "markR": 0.7227,
+        "markPrice": 1.0193
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -7392,9 +7383,9 @@
         "conviction": 65,
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
-        "lastBar": 1794596400000,
-        "markR": 0.2406,
-        "markPrice": 80.08
+        "lastBar": 1794600000000,
+        "markR": 0.3179,
+        "markPrice": 79.73
       }
     ],
     "trades": [
@@ -7653,7 +7644,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794602781521,
+  "generatedAt": 1794603722094,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -7721,14 +7712,14 @@
       "avgR": 0.5467,
       "totalR": 7.6535,
       "open": 2,
-      "equityMarked": 542.765021,
-      "returnPct": 8.553
+      "equityMarked": 543.631907,
+      "returnPct": 8.7264
     }
   },
   "lastRun": {
-    "at": 1794602781521,
-    "status": "up-to-date",
+    "at": 1794603722094,
+    "status": "waiting",
     "error": null,
-    "barClose": 1794600000000
+    "barClose": 1794603600000
   }
 }
