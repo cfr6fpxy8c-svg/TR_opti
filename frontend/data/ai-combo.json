@@ -6251,6 +6251,10 @@
             "probTarget": 58,
             "reason": "La cassure du support des 72 691 $ est port\u00e9e par un volume exceptionnel (4.1x) et un flux vendeur dominant sur les d\u00e9riv\u00e9s.",
             "ours": "taken"
+          },
+          "outcome": {
+            "retPct": -4.653,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -6265,7 +6269,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.715,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -6279,7 +6287,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.559,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -6300,6 +6312,10 @@
             "probTarget": 56,
             "reason": "La cassure 1H sur un volume solide de 3.4x confirme la persistance de la dynamique baissi\u00e8re post-incident.",
             "ours": "rejected"
+          },
+          "outcome": {
+            "retPct": -3.074,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -6319,7 +6335,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.213,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -7161,9 +7181,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794571200000,
-        "markR": 0.3613,
-        "markPrice": 1.0378
+        "lastBar": 1794574800000,
+        "markR": 0.4707,
+        "markPrice": 1.0322
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -7178,9 +7198,9 @@
         "conviction": 65,
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
-        "lastBar": 1794571200000,
-        "markR": -0.1876,
-        "markPrice": 82.02
+        "lastBar": 1794574800000,
+        "markR": -0.0486,
+        "markPrice": 81.39
       }
     ],
     "trades": [
@@ -7439,19 +7459,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794577581770,
+  "generatedAt": 1794578516036,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 50,
     "totalTokens": 602134,
     "direction": {
-      "scored": 215,
-      "called": 150,
+      "scored": 220,
+      "called": 155,
       "neutral": 65,
-      "hits": 109,
-      "hitRate": 0.7267,
-      "brier": 0.2214,
+      "hits": 114,
+      "hitRate": 0.7355,
+      "brier": 0.2198,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -7507,14 +7527,14 @@
       "avgR": 0.5467,
       "totalR": 7.6535,
       "open": 2,
-      "equityMarked": 539.143049,
-      "returnPct": 7.8286
+      "equityMarked": 540.429601,
+      "returnPct": 8.0859
     }
   },
   "lastRun": {
-    "at": 1794577581770,
+    "at": 1794578516036,
     "status": "waiting",
     "error": null,
-    "barClose": 1794574800000
+    "barClose": 1794578400000
   }
 }
