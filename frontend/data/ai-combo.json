@@ -1124,13 +1124,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "La pause de la Fed \u00e0 3,75-4% fin octobre est \u00e9clips\u00e9e par le krach de 5,5% du Nasdaq le 5 nov., d\u00e9clench\u00e9 par les techs/IA (NVIDIA -9,3%). L'aversion au risque mondiale fait plonger le Crypto Fear & Greed \u00e0 28. Pas de r\u00e9union Fed en novembre, l'attention se tourne vers l'inflation et les flux ETF.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "La chute de 5,5% du Nasdaq due aux valeurs technologiques li\u00e9es \u00e0 l'IA a entra\u00een\u00e9 le BTC sous ses EMA20/50. Le BTC teste le support critique des 75k$-76k$ (co\u00fbt moyen des d\u00e9tenteurs \u00e0 court terme) dans un contexte de sorties nettes massives d'ETF (643M$ le 30 oct.) et d'un sentiment g\u00e9n\u00e9ral d\u00e9grad\u00e9 (Fear \u00e0 28).",
-          "risks": "La rupture de la zone de support des 75k$ pourrait d\u00e9clencher de nouvelles liquidations en cascade vers les 73k$ (MM200) puis 71k$.",
+          "reason": "",
+          "risks": "",
           "price0": 75572.8,
           "trade": {
             "action": "NONE",
@@ -1147,8 +1147,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "ETH montre une faiblesse persistante, accentu\u00e9e par des sorties de pr\u00e8s de 100M$ de l'ETF spot le 5 novembre et plus de 179M$ de liquidations de positions longues \u00e0 effet de levier. Le cours teste d\u00e9sormais la zone de support critique des 2200$ sous ses EMA20 et 50 qui convergent \u00e0 la baisse.",
-          "risks": "La perte d\u00e9finitive des 2200$ validerait une poursuite vers les plus bas de l'\u00e9t\u00e9 sous les 2100$.",
+          "reason": "",
+          "risks": "",
           "price0": 2227.61,
           "trade": {
             "action": "NONE",
@@ -1165,8 +1165,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "XRP subit la baisse g\u00e9n\u00e9rale mais montre des signes d'accumulation majeure : les portefeuilles de plus d'un million d'XRP ont atteint leur plus haut niveau de 2026. L'activit\u00e9 r\u00e9seau est forte et les avanc\u00e9es sur le RLUSD (partenariats) limitent la baisse face \u00e0 la lib\u00e9ration mensuelle d'un milliard d'escrow.",
-          "risks": "Une poursuite de la panique sur le Nasdaq pourrait casser le support \u00e0 1,17$ et invalider l'accumulation des baleines.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1855,
           "trade": {
             "action": "NONE",
@@ -1197,8 +1197,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 50,
-          "reason": "BNB d\u00e9montre une r\u00e9silience sup\u00e9rieure en d\u00e9fendant fermement le support cl\u00e9 des 680$. Binance a rassur\u00e9 le march\u00e9 en couvrant 95% des pertes du piratage de 6,3 milliards via son fonds SAFU, et en confirmant des r\u00e9serves \u00e0 100% sur les actifs majeurs, ce qui stabilise la confiance des utilisateurs.",
-          "risks": "La d\u00e9pendance \u00e0 la solvabilit\u00e9 g\u00e9n\u00e9rale de Binance et au sentiment du march\u00e9 si le BTC casse les 75k$.",
+          "reason": "",
+          "risks": "",
           "price0": 690.75,
           "trade": {
             "action": "NONE",
@@ -1215,8 +1215,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "SOL a gliss\u00e9 sous ses EMA de court terme et teste sa moyenne mobile 200 jours vers 89$. Bien que la TVL en termes de jetons SOL ait augment\u00e9 de 3,7% en 30 jours, d\u00e9montrant que les utilisateurs ne retirent pas leurs capitaux des applications, la pression vendeuse g\u00e9n\u00e9rale p\u00e8se sur l'actif.",
-          "risks": "La rupture confirm\u00e9e des 89$ (MM200) pourrait entra\u00eener une baisse rapide vers le niveau psychologique des 80$.",
+          "reason": "",
+          "risks": "",
           "price0": 89.65,
           "trade": {
             "action": "NONE",
@@ -1231,16 +1231,7 @@
           }
         }
       },
-      "queries": [
-        "FOMC meeting November 2026",
-        "Fed interest rate decision November 2026",
-        "crypto news November 6 2026",
-        "Bitcoin price November 2026",
-        "\"SOL\" OR \"Solana\" news November 2026",
-        "\"BNB\" OR \"Binance\" news November 2026",
-        "\"XRP\" OR \"Ripple\" news November 2026",
-        "Fear and Greed Index November 6 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -1255,7 +1246,8 @@
         "promptTokenCount": 4162,
         "candidatesTokenCount": 1671,
         "totalTokenCount": 12649
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1793966400000,
@@ -7032,8 +7024,8 @@
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
         "lastBar": 1794553200000,
-        "markR": 0.5508,
-        "markPrice": 1.0281
+        "markR": 0.5234,
+        "markPrice": 1.0295
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -7049,8 +7041,8 @@
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
         "lastBar": 1794553200000,
-        "markR": 0.3333,
-        "markPrice": 79.66
+        "markR": 0.2826,
+        "markPrice": 79.89
       }
     ],
     "trades": [
@@ -7309,7 +7301,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794557780460,
+  "generatedAt": 1794558696307,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -7377,13 +7369,13 @@
       "avgR": 0.5467,
       "totalR": 7.6535,
       "open": 2,
-      "equityMarked": 542.815652,
-      "returnPct": 8.5631
+      "equityMarked": 542.411531,
+      "returnPct": 8.4823
     }
   },
   "lastRun": {
-    "at": 1794557780460,
-    "status": "ok",
+    "at": 1794558696307,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1794556800000
   }
