@@ -5069,6 +5069,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position short est d\u00e9j\u00e0 ouverte sur cet actif. Nous la laissons courir vers l'objectif de $70,5k."
+          },
+          "outcome": {
+            "retPct": -6.879,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -5082,6 +5086,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position short d\u00e9j\u00e0 en cours. Nous maintenons la position avec un stop \u00e0 $2150 et une cible \u00e0 $1910."
+          },
+          "outcome": {
+            "retPct": -5.711,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -5095,6 +5103,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position short d\u00e9j\u00e0 ouverte. Aucun nouveau trade initi\u00e9 conform\u00e9ment aux r\u00e8gles du portefeuille papier."
+          },
+          "outcome": {
+            "retPct": -1.782,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -5108,6 +5120,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position de vente \u00e0 d'\u00e9couvert est d\u00e9j\u00e0 ouverte sur BNB. Pas de nouveau trade."
+          },
+          "outcome": {
+            "retPct": -6.57,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -5121,6 +5137,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Position courte d\u00e9j\u00e0 active dans notre portefeuille, nous la conservons jusqu'\u00e0 la cible ou au stop."
+          },
+          "outcome": {
+            "retPct": -3.977,
+            "hit": true
           }
         }
       },
@@ -5659,25 +5679,152 @@
         "candidatesTokenCount": 1463,
         "totalTokenCount": 13641
       }
+    },
+    {
+      "barClose": 1794556800000,
+      "requestedAt": 1794556900140,
+      "analyzedAt": 1794556927682,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Macro baissi\u00e8re : CPI US d'octobre chaud (+0,3% core MoM) poussant les rendements US > 5% et DXY au plus haut. Crainte d'un resserrement de la Fed en d\u00e9c (probabilit\u00e9 proche de 100%). Sorties massives des ETF spot BTC ($1,44Md) et forte contraction de la liquidit\u00e9 globale stablecoins.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "La chute sous les $72k a d\u00e9clench\u00e9 des liquidations massives ($1,62Mds en 24h). Les flux des ETF spot BTC affichent $1,44Mds de sorties hebdomadaires. De plus, la capitalisation des stablecoins baisse de $14,2Mds en 30 jours, un record depuis 2022. N\u00e9anmoins, le RSI 14 \u00e0 17,3 est extr\u00eamement survendu, limitant l'int\u00e9r\u00eat de nouvelles ventes.",
+          "risks": "Risque de squeeze de positions courtes (short squeeze) d\u00fb \u00e0 la capitulation r\u00e9cente et au RSI extr\u00eamement survendu \u00e0 court terme, ainsi que la publication du PPI US.",
+          "price0": 68555.0,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le march\u00e9 est fortement baissier, mais le RSI \u00e0 17,3 indique un \u00e9puisement temporaire des vendeurs. Le ratio risque/rendement pour initier un short ici est tr\u00e8s d\u00e9favorable."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "L'Ether a chut\u00e9 sous les $2000 suite aux liquidations en cascade sur le march\u00e9 des d\u00e9riv\u00e9s. Les flux sortants des ETF et la faiblesse du secteur tech mondial accentuent la pression. La tendance sous l'EMA200 4H reste fortement baissi\u00e8re, mais la situation de survente extr\u00eame (RSI \u00e0 23,0) sugg\u00e8re une pause ou un rebond technique.",
+          "risks": "Rebond technique violent d\u00fb \u00e0 la survente et au positionnement short encombr\u00e9 \u00e0 court terme. Publication du PPI d'octobre ce jour.",
+          "price0": 1933.4,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Tendance baissi\u00e8re claire sous les moyennes mobiles, mais le RSI \u00e0 23,0 interdit d'initier un short \u00e0 ces niveaux. Risque de rebond technique imminent."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "Le XRP r\u00e9siste mieux que le reste du march\u00e9 (-1,78% sur 24h) mais reste plomb\u00e9 par la tendance baissi\u00e8re g\u00e9n\u00e9rale et la force du dollar am\u00e9ricain. Les moyennes de court terme (EMA20/EMA50) sont orient\u00e9es \u00e0 la baisse et la pression globale limite tout potentiel de reprise.",
+          "risks": "R\u00e9silience relative du XRP pouvant se traduire par un rebond rapide si le BTC se stabilise. Volatilit\u00e9 accrue.",
+          "price0": 1.0251,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif. Aucun nouveau trade n'est initi\u00e9."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "BNB s'est repli\u00e9 vers le support \u00e0 $622 apr\u00e8s la cassure g\u00e9n\u00e9rale du march\u00e9. L'absence d'int\u00e9r\u00eat acheteur et l'impact de la contraction globale de la liquidit\u00e9 stablecoin p\u00e8sent lourdement. Cependant, l'actif affiche lui aussi une survente historique avec un RSI 14 \u00e0 19,9, indiquant un risque de rebond technique.",
+          "risks": "Squeeze technique et manque de liquidit\u00e9 pour absorber les ventes. Volatilit\u00e9 macro\u00e9conomique li\u00e9e au dollar fort.",
+          "price0": 630.17,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que la structure soit baissi\u00e8re, le RSI extr\u00eamement survendu \u00e0 19,9 rend les ventes \u00e0 de d\u00e9couvert trop risqu\u00e9es pour un trade \u00e0 esp\u00e9rance positive imm\u00e9diate."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "SOL a test\u00e9 son bas de canal \u00e0 $77.85 suite au selloff tech et \u00e0 la capitulation g\u00e9n\u00e9rale du march\u00e9 crypto. Malgr\u00e9 de fortes liquidations, la pression vendeuse s'att\u00e9nue temporairement mais la structure de march\u00e9 reste domin\u00e9e par les vendeurs.",
+          "risks": "Forte volatilit\u00e9 inh\u00e9rente et survente \u00e0 court terme (RSI 30,9) pouvant entra\u00eener un rebond de couverture de shorts.",
+          "price0": 79.68,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur l'actif. Aucun nouveau trade n'est initi\u00e9."
+          }
+        }
+      },
+      "queries": [
+        "bitcoin November 2026",
+        "crypto news November 12 2026",
+        "CPI November 2026 US",
+        "Fed rate decision November 2026"
+      ],
+      "sources": [
+        {
+          "title": "bullionvault.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFMQY6tjbuNsVWSADBLXAXpRbJH6MRAW2wSGEkOgI6PXy3JfXQuyqdYK45BwIyaCP-0twnEphd5cE7MdeT4MN5qxNPfcmWUWJaINf3o7BCUY2dHGGnRmPiowreIz6EZSm7GXYJ4DrvTuRjaTHLRoc9zvbGCYSRihhJ1jzl8hllOUrDyRnjdaumQIaOZN8vvp-9OwW-WoLxI5Fk="
+        },
+        {
+          "title": "tmgm.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFXvcBW6toQrG-cb6Wa-DogJjGfPs6B4oiak3SZryhG8U_1ej0l5U_QfH3wGoSXLtT2C7_ViQYWwXeLId8SqfgktMVBkz0uc92RsMMa4a0TrYLfiKI70HDj55HrcZkV7mN6SKd1Axp0NXYe5eNxUWGteIOxd6o20Tsvnxx3DRZp9WZAcA=="
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFqQqOhk-flqTR6kv09k3dXT5huG4wVGKPR8f5GS788-YYcHEzRdQgk5IlG53BZxQ8BJIqab9mlyPiBxJK-LL61JjS8ycMm4C-lpGUaA658DOqCLN5Jr8NRSZjJVJW_TV2RLSbA49xitsUbfztTYuxw20UjNZDHyzRL1rQFY9s87sCUM-UtQi48Yobm_5AScMBdgeYqw9mP3rQL"
+        },
+        {
+          "title": "altcoinbuzz.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6mnfIYuDDWU5XcZBVee4xiAVtf4QMFqhnDdKqf7CvIUBZhAVo5EUnjkx_mecRXISMyF6YcrdwZeM89uLKJRzKzvU8mhiCGvEotyY9XiRkKO_ei086CM_VFQAqr0RJe8QSLdw5_kV7YzT_-6hwGZE0Se95qvmVP3o0fA-08c1v4kpPD9FsEpw="
+        },
+        {
+          "title": "kucoin.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHYo8EBoxzGXwSwg0pR5feQNVx-xuGUV7Kl4m6bAgOr-oCVOB1e3hYRyt1Uoaux4RK6SP-CoqDhwmdrCUgmV9U48kznEnrY-FXsoNIn086_Mq5t-1QpVNA_eSnAWrIm5TGctJUl-tpJqKWyrirHhOttAIVkw9QooAurFaRSTwde9SHNMdJ-HOl6ER-d"
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHnlzNJWUl7mBlW_tlEw0k-siBeGGsU7Za3cyV8T1BOlZqNmssXNLhXjOsa8nmFfHf0Hit5VinHOK58qXR4wzYLEMN_4E36aoM73wQqGkArqjwc6Ur6IVEEV3Ym0Z2yr_VU4Lzi6-7jfrh98Fou7CchEutL_YzZPeJo9xvFhh_F-oF-DckE7MKXBXh6mb0c5CWsLD0="
+        },
+        {
+          "title": "akka.app",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEtqFM1Ky2d8w_YqVt_P7FmHPgj1pGDAy2TRljQDKYHdoFZKW_1HMja7crUwyo_TQiRSm39DZ9mtjFZ4M8MGQx5f80F7xoeppEf9V3Ds_z2htYh9uhdIsVEXL75j4dzpn-0VPEYgMq5kSy_Y4_GHGtCZhRZCTsb"
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 7,
+        "supports": 15
+      },
+      "usage": {
+        "promptTokenCount": 4017,
+        "candidatesTokenCount": 1360,
+        "totalTokenCount": 9851
+      }
     }
   ],
   "attempts": {
-    "1794528000000": 1,
-    "1794542400000": 1
+    "1794542400000": 1,
+    "1794556800000": 1
   },
-  "generatedAt": 1794555966270,
+  "generatedAt": 1794556900140,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 44,
-    "totalTokens": 496363,
+    "analyses": 45,
+    "totalTokens": 506214,
     "direction": {
-      "scored": 190,
-      "called": 140,
+      "scored": 195,
+      "called": 145,
       "neutral": 50,
-      "hits": 95,
-      "hitRate": 0.6786,
-      "brier": 0.2272,
+      "hits": 100,
+      "hitRate": 0.6897,
+      "brier": 0.2255,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -5727,43 +5874,26 @@
       }
     },
     "portfolio": {
-      "trades": 14,
-      "wins": 11,
-      "winRate": 0.7857,
-      "avgR": 0.6309,
-      "totalR": 8.8322,
-      "open": 3,
-      "equityMarked": 559.339212,
-      "returnPct": 11.8678
+      "trades": 15,
+      "wins": 12,
+      "winRate": 0.8,
+      "avgR": 0.6909,
+      "totalR": 10.3636,
+      "open": 2,
+      "equityMarked": 561.716491,
+      "returnPct": 12.3433
     }
   },
   "lastRun": {
-    "at": 1794555966270,
-    "status": "up-to-date",
+    "at": 1794556900140,
+    "status": "ok",
     "error": null,
-    "barClose": 1794542400000
+    "barClose": 1794556800000
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 544.997014,
+    "equity": 553.017425,
     "positions": [
-      {
-        "id": "ETHUSDT-1794384000000",
-        "symbol": "ETHUSDT",
-        "side": "SHORT",
-        "entryTime": 1794398400000,
-        "entryPrice": 2056.41,
-        "stop": 2150.0,
-        "target": 1910.0,
-        "risk": 93.59000000000015,
-        "stake": 5.237246,
-        "conviction": 70,
-        "reason": "La forte pression vendeuse aliment\u00e9e par les sorties massives d'ETF et la structure technique fortement baissi\u00e8re militent pour un enfoncement du support psychologique des 2000$.",
-        "exitBy": 1794571200000,
-        "lastBar": 1794528000000,
-        "markR": 1.2336,
-        "markPrice": 1940.96
-      },
       {
         "id": "XRPUSDT-1794384000000",
         "symbol": "XRPUSDT",
@@ -5777,9 +5907,9 @@
         "conviction": 65,
         "reason": "La rupture des supports interm\u00e9diaires \u00e0 1,15$ sur fond de d\u00e9sengagement institutionnel et de ventes massives rend le test des 1,00$, voire des niveaux inf\u00e9rieurs, tr\u00e8s probable.",
         "exitBy": 1794571200000,
-        "lastBar": 1794528000000,
-        "markR": 0.5282,
-        "markPrice": 1.0282
+        "lastBar": 1794542400000,
+        "markR": 0.5757,
+        "markPrice": 1.0255
       },
       {
         "id": "SOLUSDT-1794384000000",
@@ -5794,9 +5924,9 @@
         "conviction": 68,
         "reason": "Le franchissement \u00e0 la baisse de supports majeurs et le flux de vente potentiel provenant des cr\u00e9ateurs de tokens accentuent le risque d'une capitulation vers la zone des 70-74$.",
         "exitBy": 1794571200000,
-        "lastBar": 1794528000000,
-        "markR": 0.9767,
-        "markPrice": 80.15
+        "lastBar": 1794542400000,
+        "markR": 1.0853,
+        "markPrice": 79.73
       }
     ],
     "trades": [
@@ -6051,6 +6181,24 @@
         "rNet": 2.2365,
         "pnl": 11.713331,
         "equityAfter": 544.997014
+      },
+      {
+        "id": "ETHUSDT-1794384000000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794398400000,
+        "entryPrice": 2056.41,
+        "stop": 2150.0,
+        "target": 1910.0,
+        "stake": 5.237246,
+        "conviction": 70,
+        "reason": "La forte pression vendeuse aliment\u00e9e par les sorties massives d'ETF et la structure technique fortement baissi\u00e8re militent pour un enfoncement du support psychologique des 2000$.",
+        "exitTime": 1794556800000,
+        "exitPrice": 1910.0,
+        "exitReason": "TARGET",
+        "rNet": 1.5314,
+        "pnl": 8.020411,
+        "equityAfter": 553.017425
       }
     ],
     "entryAfterAnalysisSince": 1794345059480

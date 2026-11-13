@@ -5855,7 +5855,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte dans notre portefeuille papier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -6.879,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -5869,7 +5873,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte dans notre portefeuille papier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.711,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -5883,7 +5891,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte dans notre portefeuille papier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.782,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -5897,7 +5909,11 @@
             "reason": "L'actif approche de son support majeur \u00e0 670 $, rendant risqu\u00e9 un short \u00e0 ce niveau malgr\u00e9 le contexte baissier. Nous restons \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -6.57,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -5911,7 +5927,11 @@
             "reason": "Position acheteuse d\u00e9j\u00e0 ouverte dans notre portefeuille papier."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.977,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -6883,8 +6903,8 @@
     }
   ],
   "attempts": {
-    "1794538800000": 1,
-    "1794542400000": 3
+    "1794542400000": 3,
+    "1794556800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -6903,9 +6923,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794549600000,
-        "markR": 0.5508,
-        "markPrice": 1.0281
+        "lastBar": 1794553200000,
+        "markR": 0.5996,
+        "markPrice": 1.0256
       },
       {
         "id": "SOLUSDT-1794492000000",
@@ -6920,9 +6940,9 @@
         "conviction": 65,
         "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
         "exitBy": 1794668400000,
-        "lastBar": 1794549600000,
-        "markR": 0.2318,
-        "markPrice": 80.12
+        "lastBar": 1794553200000,
+        "markR": 0.3046,
+        "markPrice": 79.79
       }
     ],
     "trades": [
@@ -7181,19 +7201,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794555979787,
+  "generatedAt": 1794556939967,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 48,
     "totalTokens": 575944,
     "direction": {
-      "scored": 200,
-      "called": 135,
+      "scored": 205,
+      "called": 140,
       "neutral": 65,
-      "hits": 94,
-      "hitRate": 0.6963,
-      "brier": 0.2276,
+      "hits": 99,
+      "hitRate": 0.7071,
+      "brier": 0.2249,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -7249,14 +7269,14 @@
       "avgR": 0.5467,
       "totalR": 7.6535,
       "open": 2,
-      "equityMarked": 542.292416,
-      "returnPct": 8.4585
+      "equityMarked": 542.921963,
+      "returnPct": 8.5844
     }
   },
   "lastRun": {
-    "at": 1794555979787,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794553200000
+    "at": 1794556939967,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794556800000
   }
 }
