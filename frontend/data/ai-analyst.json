@@ -1929,13 +1929,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "La Fed a maintenu ses taux (3,75-4%) le 28 oct, mais le rapport NFP solide de vendredi (165k emplois, ch\u00f4mage \u00e0 4,1%) et l'inflation chaude de septembre renforcent la perspective d'une hausse en d\u00e9c. Les taux US \u00e0 10 ans grimpent \u00e0 4,86% et le DXY \u00e0 102,27. Sorties massives d'ETF crypto ($870M BTC).",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Bitcoin reste sous pression sous ses EMA20 et EMA50 apr\u00e8s d'importantes sorties d'ETF (869,8 M$ retir\u00e9s en 4 jours), ramenant le solde annuel des ETF spot sous z\u00e9ro. La r\u00e9silience du march\u00e9 de l'emploi US (NFP \u00e0 +165k) pousse le DXY et les rendements obligataires \u00e0 la hausse, pesant sur les actifs risqu\u00e9s alors que l'indice Fear & Greed glisse dans la peur (41).",
-          "risks": "Un rebond technique \u00e0 court terme si le support psychologique des 75k$ tient, ou une chasse aux liquidit\u00e9s avant le CPI de mardi prochain.",
+          "reason": "",
+          "risks": "",
           "price0": 75728.0,
           "breakout": null,
           "trade": {
@@ -1951,8 +1951,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "Ethereum souffre d'une d\u00e9saffection institutionnelle majeure avec un record de 23 jours cons\u00e9cutifs de sorties d'ETF spot fin octobre, totalisant -310 M$ nets sur 2026. Techniquement, le cours oscille sous ses moyennes mobiles cl\u00e9s et est corr\u00e9l\u00e9 \u00e0 la faiblesse g\u00e9n\u00e9rale du march\u00e9 post-\u00e9lection.",
-          "risks": "Achats d'opportunit\u00e9 \u00e0 bas prix par des baleines (ex: achat r\u00e9cent de 19 M$ de ETH \u00e0 2236$) ou des rumeurs d'int\u00e9gration dans les plans 401(k).",
+          "reason": "",
+          "risks": "",
           "price0": 2236.19,
           "breakout": null,
           "trade": {
@@ -1968,8 +1968,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "XRP surperforme \u00e0 la baisse en raison d'un effet de levier excessif. Une cascade de liquidations de positions longues (>23 M$ liquid\u00e9s) a provoqu\u00e9 un 'long squeeze' brutal sous le support cl\u00e9 de 1,20$, alors que les flux d'ETF XRP spot se sont taris \u00e0 l'approche de la fin de semaine.",
-          "risks": "Conditions de survente court terme (RSI14 \u00e0 29,2 sur 4H) susceptibles d'engendrer un rebond technique violent en cas de stabilisation du BTC.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1582,
           "breakout": null,
           "trade": {
@@ -1985,8 +1985,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "BNB fait preuve d'une certaine r\u00e9silience relative autour du support des 690$ apr\u00e8s le piratage massif subi par Binance fin octobre. Les indicateurs momentum (EMA20/50 au-dessus du prix, RSI \u00e0 43,8) restent toutefois orient\u00e9s \u00e0 la baisse dans un contexte de faible volume d'achat sur cette bougie.",
-          "risks": "Une cassure d\u00e9finitive du support des 680-690$ pourrait ouvrir la voie vers 625$. \u00c0 l'inverse, la d\u00e9fense de ce pivot soutiendrait un retour \u00e0 750$.",
+          "reason": "",
+          "risks": "",
           "price0": 694.31,
           "breakout": null,
           "trade": {
@@ -2002,8 +2002,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Solana a touch\u00e9 sa moyenne mobile 200 jours sous l'effet du sell-off des technologiques US et d'une cascade globale de liquidations de 1 Md$. Bien que des initiatives de buy-and-burn de SOL par Leap et la conf\u00e9rence Breakpoint (15-17 nov) approchent, le sentiment imm\u00e9diat demeure baissier.",
-          "risks": "L'anticipation de la conf\u00e9rence Breakpoint \u00e0 Londres peut attirer des acheteurs sp\u00e9culatifs de court terme, malgr\u00e9 les flux d'ETF n\u00e9gatifs.",
+          "reason": "",
+          "risks": "",
           "price0": 89.51,
           "breakout": null,
           "trade": {
@@ -2017,16 +2017,7 @@
           }
         }
       },
-      "queries": [
-        "\"November 2026\" crypto news",
-        "\"FOMC\" \"November 2026\" OR Fed rate decision November 2026",
-        "US CPI \"November 2026\" OR Jobs report \"November 2026\"",
-        "BTC ETF flows November 2026",
-        "\"Solana\" news November 2026",
-        "\"BNB\" news November 2026",
-        "\"XRP\" Ripple news November 2026",
-        "\"Ethereum\" news November 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -2041,7 +2032,8 @@
         "promptTokenCount": 4129,
         "candidatesTokenCount": 1241,
         "totalTokenCount": 12667
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794081600000,
@@ -6735,7 +6727,7 @@
     "1794657600000": 1,
     "1794672000000": 1
   },
-  "generatedAt": 1794672100530,
+  "generatedAt": 1794672968050,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -6808,8 +6800,8 @@
     }
   },
   "lastRun": {
-    "at": 1794672100530,
-    "status": "ok",
+    "at": 1794672968050,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1794672000000
   },
