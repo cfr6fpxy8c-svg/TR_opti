@@ -7161,7 +7161,11 @@
             "reason": "La forte survente (RSI \u00e0 23.8) et les liquidations massives sugg\u00e8rent un risque \u00e9lev\u00e9 de rebond technique \u00e0 court terme, rendant un nouveau short peu optimal."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.58,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -7175,7 +7179,11 @@
             "reason": "RSI tr\u00e8s bas \u00e0 27.4 indiquant une forte survente. Risque de squeeze des shorts \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.838,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -7189,7 +7197,11 @@
             "reason": "Une position short est d\u00e9j\u00e0 ouverte sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.793,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -7203,7 +7215,11 @@
             "reason": "Le RSI de 4H est \u00e0 27.6, limitant le ratio rendement/risque pour un nouveau short."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.596,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -7217,7 +7233,11 @@
             "reason": "Une position short est d\u00e9j\u00e0 ouverte sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -7.688,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -7964,7 +7984,8 @@
             "stop": 1993.87,
             "target": 1740.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": {
@@ -8044,11 +8065,118 @@
         "candidatesTokenCount": 1724,
         "totalTokenCount": 13125
       }
+    },
+    {
+      "barClose": 1794672000000,
+      "requestedAt": 1794672141028,
+      "analyzedAt": 1794672177454,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "March\u00e9 crypto sous pression : l'inflation US d'octobre plus forte que pr\u00e9vu (IPC +0,4%) ravive les craintes d'une hausse des taux de la Fed en d\u00e9cembre. Le dollar fort, la hausse des rendements et la d\u00e9route de l'IA/tech US entra\u00eenent une forte aversion au risque et d'importantes sorties d'ETF.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "Baisse de 4,58% sur 24h, cassant sous le seuil psychologique des 70k$ puis glissant vers 65,7k$. La chute est men\u00e9e par des sorties massives d'ETF Spot (~1,4-1,5 Md$ en 5 jours) et une baisse mensuelle record de 14,2 Md$ de la supply de stablecoins, signifiant une fuite de capitaux. De plus, la victoire d\u00e9mocrate aux midterms fragilise le projet de r\u00e9serve strat\u00e9gique am\u00e9ricaine.",
+          "risks": "Sursaut technique possible d\u00fb \u00e0 un RSI extr\u00eamement survendu (18,9) et d'\u00e9ventuelles rachats de shorts.",
+          "price0": 65718.5,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Avec un RSI de 18,9, le march\u00e9 est extr\u00eamement survendu \u00e0 court terme, pr\u00e9sentant un risque \u00e9lev\u00e9 de rebond technique ou de short-squeeze de fin de semaine, rendant toute nouvelle position vendeuse trop risqu\u00e9e \u00e0 ce niveau."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "ETH suit la tendance lourde du march\u00e9 et passe sous les 1900$, touchant un plus bas de 1823$. La pression vendeuse est aliment\u00e9e par les sorties massives d'ETF et d'importantes liquidations de positions longues (~203 M$ pour ETH sur 24h). Le retard du d\u00e9ploiement de la mise \u00e0 jour Glamsterdam sur le r\u00e9seau principal p\u00e8se \u00e9galement sur la confiance des investisseurs.",
+          "risks": "Forte survente (RSI 24,3) propice \u00e0 un rebond technique ; support majeur \u00e0 1800$.",
+          "price0": 1840.39,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif. Nous la laissons courir vers l'objectif de 1740$ avec un stop \u00e0 1993,87$."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "XRP subit la baisse globale et passe sous la barre de 1,00$ pour cl\u00f4turer \u00e0 0,9713$. Plus de 18,8 M$ de positions acheteuses \u00e0 effet de levier ont \u00e9t\u00e9 liquid\u00e9es sur XRP le 13 novembre. Bien que Ripple ait obtenu l'approbation de l'OCC pour sa banque fiduciaire fin octobre, les vents contraires macro\u00e9conomiques et les retraits d'ETF sur le BTC \u00e9clipsent les fondamentaux propres.",
+          "risks": "Forte volatilit\u00e9 inh\u00e9rente ; rebond rapide possible si le support de 0,95$ tient.",
+          "price0": 0.9713,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La rupture de 1,00$ est baissi\u00e8re, mais la survente extr\u00eame de BTC (RSI 18,9) fait peser un risque \u00e9lev\u00e9 de rebond global du march\u00e9 qui liquiderait les shorts tardifs. L'abstention est de mise en attendant une stabilisation."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "BNB chute \u00e0 598,85$, enfon\u00e7ant la zone de support cl\u00e9 des 615$. La capitulation est accentu\u00e9e par la baisse de la supply globale de stablecoins et la prudence face aux taux de la Fed. Bien que le taux de financement soit neutre (0,0), la pression vendeuse technique reste dominante sous les EMA 20 et 50.",
+          "risks": "RSI tr\u00e8s bas (19,7) sugg\u00e9rant un \u00e9puisement des vendeurs ; support psychologique fort \u00e0 580$.",
+          "price0": 598.85,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position courte d\u00e9j\u00e0 ouverte \u00e0 614,49$ avec un objectif \u00e0 570,0$. Nous conservons la position en cours sans ajouter d'exposition."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "SOL affiche la plus forte baisse du jour (-7,69%) \u00e0 73,85$, glissant vers son plus bas sur 10 jours \u00e0 73,11$. Malgr\u00e9 de bonnes performances techniques ant\u00e9rieures, la d\u00e9route du secteur technologique et de l'IA aux \u00c9tats-Unis a d\u00e9clench\u00e9 une vague de d\u00e9-risquage rapide sur cet actif \u00e0 b\u00eata \u00e9lev\u00e9, acc\u00e9l\u00e9r\u00e9e par des liquidations de positions longues.",
+          "risks": "RSI \u00e0 24,0 indiquant des conditions de survente ; volatilit\u00e9 \u00e9lev\u00e9e propice aux rebonds violents.",
+          "price0": 73.85,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position courte est d\u00e9j\u00e0 ouverte \u00e0 75,20$ visant 67,0$. Nous maintenons la position active conform\u00e9ment aux r\u00e8gles du portefeuille."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "crypto market news november 2026",
+        "bitcoin price november 2026",
+        "macroeconomic events november 2026",
+        "cpi jobs release schedule november 2026",
+        "\"November 16, 2026\" macroeconomic releases",
+        "crypto news \"November 14, 2026\"",
+        "bitcoin price drops \"November 13\" 2026",
+        "stablecoin supply \"November 2026\""
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4235,
+        "candidatesTokenCount": 1597,
+        "totalTokenCount": 12615
+      }
     }
   ],
   "attempts": {
     "1794657600000": 1,
-    "1794668400000": 2
+    "1794668400000": 2,
+    "1794672000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -8067,9 +8195,9 @@
         "conviction": 65,
         "reason": "Le momentum baissier et la pression fondamentale li\u00e9e au hack de Binance offrent un excellent ratio de risque pour viser les 570$.",
         "exitBy": 1794819600000,
-        "lastBar": 1794664800000,
-        "markR": 0.5874,
-        "markPrice": 599.81
+        "lastBar": 1794668400000,
+        "markR": 0.6591,
+        "markPrice": 598.02
       },
       {
         "id": "SOLUSDT-1794643200000",
@@ -8084,9 +8212,26 @@
         "conviction": 70,
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
-        "lastBar": 1794664800000,
-        "markR": 0.2983,
-        "markPrice": 73.98
+        "lastBar": 1794668400000,
+        "markR": 0.3765,
+        "markPrice": 73.66
+      },
+      {
+        "id": "ETHUSDT-1794668400000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794672000000,
+        "entryPrice": 1840.39,
+        "stop": 1993.87,
+        "target": 1740.0,
+        "risk": 153.4799999999998,
+        "stake": 5.513944,
+        "conviction": 70,
+        "reason": "La rupture violente du support des 1 875$ soutenue par un volume important et des facteurs fondamentaux n\u00e9gatifs (ventes de la Fondation, report du fork) offre un excellent point d'entr\u00e9e pour un short visant la prochaine zone de support vers 1 740$.",
+        "exitBy": 1794844800000,
+        "lastBar": 1794671999999,
+        "markR": 0.0193,
+        "markPrice": 1837.43
       }
     ],
     "trades": [
@@ -8381,19 +8526,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794671181456,
+  "generatedAt": 1794672141028,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 57,
-    "totalTokens": 686578,
+    "analyses": 58,
+    "totalTokens": 699193,
     "direction": {
-      "scored": 250,
-      "called": 180,
+      "scored": 255,
+      "called": 185,
       "neutral": 70,
-      "hits": 139,
-      "hitRate": 0.7722,
-      "brier": 0.2118,
+      "hits": 144,
+      "hitRate": 0.7784,
+      "brier": 0.2104,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -8448,15 +8593,15 @@
       "winRate": 0.6875,
       "avgR": 0.637,
       "totalR": 10.1926,
-      "open": 2,
-      "equityMarked": 556.278107,
-      "returnPct": 11.2556
+      "open": 3,
+      "equityMarked": 557.211067,
+      "returnPct": 11.4422
     }
   },
   "lastRun": {
-    "at": 1794671181456,
-    "status": "up-to-date",
+    "at": 1794672141028,
+    "status": "ok",
     "error": null,
-    "barClose": 1794668400000
+    "barClose": 1794672000000
   }
 }
