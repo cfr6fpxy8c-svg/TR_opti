@@ -7927,11 +7927,128 @@
         "candidatesTokenCount": 1154,
         "totalTokenCount": 13140
       }
+    },
+    {
+      "barClose": 1794668400000,
+      "requestedAt": 1794669383790,
+      "analyzedAt": 1794669415207,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Inflation US d'octobre plus forte que pr\u00e9vu (+0,4% MoM) poussant les rendements \u00e0 10 ans au-dessus de 5% et le DXY \u00e0 un sommet de 19 mois. Les anticipations de hausse des taux de la Fed en d\u00e9cembre grimpent (94%). Climat d'aversion au risque g\u00e9n\u00e9ralis\u00e9 avec de lourdes liquidations de longs ($1,02 Md",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "Le BTC teste sa moyenne mobile sur 200 semaines (autour de 67k-68k$) apr\u00e8s une chute brutale aliment\u00e9e par des sorties massives d'ETF spot et des flux importants de mineurs vers les exchanges (Antpool a envoy\u00e9 2 077 BTC). La demande spot et perp\u00e9tuels est n\u00e9gative (-362k BTC), confirmant une forte pression vendeuse et une absence d'acheteurs pour absorber l'offre.",
+          "risks": "Un rebond technique sur le support de la MM 200 semaines ou un short squeeze de week-end face \u00e0 des carnets d'ordres peu profonds.",
+          "price0": 67243.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "BTC est sur-vendu \u00e0 court terme (RSI 22.9) et teste un support hebdomadaire majeur (MM 200 semaines). Vendre ici offre un mauvais ratio risque/rendement, et acheter va \u00e0 l'encontre de la forte tendance baissi\u00e8re."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "ETH sous-performe le BTC (ratio ETH/BTC au plus bas) avec des sorties continues des ETF spot depuis 6 semaines. De plus, la Fondation Ethereum a vendu 1 000 ETH \u00e0 l'approche de la zone des 2 000$, et le fork Glamsterdam Hoodi est report\u00e9 en raison de risques sur les frais de gaz. La cassure des 1 875$ acc\u00e9l\u00e8re la d\u00e9gradation technique.",
+          "risks": "Un rebond technique temporaire si le march\u00e9 global se stabilise ou si des rachats de shorts se produisent.",
+          "price0": 1909.59,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 70,
+            "reason": "La rupture violente du support des 1 875$ soutenue par un volume important et des facteurs fondamentaux n\u00e9gatifs (ventes de la Fondation, report du fork) offre un excellent point d'entr\u00e9e pour un short visant la prochaine zone de support vers 1 740$.",
+            "stop": 1993.87,
+            "target": 1740.0,
+            "maxHoldHours": 48,
+            "valid": true
+          },
+          "breakout4h": null,
+          "breakout1h": {
+            "side": "SHORT",
+            "level": 1875.0,
+            "decision": "GO",
+            "probTarget": 65,
+            "reason": "La cassure du support cl\u00e9 de 1 875$ sur un volume relatif exceptionnel de 5,07 confirme la force de l'impulsion baissi\u00e8re. Le contexte macro\u00e9conomique tr\u00e8s d\u00e9grad\u00e9 et les ventes de la Fondation valident la poursuite du mouvement vers les 1 750$.",
+            "ours": "taken"
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "La structure de march\u00e9 de XRP est baissi\u00e8re sur toutes les unit\u00e9s de temps (1h, 4h, daily) depuis fin octobre. XRP teste actuellement le niveau psychologique cl\u00e9 de 1,00$, montrant une faiblesse g\u00e9n\u00e9ralis\u00e9e malgr\u00e9 un RSI journalier tr\u00e8s bas (20,8) signalant des conditions de survente prononc\u00e9es.",
+          "risks": "Une forte r\u00e9action haussi\u00e8re ou un short squeeze sur le seuil psychologique de 1,00$, exacerb\u00e9 par l'illiquidit\u00e9 du week-end.",
+          "price0": 0.9945,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le cours teste la zone psychologique majeure de 1,00$ avec un RSI de survente extr\u00eame. Vendre \u00e0 ce niveau comporte un risque \u00e9lev\u00e9 de rebond \u00e0 court terme, tandis que l'achat est trop risqu\u00e9 face \u00e0 la tendance baissi\u00e8re dominante."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "BNB subit la pression vendeuse g\u00e9n\u00e9rale et la d\u00e9gradation de la confiance suite au piratage pass\u00e9 de Binance et aux retraits massifs d'utilisateurs. Le cours reste sous les moyennes mobiles exponentielles (EMA20/50), confirmant la tendance baissi\u00e8re, avec un RSI \u00e0 24,7 confirmant une forte dynamique vendeuse.",
+          "risks": "Un rebond technique face \u00e0 la survente \u00e0 court terme ou des annonces positives de l'\u00e9cosyst\u00e8me Binance.",
+          "price0": 617.56,
+          "trade": {
+            "action": "NONE",
+            "conviction": 80,
+            "reason": "Nous d\u00e9tenons d\u00e9j\u00e0 une position SHORT active (entr\u00e9e \u00e0 614,49$). Nous conservons cette position ouverte avec un stop de protection inchang\u00e9 \u00e0 639,48$ et un objectif \u00e0 570,0$."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "SOL montre une faiblesse persistante, surperformant la baisse du march\u00e9 sur 24h (-5,84%) et sur 7 jours (-15,58%). Bien qu'int\u00e9gr\u00e9e \u00e0 la feuille de route de tokenisation de la DTCC et au lancement de Privacy Rings, la pression macro et les liquidations de positions \u00e0 effet de levier p\u00e8sent lourdement.",
+          "risks": "Des d\u00e9veloppements fondamentaux sur ses applications de tokenisation de titres ou un rebond technique d\u00fb \u00e0 une survente prononc\u00e9e (RSI 27,8).",
+          "price0": 75.92,
+          "trade": {
+            "action": "NONE",
+            "conviction": 80,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte (entr\u00e9e \u00e0 75,20$). Nous restons positionn\u00e9s pour viser l'objectif \u00e0 67,00$ avec un stop de protection plac\u00e9 \u00e0 79,29$."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "bitcoin price november 2026",
+        "crypto market news november 2026",
+        "fed rate decision november 2026",
+        "cpi release schedule november 2026",
+        "\"ETH\" \"1853.03\" OR \"1875\" OR \"1909\" november 2026",
+        "\"BNB\" \"617.56\" OR \"614.49\" OR \"616.22\" november 2026",
+        "\"SOL\" \"75.92\" OR \"75.21\" OR \"74.77\" november 2026",
+        "\"XRP\" \"0.9945\" OR \"0.9822\" OR \"0.9789\" november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4214,
+        "candidatesTokenCount": 1724,
+        "totalTokenCount": 13125
+      }
     }
   ],
   "attempts": {
     "1794657600000": 1,
-    "1794668400000": 1
+    "1794668400000": 2
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -7951,8 +8068,8 @@
         "reason": "Le momentum baissier et la pression fondamentale li\u00e9e au hack de Binance offrent un excellent ratio de risque pour viser les 570$.",
         "exitBy": 1794819600000,
         "lastBar": 1794664800000,
-        "markR": 0.5358,
-        "markPrice": 601.1
+        "markR": 0.6287,
+        "markPrice": 598.78
       },
       {
         "id": "SOLUSDT-1794643200000",
@@ -7968,8 +8085,8 @@
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
         "lastBar": 1794664800000,
-        "markR": 0.2421,
-        "markPrice": 74.21
+        "markR": 0.2543,
+        "markPrice": 74.16
       }
     ],
     "trades": [
@@ -8264,12 +8381,12 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794668513839,
+  "generatedAt": 1794669383790,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 56,
-    "totalTokens": 673453,
+    "analyses": 57,
+    "totalTokens": 686578,
     "direction": {
       "scored": 250,
       "called": 180,
@@ -8281,7 +8398,7 @@
     },
     "breakouts": {
       "taken_GO": {
-        "count": 3,
+        "count": 4,
         "closed": 0,
         "wins": 0,
         "avgR": null,
@@ -8311,7 +8428,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 16,
+        "count": 17,
         "closed": 2,
         "wins": 0,
         "avgR": -1.0878,
@@ -8332,14 +8449,14 @@
       "avgR": 0.637,
       "totalR": 10.1926,
       "open": 2,
-      "equityMarked": 555.683704,
-      "returnPct": 11.1367
+      "equityMarked": 556.26322,
+      "returnPct": 11.2526
     }
   },
   "lastRun": {
-    "at": 1794668513839,
-    "status": "error",
-    "error": "no JSON object in the model answer",
+    "at": 1794669383790,
+    "status": "ok",
+    "error": null,
     "barClose": 1794668400000
   }
 }
