@@ -1859,13 +1859,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "La correction s'intensifie apr\u00e8s les l\u00e9gislatives US (victoire d\u00e9mocrate au Congr\u00e8s) et l'effondrement de la tech (-5,5% sur le Nasdaq jeudi). Le rapport sur l'emploi d'octobre (+165k vs +65k attendu) renforce les craintes de hausse des taux de la Fed en d\u00e9cembre, pesant lourdement sur le risque.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "BTC est sous pression sous les EMA 20 et 50 (4H) et teste le support cl\u00e9 des 75 000 $. La correction est aliment\u00e9e par la panique sur les valeurs technologiques et d'importantes sorties nettes des ETF spot (430 M$ de sorties jeudi, flux nets cumul\u00e9s 2026 d\u00e9sormais n\u00e9gatifs de -502 M$). Le rapport sur l'emploi am\u00e9ricain solide de vendredi ravive les craintes d'un resserrement de la Fed.",
-          "risks": "Rupture des 75 000 $ entra\u00eenant un retest de la SMA 200 (4H) vers 73 200 $. Moindre liquidit\u00e9 du week-end.",
+          "reason": "",
+          "risks": "",
           "price0": 75810.1,
           "trade": {
             "action": "NONE",
@@ -1882,8 +1882,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "ETH souffre de sa forte corr\u00e9lation avec la tech am\u00e9ricaine et d'une dynamique de flux catastrophique (sorties record de 1,61 Md$ sur les ETF en octobre, flux nets 2026 n\u00e9gatifs \u00e0 -310 M$). Malgr\u00e9 des avanc\u00e9es de finance traditionnelle comme le fonds tokenis\u00e9 d'Amundi sur Ethereum, la structure technique \u00e0 court terme est baissi\u00e8re, maintenant le prix sous les EMA 20/50.",
-          "risks": "Poursuite de la baisse vers les plus bas r\u00e9cents \u00e0 2 170 $. Craintes de hausse des taux limitant les flux d'achat.",
+          "reason": "",
+          "risks": "",
           "price0": 2237.55,
           "trade": {
             "action": "NONE",
@@ -1900,8 +1900,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "XRP a chut\u00e9 \u00e0 un plus bas de 11 semaines apr\u00e8s l'\u00e9chec de son rebond \u00e0 1,35 $. La faiblesse des flux ETF et le contexte de vente g\u00e9n\u00e9ralis\u00e9e l'ont pouss\u00e9 sous 1,20 $. N\u00e9anmoins, les donn\u00e9es on-chain montrent une forte accumulation des grands portefeuilles (whales) qui ont accumul\u00e9 1,37 milliard d'XRP pendant la baisse, et le RSI (4H) \u00e0 29,4 indique un \u00e9tat de survente extr\u00eame.",
-          "risks": "Rebond technique violent d\u00fb \u00e0 la survente. Escrow mensuel de 1 milliard d'XRP qui augmente l'offre disponible.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1785,
           "trade": {
             "action": "NONE",
@@ -1925,8 +1925,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 52,
-          "reason": "BNB montre une forte r\u00e9silience apr\u00e8s le piratage historique de 6,3 Mds$ subi par Binance le 29 octobre. L'annonce du remboursement de 98 % des fonds via les ressources de l'\u00e9change et la reprise progressive des retraits ont restaur\u00e9 la confiance. Les rachats de shorts soutiennent le prix au-dessus du support cl\u00e9 des 680 $, malgr\u00e9 la correction g\u00e9n\u00e9rale du march\u00e9.",
-          "risks": "Risques de r\u00e9pliques de s\u00e9curit\u00e9 ou de nouvelles attaques (ex. exploit mineur de 160 BNB sur CoreVault le 4 nov). D\u00e9gradation du sentiment global sur les altcoins.",
+          "reason": "",
+          "risks": "",
           "price0": 694.08,
           "trade": {
             "action": "NONE",
@@ -1943,8 +1943,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "SOL subit une lourde correction, s'approchant de son plus bas niveau en deux mois. Les ETF Solana enregistrent des sorties continues (1,18 M$ jeudi apr\u00e8s une semaine record de -71,5 M$), traduisant un d\u00e9sint\u00e9r\u00eat institutionnel. Techniquement, SOL teste une ligne de tendance de support \u00e0 long terme ; une cassure sous 87,21 $ ouvrirait la voie vers le niveau psychologique des 70 $.",
-          "risks": "Rebond \u00e0 l'approche de la conf\u00e9rence Solana Breakpoint (15-17 novembre) ou surchauffe des positions vendeuses. Volatilit\u00e9 du week-end.",
+          "reason": "",
+          "risks": "",
           "price0": 90.1,
           "trade": {
             "action": "NONE",
@@ -1959,18 +1959,7 @@
           }
         }
       },
-      "queries": [
-        "crypto market news November 2026",
-        "bitcoin price November 2026",
-        "FOMC meeting November 2026",
-        "FED rate cut November 2026",
-        "US stock market November 5 2026",
-        "US jobs report November 6 2026",
-        "CPI release November 2026",
-        "crypto ETF flows November 2026",
-        "XRP news November 2026",
-        "BNB news November 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -1985,7 +1974,8 @@
         "promptTokenCount": 4177,
         "candidatesTokenCount": 1638,
         "totalTokenCount": 12627
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794024000000,
@@ -7553,8 +7543,8 @@
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
         "lastBar": 1794621600000,
-        "markR": 1.0566,
-        "markPrice": 1.0022
+        "markR": 1.1543,
+        "markPrice": 0.9972
       }
     ],
     "trades": [
@@ -7831,7 +7821,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794625315591,
+  "generatedAt": 1794626183138,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -7899,12 +7889,12 @@
       "avgR": 0.586,
       "totalR": 8.79,
       "open": 1,
-      "equityMarked": 549.591412,
-      "returnPct": 9.9183
+      "equityMarked": 550.100454,
+      "returnPct": 10.0201
     }
   },
   "lastRun": {
-    "at": 1794625315591,
+    "at": 1794626183138,
     "status": "waiting",
     "error": null,
     "barClose": 1794625200000
