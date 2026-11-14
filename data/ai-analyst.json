@@ -5535,6 +5535,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "RSI 4H extr\u00eamement bas (18,2) apr\u00e8s une capitulation massive. Initier un short ici est trop tardif (chasse au creux), et un long est trop risqu\u00e9 face \u00e0 cette dynamique macro baissi\u00e8re."
+          },
+          "outcome": {
+            "retPct": -3.195,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -5548,6 +5552,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur ETH (entr\u00e9e \u00e0 2056,41$, stop \u00e0 2150$, cible \u00e0 1910$). Aucune nouvelle position ne sera ouverte tant qu'elle est en cours."
+          },
+          "outcome": {
+            "retPct": -2.587,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -5561,6 +5569,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte (entr\u00e9e \u00e0 1,0582$, stop \u00e0 1,115$, cible \u00e0 0,95$). Pas d'autre trade autoris\u00e9 pour cet actif."
+          },
+          "outcome": {
+            "retPct": -1.551,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -5574,6 +5586,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Survente extr\u00eame (RSI 4H \u00e0 21,0) apr\u00e8s une baisse de 6,6% en 24h. Le ratio risque/rendement pour un nouveau short est m\u00e9diocre \u00e0 ces niveaux, et contrer la tendance est pr\u00e9matur\u00e9."
+          },
+          "outcome": {
+            "retPct": -2.777,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -5587,6 +5603,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position vendeuse existante (entr\u00e9e \u00e0 83,93$, stop \u00e0 87,8$, cible \u00e0 74,5$). Nous laissons la position courir vers sa cible sans ajouter de risque."
+          },
+          "outcome": {
+            "retPct": -4.323,
+            "hit": true
           }
         }
       },
@@ -6221,22 +6241,22 @@
     }
   ],
   "attempts": {
-    "1794600000000": 1,
-    "1794614400000": 1
+    "1794614400000": 1,
+    "1794628800000": 1
   },
-  "generatedAt": 1794627967333,
+  "generatedAt": 1794628900068,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 49,
     "totalTokens": 554214,
     "direction": {
-      "scored": 215,
-      "called": 165,
+      "scored": 220,
+      "called": 170,
       "neutral": 50,
-      "hits": 120,
-      "hitRate": 0.7273,
-      "brier": 0.2164,
+      "hits": 125,
+      "hitRate": 0.7353,
+      "brier": 0.215,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -6297,10 +6317,10 @@
     }
   },
   "lastRun": {
-    "at": 1794627967333,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1794614400000
+    "at": 1794628900068,
+    "status": "error",
+    "error": "no JSON object in the model answer",
+    "barClose": 1794628800000
   },
   "portfolio": {
     "startCapital": 500.0,

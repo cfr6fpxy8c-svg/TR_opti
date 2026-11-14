@@ -1983,13 +1983,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "La Fed a maintenu ses taux (3,75-4%) mais les craintes de hausse resurgissent apr\u00e8s un rapport NFP tr\u00e8s fort et un PCE \u00e0 3,1%. Les taux et le dollar montent. Le Nasdaq a chut\u00e9 de 4,4% (semi-conducteurs), entra\u00eenant 1Md$ de liquidations crypto. Les flux d'ETF BTC sont n\u00e9gatifs (-430M$ le 5 nov).",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 47,
-          "reason": "Le BTC s'\u00e9change sous 76 000$, un niveau de co\u00fbt cl\u00e9 pour les d\u00e9tenteurs \u00e0 court terme. Les craintes d'une Fed hawkish post-NFP ont provoqu\u00e9 d'importantes sorties d'ETF (-430M$ le 5 novembre) et plus de 2 milliards de dollars de pertes r\u00e9alis\u00e9es en 3 jours. Le march\u00e9 tente de consolider apr\u00e8s la purge.",
-          "risks": "Perte du support \u00e0 75 000$ risquant de propulser le prix vers les 70 000$.",
+          "reason": "",
+          "risks": "",
           "price0": 75864.0,
           "trade": {
             "action": "NONE",
@@ -2006,8 +2006,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 44,
-          "reason": "ETH montre une faiblesse relative persistante sous l'EMA20 (2277$). Les sorties massives d'ETF en octobre (1,2Md$) et le report de la mise \u00e0 niveau Glamsterdam p\u00e8sent lourdement sur le sentiment institutionnel. Le rebond technique reste tr\u00e8s timide apr\u00e8s les liquidations du 5 novembre.",
-          "risks": "Nouveau d\u00e9crochage sous 2200$ en direction du support annuel \u00e0 2170$.",
+          "reason": "",
+          "risks": "",
           "price0": 2244.14,
           "trade": {
             "action": "NONE",
@@ -2024,8 +2024,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "XRP subit une forte pression vendeuse, glissant \u00e0 1,15$ suite aux liquidations globales. Les flux d'ETF XRP sont au point mort et l'activit\u00e9 de tokenisation sur le ledger (men\u00e9e par Justoken) ne compense pas la d\u00e9t\u00e9rioration technique. Le RSI \u00e0 26,3 indique un march\u00e9 extr\u00eamement survendu.",
-          "risks": "Acc\u00e9l\u00e9ration baissi\u00e8re vers 1,00$ en cas de capitulation du Bitcoin.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1597,
           "trade": {
             "action": "NONE",
@@ -2056,8 +2056,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 52,
-          "reason": "BNB fait preuve de r\u00e9silience en d\u00e9fendant son support critique \u00e0 680$ (marteau daily). Binance rassure en planifiant la r\u00e9ouverture compl\u00e8te des retraits (HYPE, INJ, etc.) d'ici la semaine prochaine apr\u00e8s l'incident d'octobre, ce qui soutient le sentiment domestique.",
-          "risks": "D\u00e9gradation macro globale tirant l'actif sous les 680$.",
+          "reason": "",
+          "risks": "",
           "price0": 694.55,
           "trade": {
             "action": "LONG",
@@ -2079,8 +2079,8 @@
         "SOLUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "SOL teste sa moyenne mobile \u00e0 200 jours \u00e0 89$. Le sentiment est soutenu par l'int\u00e9gration native de l'USDC sur 82M de Samsung Wallets et l'approche de la conf\u00e9rence Breakpoint \u00e0 Londres (15-17 nov). Cependant, les sorties d'ETF SOL et la baisse du Nasdaq limitent les vell\u00e9it\u00e9s de hausse.",
-          "risks": "Enfoncement de la MA 200 ouvrant la voie vers 80$.",
+          "reason": "",
+          "risks": "",
           "price0": 90.02,
           "trade": {
             "action": "NONE",
@@ -2095,14 +2095,7 @@
           }
         }
       },
-      "queries": [
-        "FOMC November 2026",
-        "Federal Reserve interest rate November 2026",
-        "crypto news November 2026",
-        "bitcoin news November 2026",
-        "BNB news November 2026",
-        "Solana news November 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -2117,7 +2110,8 @@
         "promptTokenCount": 4225,
         "candidatesTokenCount": 1300,
         "totalTokenCount": 10692
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794038400000,
@@ -7523,7 +7517,8 @@
     }
   ],
   "attempts": {
-    "1794614400000": 1
+    "1794614400000": 1,
+    "1794628800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -7542,9 +7537,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794621600000,
-        "markR": 1.2402,
-        "markPrice": 0.9928
+        "lastBar": 1794625200000,
+        "markR": 1.3203,
+        "markPrice": 0.9887
       }
     ],
     "trades": [
@@ -7821,7 +7816,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794627979850,
+  "generatedAt": 1794628941545,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -7889,14 +7884,14 @@
       "avgR": 0.586,
       "totalR": 8.79,
       "open": 1,
-      "equityMarked": 550.548015,
-      "returnPct": 10.1096
+      "equityMarked": 550.965356,
+      "returnPct": 10.1931
     }
   },
   "lastRun": {
-    "at": 1794627979850,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794625200000
+    "at": 1794628941545,
+    "status": "error",
+    "error": "no JSON object in the model answer",
+    "barClose": 1794628800000
   }
 }
