@@ -7746,7 +7746,8 @@
             "stop": 639.48,
             "target": 570.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": null
@@ -7764,7 +7765,8 @@
             "stop": 79.29,
             "target": 67.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": null
@@ -7844,29 +7846,45 @@
     }
   ],
   "attempts": {
-    "1794628800000": 2,
     "1794643200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 544.086259,
+    "equity": 551.394407,
     "positions": [
       {
-        "id": "XRPUSDT-1794384000000",
-        "symbol": "XRPUSDT",
+        "id": "BNBUSDT-1794643200000",
+        "symbol": "BNBUSDT",
         "side": "SHORT",
-        "entryTime": 1794387600000,
-        "entryPrice": 1.0563,
-        "stop": 1.1075,
-        "target": 0.9629,
-        "risk": 0.05119999999999991,
-        "stake": 5.210253,
+        "entryTime": 1794646800000,
+        "entryPrice": 614.49,
+        "stop": 639.48,
+        "target": 570.0,
+        "risk": 24.99000000000001,
+        "stake": 5.513944,
+        "conviction": 65,
+        "reason": "Le momentum baissier et la pression fondamentale li\u00e9e au hack de Binance offrent un excellent ratio de risque pour viser les 570$.",
+        "exitBy": 1794819600000,
+        "lastBar": 1794646799999,
+        "markR": -0.0384,
+        "markPrice": 615.45
+      },
+      {
+        "id": "SOLUSDT-1794643200000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1794646800000,
+        "entryPrice": 75.2,
+        "stop": 79.29,
+        "target": 67.0,
+        "risk": 4.090000000000003,
+        "stake": 5.513944,
         "conviction": 70,
-        "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
-        "exitBy": 1794646800000,
-        "lastBar": 1794639600000,
-        "markR": 1.3945,
-        "markPrice": 0.9849
+        "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
+        "exitBy": 1794819600000,
+        "lastBar": 1794646799999,
+        "markR": -0.044,
+        "markPrice": 75.38
       }
     ],
     "trades": [
@@ -8139,11 +8157,29 @@
         "rNet": 1.1365,
         "pnl": 5.858589,
         "equityAfter": 544.086259
+      },
+      {
+        "id": "XRPUSDT-1794384000000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1794387600000,
+        "entryPrice": 1.0563,
+        "stop": 1.1075,
+        "target": 0.9629,
+        "stake": 5.210253,
+        "conviction": 70,
+        "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
+        "exitTime": 1794646800000,
+        "exitPrice": 0.9829,
+        "exitReason": "TIME",
+        "rNet": 1.4026,
+        "pnl": 7.308148,
+        "equityAfter": 551.394407
       }
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794645983197,
+  "generatedAt": 1794646913242,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -8205,20 +8241,20 @@
       }
     },
     "portfolio": {
-      "trades": 15,
-      "wins": 10,
-      "winRate": 0.6667,
-      "avgR": 0.586,
-      "totalR": 8.79,
-      "open": 1,
-      "equityMarked": 551.351957,
-      "returnPct": 10.2704
+      "trades": 16,
+      "wins": 11,
+      "winRate": 0.6875,
+      "avgR": 0.637,
+      "totalR": 10.1926,
+      "open": 2,
+      "equityMarked": 550.940058,
+      "returnPct": 10.188
     }
   },
   "lastRun": {
-    "at": 1794645983197,
-    "status": "up-to-date",
+    "at": 1794646913242,
+    "status": "waiting",
     "error": null,
-    "barClose": 1794643200000
+    "barClose": 1794646800000
   }
 }
