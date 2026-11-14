@@ -6789,7 +6789,11 @@
             "reason": "D\u00e9j\u00e0 fortement expos\u00e9 via 4 positions short ouvertes. De plus, l'indicateur Fear & Greed \u00e0 20 (Extreme Fear) et le RSI \u00e0 26,7 sugg\u00e8rent un risque \u00e9lev\u00e9 de rebond technique ou de fausse cassure juste avant la publication du PPI am\u00e9ricain."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.277,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -6803,7 +6807,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif (entr\u00e9e 2057.99, stop 2143.0, cible 1920.7), interdisant toute nouvelle entr\u00e9e selon les r\u00e8gles de gestion des risques."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.334,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -6817,7 +6825,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 en cours sur XRP (entr\u00e9e 1.0563, stop 1.1075, cible 0.9629), ce qui exclut l'ouverture d'un nouveau trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.622,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -6838,6 +6850,10 @@
             "probTarget": 62,
             "reason": "Cassure valide de la borne basse du canal des 10 jours \u00e0 649,6 USD avec un volume sup\u00e9rieur \u00e0 la moyenne. S'aligne parfaitement avec la tendance baissi\u00e8re de fond (4H sous les EMA20 et EMA50) et le contexte fondamental tr\u00e8s lourd pesant sur Binance.",
             "ours": "taken"
+          },
+          "outcome": {
+            "retPct": -4.664,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -6852,7 +6868,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 active sur SOL (entr\u00e9e 81.17, stop 85.7, cible 75.9), aucune action requise."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -6.758,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -7517,7 +7537,7 @@
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 538.22767,
+    "equity": 544.086259,
     "positions": [
       {
         "id": "XRPUSDT-1794384000000",
@@ -7532,26 +7552,9 @@
         "conviction": 70,
         "reason": "Rupture technique majeure d'un triangle descendant avec cascade de liquidations forc\u00e9es de longs. L'Open Interest reste vuln\u00e9rable \u00e0 un d\u00e9bouclage suppl\u00e9mentaire vers la zone des 0,99$.",
         "exitBy": 1794646800000,
-        "lastBar": 1794618000000,
-        "markR": 1.1387,
-        "markPrice": 0.998
-      },
-      {
-        "id": "SOLUSDT-1794492000000",
-        "symbol": "SOLUSDT",
-        "side": "SHORT",
-        "entryTime": 1794495600000,
-        "entryPrice": 81.17,
-        "stop": 85.7,
-        "target": 75.9,
-        "risk": 4.530000000000001,
-        "stake": 5.15504,
-        "conviction": 65,
-        "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
-        "exitBy": 1794668400000,
-        "lastBar": 1794618000000,
-        "markR": 1.2252,
-        "markPrice": 75.62
+        "lastBar": 1794621600000,
+        "markR": 1.0566,
+        "markPrice": 1.0022
       }
     ],
     "trades": [
@@ -7806,23 +7809,41 @@
         "rNet": 1.3133,
         "pnl": 6.84283,
         "equityAfter": 538.22767
+      },
+      {
+        "id": "SOLUSDT-1794492000000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1794495600000,
+        "entryPrice": 81.17,
+        "stop": 85.7,
+        "target": 75.9,
+        "stake": 5.15504,
+        "conviction": 65,
+        "reason": "La tendance baissi\u00e8re forte sous l'EMA20 et la faiblesse macro\u00e9conomique globale justifient une position vendeuse visant le support inf\u00e9rieur.",
+        "exitTime": 1794625200000,
+        "exitPrice": 75.9,
+        "exitReason": "TARGET",
+        "rNet": 1.1365,
+        "pnl": 5.858589,
+        "equityAfter": 544.086259
       }
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794624380623,
+  "generatedAt": 1794625315591,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 53,
     "totalTokens": 636368,
     "direction": {
-      "scored": 235,
-      "called": 167,
-      "neutral": 68,
-      "hits": 126,
-      "hitRate": 0.7545,
-      "brier": 0.2151,
+      "scored": 240,
+      "called": 170,
+      "neutral": 70,
+      "hits": 129,
+      "hitRate": 0.7588,
+      "brier": 0.2144,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -7872,20 +7893,20 @@
       }
     },
     "portfolio": {
-      "trades": 14,
-      "wins": 9,
-      "winRate": 0.6429,
-      "avgR": 0.5467,
-      "totalR": 7.6535,
-      "open": 2,
-      "equityMarked": 550.47654,
-      "returnPct": 10.0953
+      "trades": 15,
+      "wins": 10,
+      "winRate": 0.6667,
+      "avgR": 0.586,
+      "totalR": 8.79,
+      "open": 1,
+      "equityMarked": 549.591412,
+      "returnPct": 9.9183
     }
   },
   "lastRun": {
-    "at": 1794624380623,
+    "at": 1794625315591,
     "status": "waiting",
     "error": null,
-    "barClose": 1794621600000
+    "barClose": 1794625200000
   }
 }
