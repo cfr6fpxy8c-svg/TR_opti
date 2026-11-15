@@ -7805,7 +7805,11 @@
             "reason": "L'extr\u00eame survente (RSI \u00e0 22,9) et la proximit\u00e9 du support majeur \u00e0 66,4k$ (bas de 10j) incitent \u00e0 ne pas initier de nouvelle position short ici."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.85,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -7819,7 +7823,11 @@
             "reason": "Proximit\u00e9 du support psychologique cl\u00e9 de 1900$ et RSI quotidien proche de 30 limitent l'int\u00e9r\u00eat d'un nouveau short \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.547,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -7833,7 +7841,11 @@
             "reason": "Le ratio risque/r\u00e9compense est d\u00e9favorable pour un short car XRP teste un support crucial de long terme (0,985$)."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.218,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -7847,7 +7859,11 @@
             "reason": "Une position courte est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.47,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -7861,7 +7877,11 @@
             "reason": "Une position courte est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.821,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -8689,7 +8709,8 @@
     }
   ],
   "attempts": {
-    "1794729600000": 1
+    "1794729600000": 1,
+    "1794744000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -8708,9 +8729,9 @@
         "conviction": 70,
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
-        "lastBar": 1794736800000,
-        "markR": 0.6577,
-        "markPrice": 72.51
+        "lastBar": 1794740400000,
+        "markR": 0.7384,
+        "markPrice": 72.18
       }
     ],
     "trades": [
@@ -9041,19 +9062,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794743179786,
+  "generatedAt": 1794744151994,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 62,
     "totalTokens": 748261,
     "direction": {
-      "scored": 275,
-      "called": 204,
+      "scored": 280,
+      "called": 209,
       "neutral": 71,
-      "hits": 163,
-      "hitRate": 0.799,
-      "brier": 0.2052,
+      "hits": 168,
+      "hitRate": 0.8038,
+      "brier": 0.2035,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -9109,14 +9130,14 @@
       "avgR": 0.6985,
       "totalR": 12.5721,
       "open": 1,
-      "equityMarked": 568.14154,
-      "returnPct": 13.6283
+      "equityMarked": 568.586515,
+      "returnPct": 13.7173
     }
   },
   "lastRun": {
-    "at": 1794743179786,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794740400000
+    "at": 1794744151994,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794744000000
   }
 }
