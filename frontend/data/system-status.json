@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1794755700000,
-    "executedAt": 1794755743691,
+    "scheduledAt": 1794756600000,
+    "executedAt": 1794756664553,
     "trigger": "schedule",
-    "jitterSeconds": 43.7,
-    "durationMs": 10896,
+    "jitterSeconds": 64.6,
+    "durationMs": 10713,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1794755699999,
-      "ageSeconds": 43.7
+      "newestCandleCloseMs": 1794756599999,
+      "ageSeconds": 64.6
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1794755743691,
-  "nextExpectedScanAt": 1794756600000,
+  "lastSuccessfulScan": 1794756664553,
+  "nextExpectedScanAt": 1794757500000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1794711677261,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1794711600000 actual=1794711677256 (jitter 77.3s)"
-    },
-    {
-      "ts": 1794711687982,
-      "level": "info",
-      "msg": "derivatives: funding rates for 949 symbols"
-    },
-    {
-      "ts": 1794711688219,
-      "level": "info",
-      "msg": "rejected 1x score_below_threshold (e.g. score 46.8 < 50)"
-    },
-    {
-      "ts": 1794711688219,
-      "level": "info",
-      "msg": "SIGNAL BTCUSDT SHORT C score=52.0 trigger=64512.491751879 TP=61956.3 SL=65425.6412406051 RR=2.7993"
-    },
     {
       "ts": 1794712545531,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1794755754562,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1794756664559,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1794756600000 actual=1794756664553 (jitter 64.6s)"
+    },
+    {
+      "ts": 1794756674854,
+      "level": "info",
+      "msg": "derivatives: funding rates for 949 symbols"
+    },
+    {
+      "ts": 1794756675236,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1794756675236,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
