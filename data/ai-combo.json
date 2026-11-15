@@ -2599,13 +2599,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Le 'blue sweep' d\u00e9mocrate aux midterms et un NFP tr\u00e8s fort ravivent les craintes d'une Fed restrictive (probabilit\u00e9 de hausse des taux en d\u00e9cembre \u00e0 80%), propulsant le dollar. Les sorties massives des ETF crypto et le sentiment en Peur Extr\u00eame (25/100) p\u00e8sent lourdement sur le march\u00e9.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Le sentiment g\u00e9n\u00e9ral a plong\u00e9 en Peur Extr\u00eame (25/100) suite aux sorties hebdomadaires records de 1,28 Md$ des ETF spot, ramenant les flux annuels en territoire n\u00e9gatif. Les s\u00e9quelles du piratage de Binance de 6,3 Md$ fin octobre et la cassure sous la ligne de support majeure \u00e0 76 100 $ continuent de limiter toute tentative de rebond, malgr\u00e9 la r\u00e9ouverture progressive des retraits.",
-          "risks": "Correction court-terme excessive provoquant un short-squeeze massif ou stabilisation inattendue des flux d'ETF.",
+          "reason": "",
+          "risks": "",
           "price0": 75836.0,
           "trade": {
             "action": "NONE",
@@ -2622,8 +2622,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "Ethereum souffre d'une d\u00e9saffection institutionnelle marqu\u00e9e avec 365,3 M$ de sorties nettes d'ETF spot cette semaine, sa sixi\u00e8me semaine cons\u00e9cutive de baisse. De plus, le report du d\u00e9ploiement principal de la mise \u00e0 jour 'Glamsterdam' p\u00e8se sur le sentiment. Techniquement, le cours reste fermement ancr\u00e9 sous les EMA 20 et 50, validant la domination persistante des vendeurs.",
-          "risks": "Un sursaut technique d\u00fb \u00e0 un march\u00e9 sous-\u00e9valu\u00e9 ou une annonce inopin\u00e9e sur les frais.",
+          "reason": "",
+          "risks": "",
           "price0": 2239.01,
           "trade": {
             "action": "NONE",
@@ -2640,8 +2640,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "XRP affiche la pire performance hebdomadaire du top 5 (-7,1%). Les flux d'ETF spot sont au point mort et l'\u00e9chec du projet de loi 'CLARITY Act' au S\u00e9nat d\u00e9truit un catalyseur haussier cl\u00e9. Malgr\u00e9 des sorties massives de Binance qui maintiennent l'indice de raret\u00e9 \u00e0 un sommet sur 4 ans, l'absence de demande acheteuse r\u00e9elle laisse la voie libre aux vendeurs vers le support \u00e0 1,10 $.",
-          "risks": "Transferts internes ou rumeurs de r\u00e9gulation provoquant de la volatilit\u00e9 sur les volumes.",
+          "reason": "",
+          "risks": "",
           "price0": 1.1634,
           "trade": {
             "action": "NONE",
@@ -2658,8 +2658,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "BNB tente de stabiliser la zone des 690-700 $ apr\u00e8s un repli depuis ses sommets \u00e0 750 $. Bien que Binance ait surmont\u00e9 l'impact imm\u00e9diat du piratage de 6,3 Md$ en rouvrant les retraits et en couvrant 90% des pertes, la nervosit\u00e9 persiste. Le bug de s\u00e9curit\u00e9 Reth sur les n\u0153uds compatibles EVM suscite de la m\u00e9fiance, m\u00eame si l'impact sur opBNB demeure tr\u00e8s limit\u00e9.",
-          "risks": "Nouveaux \u00e9l\u00e9ments n\u00e9gatifs sur l'enqu\u00eate de s\u00e9curit\u00e9 de Binance ou rupture du support cl\u00e9 \u00e0 680 $.",
+          "reason": "",
+          "risks": "",
           "price0": 696.77,
           "trade": {
             "action": "NONE",
@@ -2676,8 +2676,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 36,
-          "reason": "SOL est sous pression apr\u00e8s avoir gliss\u00e9 sous ses moyennes mobiles \u00e0 50 et 200 jours. La pression r\u00e9glementaire s'intensifie avec l'annulation forc\u00e9e par la PBOC des \u00e9v\u00e9nements 'Solana Accelerate' en Chine et une enqu\u00eate sur ses publicit\u00e9s. L'annonce de l'application Leap avec un m\u00e9canisme de buy-and-burn de SOL n'a pas suffi \u00e0 compenser les sorties d'ETF spot de 143 M$ d'octobre.",
-          "risks": "Rebond technique court terme d\u00fb \u00e0 des conditions de survente ou nouvelles positives de Leap.",
+          "reason": "",
+          "risks": "",
           "price0": 89.77,
           "trade": {
             "action": "NONE",
@@ -2692,16 +2692,7 @@
           }
         }
       },
-      "queries": [
-        "US midterm elections November 2026 results",
-        "FOMC meeting November 2026",
-        "crypto news November 2026",
-        "BTC price November 2026",
-        "SOL crypto news November 2026",
-        "XRP crypto news November 2026",
-        "BNB crypto news November 2026",
-        "Fear and Greed index crypto November 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -2716,7 +2707,8 @@
         "promptTokenCount": 4342,
         "candidatesTokenCount": 1414,
         "totalTokenCount": 11546
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794110400000,
@@ -8485,8 +8477,8 @@
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
         "lastBar": 1794697200000,
-        "markR": 1.2225,
-        "markPrice": 70.2
+        "markR": 1.176,
+        "markPrice": 70.39
       }
     ],
     "trades": [
@@ -8817,7 +8809,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794700941275,
+  "generatedAt": 1794701783249,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -8885,13 +8877,13 @@
       "avgR": 0.6985,
       "totalR": 12.5721,
       "open": 1,
-      "equityMarked": 571.255816,
-      "returnPct": 14.2512
+      "equityMarked": 570.999417,
+      "returnPct": 14.1999
     }
   },
   "lastRun": {
-    "at": 1794700941275,
-    "status": "ok",
+    "at": 1794701783249,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1794700800000
   }
