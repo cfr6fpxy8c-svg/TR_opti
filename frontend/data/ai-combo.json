@@ -8015,7 +8015,11 @@
             "reason": "Avec un RSI de 18,9, le march\u00e9 est extr\u00eamement survendu \u00e0 court terme, pr\u00e9sentant un risque \u00e9lev\u00e9 de rebond technique ou de short-squeeze de fin de semaine, rendant toute nouvelle position vendeuse trop risqu\u00e9e \u00e0 ce niveau."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.52,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -8029,7 +8033,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif. Nous la laissons courir vers l'objectif de 1740$ avec un stop \u00e0 1993,87$."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.659,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -8043,7 +8051,11 @@
             "reason": "La rupture de 1,00$ est baissi\u00e8re, mais la survente extr\u00eame de BTC (RSI 18,9) fait peser un risque \u00e9lev\u00e9 de rebond global du march\u00e9 qui liquiderait les shorts tardifs. L'abstention est de mise en attendant une stabilisation."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.431,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -8057,7 +8069,11 @@
             "reason": "Position courte d\u00e9j\u00e0 ouverte \u00e0 614,49$ avec un objectif \u00e0 570,0$. Nous conservons la position en cours sans ajouter d'exposition."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.348,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -8071,7 +8087,11 @@
             "reason": "Une position courte est d\u00e9j\u00e0 ouverte \u00e0 75,20$ visant 67,0$. Nous maintenons la position active conform\u00e9ment aux r\u00e8gles du portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.602,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -8832,7 +8852,8 @@
     }
   ],
   "attempts": {
-    "1794744000000": 2
+    "1794744000000": 2,
+    "1794758400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -8851,9 +8872,9 @@
         "conviction": 70,
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
-        "lastBar": 1794751200000,
-        "markR": 1.0147,
-        "markPrice": 71.05
+        "lastBar": 1794754800000,
+        "markR": 1.0098,
+        "markPrice": 71.07
       }
     ],
     "trades": [
@@ -9184,19 +9205,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794757581509,
+  "generatedAt": 1794758538354,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 63,
     "totalTokens": 759475,
     "direction": {
-      "scored": 285,
-      "called": 213,
+      "scored": 290,
+      "called": 218,
       "neutral": 72,
-      "hits": 172,
-      "hitRate": 0.8075,
-      "brier": 0.2025,
+      "hits": 177,
+      "hitRate": 0.8119,
+      "brier": 0.2014,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -9252,14 +9273,14 @@
       "avgR": 0.6985,
       "totalR": 12.5721,
       "open": 1,
-      "equityMarked": 570.110018,
-      "returnPct": 14.022
+      "equityMarked": 570.083,
+      "returnPct": 14.0166
     }
   },
   "lastRun": {
-    "at": 1794757581509,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794754800000
+    "at": 1794758538354,
+    "status": "error",
+    "error": "unparseable JSON: Extra data",
+    "barClose": 1794758400000
   }
 }
