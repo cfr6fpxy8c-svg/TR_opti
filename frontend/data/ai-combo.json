@@ -8486,7 +8486,11 @@
             "reason": "La tendance majeure est fortement baissi\u00e8re, mais la survente extr\u00eame et le gap CME \u00e0 combler \u00e0 68,2k$ rendent l'ouverture d'un nouveau short extr\u00eamement risqu\u00e9e ici."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.513,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -8500,7 +8504,11 @@
             "reason": "Pas d'avantage clair. La tendance est baissi\u00e8re mais le RSI \u00e0 27 et le nettoyage de l'effet de levier sugg\u00e8rent une possible consolidation \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.199,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -8514,7 +8522,11 @@
             "reason": "March\u00e9 ind\u00e9cis apr\u00e8s la perte du niveau de 1,00$. Nous restons \u00e0 l'\u00e9cart en attendant une stabilisation ou un signal clair de retournement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.277,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -8528,7 +8540,11 @@
             "reason": "Le piratage de Binance p\u00e8se lourdement sur le sentiment. Bien que survendu, le risque de nouvelles baisses emp\u00eache tout achat, et la baisse est d\u00e9j\u00e0 trop avanc\u00e9e pour shorter."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.041,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -8542,7 +8558,11 @@
             "reason": "Position short d\u00e9j\u00e0 ouverte et en cours (entr\u00e9e \u00e0 75.2$, stop \u00e0 79.29$, cible \u00e0 67.0$). Pas de nouvelle position autoris\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.045,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -9249,7 +9269,8 @@
     }
   ],
   "attempts": {
-    "1794801600000": 1
+    "1794801600000": 1,
+    "1794816000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -9268,9 +9289,9 @@
         "conviction": 70,
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
-        "lastBar": 1794808800000,
-        "markR": 1.0,
-        "markPrice": 71.11
+        "lastBar": 1794812400000,
+        "markR": 0.9976,
+        "markPrice": 71.12
       }
     ],
     "trades": [
@@ -9601,19 +9622,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794815182464,
+  "generatedAt": 1794816147717,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 67,
     "totalTokens": 808004,
     "direction": {
-      "scored": 305,
-      "called": 228,
-      "neutral": 77,
+      "scored": 310,
+      "called": 229,
+      "neutral": 81,
       "hits": 180,
-      "hitRate": 0.7895,
-      "brier": 0.2058,
+      "hitRate": 0.786,
+      "brier": 0.2072,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -9669,14 +9690,14 @@
       "avgR": 0.6985,
       "totalR": 12.5721,
       "open": 1,
-      "equityMarked": 570.028963,
-      "returnPct": 14.0058
+      "equityMarked": 570.01573,
+      "returnPct": 14.0031
     }
   },
   "lastRun": {
-    "at": 1794815182464,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794812400000
+    "at": 1794816147717,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794816000000
   }
 }
