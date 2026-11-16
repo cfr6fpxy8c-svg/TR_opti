@@ -8772,7 +8772,11 @@
             "reason": "Aucun trade initi\u00e9 en raison d'un \u00e9tat de survente prononc\u00e9 (RSI 28,9) et d'un sentiment de march\u00e9 extr\u00eamement craintif (Fear & Greed \u00e0 10), augmentant le risque d'un squeeze \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.431,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -8786,7 +8790,11 @@
             "reason": "Le prix est proche du support majeur des $1 710 et le momentum baissier est d\u00e9j\u00e0 tr\u00e8s \u00e9tir\u00e9, ce qui rend le ratio rendement/risque d\u00e9favorable pour de nouvelles positions courtes."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.521,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -8800,7 +8808,11 @@
             "reason": "La capitulation r\u00e9cente avec d'importantes liquidations de longs sugg\u00e8re une stabilisation temporaire ou un rebond technique imminent, rendant l'ouverture d'un short risqu\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.564,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -8814,7 +8826,11 @@
             "reason": "La survente extr\u00eame (RSI < 30) et la zone de support proche des $566 limitent le potentiel de baisse imm\u00e9diat sans phase de distribution ou de rebond pr\u00e9alable."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.596,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -8828,7 +8844,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte \u00e0 $75,20 (g\u00e9rant activement le risque vers l'objectif de $67,00). Aucun nouveau trade n'est donc initi\u00e9 sur cet actif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.632,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -9582,10 +9602,117 @@
         "candidatesTokenCount": 1461,
         "totalTokenCount": 11570
       }
+    },
+    {
+      "barClose": 1794844800000,
+      "requestedAt": 1794844979314,
+      "analyzedAt": 1794845009671,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Inflation US persistante (CPI +0,4%) renfor\u00e7ant l'attente d'une hausse de taux en d\u00e9cembre. Yield 10 ans \u00e0 5,15%, dollar fort et correction du Nasdaq. Ventes au d\u00e9tail (mardi), r\u00e9sultats NVIDIA (mercredi) et IPO d'Anthropic (jeudi) s'annoncent comme des catalyseurs de volatilit\u00e9 majeurs.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "Rebond technique vers 64,4k$ apr\u00e8s un plongeon \u00e0 62k$ ce week-end. L'humeur reste tr\u00e8s d\u00e9grad\u00e9e avec un Fear & Greed \u00e0 10 (peur extr\u00eame) et une h\u00e9morragie sur les ETF spot (1,91 Md$ de sorties nettes en 7 sessions). Bien que les baleines accumulent sur la baisse, la tendance de fond est baissi\u00e8re sous l'EMA200_4H et la liquidit\u00e9 globale est siphonn\u00e9e par l'IPO d'Anthropic.",
+          "risks": "Minutes de la Fed et ventes de d\u00e9tail US. Si le support des 62k$ c\u00e8de, un retour vers 58k$ est \u00e0 craindre.",
+          "price0": 64440.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Volatilit\u00e9 extr\u00eame et incertitude macro\u00e9conomique majeure \u00e0 court terme (ventes de d\u00e9tail, Nvidia) sugg\u00e9rant de rester \u00e0 l'\u00e9cart."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 40,
+          "reason": "Apr\u00e8s avoir test\u00e9 un plus bas \u00e0 1711$ ce week-end, l'ETH tente de consolider autour de 1819$. La sous-performance structurelle face au BTC persiste, p\u00e9nalis\u00e9e par des sorties continues sur les ETF et une baisse d'activit\u00e9 DeFi. Le sentiment g\u00e9n\u00e9ral est lourd, et les vendeurs conservent la main sous les moyennes mobiles cl\u00e9s (EMA20/50), malgr\u00e9 un rebond de survente temporaire.",
+          "risks": "Pression vendeuse accrue si le support \u00e0 1710-1730$ l\u00e2che, ciblant les 1600$. Risque de corr\u00e9lation n\u00e9gative avec le Nasdaq.",
+          "price0": 1819.29,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le march\u00e9 est sous l'influence d'une capitulation g\u00e9n\u00e9rale des positions longues, sans signal d'achat fiable."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "XRP s'\u00e9change sous le seuil psychologique de 1,00$ apr\u00e8s un creux \u00e0 0,892$. L'activit\u00e9 sp\u00e9culative sur les d\u00e9riv\u00e9s a chut\u00e9 \u00e0 un plus bas pluriannuel (leverage ratio \u00e0 0,13, Open Interest Binance \u00e0 325M$), ce qui limite le risque de liquidations en cascade. Les flux ETF restent sortants (-19M$ la semaine derni\u00e8re) et l'impulsion haussi\u00e8re globale est neutralis\u00e9e \u00e0 court terme.",
+          "risks": "Pression de l'escrow de d\u00e9cembre \u00e0 venir. Retest possible des 0,85$ si le march\u00e9 crypto global replonge.",
+          "price0": 0.952,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "March\u00e9 apathique apr\u00e8s avoir perdu la zone psychologique de 1$, pas d'avantage statistique clair."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 40,
+          "reason": "BNB tente de stabiliser \u00e0 587$ (creux \u00e0 566$). L'actif souffre des s\u00e9quelles du piratage historique de 6,3 Md$ subi par Binance le 29 octobre. Bien que la plateforme assure que les fonds SAFU couvrent les pertes et ait rouvert les retraits sur 87 r\u00e9seaux, le d\u00e9part du CFO historique et la perte de confiance p\u00e8sent. La tendance reste fortement baissi\u00e8re (RSI \u00e0 30,4, sous EMA20/50).",
+          "risks": "Risques li\u00e9s aux vuln\u00e9rabilit\u00e9s r\u00e9siduelles de s\u00e9curit\u00e9 chez Binance et nouvelles vagues de retraits. Support cl\u00e9 \u00e0 550$.",
+          "price0": 587.26,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La prime de risque li\u00e9e aux d\u00e9boires de Binance reste trop \u00e9lev\u00e9e pour envisager un positionnement acheteur ou vendeur."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "SOL consolide \u00e0 70,7$ apr\u00e8s avoir test\u00e9 67,3$. Sur le plan fondamental, la Fondation a retir\u00e9 le tag 'Mainnet Beta' pour lancer Solana 1.0 (gr\u00e2ce \u00e0 l'activation d'Alpenglow et Firedancer), un jalon technique majeur. De plus, le DTCC pr\u00e9voit d'int\u00e9grer Solana en 2027. Cependant, ces d\u00e9veloppements de long terme sont \u00e9clips\u00e9s \u00e0 court terme par la capitulation du march\u00e9 et les flux sortants.",
+          "risks": "Rupture possible du support des 67$ en cas de nouvelle jambe de baisse du BTC, ouvrant la voie vers 60$.",
+          "price0": 70.74,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Malgr\u00e9 d'excellentes nouvelles fondamentales (Solana 1.0), le contexte macro\u00e9conomique et de liquidit\u00e9 incite \u00e0 la prudence."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"bitcoin\" OR \"crypto\" news november 16 2026",
+        "US macro calendar economic events November 16 2026",
+        "crypto market news \"November 2026\"",
+        "fomc meeting \"November 2026\"",
+        "\"solana\" news OR update \"November 16 2026\" OR \"November 15 2026\"",
+        "\"xrp\" OR \"ripple\" news OR update \"November 16 2026\" OR \"November 15 2026\"",
+        "\"bnb\" OR \"binance\" news OR update \"November 16 2026\" OR \"November 15 2026\"",
+        "crypto fear and greed index november 16 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4047,
+        "candidatesTokenCount": 1424,
+        "totalTokenCount": 10421
+      }
     }
   ],
   "attempts": {
-    "1794830400000": 1
+    "1794830400000": 1,
+    "1794844800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -9937,19 +10064,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794844001106,
+  "generatedAt": 1794844979314,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 69,
-    "totalTokens": 831983,
+    "analyses": 70,
+    "totalTokens": 842404,
     "direction": {
-      "scored": 315,
-      "called": 234,
+      "scored": 320,
+      "called": 239,
       "neutral": 81,
-      "hits": 185,
-      "hitRate": 0.7906,
-      "brier": 0.2066,
+      "hits": 189,
+      "hitRate": 0.7908,
+      "brier": 0.2068,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -10010,9 +10137,9 @@
     }
   },
   "lastRun": {
-    "at": 1794844001106,
-    "status": "waiting",
+    "at": 1794844979314,
+    "status": "ok",
     "error": null,
-    "barClose": 1794841200000
+    "barClose": 1794844800000
   }
 }
