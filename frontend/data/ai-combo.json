@@ -8195,7 +8195,11 @@
             "reason": "Pas de position ouverte en raison d'une survente extr\u00eame \u00e0 court terme (RSI \u00e0 15,5), ce qui augmente le risque d'un rebond technique violent malgr\u00e9 une tendance de fond baissi\u00e8re."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.839,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -8209,7 +8213,11 @@
             "reason": "Entr\u00e9e SHORT \u00e9vit\u00e9e en raison d'une forte survente \u00e0 court terme (RSI 19,4), pr\u00e9sentant un ratio risque/rendement d\u00e9favorable \u00e0 ce niveau de prix bas."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 3.728,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -8223,7 +8231,11 @@
             "reason": "Aucun trade initi\u00e9. L'actif est extr\u00eamement survendu \u00e0 court terme (RSI \u00e0 20,6) dans un contexte de panique g\u00e9n\u00e9rale, rendant la vente risqu\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 6.546,
+            "hit": false
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -8237,7 +8249,11 @@
             "reason": "L'incertitude fondamentale li\u00e9e \u00e0 Binance et la survente extr\u00eame (RSI 16,3) incitent \u00e0 rester \u00e0 l'\u00e9cart pour le moment."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.544,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -8251,7 +8267,11 @@
             "reason": "Une position de vente \u00e0 d'\u00e9couvert (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille r\u00e9el."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 3.531,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -9014,7 +9034,8 @@
     }
   ],
   "attempts": {
-    "1794772800000": 1
+    "1794772800000": 1,
+    "1794787200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -9033,9 +9054,9 @@
         "conviction": 70,
         "reason": "Faiblesse relative marqu\u00e9e et cassure nette du pivot des 75$. Le stop \u00e0 79.29 est bien prot\u00e9g\u00e9 au-dessus des r\u00e9sistances locales.",
         "exitBy": 1794819600000,
-        "lastBar": 1794780000000,
-        "markR": 0.6333,
-        "markPrice": 72.61
+        "lastBar": 1794783600000,
+        "markR": 0.6357,
+        "markPrice": 72.6
       }
     ],
     "trades": [
@@ -9366,19 +9387,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794786381401,
+  "generatedAt": 1794787346259,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 65,
     "totalTokens": 784587,
     "direction": {
-      "scored": 295,
-      "called": 223,
+      "scored": 300,
+      "called": 228,
       "neutral": 72,
       "hits": 180,
-      "hitRate": 0.8072,
-      "brier": 0.2023,
+      "hitRate": 0.7895,
+      "brier": 0.2049,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -9434,14 +9455,14 @@
       "avgR": 0.6985,
       "totalR": 12.5721,
       "open": 1,
-      "equityMarked": 568.007,
-      "returnPct": 13.6014
+      "equityMarked": 568.020233,
+      "returnPct": 13.604
     }
   },
   "lastRun": {
-    "at": 1794786381401,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794783600000
+    "at": 1794787346259,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794787200000
   }
 }
