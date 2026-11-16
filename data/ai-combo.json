@@ -7703,7 +7703,11 @@
             "decision": "GO",
             "probTarget": 65,
             "reason": "La cassure du support cl\u00e9 de 1 875$ sur un volume relatif exceptionnel de 5,07 confirme la force de l'impulsion baissi\u00e8re. Le contexte macro\u00e9conomique tr\u00e8s d\u00e9grad\u00e9 et les ventes de la Fondation valident la poursuite du mouvement vers les 1 750$.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 0.1132,
+              "exitReason": "TRAIL"
+            }
           },
           "outcome": {
             "retPct": -5.41,
@@ -9933,7 +9937,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794840421912,
+  "generatedAt": 1794841317920,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -9951,10 +9955,10 @@
     "breakouts": {
       "taken_GO": {
         "count": 4,
-        "closed": 0,
-        "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "closed": 1,
+        "wins": 1,
+        "avgR": 0.1132,
+        "totalR": 0.1132
       },
       "taken_NO_GO": {
         "count": 3,
@@ -9981,10 +9985,10 @@
     "byDecision": {
       "GO": {
         "count": 17,
-        "closed": 2,
-        "wins": 0,
-        "avgR": -1.0878,
-        "totalR": -2.1757
+        "closed": 3,
+        "wins": 1,
+        "avgR": -0.6875,
+        "totalR": -2.0625
       },
       "NO_GO": {
         "count": 14,
@@ -10006,9 +10010,9 @@
     }
   },
   "lastRun": {
-    "at": 1794840421912,
+    "at": 1794841317920,
     "status": "waiting",
     "error": null,
-    "barClose": 1794837600000
+    "barClose": 1794841200000
   }
 }
