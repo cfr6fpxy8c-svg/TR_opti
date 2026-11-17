@@ -2954,7 +2954,11 @@
             "decision": "GO",
             "probTarget": 65,
             "reason": "La cassure du support des 88 $ est pleinement justifi\u00e9e par la d\u00e9gradation fondamentale li\u00e9e \u00e0 l'action de la banque centrale de Chine et aux flux ETF n\u00e9gatifs.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 4.0699,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -7967,6 +7971,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 ouverte dans le portefeuille. Pas de nouvelle entr\u00e9e tant que la position actuelle n'est pas cl\u00f4tur\u00e9e."
+          },
+          "outcome": {
+            "retPct": 0.863,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -7980,6 +7988,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 active dans notre portefeuille, emp\u00eachant l'ouverture d'un nouveau trade sur cet actif."
+          },
+          "outcome": {
+            "retPct": 0.903,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -7993,6 +8005,10 @@
             "action": "NONE",
             "conviction": 60,
             "reason": "Pas de direction claire : le march\u00e9 est lourdement baissier \u00e0 moyen terme mais \u00e0 court terme tr\u00e8s survendu avec un taux de financement n\u00e9gatif."
+          },
+          "outcome": {
+            "retPct": 1.601,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -8006,6 +8022,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position longue est d\u00e9j\u00e0 en cours d'ex\u00e9cution. Nous conservons la strat\u00e9gie actuelle sans surexposition."
+          },
+          "outcome": {
+            "retPct": 0.805,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -8019,6 +8039,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue ouverte active. Pas de nouveau trade afin de respecter les limites d'exposition et les r\u00e8gles de gestion des risques."
+          },
+          "outcome": {
+            "retPct": 2.972,
+            "hit": null
           }
         }
       },
@@ -8546,34 +8570,133 @@
         "candidatesTokenCount": 1469,
         "totalTokenCount": 10682
       }
+    },
+    {
+      "barClose": 1794916800000,
+      "requestedAt": 1794916912511,
+      "analyzedAt": 1794916938725,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "L'inflation d'octobre (CPI +0.4% m/m) et la hausse de l'IPP \u00e0 6.5% poussent les taux US \u00e0 10 ans \u00e0 5.15% et le dollar au plus haut depuis 19 mois. Les Minutes de la Fed sont attendues demain, sur fond de stress technologique avec les r\u00e9sultats de Nvidia et l'IPO d'Anthropic (ANT) cette semaine.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BTC consolide sous la r\u00e9sistance \u00e0 $65 119 apr\u00e8s une chute vers $62 000. Le sentiment est min\u00e9 par le piratage massif de $6.3 milliards de Binance et d'importantes sorties nettes d'ETF Spot (>1.1 Md$ sur deux semaines). La macro\u00e9conomie (hausse des taux et dollar fort) et l'incertitude dans la tech (Nvidia) maintiennent une pression baissi\u00e8re malgr\u00e9 un indicateur Fear & Greed en peur extr\u00eame.",
+          "risks": "Volatilit\u00e9 accrue li\u00e9e aux Minutes de la Fed et aux publications technologiques (Nvidia, Anthropic) dans les prochaines 48h.",
+          "price0": 64969.9,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucun avantage statistique clair. Le march\u00e9 est survendu \u00e0 court terme mais la tendance de fond reste fortement baissi\u00e8re sous l'EMA200."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "ETH subit les contrecoups du hack de Binance (3.79 Md$ vol\u00e9s sur Ethereum) g\u00e9n\u00e9rant des craintes de ventes massives. De plus, les commentaires de V. Buterin sur ETH comme r\u00e9serve de valeur plut\u00f4t que d\u00e9flationniste re\u00e7oivent un accueil mitig\u00e9. Techniquement, le prix reste sous l'EMA20 et l'EMA50, signalant une faiblesse persistante.",
+          "risks": "Mouvements de fonds des hackers de Binance et impact des taux am\u00e9ricains \u00e9lev\u00e9s sur la finance d\u00e9centralis\u00e9e.",
+          "price0": 1821.59,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'absence de momentum haussier et les risques de liquidations du hack excluent toute position longue. Ratio risque/rendement d\u00e9favorable."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "XRP reste sous pression apr\u00e8s avoir perdu le niveau psychologique de $1.00, p\u00e9nalis\u00e9 par des sorties nettes sur les ETF spot XRP ($19.13M). Bien que moins expos\u00e9 au hack de Binance en valeur absolue, le jeton reste coinc\u00e9 sous son EMA50 dans une tendance de fond baissi\u00e8re, avec une volatilit\u00e9 qui s'essouffle.",
+          "risks": "Poursuite des sorties sur les ETF XRP et faiblesse g\u00e9n\u00e9rale du march\u00e9 altcoin.",
+          "price0": 0.9708,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de configuration claire. XRP consolide lat\u00e9ralement sans catalyseur sp\u00e9cifique, l'inactivit\u00e9 est recommand\u00e9e."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 44,
+          "reason": "BNB souffre des retomb\u00e9es directes du piratage historique de $6.3 milliards subi par Binance le 29 octobre. Malgr\u00e9 l'engagement de la plateforme \u00e0 absorber les pertes et la reconstitution de 98% des r\u00e9serves, l'image de marque est lourdement affect\u00e9e avec des sorties de fonds massives. Le prix est scotch\u00e9 sous l'EMA20 et l'EMA50.",
+          "risks": "Risques de r\u00e9putation persistants, enqu\u00eates de la justice am\u00e9ricaine (DOJ) et volatilit\u00e9 accrue lors de la reprise compl\u00e8te des retraits.",
+          "price0": 594.97,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La prime de risque li\u00e9e au piratage massif de Binance rend toute entr\u00e9e longue pr\u00e9matur\u00e9e, malgr\u00e9 un RSI bas."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 51,
+          "reason": "Solana montre une relative r\u00e9silience (+2.97% sur 24h) et repasse l\u00e9g\u00e8rement au-dessus de son EMA20 \u00e0 $73.37. Cependant, la tendance globale reste baissi\u00e8re sous l'EMA50 ($78.74). Le r\u00e9seau a \u00e9t\u00e9 peu touch\u00e9 par le piratage de Binance ($96M vol\u00e9s), ce qui soutient une l\u00e9g\u00e8re surperformance relative par rapport aux autres altcoins.",
+          "risks": "Sensibilit\u00e9 accrue aux march\u00e9s actions am\u00e9ricains et d\u00e9pendance \u00e0 la stabilisation de BTC.",
+          "price0": 73.46,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que SOL montre une force relative, l'environnement macro et crypto global reste trop hostile pour ouvrir un trade long directionnel."
+          }
+        }
+      },
+      "queries": [
+        "\"november 2026\" FOMC fed rate decision",
+        "US CPI november 2026",
+        "bitcoin price november 2026 news",
+        "crypto market news november 17 2026",
+        "\"Binance hack\" november 2026",
+        "Anthropic IPO november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3900,
+        "candidatesTokenCount": 1235,
+        "totalTokenCount": 9363
+      }
     }
   ],
   "attempts": {
-    "1794888000000": 1,
-    "1794902400000": 1
+    "1794902400000": 1,
+    "1794916800000": 1
   },
-  "generatedAt": 1794915968793,
+  "generatedAt": 1794916912511,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 69,
-    "totalTokens": 786553,
+    "analyses": 70,
+    "totalTokens": 795916,
     "direction": {
-      "scored": 315,
+      "scored": 320,
       "called": 199,
-      "neutral": 116,
+      "neutral": 121,
       "hits": 142,
       "hitRate": 0.7136,
-      "brier": 0.2235,
+      "brier": 0.2241,
       "brierRandom": 0.25
     },
     "breakouts": {
       "taken_GO": {
         "count": 4,
-        "closed": 0,
-        "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "closed": 1,
+        "wins": 1,
+        "avgR": 4.0699,
+        "totalR": 4.0699
       },
       "taken_NO_GO": {
         "count": 0,
@@ -8600,10 +8723,10 @@
     "byDecision": {
       "GO": {
         "count": 9,
-        "closed": 1,
-        "wins": 0,
-        "avgR": -1.0638,
-        "totalR": -1.0638
+        "closed": 2,
+        "wins": 1,
+        "avgR": 1.503,
+        "totalR": 3.0061
       },
       "NO_GO": {
         "count": 0,
@@ -8625,10 +8748,10 @@
     }
   },
   "lastRun": {
-    "at": 1794915968793,
-    "status": "up-to-date",
+    "at": 1794916912511,
+    "status": "ok",
     "error": null,
-    "barClose": 1794902400000
+    "barClose": 1794916800000
   },
   "portfolio": {
     "startCapital": 500.0,
