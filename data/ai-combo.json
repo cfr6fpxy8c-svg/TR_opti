@@ -10713,7 +10713,8 @@
             "stop": 66250.0,
             "target": 60000.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": null
@@ -10731,7 +10732,8 @@
             "stop": 1885.0,
             "target": 1650.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": null
@@ -10848,13 +10850,47 @@
     }
   ],
   "attempts": {
-    "1794931200000": 2,
     "1794945600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 570.267856,
-    "positions": [],
+    "positions": [
+      {
+        "id": "BTCUSDT-1794945600000",
+        "symbol": "BTCUSDT",
+        "side": "SHORT",
+        "entryTime": 1794949200000,
+        "entryPrice": 63973.7,
+        "stop": 66250.0,
+        "target": 60000.0,
+        "risk": 2276.300000000003,
+        "stake": 5.702679,
+        "conviction": 60,
+        "reason": "La tendance globale est fortement baissi\u00e8re. Les flux d'ETF restent orient\u00e9s \u00e0 la baisse \u00e0 moyen terme et la macro\u00e9conomie am\u00e9ricaine (durcissement mon\u00e9taire attendu en d\u00e9cembre) offre un vent contraire majeur.",
+        "exitBy": 1795122000000,
+        "lastBar": 1794949199999,
+        "markR": -0.0199,
+        "markPrice": 64019.1
+      },
+      {
+        "id": "ETHUSDT-1794945600000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1794949200000,
+        "entryPrice": 1800.01,
+        "stop": 1885.0,
+        "target": 1650.0,
+        "risk": 84.99000000000001,
+        "stake": 5.702679,
+        "conviction": 68,
+        "reason": "Faiblesse relative par rapport au BTC, sorties massives d'ETF et pression vendeuse persistante. L'absence de catalyseur haussier \u00e0 court terme favorise une poursuite de la baisse vers le support cl\u00e9.",
+        "exitBy": 1795122000000,
+        "lastBar": 1794949199999,
+        "markR": -0.0537,
+        "markPrice": 1804.57
+      }
+    ],
     "trades": [
       {
         "id": "ETHUSDT-1793880000000",
@@ -11201,7 +11237,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794948383866,
+  "generatedAt": 1794949313394,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -11268,15 +11304,15 @@
       "winRate": 0.7368,
       "avgR": 0.7166,
       "totalR": 13.6154,
-      "open": 0,
-      "equityMarked": 570.267856,
-      "returnPct": 14.0536
+      "open": 2,
+      "equityMarked": 569.848139,
+      "returnPct": 13.9696
     }
   },
   "lastRun": {
-    "at": 1794948383866,
-    "status": "up-to-date",
+    "at": 1794949313394,
+    "status": "waiting",
     "error": null,
-    "barClose": 1794945600000
+    "barClose": 1794949200000
   }
 }
