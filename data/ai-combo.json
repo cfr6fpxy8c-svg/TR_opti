@@ -9728,7 +9728,11 @@
             "reason": "Volatilit\u00e9 extr\u00eame et incertitude macro\u00e9conomique majeure \u00e0 court terme (ventes de d\u00e9tail, Nvidia) sugg\u00e9rant de rester \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.555,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -9742,7 +9746,11 @@
             "reason": "Le march\u00e9 est sous l'influence d'une capitulation g\u00e9n\u00e9rale des positions longues, sans signal d'achat fiable."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.919,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -9756,7 +9764,11 @@
             "reason": "March\u00e9 apathique apr\u00e8s avoir perdu la zone psychologique de 1$, pas d'avantage statistique clair."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.84,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -9770,7 +9782,11 @@
             "reason": "La prime de risque li\u00e9e aux d\u00e9boires de Binance reste trop \u00e9lev\u00e9e pour envisager un positionnement acheteur ou vendeur."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.111,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -9784,7 +9800,11 @@
             "reason": "Malgr\u00e9 d'excellentes nouvelles fondamentales (Solana 1.0), le contexte macro\u00e9conomique et de liquidit\u00e9 incite \u00e0 la prudence."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.361,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -10497,7 +10517,8 @@
     }
   ],
   "attempts": {
-    "1794916800000": 1
+    "1794916800000": 1,
+    "1794931200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -10849,19 +10870,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794930386497,
+  "generatedAt": 1794931355988,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 75,
     "totalTokens": 897851,
     "direction": {
-      "scored": 345,
+      "scored": 350,
       "called": 244,
-      "neutral": 101,
+      "neutral": 106,
       "hits": 192,
       "hitRate": 0.7869,
-      "brier": 0.2101,
+      "brier": 0.2109,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -10922,9 +10943,9 @@
     }
   },
   "lastRun": {
-    "at": 1794930386497,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794927600000
+    "at": 1794931355988,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794931200000
   }
 }

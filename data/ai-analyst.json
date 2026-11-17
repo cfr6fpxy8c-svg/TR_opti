@@ -8090,6 +8090,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 ouverte. Le support \u00e0 62k$ a tenu durant le week-end, offrant une opportunit\u00e9 de rebond vers notre cible de 69k$ malgr\u00e9 des vents contraires macro\u00e9conomiques."
+          },
+          "outcome": {
+            "retPct": -0.555,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -8103,6 +8107,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 en cours. Nous conservons l'exposition initi\u00e9e \u00e0 1781,24$ avec un stop \u00e0 1690$ pour jouer la stabilisation technique au-dessus des 1800$."
+          },
+          "outcome": {
+            "retPct": -1.919,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -8116,6 +8124,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas de signal clair. Le biais fondamental est baissier en raison des ventes du hacker, mais l'\u00e9tat de survente g\u00e9n\u00e9ralis\u00e9 du march\u00e9 apr\u00e8s les liquidations du week-end incite \u00e0 la prudence \u00e0 court terme."
+          },
+          "outcome": {
+            "retPct": 0.84,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -8129,6 +8141,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 en cours. Nous conservons notre position entr\u00e9e \u00e0 586,99$ pour viser 630$, en pla\u00e7ant le stop de protection juste sous le creux du week-end \u00e0 555$."
+          },
+          "outcome": {
+            "retPct": 0.111,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -8142,6 +8158,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 active. Entr\u00e9e \u00e0 69,92$ conserv\u00e9e avec stop \u00e0 66$ (sous le creux r\u00e9cent) pour exploiter un \u00e9ventuel rebond technique vers la r\u00e9sistance \u00e0 77$."
+          },
+          "outcome": {
+            "retPct": 2.361,
+            "hit": null
           }
         }
       },
@@ -8669,25 +8689,126 @@
         "candidatesTokenCount": 1235,
         "totalTokenCount": 9363
       }
+    },
+    {
+      "barClose": 1794931200000,
+      "requestedAt": 1794931313227,
+      "analyzedAt": 1794931344426,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Macro tr\u00e8s baissi\u00e8re : le rendement US \u00e0 10 ans grimpe \u00e0 5,15 % apr\u00e8s une hausse de l'inflation \u00e0 6,5 %. Le discours hawkish de la Fed (Musalem) renforce la perspective de hausses de taux jusqu'en 2027. Enfin, le d\u00e9part surprise du PDG de Nvidia p\u00e8se lourdement sur les actifs \u00e0 risque.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Le BTC tente de se stabiliser autour de 64k$ apr\u00e8s un plus bas \u00e0 62k$. Les ETF spot ont enregistr\u00e9 un l\u00e9ger flux positif le 16 nov (+7,9M$, men\u00e9 par BlackRock), stoppant 7 jours de sorties massives. N\u00e9anmoins, le sentiment reste tr\u00e8s d\u00e9grad\u00e9 (Fear & Greed \u00e0 10/100) \u00e0 cause du hack historique de Binance (6,3 Mds$) et de la politique restrictive de la Fed.",
+          "risks": "Minutes de la FOMC demain, poursuite des sorties d'ETF, contagion li\u00e9e au piratage de Binance, pressions sur les actions tech US.",
+          "price0": 64083.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Pas d'avantage clair \u00e0 court terme. Le march\u00e9 est sous le choc du hack de Binance et de la crise chez Nvidia, avant les minutes de la FOMC."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "L'ETH montre une faiblesse persistante sous ses EMA20/50, plomb\u00e9 par des sorties continues sur ses ETF spot (-398,9M$ la semaine derni\u00e8re). Bien que des achats notables de baleines on-chain (comme Erik Voorhees) offrent un certain soutien, la dynamique g\u00e9n\u00e9rale reste lourdement baissi\u00e8re et p\u00e9nalis\u00e9e par la baisse globale du march\u00e9.",
+          "risks": "Cassure du support cl\u00e9 des 1700$, acc\u00e9l\u00e9ration des sorties des ETF ETH, aversion globale pour le risque avant la Fed.",
+          "price0": 1784.38,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "L'ETH est dans une tendance baissi\u00e8re marqu\u00e9e avec des flux institutionnels tr\u00e8s n\u00e9gatifs. Mieux vaut rester \u00e0 l'\u00e9cart avant la FOMC."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "XRP s'\u00e9change autour de 0,96$, montrant une consolidation apr\u00e8s avoir r\u00e9sist\u00e9 \u00e0 la baisse du week-end. L'approbation r\u00e9cente de la licence de trust bank par l'OCC soutient les fondamentaux, mais la faiblesse des volumes institutionnels et le climat d'aversion au risque global limitent l'int\u00e9r\u00eat des acheteurs.",
+          "risks": "Rejet sous la r\u00e9sistance psychologique de 1,00$, baisse du BTC, vente par les d\u00e9positaires du piratage de Binance.",
+          "price0": 0.96,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "March\u00e9 sans tendance claire et sous pression macro\u00e9conomique. Le pivot technique de 1,00$ agit comme une forte r\u00e9sistance."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "BNB reste fortement p\u00e9nalis\u00e9 par les r\u00e9percussions du piratage historique de 6,3 milliards de dollars subi par Binance le 29 octobre. Bien que la plateforme couvre les pertes, les retraits d'utilisateurs et l'incertitude r\u00e9glementaire/s\u00e9curitaire persistante p\u00e8sent sur la confiance. Techniquement, BNB glisse sous son EMA20 \u00e0 600$ avec une dynamique faible.",
+          "risks": "Nouveaux d\u00e9veloppements n\u00e9gatifs sur l'enqu\u00eate du hack, retraits accrus de la plateforme, cassure du support \u00e0 566$.",
+          "price0": 587.91,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "L'impact r\u00e9putationnel et financier du hack massif de Binance sur BNB incite \u00e0 la plus grande prudence. Aucun signal d'achat."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 52,
+          "reason": "SOL fait preuve d'une relative r\u00e9silience (+2,36% sur 24h) et a attir\u00e9 11,7M$ de flux nets entrants sur ses ETF le 16 nov, surperformant BTC et ETH. Les taux de financement n\u00e9gatifs sugg\u00e8rent \u00e9galement un potentiel de short squeeze \u00e0 court terme si le march\u00e9 global se stabilise. Cependant, la tendance de fond reste sous la pression de la baisse g\u00e9n\u00e9rale.",
+          "risks": "Retour de la baisse du BTC sous 62k$, liquidation de positions \u00e0 effet de levier, d\u00e9gradation macro\u00e9conomique.",
+          "price0": 72.41,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Bien que SOL montre de la force relative, ouvrir un long dans un march\u00e9 en mode 'Extreme Fear' (10/100) pr\u00e9sente un ratio risque/rendement d\u00e9favorable."
+          }
+        }
+      },
+      "queries": [
+        "crypto news november 2026",
+        "bitcoin price november 17 2026",
+        "macro economic events november 17 2026",
+        "fed speakers november 2026",
+        "\"Binance hack\" november 2026",
+        "bitcoin ETF flows november 17 2026",
+        "ethereum ETF flows november 2026",
+        "\"Jensen Huang\" nvidia exit november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3901,
+        "candidatesTokenCount": 1263,
+        "totalTokenCount": 10423
+      }
     }
   ],
   "attempts": {
-    "1794902400000": 1,
-    "1794916800000": 1
+    "1794916800000": 1,
+    "1794931200000": 1
   },
-  "generatedAt": 1794930373081,
+  "generatedAt": 1794931313227,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 70,
-    "totalTokens": 795916,
+    "analyses": 71,
+    "totalTokens": 806339,
     "direction": {
-      "scored": 320,
-      "called": 199,
-      "neutral": 121,
+      "scored": 325,
+      "called": 200,
+      "neutral": 125,
       "hits": 142,
-      "hitRate": 0.7136,
-      "brier": 0.2241,
+      "hitRate": 0.71,
+      "brier": 0.2247,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -8748,10 +8869,10 @@
     }
   },
   "lastRun": {
-    "at": 1794930373081,
-    "status": "up-to-date",
+    "at": 1794931313227,
+    "status": "ok",
     "error": null,
-    "barClose": 1794916800000
+    "barClose": 1794931200000
   },
   "portfolio": {
     "startCapital": 500.0,
