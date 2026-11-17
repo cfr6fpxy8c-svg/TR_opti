@@ -9376,7 +9376,11 @@
             "reason": "Pas de trade. La tendance lourde est baissi\u00e8re mais l'\u00e9tat de survente extr\u00eame et la proximit\u00e9 de supports majeurs (60k-62k) limitent le ratio risque/rendement pour de nouveaux shorts."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.384,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -9390,7 +9394,11 @@
             "reason": "La tendance reste fortement baissi\u00e8re mais l'indicateur RSI en survente sugg\u00e8re d'\u00e9viter de shorter imm\u00e9diatement \u00e0 ces niveaux."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.592,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -9404,7 +9412,11 @@
             "reason": "Pas d'avantage clair. Les flux d'ETF sortants limitent le potentiel de hausse tandis que l'\u00e9tat de survente globale freine la pertinence d'un short propre."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.261,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -9418,7 +9430,11 @@
             "reason": "Le BNB est bloqu\u00e9 dans une phase baissi\u00e8re mais montre des signes de stabilisation \u00e0 court terme. Pas d'opportunit\u00e9 d'entr\u00e9e asym\u00e9trique \u00e9vidente."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.113,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -9432,7 +9448,11 @@
             "reason": "Une position courte (SHORT) est d\u00e9j\u00e0 ouverte \u00e0 75,2 avec un objectif \u00e0 67,0. Elle approche de son expiration planifi\u00e9e \u00e0 09h00 UTC."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.2,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -10239,7 +10259,8 @@
     }
   ],
   "attempts": {
-    "1794888000000": 1
+    "1794888000000": 1,
+    "1794902400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -10591,19 +10612,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1794901582212,
+  "generatedAt": 1794902554711,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 73,
     "totalTokens": 876024,
     "direction": {
-      "scored": 335,
+      "scored": 340,
       "called": 244,
-      "neutral": 91,
+      "neutral": 96,
       "hits": 192,
       "hitRate": 0.7869,
-      "brier": 0.2083,
+      "brier": 0.2093,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -10664,9 +10685,9 @@
     }
   },
   "lastRun": {
-    "at": 1794901582212,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1794898800000
+    "at": 1794902554711,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794902400000
   }
 }
