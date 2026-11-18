@@ -8410,6 +8410,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position longue ouverte est d\u00e9j\u00e0 active sur cet actif."
+          },
+          "outcome": {
+            "retPct": -0.929,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -8423,6 +8427,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position longue ouverte est d\u00e9j\u00e0 active sur cet actif."
+          },
+          "outcome": {
+            "retPct": -1.517,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -8436,6 +8444,10 @@
             "action": "NONE",
             "conviction": 40,
             "reason": "Absence de signal de retournement clair sous la r\u00e9sistance de 1,00 $. Le ratio risque/rendement reste peu attractif dans ce range \u00e9troit."
+          },
+          "outcome": {
+            "retPct": 1.014,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -8449,6 +8461,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position longue ouverte est d\u00e9j\u00e0 active sur cet actif."
+          },
+          "outcome": {
+            "retPct": -0.446,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -8462,6 +8478,10 @@
             "action": "NONE",
             "conviction": 0,
             "reason": "Une position longue ouverte est d\u00e9j\u00e0 active sur cet actif."
+          },
+          "outcome": {
+            "retPct": 2.693,
+            "hit": null
           }
         }
       },
@@ -9000,22 +9020,22 @@
     }
   ],
   "attempts": {
-    "1794945600000": 1,
-    "1794960000000": 1
+    "1794960000000": 1,
+    "1794974400000": 1
   },
-  "generatedAt": 1794973568219,
+  "generatedAt": 1794974499483,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 73,
     "totalTokens": 828673,
     "direction": {
-      "scored": 335,
-      "called": 200,
-      "neutral": 135,
+      "scored": 340,
+      "called": 201,
+      "neutral": 139,
       "hits": 142,
-      "hitRate": 0.71,
-      "brier": 0.2256,
+      "hitRate": 0.7065,
+      "brier": 0.2262,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -9071,15 +9091,15 @@
       "avgR": 0.5631,
       "totalR": 12.3891,
       "open": 1,
-      "equityMarked": 563.59202,
-      "returnPct": 12.7184
+      "equityMarked": 563.371592,
+      "returnPct": 12.6743
     }
   },
   "lastRun": {
-    "at": 1794973568219,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1794960000000
+    "at": 1794974499483,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1794974400000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -9098,9 +9118,9 @@
         "conviction": 60,
         "reason": "Force relative claire port\u00e9e par l'annonce de la v1.0. Le support de 67,4$ (plus bas depuis juin) a fait l'objet d'un rebond solide. Le stop est plac\u00e9 \u00e0 68,5$ (sous 2x ATR) pour viser un retour vers 81,5$ (ancienne r\u00e9sistance majeure).",
         "exitBy": 1795132800000,
-        "lastBar": 1794959999999,
-        "markR": -0.0286,
-        "markPrice": 74.96
+        "lastBar": 1794960000000,
+        "markR": -0.0677,
+        "markPrice": 74.7
       }
     ],
     "trades": [
