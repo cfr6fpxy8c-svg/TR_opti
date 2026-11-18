@@ -823,7 +823,11 @@
             "decision": "GO",
             "probTarget": 51,
             "reason": "La cassure du support \u00e0 1,2284$ sur un volume relatif \u00e9lev\u00e9 de 1,468 confirme la dynamique baissi\u00e8re \u00e0 court terme, bien que le support psychologique \u00e0 1,20$ soit tr\u00e8s proche.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 4.1485,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -1060,7 +1064,11 @@
             "decision": "GO",
             "probTarget": 55,
             "reason": "La cassure du support \u00e0 1,1993$ s'accompagne d'un volume solide de 1,28. Malgr\u00e9 la forte accumulation sous-jacente des baleines (retraits massifs de Binance), le flux g\u00e9n\u00e9ral vendeur emporte l'actif.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 3.7663,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "SHORT",
@@ -1634,7 +1642,11 @@
             "decision": "GO",
             "probTarget": 53,
             "reason": "La rupture du support de canal \u00e0 1,1711$ confirme la dynamique baissi\u00e8re de fond. M\u00eame si le RSI montre une survente \u00e9vidente, la capitulation des acheteurs de positions longues et le climat macro\u00e9conomique morose plaident pour une continuation vers le bas.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 3.4222,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -2908,7 +2920,11 @@
             "decision": "GO",
             "probTarget": 58,
             "reason": "Breakout baissier sous 1,1477 $ avec un volume significatif (3,4x). La structure de march\u00e9 s'est d\u00e9grad\u00e9e et valide une extension baissi\u00e8re.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 2.8417,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "SHORT",
@@ -8283,6 +8299,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 ouverte par notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 0.1,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -8296,6 +8316,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 ouverte par notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 0.257,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -8309,6 +8333,10 @@
             "action": "NONE",
             "conviction": 60,
             "reason": "Pas de trade initi\u00e9. Bien que sous la r\u00e9sistance de 1,00$, le sentiment d'extr\u00eame peur et la survente court terme limitent le potentiel d'un short s\u00fbr."
+          },
+          "outcome": {
+            "retPct": 2.995,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -8322,6 +8350,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 ouverte par notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 1.084,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -8335,6 +8367,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Position longue d\u00e9j\u00e0 ouverte par notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 5.076,
+            "hit": null
           }
         }
       },
@@ -8841,7 +8877,8 @@
             "stop": 68.5,
             "target": 81.5,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         }
       },
@@ -8870,34 +8907,134 @@
         "candidatesTokenCount": 1292,
         "totalTokenCount": 11789
       }
+    },
+    {
+      "barClose": 1794960000000,
+      "requestedAt": 1794960100406,
+      "analyzedAt": 1794960123602,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Les bons r\u00e9sultats de Nvidia soutiennent les actifs risqu\u00e9s, mais le climat macro reste tendu. Les minutes de la Fed (mercredi) et l'introduction en bourse d'Anthropic (18 nov) drainent les liquidit\u00e9s. Les rendements \u00e0 10 ans US restent \u00e9lev\u00e9s \u00e0 5,15% apr\u00e8s une hausse de l'IPP \u00e0 6,5%.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Le BTC s'est stabilis\u00e9 autour de 64k$ apr\u00e8s 2 milliards $ de liquidations ce week-end. Les ETF spot ont enregistr\u00e9 un l\u00e9ger flux positif de 7,9M$ le 16 novembre (men\u00e9 par IBIT), mettant fin \u00e0 une s\u00e9rie de sorties de 11 jours, mais le sentiment global reste \u00e0 'Extreme Fear' (Fear & Greed \u00e0 12/13). La tendance technique H4 reste baissi\u00e8re sous les EMA20, 50 et 200.",
+          "risks": "Minutes faucons de la Fed le 18 novembre et rumeurs de ventes li\u00e9es \u00e0 l'IPO d'Anthropic pesant sur la liquidit\u00e9 globale.",
+          "price0": 64921.0,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de configuration \u00e0 haute conviction dans un environnement macro\u00e9conomique incertain et une tendance g\u00e9n\u00e9rale qui reste baissi\u00e8re."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "ETH est particuli\u00e8rement sous pression, p\u00e9nalis\u00e9 par une 7e semaine cons\u00e9cutive de sorties nettes des ETF Spot (398M$ la semaine derni\u00e8re) et par des ventes d'investisseurs lib\u00e9rant des liquidit\u00e9s avant l'IPO d'Anthropic (tarification pr\u00e9vue le 18 novembre). Techniquement, le cours reste sous ses EMA20 et EMA50 en H4, montrant une faiblesse persistante.",
+          "risks": "Surplus de volatilit\u00e9 li\u00e9 \u00e0 la tarification de l'IPO d'Anthropic et aux minutes de la Fed.",
+          "price0": 1824.32,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La tendance est fortement baissi\u00e8re, mais le niveau de support proche \u00e0 1700$ rend une position courte peu attrayante en termes de ratio R/R."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "XRP fait preuve d'une force relative relative (+3% sur 24h) et repasse l\u00e9g\u00e8rement au-dessus de son EMA20 H4. N\u00e9anmoins, il reste bloqu\u00e9 sous son EMA50 (1,016$) et le sentiment g\u00e9n\u00e9ral de march\u00e9 baissier limite son potentiel de hausse autonome \u00e0 court terme.",
+          "risks": "Forte corr\u00e9lation avec le BTC en cas de nouvelle baisse globale provoqu\u00e9e par les minutes de la Fed.",
+          "price0": 0.9834,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Absence de cassure claire de la r\u00e9sistance cl\u00e9 \u00e0 0,99$ ou 1,01$ pour valider une reprise haussi\u00e8re durable."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "BNB s'est stabilis\u00e9 autour de 597$ mais reste confin\u00e9 sous ses EMA20 et EMA50 H4, refl\u00e9tant l'apathie g\u00e9n\u00e9rale du march\u00e9 des altcoins. Les volumes sont modestes et les flux de capitaux restent orient\u00e9s vers la sortie dans l'ensemble de l'\u00e9cosyst\u00e8me crypto.",
+          "risks": "Pression baissi\u00e8re accrue si le BTC casse son support r\u00e9cent des 62k$.",
+          "price0": 597.88,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de signal technique de retournement ou de continuation, l'actif consolide de mani\u00e8re neutre."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 55,
+          "reason": "SOL montre la plus forte reprise parmi les grandes capitalisations (+5% sur 24h) et s'\u00e9change au-dessus de son EMA20 H4 (73,4$). Les fonds Solana ont \u00e9galement attir\u00e9 11,7M$ de flux positifs r\u00e9cemment, montrant un int\u00e9r\u00eat persistant pour cet actif par rapport aux autres altcoins.",
+          "risks": "Risque de retournement si le march\u00e9 global capitule suite \u00e0 des minutes de la Fed plus hawkish que pr\u00e9vu.",
+          "price0": 75.15,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position longue d\u00e9j\u00e0 ouverte sur SOL dans notre portefeuille, donc aucune nouvelle transaction n'est initi\u00e9e."
+          }
+        }
+      },
+      "queries": [
+        "\"Bitcoin\" news November 17 2026 OR November 18 2026",
+        "US CPI November 2026 OR FED rate decision November 2026",
+        "crypto market news November 18 2026",
+        "crypto ETF flows November 17 2026 OR November 16 2026",
+        "\"NVIDIA\" earnings November 17 2026",
+        "\"Nvidia\" \"November 17, 2026\" Q3",
+        "NVDA Q3 2027 earnings November 17 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3967,
+        "candidatesTokenCount": 1189,
+        "totalTokenCount": 10545
+      }
     }
   ],
   "attempts": {
-    "1794931200000": 1,
-    "1794945600000": 1
+    "1794945600000": 1,
+    "1794960000000": 1
   },
-  "generatedAt": 1794959166165,
+  "generatedAt": 1794960100406,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 72,
-    "totalTokens": 818128,
+    "analyses": 73,
+    "totalTokens": 828673,
     "direction": {
-      "scored": 330,
+      "scored": 335,
       "called": 200,
-      "neutral": 130,
+      "neutral": 135,
       "hits": 142,
       "hitRate": 0.71,
-      "brier": 0.2251,
+      "brier": 0.2256,
       "brierRandom": 0.25
     },
     "breakouts": {
       "taken_GO": {
         "count": 4,
-        "closed": 1,
-        "wins": 1,
-        "avgR": 4.0699,
-        "totalR": 4.0699
+        "closed": 2,
+        "wins": 2,
+        "avgR": 3.4558,
+        "totalR": 6.9116
       },
       "taken_NO_GO": {
         "count": 0,
@@ -8908,10 +9045,10 @@
       },
       "rejected_GO": {
         "count": 5,
-        "closed": 1,
-        "wins": 0,
-        "avgR": -1.0638,
-        "totalR": -1.0638
+        "closed": 4,
+        "wins": 3,
+        "avgR": 2.5683,
+        "totalR": 10.2732
       },
       "rejected_NO_GO": {
         "count": 0,
@@ -8924,10 +9061,10 @@
     "byDecision": {
       "GO": {
         "count": 9,
-        "closed": 2,
-        "wins": 1,
-        "avgR": 1.503,
-        "totalR": 3.0061
+        "closed": 6,
+        "wins": 5,
+        "avgR": 2.8641,
+        "totalR": 17.1848
       },
       "NO_GO": {
         "count": 0,
@@ -8943,21 +9080,39 @@
       "winRate": 0.8182,
       "avgR": 0.5631,
       "totalR": 12.3891,
-      "open": 0,
-      "equityMarked": 563.753253,
-      "returnPct": 12.7507
+      "open": 1,
+      "equityMarked": 563.702515,
+      "returnPct": 12.7405
     }
   },
   "lastRun": {
-    "at": 1794959166165,
-    "status": "up-to-date",
+    "at": 1794960100406,
+    "status": "ok",
     "error": null,
-    "barClose": 1794945600000
+    "barClose": 1794960000000
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 563.753253,
-    "positions": [],
+    "positions": [
+      {
+        "id": "SOLUSDT-1794945600000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1794960000000,
+        "entryPrice": 75.15,
+        "stop": 68.5,
+        "target": 81.5,
+        "risk": 6.650000000000006,
+        "stake": 5.637533,
+        "conviction": 60,
+        "reason": "Force relative claire port\u00e9e par l'annonce de la v1.0. Le support de 67,4$ (plus bas depuis juin) a fait l'objet d'un rebond solide. Le stop est plac\u00e9 \u00e0 68,5$ (sous 2x ATR) pour viser un retour vers 81,5$ (ancienne r\u00e9sistance majeure).",
+        "exitBy": 1795132800000,
+        "lastBar": 1794959999999,
+        "markR": -0.009,
+        "markPrice": 75.09
+      }
+    ],
     "trades": [
       {
         "id": "SOLUSDT-1793851200000",
