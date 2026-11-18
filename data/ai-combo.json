@@ -10631,7 +10631,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.574,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -10650,7 +10654,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.944,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -10664,7 +10672,11 @@
             "reason": "La force relative du jeton limite l'int\u00e9r\u00eat d'une vente \u00e0 d\u00e9couvert, mais le contexte macro\u00e9conomique globalement baissier interdit tout achat de conviction."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.166,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -10678,7 +10690,11 @@
             "reason": "Bien que fondamentalement baissier, le cours teste actuellement un support technique majeur \u00e0 590$, rendant le ratio risque/rendement peu attractif pour un short imm\u00e9diat."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.535,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -10692,7 +10708,11 @@
             "reason": "La stabilisation r\u00e9cente et l'int\u00e9r\u00eat institutionnel luttent contre d'importantes sorties de flux physiques, cr\u00e9ant une ind\u00e9cision qui ne justifie pas de position."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.385,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -11452,10 +11472,117 @@
         "candidatesTokenCount": 1377,
         "totalTokenCount": 11293
       }
+    },
+    {
+      "barClose": 1795032000000,
+      "requestedAt": 1795032141514,
+      "analyzedAt": 1795032170720,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Discours ultra-faucon du gouverneur de la Fed C. Waller, \u00e9voquant une hausse choc de 50 pb en d\u00e9cembre face \u00e0 une inflation >3%. Rendements \u00e0 10 ans de retour \u00e0 5,12%, dollar fort et d\u00e9gagement massif sur les actions et l'or. Le compte rendu d'octobre confirme la division des d\u00e9cideurs.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "La pression vendeuse s'intensifie apr\u00e8s les propos de Waller, poussant le BTC sous 63k$. Les ETF spot subissent des sorties massives (plus d'un milliard de dollars en 5 jours, dont 210M$ d'IBIT hier). Malgr\u00e9 le sentiment d'extr\u00eame peur (Fear & Greed \u00e0 11) et une zone de valorisation historique selon K33, la tendance technique 4H reste baissi\u00e8re sous l'EMA200 4H (74,5k$).",
+          "risks": "Persistance des sorties d'ETF, hawkishness de la Fed et liquidation de leviers restants.",
+          "price0": 62724.6,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "Ethereum montre une sous-performance chronique face aux autres majors. Le RSI quotidien reste coll\u00e9 en zone de survente sous les 30. La structure technique sur 4H est fortement baissi\u00e8re, avec des cours bien en dessous de l'EMA20 et de l'EMA50. Les sorties institutionnelles et le d\u00e9sint\u00e9r\u00eat g\u00e9n\u00e9ral pour le r\u00e9seau de couche 1 p\u00e8sent lourdement sur la demande spot.",
+          "risks": "Poursuite de la baisse du BTC, capitulation des d\u00e9tenteurs \u00e0 perte et frais \u00e9lev\u00e9s.",
+          "price0": 1755.48,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "XRP fait preuve d'une relative r\u00e9silience face \u00e0 la purge du march\u00e9, oscillant autour de 0,96$. Les baleines accumulent et retirent du XRP de Binance, tandis que les amendements de pr\u00eat natif sur XRPL gagnent des votes cl\u00e9s de validateurs. La certification de s\u00e9curit\u00e9 CertiK selon les standards bancaires GL1 soutient la narration institutionnelle, malgr\u00e9 de faibles flux ETF.",
+          "risks": "Cl\u00f4ture sous 0,94$ invalidant le rebond, sentiment macro\u00e9co d\u00e9grad\u00e9 entra\u00eenant tout le march\u00e9.",
+          "price0": 0.9665,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le contexte macro\u00e9conomique d'extr\u00eame peur conseille l'attente malgr\u00e9 la force relative de l'actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "BNB peine \u00e0 franchir la r\u00e9sistance psychologique des 600$ et consolide dans un triangle descendant. Bien que Binance ait finalis\u00e9 le rachat de 6,34 milliards de dollars suite au piratage de fin octobre, la confiance reste fragile. La cotation r\u00e9cente sur GMO Coin au Japon apporte un soutien \u00e0 long terme, mais la dynamique technique 4H reste baissi\u00e8re sous l'EMA20 (594$).",
+          "risks": "Cassure du support cl\u00e9 \u00e0 565-580$ entra\u00eenant un d\u00e9crochage vers les bas de septembre.",
+          "price0": 579.22,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "BNB est bloqu\u00e9 sous sa r\u00e9sistance et le biais g\u00e9n\u00e9ral est baissier, pas d'opportunit\u00e9 claire."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Solana surperforme marginalement le march\u00e9, soutenu par la sortie officielle de la version \"Mainnet 1.0\" (abandonnant l'\u00e9tiquette \"Beta\" apr\u00e8s 6 ans). Bien que les flux ETF spot soient au point mort, l'activit\u00e9 de trading d\u00e9centralis\u00e9 reste robuste. N\u00e9anmoins, la tendance \u00e0 moyen terme reste baissi\u00e8re et le cours bute sous les r\u00e9sistances cl\u00e9s autour des 74-75$.",
+          "risks": "Rejet sous 75$ et retour vers le support critique de 70$ si le BTC casse ses bas.",
+          "price0": 73.07,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position acheteuse d\u00e9j\u00e0 ouverte."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "macro events November 18 2026 fed crypto",
+        "bitcoin price november 18 2026",
+        "crypto news November 18 2026",
+        "fomc schedule 2026 november",
+        "solana price november 18 2026",
+        "ripple xrp news november 18 2026",
+        "bnb coin news november 18 2026",
+        "spot bitcoin etf flows november 18 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4251,
+        "candidatesTokenCount": 1400,
+        "totalTokenCount": 11542
+      }
     }
   ],
   "attempts": {
-    "1795017600000": 1
+    "1795017600000": 1,
+    "1795032000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -11474,9 +11601,9 @@
         "conviction": 60,
         "reason": "La tendance globale est fortement baissi\u00e8re. Les flux d'ETF restent orient\u00e9s \u00e0 la baisse \u00e0 moyen terme et la macro\u00e9conomie am\u00e9ricaine (durcissement mon\u00e9taire attendu en d\u00e9cembre) offre un vent contraire majeur.",
         "exitBy": 1795122000000,
-        "lastBar": 1795024800000,
-        "markR": 0.5928,
-        "markPrice": 62624.2
+        "lastBar": 1795028400000,
+        "markR": 0.5606,
+        "markPrice": 62697.5
       },
       {
         "id": "ETHUSDT-1794945600000",
@@ -11491,9 +11618,9 @@
         "conviction": 68,
         "reason": "Faiblesse relative par rapport au BTC, sorties massives d'ETF et pression vendeuse persistante. L'absence de catalyseur haussier \u00e0 court terme favorise une poursuite de la baisse vers le support cl\u00e9.",
         "exitBy": 1795122000000,
-        "lastBar": 1795024800000,
-        "markR": 0.5216,
-        "markPrice": 1755.68
+        "lastBar": 1795028400000,
+        "markR": 0.5287,
+        "markPrice": 1755.08
       },
       {
         "id": "SOLUSDT-1794960000000",
@@ -11508,9 +11635,9 @@
         "conviction": 65,
         "reason": "La sortie officielle de la phase b\u00eata (Solana 1.0) et les innovations techniques majeures pr\u00e9sent\u00e9es \u00e0 Breakpoint offrent un fort momentum haussier.",
         "exitBy": 1795136400000,
-        "lastBar": 1795024800000,
-        "markR": -0.5391,
-        "markPrice": 73.09
+        "lastBar": 1795028400000,
+        "markR": -0.5565,
+        "markPrice": 73.03
       }
     ],
     "trades": [
@@ -11859,19 +11986,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795031181786,
+  "generatedAt": 1795032141514,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 82,
-    "totalTokens": 979956,
+    "analyses": 83,
+    "totalTokens": 991498,
     "direction": {
-      "scored": 380,
-      "called": 257,
-      "neutral": 123,
-      "hits": 197,
-      "hitRate": 0.7665,
-      "brier": 0.2143,
+      "scored": 385,
+      "called": 260,
+      "neutral": 125,
+      "hits": 200,
+      "hitRate": 0.7692,
+      "brier": 0.214,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -11927,14 +12054,14 @@
       "avgR": 0.7166,
       "totalR": 13.6154,
       "open": 3,
-      "equityMarked": 573.548607,
-      "returnPct": 14.7097
+      "equityMarked": 573.306243,
+      "returnPct": 14.6612
     }
   },
   "lastRun": {
-    "at": 1795031181786,
-    "status": "waiting",
+    "at": 1795032141514,
+    "status": "ok",
     "error": null,
-    "barClose": 1795028400000
+    "barClose": 1795032000000
   }
 }
