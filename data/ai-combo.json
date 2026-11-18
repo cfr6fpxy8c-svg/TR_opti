@@ -4681,13 +4681,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Le CPI d'octobre plus chaud que pr\u00e9vu (+0,4% m/m, c\u0153ur +0,3%) renforce les attentes d'une Fed restrictive en d\u00e9c. Les rendements \u00e0 10 ans approchent 5% et le dollar s'envole, pesant sur les actions et les cryptos. Le PPI am\u00e9ricain est attendu vendredi 13 novembre.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 40,
-          "reason": "La tendance reste baissi\u00e8re sous l'EMA200 (4H) suite au CPI chaud et au piratage historique de Binance (6,3 Mds$ le 29/10). Les ETF spot BTC subissent leur 4e jour de sorties nettes (-95M$ le 10/11), portant les sorties 2026 \u00e0 plus d'1,1 Md$. Les traders d'options se positionnent d\u00e9fensivement (puts) pour un retour sous les 70k$ d'ici No\u00ebl. Le rebond technique actuel manque de conviction.",
-          "risks": "Regain soudain d'app\u00e9tit pour le risque si le dollar se replie; liquidation de positions courtes \u00e0 fort effet de levier.",
+          "reason": "",
+          "risks": "",
           "price0": 74381.4,
           "trade": {
             "action": "NONE",
@@ -4704,8 +4704,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 38,
-          "reason": "ETH souffre particuli\u00e8rement, p\u00e9nalis\u00e9 par les sorties d'ETF et surtout par le piratage de Binance. Les hackers de TraderTraitor (RPDC) d\u00e9tiendraient plus de 420 000 ETH hors de port\u00e9e des \u00e9metteurs, cr\u00e9ant une pression vendeuse potentielle majeure. Techniquement, le prix rebondit faiblement sur le support des 2000$ mais reste sous toutes les moyennes mobiles cl\u00e9s (EMA20/50).",
-          "risks": "Forte r\u00e9action haussi\u00e8re sur le support psychologique majeur des 2000$ en cas de stabilisation macro\u00e9conomique.",
+          "reason": "",
+          "risks": "",
           "price0": 2077.68,
           "trade": {
             "action": "NONE",
@@ -4722,8 +4722,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "Le XRP a \u00e9t\u00e9 l'un des premiers actifs cibl\u00e9s lors du piratage de Binance du 29 octobre, avec 233 millions de XRP siphonn\u00e9s vers une seule adresse. Cette perte de confiance, coupl\u00e9e \u00e0 la pression macro\u00e9conomique globale et \u00e0 une tendance de fond baissi\u00e8re (EMA20/50 en d\u00e9clin rapide), maintient le XRP proche de ses plus bas r\u00e9cents (1,03$). Le RSI \u00e0 34,8 confirme la force de la baisse.",
-          "risks": "Sursaut technique d\u00fb \u00e0 des conditions de survente \u00e0 court terme; rumeurs r\u00e9glementaires favorables aux \u00c9tats-Unis.",
+          "reason": "",
+          "risks": "",
           "price0": 1.0592,
           "trade": {
             "action": "NONE",
@@ -4740,8 +4740,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "BNB montre une r\u00e9silience relative apr\u00e8s le choc du piratage de 6,3 Mds$ subi par Binance. L'\u00e9change a rapidement couvert 98% des pertes et r\u00e9tabli les retraits le 01/11. Les fondamentaux soutiennent le cours (burn de 1,64M de BNB, hausse de 54% du CA r\u00e9seau au T3). N\u00e9anmoins, la tendance technique globale reste baissi\u00e8re sous la r\u00e9sistance des 697-700$ dans un climat macro hostile.",
-          "risks": "Retrait massif inattendu des d\u00e9p\u00f4ts de Binance; durcissement r\u00e9glementaire ou poursuites post-piratage.",
+          "reason": "",
+          "risks": "",
           "price0": 686.78,
           "trade": {
             "action": "NONE",
@@ -4758,8 +4758,8 @@
         "SOLUSDT": {
           "direction": "NEUTRAL",
           "probUp": 46,
-          "reason": "SOL a test\u00e9 son plus bas de 3 mois pr\u00e8s de 81,25$ avant de rebondir techniquement vers 84,8$. La position longue du portefeuille b\u00e9n\u00e9ficie de ce rebond, mais la structure technique reste fragile avec des moyennes mobiles EMA20/50 orient\u00e9es \u00e0 la baisse. Le sentiment g\u00e9n\u00e9ral du march\u00e9 crypto, affect\u00e9 par le hack de Binance et le CPI chaud, limite le potentiel de hausse imm\u00e9diate.",
-          "risks": "Poursuite du d\u00e9risquage macro\u00e9conomique sous l'effet de la hausse des taux; rupture du support critique des 81,25$.",
+          "reason": "",
+          "risks": "",
           "price0": 84.8,
           "trade": {
             "action": "NONE",
@@ -4774,16 +4774,7 @@
           }
         }
       },
-      "queries": [
-        "\"US CPI\" November 2026",
-        "economic calendar \"November 2026\" CPI Fed",
-        "crypto news November 11 2026",
-        "BTC ETF flows November 10 2026",
-        "\"Binance\" hack October 2026",
-        "\"Binance\" $6.3 billion",
-        "BNB news November 11 2026",
-        "Fear and Greed index November 11 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -4798,7 +4789,8 @@
         "promptTokenCount": 4311,
         "candidatesTokenCount": 1489,
         "totalTokenCount": 11160
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794441600000,
@@ -11602,8 +11594,8 @@
         "reason": "La tendance globale est fortement baissi\u00e8re. Les flux d'ETF restent orient\u00e9s \u00e0 la baisse \u00e0 moyen terme et la macro\u00e9conomie am\u00e9ricaine (durcissement mon\u00e9taire attendu en d\u00e9cembre) offre un vent contraire majeur.",
         "exitBy": 1795122000000,
         "lastBar": 1795028400000,
-        "markR": 0.5606,
-        "markPrice": 62697.5
+        "markR": 0.5411,
+        "markPrice": 62742.1
       },
       {
         "id": "ETHUSDT-1794945600000",
@@ -11619,8 +11611,8 @@
         "reason": "Faiblesse relative par rapport au BTC, sorties massives d'ETF et pression vendeuse persistante. L'absence de catalyseur haussier \u00e0 court terme favorise une poursuite de la baisse vers le support cl\u00e9.",
         "exitBy": 1795122000000,
         "lastBar": 1795028400000,
-        "markR": 0.5287,
-        "markPrice": 1755.08
+        "markR": 0.5223,
+        "markPrice": 1755.62
       },
       {
         "id": "SOLUSDT-1794960000000",
@@ -11636,8 +11628,8 @@
         "reason": "La sortie officielle de la phase b\u00eata (Solana 1.0) et les innovations techniques majeures pr\u00e9sent\u00e9es \u00e0 Breakpoint offrent un fort momentum haussier.",
         "exitBy": 1795136400000,
         "lastBar": 1795028400000,
-        "markR": -0.5565,
-        "markPrice": 73.03
+        "markR": -0.5333,
+        "markPrice": 73.11
       }
     ],
     "trades": [
@@ -11986,7 +11978,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795032141514,
+  "generatedAt": 1795032981703,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -12054,13 +12046,13 @@
       "avgR": 0.7166,
       "totalR": 13.6154,
       "open": 3,
-      "equityMarked": 573.306243,
-      "returnPct": 14.6612
+      "equityMarked": 573.290846,
+      "returnPct": 14.6582
     }
   },
   "lastRun": {
-    "at": 1795032141514,
-    "status": "ok",
+    "at": 1795032981703,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795032000000
   }
