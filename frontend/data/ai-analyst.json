@@ -8474,6 +8474,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas d'opportunit\u00e9 claire \u00e0 court terme. La forte volatilit\u00e9 attendue avec le discours de Waller aujourd'hui et les minutes de la Fed demain incite \u00e0 la prudence et \u00e0 rester \u00e0 l'\u00e9cart du march\u00e9."
+          },
+          "outcome": {
+            "retPct": 0.226,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -8487,6 +8491,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "L'absence de dynamique haussi\u00e8re propre et l'incertitude entourant les annonces macro\u00e9conomiques de la Fed incitent \u00e0 rester neutre et \u00e0 conserver ses liquidit\u00e9s."
+          },
+          "outcome": {
+            "retPct": -0.802,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -8500,6 +8508,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La perte du seuil de 1,00 $ a fragilis\u00e9 la structure technique. Nous attendons une reconqu\u00eate claire de ce niveau avant d'envisager des positions longues."
+          },
+          "outcome": {
+            "retPct": 4.106,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -8513,6 +8525,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "M\u00eame si la r\u00e9solution de l'incident de s\u00e9curit\u00e9 apporte un soulagement fondamental, la tendance g\u00e9n\u00e9rale du march\u00e9 reste lourde et n'offre pas de configuration d'achat optimale."
+          },
+          "outcome": {
+            "retPct": 0.064,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -8526,6 +8542,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le catalyseur de la conf\u00e9rence Breakpoint offre un support temporaire, mais les flux sortants persistants sur les ETF incitent \u00e0 ne pas anticiper de rebond durable dans l'imm\u00e9diat."
+          },
+          "outcome": {
+            "retPct": 3.044,
+            "hit": null
           }
         }
       },
@@ -9059,25 +9079,138 @@
         "candidatesTokenCount": 1290,
         "totalTokenCount": 9931
       }
+    },
+    {
+      "barClose": 1794988800000,
+      "requestedAt": 1794988900295,
+      "analyzedAt": 1794988931343,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Macro tendue avec les minutes de la Fed ce soir et les rendements \u00e0 10 ans proches de 5,15% apr\u00e8s un IPC d'octobre \u00e9lev\u00e9, faisant craindre une hausse des taux le 9 d\u00e9c. Heureusement, les excellents r\u00e9sultats de Nvidia (sans Jensen Huang) apportent un peu de stabilit\u00e9 au secteur technologique.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Stabilisation pr\u00e9caire autour de 64k$ apr\u00e8s un d\u00e9bouclage massif en novembre (-12% sur 7j). Les flux ETF spot restent n\u00e9gatifs (-1,07 Md$ la semaine derni\u00e8re) et l'offre globale de stablecoins s'est contract\u00e9e de 14,2 Md$ en 30 jours, r\u00e9duisant la liquidit\u00e9 disponible. L'analyse technique reste baissi\u00e8re sous l'EMA200_4h (74,8k$).",
+          "risks": "Minutes de la Fed aujourd'hui, rendements US \u00e0 10 ans proches de 5.15%, et craintes de hausse des taux le 9 d\u00e9cembre.",
+          "price0": 64851.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de configuration claire. Le biais de fond reste baissier sous l'EMA200 4H et face \u00e0 un environnement macro\u00e9conomique tendu."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "Sous pression sous 1820$, plomb\u00e9 par des sorties massives des ETF spot en octobre (-1,2 Md$) et novembre. De plus, le retard de la mise \u00e0 niveau Glamsterdam p\u00e8se sur le sentiment fondamental. Techniquement, la tendance reste fortement baissi\u00e8re, l'ETH \u00e9voluant bien sous ses EMA20 et EMA50.",
+          "risks": "Sorties continues des ETF, faiblesse de la demande institutionnelle et corr\u00e9lation au Nasdaq.",
+          "price0": 1816.51,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Tendance baissi\u00e8re prononc\u00e9e mais aucun signal de retournement ou breakout pour initier une position propre."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "UP",
+          "probUp": 58,
+          "reason": "Force relative remarquable (+4% sur 24h). XRP profite de l'approbation finale de l'OCC pour sa banque fiduciaire nationale (RNTB) et de records d'activit\u00e9 on-chain (Batch/Tickets) sur le XRPL. Techniquement, le franchissement du niveau psychologique des 1,00$ signale un retour des acheteurs.",
+          "risks": "Pression de vente structurelle des d\u00e9blocages mensuels d'escrow et volatilit\u00e9 macro\u00e9conomique li\u00e9e aux rendements US.",
+          "price0": 1.0014,
+          "breakout": {
+            "side": "LONG",
+            "level": 0.9911,
+            "decision": "GO",
+            "probTarget": 55,
+            "reason": "Le breakout long sur 1,0014$ est soutenu par des catalyseurs fondamentaux majeurs (approbation OCC) et une forte dynamique on-chain, malgr\u00e9 des vents contraires macro\u00e9conomiques.",
+            "ours": "rejected"
+          },
+          "trade": {
+            "action": "LONG",
+            "conviction": 60,
+            "reason": "Achat sur breakout haussier valid\u00e9 par des fondamentaux exceptionnels (charte OCC) et une force relative de court terme. Stop plac\u00e9 \u00e0 2 ATR.",
+            "stop": 0.9521,
+            "target": 1.1,
+            "maxHoldHours": 48,
+            "valid": true
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "BNB stagne sous sa r\u00e9sistance EMA20 (598$), malgr\u00e9 la cotation au Nasdaq de BNB Standard Corp en octobre. Les volumes d'\u00e9change sont faibles et l'absence de catalyseur propre laisse l'actif \u00e0 la merci de la tendance g\u00e9n\u00e9rale d\u00e9clinante du march\u00e9 crypto.",
+          "risks": "Sensibilit\u00e9 aux fluctuations du BTC et au resserrement de la liquidit\u00e9 globale.",
+          "price0": 594.16,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Neutre techniquement et fondamentalement. Pas d'avantage statistique \u00e0 l'achat ou \u00e0 la vente."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 53,
+          "reason": "Rebond technique au-dessus de l'EMA20 (73,7$), soutenu par des pr\u00e9visions de long terme robustes. Malgr\u00e9 une baisse mensuelle de 30% li\u00e9e au deleveraging global, SOL fait preuve de r\u00e9silience \u00e0 court terme avec un RSI qui remonte \u00e0 53,2.",
+          "risks": "Volatilit\u00e9 accrue apr\u00e8s les midterms et sensibilit\u00e9 aux rendements obligataires US \u00e9lev\u00e9s.",
+          "price0": 75.14,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position longue d\u00e9j\u00e0 ouverte \u00e0 75,15$ dans notre portefeuille (stop 68,5$, cible 81,5$)."
+          }
+        }
+      },
+      "queries": [
+        "\"bitcoin\" price November 2026",
+        "crypto market news November 2026",
+        "\"Fed\" interest rate November 2026",
+        "macroeconomic calendar November 17-19 2026",
+        "\"Nvidia\" earnings November 18 2026",
+        "Nvidia Q3 2027 earnings date",
+        "Nvidia earnings date November 2026",
+        "\"XRP\" news November 2026",
+        "Ripple \"OCC\" \"trust bank\" 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4010,
+        "candidatesTokenCount": 1218,
+        "totalTokenCount": 11795
+      }
     }
   ],
   "attempts": {
-    "1794960000000": 1,
-    "1794974400000": 3
+    "1794974400000": 3,
+    "1794988800000": 1
   },
-  "generatedAt": 1794987968376,
+  "generatedAt": 1794988900295,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 74,
-    "totalTokens": 838604,
+    "analyses": 75,
+    "totalTokens": 850399,
     "direction": {
-      "scored": 340,
+      "scored": 345,
       "called": 201,
-      "neutral": 139,
+      "neutral": 144,
       "hits": 142,
       "hitRate": 0.7065,
-      "brier": 0.2262,
+      "brier": 0.2265,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -9096,7 +9229,7 @@
         "totalR": 0
       },
       "rejected_GO": {
-        "count": 5,
+        "count": 6,
         "closed": 4,
         "wins": 3,
         "avgR": 2.5683,
@@ -9112,7 +9245,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 9,
+        "count": 10,
         "closed": 6,
         "wins": 5,
         "avgR": 2.8641,
@@ -9133,15 +9266,15 @@
       "avgR": 0.5631,
       "totalR": 12.3891,
       "open": 1,
-      "equityMarked": 563.532825,
-      "returnPct": 12.7066
+      "equityMarked": 563.694059,
+      "returnPct": 12.7388
     }
   },
   "lastRun": {
-    "at": 1794987968376,
-    "status": "up-to-date",
+    "at": 1794988900295,
+    "status": "ok",
     "error": null,
-    "barClose": 1794974400000
+    "barClose": 1794988800000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -9160,9 +9293,9 @@
         "conviction": 60,
         "reason": "Force relative claire port\u00e9e par l'annonce de la v1.0. Le support de 67,4$ (plus bas depuis juin) a fait l'objet d'un rebond solide. Le stop est plac\u00e9 \u00e0 68,5$ (sous 2x ATR) pour viser un retour vers 81,5$ (ancienne r\u00e9sistance majeure).",
         "exitBy": 1795132800000,
-        "lastBar": 1794960000000,
-        "markR": -0.0391,
-        "markPrice": 74.89
+        "lastBar": 1794974400000,
+        "markR": -0.0105,
+        "markPrice": 75.08
       }
     ],
     "trades": [
