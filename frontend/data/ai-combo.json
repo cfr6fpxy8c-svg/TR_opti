@@ -5153,13 +5153,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "L'inflation US d'octobre plus forte que pr\u00e9vu (CPI \u00e0 +0,4%, Core \u00e0 +0,3%) renforce l'hypoth\u00e8se d'une hausse des taux de la Fed en d\u00e9cembre (~86%). Les rendements obligataires et le dollar s'envolent, d\u00e9clenchant des liquidations massives de positions longues sur les crypto-actifs.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "La surprise haussi\u00e8re de l'inflation d'octobre propulse les rendements US (2 ans \u00e0 4,73%) et le dollar, incitant \u00e0 la r\u00e9duction du risque. Les flux ETF spot restent n\u00e9gatifs bien qu'en att\u00e9nuation, maintenant BTC sous pression pr\u00e8s de sa moyenne mobile \u00e0 200 jours.",
-          "risks": "Support historique \u00e0 73k$ ou rachats de shorts \u00e0 l'approche de la cl\u00f4ture hebdomadaire.",
+          "reason": "",
+          "risks": "",
           "price0": 72930.0,
           "trade": {
             "action": "NONE",
@@ -5176,8 +5176,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "ETH subit une sous-performance chronique, amplifi\u00e9e par des liquidations massives de longs (~245M$). Le flux ETF sortant persistant et la pression technique sous les EMA 20/50 confirment le biais baissier vers les 1950$.",
-          "risks": "Un RSI quotidien proche du survente pouvant provoquer un squeeze technique.",
+          "reason": "",
+          "risks": "",
           "price0": 2021.42,
           "trade": {
             "action": "NONE",
@@ -5194,8 +5194,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "XRP efface ses gains r\u00e9cents suite \u00e0 un d\u00e9bouclage de positions \u00e0 effet de levier. L'absence de catalyseur positif imm\u00e9diat et le renforcement du DXY maintiennent la pression baissi\u00e8re vers le support psychologique de 1.00$.",
-          "risks": "D\u00e9cisions de justice inattendues ou annonce de partenariat majeur.",
+          "reason": "",
+          "risks": "",
           "price0": 1.0381,
           "trade": {
             "action": "NONE",
@@ -5212,8 +5212,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "La cassure du support des 670$ valide le biais baissier. Les fondamentaux sont affaiblis par le d\u00e9part r\u00e9cent du CFO et l'impact persistant sur la confiance apr\u00e8s le piratage d'octobre.",
-          "risks": "D\u00e9fense agressive du support psychologique et technique majeur \u00e0 650$.",
+          "reason": "",
+          "risks": "",
           "price0": 664.52,
           "trade": {
             "action": "SHORT",
@@ -5249,8 +5249,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 44,
-          "reason": "Bien que soutenu par l'int\u00e9gration d'USDC dans Samsung Wallet, SOL est entra\u00een\u00e9 par la baisse g\u00e9n\u00e9ralis\u00e9e du march\u00e9. Le cours teste actuellement la borne basse de son canal \u00e0 81.25$ dans un climat de forte aversion au risque.",
-          "risks": "La rupture des 81$ pourrait d\u00e9clencher des stops en cascade.",
+          "reason": "",
+          "risks": "",
           "price0": 82.45,
           "trade": {
             "action": "NONE",
@@ -5265,14 +5265,7 @@
           }
         }
       },
-      "queries": [
-        "\"November 2026\" CPI Fed FOMC",
-        "crypto market news November 2026",
-        "\"BTC\" OR \"Bitcoin\" price November 2026",
-        "Fed meeting November 2026 dates",
-        "\"BNB\" OR \"Binance coin\" price news November 2026",
-        "\"BNB\" upgrade fork November 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -5287,7 +5280,8 @@
         "promptTokenCount": 4400,
         "candidatesTokenCount": 1152,
         "totalTokenCount": 12701
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794488400000,
@@ -12122,8 +12116,8 @@
         "reason": "La tendance globale est fortement baissi\u00e8re. Les flux d'ETF restent orient\u00e9s \u00e0 la baisse \u00e0 moyen terme et la macro\u00e9conomie am\u00e9ricaine (durcissement mon\u00e9taire attendu en d\u00e9cembre) offre un vent contraire majeur.",
         "exitBy": 1795122000000,
         "lastBar": 1795086000000,
-        "markR": 0.0957,
-        "markPrice": 63755.9
+        "markR": 0.0818,
+        "markPrice": 63787.6
       },
       {
         "id": "ETHUSDT-1794945600000",
@@ -12139,8 +12133,8 @@
         "reason": "Faiblesse relative par rapport au BTC, sorties massives d'ETF et pression vendeuse persistante. L'absence de catalyseur haussier \u00e0 court terme favorise une poursuite de la baisse vers le support cl\u00e9.",
         "exitBy": 1795122000000,
         "lastBar": 1795086000000,
-        "markR": -0.0375,
-        "markPrice": 1803.2
+        "markR": -0.0455,
+        "markPrice": 1803.88
       },
       {
         "id": "SOLUSDT-1794960000000",
@@ -12156,8 +12150,8 @@
         "reason": "La sortie officielle de la phase b\u00eata (Solana 1.0) et les innovations techniques majeures pr\u00e9sent\u00e9es \u00e0 Breakpoint offrent un fort momentum haussier.",
         "exitBy": 1795136400000,
         "lastBar": 1795086000000,
-        "markR": -0.0638,
-        "markPrice": 74.73
+        "markR": -0.0667,
+        "markPrice": 74.72
       }
     ],
     "trades": [
@@ -12506,7 +12500,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795089743924,
+  "generatedAt": 1795090581265,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -12574,13 +12568,13 @@
       "avgR": 0.7166,
       "totalR": 13.6154,
       "open": 3,
-      "equityMarked": 570.235921,
-      "returnPct": 14.0472
+      "equityMarked": 570.094495,
+      "returnPct": 14.0189
     }
   },
   "lastRun": {
-    "at": 1795089743924,
-    "status": "ok",
+    "at": 1795090581265,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795089600000
   }
