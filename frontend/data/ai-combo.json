@@ -10918,7 +10918,11 @@
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte \u00e0 63 973,7 $ selon les faits syst\u00e8me. Nous la laissons courir vers son objectif."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.93,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -10932,7 +10936,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur ETH \u00e0 1 800,01 $. Pas de nouvelle exposition requise."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.609,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -10946,7 +10954,11 @@
             "reason": "Aucun breakout valide n'est identifi\u00e9. Le march\u00e9 XRP est en phase de capitulation technique sans signal d'achat propre."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.809,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -10960,7 +10972,11 @@
             "reason": "BNB est affaibli mais d\u00e9j\u00e0 proche de zones de survente. Un trade short tardif pr\u00e9sente un mauvais ratio risque/rendement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.331,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "UP",
@@ -10974,7 +10990,11 @@
             "reason": "Une position acheteuse est d\u00e9j\u00e0 en cours sur SOL \u00e0 74,95 $ d'apr\u00e8s le syst\u00e8me. Nous conservons ce trade intact."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.723,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -11691,7 +11711,8 @@
     }
   ],
   "attempts": {
-    "1795046400000": 1
+    "1795046400000": 1,
+    "1795060800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -11710,9 +11731,9 @@
         "conviction": 60,
         "reason": "La tendance globale est fortement baissi\u00e8re. Les flux d'ETF restent orient\u00e9s \u00e0 la baisse \u00e0 moyen terme et la macro\u00e9conomie am\u00e9ricaine (durcissement mon\u00e9taire attendu en d\u00e9cembre) offre un vent contraire majeur.",
         "exitBy": 1795122000000,
-        "lastBar": 1795053600000,
-        "markR": 0.4039,
-        "markPrice": 63054.4
+        "lastBar": 1795057200000,
+        "markR": 0.2543,
+        "markPrice": 63394.8
       },
       {
         "id": "ETHUSDT-1794945600000",
@@ -11727,9 +11748,9 @@
         "conviction": 68,
         "reason": "Faiblesse relative par rapport au BTC, sorties massives d'ETF et pression vendeuse persistante. L'absence de catalyseur haussier \u00e0 court terme favorise une poursuite de la baisse vers le support cl\u00e9.",
         "exitBy": 1795122000000,
-        "lastBar": 1795053600000,
-        "markR": 0.1944,
-        "markPrice": 1783.49
+        "lastBar": 1795057200000,
+        "markR": 0.0055,
+        "markPrice": 1799.54
       },
       {
         "id": "SOLUSDT-1794960000000",
@@ -11744,9 +11765,9 @@
         "conviction": 65,
         "reason": "La sortie officielle de la phase b\u00eata (Solana 1.0) et les innovations techniques majeures pr\u00e9sent\u00e9es \u00e0 Breakpoint offrent un fort momentum haussier.",
         "exitBy": 1795136400000,
-        "lastBar": 1795053600000,
-        "markR": -0.2928,
-        "markPrice": 73.94
+        "lastBar": 1795057200000,
+        "markR": -0.1478,
+        "markPrice": 74.44
       }
     ],
     "trades": [
@@ -12095,18 +12116,18 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795059982190,
+  "generatedAt": 1795060933324,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 84,
     "totalTokens": 1002129,
     "direction": {
-      "scored": 390,
-      "called": 261,
-      "neutral": 129,
-      "hits": 200,
-      "hitRate": 0.7663,
+      "scored": 395,
+      "called": 264,
+      "neutral": 131,
+      "hits": 202,
+      "hitRate": 0.7652,
       "brier": 0.2146,
       "brierRandom": 0.25
     },
@@ -12163,14 +12184,14 @@
       "avgR": 0.7166,
       "totalR": 13.6154,
       "open": 3,
-      "equityMarked": 572.010024,
-      "returnPct": 14.402
+      "equityMarked": 570.906556,
+      "returnPct": 14.1813
     }
   },
   "lastRun": {
-    "at": 1795059982190,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1795057200000
+    "at": 1795060933324,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1795060800000
   }
 }
