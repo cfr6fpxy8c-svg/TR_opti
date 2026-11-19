@@ -9233,6 +9233,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le sentiment de march\u00e9 est en 'Extreme Fear' (12/100) et la publication imminente des minutes du FOMC de ce soir incite \u00e0 la prudence. Pas de configuration technique propre hors breakout."
+          },
+          "outcome": {
+            "retPct": -0.448,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -9246,6 +9250,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La pression vendeuse li\u00e9e \u00e0 l'IPO d'Anthropic et les flux d'ETF n\u00e9gatifs rendent l'achat risqu\u00e9, tandis que l'\u00e9tat de survente \u00e0 court terme (RSI quotidien < 30) limite le ratio gain/risque d'un short."
+          },
+          "outcome": {
+            "retPct": 0.347,
+            "hit": false
           }
         },
         "XRPUSDT": {
@@ -9259,6 +9267,10 @@
             "action": "NONE",
             "conviction": 60,
             "reason": "Position longue d\u00e9j\u00e0 ouverte (entr\u00e9e 0,9872, stop 0,9521). Nous conservons la position en cours en raison de la force relative de l'actif sans en ajouter de nouvelle."
+          },
+          "outcome": {
+            "retPct": 0.152,
+            "hit": true
           }
         },
         "BNBUSDT": {
@@ -9272,6 +9284,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Consolidation post-hack en cours. L'incertitude macro\u00e9conomique et l'absence de force acheteuse impulsive justifient de rester \u00e0 l'\u00e9cart pour le moment."
+          },
+          "outcome": {
+            "retPct": 0.476,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -9285,6 +9301,10 @@
             "action": "NONE",
             "conviction": 65,
             "reason": "Position longue d\u00e9j\u00e0 ouverte (entr\u00e9e 75,15, stop 68,5). Les d\u00e9veloppements fondamentaux \u00e0 Breakpoint soutiennent la position, mais l'inhibition de nouveaux trades s'applique pendant qu'une position est active."
+          },
+          "outcome": {
+            "retPct": 0.538,
+            "hit": true
           }
         }
       },
@@ -9940,25 +9960,124 @@
         "candidatesTokenCount": 1562,
         "totalTokenCount": 11847
       }
+    },
+    {
+      "barClose": 1795089600000,
+      "requestedAt": 1795089701164,
+      "analyzedAt": 1795089731180,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le dollar touche un sommet de 19 mois face \u00e0 une Fed hawkish (92% de chances d'une hausse en d\u00e9c.). Les discours de Waller et Cook vendredi seront surveill\u00e9s. C\u00f4t\u00e9 crypto, les sorties d'ETF s'intensifient (345M$ de sorties globales le 18 nov) et l'indice de Fear & Greed capitule \u00e0 10.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "Le prix reste sous les EMA 20/50 avec des sorties d'ETF massives (306M$ le 18 nov). Cependant, l'indice Fear & Greed est tomb\u00e9 \u00e0 10 (peur extr\u00eame), ce qui sugg\u00e8re une capitulation \u00e0 court terme et limite l'int\u00e9r\u00eat d'ouvrir des positions vendeuses tardives \u00e0 ce stade.",
+          "risks": "Un dollar tr\u00e8s fort et la perspective d'un resserrement mon\u00e9taire de la Fed en d\u00e9cembre.",
+          "price0": 63917.2,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le march\u00e9 est dans une zone de capitulation de sentiment (peur \u00e0 10), rendant les shorts risqu\u00e9s malgr\u00e9 la tendance baissi\u00e8re \u00e9vidente. Pas de signal d'achat."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 44,
+          "reason": "ETH a perdu le support des 1800$ face aux ventes de grands porteurs et \u00e0 des sorties continues d'ETF (7 semaines cons\u00e9cutives de flux n\u00e9gatifs). Les r\u00e9serves de Binance chutent mais la pression vendeuse g\u00e9n\u00e9rale reste dominante.",
+          "risks": "Conditions de survente \u00e0 court terme pouvant provoquer un rebond technique passager.",
+          "price0": 1806.42,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Flux institutionnels tr\u00e8s d\u00e9favorables et rupture technique sous les 1800$. Trop risqu\u00e9 pour un long, et un short est expos\u00e9 \u00e0 un rebond technique."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "XRP consolide entre le support de 0,90$ et la r\u00e9sistance de 1,00$. Les flux d'ETF sont neutres. Le march\u00e9 attend que les turbulences macro\u00e9conomiques se dissipent pour choisir une direction claire.",
+          "risks": "Forte corr\u00e9lation avec le reste du march\u00e9 en cas de nouvelle jambe baissi\u00e8re du BTC.",
+          "price0": 0.9888,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Nous d\u00e9tenons d\u00e9j\u00e0 une position longue active sur cet actif. La consolidation en cours soutient pour l'instant le stop-loss."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB se stabilise autour de 590$ apr\u00e8s ses r\u00e9centes pertes. L'annonce d'une ordonnance judiciaire d'Abou Dabi pour l'aide \u00e0 la r\u00e9cup\u00e9ration de fonds pirat\u00e9s offre un l\u00e9ger soutien de fond, mais la r\u00e9sistance des 600$ bloque la hausse.",
+          "risks": "Un retour sous les 580$ invaliderait la stabilisation et relancerait la baisse vers 566$.",
+          "price0": 592.86,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Absence de tendance claire et volatilit\u00e9 compress\u00e9e sous la r\u00e9sistance cl\u00e9 de 600$. Il est pr\u00e9f\u00e9rable de rester \u00e0 l'\u00e9cart."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 53,
+          "reason": "Les actifs tokenis\u00e9s sur Solana ont atteint 1,22 milliard de dollars, soutenus par Ondo et DTCC. Le prix a bien rebondi sur le support majeur des 67$ apr\u00e8s la cl\u00f4ture de la conf\u00e9rence Breakpoint.",
+          "risks": "Pression macro\u00e9conomique g\u00e9n\u00e9rale et d\u00e9pendance aux mouvements du Bitcoin.",
+          "price0": 74.81,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Nous d\u00e9tenons d\u00e9j\u00e0 une position longue active sur cet actif. Les fondamentaux r\u00e9cents (tokenisation) soutiennent la dynamique."
+          }
+        }
+      },
+      "queries": [
+        "\"fomc\" OR \"fed\" speakers schedule november 2026 OR economic calendar november 19 2026",
+        "bitcoin news november 19 2026 OR \"etf\" flows bitcoin november 2026",
+        "crypto fear and greed index november 19 2026",
+        "\"solana\" OR \"ripple\" OR \"bnb\" news november 2026",
+        "\"ethereum\" news november 19 2026",
+        "\"binance coin\" OR \"bnb\" news november 19 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4022,
+        "candidatesTokenCount": 1062,
+        "totalTokenCount": 10965
+      }
     }
   ],
   "attempts": {
-    "1795060800000": 1,
-    "1795075200000": 1
+    "1795075200000": 1,
+    "1795089600000": 1
   },
-  "generatedAt": 1795088773076,
+  "generatedAt": 1795089701164,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 81,
-    "totalTokens": 922457,
+    "analyses": 82,
+    "totalTokens": 933422,
     "direction": {
-      "scored": 375,
-      "called": 210,
-      "neutral": 165,
-      "hits": 146,
-      "hitRate": 0.6952,
-      "brier": 0.2277,
+      "scored": 380,
+      "called": 214,
+      "neutral": 166,
+      "hits": 149,
+      "hitRate": 0.6963,
+      "brier": 0.2278,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -10014,15 +10133,15 @@
       "avgR": 0.5631,
       "totalR": 12.3891,
       "open": 2,
-      "equityMarked": 564.047532,
-      "returnPct": 12.8095
+      "equityMarked": 563.387377,
+      "returnPct": 12.6775
     }
   },
   "lastRun": {
-    "at": 1795088773076,
-    "status": "up-to-date",
+    "at": 1795089701164,
+    "status": "ok",
     "error": null,
-    "barClose": 1795075200000
+    "barClose": 1795089600000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -10041,9 +10160,9 @@
         "conviction": 60,
         "reason": "Force relative claire port\u00e9e par l'annonce de la v1.0. Le support de 67,4$ (plus bas depuis juin) a fait l'objet d'un rebond solide. Le stop est plac\u00e9 \u00e0 68,5$ (sous 2x ATR) pour viser un retour vers 81,5$ (ancienne r\u00e9sistance majeure).",
         "exitBy": 1795132800000,
-        "lastBar": 1795060800000,
-        "markR": -0.0361,
-        "markPrice": 74.91
+        "lastBar": 1795075200000,
+        "markR": -0.0677,
+        "markPrice": 74.7
       },
       {
         "id": "XRPUSDT-1794988800000",
@@ -10058,9 +10177,9 @@
         "conviction": 60,
         "reason": "Achat sur breakout haussier valid\u00e9 par des fondamentaux exceptionnels (charte OCC) et une force relative de court terme. Stop plac\u00e9 \u00e0 2 ATR.",
         "exitBy": 1795176000000,
-        "lastBar": 1795060800000,
-        "markR": 0.0883,
-        "markPrice": 0.9903
+        "lastBar": 1795075200000,
+        "markR": 0.0028,
+        "markPrice": 0.9873
       }
     ],
     "trades": [
