@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1795121100000,
-    "executedAt": 1795121145785,
+    "scheduledAt": 1795122000000,
+    "executedAt": 1795122081645,
     "trigger": "schedule",
-    "jitterSeconds": 45.8,
-    "durationMs": 11135,
+    "jitterSeconds": 81.6,
+    "durationMs": 10658,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1795121099999,
-      "ageSeconds": 45.8
+      "newestCandleCloseMs": 1795121999999,
+      "ageSeconds": 81.6
     },
-    "activeSignals": 1
+    "activeSignals": 0
   },
-  "lastSuccessfulScan": 1795121145785,
-  "nextExpectedScanAt": 1795122000000,
+  "lastSuccessfulScan": 1795122081645,
+  "nextExpectedScanAt": 1795122900000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1795077082588,
-      "level": "info",
-      "msg": "derivatives: funding rates for 956 symbols"
-    },
-    {
-      "ts": 1795077082775,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1795077082775,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
-    {
-      "ts": 1795077947152,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1795077900000 actual=1795077947147 (jitter 47.1s)"
-    },
     {
       "ts": 1795077957227,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1795121156898,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1795122081652,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1795122000000 actual=1795122081645 (jitter 81.6s)"
+    },
+    {
+      "ts": 1795122092102,
+      "level": "info",
+      "msg": "derivatives: funding rates for 956 symbols"
+    },
+    {
+      "ts": 1795122092265,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1795122092265,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
