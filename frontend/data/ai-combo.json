@@ -12781,7 +12781,8 @@
             "stop": 1741.2,
             "target": 1480.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": {
@@ -12806,7 +12807,8 @@
             "stop": 0.957,
             "target": 0.816,
             "maxHoldHours": 72,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": {
             "side": "SHORT",
@@ -12845,7 +12847,8 @@
             "stop": 72.0,
             "target": 60.9,
             "maxHoldHours": 72,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": {
             "side": "SHORT",
@@ -12885,13 +12888,64 @@
     }
   ],
   "attempts": {
-    "1795176000000": 1,
     "1795190400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 573.792886,
-    "positions": [],
+    "positions": [
+      {
+        "id": "ETHUSDT-1795190400000",
+        "symbol": "ETHUSDT",
+        "side": "SHORT",
+        "entryTime": 1795194000000,
+        "entryPrice": 1644.4,
+        "stop": 1741.2,
+        "target": 1480.0,
+        "risk": 96.79999999999995,
+        "stake": 5.737929,
+        "conviction": 65,
+        "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
+        "exitBy": 1795366800000,
+        "lastBar": 1795193999999,
+        "markR": 0.0791,
+        "markPrice": 1636.74
+      },
+      {
+        "id": "XRPUSDT-1795190400000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1795194000000,
+        "entryPrice": 0.9106,
+        "stop": 0.957,
+        "target": 0.816,
+        "risk": 0.0464,
+        "stake": 5.737929,
+        "conviction": 60,
+        "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
+        "exitBy": 1795453200000,
+        "lastBar": 1795193999999,
+        "markR": 0.0884,
+        "markPrice": 0.9065
+      },
+      {
+        "id": "SOLUSDT-1795190400000",
+        "symbol": "SOLUSDT",
+        "side": "SHORT",
+        "entryTime": 1795194000000,
+        "entryPrice": 69.44,
+        "stop": 72.0,
+        "target": 60.9,
+        "risk": 2.5600000000000023,
+        "stake": 5.737929,
+        "conviction": 62,
+        "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
+        "exitBy": 1795453200000,
+        "lastBar": 1795193999999,
+        "markR": 0.1016,
+        "markPrice": 69.18
+      }
+    ],
     "trades": [
       {
         "id": "ETHUSDT-1793880000000",
@@ -13292,7 +13346,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795193182223,
+  "generatedAt": 1795194113724,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -13359,15 +13413,15 @@
       "winRate": 0.7273,
       "avgR": 0.647,
       "totalR": 14.2336,
-      "open": 0,
-      "equityMarked": 573.792886,
-      "returnPct": 14.7586
+      "open": 3,
+      "equityMarked": 575.336963,
+      "returnPct": 15.0674
     }
   },
   "lastRun": {
-    "at": 1795193182223,
-    "status": "up-to-date",
+    "at": 1795194113724,
+    "status": "waiting",
     "error": null,
-    "barClose": 1795190400000
+    "barClose": 1795194000000
   }
 }
