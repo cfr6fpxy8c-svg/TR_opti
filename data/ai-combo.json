@@ -11915,7 +11915,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier, aucun nouveau trade n'est initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.334,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -11929,7 +11933,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier, aucun nouveau trade n'est initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.219,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -11943,7 +11951,11 @@
             "reason": "Pas de breakout valid\u00e9. Bien que les flux de baleines hors \u00e9change soient positifs, la pression de vente du hacker de Binance et la r\u00e9sistance \u00e0 1,00$ incitent \u00e0 rester neutre."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.712,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -11957,7 +11969,11 @@
             "reason": "Pas de signal technique fort ni de breakout. BNB reste lourd suite \u00e0 l'impact du hack Binance de fin octobre, limitant l'int\u00e9r\u00eat de prendre un trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.799,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -11971,7 +11987,11 @@
             "reason": "Une position LONG est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille papier, aucun nouveau trade n'est initi\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.09,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -12664,10 +12684,116 @@
         "candidatesTokenCount": 1883,
         "totalTokenCount": 12347
       }
+    },
+    {
+      "barClose": 1795176000000,
+      "requestedAt": 1795176143553,
+      "analyzedAt": 1795176171361,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Les actions (S&P 500 en baisse pour la 6e s\u00e9ance) et actifs risqu\u00e9s souffrent. Les minutes de la Fed confirment une probable hausse des taux le 9 d\u00e9c (92% de chance de +25pb), portant le 10 ans US \u00e0 5,15%. Les sorties massives des ETF Spot BTC ($1,1B en 3 jours) privent le march\u00e9 de liquidit\u00e9s.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "Le BTC est sous forte pression vendeuse \u00e0 $61,7k suite \u00e0 des sorties massives d'ETF Spot ($1,13B en 3 jours, dont $582M le 19 nov, men\u00e9s par IBIT). Les liquidations de positions longues ($168M en 24h) et la crainte d'un resserrement mon\u00e9taire de la Fed le 9 d\u00e9cembre accentuent la tendance baissi\u00e8re sous les moyennes mobiles EMA20/50.",
+          "risks": "Support cl\u00e9 psychologique \u00e0 $60k ; si cass\u00e9, risque d'extension vers $56k. Volatilit\u00e9 accrue face \u00e0 la macro US.",
+          "price0": 61786.3,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'indice Fear & Greed \u00e0 10 (peur extr\u00eame) et la proximit\u00e9 du support majeur des $60k-$61k limitent le potentiel de baisse imm\u00e9diat et augmentent le risque d'un rebond technique."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "ETH glisse vers $1748, p\u00e9nalis\u00e9 par des flux sortants persistants sur ses ETF Spot et une baisse d'int\u00e9r\u00eat institutionnel. Techniquement, le cours \u00e9volue nettement sous ses EMA 20 ($1785) et 50 ($1858). BNB Chain rattrape d'ailleurs Ethereum sur le segment de la tokenisation des T-bills.",
+          "risks": "La cassure du support de canal \u00e0 $1717 mettrait en p\u00e9ril le niveau cl\u00e9 \u00e0 $1710, risquant de glisser vers $1600.",
+          "price0": 1748.27,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'absence de flux acheteurs institutionnels et la faiblesse relative de l'ETH recommandent de rester \u00e0 l'\u00e9cart, d'autant que le RSI \u00e0 37 est proche de la survente."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "XRP a cass\u00e9 le pivot des $1,00 pour s'\u00e9tablir \u00e0 $0,952. Le sentiment est pes\u00e9 par les lib\u00e9rations mensuelles de l'escrow de Ripple (200-400M XRP) et l'atonie des ETF XRP, bien que le XRP Ledger montre des avanc\u00e9es institutionnelles majeures pr\u00e9sent\u00e9es lors de la conf\u00e9rence Ripple Swell.",
+          "risks": "Le support cl\u00e9 \u00e0 $0,892 (bas de 10 jours) doit absolument tenir sous peine de glisser rapidement vers $0,78.",
+          "price0": 0.9521,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Structurellement baissier sous $1,00, mais XRP montre une forte accumulation des baleines sur ces niveaux de prix, rendant toute position short tardive risqu\u00e9e."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "Le BNB reste fragile \u00e0 $570,34 apr\u00e8s le piratage historique de $6,3 milliards subi par Binance fin octobre (bien que 98% des fonds soient d\u00e9j\u00e0 reconstitu\u00e9s). Le d\u00e9part du CFO et l'arr\u00eat programm\u00e9 de Binance en France fin d\u00e9cembre p\u00e8sent temporairement sur le sentiment.",
+          "risks": "Menace de rupture du support \u00e0 $566 (bas de 10 jours), ouvrant la voie \u00e0 une correction accrue vers $530.",
+          "price0": 570.34,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Malgr\u00e9 la forte cr\u00e9dibilit\u00e9 de BNB Chain (qui rivalise avec Ethereum sur les T-bills tokenis\u00e9s), le climat de march\u00e9 baissier incite \u00e0 la neutralit\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "SOL s'\u00e9tablit \u00e0 $71,75 apr\u00e8s avoir fr\u00f4l\u00e9 ses plus bas r\u00e9cents. La feuille de route ambitieuse pour 2027 pr\u00e9sent\u00e9e \u00e0 Breakpoint 2026 (doublement des capacit\u00e9s, IA on-chain) et la tokenisation des actions d'Anthropic sur Solana n'ont pas suffi \u00e0 compenser l'aversion au risque globale.",
+          "risks": "La rupture de $71,02 (bas de canal) exposerait le support critique \u00e0 $67,35 puis le seuil des $60.",
+          "price0": 71.75,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que le r\u00e9seau progresse techniquement, la tendance baissi\u00e8re globale du march\u00e9 et la forte corr\u00e9lation avec le BTC imposent l'attente d'un signal de retournement."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "crypto market news november 2026",
+        "bitcoin price news november 19 2026",
+        "fomc interest rates november 2026",
+        "bitcoin etf flows november 2026",
+        "solana coin news november 2026",
+        "xrp ripple news november 2026",
+        "bnb news november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4035,
+        "candidatesTokenCount": 1556,
+        "totalTokenCount": 10373
+      }
     }
   ],
   "attempts": {
-    "1795161600000": 1
+    "1795161600000": 1,
+    "1795176000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -13073,19 +13199,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795175180742,
+  "generatedAt": 1795176143553,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 92,
-    "totalTokens": 1097668,
+    "analyses": 93,
+    "totalTokens": 1108041,
     "direction": {
-      "scored": 430,
+      "scored": 435,
       "called": 280,
-      "neutral": 150,
+      "neutral": 155,
       "hits": 211,
       "hitRate": 0.7536,
-      "brier": 0.2167,
+      "brier": 0.2168,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -13146,9 +13272,9 @@
     }
   },
   "lastRun": {
-    "at": 1795175180742,
-    "status": "waiting",
+    "at": 1795176143553,
+    "status": "ok",
     "error": null,
-    "barClose": 1795172400000
+    "barClose": 1795176000000
   }
 }
