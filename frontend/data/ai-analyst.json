@@ -4989,13 +4989,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Le march\u00e9 subit une forte correction : l'inflation US (CPI +0,4% en octobre) et le rapport robuste de l'emploi cimentent une hausse des taux de la Fed en d\u00e9cembre. Les rendements obligataires et le dollar grimpent, tandis que les actions tech et le BTC plongent, d\u00e9clenchant des liquidations massives",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "La chute sous 70k$ a provoqu\u00e9 une cascade de liquidations massives de positions longues (plus de 600M$ au total). Les sorties massives des ETF spot (1,28 Md$ de sorties nettes la semaine pass\u00e9e) et la baisse acc\u00e9l\u00e9r\u00e9e de la masse globale des stablecoins t\u00e9moignent d'une fuite persistante des capitaux, maintenant la pression baissi\u00e8re.",
-          "risks": "Un RSI 4H extr\u00eamement survendu \u00e0 18,2 sugg\u00e8re un \u00e9puisement temporaire des vendeurs, ouvrant la voie \u00e0 un possible rebond technique d'ici l'IPP US.",
+          "reason": "",
+          "risks": "",
           "price0": 68930.4,
           "breakout": null,
           "trade": {
@@ -5011,8 +5011,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "ETH subit de plein fouet l'aversion au risque g\u00e9n\u00e9ralis\u00e9e, exacerb\u00e9e par des sorties continues sur les ETF spot et une contraction de la liquidit\u00e9 DeFi. La perte du niveau psychologique des 2000$ a forc\u00e9 l'\u00e9vacuation de plus de 100M$ de leviers haussiers, ancrant le cours bien sous son EMA200.",
-          "risks": "Un fort rebond technique si la r\u00e9sistance de l'IPP US s'att\u00e9nue, ou un squeeze vers 2000$ provoqu\u00e9 par le niveau \u00e9lev\u00e9 de survente (RSI \u00e0 23.0).",
+          "reason": "",
+          "risks": "",
           "price0": 1933.69,
           "breakout": null,
           "trade": {
@@ -5028,8 +5028,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "XRP glisse vers le niveau de 1,00$. Bien que plus r\u00e9silient \u00e0 court terme, l'absence de catalyseur haussier propre et l'environnement macro tendu (rendements US \u00e9lev\u00e9s, dollar fort) favorisent la capitulation des investisseurs particuliers sur les produits d\u00e9riv\u00e9s.",
-          "risks": "D\u00e9fense active du seuil psychologique majeur \u00e0 1,00$, et retour possible de la sp\u00e9culation positive.",
+          "reason": "",
+          "risks": "",
           "price0": 1.0055,
           "breakout": null,
           "trade": {
@@ -5045,8 +5045,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 41,
-          "reason": "BNB casse brutalement ses supports \u00e0 650$ sur un volume \u00e9lev\u00e9 (3,15x la moyenne), p\u00e9nalis\u00e9 par l'atonie du march\u00e9 et le manque de nouveaux lancements g\u00e9n\u00e9rateurs de rendement (Launchpool). La structure technique reste d\u00e9grad\u00e9e sous l'EMA20 avec des flux d'achat spot atones.",
-          "risks": "Rebond technique court-circuitant la baisse en raison d'un RSI 4H tr\u00e8s bas \u00e0 21,0.",
+          "reason": "",
+          "risks": "",
           "price0": 633.79,
           "breakout": null,
           "trade": {
@@ -5062,8 +5062,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "SOL faiblit nettement et casse son support \u00e0 80$ pour tester ses plus bas trimestriels. L'activit\u00e9 sur les DEX de Solana ralentit avec la fuite des capitaux vers les Treasuries US, ass\u00e9chant la liquidit\u00e9 sp\u00e9culative. Les moyennes mobiles 4H sont fermement orient\u00e9es \u00e0 la baisse.",
-          "risks": "Une r\u00e9action impulsive sur le support majeur proche de 77-78$ et des achats de couverture d'options.",
+          "reason": "",
+          "risks": "",
           "price0": 78.42,
           "breakout": null,
           "trade": {
@@ -5077,18 +5077,7 @@
           }
         }
       },
-      "queries": [
-        "\"68930.4\" BTC",
-        "\"1933.69\" ETH",
-        "\"1.0055\" XRP",
-        "\"78.42\" SOL",
-        "\"BTC\" \"68930\" OR \"68930.4\" OR \"1933.69\" OR \"78.42\"",
-        "\"68930.4\" \"1933.69\"",
-        "\"633.79\" BNB",
-        "\"1.0055\" XRP \"78.42\"",
-        "\"81188\" BTC",
-        "\"81,188\" bitcoin"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -5103,7 +5092,8 @@
         "promptTokenCount": 4080,
         "candidatesTokenCount": 1463,
         "totalTokenCount": 13641
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794556800000,
@@ -10634,7 +10624,7 @@
     "1795132800000": 1,
     "1795147200000": 1
   },
-  "generatedAt": 1795147307041,
+  "generatedAt": 1795148170580,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -10707,8 +10697,8 @@
     }
   },
   "lastRun": {
-    "at": 1795147307041,
-    "status": "ok",
+    "at": 1795148170580,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795147200000
   },
