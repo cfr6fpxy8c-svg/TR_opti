@@ -5916,13 +5916,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "L'inflation CPI US d'octobre plus forte que pr\u00e9vu (CPI +0,4%, Core +0,3%) et les propos hawkish de Waller (Fed) font craindre une hausse de 50 bps en d\u00e9cembre. Le dollar et les rendements montent, entra\u00eenant des sorties d'ETF Bitcoin. Le PPI d'aujourd'hui est le prochain test pour le march\u00e9.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "Le BTC subit de fortes sorties d'ETF (1,28 Md$ en une semaine) et la pression d'un CPI am\u00e9ricain plus chaud que pr\u00e9vu. Techniquement, la tendance 4H est fortement baissi\u00e8re sous l'EMA20 (73,5k$) et l'EMA200 (78,3k$). Cependant, le RSI \u00e0 26,7 et l'Extreme Fear \u00e0 20 limitent la poursuite imm\u00e9diate de la baisse avant le PPI de cet apr\u00e8s-midi.",
-          "risks": "Le PPI US d'aujourd'hui plus chaud que pr\u00e9vu pourrait enfoncer le support des 71k$ vers 70k$. Une surprise positive pourrait d\u00e9clencher un violent short squeeze.",
+          "reason": "",
+          "risks": "",
           "price0": 71423.3,
           "trade": {
             "action": "NONE",
@@ -5939,8 +5939,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "L'ETH montre une faiblesse relative persistante, sous-performant le BTC avec d'importantes liquidations de positions longues lors de la baisse r\u00e9cente. Le cours reste bien en dessous de l'EMA20 (2068 USD) et l'EMA50 (2164 USD). Les flux des ETF ETH restent n\u00e9gatifs, confirmant le d\u00e9sint\u00e9r\u00eat institutionnel dans ce climat de hausse des taux am\u00e9ricains.",
-          "risks": "Un rebond technique au-dessus des 2050 USD ou une volatilit\u00e9 accrue li\u00e9e aux chiffres du PPI d'aujourd'hui, qui pourraient stopper notre position vendeuse.",
+          "reason": "",
+          "risks": "",
           "price0": 2019.01,
           "trade": {
             "action": "NONE",
@@ -5957,8 +5957,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "XRP subit des sorties de ses ETF spot r\u00e9cents (-18M$ sur deux jours) apr\u00e8s une phase d'engouement. De plus, l'annonce d'une r\u00e9initialisation technique des Testnet et Devnet pour le 25 novembre, bien qu'inoffensive pour le Mainnet, alimente l'incertitude chez certains investisseurs de d\u00e9tail. Le cours consolide sous l'EMA20 (1,065 USD).",
-          "risks": "Sensibilit\u00e9 aux flux ETF et aux rumeurs r\u00e9glementaires. Une cassure sous le support psychologique de 1,00 USD acc\u00e9l\u00e9rerait la baisse.",
+          "reason": "",
+          "risks": "",
           "price0": 1.041,
           "trade": {
             "action": "NONE",
@@ -5975,8 +5975,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "BNB reste fortement p\u00e9nalis\u00e9 par le sillage du piratage historique de 6,3 Md$ subi par Binance. Malgr\u00e9 la couverture des pertes par l'\u00e9change, les retraits massifs de capitaux (plus de 3,6 Md$ de sorties nettes) \u00e9rodent la confiance. La cassure du plus bas de 10 jours \u00e0 649,6 USD sur le 1H confirme la capitulation des acheteurs.",
-          "risks": "Possibles rumeurs de r\u00e9gulation accrue suite au piratage ou rebond brutal si Binance annonce de nouvelles mesures de s\u00e9curit\u00e9 majeures.",
+          "reason": "",
+          "risks": "",
           "price0": 657.1,
           "trade": {
             "action": "NONE",
@@ -6000,8 +6000,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "SOL consolide pr\u00e8s de ses plus bas \u00e0 81,68 USD sous la pression de la baisse globale. Malgr\u00e9 l'excitation autour de l'\u00e9v\u00e9nement Solana Breakpoint 2026 \u00e0 venir (15 nov) mettant en avant l'adoption institutionnelle, le biais technique reste lourd sous l'EMA20 (83,90 USD) et le flux de vente sur les altcoins domine \u00e0 court terme.",
-          "risks": "Annonces positives surprises lors de Solana Breakpoint 2026 ou int\u00e9grations bancaires d'envergure pouvant provoquer un violent short squeeze.",
+          "reason": "",
+          "risks": "",
           "price0": 81.68,
           "trade": {
             "action": "NONE",
@@ -6016,16 +6016,7 @@
           }
         }
       },
-      "queries": [
-        "\"CPI\" November 2026",
-        "FOMC November 2026",
-        "bitcoin November 2026",
-        "crypto market news November 2026",
-        "\"BNB\" \"hack\" November 2026 OR \"Binance\" OR BNB news",
-        "\"Solana\" November 2026 OR SOL news",
-        "XRP November 2026 OR XRP news",
-        "fear and greed index crypto November 13 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -6040,7 +6031,8 @@
         "promptTokenCount": 4335,
         "candidatesTokenCount": 1724,
         "totalTokenCount": 12342
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794556800000,
@@ -12790,7 +12782,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795143713336,
+  "generatedAt": 1795144579338,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -12863,7 +12855,7 @@
     }
   },
   "lastRun": {
-    "at": 1795143713336,
+    "at": 1795144579338,
     "status": "waiting",
     "error": null,
     "barClose": 1795143600000
