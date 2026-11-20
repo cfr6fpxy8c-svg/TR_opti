@@ -5,7 +5,7 @@
   "startCapital": 500.0,
   "book4h": {
     "version": 1,
-    "generatedAt": 1795203968620,
+    "generatedAt": 1795204938028,
     "startedAt": 1793876847762,
     "startCapital": 500.0,
     "equity": 551.3885660000001,
@@ -37,11 +37,11 @@
       "_doc": "Tendance 4H en simulation (aucun ordre). Signal = cloture 4H au-dela du canal channelBars, dans le sens de trendSymbol vs EMA trendEma, volume > volumeMultiple x moyenne, financement < maxFundingRate dans le sens du trade. Entree a l'ouverture suivante, stop stopAtr x ATR, sortie a la cloture au-dela du canal trailBars oppose. Risque riskPct % du capital realise par trade, maxPositions, exposition <= maxLeverage x capital."
     },
     "lastBarClose": {
-      "BTCUSDT": 1795190399999,
-      "ETHUSDT": 1795190399999,
-      "XRPUSDT": 1795190399999,
-      "BNBUSDT": 1795190399999,
-      "SOLUSDT": 1795190399999
+      "BTCUSDT": 1795204799999,
+      "ETHUSDT": 1795204799999,
+      "XRPUSDT": 1795204799999,
+      "BNBUSDT": 1795204799999,
+      "SOLUSDT": 1795204799999
     },
     "positions": [
       {
@@ -59,8 +59,8 @@
         "notional": 146.24544690354887,
         "fundingPaid": -0.11848659862678626,
         "lastFundingTs": 1795190400000,
-        "markPrice": 1612.12,
-        "unrealizedR": 7.0726
+        "markPrice": 1608.84,
+        "unrealizedR": 7.1177
       },
       {
         "id": "BTCUSDT-1794326400000",
@@ -77,8 +77,8 @@
         "notional": 192.8893398994921,
         "fundingPaid": -0.23958206240896207,
         "lastFundingTs": 1795190400000,
-        "markPrice": 58674.7,
-        "unrealizedR": 7.6467
+        "markPrice": 58659.0,
+        "unrealizedR": 7.655
       },
       {
         "id": "BNBUSDT-1794499200000",
@@ -95,8 +95,8 @@
         "notional": 185.9608913243768,
         "fundingPaid": -0.048799857101342964,
         "lastFundingTs": 1795190400000,
-        "markPrice": 537.21,
-        "unrealizedR": 6.7414
+        "markPrice": 536.88,
+        "unrealizedR": 6.7604
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -107,14 +107,14 @@
         "riskPerUnit": 0.047122202918376974,
         "stop": 0.957022202918377,
         "initialStop": 0.957022202918377,
-        "trailLevel": null,
+        "trailLevel": 0.9975,
         "stake": 5.513885660000001,
         "qty": 117.0124764657313,
         "notional": 106.4696523361689,
         "fundingPaid": 0.0,
         "lastFundingTs": 1795190400000,
-        "markPrice": 0.8995,
-        "unrealizedR": 0.2207
+        "markPrice": 0.8956,
+        "unrealizedR": 0.3035
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -125,14 +125,14 @@
         "riskPerUnit": 3.699566474623303,
         "stop": 71.9995664746233,
         "initialStop": 71.9995664746233,
-        "trailLevel": null,
+        "trailLevel": 75.63,
         "stake": 5.513885660000001,
         "qty": 1.4904139979161843,
         "notional": 101.79527605767538,
         "fundingPaid": 0.0,
         "lastFundingTs": 1795190400000,
-        "markPrice": 68.41,
-        "unrealizedR": -0.0297
+        "markPrice": 68.19,
+        "unrealizedR": 0.0297
       }
     ],
     "pending": [],
@@ -272,10 +272,10 @@
           "side": "SHORT",
           "entryTime": 1794182400000,
           "riskPerUnit": 72.6949127312764,
-          "lastBar": 1795190399999,
+          "lastBar": 1795204799999,
           "entryPrice": 2126.26,
           "stop": 2198.9549127312766,
-          "markR": 6.4919
+          "markR": 7.1437
         }
       },
       {
@@ -371,10 +371,10 @@
           "side": "SHORT",
           "entryTime": 1794326400000,
           "riskPerUnit": 1896.9451613586218,
-          "lastBar": 1795190399999,
+          "lastBar": 1795204799999,
           "entryPrice": 73180.1,
           "stop": 75077.04516135863,
-          "markR": 7.2406
+          "markR": 7.7255
         }
       },
       {
@@ -395,10 +395,10 @@
           "side": "SHORT",
           "entryTime": 1794484800000,
           "riskPerUnit": 16.31275930192536,
-          "lastBar": 1795190399999,
+          "lastBar": 1795204799999,
           "entryPrice": 664.51,
           "stop": 680.8227593019253,
-          "markR": 7.2201
+          "markR": 7.8987
         }
       },
       {
@@ -417,10 +417,10 @@
           "side": "SHORT",
           "entryTime": 1794499200000,
           "riskPerUnit": 17.41327649464498,
-          "lastBar": 1795190399999,
+          "lastBar": 1795204799999,
           "entryPrice": 654.6,
           "stop": 672.013276494645,
-          "markR": 6.1947
+          "markR": 6.8304
         }
       },
       {
@@ -463,11 +463,14 @@
         "taken": true,
         "reasons": [],
         "shadow": {
-          "status": "pending",
+          "status": "open",
           "side": "SHORT",
           "entryTime": 1795190400000,
           "riskPerUnit": 0.047122202918376974,
-          "lastBar": 1795190399999
+          "lastBar": 1795204799999,
+          "entryPrice": 0.9099,
+          "stop": 0.957022202918377,
+          "markR": 0.3289
         }
       },
       {
@@ -482,11 +485,14 @@
         "taken": true,
         "reasons": [],
         "shadow": {
-          "status": "pending",
+          "status": "open",
           "side": "SHORT",
           "entryTime": 1795190400000,
           "riskPerUnit": 3.699566474623303,
-          "lastBar": 1795190399999
+          "lastBar": 1795204799999,
+          "entryPrice": 68.3,
+          "stop": 71.9995664746233,
+          "markR": 0.0351
         }
       }
     ],
@@ -497,7 +503,7 @@
       "avgR": 3.466,
       "totalR": 6.9319,
       "realizedPnl": 34.659656,
-      "unrealizedPnl": 108.405013,
+      "unrealizedPnl": 109.550078,
       "openPositions": 5,
       "notional": 733.360607
     },
@@ -519,27 +525,20 @@
     },
     "watch": {
       "BTCUSDT": {
-        "price": 58674.7,
-        "barClose": 1795190400000,
+        "price": 58659.0,
+        "barClose": 1795204800000,
         "channelHigh": 65425.5,
-        "channelLow": 59352.7,
-        "relVolume": 3.02,
-        "fundingRate": -2.953e-05,
+        "channelLow": 57700.1,
+        "relVolume": 3.121,
+        "fundingRate": -3.551e-05,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 2416.81317349,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 2543.19794681,
         "plannedStake": 5.513886,
-        "plannedNotional": 133.864541,
-        "plannedLeverage": 0.2428,
+        "plannedNotional": 127.178075,
+        "plannedLeverage": 0.2307,
         "candles": [
-          [
-            1794326400000,
-            73180.1,
-            73648.0,
-            72691.0,
-            73437.7
-          ],
           [
             1794340800000,
             73437.6,
@@ -958,32 +957,32 @@
             59445.1,
             59793.2,
             57700.1,
-            58674.7
+            58525.2
+          ],
+          [
+            1795204800000,
+            58525.1,
+            58683.1,
+            58480.0,
+            58659.0
           ]
         ]
       },
       "ETHUSDT": {
-        "price": 1612.12,
-        "barClose": 1795190400000,
+        "price": 1608.84,
+        "barClose": 1795204800000,
         "channelHigh": 1835.53,
-        "channelLow": 1647.61,
-        "relVolume": 3.338,
-        "fundingRate": -0.00013149,
+        "channelLow": 1579.68,
+        "relVolume": 3.124,
+        "fundingRate": -0.00014145,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 87.09344943,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 92.2853459,
         "plannedStake": 5.513886,
-        "plannedNotional": 102.063306,
-        "plannedLeverage": 0.1851,
+        "plannedNotional": 96.125335,
+        "plannedLeverage": 0.1743,
         "candles": [
-          [
-            1794326400000,
-            2022.36,
-            2048.69,
-            2008.36,
-            2043.67
-          ],
           [
             1794340800000,
             2043.67,
@@ -1402,32 +1401,32 @@
             1654.33,
             1659.57,
             1579.68,
-            1612.12
+            1606.95
+          ],
+          [
+            1795204800000,
+            1606.93,
+            1609.79,
+            1604.1,
+            1608.84
           ]
         ]
       },
       "XRPUSDT": {
-        "price": 0.8995,
-        "barClose": 1795190400000,
+        "price": 0.8956,
+        "barClose": 1795204800000,
         "channelHigh": 1.0073,
-        "channelLow": 0.9033,
-        "relVolume": 2.602,
-        "fundingRate": -5.658e-05,
+        "channelLow": 0.8911,
+        "relVolume": 2.127,
+        "fundingRate": -5.141e-05,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 0.0471222,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 0.04804205,
         "plannedStake": 5.513886,
-        "plannedNotional": 105.252723,
-        "plannedLeverage": 0.1909,
+        "plannedNotional": 102.789878,
+        "plannedLeverage": 0.1864,
         "candles": [
-          [
-            1794326400000,
-            1.0412,
-            1.0734,
-            1.0384,
-            1.0654
-          ],
           [
             1794340800000,
             1.0655,
@@ -1846,32 +1845,32 @@
             0.9099,
             0.9211,
             0.8911,
-            0.8995
+            0.8944
+          ],
+          [
+            1795204800000,
+            0.8943,
+            0.896,
+            0.8931,
+            0.8956
           ]
         ]
       },
       "BNBUSDT": {
-        "price": 537.21,
-        "barClose": 1795190400000,
+        "price": 536.88,
+        "barClose": 1795204800000,
         "channelHigh": 599.85,
-        "channelLow": 545.81,
-        "relVolume": 3.328,
+        "channelLow": 530.81,
+        "relVolume": 3.259,
         "fundingRate": 0.0,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 20.69681923,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 22.26704643,
         "plannedStake": 5.513886,
-        "plannedNotional": 143.119311,
-        "plannedLeverage": 0.2596,
+        "plannedNotional": 132.94511,
+        "plannedLeverage": 0.2411,
         "candles": [
-          [
-            1794326400000,
-            677.23,
-            680.1,
-            670.23,
-            675.52
-          ],
           [
             1794340800000,
             675.52,
@@ -2290,32 +2289,32 @@
             546.72,
             552.15,
             530.81,
-            537.21
+            535.66
+          ],
+          [
+            1795204800000,
+            535.66,
+            537.1,
+            535.02,
+            536.88
           ]
         ]
       },
       "SOLUSDT": {
-        "price": 68.41,
-        "barClose": 1795190400000,
+        "price": 68.19,
+        "barClose": 1795204800000,
         "channelHigh": 75.74,
-        "channelLow": 67.85,
-        "relVolume": 3.056,
-        "fundingRate": -0.00018098,
+        "channelLow": 67.38,
+        "relVolume": 2.423,
+        "fundingRate": -0.00018521,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 3.69956647,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 3.76959744,
         "plannedStake": 5.513886,
-        "plannedNotional": 101.959222,
-        "plannedLeverage": 0.1849,
+        "plannedNotional": 99.74324,
+        "plannedLeverage": 0.1809,
         "candles": [
-          [
-            1794326400000,
-            82.23,
-            83.26,
-            81.46,
-            82.9
-          ],
           [
             1794340800000,
             82.9,
@@ -2734,7 +2733,14 @@
             68.3,
             69.72,
             67.38,
-            68.41
+            68.17
+          ],
+          [
+            1795204800000,
+            68.16,
+            68.27,
+            68.05,
+            68.19
           ]
         ]
       }
@@ -2742,7 +2748,7 @@
   },
   "book1h": {
     "version": 1,
-    "generatedAt": 1795203968620,
+    "generatedAt": 1795204938028,
     "startedAt": 1793876847762,
     "startCapital": 500.0,
     "equity": 551.3885660000001,
@@ -2774,11 +2780,11 @@
       "_doc": "Tendance 4H en simulation (aucun ordre). Signal = cloture 4H au-dela du canal channelBars, dans le sens de trendSymbol vs EMA trendEma, volume > volumeMultiple x moyenne, financement < maxFundingRate dans le sens du trade. Entree a l'ouverture suivante, stop stopAtr x ATR, sortie a la cloture au-dela du canal trailBars oppose. Risque riskPct % du capital realise par trade, maxPositions, exposition <= maxLeverage x capital."
     },
     "lastBarClose": {
-      "BTCUSDT": 1795201199999,
-      "ETHUSDT": 1795201199999,
-      "XRPUSDT": 1795201199999,
-      "BNBUSDT": 1795201199999,
-      "SOLUSDT": 1795201199999
+      "BTCUSDT": 1795204799999,
+      "ETHUSDT": 1795204799999,
+      "XRPUSDT": 1795204799999,
+      "BNBUSDT": 1795204799999,
+      "SOLUSDT": 1795204799999
     },
     "positions": [
       {
@@ -2796,8 +2802,8 @@
         "notional": 209.63525931818575,
         "fundingPaid": -0.19285814951495137,
         "lastFundingTs": 1795190400000,
-        "markPrice": 58650.9,
-        "unrealizedR": 16.1676
+        "markPrice": 58643.5,
+        "unrealizedR": 16.1762
       },
       {
         "id": "BNBUSDT-1794538800000",
@@ -2814,8 +2820,8 @@
         "notional": 167.44022404332023,
         "fundingPaid": -0.0439396635934481,
         "lastFundingTs": 1795190400000,
-        "markPrice": 537.2,
-        "unrealizedR": 11.4424
+        "markPrice": 536.9,
+        "unrealizedR": 11.4738
       },
       {
         "id": "ETHUSDT-1795190400000",
@@ -2832,8 +2838,8 @@
         "notional": 83.87323607333455,
         "fundingPaid": 0.0,
         "lastFundingTs": 1795190400000,
-        "markPrice": 1612.12,
-        "unrealizedR": 0.7762
+        "markPrice": 1608.12,
+        "unrealizedR": 0.8498
       }
     ],
     "pending": [],
@@ -3533,10 +3539,10 @@
           "side": "SHORT",
           "entryTime": 1794484800000,
           "riskPerUnit": 8.089654739806692,
-          "lastBar": 1795201199999,
+          "lastBar": 1795204799999,
           "entryPrice": 664.51,
           "stop": 672.5996547398067,
-          "markR": 15.6224
+          "markR": 15.9278
         }
       },
       {
@@ -3557,10 +3563,10 @@
           "side": "SHORT",
           "entryTime": 1794488400000,
           "riskPerUnit": 8.384679401249073,
-          "lastBar": 1795201199999,
+          "lastBar": 1795204799999,
           "entryPrice": 659.84,
           "stop": 668.2246794012491,
-          "markR": 14.5158
+          "markR": 14.8103
         }
       },
       {
@@ -3579,10 +3585,10 @@
           "side": "SHORT",
           "entryTime": 1794492000000,
           "riskPerUnit": 855.1190940908315,
-          "lastBar": 1795201199999,
+          "lastBar": 1795204799999,
           "entryPrice": 72476.1,
           "stop": 73331.21909409083,
-          "markR": 16.4865
+          "markR": 16.3146
         }
       },
       {
@@ -3603,10 +3609,10 @@
           "side": "SHORT",
           "entryTime": 1794492000000,
           "riskPerUnit": 9.062916586874147,
-          "lastBar": 1795201199999,
+          "lastBar": 1795204799999,
           "entryPrice": 656.01,
           "stop": 665.0729165868742,
-          "markR": 13.0069
+          "markR": 13.2794
         }
       },
       {
@@ -3625,10 +3631,10 @@
           "side": "SHORT",
           "entryTime": 1794538800000,
           "riskPerUnit": 9.549589380104745,
-          "lastBar": 1795201199999,
+          "lastBar": 1795204799999,
           "entryPrice": 646.47,
           "stop": 656.0195893801048,
-          "markR": 11.345
+          "markR": 11.6036
         }
       },
       {
@@ -3697,10 +3703,10 @@
           "side": "SHORT",
           "entryTime": 1795190400000,
           "riskPerUnit": 54.378410151792444,
-          "lastBar": 1795201199999,
+          "lastBar": 1795204799999,
           "entryPrice": 1654.33,
           "stop": 1708.7084101517924,
-          "markR": 0.7076
+          "markR": 0.8713
         }
       }
     ],
@@ -3711,7 +3717,7 @@
       "avgR": 1.1137,
       "totalR": 6.6819,
       "realizedPnl": 16.72891,
-      "unrealizedPnl": 70.667588,
+      "unrealizedPnl": 70.969435,
       "openPositions": 3,
       "notional": 460.948719
     },
@@ -3733,27 +3739,20 @@
     },
     "watch": {
       "BTCUSDT": {
-        "price": 58650.9,
-        "barClose": 1795201200000,
-        "channelHigh": 67726.1,
-        "channelLow": 57950.3,
-        "relVolume": 2.07,
-        "fundingRate": -2.953e-05,
+        "price": 58643.5,
+        "barClose": 1795204800000,
+        "channelHigh": 67499.0,
+        "channelLow": 57700.1,
+        "relVolume": 2.112,
+        "fundingRate": -3.551e-05,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 1638.92878739,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 1689.80530258,
         "plannedStake": 2.756943,
-        "plannedNotional": 98.660283,
-        "plannedLeverage": 0.1789,
+        "plannedNotional": 95.677754,
+        "plannedLeverage": 0.1735,
         "candles": [
-          [
-            1794985200000,
-            64578.9,
-            64934.7,
-            64448.2,
-            64851.1
-          ],
           [
             1794988800000,
             64851.0,
@@ -4172,32 +4171,32 @@
             58378.2,
             58875.7,
             57700.1,
-            58650.9
+            58525.2
+          ],
+          [
+            1795204800000,
+            58525.1,
+            58683.1,
+            58480.0,
+            58643.5
           ]
         ]
       },
       "ETHUSDT": {
-        "price": 1612.12,
-        "barClose": 1795201200000,
+        "price": 1608.12,
+        "barClose": 1795204800000,
         "channelHigh": 1918.87,
-        "channelLow": 1608.5,
-        "relVolume": 1.494,
-        "fundingRate": -0.00013149,
+        "channelLow": 1579.68,
+        "relVolume": 2.625,
+        "fundingRate": -0.00014145,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 56.64394574,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 58.10652104,
         "plannedStake": 2.756943,
-        "plannedNotional": 78.464214,
-        "plannedLeverage": 0.1423,
+        "plannedNotional": 76.299438,
+        "plannedLeverage": 0.1384,
         "candles": [
-          [
-            1794985200000,
-            1808.51,
-            1818.92,
-            1804.4,
-            1816.51
-          ],
           [
             1794988800000,
             1816.51,
@@ -4616,32 +4615,32 @@
             1615.85,
             1618.24,
             1579.68,
-            1612.12
+            1606.95
+          ],
+          [
+            1795204800000,
+            1606.93,
+            1609.79,
+            1604.1,
+            1608.12
           ]
         ]
       },
       "XRPUSDT": {
-        "price": 0.8995,
-        "barClose": 1795201200000,
+        "price": 0.8952,
+        "barClose": 1795204800000,
         "channelHigh": 1.0073,
-        "channelLow": 0.8922,
-        "relVolume": 1.3,
-        "fundingRate": -5.658e-05,
+        "channelLow": 0.8911,
+        "relVolume": 2.025,
+        "fundingRate": -5.141e-05,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 0.0290985,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 0.02919147,
         "plannedStake": 2.756943,
-        "plannedNotional": 85.223286,
-        "plannedLeverage": 0.1546,
+        "plannedNotional": 84.545774,
+        "plannedLeverage": 0.1533,
         "candles": [
-          [
-            1794985200000,
-            0.9854,
-            1.0065,
-            0.9841,
-            1.0014
-          ],
           [
             1794988800000,
             1.0015,
@@ -5060,32 +5059,32 @@
             0.9052,
             0.9063,
             0.8911,
-            0.8995
+            0.8944
+          ],
+          [
+            1795204800000,
+            0.8943,
+            0.896,
+            0.8931,
+            0.8952
           ]
         ]
       },
       "BNBUSDT": {
-        "price": 537.2,
-        "barClose": 1795201200000,
-        "channelHigh": 626.74,
-        "channelLow": 537.01,
-        "relVolume": 1.217,
+        "price": 536.9,
+        "barClose": 1795204800000,
+        "channelHigh": 622.63,
+        "channelLow": 530.81,
+        "relVolume": 2.466,
         "fundingRate": 0.0,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 14.30876223,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 14.50242207,
         "plannedStake": 2.756943,
-        "plannedNotional": 103.505088,
-        "plannedLeverage": 0.1877,
+        "plannedNotional": 102.065889,
+        "plannedLeverage": 0.1851,
         "candles": [
-          [
-            1794985200000,
-            592.71,
-            594.76,
-            591.73,
-            594.16
-          ],
           [
             1794988800000,
             594.17,
@@ -5504,32 +5503,32 @@
             538.13,
             539.32,
             530.81,
-            537.2
+            535.66
+          ],
+          [
+            1795204800000,
+            535.66,
+            537.1,
+            535.02,
+            536.9
           ]
         ]
       },
       "SOLUSDT": {
-        "price": 68.43,
-        "barClose": 1795201200000,
-        "channelHigh": 76.29,
+        "price": 68.19,
+        "barClose": 1795204800000,
+        "channelHigh": 76.18,
         "channelLow": 67.35,
-        "relVolume": 1.426,
-        "fundingRate": -0.00018098,
+        "relVolume": 1.946,
+        "fundingRate": -0.00018521,
         "trendSide": "SHORT",
-        "trendClose": 59445.1,
-        "trendEma": 73247.057453,
-        "stopDistance": 2.25431355,
+        "trendClose": 58525.2,
+        "trendEma": 73100.569339,
+        "stopDistance": 2.30900544,
         "plannedStake": 2.756943,
-        "plannedNotional": 83.687381,
-        "plannedLeverage": 0.1518,
+        "plannedNotional": 81.418575,
+        "plannedLeverage": 0.1477,
         "candles": [
-          [
-            1794985200000,
-            74.63,
-            75.27,
-            74.55,
-            75.14
-          ],
           [
             1794988800000,
             75.14,
@@ -5948,7 +5947,14 @@
             68.84,
             68.89,
             67.38,
-            68.43
+            68.17
+          ],
+          [
+            1795204800000,
+            68.16,
+            68.27,
+            68.05,
+            68.19
           ]
         ]
       }
@@ -7434,12 +7440,16 @@
     {
       "t": 1795201303778,
       "equity": 729.647174
+    },
+    {
+      "t": 1795204938028,
+      "equity": 731.908079
     }
   ],
   "equity": 551.388566,
   "stats": {
-    "equityMarked": 730.461167,
-    "returnPct": 46.0922,
+    "equityMarked": 731.908079,
+    "returnPct": 46.3816,
     "maxDrawdownPct": 10.7179,
     "trades": 8,
     "openPositions": 8,
@@ -7453,9 +7463,9 @@
     "h1TrailBars": 40,
     "h1StopAtr": 2.0
   },
-  "generatedAt": 1795203968620,
+  "generatedAt": 1795204938028,
   "lastRun": {
-    "at": 1795203968620,
+    "at": 1795204938028,
     "status": "ok",
     "errors": []
   }
