@@ -6041,13 +6041,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "L'inflation US d'octobre plus chaude que pr\u00e9vu (+0,4% MoM, c\u0153ur +0,3%) pousse les taux (10Y \u00e0 4,99%) et le dollar \u00e0 la hausse. Les actions US baissent. Le PPI est attendu ce vendredi 13 novembre. Discours hawkish des membres de la Fed (Waller, Logan) \u00e9cartant tout pivot rapide.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Pression baissi\u00e8re massive suite \u00e0 la liquidation de 1,3 Md$ de positions \u00e0 effet de levier et de fortes tensions au Moyen-Orient. Les flux ETF spot US sont n\u00e9gatifs pour la 5e s\u00e9ance cons\u00e9cutive (-300M$ le 11/11). La contraction de 14,2 Md$ de la liquidit\u00e9 des stablecoins p\u00e8se. N\u00e9anmoins, l'indicateur Fear & Greed \u00e0 20 (Extreme Fear) et un RSI 4H \u00e0 17,3 indiquent une forte saturation vendeuse.",
-          "risks": "Un rebond technique violent de survente (short squeeze) vers l'EMA20 (72,6k$); att\u00e9nuation des tensions g\u00e9opolitiques.",
+          "reason": "",
+          "risks": "",
           "price0": 68555.0,
           "trade": {
             "action": "NONE",
@@ -6064,8 +6064,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "ETH montre une faiblesse relative prononc\u00e9e, sous ses moyennes mobiles majeures. Les stakers conservent leurs jetons mais la demande spot est inexistante, illustr\u00e9e par d'importantes sorties d'ETF (-144,8M$ le 11/11). Joseph Lubin promeut ETH comme r\u00e9serve de valeur, mais l'absence d'acheteurs maintient la pression sous le support psychologique cl\u00e9 des 2000$.",
-          "risks": "Rebond technique de survente globale du march\u00e9; soutien des stakers bloquant l'offre.",
+          "reason": "",
+          "risks": "",
           "price0": 1933.4,
           "trade": {
             "action": "NONE",
@@ -6082,8 +6082,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "XRP sous-performe apr\u00e8s 8 jours cons\u00e9cutifs de baisse. L'int\u00e9r\u00eat acheteur s'essouffle avec des sorties des ETF XRP spot (-18M$ sur deux jours) et des d\u00e9clarations frileuses de David Schwartz sur ses ventes pass\u00e9es. L'annonce de la r\u00e9initialisation des r\u00e9seaux de test (Testnet/Devnet) le 25 novembre alimente une confusion et une incertitude \u00e0 court terme.",
-          "risks": "Adoption d'un protocole de pr\u00eat XRPL \u00e0 62% approchant le seuil requis de 80%; retour des flux ETF.",
+          "reason": "",
+          "risks": "",
           "price0": 1.0251,
           "trade": {
             "action": "NONE",
@@ -6100,8 +6100,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 35,
-          "reason": "Le jeton de Binance subit de lourdes pertes (-6,5% sur 24h) avec un volume de capitulation tr\u00e8s \u00e9lev\u00e9 (relVol de 3,25). La d\u00e9cision de Binance de suspendre temporairement les br\u00fblages de LUNC apr\u00e8s un piratage majeur de 6,4 Md$ nuit au sentiment de la communaut\u00e9 BNB, tandis que les liquidations de positions longues s'acc\u00e9l\u00e8rent.",
-          "risks": "Annonce de reprise des burns de tokens; rachat \u00e0 bon compte par l'\u00e9cosyst\u00e8me Binance.",
+          "reason": "",
+          "risks": "",
           "price0": 630.17,
           "trade": {
             "action": "NONE",
@@ -6118,8 +6118,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "SOL est tomb\u00e9 sous les 80$, sous pression de liquidations forc\u00e9es de leviers (10M$ liquid\u00e9s en 1h le 13/11). Cependant, les ETF SOL spot enregistrent de l\u00e9g\u00e8res entr\u00e9es (+1,69M$ le 12/11) et l'\u00e9v\u00e9nement Solana Breakpoint 2026 \u00e0 Londres (15-17 nov) offre un soutien narratif solide \u00e0 court terme. RSI 4H \u00e0 30,9 approche de la zone de survente.",
-          "risks": "Annonces majeures lors de Breakpoint 2026 (DTCC, Barclay's, Mastercard); fort rebond technique.",
+          "reason": "",
+          "risks": "",
           "price0": 79.68,
           "trade": {
             "action": "NONE",
@@ -6134,18 +6134,7 @@
           }
         }
       },
-      "queries": [
-        "\"BTC\" \"68555\" OR \"68500\" \"1933\" OR \"1930\" \"79\" \"1.02\"",
-        "\"BTC\" 68555 OR 68930 OR 71677 OR 73963 OR 74064",
-        "\"ETH\" 1933 OR 2019 OR 2050 OR 2068",
-        "\"November 2026\" CPI OR FOMC OR Fed OR \"inflation\" OR \"interest rates\"",
-        "US CPI November 2026 OR US CPI release date November 2026",
-        "US CPI release date November 2026",
-        "macro news November 11 12 13 2026",
-        "\"crypto\" \"ETF flows\" OR \"outflows\" November 2026",
-        "\"Bitcoin ETF\" flows November 2026 OR \"Ethereum ETF\" flows November 2026",
-        "crypto \"Fear & Greed\" index November 11 12 13 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -6160,7 +6149,8 @@
         "promptTokenCount": 4169,
         "candidatesTokenCount": 1426,
         "totalTokenCount": 12793
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794571200000,
@@ -13084,7 +13074,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795162580439,
+  "generatedAt": 1795163496066,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -13157,7 +13147,7 @@
     }
   },
   "lastRun": {
-    "at": 1795162580439,
+    "at": 1795163496066,
     "status": "up-to-date",
     "error": null,
     "barClose": 1795161600000
