@@ -13053,11 +13053,124 @@
         "candidatesTokenCount": 1732,
         "totalTokenCount": 13338
       }
+    },
+    {
+      "barClose": 1795208400000,
+      "requestedAt": 1795208512764,
+      "analyzedAt": 1795208543785,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Sell-off global de la tech US (Nasdaq -3.8%), VIX \u00e0 31 et minutes restrictives de la Fed. Sentiment de march\u00e9 en Peur Extr\u00eame (index 10). Sorties massives des ETF spot (IBIT -$541M le 19/11). Plus de 820M$ de liquidations forc\u00e9es en 24h (87% de longs rinc\u00e9s) p\u00e8sent lourdement sur les cryptos.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Bitcoin a enfonc\u00e9 le support psychologique des 60 000 $ (bas de 4 mois) sous la pression d'une correction de la tech US et de sorties massives d'ETF spot (record de -541M$ sur IBIT). Plus de 380M$ de liquidations de longs sur BTC ont acc\u00e9l\u00e9r\u00e9 la baisse. Le sentiment global est en Peur Extr\u00eame (index \u00e0 10), confirmant la capitulation en cours.",
+          "risks": "Risque de short squeeze si rebond technique vu les d\u00e9riv\u00e9s rinc\u00e9s, mais menace de baisse vers 55k$ si les 58k$ c\u00e8dent.",
+          "price0": 58525.2,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "RSI 4H de 20.3 sugg\u00e8re une survente importante apr\u00e8s la perte des 60k$. Entrer court maintenant pr\u00e9sente un risque de rebond technique (short squeeze) \u00e9lev\u00e9, d\u00e9t\u00e9riorant le ratio risque/rendement."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "ETH subit une faiblesse structurelle marqu\u00e9e par sa 7e semaine cons\u00e9cutive de sorties nettes des ETF spot. La rupture des supports cl\u00e9s a d\u00e9clench\u00e9 pr\u00e8s de 200M$ de liquidations de longs en 24h. L'actif sous-performe nettement le BTC, s'enfon\u00e7ant sous ses EMA 20/50 avec des volumes de vente tr\u00e8s \u00e9lev\u00e9s (volume relatif de 3.1).",
+          "risks": "Support psychologique cl\u00e9 \u00e0 1500$; risque de rebond violent si le march\u00e9 actions am\u00e9ricain se stabilise.",
+          "price0": 1606.95,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "XRP a perdu le niveau cl\u00e9 de 1,00 $ puis de 0,95 $, p\u00e9nalis\u00e9 par des sorties nettes d'ETF XRP (les pires en 8 mois). Les ventes agressives dominent (taker ratio \u00e0 0.75), malgr\u00e9 une supply qui se resserre sur les exchanges. De plus, l'adoption rapide du stablecoin RLUSD par Ripple tend \u00e0 cannibaliser l'utilit\u00e9 premi\u00e8re du jeton XRP.",
+          "risks": "Support imm\u00e9diat \u00e0 0,89$; risque de rebond technique car le RSI quotidien flirte avec la zone de survente (30).",
+          "price0": 0.8944,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte."
+          },
+          "breakout4h": null,
+          "breakout1h": {
+            "side": "SHORT",
+            "level": 0.8911,
+            "decision": "GO",
+            "probTarget": 60,
+            "reason": "Cassure nette du support de 0,8911 $ sur volume soutenu. Malgr\u00e9 un RSI court terme tendu, la dynamique macro baissi\u00e8re et les sorties d'ETF favorisent une extension vers la cible de 0,80 $.",
+            "ours": "rejected"
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "BNB souffre de la d\u00e9mission du CFO de Binance et des cons\u00e9quences de l'attaque \u00e0 6,3 milliards de dollars subie le mois dernier, les fonds vol\u00e9s en ETH commen\u00e7ant \u00e0 bouger. Techniquement, BNB a bris\u00e9 son support des 570-590 $ sur fort volume (relatif 3.25), s'alignant sur la capitulation g\u00e9n\u00e9rale du march\u00e9.",
+          "risks": "Capitulation des leviers (2,3M$ de longs liquid\u00e9s); le support psychologique majeur se situe autour de 500$.",
+          "price0": 535.66,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "RSI 4H extr\u00eamement bas (19.0) indiquant une forte survente pr\u00e8s du bas des 10 jours. Vendre ici pr\u00e9sente un risque de rebond technique d\u00e9favorable malgr\u00e9 la tendance baissi\u00e8re."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "SOL subit la purge du Nasdaq et la cascade de liquidations de positions longues (>31M$ sur SOL). Bien que l'int\u00e9r\u00eat ouvert se maintienne, la perte du pivot des 70 $ confirme la domination des vendeurs. La tendance reste fortement baissi\u00e8re \u00e0 court terme sous l'EMA 20/50, malgr\u00e9 l'investissement de la Fondation Solana dans CoinGecko.",
+          "risks": "Support majeur \u00e0 67$ activement test\u00e9; forte r\u00e9activit\u00e9 historique de SOL pouvant d\u00e9clencher un squeeze rapide.",
+          "price0": 68.17,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "crypto market news November 2024",
+        "crypto market news November 2026",
+        "macroeconomic calendar November 20 2024",
+        "macroeconomic calendar November 20 2026",
+        "BNB news November 2026",
+        "XRP news November 2026",
+        "crypto liquidations November 20 2026",
+        "crypto funding rates November 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4282,
+        "candidatesTokenCount": 1570,
+        "totalTokenCount": 11205
+      }
     }
   ],
   "attempts": {
-    "1795190400000": 1,
-    "1795204800000": 1
+    "1795204800000": 1,
+    "1795208400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -13076,9 +13189,9 @@
         "conviction": 65,
         "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
         "exitBy": 1795366800000,
-        "lastBar": 1795201200000,
-        "markR": 0.438,
-        "markPrice": 1602.0
+        "lastBar": 1795204800000,
+        "markR": 0.4463,
+        "markPrice": 1601.2
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -13093,9 +13206,9 @@
         "conviction": 60,
         "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
         "exitBy": 1795453200000,
-        "lastBar": 1795201200000,
-        "markR": 0.472,
-        "markPrice": 0.8887
+        "lastBar": 1795204800000,
+        "markR": 0.5151,
+        "markPrice": 0.8867
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -13110,9 +13223,9 @@
         "conviction": 62,
         "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
         "exitBy": 1795453200000,
-        "lastBar": 1795201200000,
-        "markR": 0.6953,
-        "markPrice": 67.66
+        "lastBar": 1795204800000,
+        "markR": 0.7891,
+        "markPrice": 67.42
       }
     ],
     "trades": [
@@ -13515,12 +13628,12 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795207580123,
+  "generatedAt": 1795208512764,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 95,
-    "totalTokens": 1133733,
+    "analyses": 96,
+    "totalTokens": 1144938,
     "direction": {
       "scored": 445,
       "called": 286,
@@ -13546,7 +13659,7 @@
         "totalR": 6.9116
       },
       "rejected_GO": {
-        "count": 13,
+        "count": 14,
         "closed": 9,
         "wins": 7,
         "avgR": 4.8537,
@@ -13562,7 +13675,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 20,
+        "count": 21,
         "closed": 10,
         "wins": 8,
         "avgR": 4.3797,
@@ -13583,14 +13696,14 @@
       "avgR": 0.647,
       "totalR": 14.2336,
       "open": 3,
-      "equityMarked": 583.003983,
-      "returnPct": 16.6008
+      "equityMarked": 583.837131,
+      "returnPct": 16.7674
     }
   },
   "lastRun": {
-    "at": 1795207580123,
-    "status": "up-to-date",
+    "at": 1795208512764,
+    "status": "ok",
     "error": null,
-    "barClose": 1795204800000
+    "barClose": 1795208400000
   }
 }
