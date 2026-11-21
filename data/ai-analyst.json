@@ -10849,6 +10849,10 @@
             "action": "NONE",
             "conviction": 75,
             "reason": "Aucun trade : le cours bute sur un support cl\u00e9 \u00e0 $59,3k avec un RSI \u00e0 22,9. Vendre ici pr\u00e9sente un ratio R:R m\u00e9diocre \u00e0 cause du risque de rebond technique (short squeeze). L'absence de signal de retournement interdit \u00e9galement l'achat."
+          },
+          "outcome": {
+            "retPct": 0.783,
+            "hit": false
           }
         },
         "ETHUSDT": {
@@ -10862,6 +10866,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Position neutre : vendre juste au-dessus du support annuel majeur \u00e0 $1650 avec un RSI en zone de survente s\u00e9v\u00e8re n'est pas optimal. Nous attendons une consolidation ou un signal clair avant d'agir."
+          },
+          "outcome": {
+            "retPct": 1.786,
+            "hit": false
           }
         },
         "XRPUSDT": {
@@ -10882,6 +10890,10 @@
             "action": "NONE",
             "conviction": 70,
             "reason": "Pas de trade. La proximit\u00e9 directe du support des 0,89$ et un taux de financement d\u00e9j\u00e0 n\u00e9gatif rendent l'ouverture d'un short risqu\u00e9e. Un rebond sur support est probable."
+          },
+          "outcome": {
+            "retPct": 1.495,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -10895,6 +10907,10 @@
             "action": "NONE",
             "conviction": 75,
             "reason": "Aucun trade. Le RSI \u00e0 22,2 et le test imminent du support de long terme \u00e0 545$ augmentent la probabilit\u00e9 d'un rebond technique de court terme, invalidant un short imm\u00e9diat."
+          },
+          "outcome": {
+            "retPct": -0.011,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -10915,6 +10931,10 @@
             "action": "NONE",
             "conviction": 80,
             "reason": "Aucune position. Le risque de short squeeze en raison du taux de financement tr\u00e8s n\u00e9gatif emp\u00eache de shorter ici, tandis qu'acheter reste pr\u00e9matur\u00e9 sans signal de retournement."
+          },
+          "outcome": {
+            "retPct": 3.06,
+            "hit": false
           }
         }
       },
@@ -11542,25 +11562,126 @@
         "candidatesTokenCount": 1274,
         "totalTokenCount": 10773
       }
+    },
+    {
+      "barClose": 1795276800000,
+      "requestedAt": 1795276899094,
+      "analyzedAt": 1795276923435,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Chute de Wall Street (Nasdaq -5,3% sur la semaine) face \u00e0 des valorisations tendues (Nvidia). Rendements r\u00e9els US au plus haut depuis 20 ans (>2,4%). La Fed est attendue hawkish avec une hausse des taux probable le 9 d\u00e9cembre (probabilit\u00e9 >98%), pesant sur les actifs sans rendement.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 58,
+          "reason": "Rebond technique apr\u00e8s avoir test\u00e9 les 55 126 $ (plus bas depuis sept 2024). Cette capitulation a liquid\u00e9 plus de 2,5 Mds $ de positions longues en 24h, assainissant l'effet de levier. L'Extreme Fear historique (indice \u00e0 5/100) sugg\u00e8re un point bas local \u00e0 court terme malgr\u00e9 de lourdes sorties d'ETF ($3,5 Mds en nov) et la baisse continue de l'offre de stablecoins.",
+          "risks": "Forte r\u00e9sistance technique \u00e0 60 000 $. La d\u00e9gradation macro-\u00e9conomique et de nouvelles sorties d'ETF pourraient rapidement invalider le rebond.",
+          "price0": 59910.4,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le march\u00e9 vient de subir une capitulation massive mais reste sous l'EMA200 4H. Il est pr\u00e9f\u00e9rable d'attendre une stabilisation ou une cassure haussi\u00e8re confirm\u00e9e avant de se positionner."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 56,
+          "reason": "Rebondit dans le sillage de BTC apr\u00e8s avoir touch\u00e9 un plus bas \u00e0 1 536 $. Plus de 579 M$ de longs ETH ont \u00e9t\u00e9 balay\u00e9s en 24h. Bien que le nettoyage des leviers et la peur extr\u00eame favorisent une pause dans la baisse, l'absence de flux acheteurs institutionnels (sorties d'ETF) limite le potentiel de hausse.",
+          "risks": "R\u00e9sistance imm\u00e9diate \u00e0 1 710 $ (EMA20). Risque de rechute sous les 1 530 $ si le Nasdaq poursuit sa baisse.",
+          "price0": 1683.88,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La tendance de fond est fortement baissi\u00e8re et sous l'EMA200. Risque de baisse r\u00e9siduelle trop \u00e9lev\u00e9 pour tenter un long contrarien."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 55,
+          "reason": "XRP a bien d\u00e9fendu le support des 0,86 $ lors de la purge g\u00e9n\u00e9ralis\u00e9e du march\u00e9. La structure s'est assainie apr\u00e8s de fortes liquidations. Bien qu'il montre une force relative, le manque de liquidit\u00e9 globale et le climat d'aversion au risque limitent une v\u00e9ritable impulsion haussi\u00e8re \u00e0 court terme.",
+          "risks": "Bloqu\u00e9 sous ses EMA20 (0,935 $) et EMA50 (0,963 $). Vuln\u00e9rable en cas de cassure des 0,85 $.",
+          "price0": 0.9236,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La baisse g\u00e9n\u00e9rale limite les perspectives de hausse durable. Pas de signal technique d'achat propre."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 54,
+          "reason": "Rebond technique depuis le support des 503 $. La pression du hack de Binance s'estompe, mais la contraction globale de l'offre de stablecoins (-16 Mds $ en un mois) r\u00e9duit fortement l'activit\u00e9 et la liquidit\u00e9 on-chain. Le nettoyage des positions longues offre n\u00e9anmoins un r\u00e9pit technique temporaire.",
+          "risks": "R\u00e9sistance majeure \u00e0 560 $ (EMA20). Sensible aux d\u00e9veloppements r\u00e9glementaires et \u00e0 la baisse d'activit\u00e9.",
+          "price0": 546.67,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le contexte d'ass\u00e8chement de la liquidit\u00e9 on-chain sur BSC et la macro\u00e9conomie incitent \u00e0 la prudence absolue."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 58,
+          "reason": "SOL m\u00e8ne le rebond avec +3,06% sur 24h apr\u00e8s avoir tenu le support cl\u00e9 des 65 $. La demande sp\u00e9culative intra-journali\u00e8re reste r\u00e9siliente par rapport aux autres altcoins. L'apurement massif des leviers longs sur le march\u00e9 crypto r\u00e9duit le risque de cascade imm\u00e9diate de ventes forc\u00e9es.",
+          "risks": "Sous l'EMA20 (70,9 $) et l'EMA50 (73,4 $). D\u00e9pendance totale \u00e0 la stabilisation du BTC.",
+          "price0": 70.39,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Malgr\u00e9 sa force relative, SOL fait face \u00e0 des barri\u00e8res techniques importantes (EMA20/EMA50) dans un march\u00e9 crypto encore fragile."
+          }
+        }
+      },
+      "queries": [
+        "crypto news november 20 2026",
+        "bitcoin price news november 21 2026",
+        "fomc meeting fed speakers november 2026",
+        "spot bitcoin etf flows november 2026",
+        "crypto fear and greed index november 21 2026",
+        "bitcoin funding rate coinglass november 2026",
+        "bitcoin open interest coinglass november 2026",
+        "stablecoin supply november 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3883,
+        "candidatesTokenCount": 1253,
+        "totalTokenCount": 9833
+      }
     }
   ],
   "attempts": {
-    "1795248000000": 1,
-    "1795262400000": 1
+    "1795262400000": 1,
+    "1795276800000": 1
   },
-  "generatedAt": 1795275968604,
+  "generatedAt": 1795276899094,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 94,
-    "totalTokens": 1069888,
+    "analyses": 95,
+    "totalTokens": 1079721,
     "direction": {
-      "scored": 440,
-      "called": 241,
+      "scored": 445,
+      "called": 246,
       "neutral": 199,
-      "hits": 168,
-      "hitRate": 0.6971,
-      "brier": 0.227,
+      "hits": 169,
+      "hitRate": 0.687,
+      "brier": 0.2285,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -11621,10 +11742,10 @@
     }
   },
   "lastRun": {
-    "at": 1795275968604,
-    "status": "up-to-date",
+    "at": 1795276899094,
+    "status": "ok",
     "error": null,
-    "barClose": 1795262400000
+    "barClose": 1795276800000
   },
   "portfolio": {
     "startCapital": 500.0,
