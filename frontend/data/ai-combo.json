@@ -12306,7 +12306,11 @@
             "reason": "Attente de stabilisation. Vendre pr\u00e8s d'un support cl\u00e9 avec un RSI de 32 offre un mauvais ratio risque/rendement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -4.913,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -12320,7 +12324,11 @@
             "reason": "Pas de signal de retournement. L'environnement macro\u00e9conomique hostile incite \u00e0 rester \u00e0 l'\u00e9cart."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -7.668,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -12334,7 +12342,11 @@
             "reason": "Le prix oscille dans une fourchette \u00e9troite sans tendance claire. Pas d'avantage statistique."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.188,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -12348,7 +12360,11 @@
             "reason": "La structure technique reste baissi\u00e8re sous les moyennes mobiles. Patience recommand\u00e9e."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -6.829,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -12362,7 +12378,11 @@
             "reason": "Une position longue est d\u00e9j\u00e0 ouverte dans notre portefeuille ind\u00e9pendant."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.868,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -13109,7 +13129,11 @@
             "decision": "GO",
             "probTarget": 60,
             "reason": "Cassure nette du support de 0,8911 $ sur volume soutenu. Malgr\u00e9 un RSI court terme tendu, la dynamique macro baissi\u00e8re et les sorties d'ETF favorisent une extension vers la cible de 0,80 $.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0455,
+              "exitReason": "STOP"
+            }
           }
         },
         "BNBUSDT": {
@@ -13166,11 +13190,120 @@
         "candidatesTokenCount": 1570,
         "totalTokenCount": 11205
       }
+    },
+    {
+      "barClose": 1795219200000,
+      "requestedAt": 1795219347681,
+      "analyzedAt": 1795219384228,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Impact persistant du piratage de Binance (6,36 Md$) et pressions macro (CPI US chaud \u00e0 0,4%, dollar fort sur 4 semaines). Craintes accrues de hausse des taux Fed en d\u00e9c. Climat d'Extreme Fear (CMC \u00e0 9/100) avec retraits records d'ETF BTC Spot (3,47 Md$ en nov, dont 541 M$ pour IBIT le 19/11).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Sentiment en 'Extreme Fear' (CMC \u00e0 9/100) post-piratage Binance et retraits massifs d'ETF (3,47 Md$ en nov, record historique pour IBIT le 19/11). Techniquement, le BTC a bris\u00e9 les 60k$, s'installant sous ses EMA 20, 50 et 200. Bien que la tendance soit fortement baissi\u00e8re, le RSI 4H \u00e0 24,0 indique une survente extr\u00eame qui pourrait limiter la baisse imm\u00e9diate au profit d'une consolidation.",
+          "risks": "Risque de liquidation forc\u00e9e r\u00e9siduelle sous 57,7k$ (low 10d) ou au contraire de rebond technique (short squeeze) violent aliment\u00e9 par la survente extr\u00eame.",
+          "price0": 58915.0,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Survente extr\u00eame 4H (RSI 24) et Extreme Fear (9/100) rendent les nouvelles ventes risqu\u00e9es \u00e0 court terme malgr\u00e9 la tendance baissi\u00e8re de fond. Pas de signal de retournement haussier propre."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "ETH subit de lourdes sorties de ses ETF Spot (-1,6 Md$ sur la p\u00e9riode r\u00e9cente) et p\u00e2tit du report de la mise \u00e0 niveau Glamsterdam. Techniquement, le prix de 1622$ est tr\u00e8s proche du support des 1580$ (low 10d). Avec un RSI 4H \u00e0 24,7, l'actif est survendu et pourrait stabiliser temporairement, bien que la tendance structurelle reste fortement baissi\u00e8re (sous l'EMA200).",
+          "risks": "Rebond technique violent sur le niveau des 1600$ ou cassure brutale vers de nouveaux plus bas de l'ann\u00e9e en cas de panique continue sur les altcoins.",
+          "price0": 1622.03,
+          "trade": {
+            "action": "NONE",
+            "conviction": 65,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte depuis 1644,4$ qui est actuellement rentable. Pas de nouvelle entr\u00e9e possible conform\u00e9ment aux r\u00e8gles de notre portefeuille papier."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 49,
+          "reason": "XRP fait preuve d'une relative r\u00e9silience comparativement au reste du march\u00e9, soutenu par le lancement de campagnes promotionnelles de Binance pour le RLUSD (stablecoin de Ripple) et l'approbation bancaire finale de l'OCC pour son trust. Le RSI est plus sain (34,5) que celui du BTC/ETH. XRP consolide dans la zone des 0,91$ et d\u00e9fend son support de 0,88$.",
+          "risks": "Sensibilit\u00e9 accrue aux mouvements de BTC et liquidation g\u00e9n\u00e9rale du march\u00e9 des altcoins si la panique reprend sous les plus bas r\u00e9cents.",
+          "price0": 0.9101,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "Position SHORT d\u00e9j\u00e0 en cours (entr\u00e9e \u00e0 0,9106$). On maintient la position sans en ouvrir de nouvelle."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB souffre de la baisse g\u00e9n\u00e9rale mais surtout des retomb\u00e9es du piratage massif de 6,36 Md$ subi par Binance fin octobre. Bien que la plateforme assure la solvabilit\u00e9 \u00e0 100%, l'angoisse persiste. Techniquement, BNB consolide juste au-dessus du support des 530$ (plus-bas 10d). Son RSI \u00e0 24,1 est extr\u00eamement bas, ce qui sugg\u00e8re l'imminence d'une phase de consolidation lat\u00e9rale ou de rebond.",
+          "risks": "Risques r\u00e9glementaires ou d'annonces judiciaires sur les fonds vol\u00e9s de Binance, et cassure du support des 530$ entra\u00eenant de nouvelles liquidations.",
+          "price0": 540.95,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le support cl\u00e9 des 530$ et l'\u00e9tat de survente prononc\u00e9 (RSI 24) incitent \u00e0 la prudence. Vendre ici pr\u00e9sente un ratio risque/rendement m\u00e9diocre tandis qu'acheter reste \u00e0 contre-tendance."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "SOL consolide autour des 68,8$ apr\u00e8s avoir test\u00e9 le support majeur \u00e0 67,08$ (low 10d). Le sentiment de march\u00e9 d\u00e9grad\u00e9 et les ventes d'actifs IA p\u00e8sent sur l'actif. N\u00e9anmoins, l'int\u00e9r\u00eat ouvert s'est d\u00e9gonfl\u00e9, limitant l'effet cascade imm\u00e9diat. Le RSI \u00e0 31,3 sugg\u00e8re un ralentissement de la dynamique baissi\u00e8re \u00e0 court terme.",
+          "risks": "Perte du support des 67$ qui pourrait ouvrir la voie vers les 60$, ou short squeeze rapide en cas de rebond global des altcoins.",
+          "price0": 68.82,
+          "trade": {
+            "action": "NONE",
+            "conviction": 65,
+            "reason": "Position SHORT active depuis 69,44$ en direction de notre cible \u00e0 60,9$. On reste passif conform\u00e9ment aux r\u00e8gles."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"Bitcoin\" price November 2026",
+        "crypto news November 2026",
+        "Fed interest rates November 2026",
+        "US CPI November 2026",
+        "\"Binance\" security incident \"6.3 billion\" OR \"October 29\" OR \"November 2026\"",
+        "\"IBIT\" outflow \"November 2026\" OR \"November 19\"",
+        "US dollar index November 20, 2026",
+        "Fear and greed index crypto November 20 2026",
+        "\"BNB\" price November 2026",
+        "Binance coin news November 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4236,
+        "candidatesTokenCount": 1503,
+        "totalTokenCount": 13802
+      }
     }
   ],
   "attempts": {
     "1795204800000": 1,
-    "1795208400000": 1
+    "1795208400000": 1,
+    "1795219200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -13189,9 +13322,9 @@
         "conviction": 65,
         "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
         "exitBy": 1795366800000,
-        "lastBar": 1795212000000,
-        "markR": 0.2183,
-        "markPrice": 1623.27
+        "lastBar": 1795215600000,
+        "markR": 0.2211,
+        "markPrice": 1623.0
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -13206,9 +13339,9 @@
         "conviction": 60,
         "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
         "exitBy": 1795453200000,
-        "lastBar": 1795212000000,
-        "markR": -0.0194,
-        "markPrice": 0.9115
+        "lastBar": 1795215600000,
+        "markR": -0.0086,
+        "markPrice": 0.911
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -13223,9 +13356,9 @@
         "conviction": 62,
         "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
         "exitBy": 1795453200000,
-        "lastBar": 1795212000000,
-        "markR": 0.1328,
-        "markPrice": 69.1
+        "lastBar": 1795215600000,
+        "markR": 0.2305,
+        "markPrice": 68.85
       }
     ],
     "trades": [
@@ -13628,19 +13761,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795218384893,
+  "generatedAt": 1795219347681,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 96,
-    "totalTokens": 1144938,
+    "analyses": 97,
+    "totalTokens": 1158740,
     "direction": {
-      "scored": 445,
-      "called": 286,
-      "neutral": 159,
-      "hits": 217,
-      "hitRate": 0.7587,
-      "brier": 0.2158,
+      "scored": 450,
+      "called": 289,
+      "neutral": 161,
+      "hits": 220,
+      "hitRate": 0.7612,
+      "brier": 0.2155,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -13660,10 +13793,10 @@
       },
       "rejected_GO": {
         "count": 14,
-        "closed": 9,
+        "closed": 10,
         "wins": 7,
-        "avgR": 4.8537,
-        "totalR": 43.6835
+        "avgR": 4.2638,
+        "totalR": 42.638
       },
       "rejected_NO_GO": {
         "count": 12,
@@ -13676,10 +13809,10 @@
     "byDecision": {
       "GO": {
         "count": 21,
-        "closed": 10,
+        "closed": 11,
         "wins": 8,
-        "avgR": 4.3797,
-        "totalR": 43.7967
+        "avgR": 3.8865,
+        "totalR": 42.7512
       },
       "NO_GO": {
         "count": 15,
@@ -13696,14 +13829,14 @@
       "avgR": 0.647,
       "totalR": 14.2336,
       "open": 3,
-      "equityMarked": 575.696157,
-      "returnPct": 15.1392
+      "equityMarked": 576.334789,
+      "returnPct": 15.267
     }
   },
   "lastRun": {
-    "at": 1795218384893,
-    "status": "waiting",
+    "at": 1795219347681,
+    "status": "ok",
     "error": null,
-    "barClose": 1795215600000
+    "barClose": 1795219200000
   }
 }
