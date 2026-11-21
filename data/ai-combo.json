@@ -12712,7 +12712,11 @@
             "decision": "GO",
             "probTarget": 65,
             "reason": "La cassure du niveau de 1710,01 $ sur un volume tr\u00e8s \u00e9lev\u00e9 (relVolume de 7,64) valide une forte dynamique baissi\u00e8re. Malgr\u00e9 la survente, le flux institutionnel sortant et la capitulation des perp\u00e9tuels soutiennent la poursuite de la baisse.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": -1.0456,
+              "exitReason": "STOP"
+            }
           }
         },
         "XRPUSDT": {
@@ -13471,9 +13475,9 @@
         "conviction": 65,
         "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
         "exitBy": 1795366800000,
-        "lastBar": 1795262400000,
-        "markR": -0.5918,
-        "markPrice": 1701.69
+        "lastBar": 1795266000000,
+        "markR": -0.6045,
+        "markPrice": 1702.92
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -13488,9 +13492,9 @@
         "conviction": 60,
         "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
         "exitBy": 1795453200000,
-        "lastBar": 1795262400000,
-        "markR": -0.3427,
-        "markPrice": 0.9265
+        "lastBar": 1795266000000,
+        "markR": -0.431,
+        "markPrice": 0.9306
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -13505,9 +13509,9 @@
         "conviction": 62,
         "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
         "exitBy": 1795453200000,
-        "lastBar": 1795262400000,
-        "markR": -0.3984,
-        "markPrice": 70.46
+        "lastBar": 1795266000000,
+        "markR": -0.5234,
+        "markPrice": 70.78
       }
     ],
     "trades": [
@@ -13910,7 +13914,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795268782727,
+  "generatedAt": 1795269711037,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -13928,10 +13932,10 @@
     "breakouts": {
       "taken_GO": {
         "count": 7,
-        "closed": 1,
+        "closed": 2,
         "wins": 1,
-        "avgR": 0.1132,
-        "totalR": 0.1132
+        "avgR": -0.4662,
+        "totalR": -0.9324
       },
       "taken_NO_GO": {
         "count": 3,
@@ -13958,10 +13962,10 @@
     "byDecision": {
       "GO": {
         "count": 21,
-        "closed": 11,
+        "closed": 12,
         "wins": 8,
-        "avgR": 3.8865,
-        "totalR": 42.7512
+        "avgR": 3.4755,
+        "totalR": 41.7056
       },
       "NO_GO": {
         "count": 15,
@@ -13978,14 +13982,14 @@
       "avgR": 0.647,
       "totalR": 14.2336,
       "open": 3,
-      "equityMarked": 566.1448,
-      "returnPct": 13.229
+      "equityMarked": 564.848028,
+      "returnPct": 12.9696
     }
   },
   "lastRun": {
-    "at": 1795268782727,
+    "at": 1795269711037,
     "status": "waiting",
     "error": null,
-    "barClose": 1795266000000
+    "barClose": 1795269600000
   }
 }
