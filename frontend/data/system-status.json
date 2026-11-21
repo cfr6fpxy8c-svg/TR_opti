@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1795299300000,
-    "executedAt": 1795299344151,
+    "scheduledAt": 1795300200000,
+    "executedAt": 1795300262118,
     "trigger": "schedule",
-    "jitterSeconds": 44.2,
-    "durationMs": 1246,
+    "jitterSeconds": 62.1,
+    "durationMs": 11554,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -16,36 +16,36 @@
     "symbolsValid": 1,
     "dataFailures": 0,
     "failedSymbols": [],
-    "candidates": 2,
-    "signalsGenerated": 1,
+    "candidates": 0,
+    "signalsGenerated": 0,
     "rejects": {
-      "score_below_threshold": 1
+      "duplicate_active": 2
     },
     "rejectFunnel": [
       {
-        "stage": "score_below_threshold",
-        "rejected": 1
+        "stage": "duplicate_active",
+        "rejected": 2
       }
     ],
     "apiStats": {
-      "requests": 6,
-      "errors": 0,
-      "retries": 0,
+      "requests": 10,
+      "errors": 4,
+      "retries": 3,
       "rateLimitHits": 0,
-      "lastError": null,
-      "endpointUsed": "binance-futures",
+      "lastError": "HTTP 451 geo-restricted host=fapi.binance.com",
+      "endpointUsed": "binance-futures-mirror",
       "marketUsed": "futures"
     },
-    "apiHealth": "HEALTHY",
+    "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1795299299999,
-      "ageSeconds": 44.2
+      "newestCandleCloseMs": 1795300199999,
+      "ageSeconds": 62.1
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1795299344151,
-  "nextExpectedScanAt": 1795300200000,
+  "lastSuccessfulScan": 1795300262118,
+  "nextExpectedScanAt": 1795301100000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1795254353956,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1795254353956,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
-    {
-      "ts": 1795255272817,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1795255200000 actual=1795255272813 (jitter 72.8s)"
-    },
-    {
-      "ts": 1795255284977,
-      "level": "info",
-      "msg": "derivatives: funding rates for 959 symbols"
-    },
     {
       "ts": 1795255285223,
       "level": "info",
@@ -1052,6 +1032,26 @@
       "ts": 1795299345357,
       "level": "info",
       "msg": "SIGNAL BTCUSDT SHORT C score=51.1 trigger=60144.8189066305 TP=58889.7 SL=60675.5054668476 RR=2.3651"
+    },
+    {
+      "ts": 1795300262123,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1795300200000 actual=1795300262118 (jitter 62.1s)"
+    },
+    {
+      "ts": 1795300273444,
+      "level": "info",
+      "msg": "derivatives: funding rates for 959 symbols"
+    },
+    {
+      "ts": 1795300273648,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1795300273648,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
     }
   ]
 }
