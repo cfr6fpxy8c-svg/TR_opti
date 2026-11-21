@@ -12377,7 +12377,11 @@
             "reason": "Absence de signal de breakout clair. Vendre le support de 62k en pleine zone de panique (Fear & Greed \u00e0 10) pr\u00e9sente un mauvais ratio risque/rendement, malgr\u00e9 la tendance de fond baissi\u00e8re."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -8.727,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -12391,7 +12395,11 @@
             "reason": "Aucun breakout valide. Le support historique de 1700$ est proche et l'incertitude autour du report de la mise \u00e0 niveau Glamsterdam conseille de rester \u00e0 l'\u00e9cart en attendant une stabilisation."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -9.976,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -12405,7 +12413,11 @@
             "reason": "Pas d'opportunit\u00e9 claire. XRP montre une relative r\u00e9silience par rapport aux autres altcoins mais est bloqu\u00e9 sous la r\u00e9sistance majeure de 1$."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -8.516,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -12419,7 +12431,11 @@
             "reason": "Pas de breakout. Les risques de r\u00e9putation et de liquidit\u00e9 post-hack de Binance rendent tout trade haussier pr\u00e9matur\u00e9, tandis que le shorting sur support est risqu\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -9.913,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -12433,7 +12449,11 @@
             "reason": "Aucun breakout. Les catalyseurs de la conf\u00e9rence Breakpoint sont pass\u00e9s, la pression des unlocks et des sorties d'ETF domine \u00e0 court terme."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -9.085,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -13246,7 +13266,8 @@
     }
   ],
   "attempts": {
-    "1795219200000": 1
+    "1795219200000": 1,
+    "1795233600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -13265,9 +13286,9 @@
         "conviction": 65,
         "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
         "exitBy": 1795366800000,
-        "lastBar": 1795226400000,
-        "markR": 0.806,
-        "markPrice": 1566.38
+        "lastBar": 1795230000000,
+        "markR": 0.7718,
+        "markPrice": 1569.69
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -13282,9 +13303,9 @@
         "conviction": 60,
         "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
         "exitBy": 1795453200000,
-        "lastBar": 1795226400000,
-        "markR": 0.6724,
-        "markPrice": 0.8794
+        "lastBar": 1795230000000,
+        "markR": 0.6336,
+        "markPrice": 0.8812
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -13299,9 +13320,9 @@
         "conviction": 62,
         "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
         "exitBy": 1795453200000,
-        "lastBar": 1795226400000,
-        "markR": 1.293,
-        "markPrice": 66.13
+        "lastBar": 1795230000000,
+        "markR": 1.2305,
+        "markPrice": 66.29
       }
     ],
     "trades": [
@@ -13704,19 +13725,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795232777961,
+  "generatedAt": 1795233742390,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 97,
     "totalTokens": 1158740,
     "direction": {
-      "scored": 450,
-      "called": 289,
-      "neutral": 161,
-      "hits": 220,
-      "hitRate": 0.7612,
-      "brier": 0.2155,
+      "scored": 455,
+      "called": 293,
+      "neutral": 162,
+      "hits": 224,
+      "hitRate": 0.7645,
+      "brier": 0.2153,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -13772,14 +13793,14 @@
       "avgR": 0.647,
       "totalR": 14.2336,
       "open": 3,
-      "equityMarked": 589.694982,
-      "returnPct": 17.939
+      "equityMarked": 588.917493,
+      "returnPct": 17.7835
     }
   },
   "lastRun": {
-    "at": 1795232777961,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1795230000000
+    "at": 1795233742390,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1795233600000
   }
 }

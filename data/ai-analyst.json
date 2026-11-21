@@ -10508,6 +10508,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le prix teste un support majeur historique \u00e0 $62k. Shorter ici est risqu\u00e9 face au potentiel de rebond technique, tandis que prendre un long va \u00e0 l'encontre d'une forte dynamique baissi\u00e8re."
+          },
+          "outcome": {
+            "retPct": -8.727,
+            "hit": true
           }
         },
         "ETHUSDT": {
@@ -10521,6 +10525,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Bien que la tendance soit fortement baissi\u00e8re, le RSI quotidien est dans une zone de survente historique et le support horizontal majeur \u00e0 $1710 limite l'int\u00e9r\u00eat d'un short."
+          },
+          "outcome": {
+            "retPct": -9.976,
+            "hit": true
           }
         },
         "XRPUSDT": {
@@ -10534,6 +10542,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Consolidation instable autour de $0.96. L'absence d'un catalyseur directionnel clair et la volatilit\u00e9 macro\u00e9conomique invitent \u00e0 la prudence."
+          },
+          "outcome": {
+            "retPct": -8.516,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -10547,6 +10559,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "BNB s'approche du support cl\u00e9 \u00e0 $550-$560. Pas de ratio risque/rendement favorable pour initier un short ou un long sur ce niveau."
+          },
+          "outcome": {
+            "retPct": -9.913,
+            "hit": true
           }
         },
         "SOLUSDT": {
@@ -10560,6 +10576,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "SOL est coinc\u00e9 sur un niveau technique charni\u00e8re. Les annonces fondamentales positives s'opposent \u00e0 une fuite de capitaux globale sur le march\u00e9 crypto, justifiant l'abstention."
+          },
+          "outcome": {
+            "retPct": -9.085,
+            "hit": null
           }
         }
       },
@@ -11202,25 +11222,126 @@
         "candidatesTokenCount": 1704,
         "totalTokenCount": 11942
       }
+    },
+    {
+      "barClose": 1795233600000,
+      "requestedAt": 1795233697845,
+      "analyzedAt": 1795233727651,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La persistance de l'inflation am\u00e9ricaine et la posture hawkish de la Fed (hausse de 0,5% \u00e9voqu\u00e9e pour d\u00e9cembre) soutiennent le dollar et les rendements obligataires. La chute des valeurs technologiques am\u00e9ricaines et les sorties massives d'ETF ($3,47Mds en nov) plombent les actifs risqu\u00e9s.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "Bitcoin a plong\u00e9 sous les $60k face \u00e0 des sorties records d'ETF (IBIT -$541M le 19 nov) et plus de $1,5Mrd de liquidations forc\u00e9es le 20 nov. La structure technique est lourdement baissi\u00e8re sous l'EMA200_4h (72,8k), bien que le RSI (18,6) soit extr\u00eamement survendu. La perte de confiance li\u00e9e au hack de $6,3Mds de Binance fin octobre continue de peser indirectement.",
+          "risks": "Un rebond technique violent d\u00fb \u00e0 la survente (RSI 18,6); une baisse vers le support majeur \u00e0 $50k-53k.",
+          "price0": 56704.7,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Court-circuiter un march\u00e9 avec un RSI \u00e0 18,6 pr\u00e9sente un risque asym\u00e9trique de squeeze, tandis qu'acheter \u00e0 contre-tendance face \u00e0 des flux sortants d'ETF massifs manque de catalyseur imm\u00e9diat."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "ETH souffre de la faiblesse globale et de facteurs propres: le report de la mise \u00e0 jour Glamsterdam \u00e0 fin janvier 2027 (risques de co\u00fbt des smart contracts) et des sorties continues d'ETF ($399M en une semaine). Des baleines capitulent \u00e0 perte (comme l'adresse 0x4AB7 vendant 5k ETH), augmentant les r\u00e9serves sur les plateformes de trading.",
+          "risks": "Rebond technique sur le support des $1500; volatilit\u00e9 accrue li\u00e9e \u00e0 la r\u00e9union des devs Ethereum le 26 nov.",
+          "price0": 1571.3,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le RSI \u00e0 20,9 signale une forte survente \u00e0 court terme qui d\u00e9courage les ventes \u00e0 d\u00e9couvert, mais la tendance lourde reste baissi\u00e8re avec l'accumulation de ETH sur les plateformes d'\u00e9change."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "XRP a reperdu le seuil de $1 apr\u00e8s les minutes hawkish de la Fed. Bien que des retraits de baleines hors de Binance ($127M) et un taux de financement temporairement n\u00e9gatif sur OKX montrent que des vendeurs \u00e0 contre-tendance se retirent, l'int\u00e9r\u00eat ouvert sur Binance a chut\u00e9 de 33,5% en deux semaines, refl\u00e9tant un d\u00e9sint\u00e9r\u00eat \u00e0 court terme et un manque de flux ETF.",
+          "risks": "Volatilit\u00e9 li\u00e9e aux d\u00e9veloppements de l'introduction en bourse d'Anthropic ou aux r\u00e9sultats de Nvidia.",
+          "price0": 0.8809,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le d\u00e9sint\u00e9r\u00eat sp\u00e9culatif (baisse de l'int\u00e9r\u00eat ouvert) et l'absence de direction claire apr\u00e8s l'\u00e9chec de la reprise des $1 incitent \u00e0 la neutralit\u00e9 en attendant une stabilisation du march\u00e9."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "BNB subit le contrecoup du hack historique de $6,3Mds subi par Binance le 29 octobre (North Korea). Bien que Binance ait promis de couvrir les pertes et obtenu un gel d'actifs de $6,5Mds \u00e0 Abu Dhabi, l'atteinte \u00e0 la r\u00e9putation et la baisse globale du march\u00e9 p\u00e8sent lourdement, poussant le prix vers les $518 avec un volume de vente \u00e9lev\u00e9.",
+          "risks": "Actions judiciaires ou de r\u00e9gulation suite au piratage; rebond violent si le march\u00e9 du BTC se stabilise.",
+          "price0": 518.19,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le piratage historique de Binance p\u00e8se sur la confiance envers le BNB \u00e0 long terme, mais le RSI \u00e0 18,6 rend la prise de position vendeuse imm\u00e9diate trop dangereuse \u00e0 ce niveau de prix."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "SOL a gliss\u00e9 \u00e0 $66,25 malgr\u00e9 la transition officielle vers 'Solana 1.0' (sortie de beta) annonc\u00e9e le 16 nov avec les avanc\u00e9es majeures d'Alpenglow (finalit\u00e9 \u00e0 150ms) et Firedancer. L'adoption fondamentale progresse (Allfunds lancera des fonds tokenis\u00e9s en Q1 2027), mais le jeton subit la liquidation forc\u00e9e g\u00e9n\u00e9ralis\u00e9e du march\u00e9.",
+          "risks": "Incompatibilit\u00e9s logicielles potentielles li\u00e9es aux feature-gates d'Anza; poursuite de la panique macro.",
+          "price0": 66.25,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 55,
+            "reason": "Bien que SOL pr\u00e9sente les meilleurs fondamentaux de court terme du groupe (Solana 1.0, Alpenglow), racheter le couteau qui tombe sans signal de retournement du Bitcoin est pr\u00e9matur\u00e9."
+          }
+        }
+      },
+      "queries": [
+        "\"bitcoin\" November 2026",
+        "crypto crash November 2026",
+        "fed interest rate November 2026",
+        "macroeconomics November 2026",
+        "\"Binance\" hack November 2026",
+        "\"XRP\" November 2026 news",
+        "\"Solana\" November 2026 news",
+        "\"Ethereum\" November 2026 news"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3895,
+        "candidatesTokenCount": 1534,
+        "totalTokenCount": 10073
+      }
     }
   ],
   "attempts": {
-    "1795204800000": 1,
-    "1795219200000": 1
+    "1795219200000": 1,
+    "1795233600000": 1
   },
-  "generatedAt": 1795232766385,
+  "generatedAt": 1795233697845,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 91,
-    "totalTokens": 1037922,
+    "analyses": 92,
+    "totalTokens": 1047995,
     "direction": {
-      "scored": 425,
-      "called": 228,
-      "neutral": 197,
-      "hits": 155,
-      "hitRate": 0.6798,
-      "brier": 0.2292,
+      "scored": 430,
+      "called": 231,
+      "neutral": 199,
+      "hits": 158,
+      "hitRate": 0.684,
+      "brier": 0.2287,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -11281,10 +11402,10 @@
     }
   },
   "lastRun": {
-    "at": 1795232766385,
-    "status": "up-to-date",
+    "at": 1795233697845,
+    "status": "ok",
     "error": null,
-    "barClose": 1795219200000
+    "barClose": 1795233600000
   },
   "portfolio": {
     "startCapital": 500.0,
