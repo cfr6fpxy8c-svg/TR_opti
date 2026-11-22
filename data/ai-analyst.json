@@ -4588,7 +4588,11 @@
             "decision": "GO",
             "probTarget": 62,
             "reason": "La cassure du support s'effectue avec un volume solide (1,42) dans un contexte macro et micro tr\u00e8s baissier (sorties d'ETF, dollar fort, baisse de l'offre de stablecoins). Le ratio risque/rendement est tr\u00e8s favorable.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 6.7747,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -4708,7 +4712,11 @@
             "decision": "GO",
             "probTarget": 55,
             "reason": "La rupture de 662.42$ s'est faite avec un volume tr\u00e8s solide (3.08) et s'aligne parfaitement avec la tendance baissi\u00e8re globale du march\u00e9 crypto et du BTC sous sa MM200 4H. C'est un signal de vente \u00e0 haute probabilit\u00e9 de continuation.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 5.7782,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -11454,6 +11462,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Malgr\u00e9 la tendance fortement baissi\u00e8re, l'exc\u00e8s de levier a \u00e9t\u00e9 nettoy\u00e9 (2,3B$ de liquidations) et le RSI est survendu. Vendre ici expose \u00e0 un short squeeze, acheter va contre la tendance."
+          },
+          "outcome": {
+            "retPct": 4.913,
+            "hit": false
           }
         },
         "ETHUSDT": {
@@ -11467,6 +11479,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le march\u00e9 est extr\u00eamement instable apr\u00e8s le nettoyage des positions \u00e0 effet de levier. Pas de signal de retournement clair malgr\u00e9 la survente relative."
+          },
+          "outcome": {
+            "retPct": 3.373,
+            "hit": false
           }
         },
         "XRPUSDT": {
@@ -11480,6 +11496,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La structure technique reste baissi\u00e8re sous l'EMA20, mais le fort rebond depuis le support de 0,859$ et les conditions de march\u00e9 instables incitent \u00e0 rester \u00e0 l'\u00e9cart."
+          },
+          "outcome": {
+            "retPct": 2.779,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -11493,6 +11513,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "L'extr\u00eame survente (RSI 28) limite le potentiel de baisse imm\u00e9diate, mais l'absence de confiance envers l'\u00e9cosyst\u00e8me Binance rend tout achat pr\u00e9matur\u00e9."
+          },
+          "outcome": {
+            "retPct": 4.32,
+            "hit": false
           }
         },
         "SOLUSDT": {
@@ -11506,6 +11530,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le march\u00e9 purge son levier et l'incertitude macro\u00e9conomique reste \u00e9lev\u00e9e. Il est pr\u00e9f\u00e9rable d'attendre une stabilisation ou un signal de retournement clair."
+          },
+          "outcome": {
+            "retPct": 2.616,
+            "hit": false
           }
         }
       },
@@ -11991,34 +12019,134 @@
         "candidatesTokenCount": 1270,
         "totalTokenCount": 10091
       }
+    },
+    {
+      "barClose": 1795348800000,
+      "requestedAt": 1795348896065,
+      "analyzedAt": 1795348930782,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La r\u00e9acc\u00e9l\u00e9ration de l'inflation US (CPI \u00e0 0,4% m/m) soutient la perspective d'une hausse des taux par la Fed en d\u00e9cembre. Le dollar fort et la correction brutale des actions am\u00e9ricaines (techs en correction, Nvidia -47% depuis son pic) continuent d'exercer une lourde pression sur la crypto.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Apr\u00e8s un plus bas \u00e0 $55,1K sur fond de liquidations massives (>1,9 Md$) et de sorties records des ETF spot ($3,5 Md en novembre), le BTC rebondit au-dessus de $60K avec un volume acheteur en hausse. Le sentiment g\u00e9n\u00e9ral reste toutefois bloqu\u00e9 en zone de peur extr\u00eame (Fear & Greed \u00e0 12).",
+          "risks": "La tendance de fond reste baissi\u00e8re sous l'EMA200_4h. Risque de simple rebond technique ('dead cat bounce') avant de retester les plus bas de 10 jours.",
+          "price0": 61036.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le sentiment de capitulation r\u00e9cente rend les ventes \u00e0 d\u00e9couvert risqu\u00e9es \u00e0 court terme, tandis que la tendance de fond r\u00e9solument baissi\u00e8re sous l'EMA200 emp\u00eache tout achat de conviction."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "L'ETH suit le rebond g\u00e9n\u00e9ral pour repasser au-dessus de $1700, apr\u00e8s avoir test\u00e9 les $1536. La baisse mensuelle d\u00e9passe les 27% (2\u00e8me pire novembre historique). Les sorties nettes d'ETF Ethereum se poursuivent, maintenant une pression vendeuse structurelle malgr\u00e9 le rachat de baleines sur les plus bas.",
+          "risks": "Nouveau rejet sous l'EMA50 (1773$) et retour de la panique si le Bitcoin repasse sous le niveau psychologique majeur des $60K.",
+          "price0": 1707.48,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucune opportunit\u00e9 claire. Le march\u00e9 est en phase de consolidation apr\u00e8s une forte baisse, rendant les ratios risque-rendement peu attractifs pour des positions directionnelles."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 49,
+          "reason": "XRP a temporairement enfonc\u00e9 son support de long terme \u00e0 $0,90 (plus bas \u00e0 $0,86) avant de se ressaisir. Le mois de novembre affiche une baisse de 28% sur fond de sorties records des ETF XRP (31 M$) et de liquidations massives de positions longues, amenant le RSI quotidien en zone de survente.",
+          "risks": "Poursuite de la baisse vers les $0,80 en cas de cl\u00f4ture journali\u00e8re sous $0,86. Lib\u00e9ration mensuelle d'escrow XRP pr\u00e9vue le 1er d\u00e9cembre.",
+          "price0": 0.9283,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'actif reste sous toutes ses moyennes mobiles majeures et la rupture r\u00e9cente du support cl\u00e9 de $0,90 montre une fragilit\u00e9 \u00e9vidente, malgr\u00e9 la tentative de rebond actuelle."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Le BNB a touch\u00e9 un support critique proche de $500 (plus bas \u00e0 $503) et a rebondi \u00e0 $553. L'actif est p\u00e9nalis\u00e9 par l'absence de dynamique propre et reste marqu\u00e9 par les retomb\u00e9es du hack de Binance de fin octobre (6,3 Mds$), malgr\u00e9 les mesures judiciaires gelant les fonds vol\u00e9s \u00e0 Abu Dhabi.",
+          "risks": "La perte du support des $500 validerait une structure fortement baissi\u00e8re, ouvrant la voie vers des objectifs plus bas comme les $450.",
+          "price0": 553.0,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le BNB montre des signes de stabilisation sur ses supports majeurs mais reste vuln\u00e9rable aux risques de r\u00e9putation li\u00e9s \u00e0 Binance et \u00e0 la faiblesse globale du march\u00e9."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 51,
+          "reason": "SOL rebondit au-dessus de $70 apr\u00e8s avoir test\u00e9 les $64,8. Bien que l'\u00e9cosyst\u00e8me montre des avanc\u00e9es techniques (Solana 1.0 sort de beta, Privacy Rings lanc\u00e9s par Helius, augmentation de la tokenisation d'actifs), le prix reste sous la pression d'un croisement baissier ('death cross') \u00e0 court terme.",
+          "risks": "Rejet potentiel sur la zone de r\u00e9sistance interm\u00e9diaire \u00e0 $74-$75. D\u00e9pendance totale \u00e0 la stabilisation du BTC.",
+          "price0": 70.6,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que les fondamentaux du r\u00e9seau soient solides (fin de la beta, adoption institutionnelle), la structure technique de court terme reste baissi\u00e8re avec des moyennes mobiles denses au-dessus du prix."
+          }
+        }
+      },
+      "queries": [
+        "\"bitcoin\" news \"November 2026\"",
+        "\"crypto\" market news November 22 2026",
+        "macroeconomic news November 2026 Fed CPI",
+        "bitcoin ETF flows November 2026",
+        "\"Solana\" news November 2026",
+        "\"XRP\" news November 2026",
+        "\"BNB\" news November 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3882,
+        "candidatesTokenCount": 1288,
+        "totalTokenCount": 11324
+      }
     }
   ],
   "attempts": {
-    "1795320000000": 3,
-    "1795334400000": 1
+    "1795334400000": 1,
+    "1795348800000": 1
   },
-  "generatedAt": 1795347967847,
+  "generatedAt": 1795348896065,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 98,
-    "totalTokens": 1112194,
+    "analyses": 99,
+    "totalTokens": 1123518,
     "direction": {
-      "scored": 465,
-      "called": 251,
+      "scored": 470,
+      "called": 256,
       "neutral": 214,
       "hits": 169,
-      "hitRate": 0.6733,
-      "brier": 0.2319,
+      "hitRate": 0.6602,
+      "brier": 0.2334,
       "brierRandom": 0.25
     },
     "breakouts": {
       "taken_GO": {
         "count": 4,
-        "closed": 2,
-        "wins": 2,
-        "avgR": 3.4558,
-        "totalR": 6.9116
+        "closed": 3,
+        "wins": 3,
+        "avgR": 4.2299,
+        "totalR": 12.6898
       },
       "taken_NO_GO": {
         "count": 2,
@@ -12029,10 +12157,10 @@
       },
       "rejected_GO": {
         "count": 6,
-        "closed": 5,
-        "wins": 3,
-        "avgR": 1.8485,
-        "totalR": 9.2427
+        "closed": 6,
+        "wins": 4,
+        "avgR": 2.6696,
+        "totalR": 16.0174
       },
       "rejected_NO_GO": {
         "count": 0,
@@ -12045,10 +12173,10 @@
     "byDecision": {
       "GO": {
         "count": 10,
-        "closed": 7,
-        "wins": 5,
-        "avgR": 2.3078,
-        "totalR": 16.1543
+        "closed": 9,
+        "wins": 7,
+        "avgR": 3.1897,
+        "totalR": 28.7072
       },
       "NO_GO": {
         "count": 2,
@@ -12070,10 +12198,10 @@
     }
   },
   "lastRun": {
-    "at": 1795347967847,
-    "status": "up-to-date",
+    "at": 1795348896065,
+    "status": "ok",
     "error": null,
-    "barClose": 1795334400000
+    "barClose": 1795348800000
   },
   "portfolio": {
     "startCapital": 500.0,
