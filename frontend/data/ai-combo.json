@@ -5239,7 +5239,11 @@
             "decision": "GO",
             "probTarget": 58,
             "reason": "Confirmation \u00e0 court terme avec une forte impulsion baissi\u00e8re (volume de 3.37). Id\u00e9al pour se positionner en renforcement de la tendance 4H.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 13.3978,
+              "exitReason": "TRAIL"
+            }
           },
           "outcome": {
             "retPct": -3.729,
@@ -5364,7 +5368,11 @@
             "decision": "GO",
             "probTarget": 56,
             "reason": "La cassure du support \u00e0 662.42 se fait sous un volume \u00e9lev\u00e9 (3.26) dans un march\u00e9 globalement sous pression baissi\u00e8re. La dynamique favorise une poursuite vers la zone de support suivante autour de $635-650.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 12.3702,
+              "exitReason": "TRAIL"
+            }
           },
           "outcome": {
             "retPct": -3.541,
@@ -5436,7 +5444,11 @@
             "decision": "GO",
             "probTarget": 58,
             "reason": "La cassure du support des 72 691 $ est port\u00e9e par un volume exceptionnel (4.1x) et un flux vendeur dominant sur les d\u00e9riv\u00e9s.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 13.1765,
+              "exitReason": "TRAIL"
+            }
           },
           "outcome": {
             "retPct": -4.653,
@@ -5497,7 +5509,11 @@
             "decision": "GO",
             "probTarget": 56,
             "reason": "La cassure 1H sur un volume solide de 3.4x confirme la persistance de la dynamique baissi\u00e8re post-incident.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": 11.0225,
+              "exitReason": "TRAIL"
+            }
           },
           "outcome": {
             "retPct": -3.074,
@@ -5990,7 +6006,11 @@
             "decision": "GO",
             "probTarget": 62,
             "reason": "Cassure valide de la borne basse du canal des 10 jours \u00e0 649,6 USD avec un volume sup\u00e9rieur \u00e0 la moyenne. S'aligne parfaitement avec la tendance baissi\u00e8re de fond (4H sous les EMA20 et EMA50) et le contexte fondamental tr\u00e8s lourd pesant sur Binance.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 9.4633,
+              "exitReason": "TRAIL"
+            }
           },
           "outcome": {
             "retPct": -4.664,
@@ -13949,9 +13969,9 @@
         "conviction": 65,
         "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
         "exitBy": 1795366800000,
-        "lastBar": 1795334400000,
-        "markR": -0.5135,
-        "markPrice": 1694.11
+        "lastBar": 1795338000000,
+        "markR": -0.68,
+        "markPrice": 1710.22
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -13966,9 +13986,9 @@
         "conviction": 60,
         "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
         "exitBy": 1795453200000,
-        "lastBar": 1795334400000,
-        "markR": -0.3405,
-        "markPrice": 0.9264
+        "lastBar": 1795338000000,
+        "markR": -0.4655,
+        "markPrice": 0.9322
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -13983,9 +14003,9 @@
         "conviction": 62,
         "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
         "exitBy": 1795453200000,
-        "lastBar": 1795334400000,
-        "markR": -0.1953,
-        "markPrice": 69.94
+        "lastBar": 1795338000000,
+        "markR": -0.3789,
+        "markPrice": 70.41
       }
     ],
     "trades": [
@@ -14388,7 +14408,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795340782138,
+  "generatedAt": 1795341708008,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -14406,10 +14426,10 @@
     "breakouts": {
       "taken_GO": {
         "count": 7,
-        "closed": 2,
-        "wins": 1,
-        "avgR": -0.4662,
-        "totalR": -0.9324
+        "closed": 4,
+        "wins": 3,
+        "avgR": 5.4268,
+        "totalR": 21.7074
       },
       "taken_NO_GO": {
         "count": 3,
@@ -14420,10 +14440,10 @@
       },
       "rejected_GO": {
         "count": 14,
-        "closed": 10,
-        "wins": 7,
-        "avgR": 4.2638,
-        "totalR": 42.638
+        "closed": 13,
+        "wins": 10,
+        "avgR": 6.1099,
+        "totalR": 79.4285
       },
       "rejected_NO_GO": {
         "count": 12,
@@ -14436,10 +14456,10 @@
     "byDecision": {
       "GO": {
         "count": 21,
-        "closed": 12,
-        "wins": 8,
-        "avgR": 3.4755,
-        "totalR": 41.7056
+        "closed": 17,
+        "wins": 13,
+        "avgR": 5.9492,
+        "totalR": 101.1359
       },
       "NO_GO": {
         "count": 15,
@@ -14456,14 +14476,14 @@
       "avgR": 0.647,
       "totalR": 14.2336,
       "open": 3,
-      "equityMarked": 567.772077,
-      "returnPct": 13.5544
+      "equityMarked": 565.045987,
+      "returnPct": 13.0092
     }
   },
   "lastRun": {
-    "at": 1795340782138,
+    "at": 1795341708008,
     "status": "waiting",
     "error": null,
-    "barClose": 1795338000000
+    "barClose": 1795341600000
   }
 }
