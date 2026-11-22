@@ -11289,6 +11289,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas de trade. Short\u00e9 apr\u00e8s une telle capitulation et avec un RSI \u00e0 28 est extr\u00eamement risqu\u00e9, tandis qu'un long \u00e0 contre-tendance face \u00e0 de violents flux sortants d'ETF manque de momentum."
+          },
+          "outcome": {
+            "retPct": 2.036,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -11302,6 +11306,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Aucune position. Le march\u00e9 est en phase de capitulation. Attendre une stabilisation ou un pivot de la structure de march\u00e9 4H avant de chercher un rebond."
+          },
+          "outcome": {
+            "retPct": 2.154,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -11315,6 +11323,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas de trade. Malgr\u00e9 une relative r\u00e9silience face \u00e0 la chute du BTC, l'environnement de deleveraging global emp\u00eache toute hausse durable \u00e0 court terme."
+          },
+          "outcome": {
+            "retPct": 2.693,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -11328,6 +11340,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Aucun trade. Bien que le RSI \u00e0 24.0 sugg\u00e8re un fort potentiel de rebond technique et que le fork Jenner approche, l'incertitude macro\u00e9conomique globale incite \u00e0 la prudence."
+          },
+          "outcome": {
+            "retPct": 3.04,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -11341,6 +11357,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas d'action. Le risque de dumping des 2,31M de SOL transf\u00e9r\u00e9s sur Coinbase Prime, combin\u00e9 aux sorties d'ETF, rend un long trop risqu\u00e9 malgr\u00e9 le fort niveau de support \u00e0 65$."
+          },
+          "outcome": {
+            "retPct": 2.657,
+            "hit": null
           }
         }
       },
@@ -11874,25 +11894,128 @@
         "candidatesTokenCount": 1629,
         "totalTokenCount": 9990
       }
+    },
+    {
+      "barClose": 1795334400000,
+      "requestedAt": 1795334497067,
+      "analyzedAt": 1795334519398,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Semaine de Thanksgiving \u00e9court\u00e9e aux USA avec volumes r\u00e9duits propices \u00e0 la volatilit\u00e9. Focus sur les indicateurs de lundi (PMI) et mardi (confiance des consommateurs), avant la journ\u00e9e cl\u00e9 de mercredi : PIB Q3 r\u00e9vis\u00e9, rapport Beige Book et surtout l'inflation Core PCE d'octobre attendue \u00e0 3,1%.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 52,
+          "reason": "Apr\u00e8s une purge brutale \u00e0 55,1k$ (1,8 Md$ de liquidations globales), le BTC tente de consolider autour de 59,1k$. Les flux ETF spot restent extr\u00eamement n\u00e9gatifs (3,5 Md$ de sorties en novembre), et le Coinbase Premium n\u00e9gatif (-0,23%) montre une demande US tr\u00e8s faible. Le d\u00e9sendettement massif limite les ventes forc\u00e9es \u00e0 court terme mais l'absence d'acheteurs actifs capte le rebond.",
+          "risks": "Sorties continues des ETF, volumes r\u00e9duits de fin de semaine, d\u00e9rapage du Core PCE am\u00e9ricain mercredi.",
+          "price0": 59145.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas d'opportunit\u00e9 claire. La tendance est fortement baissi\u00e8re mais la survente technique extr\u00eame suite \u00e0 la purge \u00e0 55,1k$ r\u00e9duit le ratio risque/rendement pour initier de nouveaux shorts."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "L'ETH fait face \u00e0 une d\u00e9collecte massive (pr\u00e8s de 1 Md$ de sorties nettes des ETF spot en novembre). BlackRock (ETHA) m\u00e8ne les sorties. Techniquement, apr\u00e8s avoir bri\u00e8vement enfonc\u00e9 le support des 1600$, l'ETH affiche un RSI quotidien proche de 23 (fortement survendu). La dynamique reste baissi\u00e8re sous l'EMA20 (1697$) sans signal de retournement clair.",
+          "risks": "Sursaut de d\u00e9collecte sur les ETF, ventes corr\u00e9l\u00e9es aux valeurs tech US, et sentiment d'extr\u00eame peur.",
+          "price0": 1665.52,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La tendance de fond est baissi\u00e8re mais le niveau de survente et la proximit\u00e9 de supports majeurs rendent la prise de position risqu\u00e9e sans confirmation."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 55,
+          "reason": "B\u00e9n\u00e9ficie du lancement officiel du trading crypto l\u00e9gal en Russie le 22 novembre, avec des contrats perp\u00e9tuels XRP en roubles index\u00e9s lanc\u00e9s sur la bourse MOEX pour les qualifi\u00e9s. Bien qu'ayant rebondi sur le support \u00e0 0,859$, le cours reste sous l'EMA20 (0,932$) et subit la pesanteur du march\u00e9 global.",
+          "risks": "Le march\u00e9 russe est isol\u00e9 (sanctions US sur MOEX), limitant l'impact sur la liquidit\u00e9 globale du XRP.",
+          "price0": 0.9151,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'actualit\u00e9 russe apporte un soutien sp\u00e9culatif mais insuffisant face au pessimisme ambiant et \u00e0 la tendance technique baissi\u00e8re."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Rebond technique depuis les 503,4$ s'alignant sur le march\u00e9. Cependant, le BNB reste fermement ancr\u00e9 dans une tendance baissi\u00e8re sous ses EMA20 (554,8$) et EMA50 (580,0$). Les taux de financement plats \u00e0 0,0% indiquent que l'activit\u00e9 sp\u00e9culative \u00e0 effet de levier est totalement absente, limitant \u00e0 la fois la volatilit\u00e9 haussi\u00e8re et les risques de cascade.",
+          "risks": "Risque de cassure du support des 500$, baisse continue des volumes sur la plateforme Binance.",
+          "price0": 540.7,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucun catalyseur propre \u00e0 BNB. La baisse de l'int\u00e9r\u00eat sp\u00e9culatif et la tendance globale baissi\u00e8re incitent \u00e0 l'observation passive."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Le SOL montre une r\u00e9silience relative mais reste enferm\u00e9 sous l'EMA20 (70,54$). Le test r\u00e9ussi du support \u00e0 64,83$ a permis un timide rebond. La pression demeure en raison de la forte corr\u00e9lation de l'actif avec le secteur de l'intelligence artificielle et de la tech US (Nasdaq) qui a subi une forte correction en fin de semaine derni\u00e8re.",
+          "risks": "Fuite des capitaux sp\u00e9culatifs du r\u00e9seau, d\u00e9stabilisation macro li\u00e9e aux taux am\u00e9ricains.",
+          "price0": 69.15,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La tendance globale de l'\u00e9cosyst\u00e8me Solana reste corr\u00e9l\u00e9e au sentiment macro et crypto tr\u00e8s d\u00e9grad\u00e9, ce qui n'offre aucun point d'entr\u00e9e attractif."
+          }
+        }
+      },
+      "queries": [
+        "\"bitcoin\" price November 2026",
+        "crypto news November 22 2026",
+        "macro economic calendar November 22 2026",
+        "fed speaker November 2026",
+        "\"economic releases\" \"November 23\" 2026",
+        "\"economic releases\" \"November 24\" 2026",
+        "\"economic releases\" \"November 25\" 2026",
+        "\"PCE\" \"November 2026\" date",
+        "crypto funding rates open interest November 22 2026",
+        "US spot bitcoin ETF flows November 20 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3886,
+        "candidatesTokenCount": 1270,
+        "totalTokenCount": 10091
+      }
     }
   ],
   "attempts": {
-    "1795305600000": 1,
-    "1795320000000": 3
+    "1795320000000": 3,
+    "1795334400000": 1
   },
-  "generatedAt": 1795333565326,
+  "generatedAt": 1795334497067,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 97,
-    "totalTokens": 1102103,
+    "analyses": 98,
+    "totalTokens": 1112194,
     "direction": {
-      "scored": 460,
+      "scored": 465,
       "called": 251,
-      "neutral": 209,
+      "neutral": 214,
       "hits": 169,
       "hitRate": 0.6733,
-      "brier": 0.2314,
+      "brier": 0.2319,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -11953,10 +12076,10 @@
     }
   },
   "lastRun": {
-    "at": 1795333565326,
-    "status": "skipped-late",
+    "at": 1795334497067,
+    "status": "ok",
     "error": null,
-    "barClose": 1795320000000
+    "barClose": 1795334400000
   },
   "portfolio": {
     "startCapital": 500.0,
