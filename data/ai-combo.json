@@ -7608,13 +7608,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Inflation US (CPI +0.4% MoM) et emploi solides renforcent les attentes d'une hausse des taux de la Fed en d\u00e9c. (probabilit\u00e9 ~90%, voire 50 pb selon Waller). Rendements US en hausse et aversion au risque accrue par les d\u00e9boires d'un g\u00e9ant de la tech (Nvidia) et des sorties massives des ETF.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "Chute brutale sous la MM200j (~73k$) entra\u00eenant plus de 2 Md$ de liquidations forc\u00e9es de positions longues ce week-end. Les ETF Bitcoin enregistrent des sorties massives (2,4 Md$ sur 13 jours). Cependant, l'extr\u00eame peur (index \u00e0 10-12) et un gap CME b\u00e9ant \u00e0 68,2k$ sugg\u00e8rent l'imminence d'un rebond technique de survente (RSI 14 \u00e0 19.8).",
-          "risks": "Acc\u00e9l\u00e9ration de la panique vers les plus bas de juin (~58k$) si le rebond avorte ; hawkishness accrue de la Fed.",
+          "reason": "",
+          "risks": "",
           "price0": 63986.4,
           "trade": {
             "action": "NONE",
@@ -7631,8 +7631,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 47,
-          "reason": "S\u00e9v\u00e8rement touch\u00e9 par le de-risking global, l'Ether a plong\u00e9 vers 1710$ (plus bas depuis juillet). Les ETF ETH subissent \u00e9galement des sorties de fonds (-399M$ cette semaine). L'\u00e9cosyst\u00e8me subit les contrecoups du hack de Binance (6 Md$) et la rotation vers l'IA, mais l'\u00e9tat de survente extr\u00eame (RSI \u00e0 27) offre un support temporaire.",
-          "risks": "Rupture du support cl\u00e9 des 1700$ ouvrant la voie vers les 1500$ ; absence de capitaux institutionnels.",
+          "reason": "",
+          "risks": "",
           "price0": 1781.25,
           "trade": {
             "action": "NONE",
@@ -7649,8 +7649,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 46,
-          "reason": "XRP a suivi le mouvement de panique g\u00e9n\u00e9rale, glissant sous son support psychologique de 1,00$ pour toucher 0.892$. Les volumes restent \u00e9lev\u00e9s lors de la descente, d\u00e9notant une capitulation des positions \u00e0 effet de levier. Bien que le funding rate soit devenu l\u00e9g\u00e8rement n\u00e9gatif, indiquant un \u00e9puisement des vendeurs, la tendance reste baissi\u00e8re.",
-          "risks": "Pression vendeuse persistante sous 0,90$ ; environnement r\u00e9glementaire am\u00e9ricain de nouveau incertain apr\u00e8s les midterms.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9473,
           "trade": {
             "action": "NONE",
@@ -7667,8 +7667,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "BNB reste fortement sous pression suite aux retomb\u00e9es persistantes du piratage massif de 6 milliards de dollars de Binance. Le jeton a test\u00e9 les 566$ avant de rebondir modestement. La survente prononc\u00e9e (RSI 24.5) et l'absence de taux de financement excessif (funding \u00e0 0) indiquent une pause potentielle dans la baisse, mais l'\u00e9lan haussier est absent.",
-          "risks": "Nouvelles r\u00e9v\u00e9lations sur le hack de Binance ; cassure des 560$ d\u00e9clenchant une baisse vers 500$.",
+          "reason": "",
+          "risks": "",
           "price0": 587.0,
           "trade": {
             "action": "NONE",
@@ -7685,8 +7685,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "Solana subit une baisse marqu\u00e9e de 21% sur 7 jours, p\u00e9nalis\u00e9 par la d\u00e9saffection des investisseurs pour les altcoins \u00e0 haut b\u00eata au profit des technologiques. La chute a atteint un plancher local \u00e0 67.35$. Bien que le RSI (21.9) appelle \u00e0 un rebond de court terme, notre position short reste en excellent profit alors que le prix se rapproche de la cible.",
-          "risks": "Un violent short squeeze g\u00e9n\u00e9ralis\u00e9 du march\u00e9 propulsant SOL au-dessus des 72$ et invalidant les gains.",
+          "reason": "",
+          "risks": "",
           "price0": 69.92,
           "trade": {
             "action": "NONE",
@@ -7701,12 +7701,7 @@
           }
         }
       },
-      "queries": [
-        "crypto market news november 14 2026",
-        "bitcoin news november 15 2026",
-        "macroeconomic events schedule november 15 2026",
-        "fed rates november 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -7721,7 +7716,8 @@
         "promptTokenCount": 4107,
         "candidatesTokenCount": 1580,
         "totalTokenCount": 11744
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794744000000,
@@ -13955,8 +13951,8 @@
         "reason": "Alignement avec la cassure horaire baissi\u00e8re sous 1710 $ dans un contexte de capitulation g\u00e9n\u00e9ralis\u00e9e. Le stop est plac\u00e9 au-dessus du niveau de cassure \u00e0 2 ATR.",
         "exitBy": 1795366800000,
         "lastBar": 1795330800000,
-        "markR": -0.2236,
-        "markPrice": 1666.04
+        "markR": -0.2827,
+        "markPrice": 1671.77
       },
       {
         "id": "XRPUSDT-1795190400000",
@@ -13972,8 +13968,8 @@
         "reason": "La cassure 4H sous 0,945 $ confirme la rupture du cycle de hausse. Le stop est plac\u00e9 au-dessus du support bris\u00e9 (0,945 $) \u00e0 2 ATR.",
         "exitBy": 1795453200000,
         "lastBar": 1795330800000,
-        "markR": -0.097,
-        "markPrice": 0.9151
+        "markR": -0.1336,
+        "markPrice": 0.9168
       },
       {
         "id": "SOLUSDT-1795190400000",
@@ -13989,8 +13985,8 @@
         "reason": "Cassure technique majeure du canal de 10 jours sous 71 $. Tendance fortement baissi\u00e8re sous l'EMA20 (72,9 $). Le stop \u00e0 2 ATR (72,0 $) prot\u00e8ge au-dessus du support cass\u00e9.",
         "exitBy": 1795453200000,
         "lastBar": 1795330800000,
-        "markR": 0.1016,
-        "markPrice": 69.18
+        "markR": 0.0117,
+        "markPrice": 69.41
       }
     ],
     "trades": [
@@ -14393,7 +14389,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795334532113,
+  "generatedAt": 1795335378089,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -14461,13 +14457,13 @@
       "avgR": 0.647,
       "totalR": 14.2336,
       "open": 3,
-      "equityMarked": 572.53628,
-      "returnPct": 14.5073
+      "equityMarked": 571.47132,
+      "returnPct": 14.2943
     }
   },
   "lastRun": {
-    "at": 1795334532113,
-    "status": "ok",
+    "at": 1795335378089,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795334400000
   }
