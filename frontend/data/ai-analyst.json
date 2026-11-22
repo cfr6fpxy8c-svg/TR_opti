@@ -6356,13 +6356,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Tensions macro avec un 10Y US \u00e0 5,15% et DXY en hausse suite \u00e0 un CPI chaud, renfor\u00e7ant la probabilit\u00e9 d'une hausse de la Fed en d\u00e9c. (88%). De plus, le d\u00e9part du CEO de Nvidia secoue la tech. Mais la purge crypto de 1,2Mds$ de liquidations de longs montre des signes d'\u00e9puisement des vendeurs.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 55,
-          "reason": "Chute de 14% sur 7 jours men\u00e9e par des sorties d'ETF massives (~1,4B$ en 6j) et les craintes de taux de la Fed. N\u00e9anmoins, la derni\u00e8re bougie 4H montre une m\u00e8che de capitulation extr\u00eame (rejet de 61,9k$ sur relVolume=2,77) et des liquidations de longs record (>1,2Mds$ sur le week-end). Cela sugg\u00e8re un \u00e9puisement temporaire de la pression vendeuse propice \u00e0 un rebond technique.",
-          "risks": "Poursuite des sorties d'ETF spot ce lundi; panique prolong\u00e9e li\u00e9e au piratage de Binance; persistance des anticipations de hausse des taux de la Fed.",
+          "reason": "",
+          "risks": "",
           "price0": 64798.4,
           "breakout": null,
           "trade": {
@@ -6383,8 +6383,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 55,
-          "reason": "Ethereum recule de 18% sur 7 jours sous le coup des ventes de la Fondation (7500 ETH) et d'ETF n\u00e9gatifs. Cependant, le plongeon sous 1750$ a d\u00e9clench\u00e9 une cascade de liquidations (264M$) suivis d'un rejet violent \u00e0 1710$ (bougie marteau 4H). Le RSI survendu \u00e0 29,8 et le volume de capitulation indiquent une forte probabilit\u00e9 de rebond \u00e0 court terme.",
-          "risks": "Ventes additionnelles de la Fondation Ethereum; absence de reprise des flux d'ETF spot lundi; faiblesse persistante du gaz et de l'activit\u00e9 on-chain.",
+          "reason": "",
+          "risks": "",
           "price0": 1818.21,
           "breakout": null,
           "trade": {
@@ -6405,8 +6405,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 53,
-          "reason": "XRP recule de 16,7% sur la semaine mais montre une meilleure r\u00e9silience relative (RSI \u00e0 37,7). Le rejet vigoureux des 0,89$ sur la derni\u00e8re bougie 4H s'inscrit dans le mouvement de capitulation g\u00e9n\u00e9ral. La r\u00e9initialisation planifi\u00e9e du Testnet le 25 novembre est un non-\u00e9v\u00e9nement pour le prix, qui reste d\u00e9pendant de la stabilisation du BTC.",
-          "risks": "Instabilit\u00e9 globale du march\u00e9 crypto; retour sous le niveau psychologique de 0,90$ en cas de rechute du BTC.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9667,
           "breakout": null,
           "trade": {
@@ -6422,8 +6422,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 55,
-          "reason": "BNB souffre des contrecoups du hack de 6Mds$ subi par Binance fin octobre, bien que le gel de 2,7Mds$ par le DOJ apporte du r\u00e9confort. Le rejet des 566$ combin\u00e9 \u00e0 l'annonce d'une r\u00e9ouverture compl\u00e8te des retraits d'ici le week-end prochain (ainsi que la nomination du nouveau CFO Justin Yek) devrait rassurer les investisseurs et favoriser un rebond.",
-          "risks": "Nouvelles failles ou retards dans la r\u00e9ouverture des retraits de Binance; pression r\u00e9glementaire accrue suite au piratage.",
+          "reason": "",
+          "risks": "",
           "price0": 594.48,
           "breakout": null,
           "trade": {
@@ -6444,8 +6444,8 @@
         "SOLUSDT": {
           "direction": "NEUTRAL",
           "probUp": 55,
-          "reason": "SOL accuse une lourde baisse de 20% sur la semaine, amplifi\u00e9e par la chute de 11% de l'open interest et un transfert de 130M$ de SOL de Forward Ind. vers Coinbase. Pourtant, la conf\u00e9rence majeure Breakpoint 2026 \u00e0 Londres s'ouvre aujourd'hui (15-17 nov). Le rejet puissant des 67,35$ coupl\u00e9 \u00e0 ce catalyseur historique favorise un rebond d'achat sur rumeur.",
-          "risks": "Ventes r\u00e9elles suite au transfert de Forward Industries; absence d'annonces d'envergure durant la conf\u00e9rence Breakpoint.",
+          "reason": "",
+          "risks": "",
           "price0": 71.32,
           "breakout": null,
           "trade": {
@@ -6464,16 +6464,7 @@
           }
         }
       },
-      "queries": [
-        "\"bitcoin\" OR \"crypto\" market news November 14 2026 OR November 15 2026",
-        "US CPI jobs Federal Reserve November 2026",
-        "BTC ETF flows November 2026",
-        "S&P 500 dollar index November 13 2026",
-        "\"liquidations\" crypto November 14 2026 OR November 15 2026",
-        "\"bitcoin\" bottom November 15 2026",
-        "\"solana\" price November 14 2026 OR November 15 2026",
-        "\"ethereum\" price November 14 2026 OR November 15 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -6488,7 +6479,8 @@
         "promptTokenCount": 3901,
         "candidatesTokenCount": 1689,
         "totalTokenCount": 12959
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794729600000,
@@ -11886,9 +11878,9 @@
   ],
   "attempts": {
     "1795305600000": 1,
-    "1795320000000": 1
+    "1795320000000": 2
   },
-  "generatedAt": 1795320096055,
+  "generatedAt": 1795320967994,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -11961,7 +11953,7 @@
     }
   },
   "lastRun": {
-    "at": 1795320096055,
+    "at": 1795320967994,
     "status": "error",
     "error": "unparseable JSON: Expecting ',' delimiter",
     "barClose": 1795320000000
