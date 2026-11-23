@@ -10694,7 +10694,11 @@
             "decision": "NO_GO",
             "probTarget": 35,
             "reason": "Bien que le support soit bris\u00e9 \u00e0 court terme, le taux de financement extr\u00eamement n\u00e9gatif (-0,01%/8h) indique une surcharge de positions courtes. Le risque d'un retournement brutal est trop \u00e9lev\u00e9.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": -1.0277,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -11866,6 +11870,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas d'opportunit\u00e9 claire. La tendance est fortement baissi\u00e8re mais la survente technique extr\u00eame suite \u00e0 la purge \u00e0 55,1k$ r\u00e9duit le ratio risque/rendement pour initier de nouveaux shorts."
+          },
+          "outcome": {
+            "retPct": 3.865,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -11879,6 +11887,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La tendance de fond est baissi\u00e8re mais le niveau de survente et la proximit\u00e9 de supports majeurs rendent la prise de position risqu\u00e9e sans confirmation."
+          },
+          "outcome": {
+            "retPct": 3.373,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -11892,6 +11904,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "L'actualit\u00e9 russe apporte un soutien sp\u00e9culatif mais insuffisant face au pessimisme ambiant et \u00e0 la tendance technique baissi\u00e8re."
+          },
+          "outcome": {
+            "retPct": 2.349,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -11905,6 +11921,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Aucun catalyseur propre \u00e0 BNB. La baisse de l'int\u00e9r\u00eat sp\u00e9culatif et la tendance globale baissi\u00e8re incitent \u00e0 l'observation passive."
+          },
+          "outcome": {
+            "retPct": 3.048,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -11918,6 +11938,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La tendance globale de l'\u00e9cosyst\u00e8me Solana reste corr\u00e9l\u00e9e au sentiment macro et crypto tr\u00e8s d\u00e9grad\u00e9, ce qui n'offre aucun point d'entr\u00e9e attractif."
+          },
+          "outcome": {
+            "retPct": 4.136,
+            "hit": null
           }
         }
       },
@@ -12459,22 +12483,123 @@
         "candidatesTokenCount": 1353,
         "totalTokenCount": 10681
       }
+    },
+    {
+      "barClose": 1795420800000,
+      "requestedAt": 1795420901768,
+      "analyzedAt": 1795420922669,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le dollar fort (DXY \u00e0 103,87) et les craintes de taux \u00e9lev\u00e9s p\u00e8sent sur le risque. Cette semaine s'annonce d'abord calme puis volatile : PMI ce lundi, suivis de l'inflation PCE US et du PIB Q3 mercredi, avant Thanksgiving jeudi (march\u00e9s US ferm\u00e9s, liquidit\u00e9 r\u00e9duite).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Apr\u00e8s une purge \u00e0 55,2k$ ce week-end (2,5 Md$ de liquidations), le BTC a rebondi au-dessus de 61k$. N\u00e9anmoins, la tendance de fond reste baissi\u00e8re sous l'EMA50. La pression s'accentue avec la pire semaine de d\u00e9collecte sur les ETF spot depuis juin (-1,79 Md$, dont un record de sorties de -544 M$ sur IBIT vendredi).",
+          "risks": "Un retour sous le support des 60k$ r\u00e9activerait la panique vers les 55k$. Un d\u00e9passement des 62,4k$ soulagerait temporairement les acheteurs.",
+          "price0": 61431.1,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Rebond technique fragile apr\u00e8s une purge s\u00e9v\u00e8re. Les sorties massives des ETF et la faible liquidit\u00e9 attendue pour Thanksgiving incitent \u00e0 la prudence avant le PCE de mercredi."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "ETH a touch\u00e9 un plus bas multimensuel \u00e0 1550$ ce week-end avant de revenir au niveau de son EMA20 (1721$). Malgr\u00e9 ce rebond, la tendance reste tr\u00e8s lourde (-41% depuis le d\u00e9but de l'ann\u00e9e) et les ETF spot ETH continuent de subir des retraits pour la 6\u00e8me s\u00e9ance cons\u00e9cutive (-97 M$ le 20 novembre).",
+          "risks": "Poursuite de la d\u00e9collecte institutionnelle et risque de retour vers la zone de support critique des 1500-1550$.",
+          "price0": 1721.7,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le rebond manque de soutien institutionnel et le march\u00e9 reste vuln\u00e9rable. Mieux vaut rester \u00e0 l'\u00e9cart en attendant une stabilisation plus convaincante."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "XRP a connu son pire mois de novembre historique (-25%), plomb\u00e9 par des sorties record sur ses ETF spot (30 M$ de d\u00e9collecte cumul\u00e9e). La structure technique reste d\u00e9grad\u00e9e sous l'EMA50. De plus, la lib\u00e9ration mensuelle programm\u00e9e de 1 milliard de tokens XRP le 1er d\u00e9cembre p\u00e8se sur la confiance.",
+          "risks": "Un rebond de soulagement men\u00e9 par le BTC au-del\u00e0 de 62 000$ pourrait d\u00e9clencher des rachats de shorts.",
+          "price0": 0.9366,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "Le jeton BNB a rebondi \u00e0 557$ apr\u00e8s avoir fr\u00f4l\u00e9 les 500$ ce week-end. L'impact psychologique du hack de 6,3 Md$ sur Binance fin octobre continue de peser. M\u00eame si Binance a couvert la quasi-totalit\u00e9 des pertes avec ses fonds propres, l'incertitude et la vague de retraits des clients freinent la reprise.",
+          "risks": "Une nouvelle d\u00e9gradation r\u00e9glementaire ou un regain de retraits massifs de la plateforme Binance.",
+          "price0": 557.18,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le risque de r\u00e9putation et de liquidit\u00e9 li\u00e9 au hack de Binance reste trop \u00e9lev\u00e9 pour initier de nouvelles positions d'achat sur BNB."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 55,
+          "reason": "Solana montre une belle force relative par rapport au reste du march\u00e9. Contrairement au BTC et \u00e0 l'ETH, les ETF SOL spot US ont enregistr\u00e9 leur premi\u00e8re semaine d'entr\u00e9es positives en 7 semaines (+4,38 M$, port\u00e9s par BSOL), cassant une spirale de vente. Le support cl\u00e9 \u00e0 69$ a \u00e9t\u00e9 fermement d\u00e9fendu.",
+          "risks": "Une nouvelle chute globale du march\u00e9 crypto ou une reprise des d\u00e9collectes sur les ETF Solana.",
+          "price0": 72.01,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position acheteuse d\u00e9j\u00e0 ouverte sur cet actif."
+          }
+        }
+      },
+      "queries": [
+        "bitcoin price news november 2026",
+        "crypto market news november 23 2026",
+        "macro economic calendar november 23 2026",
+        "fomc fed speakers schedule november 23 2026",
+        "bnb binance hack details 2026",
+        "ethereum eth news november 23 2026",
+        "solana sol news november 23 2026",
+        "xrp ripple news november 23 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4017,
+        "candidatesTokenCount": 1190,
+        "totalTokenCount": 9985
+      }
     }
   ],
   "attempts": {
-    "1795392000000": 1,
-    "1795406400000": 1
+    "1795406400000": 1,
+    "1795420800000": 1
   },
-  "generatedAt": 1795419970356,
+  "generatedAt": 1795420901768,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 103,
-    "totalTokens": 1166691,
+    "analyses": 104,
+    "totalTokens": 1176676,
     "direction": {
-      "scored": 485,
+      "scored": 490,
       "called": 256,
-      "neutral": 229,
+      "neutral": 234,
       "hits": 169,
       "hitRate": 0.6602,
       "brier": 0.2344,
@@ -12490,10 +12615,10 @@
       },
       "taken_NO_GO": {
         "count": 2,
-        "closed": 0,
+        "closed": 1,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.0277,
+        "totalR": -1.0277
       },
       "rejected_GO": {
         "count": 6,
@@ -12520,10 +12645,10 @@
       },
       "NO_GO": {
         "count": 2,
-        "closed": 0,
+        "closed": 1,
         "wins": 0,
-        "avgR": null,
-        "totalR": 0
+        "avgR": -1.0277,
+        "totalR": -1.0277
       }
     },
     "portfolio": {
@@ -12533,15 +12658,15 @@
       "avgR": 0.4593,
       "totalR": 11.0232,
       "open": 2,
-      "equityMarked": 555.76599,
-      "returnPct": 11.1532
+      "equityMarked": 555.638098,
+      "returnPct": 11.1276
     }
   },
   "lastRun": {
-    "at": 1795419970356,
-    "status": "up-to-date",
+    "at": 1795420901768,
+    "status": "ok",
     "error": null,
-    "barClose": 1795406400000
+    "barClose": 1795420800000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -12560,9 +12685,9 @@
         "conviction": 65,
         "reason": "Faiblesse fondamentale marqu\u00e9e : effondrement des adresses actives (-60%), sorties d'ETF et d\u00e9verrouillage d'escrow massif le 1er d\u00e9cembre. Vente \u00e0 d'\u00e9couvert sous la r\u00e9sistance des EMA20/EMA50.",
         "exitBy": 1795579200000,
-        "lastBar": 1795406399999,
-        "markR": -0.2183,
-        "markPrice": 0.9371
+        "lastBar": 1795406400000,
+        "markR": -0.2533,
+        "markPrice": 0.9379
       },
       {
         "id": "SOLUSDT-1795392000000",
@@ -12577,9 +12702,9 @@
         "conviction": 60,
         "reason": "Force relative et flux d'actualit\u00e9s tr\u00e8s positifs (transition v1.0, rachat de CoinGecko, tokenisation d'Anthropic r\u00e9ussie et retour d'inflows sur les ETF). SOL montre des signes d'accumulation.",
         "exitBy": 1795579200000,
-        "lastBar": 1795406399999,
-        "markR": 0.1667,
-        "markPrice": 72.03
+        "lastBar": 1795406400000,
+        "markR": 0.1787,
+        "markPrice": 72.08
       }
     ],
     "trades": [
