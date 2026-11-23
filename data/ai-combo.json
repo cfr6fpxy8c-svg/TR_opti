@@ -14855,7 +14855,11 @@
             "decision": "NO_GO",
             "probTarget": 38,
             "reason": "Dans ce climat de forte aversion au risque et de dollar fort, les cassures haussi\u00e8res 1H sur un actif \u00e0 b\u00eata \u00e9lev\u00e9 sont tr\u00e8s sujettes aux fakeouts. De plus, la cible de 77.5$ est d\u00e9j\u00e0 tr\u00e8s proche du niveau de cassure.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0609,
+              "exitReason": "STOP"
+            }
           }
         }
       },
@@ -14957,7 +14961,8 @@
             "stop": 59913.0,
             "target": 68500.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": {
             "side": "LONG",
@@ -15024,7 +15029,8 @@
             "stop": 71.5,
             "target": 84.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": {
             "side": "LONG",
@@ -15065,14 +15071,48 @@
     }
   ],
   "attempts": {
-    "1795435200000": 1,
     "1795442400000": 1,
     "1795449600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 570.628861,
-    "positions": [],
+    "positions": [
+      {
+        "id": "BTCUSDT-1795449600000",
+        "symbol": "BTCUSDT",
+        "side": "LONG",
+        "entryTime": 1795453200000,
+        "entryPrice": 62216.2,
+        "stop": 59913.0,
+        "target": 68500.0,
+        "risk": 2303.199999999997,
+        "stake": 5.706289,
+        "conviction": 60,
+        "reason": "Achat sur cassure haussi\u00e8re H4 pour viser un retour vers 68,5k$. Stop plac\u00e9 sous le support des 60k$, soutenu par la dynamique globale de court terme.",
+        "exitBy": 1795626000000,
+        "lastBar": 1795453199999,
+        "markR": -0.0451,
+        "markPrice": 62112.3
+      },
+      {
+        "id": "SOLUSDT-1795449600000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1795453200000,
+        "entryPrice": 74.56,
+        "stop": 71.5,
+        "target": 84.0,
+        "risk": 3.0600000000000023,
+        "stake": 5.706289,
+        "conviction": 65,
+        "reason": "Entr\u00e9e longue capitalisant sur le breakout H4 et les solides fondamentaux de court terme. Le stop est log\u00e9 sous l'EMA20 et l'ancien niveau de cassure.",
+        "exitBy": 1795626000000,
+        "lastBar": 1795453199999,
+        "markR": -0.0261,
+        "markPrice": 74.48
+      }
+    ],
     "trades": [
       {
         "id": "ETHUSDT-1793880000000",
@@ -15545,7 +15585,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795452381870,
+  "generatedAt": 1795453318324,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -15584,10 +15624,10 @@
       },
       "rejected_NO_GO": {
         "count": 13,
-        "closed": 12,
+        "closed": 13,
         "wins": 5,
-        "avgR": 2.3113,
-        "totalR": 27.7355
+        "avgR": 2.0519,
+        "totalR": 26.6746
       }
     },
     "byDecision": {
@@ -15600,10 +15640,10 @@
       },
       "NO_GO": {
         "count": 16,
-        "closed": 15,
+        "closed": 16,
         "wins": 8,
-        "avgR": 2.6311,
-        "totalR": 39.4663
+        "avgR": 2.4003,
+        "totalR": 38.4054
       }
     },
     "portfolio": {
@@ -15612,15 +15652,15 @@
       "winRate": 0.6538,
       "avgR": 0.528,
       "totalR": 13.7269,
-      "open": 0,
-      "equityMarked": 570.628861,
-      "returnPct": 14.1258
+      "open": 2,
+      "equityMarked": 570.222573,
+      "returnPct": 14.0445
     }
   },
   "lastRun": {
-    "at": 1795452381870,
-    "status": "up-to-date",
+    "at": 1795453318324,
+    "status": "waiting",
     "error": null,
-    "barClose": 1795449600000
+    "barClose": 1795453200000
   }
 }
