@@ -2891,7 +2891,11 @@
             "decision": "GO",
             "probTarget": 60,
             "reason": "La rupture du support \u00e0 2205 $ est nette et valid\u00e9e par un volume tr\u00e8s sup\u00e9rieur \u00e0 la moyenne. ETH sous-performe continuellement.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": 4.8192,
+              "exitReason": "TRAIL"
+            }
           },
           "trade": {
             "action": "SHORT",
@@ -10639,7 +10643,11 @@
             "decision": "NO_GO",
             "probTarget": 38,
             "reason": "La cl\u00f4ture \u00e0 0,91$ place le prix juste au-dessus de la zone de support critique de 0,89$-0,90$. Le potentiel de baisse imm\u00e9diat vers la cible du breakout est bloqu\u00e9 par cette demande historique.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": -1.029,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -12099,6 +12107,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "L'absence de tendance claire apr\u00e8s ce violent squeeze de week-end invite \u00e0 la prudence. Le ratio risque/rendement est m\u00e9diocre."
+          },
+          "outcome": {
+            "retPct": 3.292,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -12112,6 +12124,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Volatilit\u00e9 \u00e9lev\u00e9e et forte corr\u00e9lation n\u00e9gative avec l'environnement d'aversion au risque global. Pas de signal de retournement propre."
+          },
+          "outcome": {
+            "retPct": 3.213,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -12125,6 +12141,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "L'attraction temporaire d'autres actifs hors-crypto (comme l'IPO Anthropic) limite le potentiel de hausse imm\u00e9diat de l'XRP."
+          },
+          "outcome": {
+            "retPct": 7.324,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -12138,6 +12158,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Bien que le support \u00e0 500$ ait tenu, la r\u00e9sistance \u00e0 580$ est proche et le climat de panique g\u00e9n\u00e9rale n'aide pas \u00e0 l'initiation d'un trade."
+          },
+          "outcome": {
+            "retPct": 2.272,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -12151,6 +12175,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Malgr\u00e9 des fondamentaux solides et des flux d'ETF positifs, la forte corr\u00e9lation avec le BTC dans un march\u00e9 en Extreme Fear rend l'achat pr\u00e9matur\u00e9."
+          },
+          "outcome": {
+            "retPct": 7.569,
+            "hit": null
           }
         }
       },
@@ -12614,7 +12642,8 @@
             "stop": 63900.0,
             "target": 55500.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         },
         "ETHUSDT": {
@@ -12700,38 +12729,38 @@
     }
   ],
   "attempts": {
-    "1795420800000": 1,
-    "1795435200000": 1
+    "1795435200000": 1,
+    "1795449600000": 1
   },
-  "generatedAt": 1795448753709,
+  "generatedAt": 1795449701517,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 105,
     "totalTokens": 1189543,
     "direction": {
-      "scored": 495,
+      "scored": 500,
       "called": 256,
-      "neutral": 239,
+      "neutral": 244,
       "hits": 169,
       "hitRate": 0.6602,
-      "brier": 0.2346,
+      "brier": 0.235,
       "brierRandom": 0.25
     },
     "breakouts": {
       "taken_GO": {
         "count": 4,
-        "closed": 3,
-        "wins": 3,
-        "avgR": 4.2299,
-        "totalR": 12.6898
+        "closed": 4,
+        "wins": 4,
+        "avgR": 4.3773,
+        "totalR": 17.509
       },
       "taken_NO_GO": {
         "count": 2,
-        "closed": 1,
+        "closed": 2,
         "wins": 0,
-        "avgR": -1.0277,
-        "totalR": -1.0277
+        "avgR": -1.0284,
+        "totalR": -2.0567
       },
       "rejected_GO": {
         "count": 6,
@@ -12751,73 +12780,56 @@
     "byDecision": {
       "GO": {
         "count": 10,
-        "closed": 9,
-        "wins": 7,
-        "avgR": 3.1897,
-        "totalR": 28.7072
+        "closed": 10,
+        "wins": 8,
+        "avgR": 3.3526,
+        "totalR": 33.5264
       },
       "NO_GO": {
         "count": 2,
-        "closed": 1,
+        "closed": 2,
         "wins": 0,
-        "avgR": -1.0277,
-        "totalR": -1.0277
+        "avgR": -1.0284,
+        "totalR": -2.0567
       }
     },
     "portfolio": {
-      "trades": 24,
-      "wins": 18,
-      "winRate": 0.75,
-      "avgR": 0.4593,
-      "totalR": 11.0232,
-      "open": 2,
-      "equityMarked": 546.750704,
-      "returnPct": 9.3501
+      "trades": 26,
+      "wins": 19,
+      "winRate": 0.7308,
+      "avgR": 0.4255,
+      "totalR": 11.0619,
+      "open": 1,
+      "equityMarked": 556.832169,
+      "returnPct": 11.3664
     }
   },
   "lastRun": {
-    "at": 1795448753709,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1795435200000
+    "at": 1795449701517,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1795449600000
   },
   "portfolio": {
     "startCapital": 500.0,
-    "equity": 556.052913,
+    "equity": 556.268113,
     "positions": [
       {
-        "id": "XRPUSDT-1795392000000",
-        "symbol": "XRPUSDT",
+        "id": "BTCUSDT-1795435200000",
+        "symbol": "BTCUSDT",
         "side": "SHORT",
-        "entryTime": 1795406400000,
-        "entryPrice": 0.9321,
-        "stop": 0.955,
-        "target": 0.862,
-        "risk": 0.02289999999999992,
-        "stake": 5.560529,
+        "entryTime": 1795449600000,
+        "entryPrice": 62867.1,
+        "stop": 63900.0,
+        "target": 55500.0,
+        "risk": 1032.9000000000015,
+        "stake": 5.562681,
         "conviction": 65,
-        "reason": "Faiblesse fondamentale marqu\u00e9e : effondrement des adresses actives (-60%), sorties d'ETF et d\u00e9verrouillage d'escrow massif le 1er d\u00e9cembre. Vente \u00e0 d'\u00e9couvert sous la r\u00e9sistance des EMA20/EMA50.",
-        "exitBy": 1795579200000,
-        "lastBar": 1795420800000,
-        "markR": -2.6463,
-        "markPrice": 0.9927
-      },
-      {
-        "id": "SOLUSDT-1795392000000",
-        "symbol": "SOLUSDT",
-        "side": "LONG",
-        "entryTime": 1795406400000,
-        "entryPrice": 71.34,
-        "stop": 67.2,
-        "target": 76.0,
-        "risk": 4.140000000000001,
-        "stake": 5.560529,
-        "conviction": 60,
-        "reason": "Force relative et flux d'actualit\u00e9s tr\u00e8s positifs (transition v1.0, rachat de CoinGecko, tokenisation d'Anthropic r\u00e9ussie et retour d'inflows sur les ETF). SOL montre des signes d'accumulation.",
-        "exitBy": 1795579200000,
-        "lastBar": 1795420800000,
-        "markR": 0.9734,
-        "markPrice": 75.37
+        "reason": "Poursuite de la tendance baissi\u00e8re de fond. Le rebond du week-end manque de volume et de soutien institutionnel. Le stop est plac\u00e9 au-dessus des EMA50 4H et de la r\u00e9sistance psychologique locale de 63.5k$.",
+        "exitBy": 1795622400000,
+        "lastBar": 1795449599999,
+        "markR": 0.1014,
+        "markPrice": 62762.4
       }
     ],
     "trades": [
@@ -13252,6 +13264,42 @@
         "rNet": -1.0422,
         "pnl": -5.875369,
         "equityAfter": 556.052913
+      },
+      {
+        "id": "XRPUSDT-1795392000000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1795406400000,
+        "entryPrice": 0.9321,
+        "stop": 0.955,
+        "target": 0.862,
+        "stake": 5.560529,
+        "conviction": 65,
+        "reason": "Faiblesse fondamentale marqu\u00e9e : effondrement des adresses actives (-60%), sorties d'ETF et d\u00e9verrouillage d'escrow massif le 1er d\u00e9cembre. Vente \u00e0 d'\u00e9couvert sous la r\u00e9sistance des EMA20/EMA50.",
+        "exitTime": 1795449600000,
+        "exitPrice": 0.955,
+        "exitReason": "STOP",
+        "rNet": -1.0611,
+        "pnl": -5.900025,
+        "equityAfter": 550.152888
+      },
+      {
+        "id": "SOLUSDT-1795392000000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1795406400000,
+        "entryPrice": 71.34,
+        "stop": 67.2,
+        "target": 76.0,
+        "stake": 5.560529,
+        "conviction": 60,
+        "reason": "Force relative et flux d'actualit\u00e9s tr\u00e8s positifs (transition v1.0, rachat de CoinGecko, tokenisation d'Anthropic r\u00e9ussie et retour d'inflows sur les ETF). SOL montre des signes d'accumulation.",
+        "exitTime": 1795449600000,
+        "exitPrice": 76.0,
+        "exitReason": "TARGET",
+        "rNet": 1.0998,
+        "pnl": 6.115225,
+        "equityAfter": 556.268113
       }
     ],
     "entryAfterAnalysisSince": 1794345059480
