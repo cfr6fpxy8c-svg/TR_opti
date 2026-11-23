@@ -12220,6 +12220,10 @@
             "action": "NONE",
             "conviction": 60,
             "reason": "Pas d'avantage clair. Bien que la purge \u00e0 55k$ offre un rebond technique, le march\u00e9 reste structurellement baissier sous l'EMA200 4H et sans flux acheteurs solides (ETF toujours en cours de rachat). Mieux vaut rester \u00e0 l'\u00e9cart en attendant une stabilisation ou un vrai breakout."
+          },
+          "outcome": {
+            "retPct": 0.863,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -12233,6 +12237,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le rebond actuel manque de conviction et de volumes acheteurs. ETH fait face \u00e0 des vents contraires structurels (surplomb du hack de Binance et sorties des ETF). Le ratio risque/rendement pour un long ou un short n'est pas optimal \u00e0 ce niveau interm\u00e9diaire."
+          },
+          "outcome": {
+            "retPct": 0.942,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -12246,6 +12254,10 @@
             "action": "NONE",
             "conviction": 55,
             "reason": "Le rejet sous 1,00$ a cass\u00e9 la structure haussi\u00e8re de moyen terme. Avec l'approche du d\u00e9blocage d'un milliard de XRP le 1er d\u00e9cembre et les sorties des ETF, ouvrir un long est trop risqu\u00e9, et shorter apr\u00e8s une telle baisse manque de marge de s\u00e9curit\u00e9."
+          },
+          "outcome": {
+            "retPct": 1.572,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -12259,6 +12271,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "BNB montre une r\u00e9silience relative gr\u00e2ce \u00e0 la r\u00e9action rapide de Binance face au hack, mais la tendance globale reste baissi\u00e8re sous l'EMA50. Sans catalyseur haussier propre et dans un march\u00e9 crypto f\u00e9brile, l'abstention est de rigueur."
+          },
+          "outcome": {
+            "retPct": 0.575,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -12272,6 +12288,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "SOL montre un comportement de beta \u00e9lev\u00e9 et pourrait surperformer en cas de vrai rallye, mais le march\u00e9 reste sous la menace d'une nouvelle jambe de baisse si les ventes d'ETF BTC reprennent lundi. Aucun signal de trading robuste pour le moment."
+          },
+          "outcome": {
+            "retPct": 3.941,
+            "hit": null
           }
         }
       },
@@ -12838,22 +12858,22 @@
     }
   ],
   "attempts": {
-    "1795435200000": 1,
-    "1795449600000": 3
+    "1795449600000": 3,
+    "1795464000000": 1
   },
-  "generatedAt": 1795463167817,
+  "generatedAt": 1795464099038,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 106,
     "totalTokens": 1201838,
     "direction": {
-      "scored": 500,
+      "scored": 505,
       "called": 256,
-      "neutral": 244,
+      "neutral": 249,
       "hits": 169,
       "hitRate": 0.6602,
-      "brier": 0.235,
+      "brier": 0.2351,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -12909,15 +12929,15 @@
       "avgR": 0.4255,
       "totalR": 11.0619,
       "open": 1,
-      "equityMarked": 566.27927,
-      "returnPct": 13.2559
+      "equityMarked": 564.608797,
+      "returnPct": 12.9218
     }
   },
   "lastRun": {
-    "at": 1795463167817,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1795449600000
+    "at": 1795464099038,
+    "status": "error",
+    "error": "unparseable JSON: Expecting ',' delimiter",
+    "barClose": 1795464000000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -12936,9 +12956,9 @@
         "conviction": 65,
         "reason": "Poursuite de la tendance baissi\u00e8re de fond. Le rebond du week-end manque de volume et de soutien institutionnel. Le stop est plac\u00e9 au-dessus des EMA50 4H et de la r\u00e9sistance psychologique locale de 63.5k$.",
         "exitBy": 1795622400000,
-        "lastBar": 1795449599999,
-        "markR": 1.7997,
-        "markPrice": 61008.2
+        "lastBar": 1795449600000,
+        "markR": 1.4994,
+        "markPrice": 61318.4
       }
     ],
     "trades": [
