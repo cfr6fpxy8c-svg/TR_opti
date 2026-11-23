@@ -7407,13 +7407,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Inflation US d'octobre sup\u00e9rieure aux attentes (CPI +0,4%, PPI \u00e9lev\u00e9) renfor\u00e7ant la perspective de taux de la Fed \u00e9lev\u00e9s en d\u00e9cembre. Les rendements US \u00e0 10 ans grimpent \u00e0 5,15%. Wall Street r\u00e9siste mais Nvidia (r\u00e9sultats le 18/11) et les minutes du FOMC maintiennent la prudence.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 50,
-          "reason": "Correction majeure apr\u00e8s l'inflation US chaude et d'importantes sorties d'ETF (-1,07 Md$ en 5 jours). Le krach du week-end a liquid\u00e9 2 Md$ de positions longues, entra\u00eenant une capitulation temporaire (Fear & Greed \u00e0 10). Un rebond technique se dessine mais reste fragile sous l'EMA20 et sans retour des flux acheteurs.",
-          "risks": "R\u00e9sistance technique majeure \u00e0 67k-70k$; nouvelles ventes si les sorties d'ETF persistent; discours de la Fed (Barr, Warsh) ce lundi.",
+          "reason": "",
+          "risks": "",
           "price0": 64440.8,
           "breakout": null,
           "trade": {
@@ -7429,8 +7429,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 52,
-          "reason": "Ethereum a lourdement chut\u00e9 \u00e0 1713$ ce week-end (plus bas depuis juillet) sous la pression de sorties massives d'ETF (-399 M$ la semaine pass\u00e9e, 7e semaine de baisse). Une timide reprise s'amorce \u00e0 1819$ gr\u00e2ce \u00e0 des achats \u00e0 bon compte, mais la faiblesse de la DeFi et l'EMA20 font obstacle.",
-          "risks": "Poursuite de la d\u00e9collecte sur les ETF spot; baisse de l'activit\u00e9 on-chain; perte du support psychologique majeur des 1800$.",
+          "reason": "",
+          "risks": "",
           "price0": 1819.29,
           "breakout": null,
           "trade": {
@@ -7446,8 +7446,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 45,
-          "reason": "XRP subit une double pression : la distribution par le hacker de Binance de millions de jetons vol\u00e9s et des sorties sur les ETF spot (-10,4 M$). Le taux de financement reste anormalement \u00e9lev\u00e9 (longs encombr\u00e9s), sugg\u00e9rant qu'un nettoyage des leviers acheteurs est encore n\u00e9cessaire sous 1,00$.",
-          "risks": "Poursuite des ventes du hacker Binance; volatilit\u00e9 accrue li\u00e9e \u00e0 la r\u00e9gulation US; rupture du support technique cl\u00e9 \u00e0 0,90$.",
+          "reason": "",
+          "risks": "",
           "price0": 0.952,
           "breakout": null,
           "trade": {
@@ -7463,8 +7463,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 50,
-          "reason": "BNB a chut\u00e9 vers 566$ avant de se stabiliser autour de 587$. Le jeton souffre de la faiblesse g\u00e9n\u00e9rale des altcoins et de l'absence de narratif fort \u00e0 court terme. Les volumes restent moyens et le sentiment reste domin\u00e9 par la trajectoire incertaine de Bitcoin et de la r\u00e9gulation.",
-          "risks": "Rupture du support des 566$; sentiment n\u00e9gatif persistant sur les altcoins; pression r\u00e9glementaire rampante sur Binance.",
+          "reason": "",
+          "risks": "",
           "price0": 587.26,
           "breakout": null,
           "trade": {
@@ -7480,8 +7480,8 @@
         "SOLUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "Solana a sous-perform\u00e9 le march\u00e9 avec une baisse de -18,5% sur 7 jours, testant 67,35$ avant de remonter \u00e0 70,74$. La d\u00e9gradation des conditions de liquidit\u00e9 globale et la rotation vers le stable ont p\u00e9nalis\u00e9 SOL, bien que la demande de base sur l'\u00e9cosyst\u00e8me amortisse l\u00e9g\u00e8rement la baisse.",
-          "risks": "Pression baissi\u00e8re accrue si le BTC \u00e9choue \u00e0 tenir 64k$; ventes massives d'altcoins par capitulation; rupture des 67$.",
+          "reason": "",
+          "risks": "",
           "price0": 70.74,
           "breakout": null,
           "trade": {
@@ -7495,14 +7495,7 @@
           }
         }
       },
-      "queries": [
-        "Federal Reserve FOMC meeting schedule 2026",
-        "CPI release calendar November 2026",
-        "\"bitcoin\" \"november 2026\" OR \"nov 2026\"",
-        "\"crypto\" market news \"november 15\" OR \"november 16\" 2026",
-        "bitcoin price drop November 16 2026 OR November 15 2026",
-        "\"crypto\" funding rate november 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -7517,7 +7510,8 @@
         "promptTokenCount": 4164,
         "candidatesTokenCount": 1496,
         "totalTokenCount": 12550
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794859200000,
@@ -12730,9 +12724,9 @@
   ],
   "attempts": {
     "1795435200000": 1,
-    "1795449600000": 1
+    "1795449600000": 2
   },
-  "generatedAt": 1795449701517,
+  "generatedAt": 1795450569654,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -12800,12 +12794,12 @@
       "avgR": 0.4255,
       "totalR": 11.0619,
       "open": 1,
-      "equityMarked": 556.832169,
-      "returnPct": 11.3664
+      "equityMarked": 557.381762,
+      "returnPct": 11.4764
     }
   },
   "lastRun": {
-    "at": 1795449701517,
+    "at": 1795450569654,
     "status": "error",
     "error": "unparseable JSON: Expecting ',' delimiter",
     "barClose": 1795449600000
@@ -12828,8 +12822,8 @@
         "reason": "Poursuite de la tendance baissi\u00e8re de fond. Le rebond du week-end manque de volume et de soutien institutionnel. Le stop est plac\u00e9 au-dessus des EMA50 4H et de la r\u00e9sistance psychologique locale de 63.5k$.",
         "exitBy": 1795622400000,
         "lastBar": 1795449599999,
-        "markR": 0.1014,
-        "markPrice": 62762.4
+        "markR": 0.2002,
+        "markPrice": 62660.3
       }
     ],
     "trades": [
