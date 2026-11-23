@@ -7520,13 +7520,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Inflation US d'octobre sup\u00e9rieure aux attentes (+3,7% YoY) alimentant les craintes de resserrement de la Fed. Rendements US \u00e0 5,15%. Wall Street recule avec Nvidia (d\u00e9mission du CEO). Crypto plomb\u00e9e par l'effet de levier, des sorties d'ETF majeures et l'IPO g\u00e9ante d'Anthropic (retrait de liquidit\u00e9).",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "Rebond technique fragile apr\u00e8s la purge du week-end sous 62k$ (2 Md$ de liquidations). Le sentiment est \u00e0 la peur extr\u00eame (index \u00e0 10) et les flux d'ETF restent n\u00e9gatifs (7 jours de sorties pour 1,9 Md$). Les options montrent un fort int\u00e9r\u00eat d'achat de puts sur le niveau de 60k$. Les pressions macro (rendements \u00e0 5,15%) et l'approche de l'IPO d'Anthropic limitent la hausse.",
-          "risks": "Rupture des 62k$ vers 60k$, minutes de la Fed mercredi, r\u00e9sultats Nvidia, poursuite des sorties d'ETF spot.",
+          "reason": "",
+          "risks": "",
           "price0": 65035.8,
           "breakout": null,
           "trade": {
@@ -7542,8 +7542,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 47,
-          "reason": "ETH a rebondi apr\u00e8s avoir touch\u00e9 1710$ ce week-end (plus bas depuis juillet). La pression vendeuse reste forte, aliment\u00e9e par des ventes forc\u00e9es et le besoin des investisseurs de lever des liquidit\u00e9s avant l'IPO massive d'Anthropic cette semaine (ph\u00e9nom\u00e8ne similaire \u00e0 SpaceX en juin). Bitmine poss\u00e8de 4,97% de l'offre mais la dynamique \u00e0 court terme reste baissi\u00e8re sous l'EMA50 (1984$).",
-          "risks": "Chute sous 1700$ vers 1600$, minutes de la Fed, volatilit\u00e9 post-earnings de Nvidia, manque de liquidit\u00e9.",
+          "reason": "",
+          "risks": "",
           "price0": 1822.92,
           "breakout": null,
           "trade": {
@@ -7559,8 +7559,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "Le XRP subit une forte correction de 30% depuis d\u00e9but novembre, repassant sous le seuil psychologique de 1$. Les ETF XRP ont enregistr\u00e9 des sorties hebdomadaires de 19 M$ (plus fort d\u00e9flux depuis mars). Graphiquement, un grand triangle ascendant depuis 2017 sugg\u00e8re un retour possible vers le support des 0,78$ si la purge du march\u00e9 continue, malgr\u00e9 des clusters de liquidation vers 1,05$.",
-          "risks": "Cassure des 0,90$ vers 0,78$, poursuite de la panique sur les altcoins, minutes hawkish de la Fed.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9597,
           "breakout": null,
           "trade": {
@@ -7576,8 +7576,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 46,
-          "reason": "BNB s'est stabilis\u00e9 autour de 590$ apr\u00e8s avoir test\u00e9 les 566$ ce week-end. Le volume est faible (relVolume \u00e0 0,41) indiquant une absence d'acheteurs convaincus. Le sentiment de march\u00e9 reste plomb\u00e9 par l'incertitude macro (Fed, Nvidia) et les ventes forc\u00e9es g\u00e9n\u00e9ralis\u00e9es. N\u00e9anmoins, l'EMA20 (605$) agit comme r\u00e9sistance dynamique imm\u00e9diate.",
-          "risks": "Perte des 566$ vers 530$, d\u00e9gradation macro, baisse g\u00e9n\u00e9rale sous la pression de l'IPO d'Anthropic.",
+          "reason": "",
+          "risks": "",
           "price0": 592.64,
           "breakout": null,
           "trade": {
@@ -7593,8 +7593,8 @@
         "SOLUSDT": {
           "direction": "NEUTRAL",
           "probUp": 46,
-          "reason": "SOL a fortement souffert avec une chute de 17% sur 7 d, testant les 67,35$ ce week-end avant de se stabiliser sous l'EMA20 (73,67$). Les flux sortants des ETF Solana se poursuivent pour la 6\u00e8me semaine cons\u00e9cutive. Malgr\u00e9 la d\u00e9cote, la pression vendeuse li\u00e9e aux liquidations de positions \u00e0 effet de levier et l'incertitude sur la Fed limitent le potentiel de rebond imm\u00e9diat.",
-          "risks": "Cassure des 67$ vers 60$, deflux continus des ETF Solana, volatilit\u00e9 accrue li\u00e9e \u00e0 Nvidia.",
+          "reason": "",
+          "risks": "",
           "price0": 71.51,
           "breakout": null,
           "trade": {
@@ -7608,14 +7608,7 @@
           }
         }
       },
-      "queries": [
-        "\"november 2026\" \"FOMC\" OR \"CPI\" OR \"inflation\" OR \"interest rates\"",
-        "crypto market news november 16 2026",
-        "bitcoin price news November 16 2026",
-        "macroeconomic events November 16 17 18 2026",
-        "XRP news november 16 2026",
-        "XRP price November 16 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -7630,7 +7623,8 @@
         "promptTokenCount": 4167,
         "candidatesTokenCount": 1323,
         "totalTokenCount": 12410
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794873600000,
@@ -12855,18 +12849,119 @@
         "candidatesTokenCount": 1201,
         "totalTokenCount": 12295
       }
+    },
+    {
+      "barClose": 1795464000000,
+      "requestedAt": 1795464975793,
+      "analyzedAt": 1795465006092,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Macro tendue avant Thanksgiving : PCE US et PIB T3 (mercredi) soutiennent une Fed hawkish en d\u00e9c. (96% proba), maintenant les taux \u00e9lev\u00e9s (10Y \u00e0 4,94%). Le rebond technique de lundi fait suite \u00e0 la r\u00e9int\u00e9gration surprise du PDG de Nvidia qui a soutenu le Nasdaq apr\u00e8s une semaine de forte baisse.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BTC a rebondi de son plus bas de $55,3k \u00e0 $64,5k avant de consolider \u00e0 $61,2k. Ce short squeeze fait suite \u00e0 un reset majeur de l'effet de levier ($1,8Md de liquidations ce week-end). N\u00e9anmoins, les flux restent tr\u00e8s n\u00e9gatifs avec $1,79Md de sorties des ETF spot la semaine derni\u00e8re et une contraction rapide de l'offre de stablecoins, ce qui limite le potentiel de hausse imm\u00e9diat.",
+          "risks": "Volatilit\u00e9 accrue \u00e0 l'approche du Thanksgiving US et des chiffres PCE de mercredi ; risque de reprise des ventes d'ETF.",
+          "price0": 61233.0,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 65,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte \u00e0 62867,1 dans le sens du flux global et de la tendance de fond. En attente de la cible \u00e0 55500 ou du stop."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "ETH a effac\u00e9 une partie de ses pertes du week-end ($1539) pour atteindre $1845 avant de corriger \u00e0 $1730. Malgr\u00e9 $42M de liquidations de shorts lundi qui ont dynamis\u00e9 la hausse, la structure de fond demeure baissi\u00e8re sous l'EMA50 ($1759) et sous l'influence des sorties d'ETF Ethereum ($305M la semaine derni\u00e8re) et de l'incertitude macro US.",
+          "risks": "Sensibilit\u00e9 aux chiffres d'inflation PCE mercredi et faible liquidit\u00e9 attendue pour Thanksgiving.",
+          "price0": 1730.95,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Absence de signal directionnel clair suite au fort rebond technique et au pullback imm\u00e9diat. La tendance globale reste baissi\u00e8re mais le march\u00e9 est volatil."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "XRP a bri\u00e8vement d\u00e9pass\u00e9 $1,02 suite \u00e0 l'annonce Nvidia avant de rechuter rapidement sous $0.95, confirmant une forte pression vendeuse sous la r\u00e9sistance cl\u00e9 de $1,00. XRP subit son pire mois de novembre (-25%) sur fond de sorties d'ETF spot XRP, et le support des $0,92 reste activement test\u00e9.",
+          "risks": "Forte volatilit\u00e9 sur les produits d\u00e9riv\u00e9s et sensibilit\u00e9 extr\u00eame aux mouvements du BTC et du dollar.",
+          "price0": 0.9434,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Rejet violent au-dessus de $1,00 et retour sous $0,95. L'incertitude et la volatilit\u00e9 court terme incitent \u00e0 rester \u00e0 l'\u00e9cart avant de nouveaux signaux de stabilisation."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB se stabilise autour de $559 apr\u00e8s avoir touch\u00e9 un plus bas de $503 ce week-end. Le rebond de lundi s'inscrit pleinement dans le sillage de l'ensemble du march\u00e9 des altcoins sans catalyseur propre au jeton de Binance. L'absence de momentum directionnel fort maintient le cours sous sa moyenne mobile EMA50 ($573).",
+          "risks": "Risques r\u00e9glementaires persistants sur les plateformes centralis\u00e9es et forte corr\u00e9lation au BTC.",
+          "price0": 559.55,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "BNB \u00e9volue sans tendance propre et reste corr\u00e9l\u00e9 au sentiment g\u00e9n\u00e9ral. Pas d'avantage statistique clair pour justifier l'ouverture d'une position."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "SOL montre une r\u00e9silience sup\u00e9rieure gr\u00e2ce au lancement officiel de sa page \u00e9cosyst\u00e8me IA et \u00e0 de l\u00e9g\u00e8res entr\u00e9es d'ETF SOL ($11,6M le 17 nov) qui contrastent avec BTC/ETH. Le cours a rebondi depuis $64,8 jusqu'\u00e0 $78,4 avant de consolider \u00e0 $73. La structure technique s'am\u00e9liore mais reste sous la pression de la macro.",
+          "risks": "Possibilit\u00e9 de retour vers le support de $64,6 en cas de baisse g\u00e9n\u00e9rale du march\u00e9.",
+          "price0": 73.05,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 55,
+            "reason": "Bien que SOL montre une force relative, le rejet sous la r\u00e9sistance des $78,5 incite \u00e0 la prudence. Pas de configuration de cassure claire pour l'instant."
+          }
+        }
+      },
+      "queries": [
+        "\"bitcoin\" OR \"crypto\" news November 23 2026",
+        "macro news Fed November 23 2026",
+        "spot bitcoin ETF flows November 2026",
+        "US interest rates November 2026 FOMC CPI",
+        "\"ethereum\" news November 23 2026",
+        "\"solana\" news November 23 2026",
+        "\"xrp\" news November 23 2026",
+        "\"bnb\" news November 23 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3954,
+        "candidatesTokenCount": 1446,
+        "totalTokenCount": 12595
+      }
     }
   ],
   "attempts": {
     "1795449600000": 3,
-    "1795464000000": 1
+    "1795464000000": 2
   },
-  "generatedAt": 1795464099038,
+  "generatedAt": 1795464975793,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 106,
-    "totalTokens": 1201838,
+    "analyses": 107,
+    "totalTokens": 1214433,
     "direction": {
       "scored": 505,
       "called": 256,
@@ -12929,14 +13024,14 @@
       "avgR": 0.4255,
       "totalR": 11.0619,
       "open": 1,
-      "equityMarked": 564.608797,
-      "returnPct": 12.9218
+      "equityMarked": 564.23721,
+      "returnPct": 12.8474
     }
   },
   "lastRun": {
-    "at": 1795464099038,
-    "status": "error",
-    "error": "unparseable JSON: Expecting ',' delimiter",
+    "at": 1795464975793,
+    "status": "ok",
+    "error": null,
     "barClose": 1795464000000
   },
   "portfolio": {
@@ -12957,8 +13052,8 @@
         "reason": "Poursuite de la tendance baissi\u00e8re de fond. Le rebond du week-end manque de volume et de soutien institutionnel. Le stop est plac\u00e9 au-dessus des EMA50 4H et de la r\u00e9sistance psychologique locale de 63.5k$.",
         "exitBy": 1795622400000,
         "lastBar": 1795449600000,
-        "markR": 1.4994,
-        "markPrice": 61318.4
+        "markR": 1.4326,
+        "markPrice": 61387.4
       }
     ],
     "trades": [
