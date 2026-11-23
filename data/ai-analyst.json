@@ -12355,7 +12355,8 @@
             "stop": 0.955,
             "target": 0.862,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         },
         "BNBUSDT": {
@@ -12385,7 +12386,8 @@
             "stop": 67.2,
             "target": 76.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           }
         }
       },
@@ -12414,18 +12416,118 @@
         "candidatesTokenCount": 1477,
         "totalTokenCount": 11094
       }
+    },
+    {
+      "barClose": 1795406400000,
+      "requestedAt": 1795406494311,
+      "analyzedAt": 1795406524083,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Rallye de soulagement post-capitulation crypto, mais pes\u00e9 par la pire semaine du S&P 500 en un an (-8,6 %) sur fond de baisse de l'IA. Semaine de Thanksgiving raccourcie avec 5 rapports cl\u00e9s US attendus mercredi, dont l'inflation PCE. Liquidit\u00e9s en baisse et forte volatilit\u00e9 \u00e0 pr\u00e9voir.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 52,
+          "reason": "Rebond de +11% depuis le plus bas de 2 ans \u00e0 55k$. Sentiment en 'Peur Extr\u00eame' (FGI \u00e0 11) apr\u00e8s 2,7 milliards $ de liquidations. Les futures US sont dans le vert, mais les sorties massives d'ETF spot (record de -541M$ sur IBIT) et la r\u00e9sistance de l'EMA50 (62,8k$) limitent la hausse avant l'inflation PCE. Le flash crash de Kraken CAD \u00e0 16,9k$ n'\u00e9tait qu'un bug de liquidit\u00e9 locale.",
+          "risks": "Volatilit\u00e9 accrue par la semaine de Thanksgiving rabaissant la liquidit\u00e9. Risque de rejet sur l'EMA50 4H et pression vendeuse persistante li\u00e9e aux flux ETF n\u00e9gatifs.",
+          "price0": 61264.6,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas d'avantage clair \u00e0 ouvrir une position directionnelle avant l'afflux de donn\u00e9es macro\u00e9conomiques majeures de mercredi et avec la liquidit\u00e9 r\u00e9duite de Thanksgiving."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "ETH a rebondi depuis son support \u00e0 1536$ mais fait face \u00e0 une tendance de fond baissi\u00e8re de 7 semaines cons\u00e9cutives. Les sorties massives des ETF spot se poursuivent avec -97M$ le 20 novembre, men\u00e9es par BlackRock ETHA (-60M$). Les d\u00e9veloppeurs proposent de nouvelles r\u00e8gles de gas, mais l'inflow de capitaux institutionnels reste nul \u00e0 court terme.",
+          "risks": "Rejet sous l'EMA50 (1766$). Risque de chute sous les 1500$ si le support de 1536$ venait \u00e0 \u00eatre bris\u00e9 par de nouvelles sorties de fonds majeures des ETF.",
+          "price0": 1731.54,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "L'absence de signal de breakout technique fort et les vents contraires persistants sur les flux ETF incitent \u00e0 la neutralit\u00e9 absolue."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "XRP consolide autour de 0,93$ apr\u00e8s avoir touch\u00e9 un plus bas annuel \u00e0 0,86$ la semaine derni\u00e8re. Les amendements majeurs du XRPL n'ont pas encore obtenu le consensus requis de 80% des validateurs. La tendance reste techniquement lourde sous l'EMA50 4H (0,9519$).",
+          "risks": "Risque de squeeze si le rebond global du march\u00e9 crypto s'acc\u00e9l\u00e8re au-dessus de l'EMA50, ce qui d\u00e9clencherait notre stop de protection \u00e0 0,955$.",
+          "price0": 0.9321,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 en cours d'ex\u00e9cution depuis 0,9321$. Gestion passive de la position jusqu'\u00e0 la limite temporelle ou le stop/target."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 51,
+          "reason": "BNB a rebondi depuis ses plus bas \u00e0 510$, soutenu par l'annonce que Binance a enti\u00e8rement couvert les pertes du hack d'octobre (6,34 milliards $). De plus, la BNB Chain rivalise d\u00e9sormais avec Ethereum en valeur de bons du Tr\u00e9sor tokenis\u00e9s (~4,39 milliards $), apportant un argument de cr\u00e9dibilit\u00e9 institutionnelle non n\u00e9gligeable.",
+          "risks": "L'ombre du hack de Binance et des proc\u00e9dures judiciaires associ\u00e9es continue de peser. R\u00e9sistance forte autour du seuil psychologique et technique de 560-600$.",
+          "price0": 558.02,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La structure de march\u00e9 globale reste fragile et BNB bute sous sa r\u00e9sistance imm\u00e9diate (EMA50 \u00e0 576$). Prudence de mise avant Thanksgiving."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 53,
+          "reason": "SOL a l\u00e9g\u00e8rement sous-perform\u00e9 le rebond du week-end mais montre des signes de stabilisation au-dessus de 70$ avec une hausse de l'Open Interest futures \u00e0 4,15 milliards $. Cependant, la pression des ventes institutionnelles de certains gestionnaires d'actifs p\u00e8se temporairement sur le momentum de reprise.",
+          "risks": "Chute sous le support cl\u00e9 de 68$ en cas de reprise de la baisse g\u00e9n\u00e9rale sur les altcoins, ce qui invaliderait notre position longue.",
+          "price0": 71.35,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "Une position LONG est d\u00e9j\u00e0 en cours d'ex\u00e9cution depuis 71,34$. Nous laissons courir la position avec notre stop fix\u00e9 \u00e0 67,2$ et l'objectif \u00e0 76,0$."
+          }
+        }
+      },
+      "queries": [
+        "\"november 2026\" btc news",
+        "bitcoin news 23 November 2026",
+        "crypto news 22 November 2026",
+        "macro events scheduled november 23 2026",
+        "\"BNB\" news november 2026",
+        "\"ETH\" news november 22 2026",
+        "\"ethereum\" news november 23 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4013,
+        "candidatesTokenCount": 1353,
+        "totalTokenCount": 10681
+      }
     }
   ],
   "attempts": {
-    "1795377600000": 1,
-    "1795392000000": 1
+    "1795392000000": 1,
+    "1795406400000": 1
   },
-  "generatedAt": 1795405565946,
+  "generatedAt": 1795406494311,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 102,
-    "totalTokens": 1156010,
+    "analyses": 103,
+    "totalTokens": 1166691,
     "direction": {
       "scored": 485,
       "called": 256,
@@ -12487,21 +12589,56 @@
       "winRate": 0.75,
       "avgR": 0.4593,
       "totalR": 11.0232,
-      "open": 0,
-      "equityMarked": 556.052913,
-      "returnPct": 11.2106
+      "open": 2,
+      "equityMarked": 556.091281,
+      "returnPct": 11.2183
     }
   },
   "lastRun": {
-    "at": 1795405565946,
-    "status": "up-to-date",
+    "at": 1795406494311,
+    "status": "ok",
     "error": null,
-    "barClose": 1795392000000
+    "barClose": 1795406400000
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 556.052913,
-    "positions": [],
+    "positions": [
+      {
+        "id": "XRPUSDT-1795392000000",
+        "symbol": "XRPUSDT",
+        "side": "SHORT",
+        "entryTime": 1795406400000,
+        "entryPrice": 0.9321,
+        "stop": 0.955,
+        "target": 0.862,
+        "risk": 0.02289999999999992,
+        "stake": 5.560529,
+        "conviction": 65,
+        "reason": "Faiblesse fondamentale marqu\u00e9e : effondrement des adresses actives (-60%), sorties d'ETF et d\u00e9verrouillage d'escrow massif le 1er d\u00e9cembre. Vente \u00e0 d'\u00e9couvert sous la r\u00e9sistance des EMA20/EMA50.",
+        "exitBy": 1795579200000,
+        "lastBar": 1795406399999,
+        "markR": 0.0262,
+        "markPrice": 0.9315
+      },
+      {
+        "id": "SOLUSDT-1795392000000",
+        "symbol": "SOLUSDT",
+        "side": "LONG",
+        "entryTime": 1795406400000,
+        "entryPrice": 71.34,
+        "stop": 67.2,
+        "target": 76.0,
+        "risk": 4.140000000000001,
+        "stake": 5.560529,
+        "conviction": 60,
+        "reason": "Force relative et flux d'actualit\u00e9s tr\u00e8s positifs (transition v1.0, rachat de CoinGecko, tokenisation d'Anthropic r\u00e9ussie et retour d'inflows sur les ETF). SOL montre des signes d'accumulation.",
+        "exitBy": 1795579200000,
+        "lastBar": 1795406399999,
+        "markR": -0.0193,
+        "markPrice": 71.26
+      }
+    ],
     "trades": [
       {
         "id": "SOLUSDT-1793851200000",
