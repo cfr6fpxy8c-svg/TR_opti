@@ -11759,6 +11759,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas de signal clair. Le rebond technique \u00e0 court terme limite le ratio R:R pour un short, tandis que la tendance de fond et les flux sortants majeurs interdisent toute position longue acheteuse."
+          },
+          "outcome": {
+            "retPct": 1.738,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -11772,6 +11776,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le march\u00e9 est dans une phase de forte volatilit\u00e9 et de rebond technique apr\u00e8s liquidation. L'absence d'un double bottom solide rend tout achat pr\u00e9matur\u00e9 malgr\u00e9 l'\u00e9tat survendu."
+          },
+          "outcome": {
+            "retPct": 2.283,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -11785,6 +11793,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Le death cross et la rupture temporaire des $0,90 militent pour la prudence. Le ratio R:R est m\u00e9diocre pour initier un short suite au rebond imm\u00e9diat."
+          },
+          "outcome": {
+            "retPct": -0.343,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -11798,6 +11810,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Bien que BNB montre de la r\u00e9silience relative et un catalyseur \u00e0 venir (Jenner), la tendance g\u00e9n\u00e9rale baissi\u00e8re du march\u00e9 invite \u00e0 l'attentisme."
+          },
+          "outcome": {
+            "retPct": 1.977,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -11811,6 +11827,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La tendance \u00e0 moyen terme est fortement baissi\u00e8re sous l'EMA200 et les moyennes courtes. Entrer en long est trop risqu\u00e9, et short ici offre peu de marge de s\u00e9curit\u00e9."
+          },
+          "outcome": {
+            "retPct": 0.612,
+            "hit": null
           }
         }
       },
@@ -12291,25 +12311,134 @@
         "candidatesTokenCount": 1449,
         "totalTokenCount": 11119
       }
+    },
+    {
+      "barClose": 1795392000000,
+      "requestedAt": 1795392102518,
+      "analyzedAt": 1795392135512,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le dollar (DXY) s'envole vers 103,90 face aux attentes d'une hausse des taux de la Fed le 9 d\u00e9cembre (probabilit\u00e9 86-97%, d\u00e9bat 25 vs 50 pb). Les actions am\u00e9ricaines (S&P 500, Nasdaq) entrent en correction et le sentiment des investisseurs chute en peur extr\u00eame (CNN Fear & Greed \u00e0 14).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Rebond technique de court terme au-dessus des 60k$ apr\u00e8s une purge massive ayant liquid\u00e9 1,8 Md$ de positions \u00e0 terme. Cependant, la tendance de fond reste baissi\u00e8re sous l'EMA200 (4H) et les flux sortants records des ETF Spot en novembre (plus de 3,4 Mds$ de sorties) conjugu\u00e9s \u00e0 la fermet\u00e9 de la Fed (hausse des taux anticip\u00e9e en d\u00e9cembre) limitent le potentiel de hausse durable imm\u00e9diate.",
+          "risks": "Risque macro li\u00e9 \u00e0 l'inflation persistante et aux sorties continues d'ETF. Une rechute sous les 60 000 $ r\u00e9activerait la dynamique baissi\u00e8re vers les bas annuels.",
+          "price0": 61236.9,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Absence de signal directionnel clair : bien que BTC rebondisse sur les 60k$, la tendance de fond \u00e0 moyen terme reste baissi\u00e8re sous l'EMA200 (4H) et la pression des ETF limite la conviction haussi\u00e8re."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 51,
+          "reason": "ETH a rebondi vigoureusement depuis ses plus bas annuels proches de 1 536 $, port\u00e9 par le sursaut g\u00e9n\u00e9ralis\u00e9 du march\u00e9. Le sentiment reste n\u00e9anmoins tr\u00e8s d\u00e9grad\u00e9 (peur extr\u00eame) et les flux ETF Ether demeurent n\u00e9gatifs. Techniquement, la structure reste domin\u00e9e par des moyennes mobiles orient\u00e9es \u00e0 la baisse, ce qui sugg\u00e8re une consolidation ou un retest \u00e0 court terme.",
+          "risks": "Forte corr\u00e9lation au BTC, fragilit\u00e9 de la DeFi et pression vendeuse institutionnelle si les sorties des ETF se poursuivent. Perte des 1 700 $ comme signal baissier.",
+          "price0": 1723.33,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La tendance globale de l'ETH reste baissi\u00e8re \u00e0 moyen terme. Le rebond technique r\u00e9cent manque de soutien en termes de volumes et de flux acheteurs institutionnels pour justifier une position longue."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "XRP enregistre son pire mois de novembre (-25,4%) avec des flux sortants d'ETF de 26 M$ et une chute brutale de 60% des adresses actives sur le XRPL (92k). L'Open Interest est au plus bas de deux ans. De plus, la lib\u00e9ration de 1 milliard de jetons XRP de l'escrow de Ripple le 1er d\u00e9cembre ajoute une pression d'offre sur un carnet d'ordres d\u00e9j\u00e0 affaibli.",
+          "risks": "Volatilit\u00e9 accrue \u00e0 l'approche de la lib\u00e9ration de l'escrow de d\u00e9cembre. Un squeeze de positions courtes pourrait provoquer un rebond brutal vers 0,98 $.",
+          "price0": 0.9284,
+          "breakout": null,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 65,
+            "reason": "Faiblesse fondamentale marqu\u00e9e : effondrement des adresses actives (-60%), sorties d'ETF et d\u00e9verrouillage d'escrow massif le 1er d\u00e9cembre. Vente \u00e0 d'\u00e9couvert sous la r\u00e9sistance des EMA20/EMA50.",
+            "stop": 0.955,
+            "target": 0.862,
+            "maxHoldHours": 48,
+            "valid": true
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "BNB a rebondi fortement apr\u00e8s avoir touch\u00e9 503 $, port\u00e9 par la r\u00e9demption g\u00e9n\u00e9rale du march\u00e9 une fois le BTC repass\u00e9 au-dessus des 60k$. Cependant, le volume d'achat s'essouffle \u00e0 l'approche de la r\u00e9sistance majeure de l'EMA50 (576 $). Sans catalyseur propre et sous la menace de la d\u00e9gradation macro\u00e9conomique globale, BNB devrait consolider dans sa fourchette actuelle.",
+          "risks": "D\u00e9pendance extr\u00eame \u00e0 la stabilit\u00e9 de Binance et au sentiment g\u00e9n\u00e9ral du march\u00e9. Un retour de la panique sur le BTC ram\u00e8nerait le BNB vers les 500 $.",
+          "price0": 559.53,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Bien que le rebond depuis 503 $ soit impressionnant, BNB bute sur l'EMA50 et manque d'un moteur de croissance ind\u00e9pendant pour soutenir une poursuite haussi\u00e8re."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 55,
+          "reason": "Solana affiche une dynamique fondamentale exceptionnelle : fin du label beta pour la v1.0, rachat de CoinGecko, et succ\u00e8s fulgurant des actions Anthropic tokenis\u00e9es (134M$ de volume au jour 1). De plus, les ETF Solana spot ont bris\u00e9 6 semaines de sorties avec 4,4 M$ d'entr\u00e9es. Techniquement, SOL montre une force relative sup\u00e9rieure en repassant au-dessus de l'EMA20.",
+          "risks": "Sensibilit\u00e9 au sentiment g\u00e9n\u00e9ral tr\u00e8s d\u00e9grad\u00e9 (peur extr\u00eame) et risques de correction persistants sur les indices am\u00e9ricains qui p\u00e8sent sur les actifs risqu\u00e9s.",
+          "price0": 70.69,
+          "breakout": null,
+          "trade": {
+            "action": "LONG",
+            "conviction": 60,
+            "reason": "Force relative et flux d'actualit\u00e9s tr\u00e8s positifs (transition v1.0, rachat de CoinGecko, tokenisation d'Anthropic r\u00e9ussie et retour d'inflows sur les ETF). SOL montre des signes d'accumulation.",
+            "stop": 67.2,
+            "target": 76.0,
+            "maxHoldHours": 48,
+            "valid": true
+          }
+        }
+      },
+      "queries": [
+        "\"BTC\" \"ETF flows\" November 2026",
+        "\"crypto market\" news November 22 2026",
+        "US dollar index yields November 2026",
+        "Fed FOMC news November 2026",
+        "\"XRP\" news November 22 2026",
+        "\"Solana\" news November 22 2026",
+        "\"BNB\" news November 22 2026",
+        "Fear and greed index crypto today November 23 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 3886,
+        "candidatesTokenCount": 1477,
+        "totalTokenCount": 11094
+      }
     }
   ],
   "attempts": {
-    "1795363200000": 1,
-    "1795377600000": 1
+    "1795377600000": 1,
+    "1795392000000": 1
   },
-  "generatedAt": 1795391168485,
+  "generatedAt": 1795392102518,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 101,
-    "totalTokens": 1144916,
+    "analyses": 102,
+    "totalTokens": 1156010,
     "direction": {
-      "scored": 480,
+      "scored": 485,
       "called": 256,
-      "neutral": 224,
+      "neutral": 229,
       "hits": 169,
       "hitRate": 0.6602,
-      "brier": 0.2338,
+      "brier": 0.2344,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -12370,10 +12499,10 @@
     }
   },
   "lastRun": {
-    "at": 1795391168485,
-    "status": "up-to-date",
+    "at": 1795392102518,
+    "status": "ok",
     "error": null,
-    "barClose": 1795377600000
+    "barClose": 1795392000000
   },
   "portfolio": {
     "startCapital": 500.0,
