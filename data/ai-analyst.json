@@ -7633,13 +7633,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Dollar \u00e0 un sommet de 19 mois, rendements \u00e0 10 ans \u00e0 5,12%. Craintes de hausses de taux de la Fed en d\u00e9cembre apr\u00e8s l'inflation d'octobre. Minutes de la Fed attendues mercredi, et r\u00e9sultats de Nvidia mardi apr\u00e8s-bourse.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "NEUTRAL",
           "probUp": 50,
-          "reason": "Stabilisation autour de 64k$ apr\u00e8s un plongeon \u00e0 62k$. La pression reste forte avec plus de 1Md$ de sorties nettes des ETF Spot BTC pour la deuxi\u00e8me semaine cons\u00e9cutive (IBIT sur 11 jours de sorties). L'indice Fear & Greed est en Extreme Fear (11). MicroStrategy a achet\u00e9 485 BTC mais fait face \u00e0 un risque de vente de 2,8Mds$ par l'indice MSCI le 30/11.",
-          "risks": "R\u00e9sultats de Nvidia mardi, minutes de la Fed mercredi, et incertitude r\u00e9glementaire post-\u00e9lections am\u00e9ricaines.",
+          "reason": "",
+          "risks": "",
           "price0": 64856.0,
           "breakout": null,
           "trade": {
@@ -7655,8 +7655,8 @@
         "ETHUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "Stabilisation pr\u00e9caire autour de 1800$. Vitalik Buterin soutient leanPCS et l'EIP-8037 pour limiter la croissance de l'\u00e9tat r\u00e9seau. Bitmine Immersion a augment\u00e9 son tr\u00e9sor \u00e0 6,08M d'ETH (4,97% de l'offre). Cependant, l'int\u00e9r\u00eat ouvert d\u00e9cline \u00e0 9Mds$ avec un flux net de futures n\u00e9gatif (-176M$), et la TVL DeFi a chut\u00e9 de 12% en une semaine.",
-          "risks": "Pression baissi\u00e8re g\u00e9n\u00e9rale du march\u00e9, faiblesse de la demande institutionnelle et retard de l'upgrade Glamsterdam.",
+          "reason": "",
+          "risks": "",
           "price0": 1819.64,
           "breakout": null,
           "trade": {
@@ -7672,8 +7672,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 45,
-          "reason": "XRP a cass\u00e9 le support cl\u00e9 de 1,00$, qui fait d\u00e9sormais office de r\u00e9sistance. Malgr\u00e9 les annonces positives lors de la conf\u00e9rence Ripple Swell (garde du RLUSD par BNY, fonds mon\u00e9taires d'Aviva/Franklin Templeton sur XRPL), la dynamique reste baissi\u00e8re avec des sorties d'ETF XRP de 19M$ et un sentiment d\u00e9fensif g\u00e9n\u00e9ral.",
-          "risks": "Poursuite de la baisse vers le support de 0,78$ si le Bitcoin fl\u00e9chit \u00e0 nouveau sous 64k$.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9548,
           "breakout": null,
           "trade": {
@@ -7689,8 +7689,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 52,
-          "reason": "Binance a enti\u00e8rement couvert les pertes du piratage d'octobre en injectant 6,34Mds$ de ses propres fonds. Les retraits ont r\u00e9ouvert sur 87 r\u00e9seaux. Le ratio de r\u00e9serve de BNB est \u00e0 100,39%. Sur le plan technique, le BNB montre une r\u00e9silience relative au-dessus de 590$, soutenu par l'annonce du hardfork Jenner pour le 8 d\u00e9cembre.",
-          "risks": "Incertitude post-incident de s\u00e9curit\u00e9 et faiblesse g\u00e9n\u00e9rale des volumes spot.",
+          "reason": "",
+          "risks": "",
           "price0": 591.47,
           "breakout": null,
           "trade": {
@@ -7706,8 +7706,8 @@
         "SOLUSDT": {
           "direction": "NEUTRAL",
           "probUp": 53,
-          "reason": "Solana a retir\u00e9 l'appellation 'beta' pour devenir 'Solana mainnet' (version 1.0). La conf\u00e9rence Breakpoint 2026 \u00e0 Londres apporte des nouvelles positives (Privacy Rings de Helius, API Sunrise pour actions tokenis\u00e9es). N\u00e9anmoins, les ETF Solana ont enregistr\u00e9 58M$ de sorties en une semaine, limitant le potentiel de rebond imm\u00e9diat.",
-          "risks": "Sorties continues des ETF et liquidation de positions \u00e0 effet de levier.",
+          "reason": "",
+          "risks": "",
           "price0": 71.52,
           "breakout": null,
           "trade": {
@@ -7721,16 +7721,7 @@
           }
         }
       },
-      "queries": [
-        "\"bitcoin\" OR \"crypto\" news November 16 2026",
-        "macro economic calendar November 16 17 2026",
-        "fomc fed speakers November 2026",
-        "bitcoin ETF flows November 2026",
-        "\"ethereum\" news November 16 2026",
-        "\"solana\" news November 16 2026",
-        "\"XRP\" news November 16 2026",
-        "\"BNB\" news November 16 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -7745,7 +7736,8 @@
         "promptTokenCount": 4166,
         "candidatesTokenCount": 1157,
         "totalTokenCount": 10528
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1794888000000,
@@ -13081,7 +13073,7 @@
     "1795464000000": 2,
     "1795478400000": 1
   },
-  "generatedAt": 1795478501716,
+  "generatedAt": 1795479368693,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -13149,13 +13141,13 @@
       "avgR": 0.4255,
       "totalR": 11.0619,
       "open": 1,
-      "equityMarked": 565.342515,
-      "returnPct": 13.0685
+      "equityMarked": 565.072724,
+      "returnPct": 13.0145
     }
   },
   "lastRun": {
-    "at": 1795478501716,
-    "status": "ok",
+    "at": 1795479368693,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795478400000
   },
@@ -13177,8 +13169,8 @@
         "reason": "Poursuite de la tendance baissi\u00e8re de fond. Le rebond du week-end manque de volume et de soutien institutionnel. Le stop est plac\u00e9 au-dessus des EMA50 4H et de la r\u00e9sistance psychologique locale de 63.5k$.",
         "exitBy": 1795622400000,
         "lastBar": 1795464000000,
-        "markR": 1.6313,
-        "markPrice": 61182.1
+        "markR": 1.5828,
+        "markPrice": 61232.2
       }
     ],
     "trades": [
