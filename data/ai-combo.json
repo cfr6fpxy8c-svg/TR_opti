@@ -14225,7 +14225,11 @@
             "reason": "Aucun avantage statistique clair dans ce r\u00e9gime de forte volatilit\u00e9 baissi\u00e8re et de d\u00e9collecte institutionnelle massive."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.005,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -14239,7 +14243,11 @@
             "reason": "La tendance de fond est baissi\u00e8re et la faiblesse relative d'ETH par rapport \u00e0 BTC n'incite pas \u00e0 l'achat imm\u00e9diat."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.782,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -14253,7 +14261,11 @@
             "reason": "Nous d\u00e9tenons d\u00e9j\u00e0 une position vendeuse ouverte (SHORT) active sur cet actif jusqu'au 23/11 \u00e0 17:00 UTC."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.26,
+            "hit": false
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -14267,7 +14279,11 @@
             "reason": "Le contexte d'incertitude r\u00e9glementaire et s\u00e9curitaire li\u00e9 \u00e0 Binance incite \u00e0 la prudence et \u00e0 l'absence de positionnement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.509,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -14281,7 +14297,11 @@
             "reason": "Nous d\u00e9tenons d\u00e9j\u00e0 une position vendeuse ouverte (SHORT) active sur cet actif jusqu'au 23/11 \u00e0 17:00 UTC."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 1.825,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -15001,7 +15021,11 @@
             "decision": "GO",
             "probTarget": 56,
             "reason": "Le breakout est tr\u00e8s qualitatif : volume de 3,2x, retour des flux institutionnels positifs et dynamique fondamentale forte autour de l'IA et de la tokenisation.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0282,
+              "exitReason": "STOP"
+            }
           },
           "breakout1h": null
         }
@@ -15186,10 +15210,167 @@
         "candidatesTokenCount": 1549,
         "totalTokenCount": 13238
       }
+    },
+    {
+      "barClose": 1795478400000,
+      "requestedAt": 1795478553249,
+      "analyzedAt": 1795478577531,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le march\u00e9 actions US a fortement rebondi lundi (Nasdaq +6,51%) apr\u00e8s une correction, mais les cryptos restent atones en raison d'une demande spot fragile (sorties de 1,79 md$ des ETF BTC spot la semaine derni\u00e8re). Risque d'inflation PCE US mercredi \u00e0 surveiller.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Rebond technique suite au sell-off sous 56k$, mais la demande reste tr\u00e8s faible avec des sorties records sur les ETF spot (-1,79 md$ la semaine pass\u00e9e) et une contraction de l'offre de stablecoins (-4,6 md$). Les investisseurs restent prudents avant l'indice PCE US ce mercredi.",
+          "risks": "Poursuite de la d\u00e9collecte ETF, hawkishness de la Fed, et chiffre PCE sup\u00e9rieur aux attentes.",
+          "price0": 61239.9,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position acheteuse d\u00e9j\u00e0 ouverte dans le portefeuille syst\u00e8me."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "ETH consolide apr\u00e8s avoir fr\u00f4l\u00e9 les 1530$. Le rebond r\u00e9cent est surtout technique, aid\u00e9 par des liquidations de shorts (43 M$). BitMine continue d'accumuler (atteignant 4,98% de l'offre totale), mais la d\u00e9collecte des ETF ETH (-314 M$ la semaine derni\u00e8re) p\u00e8se en l'absence de catalyseur propre.",
+          "risks": "Faiblesse de la demande institutionnelle, cassure du support des 1700$, chiffres PCE US.",
+          "price0": 1709.85,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de configuration claire. La tendance de fond reste baissi\u00e8re sous les EMA 20/50, et la d\u00e9collecte sur les ETF ETH freine toute vell\u00e9it\u00e9 de reprise durable."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "XRP subit son pire mois de novembre de l'histoire (-25% sur le mois), sous la pression des sorties d'ETF (plus de 30 M$ de rachats en novembre) et de l'annonce de la lib\u00e9ration d'un milliard de tokens de l'escrow de Ripple le 1er d\u00e9cembre. Le support \u00e0 0,92$ est sous pression.",
+          "risks": "Lib\u00e9ration massive de tokens le 1er d\u00e9cembre, poursuite de la d\u00e9collecte ETF, cassure de 0,90$.",
+          "price0": 0.9401,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La tendance globale est baissi\u00e8re et l'imminence de la lib\u00e9ration des jetons de l'escrow de Ripple le 1er d\u00e9cembre invite \u00e0 la prudence. Pas d'avantage statistique clair."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB tente de se stabiliser autour de 556$ apr\u00e8s un plus bas \u00e0 503$ le 21 novembre. Bien que le ratio on-chain reste solide \u00e0 100% sur Binance et que les pertes de l'incident d'octobre soient couvertes, le jeton manque de flux d'achat frais et reste sous ses EMA 20 et 50.",
+          "risks": "Poursuite du bear market crypto global, rejet sous la r\u00e9sistance des 560$.",
+          "price0": 556.68,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Structure technique d\u00e9grad\u00e9e sous les moyennes mobiles et manque de volume acheteur. Nous restons \u00e0 l'\u00e9cart en l'absence de signal de retournement."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "UP",
+          "probUp": 53,
+          "reason": "SOL surperforme avec un rebond vers 72$, soutenu par des flux d'ETF positifs (+4,4 M$) et le succ\u00e8s de la mise \u00e0 niveau Alpenglow. DFDV a \u00e9galement prolong\u00e9 son accumulation de SOL pour la 11e semaine cons\u00e9cutive. Cependant, SOL reste sous son EMA20 journali\u00e8re.",
+          "risks": "Rejet sous la r\u00e9sistance de court terme, rechute si le BTC casse ses supports, volatilit\u00e9 PCE.",
+          "price0": 71.98,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position acheteuse d\u00e9j\u00e0 ouverte dans le portefeuille syst\u00e8me."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"November 24, 2026\" macro FOMC CPI",
+        "crypto market news November 23 2026",
+        "Bitcoin ETF flows November 2026",
+        "fear and greed index crypto November 24 2026",
+        "\"XRP\" news November 2026",
+        "\"Ethereum\" news November 23 2026",
+        "Solana news November 2026",
+        "BNB news November 2026"
+      ],
+      "sources": [
+        {
+          "title": "biggo.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH0d4fxSC6-6v5Di5oiVeY7NJhF0SHJ5uKTJFk50QiCDpJkdHhIgSLG9QkyO5FE-4aUb4Xhndpu7zfOPzucnKae-K0koXMyyccEFvKScws0-2Li2HBtULQ0MvXVNnZRiSQ1HXDXZ0Y0BHZMecf6CFuFZPdI1zowyGmT8c3Mjzk="
+        },
+        {
+          "title": "fool.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQElyD8Co8CkN09y0gU8WbfSOfeauIQmA3RXl0xV9iYx-MUls44MhgKO1AykObHJHqXkqaHxIIjjZitRPVZU75BBokH_HTgvzIsBhTf76DVSgtfurfgoRbi10rCaGyWAr1UAomllL0Lk8MJGODagc4Vjpk17SNVk61ppsFwZFQBCegy7NTskmt_6I4hDDRmWPqYf8EH0p10uDJypCLfF_6wFz_On3oyS_hhvDFzEwEeyXrXW8krymsVYyxTkTceOtrCuR1KdyqToWM4ClMyGlEAUCX0Tq258N5NmaEzLfBz9UBgUTDgsoSxdSN67n30z5g=="
+        },
+        {
+          "title": "bybit.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGMwwebritLmEK8kJEfXkjqepJ-ZD1_ao3k-7a8hwKYWGMsMIdnr9jYSMY334GKb0i2gINVImx0-L4MFNje991Fl7D6wBtU5ynKiUr5a7DAYYMhwTMBMCXB1vsslvgYbgM-6OO223zr64srUIf6VWaK2_UguCEiVjMeVCnlmLHrHA976Pt84INO0qF14_g72b8obE9nQXejaXfl4WQe9xF4Hh2fTz4LAQ=="
+        },
+        {
+          "title": "longbridge.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHDVRWte6eIvbNi7NFPu6JN8aQ0iQQVldzvoERt4HGe3HNUeh9bfozzYJ9RHbR7dN7eOT-BVuYguLlN6Bwtt1ErzVHuCZsLUMs-UR-wl4IH5G9I_UBQfCUzVVLlqlheEp2lZIs="
+        },
+        {
+          "title": "dailyforex.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEs7jOdJDBdMVcXzSYb6GUbMPK_mg0fGtaZ7UfrpgbUpxGbV9QZtsRrwSj9895uzejBvpmRAMvceyDdY4mBNG-bGeUc0dCn_uN-7uUNstgSwHUTxVgqmNzjmhwxqon_ZLcb3v7CJ1xCFr63qcaBxs4eRy4g_-L-nVynhCuHABoOUrbIDVQ7LbxRMnNZkKRFxbRUv1k3J6GD9ADzMQrX7Mk="
+        },
+        {
+          "title": "cryptoticker.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEB9qKotDgYEJAgT4-gDu6IFlWlC682dgO21ipyllozbBEZU_HittxGDvBzCo4Pyzpc_8r9ZU4L5rcQ4ZrSsxAURPIELuXCnOPMTxPKmLz20hfWtK952m8bFI1LyAWVA1RWhsLaRW6bm4lHZVuOvSnBvu9ow2kZ0nsQ5ghpiONTqhG5C0kO2_1"
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKMDDQvFiOGjtKTUQJDJPNrU7rg2GSna7fzbeyrLdEtGrXTr5cJwvAENXORskAva0MkxmBHaOthLWEi5-e4J5MViKuXsFtHwBee3qSgKLV2-EwG4silp1bgsrJZyZ4hDu9BUyNjKaVywlnfNUQcm2Pgw=="
+        },
+        {
+          "title": "coinmarketcap.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGYvVQgOvR_F1BZ5Uki08DocZu-wOjvk9NIijT59YPLci-42TBkwRVIi7lpbIu3q3l12GKnTNyPrV0hxnWrdjBfR_X6jNuRTbBvy2gdb7EpMflc-t4EvQm_r5npHtwPYGgW2vrBbrTVcbiOcxkAv1fzeesZIYxgCtzlKg=="
+        },
+        {
+          "title": "kriptofoni.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGZ9hAFViwQ87auwpHwbymkxeXMDmVg5KGW9SAxOr366ooeHJV6iFUVTe3AEHDitKT1CNqvuIaI5WtWE922yWqd81l0hXEqKd0wIfAA3YT6tyG3_gcHt3yISs6sO5u9S0VQ7Q0ekVcJSL6wsfa8C45P2GHKDw=="
+        },
+        {
+          "title": "cryptonews.net",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE934cz_7n2hBcMFWx-su7utXmE5wVW5f0MAQrorl9G8Q-qyJTlrN22wsqau3njFtFlNStM6raV3PAexqIoTRSkwldfUlyJwn8jO0bJnf7XfinnQRh9WNmIPjLTzv3e7dU9TLGqo-a34_mY"
+        },
+        {
+          "title": "bitkub.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE0PzY2v-7wY602_SsM7rPJNXIVaiGSCWE-ANxnFsVMPUjKGdYjaKd6qZf7OoDCISkTstMdzyhEcm1e9kq_o_9VkTtNa8_QA-w3KuiN15Fn4268XZJPYK5XoAEfki3N-N8Wu8-gIGRQK8la9k-hRR8jQcV3T4bbJn23fqidm7T1oUora5PUQ3QABNTIOu-kIPGCphieXpdevOk3j1SCXGv_q7_YhZef"
+        },
+        {
+          "title": "pluang.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF6MqAmc-jdzdbcwz-kUZq9i88_z7rc5I1os9hJea3fmE_Z_IlOQxOiJJ-DC04RkkBlFy1wk41x-PZKT1BaCeoLD9uA_hXziptdXJEMWfGLSwiwa4ZaIYvMF_UbsrRrb7Q2wpC4r_RzKzHVzjF2CzvOguZs7UjHO2yuEv1JHRG5Ebqhh8LewPM="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 17,
+        "supports": 34
+      },
+      "usage": {
+        "promptTokenCount": 4169,
+        "candidatesTokenCount": 1453,
+        "totalTokenCount": 11578
+      }
     }
   ],
   "attempts": {
-    "1795464000000": 1
+    "1795464000000": 1,
+    "1795478400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -15208,9 +15389,9 @@
         "conviction": 60,
         "reason": "Achat sur cassure haussi\u00e8re H4 pour viser un retour vers 68,5k$. Stop plac\u00e9 sous le support des 60k$, soutenu par la dynamique globale de court terme.",
         "exitBy": 1795626000000,
-        "lastBar": 1795471200000,
-        "markR": -0.4343,
-        "markPrice": 61216.0
+        "lastBar": 1795474800000,
+        "markR": -0.4256,
+        "markPrice": 61236.0
       },
       {
         "id": "SOLUSDT-1795449600000",
@@ -15225,9 +15406,9 @@
         "conviction": 65,
         "reason": "Entr\u00e9e longue capitalisant sur le breakout H4 et les solides fondamentaux de court terme. Le stop est log\u00e9 sous l'EMA20 et l'ancien niveau de cassure.",
         "exitBy": 1795626000000,
-        "lastBar": 1795471200000,
-        "markR": -0.915,
-        "markPrice": 71.76
+        "lastBar": 1795474800000,
+        "markR": -0.8627,
+        "markPrice": 71.92
       }
     ],
     "trades": [
@@ -15702,19 +15883,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795477577885,
+  "generatedAt": 1795478553249,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 114,
-    "totalTokens": 1362961,
+    "analyses": 115,
+    "totalTokens": 1374539,
     "direction": {
-      "scored": 535,
-      "called": 328,
-      "neutral": 207,
+      "scored": 540,
+      "called": 330,
+      "neutral": 210,
       "hits": 235,
-      "hitRate": 0.7165,
-      "brier": 0.2266,
+      "hitRate": 0.7121,
+      "brier": 0.227,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -15734,10 +15915,10 @@
       },
       "rejected_GO": {
         "count": 16,
-        "closed": 14,
+        "closed": 15,
         "wins": 11,
-        "avgR": 6.1574,
-        "totalR": 86.2032
+        "avgR": 5.6783,
+        "totalR": 85.175
       },
       "rejected_NO_GO": {
         "count": 13,
@@ -15750,10 +15931,10 @@
     "byDecision": {
       "GO": {
         "count": 23,
-        "closed": 21,
+        "closed": 22,
         "wins": 15,
-        "avgR": 5.3158,
-        "totalR": 111.6321
+        "avgR": 5.0275,
+        "totalR": 110.6039
       },
       "NO_GO": {
         "count": 16,
@@ -15770,14 +15951,14 @@
       "avgR": 0.528,
       "totalR": 13.7269,
       "open": 2,
-      "equityMarked": 562.929365,
-      "returnPct": 12.5859
+      "equityMarked": 563.277449,
+      "returnPct": 12.6555
     }
   },
   "lastRun": {
-    "at": 1795477577885,
-    "status": "waiting",
+    "at": 1795478553249,
+    "status": "ok",
     "error": null,
-    "barClose": 1795474800000
+    "barClose": 1795478400000
   }
 }
