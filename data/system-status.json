@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1795496400000,
-    "executedAt": 1795496478553,
+    "scheduledAt": 1795497300000,
+    "executedAt": 1795497347228,
     "trigger": "schedule",
-    "jitterSeconds": 78.6,
-    "durationMs": 11455,
+    "jitterSeconds": 47.2,
+    "durationMs": 11066,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1795496399999,
-      "ageSeconds": 78.6
+      "newestCandleCloseMs": 1795497299999,
+      "ageSeconds": 47.2
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1795496478553,
-  "nextExpectedScanAt": 1795497300000,
+  "lastSuccessfulScan": 1795497347228,
+  "nextExpectedScanAt": 1795498200000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1795452345929,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1795452300000 actual=1795452345922 (jitter 45.9s)"
-    },
-    {
-      "ts": 1795452356450,
-      "level": "info",
-      "msg": "derivatives: funding rates for 959 symbols"
-    },
-    {
-      "ts": 1795452356610,
-      "level": "info",
-      "msg": "rejected 2x score_below_threshold (e.g. score 42.5 < 50)"
-    },
-    {
-      "ts": 1795452356610,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
     {
       "ts": 1795453281313,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1795496489970,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1795497347236,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1795497300000 actual=1795497347228 (jitter 47.2s)"
+    },
+    {
+      "ts": 1795497358054,
+      "level": "info",
+      "msg": "derivatives: funding rates for 959 symbols"
+    },
+    {
+      "ts": 1795497358257,
+      "level": "info",
+      "msg": "rejected 2x score_below_threshold (e.g. score 35.4 < 50)"
+    },
+    {
+      "ts": 1795497358257,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
