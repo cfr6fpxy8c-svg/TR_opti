@@ -15119,7 +15119,11 @@
             "reason": "Position acheteuse d\u00e9j\u00e0 ouverte dans le portefeuille syst\u00e8me."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.349,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -15133,7 +15137,11 @@
             "reason": "Pas de configuration claire. La tendance de fond reste baissi\u00e8re sous les EMA 20/50, et la d\u00e9collecte sur les ETF ETH freine toute vell\u00e9it\u00e9 de reprise durable."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.781,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -15147,7 +15155,11 @@
             "reason": "La tendance globale est baissi\u00e8re et l'imminence de la lib\u00e9ration des jetons de l'escrow de Ripple le 1er d\u00e9cembre invite \u00e0 la prudence. Pas d'avantage statistique clair."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.67,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -15161,7 +15173,11 @@
             "reason": "Structure technique d\u00e9grad\u00e9e sous les moyennes mobiles et manque de volume acheteur. Nous restons \u00e0 l'\u00e9cart en l'absence de signal de retournement."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.39,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "UP",
@@ -15175,7 +15191,11 @@
             "reason": "Position acheteuse d\u00e9j\u00e0 ouverte dans le portefeuille syst\u00e8me."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.237,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -15904,10 +15924,119 @@
         "candidatesTokenCount": 1464,
         "totalTokenCount": 11830
       }
+    },
+    {
+      "barClose": 1795564800000,
+      "requestedAt": 1795564953961,
+      "analyzedAt": 1795564985050,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le sentiment est marqu\u00e9 par une peur extr\u00eame (Fear & Greed \u00e0 8) apr\u00e8s le piratage massif de Binance. Les sorties records des ETF spot BTC (~4,7 milliards $ en novembre) p\u00e8sent lourdement, alors que les investisseurs attendent les donn\u00e9es de l'inflation PCE am\u00e9ricaine avant le FOMC de d\u00e9cembre.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "La faiblesse persiste apr\u00e8s l'\u00e9chec du rebond au-dessus de 64k$ initi\u00e9 par Nvidia. Le BTC s'\u00e9tablit sous les 60k$ avec d'importantes sorties des ETF spot (~2,37 milliards $ sur 7 jours) et une baisse de l'int\u00e9r\u00eat ouvert \u00e0 19,2 milliards $. Les liquidations massives de positions longues renforcent la pression vendeuse.",
+          "risks": "Risque de squeeze d\u00fb \u00e0 un sentiment de peur extr\u00eame (Fear & Greed \u00e0 8/100) et des annonces macro\u00e9conomiques (PCE) imminentes.",
+          "price0": 59801.3,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "ETH souffre des retraits massifs et continus sur les ETF spot (record de 1,42 milliard $ de sorties en novembre), bien qu'un l\u00e9ger afflux de 96,6 millions $ ait \u00e9t\u00e9 enregistr\u00e9 le 24 novembre men\u00e9 par BlackRock. Techniquement, la tendance reste fortement baissi\u00e8re sous l'EMA20 (1702$) et l'EMA50 (1738$).",
+          "risks": "Survente court terme et rebonds techniques sporadiques men\u00e9s par BlackRock.",
+          "price0": 1679.4,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 44,
+          "reason": "XRP subit un 'death cross' daily le 21 novembre et reste sous la r\u00e9sistance psychologique majeure des 1,00$. Les taux de financement n\u00e9gatifs sur les perps indiquent une domination des vendeurs de d\u00e9riv\u00e9s, malgr\u00e9 des retraits nets d'XRP des exchanges qui indiquent une possible accumulation hors ligne.",
+          "risks": "Rebond violent si franchissement des 1,00$, et volatilit\u00e9 li\u00e9e \u00e0 la r\u00e9initialisation du Testnet de Ripple le 25 novembre.",
+          "price0": 0.9244,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 41,
+          "reason": "BNB reste impact\u00e9 par les cons\u00e9quences du piratage historique de 6,3 milliards $ de Binance fin octobre. De plus, Binance suspend temporairement les retraits le 25 novembre pour une maintenance de portefeuille d'une heure, maintenant la pression sous l'EMA20 \u00e0 553,7$.",
+          "risks": "Volatilit\u00e9 accrue autour de la fen\u00eatre de maintenance et rumeurs de r\u00e9gulation.",
+          "price0": 548.94,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 45,
+          "reason": "SOL montre une relative r\u00e9silience en restant au-dessus des plus bas de novembre (64,83$), soutenu par un volume record d'actifs tokenis\u00e9s (RWA) sur le r\u00e9seau. Cependant, la tendance globale reste baissi\u00e8re sous l'EMA20 (70,85$) et l'EMA50 (71,56$), affect\u00e9e par la capitulation g\u00e9n\u00e9rale du march\u00e9.",
+          "risks": "Fortes fluctuations en cas de rebond du BTC ou de pression de vente persistante.",
+          "price0": 69.65,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucun avantage statistique clair : le prix est proche du support local de 68,5$ tandis que la tendance macro reste fortement baissi\u00e8re, justifiant l'abstention."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"FOMC\" OR \"Federal Reserve\" November 2026",
+        "US CPI November 2026 OR US jobs November 2026",
+        "crypto news November 24 2026 OR November 25 2026",
+        "Bitcoin price November 24 2026 OR November 25 2026",
+        "\"XRP\" news November 2026 OR November 24 2026 OR November 25 2026",
+        "\"Solana\" news November 2026 OR November 24 2026 OR November 25 2026",
+        "\"Ethereum\" ETF flows November 24 2026 OR November 25 2026",
+        "\"Binance\" BNB news November 2026 OR November 24 2026 OR November 25 2026",
+        "\"Binance\" hack October 2026 6.3 billion",
+        "Fear and greed index crypto November 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4310,
+        "candidatesTokenCount": 1331,
+        "totalTokenCount": 11995
+      }
     }
   ],
   "attempts": {
-    "1795550400000": 1
+    "1795550400000": 1,
+    "1795564800000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -15926,9 +16055,9 @@
         "conviction": 60,
         "reason": "La tendance de fond est fortement baissi\u00e8re (sous l'EMA 200) et la derni\u00e8re bougie 4H montre un rejet net des hausses avec un retour sous l'EMA 20. Les flux sortants des ETF et la macro\u00e9conomie soutiennent une poursuite de la baisse vers les r\u00e9cents plus bas.",
         "exitBy": 1795669200000,
-        "lastBar": 1795557600000,
-        "markR": 0.2123,
-        "markPrice": 59793.3
+        "lastBar": 1795561200000,
+        "markR": 0.2317,
+        "markPrice": 59742.0
       },
       {
         "id": "ETHUSDT-1795492800000",
@@ -15943,9 +16072,9 @@
         "conviction": 65,
         "reason": "Faiblesse technique marqu\u00e9e avec une cl\u00f4ture sous les EMA cl\u00e9s et un momentum baissier fort. Le retest des plus bas annuels vers 1540$ semble probable dans ce climat d'aversion au risque g\u00e9n\u00e9ralis\u00e9e.",
         "exitBy": 1795669200000,
-        "lastBar": 1795557600000,
-        "markR": 0.2599,
-        "markPrice": 1678.4
+        "lastBar": 1795561200000,
+        "markR": 0.2718,
+        "markPrice": 1677.44
       },
       {
         "id": "BNBUSDT-1795492800000",
@@ -15960,9 +16089,9 @@
         "conviction": 55,
         "reason": "La structure technique reste baissi\u00e8re avec des sommets descendants sous l'EMA 50. Les cons\u00e9quences financi\u00e8res et de r\u00e9putation du piratage g\u00e9ant de Binance continuent de peser, rendant la rupture du support \u00e0 540$ imminente.",
         "exitBy": 1795669200000,
-        "lastBar": 1795557600000,
-        "markR": 0.2278,
-        "markPrice": 548.59
+        "lastBar": 1795561200000,
+        "markR": 0.2329,
+        "markPrice": 548.48
       },
       {
         "id": "XRPUSDT-1795536000000",
@@ -15977,9 +16106,9 @@
         "conviction": 65,
         "reason": "La rupture valid\u00e9e du support cl\u00e9 des $0.92 ouvre la voie vers la zone de support suivante situ\u00e9e entre $0.83 et $0.85. Le stop \u00e0 $0.955 est positionn\u00e9 en toute s\u00e9curit\u00e9 au-dessus des EMA20 et EMA50.",
         "exitBy": 1795712400000,
-        "lastBar": 1795557600000,
-        "markR": -0.2777,
-        "markPrice": 0.923
+        "lastBar": 1795561200000,
+        "markR": -0.2935,
+        "markPrice": 0.9237
       }
     ],
     "trades": [
@@ -16490,19 +16619,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795563987556,
+  "generatedAt": 1795564953961,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 120,
-    "totalTokens": 1436047,
+    "analyses": 121,
+    "totalTokens": 1448042,
     "direction": {
-      "scored": 570,
-      "called": 338,
-      "neutral": 232,
+      "scored": 575,
+      "called": 339,
+      "neutral": 236,
       "hits": 237,
-      "hitRate": 0.7012,
-      "brier": 0.2287,
+      "hitRate": 0.6991,
+      "brier": 0.2288,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -16558,14 +16687,14 @@
       "avgR": 0.4161,
       "totalR": 11.6499,
       "open": 4,
-      "equityMarked": 561.136222,
-      "returnPct": 12.2272
+      "equityMarked": 561.25133,
+      "returnPct": 12.2503
     }
   },
   "lastRun": {
-    "at": 1795563987556,
-    "status": "waiting",
+    "at": 1795564953961,
+    "status": "ok",
     "error": null,
-    "barClose": 1795561200000
+    "barClose": 1795564800000
   }
 }
