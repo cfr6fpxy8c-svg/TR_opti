@@ -15371,7 +15371,11 @@
             "reason": "Position vendeuse existante ouverte \u00e0 60354.8$. Pas de nouvelle position."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.796,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -15385,7 +15389,11 @@
             "reason": "Position vendeuse existante ouverte \u00e0 1699.36$. Pas de nouvelle position."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.344,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -15399,7 +15407,11 @@
             "reason": "Pas de signal de breakout valide et proximit\u00e9 du support \u00e0 0,91$, incitant \u00e0 la prudence malgr\u00e9 la tendance baissi\u00e8re."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -3.075,
+            "hit": true
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -15413,7 +15425,11 @@
             "reason": "Position vendeuse existante ouverte \u00e0 553.49$. Pas de nouvelle position."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.312,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -15427,7 +15443,11 @@
             "reason": "SOL reste sous sa r\u00e9sistance cl\u00e9 de 80$ mais l'absence de signal de breakout technique nous pousse \u00e0 rester \u00e0 l'\u00e9cart pour le moment."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -5.178,
+            "hit": true
+          }
         }
       },
       "queries": [
@@ -16100,10 +16120,187 @@
         "candidatesTokenCount": 1521,
         "totalTokenCount": 13082
       }
+    },
+    {
+      "barClose": 1795593600000,
+      "requestedAt": 1795593754864,
+      "analyzedAt": 1795593787954,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Politique hawkish de la Fed (hausse de d\u00e9cembre enti\u00e8rement pric\u00e9e), dollar au plus haut depuis avril 2025 et correction des actions tech p\u00e8sent lourdement. De plus, les sorties massives des ETF spot Bitcoin et le choc du hack de Binance accentuent l'aversion au risque mondiale.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "Tendance baissi\u00e8re puissante sous l'EMA200 (70k$). Sorties records de 4,7Mrd$ des ETF spot en novembre et baisse g\u00e9n\u00e9rale d\u00e9clench\u00e9e par le hack de Binance. Le niveau cl\u00e9 des 58,5k$ est enfonc\u00e9, alimentant les liquidations. Les taux de financement n\u00e9gatifs refl\u00e8tent une forte pression vendeuse.",
+          "risks": "Le sentiment \u00e0 Extreme Fear (13) et le short-crowding peuvent d\u00e9clencher un short squeeze violent sur un rebond technique.",
+          "price0": 58710.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 60354.8$. Pas de nouvelle entr\u00e9e pour \u00e9viter la surexposition sur un actif d\u00e9j\u00e0 en portefeuille."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 58746.1,
+            "decision": "GO",
+            "probTarget": 52,
+            "reason": "GO. Bien que l'indice de Fear & Greed \u00e0 13 (Extreme Fear) et les taux de financement bas augmentent le risque d'un short squeeze \u00e0 court terme, la force de la tendance baissi\u00e8re macro (sorties d'ETF massives, dollar fort) favorise la continuation.",
+            "ours": "rejected"
+          },
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Ethereum affiche une sous-performance chronique (-28% sur le mois), plomb\u00e9 par les pertes de BitMine ($6,3Mrd) et le tarissement des flux d'ETF. La rupture du support \u00e0 1640 USD confirme la domination vendeuse alors que l'activit\u00e9 on-chain (frais, burn) s'effondre face aux L2.",
+          "risks": "Survendu \u00e0 court terme avec RSI \u00e0 36, un rebond technique coordonn\u00e9 avec le BTC est le risque principal pour les shorts.",
+          "price0": 1640.35,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 1699.36$. Pas de nouvelle entr\u00e9e conform\u00e9ment aux r\u00e8gles du portefeuille qui interdisent le cumul."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 1647.51,
+            "decision": "GO",
+            "probTarget": 53,
+            "reason": "GO. Ethereum souffre d'un d\u00e9sint\u00e9r\u00eat institutionnel (outflows d'ETF) et des pertes massives de BitMine ($6,3Mrd). La rupture des 1647 USD ouvre la voie vers le support majeur \u00e0 1540 USD malgr\u00e9 le risque d'un rebond technique d\u00fb \u00e0 l'Extreme Fear globale.",
+            "ours": "rejected"
+          },
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 42,
+          "reason": "XRP subit son pire mois de novembre (-25%), plomb\u00e9 par des sorties nettes d'ETF de 30M$ et la cassure des 0,90$. Malgr\u00e9 des indicateurs techniques tr\u00e8s survendus, l'absence de force d'achat et le d\u00e9sint\u00e9r\u00eat des institutionnels emp\u00eachent toute reprise durable.",
+          "risks": "Proximit\u00e9 du support psychologique et rumeurs de r\u00e9gulation favorable qui pourraient provoquer des pics d'achat sp\u00e9culatifs.",
+          "price0": 0.9142,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 0.9107$. Nous conservons la position actuelle jusqu'au stop ou \u00e0 la cible sans rajouter de risque."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "BNB reste sous pression suite au hack d'octobre. Bien que les utilisateurs aient \u00e9t\u00e9 rembours\u00e9s, la m\u00e9fiance persiste et le volume spot diminue. Les audits en cours par Mandiant/SlowMist et la mise \u00e0 jour Jenner du 8 d\u00e9cembre n'arrivent pas \u00e0 contrer la baisse globale du march\u00e9.",
+          "risks": "Une issue positive rapide des audits de s\u00e9curit\u00e9 de Binance pourrait restaurer la confiance et faire rebondir BNB.",
+          "price0": 539.45,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 553.49$. Aucune nouvelle action requise, nous laissons courir le trade existant sous l'EMA20."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 37,
+          "reason": "Malgr\u00e9 d'excellentes m\u00e9triques fondamentales (43% du trading d'actions tokenis\u00e9es, mise \u00e0 niveau Alpenglow \u00e0 150ms et accumulation continue de DFDV), SOL subit la correction g\u00e9n\u00e9rale (-27% en novembre) et des flux ETF n\u00e9gatifs. La rupture de la zone de support des 68$ ouvre de nouveaux plus bas.",
+          "risks": "Les rachats r\u00e9guliers par des tr\u00e9soreries cot\u00e9es (DFDV, WIZE) soutiennent le prix et peuvent amplifier un rebond rapide.",
+          "price0": 67.76,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 68.74$. La position actuelle est d\u00e9j\u00e0 en profit substantiel, pas d'accumulation additionnelle."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 68.45,
+            "decision": "GO",
+            "probTarget": 51,
+            "reason": "GO. Bien que SOL montre des fondamentaux on-chain solides (43% d'actions tokenis\u00e9es, accumulation institutionnelle), la pression vendeuse du march\u00e9 global et les flux ETF n\u00e9gatifs entra\u00eenent le prix sous les supports majeurs.",
+            "ours": "rejected"
+          },
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "bitcoin news november 2026",
+        "fomc november 2026",
+        "cryptocurrency news november 25 2026",
+        "BNB news november 2026",
+        "SOL news november 2026",
+        "XRP news november 2026",
+        "ethereum news november 2026"
+      ],
+      "sources": [
+        {
+          "title": "theedgemalaysia.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEPXDXpFaIqVH7kGf6rKsafMf_BYJqXULGEGMgMuJ6-PVQYoUH5sAA3St7jxlTJcxiX78CqUixo5rvHRUSEGGGJ_zJw2h_yyDuyuIzlvlK62SNcF5mqNE5XDCHjn1u5aEa0Gw=="
+        },
+        {
+          "title": "biggo.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHbguG-LxF7ecOXnZf_fd9gE6Ok-uEZF9LN7YdLQJSUjx-TDt-F2lpb0i4yznMqezAIf1EN29HVpUobWcHw87zOEU8pXTs8RR3rb47DWMiH0TNG6VfjaNPXPzfDR6bHI44lC-aecW2EJgr5_xuzGNNiExvi04Zx1W_sFt2_5F4="
+        },
+        {
+          "title": "thecryptomerchant.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQELuqziE_ZU3m9TW3GBfTSirIP-DBhwhFs_Gm9kaqM1MIcsq48p7HtQ7Ku00gocsT12pVMOxFrhaFIbR6mhCYogB5iHnICJq602MFIQXODCn7REaTcwLDarzWEl5AXfKhOavxfKY3nKVM5mqJCOwMCHmNjOdLCHjEnBN6n7SLDITRxYOov3C4r1hw=="
+        },
+        {
+          "title": "cryptobriefing.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH7_5cI3h5FLv1hzbrKlbYBG0ZSu6FX5K2prLX7IPAPcrQhpROKOV93STnqMq0S3scFGxUTHYwaZNrqEhnT9i4Aw6ml-Fq3nzxfjvh6zoCJr5Koq71rq_Ma2ckJ4Rf2JNbmNzf7vsWTNUkC4rpu2CQruFz6FX8alkZacpqm-pRsug=="
+        },
+        {
+          "title": "coingabbar.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXdHLou-L0ZA2suhDJcSjQsYyEzW6On-lmnrE5b0IDBnCe4n5Xa2p4EBEnE5L3n_7hg3-oBpjwe65xtFt607TBhgJZP3zL0ozbE3j8DpQPBbBofiX5okmcil5AAEzsbO5X0d_8_z1IFvqi9grE8sd5xTu2uRxs_NC2eAdxhB88ZE_fsSJDP8U9Y6HS6Bzl_a5NxOuLeDvHHg=="
+        },
+        {
+          "title": "cryptonews.net",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGsegqqpdZsxzPesn9VblclwdASZSSmsPyJlq7b_VhlIrn6xSflYtRQNvKrRCI61S-S3R6BX1srGq7Nk5LGm1eWRGYyA99q7S1Vwgc3YGXLOgzh0nC5w9FcVJg94xH5lls_I4rZs3tQYQk="
+        },
+        {
+          "title": "cryptoslate.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHoy0CgE1zmlyDGAR1ukRNWSUbIcaheqbR33cBEDyDsRwPckRKo70DQ6SblrnSeq7LCJSRc2G16KwKuQsWQgXLffuzNKun14btcHXnYEKfA-GsiX7sGbzyNZMJo5Q2WYLYd4nEl0LGyk9vyjN7jZqm3lUpxTVB_XKqc61Eue3i9TxKdtaPbeA9cUMEHjtC70ftd88xb372a-g9o9k_NNvZZEtoMvA=="
+        },
+        {
+          "title": "finbold.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGVE3VCKbcoJ2o56MGXcFMYXztdKfYjFuE55pmHyIZlvruA-Zigi2QYn9JKatPvqxFw4pkwbFQeUgbQczUMna6CMSigKSTN8QPMxtdzZUFGe7LoJX2RhunrRnLQNSKwVdtikYWqWhG0r6qtoq4yvPC_6if8Xgm04brtpJzgC8f9hGDeH-4KvBCPgRBKxPawmDZ_nCanyaeZVASb"
+        },
+        {
+          "title": "cryptobriefing.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEFmIdKUqNym59ipVPElKQNql2bs45mEoMGTQnn7SOCDgwZoFnCeLsS82p-Q7419FSrNMPAZmlQOmjJHV9mc-RmeJs8y2suDM4g5Du9fhXDmgj9BSrywPK7YdtIZaYMP9GaUmhwtCJ8oaJwlgeH3mFpngwIx_ZeHA=="
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHSJxwqv566Ehxix5wveHskmXAhDufY887l2zEcBYIhGixwOy0bwIaSLg21VSg46i_uZaSiSWSeydYH8wFuJyeXxKwIqRCHhWEOFTJBWn1ppcVPp8MKgrbXP1EYUBtpiQM6Hg3S74spFPXQJMoHAgJtsQ=="
+        },
+        {
+          "title": "youtube.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFEHB5lpu3B_8A1PuVIjVLuk9MNL3apoH3U2lDjUFH5pLDa2rm8KLoDyit_hwCU3ZgNQqJWD-ingbN0ISLfKrr9M-8k4utNkxKAZd-v2nf6e54sGSuXyUUMwsRVLfggwEcJrjl36SE="
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE-PW6i_ey7SYs2bmllrweiUnI6NREkvgmjUUOPijEDA_-Ipkh8tdv6QfGIRVBO4pWadlNdmFXNyft3qdw60_FScwVcUO_x1c0InR5SNe9qr-7TzIEfnz7WnG00lcXgiQ5HUtzIUS8_fphok-kpS5jTl0DpvWk4JzmzabI9UUljwJz8UOIlsiVFzSnEXrYmsRXp-iup2ggeqWr5EyHdF3fTYCmflHn-dg8xhF7--inHA7l8AVEx4d6wvqC7HXgqVg=="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 20,
+        "supports": 38
+      },
+      "usage": {
+        "promptTokenCount": 4495,
+        "candidatesTokenCount": 1995,
+        "totalTokenCount": 12689
+      }
     }
   ],
   "attempts": {
-    "1795579200000": 1
+    "1795579200000": 1,
+    "1795593600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -16122,9 +16319,9 @@
         "conviction": 60,
         "reason": "La tendance de fond est fortement baissi\u00e8re (sous l'EMA 200) et la derni\u00e8re bougie 4H montre un rejet net des hausses avec un retour sous l'EMA 20. Les flux sortants des ETF et la macro\u00e9conomie soutiennent une poursuite de la baisse vers les r\u00e9cents plus bas.",
         "exitBy": 1795669200000,
-        "lastBar": 1795586400000,
-        "markR": 0.5665,
-        "markPrice": 58856.2
+        "lastBar": 1795590000000,
+        "markR": 0.5987,
+        "markPrice": 58771.1
       },
       {
         "id": "ETHUSDT-1795492800000",
@@ -16139,9 +16336,9 @@
         "conviction": 65,
         "reason": "Faiblesse technique marqu\u00e9e avec une cl\u00f4ture sous les EMA cl\u00e9s et un momentum baissier fort. Le retest des plus bas annuels vers 1540$ semble probable dans ce climat d'aversion au risque g\u00e9n\u00e9ralis\u00e9e.",
         "exitBy": 1795669200000,
-        "lastBar": 1795586400000,
-        "markR": 0.6966,
-        "markPrice": 1643.19
+        "lastBar": 1795590000000,
+        "markR": 0.7109,
+        "markPrice": 1642.03
       },
       {
         "id": "BNBUSDT-1795492800000",
@@ -16156,9 +16353,9 @@
         "conviction": 55,
         "reason": "La structure technique reste baissi\u00e8re avec des sommets descendants sous l'EMA 50. Les cons\u00e9quences financi\u00e8res et de r\u00e9putation du piratage g\u00e9ant de Binance continuent de peser, rendant la rupture du support \u00e0 540$ imminente.",
         "exitBy": 1795669200000,
-        "lastBar": 1795586400000,
-        "markR": 0.6183,
-        "markPrice": 540.19
+        "lastBar": 1795590000000,
+        "markR": 0.6313,
+        "markPrice": 539.91
       },
       {
         "id": "XRPUSDT-1795536000000",
@@ -16173,9 +16370,9 @@
         "conviction": 65,
         "reason": "La rupture valid\u00e9e du support cl\u00e9 des $0.92 ouvre la voie vers la zone de support suivante situ\u00e9e entre $0.83 et $0.85. Le stop \u00e0 $0.955 est positionn\u00e9 en toute s\u00e9curit\u00e9 au-dessus des EMA20 et EMA50.",
         "exitBy": 1795712400000,
-        "lastBar": 1795586400000,
-        "markR": -0.0655,
-        "markPrice": 0.9136
+        "lastBar": 1795590000000,
+        "markR": -0.0926,
+        "markPrice": 0.9148
       },
       {
         "id": "SOLUSDT-1795579200000",
@@ -16190,9 +16387,9 @@
         "conviction": 65,
         "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
         "exitBy": 1795755600000,
-        "lastBar": 1795586400000,
-        "markR": 0.172,
-        "markPrice": 67.99
+        "lastBar": 1795590000000,
+        "markR": 0.2064,
+        "markPrice": 67.84
       }
     ],
     "trades": [
@@ -16703,19 +16900,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795592778735,
+  "generatedAt": 1795593754864,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 122,
-    "totalTokens": 1461124,
+    "analyses": 123,
+    "totalTokens": 1473813,
     "direction": {
-      "scored": 580,
-      "called": 342,
-      "neutral": 238,
-      "hits": 240,
-      "hitRate": 0.7018,
-      "brier": 0.2285,
+      "scored": 585,
+      "called": 344,
+      "neutral": 241,
+      "hits": 242,
+      "hitRate": 0.7035,
+      "brier": 0.2282,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -16734,7 +16931,7 @@
         "totalR": 11.7308
       },
       "rejected_GO": {
-        "count": 16,
+        "count": 19,
         "closed": 16,
         "wins": 11,
         "avgR": 5.2589,
@@ -16750,7 +16947,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 23,
+        "count": 26,
         "closed": 23,
         "wins": 15,
         "avgR": 4.764,
@@ -16771,14 +16968,14 @@
       "avgR": 0.4161,
       "totalR": 11.6499,
       "open": 5,
-      "equityMarked": 569.884427,
-      "returnPct": 13.9769
+      "equityMarked": 570.25769,
+      "returnPct": 14.0515
     }
   },
   "lastRun": {
-    "at": 1795592778735,
-    "status": "waiting",
+    "at": 1795593754864,
+    "status": "ok",
     "error": null,
-    "barClose": 1795590000000
+    "barClose": 1795593600000
   }
 }
