@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1795575600000,
-    "executedAt": 1795575677146,
+    "scheduledAt": 1795576500000,
+    "executedAt": 1795576554018,
     "trigger": "schedule",
-    "jitterSeconds": 77.1,
-    "durationMs": 12093,
+    "jitterSeconds": 54.0,
+    "durationMs": 10417,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1795575599999,
-      "ageSeconds": 77.1
+      "newestCandleCloseMs": 1795576499999,
+      "ageSeconds": 54.0
     },
     "activeSignals": 1
   },
-  "lastSuccessfulScan": 1795575677146,
-  "nextExpectedScanAt": 1795576500000,
+  "lastSuccessfulScan": 1795576554018,
+  "nextExpectedScanAt": 1795577400000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1795531550467,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1795531500000 actual=1795531550460 (jitter 50.5s)"
-    },
-    {
-      "ts": 1795531561308,
-      "level": "info",
-      "msg": "derivatives: funding rates for 959 symbols"
-    },
-    {
-      "ts": 1795531561511,
-      "level": "info",
-      "msg": "rejected 1x weaker_direction (e.g. opposite direction scored higher)"
-    },
-    {
-      "ts": 1795531561511,
-      "level": "info",
-      "msg": "SIGNAL BTCUSDT SHORT B score=72.2 trigger=59993.2949288332 TP=58166.0 SL=60854.2253558339 RR=2.1225"
-    },
     {
       "ts": 1795532479933,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1795575689202,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1795576554022,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1795576500000 actual=1795576554018 (jitter 54.0s)"
+    },
+    {
+      "ts": 1795576564270,
+      "level": "info",
+      "msg": "derivatives: funding rates for 959 symbols"
+    },
+    {
+      "ts": 1795576564410,
+      "level": "info",
+      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
+    },
+    {
+      "ts": 1795576564410,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
