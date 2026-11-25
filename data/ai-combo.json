@@ -15292,7 +15292,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.517,
+            "hit": true
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -15311,7 +15315,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.88,
+            "hit": true
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -15325,7 +15333,11 @@
             "reason": "Le march\u00e9 est ind\u00e9cis avec un XRP oscillant autour du pivot de 1,00$. La baisse globale incite \u00e0 la prudence, mais la r\u00e9silience relative de l'actif par rapport aux autres altcoins rend un short risqu\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.901,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -15344,7 +15356,11 @@
             "status": "opened"
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -1.621,
+            "hit": true
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -15358,7 +15374,11 @@
             "reason": "Bien que fondamentalement solide gr\u00e2ce \u00e0 l'adoption des actions tokenis\u00e9es et Firedancer, SOL est bloqu\u00e9 dans une corr\u00e9lation \u00e9troite avec le BTC. L'absence de tendance claire \u00e0 tr\u00e8s court terme incite \u00e0 s'abstenir."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -2.9,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -16024,10 +16044,123 @@
         "candidatesTokenCount": 1331,
         "totalTokenCount": 11995
       }
+    },
+    {
+      "barClose": 1795579200000,
+      "requestedAt": 1795579355936,
+      "analyzedAt": 1795579424750,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Le sentiment macro\u00e9conomique est domin\u00e9 par l'attente de l'indice PCE am\u00e9ricain d'octobre (attendu \u00e0 +0,3% MoM) et du PIB du T3 aujourd'hui. L'inflation persistante soutient la perspective d'une hausse des taux de la Fed en d\u00e9cembre, propulsant le dollar \u00e0 un sommet de 20 mois.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Le BTC est repass\u00e9 sous les 60k$ suite \u00e0 des sorties records des ETF spot am\u00e9ricains de 4,71 Mds$ en novembre (dont 569,7 M$ le 23 novembre). Malgr\u00e9 une baisse continue des r\u00e9serves de BTC sur les plateformes (-43k BTC sur 30 jours, signe d'accumulation \u00e0 long terme), la pression vendeuse spot domine avant le rapport PCE d'aujourd'hui.",
+          "risks": "Le niveau technique des 58,5k$ est crucial; une rupture de ce support pourrait aggraver la baisse. Une surprise baissi\u00e8re sur l'indice PCE pourrait d\u00e9clencher un rebond.",
+          "price0": 59393.5,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Une position short est d\u00e9j\u00e0 ouverte sur le BTC via notre portefeuille, interdisant toute nouvelle entr\u00e9e."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "L'Ether continue de sous-performer sous la pression d'importantes sorties de capitaux de ses ETF spot en novembre. Techniquement, le cours est enferm\u00e9 dans un canal baissier sous les moyennes mobiles 4H (EMA20 et EMA50) et s'aligne sur la correction globale du secteur technologique am\u00e9ricain.",
+          "risks": "Le support majeur des 1536$ est en ligne de mire si le BTC rompt ses supports. Un sursaut technique du Nasdaq suite au retour de Jensen Huang pourrait limiter la baisse.",
+          "price0": 1663.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Une position short est d\u00e9j\u00e0 en cours sur l'ETH, aucun nouveau trade ne sera initi\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 40,
+          "reason": "Le XRP enregistre son pire mois de novembre historique avec une baisse de ~25%, brisant sa tendance positive de flux ETF spot (-30,7M$ en novembre). Bien que l'Uphold ait vu une sortie massive de 269M XRP vers des portefeuilles froids (accumulation potentielle), les liquidations massives de positions longues p\u00e8sent sur les prix.",
+          "risks": "La rupture potentielle du niveau de support cl\u00e9 des 0,90$ pourrait pr\u00e9cipiter une baisse vers le bas annuel de 0,86$. Le testnet/devnet est r\u00e9initialis\u00e9 le 25 novembre.",
+          "price0": 0.9204,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position short d\u00e9j\u00e0 active dans notre portefeuille, emp\u00eachant une nouvelle exposition."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Le BNB montre une relative r\u00e9silience face \u00e0 la purge du march\u00e9, mais reste sous pression apr\u00e8s la demande de saisie civile de 1,1 Md$ de l'autorit\u00e9 am\u00e9ricaine (fonds blanchis par la Cor\u00e9e du Nord). L'introduction des actions tokenis\u00e9es d'Anthropic apporte du volume \u00e0 la BNB Chain mais ne soutient pas directement le prix.",
+          "risks": "Rupture du support des 542$ ouvrant la voie vers les 506$. L'enqu\u00eate r\u00e9glementaire en cours sur Binance et le DOJ am\u00e9ricain reste le principal risque de baisse extr\u00eame.",
+          "price0": 543.88,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Une position short est d\u00e9j\u00e0 en cours d'ex\u00e9cution sur le BNB."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 38,
+          "reason": "Le SOL a chut\u00e9 de plus de 27% en novembre, effa\u00e7ant le rebond \u00e9ph\u00e9m\u00e8re post-Nvidia. Malgr\u00e9 la reprise timide des flux d'ETF Solana (+4,38M$ fin novembre) et la fin de la d\u00e9signation 'Mainnet Beta', la baisse de 12% de l'offre globale de stablecoins sur le r\u00e9seau et la faiblesse de l'\u00e9cosyst\u00e8me DeFi p\u00e8sent lourdement.",
+          "risks": "Une r\u00e9action positive des march\u00e9s suite au PCE d'aujourd'hui ou un rallye de couverture des positions short (funding n\u00e9gatif) pourrait propulser le SOL vers les 71,68$.",
+          "price0": 69.3,
+          "trade": {
+            "action": "SHORT",
+            "conviction": 65,
+            "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
+            "stop": 73.1,
+            "target": 61.7,
+            "maxHoldHours": 48,
+            "valid": true
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "crypto news November 24 2026",
+        "bitcoin price November 25 2026",
+        "fomc macro news November 24 2026",
+        "spot etf flows crypto November 2026",
+        "\"November 25 2026\" macro calendar",
+        "\"November 25, 2026\" US PCE GDP jobless claims",
+        "\"Kevin Warsh\" Fed Chairman 2026",
+        "crypto news \"November 25\" 2026",
+        "\"Solana\" news November 24 2026",
+        "\"Solana\" news November 25 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4299,
+        "candidatesTokenCount": 1521,
+        "totalTokenCount": 13082
+      }
     }
   ],
   "attempts": {
-    "1795564800000": 1
+    "1795564800000": 1,
+    "1795579200000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -16046,9 +16179,9 @@
         "conviction": 60,
         "reason": "La tendance de fond est fortement baissi\u00e8re (sous l'EMA 200) et la derni\u00e8re bougie 4H montre un rejet net des hausses avec un retour sous l'EMA 20. Les flux sortants des ETF et la macro\u00e9conomie soutiennent une poursuite de la baisse vers les r\u00e9cents plus bas.",
         "exitBy": 1795669200000,
-        "lastBar": 1795572000000,
-        "markR": 0.3407,
-        "markPrice": 59453.6
+        "lastBar": 1795575600000,
+        "markR": 0.4086,
+        "markPrice": 59273.9
       },
       {
         "id": "ETHUSDT-1795492800000",
@@ -16063,9 +16196,9 @@
         "conviction": 65,
         "reason": "Faiblesse technique marqu\u00e9e avec une cl\u00f4ture sous les EMA cl\u00e9s et un momentum baissier fort. Le retest des plus bas annuels vers 1540$ semble probable dans ce climat d'aversion au risque g\u00e9n\u00e9ralis\u00e9e.",
         "exitBy": 1795669200000,
-        "lastBar": 1795572000000,
-        "markR": 0.4317,
-        "markPrice": 1664.55
+        "lastBar": 1795575600000,
+        "markR": 0.4862,
+        "markPrice": 1660.15
       },
       {
         "id": "BNBUSDT-1795492800000",
@@ -16080,9 +16213,9 @@
         "conviction": 55,
         "reason": "La structure technique reste baissi\u00e8re avec des sommets descendants sous l'EMA 50. Les cons\u00e9quences financi\u00e8res et de r\u00e9putation du piratage g\u00e9ant de Binance continuent de peser, rendant la rupture du support \u00e0 540$ imminente.",
         "exitBy": 1795669200000,
-        "lastBar": 1795572000000,
-        "markR": 0.4556,
-        "markPrice": 543.69
+        "lastBar": 1795575600000,
+        "markR": 0.5095,
+        "markPrice": 542.53
       },
       {
         "id": "XRPUSDT-1795536000000",
@@ -16097,9 +16230,9 @@
         "conviction": 65,
         "reason": "La rupture valid\u00e9e du support cl\u00e9 des $0.92 ouvre la voie vers la zone de support suivante situ\u00e9e entre $0.83 et $0.85. Le stop \u00e0 $0.955 est positionn\u00e9 en toute s\u00e9curit\u00e9 au-dessus des EMA20 et EMA50.",
         "exitBy": 1795712400000,
-        "lastBar": 1795572000000,
-        "markR": -0.1986,
-        "markPrice": 0.9195
+        "lastBar": 1795575600000,
+        "markR": -0.167,
+        "markPrice": 0.9181
       }
     ],
     "trades": [
@@ -16610,19 +16743,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795578384852,
+  "generatedAt": 1795579355936,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 121,
-    "totalTokens": 1448042,
+    "analyses": 122,
+    "totalTokens": 1461124,
     "direction": {
-      "scored": 575,
-      "called": 339,
-      "neutral": 236,
-      "hits": 237,
-      "hitRate": 0.6991,
-      "brier": 0.2288,
+      "scored": 580,
+      "called": 342,
+      "neutral": 238,
+      "hits": 240,
+      "hitRate": 0.7018,
+      "brier": 0.2285,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -16678,14 +16811,14 @@
       "avgR": 0.4161,
       "totalR": 11.6499,
       "open": 4,
-      "equityMarked": 564.528554,
-      "returnPct": 12.9057
+      "equityMarked": 565.690251,
+      "returnPct": 13.1381
     }
   },
   "lastRun": {
-    "at": 1795578384852,
-    "status": "waiting",
+    "at": 1795579355936,
+    "status": "ok",
     "error": null,
-    "barClose": 1795575600000
+    "barClose": 1795579200000
   }
 }
