@@ -16308,11 +16308,183 @@
         "candidatesTokenCount": 1995,
         "totalTokenCount": 12689
       }
+    },
+    {
+      "barClose": 1795608000000,
+      "requestedAt": 1795608981549,
+      "analyzedAt": 1795609013849,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Aversion au risque marqu\u00e9e ce 25 nov avec la menace de nouveaux tarifs douaniers US (le VIX bondit \u00e0 30, Nasdaq futures -2.4%). De plus, les march\u00e9s attendent le PCE d'octobre (inflation core \u00e9lev\u00e9e) renfor\u00e7ant les craintes de hausse de taux le 9 d\u00e9c. Sorties massives d'ETF crypto (~5 Mds$ en nov).",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "Le BTC casse sous le support psychologique des 60 000 $ (actuellement \u00e0 58 613 $) face aux craintes sur les tarifs douaniers am\u00e9ricains et avant la publication du PCE. Les flux d'ETF spot sont catastrophiques avec un record de sorties de pr\u00e8s de 5 milliards de dollars en novembre. La dynamique \u00e0 court et moyen terme reste fermement baissi\u00e8re sous l'EMA 20/50.",
+          "risks": "Choc de liquidation si baisse sous 55k, sursaut technique de short squeeze si le PCE d'octobre est plus faible qu'attendu.",
+          "price0": 58613.0,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur ce compte papier \u00e0 60354.8 $, aucun nouveau trade initi\u00e9 selon les r\u00e8gles."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "L'ETH suit le d\u00e9clin global \u00e0 1637.99 $, p\u00e9nalis\u00e9 par la faiblesse g\u00e9n\u00e9rale des altcoins et l'impact persistant du piratage de Binance fin octobre (l'ETH \u00e9tait le principal actif vol\u00e9). Techniquement, la structure reste tr\u00e8s lourde sous les EMA20 et EMA50, avec des sorties nettes continues des ETF spot d'Ethereum et peu d'int\u00e9r\u00eat acheteur.",
+          "risks": "Sursaut technique si le march\u00e9 d'actions se stabilise, mais risque accru de capitulation vers les 1500 $ en cas de panique globale.",
+          "price0": 1637.99,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur ce compte \u00e0 1699.36 $, pas de nouveau trade autoris\u00e9."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "DOWN",
+          "probUp": 30,
+          "reason": "XRP subit son pire mois de novembre jamais enregistr\u00e9, affichant une baisse de plus de 25% et enfon\u00e7ant le support majeur des 0.90 $. Les ETF spot XRP enregistrent des sorties nettes records sans aucun jour d'afflux en novembre. Ripple continue \u00e9galement de d\u00e9verrouiller ses jetons mensuels de l'escrow, augmentant la pression vendeuse.",
+          "risks": "Rebonds volatils dus \u00e0 des conditions temporairement survendues (RSI \u00e0 41.8), mais la tendance macro reste fermement baissi\u00e8re.",
+          "price0": 0.9083,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Une position SHORT est d\u00e9j\u00e0 ouverte sur cet actif \u00e0 0.9107 $, interdisant tout nouveau trade."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 0.9089,
+            "decision": "GO",
+            "probTarget": 65,
+            "reason": "La rupture du support critique \u00e0 0.9089 $ sur fond de forts volumes baissiers et de sorties massives d'ETF soutient une poursuite du mouvement vers 0.83 $.",
+            "ours": "rejected"
+          },
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "DOWN",
+          "probUp": 35,
+          "reason": "BNB s'\u00e9tablit \u00e0 539.14 $ et s'approche dangereusement du plancher de support des 500-503 $. Bien que Binance ait couvert les pertes du piratage g\u00e9ant d'octobre et que l'activit\u00e9 sur la BNB Chain soit robuste, la tendance g\u00e9n\u00e9rale du march\u00e9 et l'aversion au risque mondiale emportent l'actif vers le bas.",
+          "risks": "Rebond technique possible si le support des 500 $ tient fermement, mais une cassure de ce seuil acc\u00e9l\u00e9rerait la baisse vers 450 $.",
+          "price0": 539.14,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif \u00e0 553.49 $, conform\u00e9ment aux r\u00e8gles du portefeuille."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "DOWN",
+          "probUp": 25,
+          "reason": "SOL affiche une faiblesse marqu\u00e9e \u00e0 67.52 $, en baisse de plus de 27% en novembre malgr\u00e9 d'excellentes performances op\u00e9rationnelles sur la tokenisation d'actifs. Les flux des fonds spot SOL sont devenus n\u00e9gatifs. Techniquement, l'actif s'enfonce sous ses EMA de court/moyen terme et la rupture des plus bas r\u00e9cents valide la tendance baissi\u00e8re.",
+          "risks": "RSI proche de la zone de survente (37), risque de rebond si le march\u00e9 d'actions US se stabilise apr\u00e8s le choc des tarifs douaniers.",
+          "price0": 67.52,
+          "trade": {
+            "action": "NONE",
+            "conviction": 0,
+            "reason": "Position SHORT d\u00e9j\u00e0 active \u00e0 68.74 $, pas de cumul de positions suppl\u00e9mentaires selon les directives."
+          },
+          "breakout4h": {
+            "side": "SHORT",
+            "level": 67.66,
+            "decision": "GO",
+            "probTarget": 70,
+            "reason": "La cassure du support r\u00e9cent \u00e0 67.66 $ avec un volume relatif de 0.81 s'aligne parfaitement avec la forte dynamique baissi\u00e8re du march\u00e9 global.",
+            "ours": "rejected"
+          },
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"November 25, 2026\" macro economics calendar FOMC Fed CPI jobs",
+        "crypto market November 25 2026 bitcoin news",
+        "bitcoin price November 2026",
+        "FOMC minutes November 2026 or Fed meeting November 2026",
+        "\"Binance\" hack October 2026",
+        "XRP news November 2026",
+        "Solana SOL news November 2026",
+        "crypto \"Fear & Greed\" index November 25 2026",
+        "BNB news November 2026",
+        "BNB Binance coin November 2026 price update news"
+      ],
+      "sources": [
+        {
+          "title": "tradingkey.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpNj14Y-P8P7WDW-S_x4S8pksDbwMsSIR0GNqmG3058jarp1XGy1apZD-z3l4_pDjvkubZz7GwyN1BCkxJO3xSWq4c1fMzz6-ZaMt6S3XXM3czdsuorwJT6SQROMX1wmFoP5RndbuDT8pDXfxk7xLQ-s0wY0q9WPlNPdFYbSfTQNpOWmdQyXNjtHrtIgevJFH_FkRTHQjvJ9lTfuZoNjMlYUKvghZ9il9vxqm5geGz"
+        },
+        {
+          "title": "cryptoticker.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH5Zf0Dx7aFXmECnyPLLp_ByUUObZ1dIqQoYc84S5kCr3c4j2jiVIWbA6esUr1iaR2JDW7P8QDOGHVIr-9-STsb-GgLrYdjbS-1allUdIJ2j6thN5uP4mbjcvZnu-vTNao8NEdk1c34cOAEe2vyncKC3KdlM86Krl8BJQEdWnt5Bg=="
+        },
+        {
+          "title": "admiralmarkets.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGHufOD4YLyd6tcZWvZKKZLm1VT7MPeRqf1xSOIDAArxqA7wh91-7xnV0VKgnaxBNXtc3Iujy6f3U_uEihkh3PEMsDT-0iqKFrDvTONB5-_STDF0SiaO5oFd73Xacp69QvN_mbGHJS_RSgP_p0UYeJPm6Y7QtPG6jUhOySyzgR-q_Csa2cypII1ZPNVblAXDckYkuhaM7MVXcAAUY7N78_pX843rQstsA=="
+        },
+        {
+          "title": "investing.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFwzLLQF6Loeb3t41-7A5KQjRBHwIPULSQ4f0ZAQFpgknbmsullre87NHWpfMFwTNnhY_N-P7j4A0d7vRCnuhfRMX18Vc3RUy72V7BkAlMsanKNZ2mRzJVZeSgRzBX6SgtLs3PDkksFrBBYolKItuTXsaJ0GdyI2cyNr6kVuPqKYoS8oVcvWqa3xHqU3NK0OSWyGVMJFIA7PNeb15i5JwTePtfTi98X0S10qvWKPsU="
+        },
+        {
+          "title": "wikipedia.org",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQE1nb1t-cX2mmZiM2V6T8WmwECA87lJv5C27jKpRWYq5ETHSKzh-4OA89qT7o45sWmNdedqSt8yZfguMrAnwblGGTAhqQft3DPdcf50u7T4mjXVFK8znKt9HOrTjihA8FXGSjyhqngZU74="
+        },
+        {
+          "title": "forbes.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAKlzKgcSBjPBEdEeY-UYukVqTDwkDD53d5uQelXzvKmzoR-GPfQLMSt4JQ4vIyD89zreNYxCOFV4rDfdT-A5K3wIXZ9YkCxwMzkclWWMqImdYcj5ia5utpZ2w75BJZYGr_XcdXiSmtof9MsHACWJmI62qpafJ08uz7Gz8oJGH9P20h_NA7_VYsOKA0K-1DED8CYv4sxVVcuDXYdIhOduz1DCwsD2ljVbs_EDDdS9y-rk6rQOeFg=="
+        },
+        {
+          "title": "247wallst.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFL_FGQ5eqyKU7b3exiq7NOEwZFa1gbMHoBdwsZVR9xdBPLDSkAK9UlXfJdQ82eqi9YFf181mUVd_r9YzVco48OLkP3dO-8-8UraYhOquiWB4DbPtfX8pu9Htv2UpiIQxAQpS7ygrmPUt8Oxuo7QyX5xX981mLhhtpcszwPZsOHyeEL6GO1h9ID2KZqWjOdIBAK1zqaEuwlGhC-5sg2tp53H3C7YMF--I2xu4mFlrkQy0oW1e0iMn492J4T7JiREA=="
+        },
+        {
+          "title": "youtube.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEEMMbsS6PUSMUTKTDQQ6UIp8FTD6sDaHNGj8VBKmiM04aT827Jz5FIewDnH5SL4nhda_FmD90FiJLejAu3E2bjFs87FDDp4_4za8ShPqVfW4pcqYRjW6fzeL57RCQUJ3lTAzER-A=="
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHXRKF_rm5sAoABIOY05mG_H2oK1IDQFCSTtnbRcrKmAo690UcxuwaHLOjpK4EfcI7gXpSwhnLugzFXoNU0T10Ph15dqp3-0HF9kNku96L19qIDSHkggDw0sbhdI4H8rqTxOJhf0hf6kGSelESWbZFPfk52C5x5iPeOTBWDIG9kb3tdvTvsdkK-D2s6ZuQXrwpcIS2or3PYt1HP_iGqUlwkfYoGUK82Y3tsn2mdtu7f4f2zNlBZW74rI2C17Lk-"
+        },
+        {
+          "title": "financefeeds.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFpCmC4h4mDR6sarvg8-HsvsqPiWW6Dyv1u4V6y8DoSjygMVJmiRXXd5zSKR-CZQKdvXOAvYJ-T0wTHMLMTmjaJG3PJb-kVyfIVkS652uTSqVTYTgEcAlk4ix83gDuSk3gVNy_yy6EwlYRzqXzHLjG2Mv6jruukfSVYa6iVTcIklMi5F4RWhgdmPTt41gA="
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEUjua5EV0jm0qWZvUNAj062Y2zUv0duQGqPlmvD4aCxWiz1M4ZzCt8W5YCABBr9OEW_RmMmp1H81kCt5QEbMacO-kU7hOa5TL83BKUenmHRvQV70rBu8x7UMavB_JGSc0ify6z5LMKq71NB6iaAX5Mtw=="
+        },
+        {
+          "title": "coinstats.app",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHpEoPtR495_D8eUQbJVQ6dXw9Bp_4iNI5FY3kw7-Q6cwG-txY6fxKouBgKO9IQkTOj_bpdgzZMu3LlRXX58sW6zaHxBwqcM86R0EHoxr7BAZeW3IEChd098ejzSMcUoXLbQk4gl0-4pDdmIO11qzSKbVbu3tHgkHMseVNPS_aZefydC-Sx_YDsCo8CRNP_CsW4x2a0ovls2SVNmVMSLB2Zs7ayk7Wd-z5LHW3Idk7XHURYEy1Zg1mbMDcFta8S29IznSWno8Kl"
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 14,
+        "supports": 17
+      },
+      "usage": {
+        "promptTokenCount": 4457,
+        "candidatesTokenCount": 1781,
+        "totalTokenCount": 10610
+      }
     }
   ],
   "attempts": {
     "1795593600000": 1,
-    "1795608000000": 1
+    "1795608000000": 2
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -16332,8 +16504,8 @@
         "reason": "La tendance de fond est fortement baissi\u00e8re (sous l'EMA 200) et la derni\u00e8re bougie 4H montre un rejet net des hausses avec un retour sous l'EMA 20. Les flux sortants des ETF et la macro\u00e9conomie soutiennent une poursuite de la baisse vers les r\u00e9cents plus bas.",
         "exitBy": 1795669200000,
         "lastBar": 1795604400000,
-        "markR": 0.667,
-        "markPrice": 58590.4
+        "markR": 0.6759,
+        "markPrice": 58567.0
       },
       {
         "id": "ETHUSDT-1795492800000",
@@ -16349,8 +16521,8 @@
         "reason": "Faiblesse technique marqu\u00e9e avec une cl\u00f4ture sous les EMA cl\u00e9s et un momentum baissier fort. Le retest des plus bas annuels vers 1540$ semble probable dans ce climat d'aversion au risque g\u00e9n\u00e9ralis\u00e9e.",
         "exitBy": 1795669200000,
         "lastBar": 1795604400000,
-        "markR": 0.7437,
-        "markPrice": 1639.39
+        "markR": 0.7169,
+        "markPrice": 1641.55
       },
       {
         "id": "BNBUSDT-1795492800000",
@@ -16366,8 +16538,8 @@
         "reason": "La structure technique reste baissi\u00e8re avec des sommets descendants sous l'EMA 50. Les cons\u00e9quences financi\u00e8res et de r\u00e9putation du piratage g\u00e9ant de Binance continuent de peser, rendant la rupture du support \u00e0 540$ imminente.",
         "exitBy": 1795669200000,
         "lastBar": 1795604400000,
-        "markR": 0.6643,
-        "markPrice": 539.2
+        "markR": 0.6462,
+        "markPrice": 539.59
       },
       {
         "id": "XRPUSDT-1795536000000",
@@ -16383,8 +16555,8 @@
         "reason": "La rupture valid\u00e9e du support cl\u00e9 des $0.92 ouvre la voie vers la zone de support suivante situ\u00e9e entre $0.83 et $0.85. Le stop \u00e0 $0.955 est positionn\u00e9 en toute s\u00e9curit\u00e9 au-dessus des EMA20 et EMA50.",
         "exitBy": 1795712400000,
         "lastBar": 1795604400000,
-        "markR": 0.0813,
-        "markPrice": 0.9071
+        "markR": 0.0542,
+        "markPrice": 0.9083
       },
       {
         "id": "SOLUSDT-1795579200000",
@@ -16400,8 +16572,8 @@
         "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
         "exitBy": 1795755600000,
         "lastBar": 1795604400000,
-        "markR": 0.2867,
-        "markPrice": 67.49
+        "markR": 0.2294,
+        "markPrice": 67.74
       }
     ],
     "trades": [
@@ -16912,12 +17084,12 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795608151629,
+  "generatedAt": 1795608981549,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 123,
-    "totalTokens": 1473813,
+    "analyses": 124,
+    "totalTokens": 1484423,
     "direction": {
       "scored": 590,
       "called": 349,
@@ -16943,7 +17115,7 @@
         "totalR": 11.7308
       },
       "rejected_GO": {
-        "count": 19,
+        "count": 21,
         "closed": 16,
         "wins": 11,
         "avgR": 5.2589,
@@ -16959,7 +17131,7 @@
     },
     "byDecision": {
       "GO": {
-        "count": 26,
+        "count": 28,
         "closed": 23,
         "wins": 15,
         "avgR": 4.764,
@@ -16980,14 +17152,14 @@
       "avgR": 0.4161,
       "totalR": 11.6499,
       "open": 5,
-      "equityMarked": 572.427419,
-      "returnPct": 14.4855
+      "equityMarked": 571.754652,
+      "returnPct": 14.3509
     }
   },
   "lastRun": {
-    "at": 1795608151629,
-    "status": "error",
-    "error": "unparseable JSON: Expecting ',' delimiter",
+    "at": 1795608981549,
+    "status": "ok",
+    "error": null,
     "barClose": 1795608000000
   }
 }
