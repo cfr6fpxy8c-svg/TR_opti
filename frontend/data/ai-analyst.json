@@ -13809,6 +13809,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 2.295,
+            "hit": false
           }
         },
         "ETHUSDT": {
@@ -13822,6 +13826,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 2.013,
+            "hit": false
           }
         },
         "XRPUSDT": {
@@ -13835,6 +13843,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 3.998,
+            "hit": false
           }
         },
         "BNBUSDT": {
@@ -13848,6 +13860,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 2.8,
+            "hit": false
           }
         },
         "SOLUSDT": {
@@ -13861,6 +13877,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position vendeuse est d\u00e9j\u00e0 ouverte sur cet actif dans notre portefeuille."
+          },
+          "outcome": {
+            "retPct": 2.439,
+            "hit": false
           }
         }
       },
@@ -13911,7 +13931,11 @@
             "decision": "GO",
             "probTarget": 65,
             "reason": "Cassure vendeuse propre sous $58,7k. Le momentum est soutenu par des flux d'ETF historiquement n\u00e9gatifs et une macro\u00e9conomie d\u00e9favorable aux actifs risqu\u00e9s.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0352,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -13931,7 +13955,11 @@
             "decision": "GO",
             "probTarget": 67,
             "reason": "La cassure baissi\u00e8re sous $1647,51 est tr\u00e8s nette et s'aligne parfaitement avec l'absence persistante d'int\u00e9r\u00eat acheteur sur les ETF.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0307,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -13977,7 +14005,11 @@
             "decision": "GO",
             "probTarget": 68,
             "reason": "Cassure valid\u00e9e sous $68,45 avec volume sup\u00e9rieur \u00e0 la moyenne (1,023) dans le sens de la tendance dominante.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0269,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -14059,7 +14091,11 @@
             "decision": "NO_GO",
             "probTarget": 45,
             "reason": "L'imminence des donn\u00e9es PCE et PIB US dans 1h30 pr\u00e9sente un risque majeur de faux breakout et de whipsaw. De plus, XRP est tr\u00e8s proche de son support historique de 0,85-0,90$, limitant le ratio risque/rendement.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0297,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -14092,7 +14128,11 @@
             "decision": "NO_GO",
             "probTarget": 46,
             "reason": "Risque de fausse cassure tr\u00e8s \u00e9lev\u00e9 en raison de la publication majeure du PCE dans 1h30. De plus, SOL teste une zone de support cl\u00e9 \u00e0 65-67$ qui pourrait provoquer un rebond technique rapide.",
-            "ours": "rejected"
+            "ours": "rejected",
+            "result": {
+              "rNet": -1.0275,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -14200,7 +14240,11 @@
             "decision": "GO",
             "probTarget": 65,
             "reason": "Cassure sous 58 427 USD avec fort volume (2,1x) suite au PCE \u00e0 +3,8% YoY cimentant une hausse de la Fed. La tendance baissi\u00e8re sous l'EMA200 et les sorties massives d'ETF soutiennent la baisse vers 55k$.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": -1.0346,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "SHORT",
@@ -14238,7 +14282,11 @@
             "decision": "GO",
             "probTarget": 60,
             "reason": "Cassure du support \u00e0 0,9039 USD sur fort volume (2,1x). Ripple subit 4 semaines de sorties nettes d'ETF et une faiblesse globale sous l'EMA20, ouvrant la voie \u00e0 un retour vers le plus bas \u00e0 0,86 USD.",
-            "ours": "taken"
+            "ours": "taken",
+            "result": {
+              "rNet": -1.0293,
+              "exitReason": "STOP"
+            }
           },
           "trade": {
             "action": "NONE",
@@ -14537,34 +14585,134 @@
         "candidatesTokenCount": 1517,
         "totalTokenCount": 10260
       }
+    },
+    {
+      "barClose": 1795665600000,
+      "requestedAt": 1795665702938,
+      "analyzedAt": 1795665725481,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "Tensions douani\u00e8res US raviv\u00e9es (tarifs de 15-35% propos\u00e9s par l'USTR) et hausse de l'inflation PCE d'octobre (3,3%) soutiennent les craintes de resserrement de la Fed. Cl\u00f4ture du Nasdaq en baisse (-4,3%) et Thanksgiving (march\u00e9s ferm\u00e9s ce jeudi) entra\u00eenent une liquidit\u00e9 tr\u00e8s r\u00e9duite.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "Malgr\u00e9 un rebond technique au-dessus des 60k$ aliment\u00e9 par des rachats de shorts, la tendance reste baissi\u00e8re sous l'EMA200 (4H \u00e0 69,5k$). Les flux ETF de novembre enregistrent un record de sorties (~5 milliards $), tandis que les menaces de barri\u00e8res douani\u00e8res p\u00e8sent sur les actifs risqu\u00e9s dans un contexte de liquidit\u00e9 r\u00e9duite par Thanksgiving.",
+          "risks": "Volatilit\u00e9 accrue due \u00e0 la faible liquidit\u00e9 festive; risque de rebond sur affaiblissement du dollar.",
+          "price0": 60756.8,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de signal de breakout clair. Entrer sur le march\u00e9 pendant le jour f\u00e9ri\u00e9 am\u00e9ricain pr\u00e9sente un risque \u00e9lev\u00e9 en raison d'une liquidit\u00e9 insuffisante."
+          }
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "ETH a rebondi depuis ses plus bas de 1608$, mais continue de sous-performer face aux sorties massives sur les ETF Spot Ethereum. Le sentiment global reste plomb\u00e9 par l'Extreme Fear (Fear & Greed \u00e0 13). La r\u00e9sistance de l'EMA50 \u00e0 1718$ limite le potentiel de hausse imm\u00e9diat.",
+          "risks": "Squeeze des positions vendeuses si le BTC franchit les 61,5k$; baisse vers le support \u00e0 1600$.",
+          "price0": 1697.29,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif."
+          }
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 49,
+          "reason": "XRP s'est stabilis\u00e9 au-dessus de son support de 0,88$, profitant d'un rebond technique temporaire. Cependant, l'absence de catalyseur propre et l'aversion globale pour le risque (PCE \u00e9lev\u00e9, tensions commerciales) freinent l'\u00e9lan sous la r\u00e9sistance psychologique des 1,00$.",
+          "risks": "Forte d\u00e9pendance \u00e0 la direction g\u00e9n\u00e9rale du BTC; volatilit\u00e9 accrue par le manque de liquidit\u00e9.",
+          "price0": 0.9572,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucune configuration de breakout identifi\u00e9e et Thanksgiving limite l'int\u00e9r\u00eat de nouvelles positions."
+          }
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BNB oscille entre 530$ et 560$ dans un march\u00e9 crypto bloqu\u00e9 en Extreme Fear. Le rebond en cours manque de volumes acheteurs convaincants et se heurte de plein fouet \u00e0 l'EMA50 (561,5$). Les incertitudes macro\u00e9conomiques incitent \u00e0 la prudence.",
+          "risks": "Extension du rebond vers 580$ en cas de stabilisation du BTC; retour vers le support \u00e0 526$.",
+          "price0": 559.11,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif."
+          }
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "SOL a rebondi sur son support \u00e0 65,7$ mais se heurte \u00e0 la r\u00e9sistance de l'EMA50 \u00e0 70,96$. Les flux institutionnels vers les altcoins sont au point mort et la baisse r\u00e9cente des valeurs technologiques p\u00e9nalise les actifs \u00e0 fort b\u00eata.",
+          "risks": "Grande sensibilit\u00e9 aux mouvements rapides du BTC; cassure du support cl\u00e9 des 65$.",
+          "price0": 70.99,
+          "breakout": null,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur cet actif."
+          }
+        }
+      },
+      "queries": [
+        "\"November 26, 2026\" OR \"November 2026\" fed fomc cpi rates",
+        "crypto market news November 2026 bitcoin ethereum",
+        "bitcoin ETF flows November 2026",
+        "\"November 26, 2026\" crypto OR bitcoin",
+        "\"November 25, 2026\" crypto OR bitcoin OR ethereum",
+        "US tariff concerns November 2026 crypto",
+        "fear and greed index crypto November 26 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4074,
+        "candidatesTokenCount": 1086,
+        "totalTokenCount": 9640
+      }
     }
   ],
   "attempts": {
-    "1795636800000": 1,
-    "1795651200000": 1
+    "1795651200000": 1,
+    "1795665600000": 1
   },
-  "generatedAt": 1795664769375,
+  "generatedAt": 1795665702938,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 120,
-    "totalTokens": 1367620,
+    "analyses": 121,
+    "totalTokens": 1377260,
     "direction": {
-      "scored": 570,
-      "called": 288,
+      "scored": 575,
+      "called": 293,
       "neutral": 282,
       "hits": 187,
-      "hitRate": 0.6493,
-      "brier": 0.2353,
+      "hitRate": 0.6382,
+      "brier": 0.2362,
       "brierRandom": 0.25
     },
     "breakouts": {
       "taken_GO": {
         "count": 6,
-        "closed": 4,
+        "closed": 6,
         "wins": 4,
-        "avgR": 4.3773,
-        "totalR": 17.509
+        "avgR": 2.5742,
+        "totalR": 15.4451
       },
       "taken_NO_GO": {
         "count": 2,
@@ -14575,33 +14723,33 @@
       },
       "rejected_GO": {
         "count": 9,
-        "closed": 6,
+        "closed": 9,
         "wins": 4,
-        "avgR": 2.6696,
-        "totalR": 16.0174
+        "avgR": 1.4361,
+        "totalR": 12.9246
       },
       "rejected_NO_GO": {
         "count": 4,
-        "closed": 2,
+        "closed": 4,
         "wins": 0,
-        "avgR": -1.0301,
-        "totalR": -2.0602
+        "avgR": -1.0293,
+        "totalR": -4.1174
       }
     },
     "byDecision": {
       "GO": {
         "count": 15,
-        "closed": 10,
+        "closed": 15,
         "wins": 8,
-        "avgR": 3.3526,
-        "totalR": 33.5264
+        "avgR": 1.8913,
+        "totalR": 28.3697
       },
       "NO_GO": {
         "count": 6,
-        "closed": 4,
+        "closed": 6,
         "wins": 0,
-        "avgR": -1.0292,
-        "totalR": -4.1169
+        "avgR": -1.029,
+        "totalR": -6.1741
       }
     },
     "portfolio": {
@@ -14611,15 +14759,15 @@
       "avgR": 0.4506,
       "totalR": 13.0682,
       "open": 3,
-      "equityMarked": 562.35306,
-      "returnPct": 12.4706
+      "equityMarked": 561.854644,
+      "returnPct": 12.3709
     }
   },
   "lastRun": {
-    "at": 1795664769375,
-    "status": "up-to-date",
+    "at": 1795665702938,
+    "status": "ok",
     "error": null,
-    "barClose": 1795651200000
+    "barClose": 1795665600000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -14638,9 +14786,9 @@
         "conviction": 60,
         "reason": "Faiblesse relative marqu\u00e9e suite au hack historique et incapacit\u00e9 \u00e0 rebondir avec les actions US. Objectif proche du bas du canal de 10 jours sous les 503$ avec un stop au-dessus de l'EMA50.",
         "exitBy": 1795852800000,
-        "lastBar": 1795636800000,
-        "markR": -0.2563,
-        "markPrice": 558.82
+        "lastBar": 1795651200000,
+        "markR": -0.3129,
+        "markPrice": 560.28
       },
       {
         "id": "ETHUSDT-1795521600000",
@@ -14655,9 +14803,9 @@
         "conviction": 65,
         "reason": "La structure technique reste tr\u00e8s lourde sous l'EMA50 avec des flux ETF sortants continus et un march\u00e9 global sans acheteurs. Un stop au-dessus de l'EMA50 (1780$) prot\u00e8ge la position en visant un retour vers le support majeur \u00e0 1550$.",
         "exitBy": 1795708800000,
-        "lastBar": 1795636800000,
-        "markR": -0.2026,
-        "markPrice": 1697.87
+        "lastBar": 1795651200000,
+        "markR": -0.2317,
+        "markPrice": 1700.87
       },
       {
         "id": "SOLUSDT-1795521600000",
@@ -14672,9 +14820,9 @@
         "conviction": 65,
         "reason": "SOL montre une faiblesse technique claire sous ses EMA 20 et 50. La pression g\u00e9n\u00e9rale sur le march\u00e9 crypto favorise la continuation de la baisse vers le bas du canal r\u00e9cent. Un stop \u00e0 74,20$ (au-dessus des moyennes mobiles et du dernier sommet local de 73$) limite efficacement le risque.",
         "exitBy": 1795708800000,
-        "lastBar": 1795636800000,
-        "markR": -0.4123,
-        "markPrice": 71.15
+        "lastBar": 1795651200000,
+        "markR": -0.4162,
+        "markPrice": 71.17
       }
     ],
     "trades": [
