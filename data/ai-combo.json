@@ -10512,13 +10512,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Les minutes hawkish de la Fed renforcent le dollar et les rendements. Les sorties d'ETF spot BTC s'acc\u00e9l\u00e8rent (2,58B$ en novembre) et l'indice Fear & Greed chute \u00e0 10 (Extr\u00eame Peur), maintenant une pression vendeuse g\u00e9n\u00e9ralis\u00e9e sur les actifs risqu\u00e9s.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "La posture ferme de la Fed post-minutes et les sorties nettes des ETF (239,9M$ le 17 nov) maintiennent le BTC sous ses EMA20/50. Le sentiment g\u00e9n\u00e9ral est \u00e0 l'Extr\u00eame Peur (indice \u00e0 10) et le prix teste la zone de support cl\u00e9 des 62k$, manquant de catalyseur haussier pour inverser la tendance.",
-          "risks": "Rebond technique court terme sur le support des 62k$ ou squeeze des positions vendeuses.",
+          "reason": "",
+          "risks": "",
           "price0": 63709.3,
           "trade": {
             "action": "NONE",
@@ -10535,8 +10535,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "ETH suit la tendance baissi\u00e8re globale du march\u00e9, p\u00e9nalis\u00e9 par des flux d'ETF d\u00e9cevants et une liquidit\u00e9 globale atone. Techniquement sous ses EMA20 (1809,5$) et EMA50 (1896,3$), l'actif manque d'\u00e9lan propre pour contrer la pression macro\u00e9conomique d\u00e9favorable.",
-          "risks": "Support historique vers 1710$-1730$ provoquant un sursaut technique.",
+          "reason": "",
+          "risks": "",
           "price0": 1803.56,
           "trade": {
             "action": "NONE",
@@ -10553,8 +10553,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 47,
-          "reason": "Bien que XRP ait montr\u00e9 une force relative temporaire vers 1,00$, les sorties de capitaux de ses ETF (6,14M$ le 17 nov via Canary/Grayscale) et le d\u00e9sint\u00e9r\u00eat institutionnel p\u00e8sent sur l'actif. Techniquement neutre (RSI 51,8), le cours oscille entre son EMA20 (0,974$) et son EMA50 (1,002$).",
-          "risks": "Sp\u00e9culation r\u00e9glementaire soudaine ou squeeze de positions courtes.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9827,
           "trade": {
             "action": "NONE",
@@ -10571,8 +10571,8 @@
         "BNBUSDT": {
           "direction": "NEUTRAL",
           "probUp": 44,
-          "reason": "BNB consolide dans un triangle ascendant \u00e9troit apr\u00e8s sa chute sous 600$. La baisse des volumes et des doutes techniques sur la proposition BEP-706 limitent la hausse, tandis que l'EMA20 (592$) fait obstacle. L'absence de dynamique claire sur les flux spot incite \u00e0 la prudence.",
-          "risks": "Sortie violente du triangle de consolidation ou rebond sur le support \u00e0 575$.",
+          "reason": "",
+          "risks": "",
           "price0": 590.1,
           "trade": {
             "action": "NONE",
@@ -10589,8 +10589,8 @@
         "SOLUSDT": {
           "direction": "UP",
           "probUp": 56,
-          "reason": "SOL surperforme nettement gr\u00e2ce au Breakpoint 2026 : lancement officiel de Mainnet 1.0 (blocs \u00e0 200ms), int\u00e9gration de ZelleUSD et MoneyGram. Soutenu par 11,68M$ d'entr\u00e9es ETF le 16 nov, SOL se maintient au-dessus de son EMA20 (73,8$) et affiche une forte r\u00e9silience face au d\u00e9clin de BTC.",
-          "risks": "La capitulation globale de BTC sous 62k$ pourrait finir par entra\u00eener SOL par corr\u00e9lation.",
+          "reason": "",
+          "risks": "",
           "price0": 74.9,
           "trade": {
             "action": "NONE",
@@ -10605,14 +10605,7 @@
           }
         }
       },
-      "queries": [
-        "\"bitcoin\" \"November 19 2026\" OR \"November 18 2026\"",
-        "crypto market news November 18 2026 OR November 19 2026",
-        "fomc fed news November 2026 OR macro economic calendar November 19 2026",
-        "\"XRP\" OR \"ripple\" \"November 19 2026\" OR \"November 18 2026\"",
-        "\"solana\" OR \"SOL\" \"November 19 2026\" OR \"November 18 2026\"",
-        "\"BNB\" OR \"binance coin\" \"November 19 2026\" OR \"November 18 2026\""
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -10627,7 +10620,8 @@
         "promptTokenCount": 4232,
         "candidatesTokenCount": 1141,
         "totalTokenCount": 11376
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1795089600000,
@@ -17012,11 +17006,119 @@
         "candidatesTokenCount": 1567,
         "totalTokenCount": 12916
       }
+    },
+    {
+      "barClose": 1795680000000,
+      "requestedAt": 1795680981741,
+      "analyzedAt": 1795681011553,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "PCE sous-jacent US d'octobre plus chaud que prevu a 3,3% et PIB T3 revise en forte hausse a 4,3%, renforcant les attentes de hausse des taux de la Fed le 9 dec. Marches US fermes pour Thanksgiving, ce qui reduit la liquidite et peut amplifier la volatilite sur des marches cryptos deja fragiles.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Malgre un rebond technique depuis le support des 57,2k$, le BTC reste sous sa EMA200 4H (69,4k$). Les sorties massives des ETF spot en novembre (4,7 Md$) et la macro-economie hawkish pesent sur la tendance de fond. La fermeture de Thanksgiving devrait limiter les volumes et maintenir une consolidation.",
+          "risks": "Volatilite exacerbee par la faible liquidite du week-end de Thanksgiving; risque de reprise de la baisse sous les 58k$.",
+          "price0": 60497.9,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucun signal de breakout clair sur 1H/4H. Le marche consolide apres un fort sell-off et la liquidite est tres faible en raison de Thanksgiving."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "L'ETH consolide autour de 1689$ sans dynamique propre. Les flux sortants sur les ETF Ethereum spot et la faiblesse generale des altcoins maintiennent la pression. Le prix reste bloque sous sa EMA50 4H (1717$), signalant une tendance baissiere persistante malgre un leger rebond technique de court terme.",
+          "risks": "Faible liquidite durant Thanksgiving propice a des chasses aux stops; risque de retest des plus bas recents a 1608$.",
+          "price0": 1689.06,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Structure technique baissiere a moyen terme et absence de catalyseur ou de breakout. Nous restons a l'ecart en cette periode de faible liquidite."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "XRP a rebondi vers 0,95$ mais fait face a de lourdes resistances. Selon Coinbase, de nombreuses positions longues a effet de levier sont sous l'eau a 0,982$, creant une pression vendeuse potentielle. De plus, les sorties nettes des ETF XRP spot s'accelerent et l'antecedent historique de decembre est baissier.",
+          "risks": "Pression offre avec la liberation d'engagements mensuels en decembre; liquidation en cascade des longs sous l'eau si le support a 0,90$ lache.",
+          "price0": 0.9528,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "La concentration de positions longues sous l'eau autour de 0,98$ cree un mur de revente difficile a franchir a court terme."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "BNB tente de se stabiliser autour de 554$ apres avoir chute vers 503$. Binance a entierement couvert les pertes du piratage d'octobre et restaure la confiance. Bien que la mise a niveau Jenner (8 dec) offre un leger soutien fondamental, la tendance 4H reste baissiere sous l'EMA50 (561$).",
+          "risks": "Sensibilite accrue au sentiment general du marche crypto; volume faible durant Thanksgiving.",
+          "price0": 554.67,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le BNB est en phase de reconstruction de sa base apres le piratage. Nous attendons des signaux de breakout plus clairs."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "SOL consolide autour de 70,8$ apres un rebond depuis 65,7$. L'accumulation institutionnelle se poursuit avec la hausse de la tresorerie de DFDV (2,62M SOL), mais la tendance 4H demeure fragile sous la EMA50 (71,0$). Le sentiment global est freine par les craintes d'inflation americaine et de taux.",
+          "risks": "Volatilite liee a de faibles volumes; risque de squeeze de notre position courte ouverte si la EMA50 a 71$ est franchie.",
+          "price0": 70.81,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Une position courte est deja ouverte sur cet actif, ce qui exclut l'ouverture d'un nouveau trade conformement aux regles."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "bitcoin news november 2026",
+        "crypto market sentiment november 2026",
+        "fed rates november 2026",
+        "us economic calendar thanksgiving november 2026",
+        "XRP news november 2026",
+        "SOL news november 2026",
+        "BNB news november 2026",
+        "binance hack october 2026",
+        "\"PCE\" november 25 2026",
+        "us inflation pce october 2026 november 25 2026"
+      ],
+      "sources": [],
+      "grounding": {
+        "keys": [
+          "retrievalMetadata",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 0,
+        "supports": 0
+      },
+      "usage": {
+        "promptTokenCount": 4093,
+        "candidatesTokenCount": 1449,
+        "totalTokenCount": 11398
+      }
     }
   ],
   "attempts": {
     "1795665600000": 1,
-    "1795680000000": 1
+    "1795680000000": 2
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -17036,8 +17138,8 @@
         "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
         "exitBy": 1795755600000,
         "lastBar": 1795676400000,
-        "markR": -0.4748,
-        "markPrice": 70.81
+        "markR": -0.4954,
+        "markPrice": 70.9
       }
     ],
     "trades": [
@@ -17620,12 +17722,12 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795680137729,
+  "generatedAt": 1795680981741,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 128,
-    "totalTokens": 1533602,
+    "analyses": 129,
+    "totalTokens": 1545000,
     "direction": {
       "scored": 615,
       "called": 373,
@@ -17688,14 +17790,14 @@
       "avgR": 0.3106,
       "totalR": 9.9392,
       "open": 1,
-      "equityMarked": 546.5638,
-      "returnPct": 9.3128
+      "equityMarked": 546.448692,
+      "returnPct": 9.2897
     }
   },
   "lastRun": {
-    "at": 1795680137729,
-    "status": "error",
-    "error": "no JSON object in the model answer",
+    "at": 1795680981741,
+    "status": "ok",
+    "error": null,
     "barClose": 1795680000000
   }
 }
