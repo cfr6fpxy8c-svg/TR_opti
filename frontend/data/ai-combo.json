@@ -16059,7 +16059,11 @@
               "exitReason": "STOP"
             }
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 3.044,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -16084,7 +16088,11 @@
               "exitReason": "STOP"
             }
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.969,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -16098,7 +16106,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 0.9107$. Nous conservons la position actuelle jusqu'au stop ou \u00e0 la cible sans rajouter de risque."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 4.222,
+            "hit": false
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -16112,7 +16124,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte \u00e0 553.49$. Aucune nouvelle action requise, nous laissons courir le trade existant sous l'EMA20."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.821,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -16137,7 +16153,11 @@
               "exitReason": "STOP"
             }
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 4.501,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -16995,7 +17015,8 @@
     }
   ],
   "attempts": {
-    "1795665600000": 1
+    "1795665600000": 1,
+    "1795680000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -17014,9 +17035,9 @@
         "conviction": 65,
         "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
         "exitBy": 1795755600000,
-        "lastBar": 1795672800000,
-        "markR": -0.4862,
-        "markPrice": 70.86
+        "lastBar": 1795676400000,
+        "markR": -0.4748,
+        "markPrice": 70.81
       }
     ],
     "trades": [
@@ -17599,19 +17620,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795679184327,
+  "generatedAt": 1795680137729,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 128,
     "totalTokens": 1533602,
     "direction": {
-      "scored": 610,
-      "called": 368,
+      "scored": 615,
+      "called": 373,
       "neutral": 242,
       "hits": 252,
-      "hitRate": 0.6848,
-      "brier": 0.2306,
+      "hitRate": 0.6756,
+      "brier": 0.2318,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -17667,14 +17688,14 @@
       "avgR": 0.3106,
       "totalR": 9.9392,
       "open": 1,
-      "equityMarked": 546.5001,
-      "returnPct": 9.3
+      "equityMarked": 546.5638,
+      "returnPct": 9.3128
     }
   },
   "lastRun": {
-    "at": 1795679184327,
-    "status": "waiting",
-    "error": null,
-    "barClose": 1795676400000
+    "at": 1795680137729,
+    "status": "error",
+    "error": "no JSON object in the model answer",
+    "barClose": 1795680000000
   }
 }
