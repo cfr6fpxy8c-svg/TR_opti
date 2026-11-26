@@ -16250,7 +16250,11 @@
             "reason": "Position vendeuse d\u00e9j\u00e0 ouverte sur ce compte papier \u00e0 60354.8 $, aucun nouveau trade initi\u00e9 selon les r\u00e8gles."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 3.538,
+            "hit": false
+          }
         },
         "ETHUSDT": {
           "direction": "DOWN",
@@ -16264,7 +16268,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur ce compte \u00e0 1699.36 $, pas de nouveau trade autoris\u00e9."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 3.767,
+            "hit": false
+          }
         },
         "XRPUSDT": {
           "direction": "DOWN",
@@ -16289,7 +16297,11 @@
               "exitReason": "STOP"
             }
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 4.822,
+            "hit": false
+          }
         },
         "BNBUSDT": {
           "direction": "DOWN",
@@ -16303,7 +16315,11 @@
             "reason": "Position SHORT d\u00e9j\u00e0 ouverte sur cet actif \u00e0 553.49 $, conform\u00e9ment aux r\u00e8gles du portefeuille."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 2.435,
+            "hit": false
+          }
         },
         "SOLUSDT": {
           "direction": "DOWN",
@@ -16328,7 +16344,11 @@
               "exitReason": "STOP"
             }
           },
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 4.932,
+            "hit": false
+          }
         }
       },
       "queries": [
@@ -17114,10 +17134,167 @@
         "candidatesTokenCount": 1449,
         "totalTokenCount": 11398
       }
+    },
+    {
+      "barClose": 1795694400000,
+      "requestedAt": 1795694547109,
+      "analyzedAt": 1795694582497,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "March\u00e9s US ferm\u00e9s pour Thanksgiving ce jeudi, limitant la liquidit\u00e9. Le rebond technique actuel fait suite \u00e0 une forte baisse mercredi provoqu\u00e9e par l'indice PCE \u00e0 3,8% (renfor\u00e7ant la perspective d'une hausse des taux de la Fed en d\u00e9cembre). L'expiration d'options mensuelles de vendredi approche.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "Rebond technique court-terme apr\u00e8s la liquidation de mercredi (li\u00e9e \u00e0 l'inflation PCE chaude \u00e0 3,8%). Cependant, la tendance de fond reste baissi\u00e8re sous l'EMA200 4H (69,3k) et les flux ETF spot restent n\u00e9gatifs en novembre. L'absence des traders US pour Thanksgiving limite les volumes et favorise la consolidation.",
+          "risks": "Faible liquidit\u00e9 de Thanksgiving propice \u00e0 des manipulations de prix; expiration d'options mensuelles ce vendredi.",
+          "price0": 60686.8,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Pas de signal clair. Le march\u00e9 consolide sur de tr\u00e8s faibles volumes en raison de Thanksgiving, et fait face \u00e0 la r\u00e9sistance de l'EMA50 4H \u00e0 61,1k. L'absence d'institutions limite la probabilit\u00e9 d'un mouvement directionnel propre."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "Rebond technique vers 1700$ apr\u00e8s un double top et une baisse sous l'EMA50 4H (1716$). Le sentiment reste lourd avec des sorties constantes des ETF spot Ethereum en novembre. Les volumes sont particuli\u00e8rement bas en ce jour de Thanksgiving, favorisant une d\u00e9rive lat\u00e9rale.",
+          "risks": "Volatilit\u00e9 accrue lors de l'expiration des options mensuelles Deribit vendredi.",
+          "price0": 1699.69,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le prix oscille autour des moyennes mobiles cl\u00e9s \u00e0 court terme (EMA20/50 4H) dans un carnet d'ordres aminci par le jour f\u00e9ri\u00e9 am\u00e9ricain. Le ratio risque-r\u00e9compense est m\u00e9diocre pour de nouvelles entr\u00e9es."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 45,
+          "reason": "XRP oscille sous le pivot psychologique de 1,00$. La pression baissi\u00e8re est aliment\u00e9e par les rachats nets sur les ETF XRP spot (30,8M$ de sorties en novembre) et des flux importants vers les exchanges. Le volume est faible en raison de Thanksgiving, ce qui limite les mouvements majeurs.",
+          "risks": "Poursuite des sorties d'ETF et rumeurs de ventes massives par les grands portefeuilles.",
+          "price0": 0.9521,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "XRP est coinc\u00e9 sous la r\u00e9sistance de 1,00$ mais montre un int\u00e9r\u00eat d'achat pr\u00e8s du support des 0,90$. L'absence de catalyseur fort et la faible liquidit\u00e9 de Thanksgiving d\u00e9conseillent l'ouverture d'une position."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "BNB tente de se stabiliser au-dessus de 550$ apr\u00e8s avoir test\u00e9 son support \u00e0 503$ (plus bas depuis avril). Le march\u00e9 dig\u00e8re toujours les cons\u00e9quences du piratage de Binance d'octobre et les ordonnances judiciaires. Les volumes de Thanksgiving sont an\u00e9miques.",
+          "risks": "D\u00e9veloppements judiciaires li\u00e9s au hack de Binance; baisse sous le support critique des 500$.",
+          "price0": 552.27,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "BNB consolide dans un range \u00e9troit de Thanksgiving (540$-570$) et reste sous ses moyennes mobiles de long terme. Aucun signal de retournement ou de continuation valide n'est pr\u00e9sent."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "SOL rebondit l\u00e9g\u00e8rement vers 71$ apr\u00e8s avoir touch\u00e9 un plus bas de novembre \u00e0 64,8$. Bien que l'activit\u00e9 DeFi reste forte, la tendance quotidienne reste endommag\u00e9e (8 semaines cons\u00e9cutives de baisse). Le jour f\u00e9ri\u00e9 am\u00e9ricain limite l'activit\u00e9 de trading.",
+          "risks": "Poursuite de la baisse si le BTC passe sous les 60k$; d\u00e9blocquages de jetons r\u00e9guliers.",
+          "price0": 70.85,
+          "trade": {
+            "action": "NONE",
+            "conviction": 60,
+            "reason": "Une position vendeuse (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif. Nous la laissons courir selon ses param\u00e8tres initiaux jusqu'\u00e0 l'atteinte du stop, de l'objectif, ou de la limite de temps."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "US macro calendar November 26 27 2026",
+        "Thanksgiving 2026 date",
+        "crypto news November 26 2026",
+        "BTC price November 2026",
+        "\"XRP\" news November 2026",
+        "\"SOL\" SOLUSDT news November 2026",
+        "\"BNB\" BNBUSDT news November 2026",
+        "\"ETH\" ETHUSDT news November 2026"
+      ],
+      "sources": [
+        {
+          "title": "aa.com.tr",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGFIeCzsmY5DpcVbI0qWAT2UQtuScxVZo6YHQb6a1NRvUP26nbTAWJWDd6Y6s63g-DCHzDi5aTyqQg6MQtXysie-tyvJ5Mr0ssoHBqW9PDt7vaHrCPj3oscykkME_huf-hRdvNrd16q30UjjpQ9UDK6qYsl5-JqO2Oo3T3hnrUSqyg6eXnXIusZ-TAhZ6nBFyJFUMwCj9pWArGQgy4KM9v73Ac-Tmn48JE2Dw=="
+        },
+        {
+          "title": "morningstar.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGSqrpiRKPrxvISzTFqpP0Cvab74z4PYtlaUp98aDHJtCm89F3Q0DByzEqKO7ce3029Qwuqo0e0dkcXjnxS-u_p_DcDEq43hFFMeb6nyVdsu9t7_k1XT_385adAIeSKPuO0535Ctoo4OfX3dRgv3omK5DfTzTTwBWIVikCyA5DWLA2iAIaxE8c5CfUi4F4F8YO8tkfKQqwou7s="
+        },
+        {
+          "title": "simianx.ai",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGKDaX5X8ng4_qF1WutLcoh2KfQFcRelHLn-eg7S6F_kJvIwJMjw0iYTSnm6hofgdMxuZlxA1zCajrWfjhdZ7MtK_tSdbeJ09OQpX0os4spYDMCpUTQa5MdYq1OlR5JsjAnBAOuX5b-FEcG3DxwRyoGmfpDCftzDMjsGSqksiVFfgWoKTTVJevPZW8="
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF7gTGnYTYfut2SMFeIHZDWEFitSAaWkuuN7elpXZSitoAvZTKyq6oFvEZVPb8EYX6WH1zPbeCGylbLeM-fQ409ww2LraZxrXZUR01jMkCWy_J-HzoENr6WVamu_JXgnCQAldYBpsOwtgwDQbLTWqlGnVFFMA=="
+        },
+        {
+          "title": "thecryptomerchant.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQERg14tS3f_YPZTgyF3NHKBIZKYqoY1gVODKUD8LT1hr19Ur--kpboZt9hxtxrKHk_Cw4Wlfs42aM1ymjINynjrd--FMGPejWFgWhkM92VJTDxLuiQt7VSOfUtn4CHjnbib5Dyq_5wfNAkHEAihyjYyobw_fAbiW-OxhMukv3ArC17-Gy132RFL"
+        },
+        {
+          "title": "lines.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEpSEABBgyMSZZZNZn8lQcs4Aj0H8DqYxKnt1GcSqTS2Y4i4pkbgbBgix9TIKzHkKQfpTqitQ68mVU-fMYN4NydJ0af7CuJ270s1WGqBsD0E_NaqkKjlsKDDf7lgAZtiZSB0TXP6MEwzpSGS0N6gFwgeY0YrUj1Iz2FE5a5fueHw7kE0VJV-IlLTROWj9sTWyR2XdtvUuSaiCrZnA=="
+        },
+        {
+          "title": "tradingkey.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHV04fkZorWe2puwpz7eNYvcIKMoj2vdAtQHco2gza-pWl1b-QBtMgrtOazgEWLRVvEi0OWnE_DdYd0LuHCKtl-4vjq9rXGHzrbu90lUv0KURUPLFUk6N_XXuTC7-8ELnNitpKtRmOQ8RUqFZRNZNxSE127DP63mQYVwYvCBAfOtZ8hIyh7RJWSJfQwZ23vkt6iDj6IkhXfE4w2bdH8Ctt-m0au76ZuSU3UNJlS4wck9w=="
+        },
+        {
+          "title": "altcoinbuzz.io",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHjEApWlC9bM8UFCvN1GrTLlU7KptdAda5sbbsRbEezvM0vDRCTG8GIIeCf5TaYkI7F6c_8vder15cuSzdJp_ENpnS0SDflZZQ91pr0NRL_iyTWpUlZ01GHD4XZ-uKXqJyp4H7M1gKrc--hZjrUSL-2Rb38brNKvc9-IteV33-QYsZKoPEKDWeHlPNHkYdc4Gs8XozKsA=="
+        },
+        {
+          "title": "awarenessdays.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG-8PGjTSSqW8nl21uK6dEkRxPgmyxA5MF7ZbRk0wJByzGVSYc1AsDOd3NR-yRPiGKqCYVeLE77u15tBN52idLFCq0mK5S9DeFY58T_UaeNIVVPmVlXevNkS0ljvxD4ukLTx3EEz_ICNMrWcUKeFvcSp5Mh-NvJC1Ea9C-Keg=="
+        },
+        {
+          "title": "coindcx.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFKm4xgU8BEaIJjDh0X9rZOVOVjtyKfzxTeri-g2Yh8PRtDwb5f_J6dKxaqh2jYgLBoidteLhRzOL0eBzviZ0etzVE5wvEXAsNsL-ojqFItGl72I3mk8P4Js3khVLxOal28lA-qFBs8hke4n756SCRDMyxs_ynTOgJn6Q=="
+        },
+        {
+          "title": "coinstats.app",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGQzIL2FP_8_kf5d_0BientcSOLel3akeDuvOXr33TSbXfP1Xi4kN9YY3Uh5DWCz6RbA56vB32YXWaOXX3tSWu_x7au8980PnOZKNBGLXzfifgRouMCUjsUPr1ZPn203tEaUCxaHdT9t5sFwugvwij0lkk="
+        },
+        {
+          "title": "tradingnews.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOKJj7YlunaVdAhiUHU04_HCu06fsAXrm7cX6aZ-ndpIPyB9THE5750ih5Up0PdQsL_0HsOkRyoaAEOzON8-aAZwlXV0VCbgLIxFllTjtzGOxPjys6JPEcClvkwne9J06jhmgTKSun1SoXEBwC2oeRd29KqTUOIho9vMw7zPFq0Fn3iA3GYZ6OH_U6b745mS6Odcf9czSuEk-bkOze7dLd_ttg-ebo0PCDRkZK8AUGQ4UqU2nQGDzBx9A="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 13,
+        "supports": 18
+      },
+      "usage": {
+        "promptTokenCount": 4095,
+        "candidatesTokenCount": 1434,
+        "totalTokenCount": 11431
+      }
     }
   ],
   "attempts": {
-    "1795680000000": 2
+    "1795680000000": 2,
+    "1795694400000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -17136,9 +17313,9 @@
         "conviction": 65,
         "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
         "exitBy": 1795755600000,
-        "lastBar": 1795687200000,
-        "markR": -0.4702,
-        "markPrice": 70.79
+        "lastBar": 1795690800000,
+        "markR": -0.5573,
+        "markPrice": 71.17
       }
     ],
     "trades": [
@@ -17721,19 +17898,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795693588282,
+  "generatedAt": 1795694547109,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 129,
-    "totalTokens": 1545000,
+    "analyses": 130,
+    "totalTokens": 1556431,
     "direction": {
-      "scored": 615,
-      "called": 373,
+      "scored": 620,
+      "called": 378,
       "neutral": 242,
       "hits": 252,
-      "hitRate": 0.6756,
-      "brier": 0.2318,
+      "hitRate": 0.6667,
+      "brier": 0.2338,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -17789,14 +17966,14 @@
       "avgR": 0.3106,
       "totalR": 9.9392,
       "open": 1,
-      "equityMarked": 546.589504,
-      "returnPct": 9.3179
+      "equityMarked": 546.10281,
+      "returnPct": 9.2206
     }
   },
   "lastRun": {
-    "at": 1795693588282,
-    "status": "waiting",
+    "at": 1795694547109,
+    "status": "ok",
     "error": null,
-    "barClose": 1795690800000
+    "barClose": 1795694400000
   }
 }
