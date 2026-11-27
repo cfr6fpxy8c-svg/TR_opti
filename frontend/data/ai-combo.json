@@ -11341,13 +11341,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Les actions (S&P 500 en baisse pour la 6e s\u00e9ance) et actifs risqu\u00e9s souffrent. Les minutes de la Fed confirment une probable hausse des taux le 9 d\u00e9c (92% de chance de +25pb), portant le 10 ans US \u00e0 5,15%. Les sorties massives des ETF Spot BTC ($1,1B en 3 jours) privent le march\u00e9 de liquidit\u00e9s.",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Le BTC est sous forte pression vendeuse \u00e0 $61,7k suite \u00e0 des sorties massives d'ETF Spot ($1,13B en 3 jours, dont $582M le 19 nov, men\u00e9s par IBIT). Les liquidations de positions longues ($168M en 24h) et la crainte d'un resserrement mon\u00e9taire de la Fed le 9 d\u00e9cembre accentuent la tendance baissi\u00e8re sous les moyennes mobiles EMA20/50.",
-          "risks": "Support cl\u00e9 psychologique \u00e0 $60k ; si cass\u00e9, risque d'extension vers $56k. Volatilit\u00e9 accrue face \u00e0 la macro US.",
+          "reason": "",
+          "risks": "",
           "price0": 61786.3,
           "trade": {
             "action": "NONE",
@@ -11364,8 +11364,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 38,
-          "reason": "ETH glisse vers $1748, p\u00e9nalis\u00e9 par des flux sortants persistants sur ses ETF Spot et une baisse d'int\u00e9r\u00eat institutionnel. Techniquement, le cours \u00e9volue nettement sous ses EMA 20 ($1785) et 50 ($1858). BNB Chain rattrape d'ailleurs Ethereum sur le segment de la tokenisation des T-bills.",
-          "risks": "La cassure du support de canal \u00e0 $1717 mettrait en p\u00e9ril le niveau cl\u00e9 \u00e0 $1710, risquant de glisser vers $1600.",
+          "reason": "",
+          "risks": "",
           "price0": 1748.27,
           "trade": {
             "action": "NONE",
@@ -11382,8 +11382,8 @@
         "XRPUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "XRP a cass\u00e9 le pivot des $1,00 pour s'\u00e9tablir \u00e0 $0,952. Le sentiment est pes\u00e9 par les lib\u00e9rations mensuelles de l'escrow de Ripple (200-400M XRP) et l'atonie des ETF XRP, bien que le XRP Ledger montre des avanc\u00e9es institutionnelles majeures pr\u00e9sent\u00e9es lors de la conf\u00e9rence Ripple Swell.",
-          "risks": "Le support cl\u00e9 \u00e0 $0,892 (bas de 10 jours) doit absolument tenir sous peine de glisser rapidement vers $0,78.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9521,
           "trade": {
             "action": "NONE",
@@ -11400,8 +11400,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 42,
-          "reason": "Le BNB reste fragile \u00e0 $570,34 apr\u00e8s le piratage historique de $6,3 milliards subi par Binance fin octobre (bien que 98% des fonds soient d\u00e9j\u00e0 reconstitu\u00e9s). Le d\u00e9part du CFO et l'arr\u00eat programm\u00e9 de Binance en France fin d\u00e9cembre p\u00e8sent temporairement sur le sentiment.",
-          "risks": "Menace de rupture du support \u00e0 $566 (bas de 10 jours), ouvrant la voie \u00e0 une correction accrue vers $530.",
+          "reason": "",
+          "risks": "",
           "price0": 570.34,
           "trade": {
             "action": "NONE",
@@ -11418,8 +11418,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "SOL s'\u00e9tablit \u00e0 $71,75 apr\u00e8s avoir fr\u00f4l\u00e9 ses plus bas r\u00e9cents. La feuille de route ambitieuse pour 2027 pr\u00e9sent\u00e9e \u00e0 Breakpoint 2026 (doublement des capacit\u00e9s, IA on-chain) et la tokenisation des actions d'Anthropic sur Solana n'ont pas suffi \u00e0 compenser l'aversion au risque globale.",
-          "risks": "La rupture de $71,02 (bas de canal) exposerait le support critique \u00e0 $67,35 puis le seuil des $60.",
+          "reason": "",
+          "risks": "",
           "price0": 71.75,
           "trade": {
             "action": "NONE",
@@ -11434,15 +11434,7 @@
           }
         }
       },
-      "queries": [
-        "crypto market news november 2026",
-        "bitcoin price news november 19 2026",
-        "fomc interest rates november 2026",
-        "bitcoin etf flows november 2026",
-        "solana coin news november 2026",
-        "xrp ripple news november 2026",
-        "bnb news november 2026"
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -11457,7 +11449,8 @@
         "promptTokenCount": 4035,
         "candidatesTokenCount": 1556,
         "totalTokenCount": 10373
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1795190400000,
@@ -18044,8 +18037,8 @@
         "reason": "Idiosyncrasie tr\u00e8s forte avec la r\u00e9solution de la crise des retraits de Binance et le nouveau projet L1 IA. Bon point d'entr\u00e9e au-dessus des EMA20/50.",
         "exitBy": 1795928400000,
         "lastBar": 1795777200000,
-        "markR": 0.0201,
-        "markPrice": 564.33
+        "markR": 0.0258,
+        "markPrice": 564.45
       }
     ],
     "trades": [
@@ -18646,7 +18639,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795780959189,
+  "generatedAt": 1795781784565,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -18714,13 +18707,13 @@
       "avgR": 0.2702,
       "totalR": 8.9156,
       "open": 1,
-      "equityMarked": 543.606203,
-      "returnPct": 8.7212
+      "equityMarked": 543.637182,
+      "returnPct": 8.7274
     }
   },
   "lastRun": {
-    "at": 1795780959189,
-    "status": "ok",
+    "at": 1795781784565,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795780800000
   }
