@@ -17721,7 +17721,8 @@
             "stop": 543.0,
             "target": 595.0,
             "maxHoldHours": 48,
-            "valid": true
+            "valid": true,
+            "status": "opened"
           },
           "breakout4h": null,
           "breakout1h": null
@@ -17819,13 +17820,30 @@
     }
   ],
   "attempts": {
-    "1795737600000": 1,
     "1795752000000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
     "equity": 543.49696,
-    "positions": [],
+    "positions": [
+      {
+        "id": "BNBUSDT-1795752000000",
+        "symbol": "BNBUSDT",
+        "side": "LONG",
+        "entryTime": 1795755600000,
+        "entryPrice": 563.91,
+        "stop": 543.0,
+        "target": 595.0,
+        "risk": 20.909999999999968,
+        "stake": 5.43497,
+        "conviction": 65,
+        "reason": "Idiosyncrasie tr\u00e8s forte avec la r\u00e9solution de la crise des retraits de Binance et le nouveau projet L1 IA. Bon point d'entr\u00e9e au-dessus des EMA20/50.",
+        "exitBy": 1795928400000,
+        "lastBar": 1795755599999,
+        "markR": 0.0397,
+        "markPrice": 564.74
+      }
+    ],
     "trades": [
       {
         "id": "ETHUSDT-1793880000000",
@@ -18424,7 +18442,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795754779264,
+  "generatedAt": 1795755715050,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -18491,15 +18509,15 @@
       "winRate": 0.5152,
       "avgR": 0.2702,
       "totalR": 8.9156,
-      "open": 0,
-      "equityMarked": 543.49696,
-      "returnPct": 8.6994
+      "open": 1,
+      "equityMarked": 543.712728,
+      "returnPct": 8.7425
     }
   },
   "lastRun": {
-    "at": 1795754779264,
-    "status": "up-to-date",
+    "at": 1795755715050,
+    "status": "waiting",
     "error": null,
-    "barClose": 1795752000000
+    "barClose": 1795755600000
   }
 }
