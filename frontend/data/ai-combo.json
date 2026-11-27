@@ -16668,7 +16668,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 active dans le portefeuille, emp\u00eachant l'ouverture d'un nouveau trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.189,
+            "hit": null
+          }
         },
         "ETHUSDT": {
           "direction": "NEUTRAL",
@@ -16682,7 +16686,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 active dans le portefeuille, emp\u00eachant l'ouverture d'un nouveau trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": -0.164,
+            "hit": null
+          }
         },
         "XRPUSDT": {
           "direction": "NEUTRAL",
@@ -16696,7 +16704,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 active dans le portefeuille, emp\u00eachant l'ouverture d'un nouveau trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.651,
+            "hit": null
+          }
         },
         "BNBUSDT": {
           "direction": "NEUTRAL",
@@ -16710,7 +16722,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 active dans le portefeuille, emp\u00eachant l'ouverture d'un nouveau trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.058,
+            "hit": null
+          }
         },
         "SOLUSDT": {
           "direction": "NEUTRAL",
@@ -16724,7 +16740,11 @@
             "reason": "Une position SHORT est d\u00e9j\u00e0 active dans le portefeuille, emp\u00eachant l'ouverture d'un nouveau trade."
           },
           "breakout4h": null,
-          "breakout1h": null
+          "breakout1h": null,
+          "outcome": {
+            "retPct": 0.795,
+            "hit": null
+          }
         }
       },
       "queries": [
@@ -17484,10 +17504,159 @@
         "candidatesTokenCount": 1230,
         "totalTokenCount": 11611
       }
+    },
+    {
+      "barClose": 1795737600000,
+      "requestedAt": 1795737741188,
+      "analyzedAt": 1795737767665,
+      "model": "gemini-3.5-flash",
+      "modelVersion": "gemini-3.5-flash",
+      "horizonHours": 24,
+      "macro": "La Fed maintient ses taux (3,75-4,00%) mais une hausse en d\u00e9cembre est anticip\u00e9e (PCE de base \u00e0 3,3%). Rebond des actions US avant Thanksgiving (fermeture le 26 nov), stabilisant temporairement les cryptos apr\u00e8s de fortes baisses. Les rendements du Tr\u00e9sor US \u00e0 10 ans restent sous pression \u00e0 ~5%.",
+      "assets": {
+        "BTCUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "BTC se maintient autour des 60k$ apr\u00e8s une correction brutale depuis les 80k$ fin octobre, caus\u00e9e par le piratage massif de Binance (6,3 milliards $) et de fortes sorties nettes des ETF Bitcoin (pr\u00e8s de 5 milliards $ de sorties en novembre). La baisse de l'offre de stablecoins (-10,7 Mds$) p\u00e8se sur la liquidit\u00e9. Le rebond technique actuel manque de volumes acheteurs significatifs.",
+          "risks": "Pression vendeuse persistante sous les 62,5k$ (moyenne mobile 200 semaines). Risque de chute vers 55k$ puis 42k$ si les flux ETF restent n\u00e9gatifs. D\u00e9cisions hawkish de la Fed.",
+          "price0": 60544.2,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Aucun signal de breakout actif et faible liquidit\u00e9 durant le week-end prolong\u00e9 de Thanksgiving."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "ETHUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 47,
+          "reason": "ETH stagne sous les 1700$ dans un contexte de baisse de liquidit\u00e9 globale et de retraits continus des ETF Ethereum (proches de 1 milliard $ de sorties en novembre). Le piratage historique de Binance (dont 3,8 milliards $ en ETH) a lourdement pes\u00e9 sur le r\u00e9seau, malgr\u00e9 le gel partiel des stablecoins par les \u00e9metteurs. Le rebond technique actuel manque d'\u00e9lan et de force d'achat.",
+          "risks": "Sous-performance chronique face au BTC. Risque de cassure du support des 1600$ vers 1530$ si la baisse reprend. Sorties continues des ETF Ethereum.",
+          "price0": 1689.01,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Manque \u00e9vident de dynamique et de volume d'achat. Pas de signal technique exploitable."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "XRPUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 46,
+          "reason": "XRP tente de stabiliser au-dessus des 0,94$ apr\u00e8s une chute de plus de 27% en novembre, touchant un plus bas de 2 ans. Bien que Ripple ait annonc\u00e9 des partenariats (Yap\u0131 Kredi en Turquie pour Ripple Custody, int\u00e9gration de RLUSD par Robinhood), les flux des ETF XRP sont n\u00e9gatifs (-30,8M$ en novembre) et la lib\u00e9ration de 1 milliard de XRP sous s\u00e9questre le 1er d\u00e9cembre constitue un overhang.",
+          "risks": "Surplomb d'offre avec la lib\u00e9ration d'un milliard de tokens le 1er d\u00e9cembre. Risque de retour sous 0,90$ puis 0,80$ en cas de faiblesse globale.",
+          "price0": 0.9434,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Surplomb de l'escrow de d\u00e9cembre et flux ETF n\u00e9gatifs. Pas de configuration haussi\u00e8re claire."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "BNBUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 50,
+          "reason": "BNB s'est montr\u00e9 r\u00e9silient, restant autour de 554$ malgr\u00e9 le piratage record de 6,3 milliards $ subi par Binance le 29 octobre. Binance a couvert l'int\u00e9gralit\u00e9 des pertes via ses fonds SAFU et sa tr\u00e9sorerie, et a rouvert la quasi-totalit\u00e9 des retraits, ce qui a \u00e9vit\u00e9 une panique majeure. Cependant, la m\u00e9fiance persiste et le volume est faible en cette p\u00e9riode de vacances US.",
+          "risks": "Risque de r\u00e9putation \u00e0 long terme post-hack. Pression r\u00e9glementaire accrue sur la s\u00e9curit\u00e9 de l'exchange. Risque de cassure sous le support cl\u00e9 de 526$.",
+          "price0": 554.49,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Le sentiment reste fragile apr\u00e8s le piratage de l'exchange. Pas de catalyseur \u00e0 court terme."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        },
+        "SOLUSDT": {
+          "direction": "NEUTRAL",
+          "probUp": 48,
+          "reason": "SOL est sous pression \u00e0 court terme \u00e0 cause de la baisse de l'activit\u00e9 DeFi et des sorties nettes des ETF Solana (-5,9M$ r\u00e9cemment). Cependant, des facteurs fondamentaux positifs soutiennent l'\u00e9cosyst\u00e8me \u00e0 long terme, notamment la transition vers Solana 1.0 (retrait du tag mainnet-beta), l'activation d'Alpenglow et de Firedancer, et l'int\u00e9gration de la DTCC pr\u00e9vue pour 2027.",
+          "risks": "Sensibilit\u00e9 \u00e9lev\u00e9e aux fluctuations du BTC. Sorties de fonds des ETF Solana. Volatilit\u00e9 accrue sous les 70$.",
+          "price0": 70.99,
+          "trade": {
+            "action": "NONE",
+            "conviction": 50,
+            "reason": "Position de vente \u00e0 ouvert d\u00e9j\u00e0 active. Nous g\u00e9rons la position existante jusqu'\u00e0 son expiration \u00e0 05:00 UTC."
+          },
+          "breakout4h": null,
+          "breakout1h": null
+        }
+      },
+      "queries": [
+        "\"November 2026\" crypto market news",
+        "\"Bitcoin\" price November 2026",
+        "\"Fed\" interest rate November 2026",
+        "US CPI November 2026",
+        "\"Binance hack\" October 2026",
+        "\"BNB\" price November 2026",
+        "\"XRP\" news November 2026",
+        "\"Solana\" news November 2026"
+      ],
+      "sources": [
+        {
+          "title": "fxpro.news",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEdAWLGIAAC0k2uXCfbIM7S2GHcceGC7ENrRLPT5WAJXgfKq1UUBn7oyTK5LzPAslmyoHbOW65aTV6F_8eugftEcl-aGrBbxYqDM_qqrSZO_X3awzppoaGrzJpi_JmvUjVMFknA9UPQi6e0fPcbz0N2SJ4O13Mx_Mpnwu5Y2W9_hpXjPCYJSPnP5Bm3Uj8njrddn1SHF8IM"
+        },
+        {
+          "title": "wikipedia.org",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHEIeAJZ781OdTqGR9INgWPtORoeztf3R6wFiid8AEF03Cx3qAEHkxbjDHQQd1rJedzCcmJw1m4pbqUWkAoevebDYnGZSZ1mnvIMe2lz68a8xt-5lU7m8U_OYjh3QufT8fRHayThvCAUN4i"
+        },
+        {
+          "title": "roboforex.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGScNdipuge8OoAv2KJz2vXTlRlHv6ArZQIs7EX8_HJAhw_shsDxkSdGcWiI7Oe4xA6H-P6-CQ2iI0TK-A5oYJXS3N4NUHnAGlaWmwn6gi7zV9ULURM5KxdZhx4-w71Q-hyPlSWT2-aCGxbggA9Co_NneK1UFYyw2RTqOFfurIP-K3e2MGcwxYwQ1SKq6YDVJA46jYkOYcqYK_-vSDiE-QZbEo9_6aDKkA="
+        },
+        {
+          "title": "chainalysis.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF3Hf0_3W1evivyGJ_pR4tBuUCt3Hy2qBzQUHnVo0NKpCU7kNvY5IrIl9S_gYMmEgpf1Afhe2r5u3FCwn-se0wpUgwEbHJMRZs-dAdvqRg2FAK2nKT6IYQMsj7drTjih9LSeWc5LoZCkvPrJywo-zrNyvwcnMD-WN0AV7QIoqDSswaOuX9m04cXRg=="
+        },
+        {
+          "title": "bitkub.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGivPn42blwMq8UcuyFS4r37JwJ1JVsXjF9hW6Zj8rQKS_KPu-g1ejKKFiBoTRXEtcIE87dD-7TxwxIvtSuB2EZqBxUv_5m08WgPkQqwIAGqj6HxEPPpOIl_LtR3w0q3b_Vv_AswTvEMilyzZ4hFovRlrKqIbnzPPgupAMgq6lyJ1OsawkLzY3Nteesh50m40-gxcGfCRqzaFCMHDOZN8dGey-nCKAbIsc="
+        },
+        {
+          "title": "coinstats.app",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGfoMb5NcGyf-xKIMN6FXAdjQ7oo0zM8H6nkOa_Ufr_G3VW3ahqHz45qq9x-47rRUQaFqtZ4A1Zgvbg3DtwPgpuNlaF5jVFnL3ZKlZQcWX161goHhGM0f32GOB5ozcBIh6fdiptXG0Lm3eszXM="
+        },
+        {
+          "title": "finbold.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGqxN6En4NYLbm5Jt40TKkG1pTfGGSZpV9L6xX_jVlwsYiLNzzBvZx7zIuHZ2F0GN3bc6yR98C7yzxTXeYkXl9SiTM6Bx7Xg_XSApvRNAZ9sOvTU-vXdN3bZ7RCT97jqXCcVJVU9P9FSqCzQbU43By23tft_AuYI2ykAlZrjenjR1NyrCGh"
+        },
+        {
+          "title": "binance.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHhPoai2Bs5rTC2CY6gr7utnNSZI1r7sfpkHU6eEyPFyycwJkvH27_OA713SevzuzYZ1lqvGGF7fG05aYESpAkCLQUxWC7b5_BxGGW6Qfp0-u0XZX84Rk-f-lPpzTNrdtlrGKLn2xeRVtOr7fy8Z_Rv7Q=="
+        },
+        {
+          "title": "fluidattacks.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGh8_KZ-rmTsRvDYq4tP_2bnyFEnNPkACxp0Ftp7qeBLJ0mfWKoZKALl2eG1_BT-IxzzZqtvZa-w2ash2GJ8AozEBcyQV5N6G_x1vIPcBe7k8WS2XfbAzc8Yf_6zmpP963lfySb3i1LgOvztFxf2lkDmTq_ki6fSQ=="
+        },
+        {
+          "title": "bitkub.com",
+          "uri": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGuTKg3R-IwgALx3qc0Oebp5N3Gv3ZucYfytFpzos_OdVir4_kzQ95c5Wg6lOPQ692dN7MFwvPXqA2PHeRXWKNBLVPfzUJmTBXu1YpTXY6KVLV41veOugf3pu8xwRrOjLHH1x1V2JZVufXKSH_lWaqcFaGsycCHEhuPB64qLxLLW_ccblvUspRMr0spoz-axuZG15PX39YqiGLgNYkILFvtfV-4Y2hoEt0="
+        }
+      ],
+      "grounding": {
+        "keys": [
+          "groundingChunks",
+          "groundingSupports",
+          "searchEntryPoint",
+          "webSearchQueries"
+        ],
+        "chunks": 10,
+        "supports": 22
+      },
+      "usage": {
+        "promptTokenCount": 4098,
+        "candidatesTokenCount": 1575,
+        "totalTokenCount": 11834
+      }
     }
   ],
   "attempts": {
-    "1795723200000": 2
+    "1795723200000": 2,
+    "1795737600000": 1
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -17506,9 +17675,9 @@
         "conviction": 65,
         "reason": "SOL est dans une configuration baissi\u00e8re nette sous l'EMA20/50, apr\u00e8s l'\u00e9chec de son rebond \u00e0 75$. La faiblesse g\u00e9n\u00e9rale du march\u00e9 crypto sous les 60k$ de BTC et les incertitudes macro\u00e9conomiques de la journ\u00e9e (PCE) militent pour un short vers les supports de juin.",
         "exitBy": 1795755600000,
-        "lastBar": 1795730400000,
-        "markR": -0.5115,
-        "markPrice": 70.97
+        "lastBar": 1795734000000,
+        "markR": -0.5505,
+        "markPrice": 71.14
       }
     ],
     "trades": [
@@ -18091,19 +18260,19 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795736781102,
+  "generatedAt": 1795737741188,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
-    "analyses": 132,
-    "totalTokens": 1578700,
+    "analyses": 133,
+    "totalTokens": 1590534,
     "direction": {
-      "scored": 630,
+      "scored": 635,
       "called": 387,
-      "neutral": 243,
+      "neutral": 248,
       "hits": 252,
       "hitRate": 0.6512,
-      "brier": 0.2358,
+      "brier": 0.236,
       "brierRandom": 0.25
     },
     "breakouts": {
@@ -18159,14 +18328,14 @@
       "avgR": 0.3106,
       "totalR": 9.9392,
       "open": 1,
-      "equityMarked": 546.358729,
-      "returnPct": 9.2717
+      "equityMarked": 546.140806,
+      "returnPct": 9.2282
     }
   },
   "lastRun": {
-    "at": 1795736781102,
-    "status": "waiting",
+    "at": 1795737741188,
+    "status": "ok",
     "error": null,
-    "barClose": 1795734000000
+    "barClose": 1795737600000
   }
 }
