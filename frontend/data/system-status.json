@@ -3,11 +3,11 @@
   "health": "HEALTHY",
   "version": "0.1.0",
   "lastScan": {
-    "scheduledAt": 1795807800000,
-    "executedAt": 1795807865619,
+    "scheduledAt": 1795808700000,
+    "executedAt": 1795808746360,
     "trigger": "schedule",
-    "jitterSeconds": 65.6,
-    "durationMs": 12531,
+    "jitterSeconds": 46.4,
+    "durationMs": 11260,
     "status": "OK",
     "universeSize": 1,
     "universeSource": "manual",
@@ -16,14 +16,14 @@
     "symbolsValid": 1,
     "dataFailures": 0,
     "failedSymbols": [],
-    "candidates": 0,
+    "candidates": 2,
     "signalsGenerated": 0,
     "rejects": {
-      "duplicate_active": 2
+      "score_below_threshold": 2
     },
     "rejectFunnel": [
       {
-        "stage": "duplicate_active",
+        "stage": "score_below_threshold",
         "rejected": 2
       }
     ],
@@ -39,13 +39,13 @@
     "apiHealth": "DEGRADED",
     "dataFreshness": {
       "label": "LIVE",
-      "newestCandleCloseMs": 1795807799999,
-      "ageSeconds": 65.6
+      "newestCandleCloseMs": 1795808699999,
+      "ageSeconds": 46.4
     },
     "activeSignals": 0
   },
-  "lastSuccessfulScan": 1795807865619,
-  "nextExpectedScanAt": 1795808700000,
+  "lastSuccessfulScan": 1795808746360,
+  "nextExpectedScanAt": 1795809600000,
   "scanScheduleUtcMinutes": [
     0,
     15,
@@ -53,26 +53,6 @@
     45
   ],
   "logs": [
-    {
-      "ts": 1795763755191,
-      "level": "info",
-      "msg": "derivatives: funding rates for 961 symbols"
-    },
-    {
-      "ts": 1795763755378,
-      "level": "info",
-      "msg": "rejected 2x duplicate_active (e.g. duplicate active signal (rule 11))"
-    },
-    {
-      "ts": 1795763755378,
-      "level": "info",
-      "msg": "no qualifying setups this scan -- zero signals generated"
-    },
-    {
-      "ts": 1795764674731,
-      "level": "info",
-      "msg": "scan start v0.1.0 scheduled=1795764600000 actual=1795764674726 (jitter 74.7s)"
-    },
     {
       "ts": 1795764685165,
       "level": "info",
@@ -1050,6 +1030,26 @@
     },
     {
       "ts": 1795807878114,
+      "level": "info",
+      "msg": "no qualifying setups this scan -- zero signals generated"
+    },
+    {
+      "ts": 1795808746367,
+      "level": "info",
+      "msg": "scan start v0.1.0 scheduled=1795808700000 actual=1795808746360 (jitter 46.4s)"
+    },
+    {
+      "ts": 1795808757265,
+      "level": "info",
+      "msg": "derivatives: funding rates for 961 symbols"
+    },
+    {
+      "ts": 1795808757579,
+      "level": "info",
+      "msg": "rejected 2x score_below_threshold (e.g. score 36.5 < 50)"
+    },
+    {
+      "ts": 1795808757579,
       "level": "info",
       "msg": "no qualifying setups this scan -- zero signals generated"
     }
