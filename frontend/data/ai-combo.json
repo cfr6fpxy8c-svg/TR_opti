@@ -11104,13 +11104,13 @@
       "model": "gemini-3.5-flash",
       "modelVersion": "gemini-3.5-flash",
       "horizonHours": 24,
-      "macro": "Fed tr\u00e8s hawkish (minutes d'octobre \u00e9voquant +50pb en d\u00e9c, taux 10 ans \u00e0 5,15% et DXY au plus haut de 19 mois). Les actions chutent (S&P -2% le 19 nov, 6e baisse d'affil\u00e9e) tandis que l'IPO d'Anthropic draine la liquidit\u00e9. Sorties massives des ETF crypto et offre de stablecoins en forte baisse (-14,",
+      "macro": "",
       "assets": {
         "BTCUSDT": {
           "direction": "DOWN",
           "probUp": 44,
-          "reason": "Tendance baissi\u00e8re claire, sous l'EMA200 4H et les MM 200/365j. La contraction de la demande spot est la plus forte depuis juillet. Sorties massives des ETF spot en novembre (-2,6 Mds$, dont -209M$ sur IBIT le 19 nov) et fuite de capitaux vers l'IA post-IPO Anthropic. L'indice Fear & Greed est au plus bas \u00e0 10 (peur extr\u00eame).",
-          "risks": "Support majeur \u00e0 61,2k-62k. Risque de squeeze \u00e0 court terme si les shorts se font liquider, ou rebond technique d\u00fb \u00e0 l'\u00e9tat de survente extr\u00eame.",
+          "reason": "",
+          "risks": "",
           "price0": 62126.2,
           "trade": {
             "action": "NONE",
@@ -11127,8 +11127,8 @@
         "ETHUSDT": {
           "direction": "DOWN",
           "probUp": 40,
-          "reason": "Fortement baissier, sous l'EMA20 et 50. Les sorties d'ETF spot s'acc\u00e9l\u00e8rent. De plus, la mise \u00e0 niveau majeure 'Glamsterdam' fait face \u00e0 des risques de retard (ACDE du 19 nov) apr\u00e8s la d\u00e9couverte d'audits r\u00e9v\u00e9lant des failles potentielles sur 10 \u00e0 15k contrats existants. Concurrence f\u00e9roce de Solana.",
-          "risks": "Support cl\u00e9 \u00e0 1700-1730$ tr\u00e8s d\u00e9fendu par les whales. Une stabilisation ou un rebond technique n'est pas exclu apr\u00e8s une chute de 25% en novembre.",
+          "reason": "",
+          "risks": "",
           "price0": 1745.43,
           "trade": {
             "action": "NONE",
@@ -11145,8 +11145,8 @@
         "XRPUSDT": {
           "direction": "NEUTRAL",
           "probUp": 48,
-          "reason": "Perte du seuil cl\u00e9 de 1$ suite \u00e0 un deleveraging global du march\u00e9 face \u00e0 la hausse des rendements obligataires (>5%). Pression vendeuse structurelle continue via les d\u00e9blocages mensuels des escrows de Ripple (200-400M de tokens). Accumulation massive des whales et rumeurs de burn d'escrow soutiennent un biais neutre.",
-          "risks": "Si le rebond vers 1$ \u00e9choue, risque de glissade vers 0,80-0,85$. La pression de l'offre structurelle reste forte sans nouveaux flux entrants.",
+          "reason": "",
+          "risks": "",
           "price0": 0.9629,
           "trade": {
             "action": "NONE",
@@ -11163,8 +11163,8 @@
         "BNBUSDT": {
           "direction": "DOWN",
           "probUp": 43,
-          "reason": "Le piratage de 6,3 milliards de dollars sur Binance fin octobre continue de peser lourdement, provoquant des sorties nettes de la plateforme. Techniquement sous l'EMA20 et l'EMA50, l'actif montre une dynamique baissi\u00e8re marqu\u00e9e, bien que le RSI 14-jours soit proche des zones de survente (RSI \u00e0 34,5).",
-          "risks": "Risques de nouvelles vagues de panique li\u00e9es au piratage ou \u00e0 des retraits massifs. Le plancher des 550$ est un support technique majeur \u00e0 surveiller.",
+          "reason": "",
+          "risks": "",
           "price0": 575.21,
           "trade": {
             "action": "NONE",
@@ -11181,8 +11181,8 @@
         "SOLUSDT": {
           "direction": "DOWN",
           "probUp": 45,
-          "reason": "La fondation a retir\u00e9 le tag 'beta' pour lancer Solana 1.0 et a acquis CoinGecko, mais cela ne compense pas les sorties continues sur les ETF spot SOL (6e semaine cons\u00e9cutive de flux sortants) et la chute de la TVL \u00e0 4,7Mds$. De gros d\u00e9blocages de tokens ($TRUMP, $PUMP) en novembre accentuent la pression de vente.",
-          "risks": "Le support des 70$ a tenu r\u00e9cemment, mais une cassure ouvrirait la voie vers 67,4$. Risque de volatilit\u00e9 \u00e9lev\u00e9e li\u00e9e aux gros unlocks de jetons.",
+          "reason": "",
+          "risks": "",
           "price0": 72.87,
           "trade": {
             "action": "NONE",
@@ -11197,16 +11197,7 @@
           }
         }
       },
-      "queries": [
-        "\"bitcoin\" November 2026 OR \"crypto\" November 2026",
-        "crypto news November 19 2026 OR November 20 2026",
-        "US macro November 19 2026 OR November 20 2026",
-        "FOMC November 2026 OR CPI November 2026",
-        "solana news \"November 2026\"",
-        "ethereum news \"November 2026\"",
-        "xrp news \"November 2026\"",
-        "bnb news \"November 2026\""
-      ],
+      "queries": [],
       "sources": [],
       "grounding": {
         "keys": [
@@ -11221,7 +11212,8 @@
         "promptTokenCount": 4035,
         "candidatesTokenCount": 1448,
         "totalTokenCount": 12159
-      }
+      },
+      "compact": true
     },
     {
       "barClose": 1795161600000,
@@ -18432,7 +18424,7 @@
     ],
     "entryAfterAnalysisSince": 1794345072692
   },
-  "generatedAt": 1795752147217,
+  "generatedAt": 1795752979494,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
@@ -18505,8 +18497,8 @@
     }
   },
   "lastRun": {
-    "at": 1795752147217,
-    "status": "ok",
+    "at": 1795752979494,
+    "status": "up-to-date",
     "error": null,
     "barClose": 1795752000000
   }
