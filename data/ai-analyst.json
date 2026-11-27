@@ -15105,6 +15105,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position de vente (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif selon les faits du syst\u00e8me."
+          },
+          "outcome": {
+            "retPct": -1.336,
+            "hit": null
           }
         },
         "ETHUSDT": {
@@ -15118,6 +15122,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position de vente (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif selon les faits du syst\u00e8me."
+          },
+          "outcome": {
+            "retPct": -1.964,
+            "hit": null
           }
         },
         "XRPUSDT": {
@@ -15131,6 +15139,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Pas de signal technique directionnel clair sur le 4H dans un march\u00e9 de vacances sans volume."
+          },
+          "outcome": {
+            "retPct": -0.22,
+            "hit": null
           }
         },
         "BNBUSDT": {
@@ -15144,6 +15156,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "Une position de vente (SHORT) est d\u00e9j\u00e0 ouverte sur cet actif selon les faits du syst\u00e8me."
+          },
+          "outcome": {
+            "retPct": -0.148,
+            "hit": null
           }
         },
         "SOLUSDT": {
@@ -15157,6 +15173,10 @@
             "action": "NONE",
             "conviction": 50,
             "reason": "La tendance de fond reste baissi\u00e8re malgr\u00e9 un rebond sur nouvelle fondamentale. L'extr\u00eame peur ambiante conseille la prudence et l'abstention."
+          },
+          "outcome": {
+            "retPct": 1.067,
+            "hit": null
           }
         }
       },
@@ -15796,19 +15816,19 @@
     }
   ],
   "attempts": {
-    "1795780800000": 1,
-    "1795795200000": 1
+    "1795795200000": 1,
+    "1795809600000": 1
   },
-  "generatedAt": 1795808768860,
+  "generatedAt": 1795809699963,
   "model": "gemini-3.5-flash",
   "horizonHours": 24,
   "stats": {
     "analyses": 130,
     "totalTokens": 1476913,
     "direction": {
-      "scored": 620,
+      "scored": 625,
       "called": 317,
-      "neutral": 303,
+      "neutral": 308,
       "hits": 190,
       "hitRate": 0.5994,
       "brier": 0.2423,
@@ -15867,15 +15887,15 @@
       "avgR": 0.3574,
       "totalR": 11.4361,
       "open": 3,
-      "equityMarked": 558.593805,
-      "returnPct": 11.7188
+      "equityMarked": 558.740152,
+      "returnPct": 11.748
     }
   },
   "lastRun": {
-    "at": 1795808768860,
-    "status": "up-to-date",
-    "error": null,
-    "barClose": 1795795200000
+    "at": 1795809699963,
+    "status": "error",
+    "error": "no JSON object in the model answer",
+    "barClose": 1795809600000
   },
   "portfolio": {
     "startCapital": 500.0,
@@ -15894,9 +15914,9 @@
         "conviction": 60,
         "reason": "Faiblesse relative marqu\u00e9e suite au hack historique et incapacit\u00e9 \u00e0 rebondir avec les actions US. Objectif proche du bas du canal de 10 jours sous les 503$ avec un stop au-dessus de l'EMA50.",
         "exitBy": 1795852800000,
-        "lastBar": 1795780800000,
-        "markR": -0.0849,
-        "markPrice": 554.4
+        "lastBar": 1795795200000,
+        "markR": -0.0585,
+        "markPrice": 553.72
       },
       {
         "id": "BTCUSDT-1795708800000",
@@ -15911,9 +15931,9 @@
         "conviction": 60,
         "reason": "Le rebond au-dessus de 60k$ est principalement d\u00fb \u00e0 des rachats de shorts techniques. Entr\u00e9e en SHORT sous la r\u00e9sistance locale pour viser 57k$, stop \u00e0 62,4k$ (environ 1,5x ATR) pour se prot\u00e9ger en cas d'extension du rebond.",
         "exitBy": 1795896000000,
-        "lastBar": 1795780800000,
-        "markR": 0.4258,
-        "markPrice": 59972.0
+        "lastBar": 1795795200000,
+        "markR": 0.511,
+        "markPrice": 59827.0
       },
       {
         "id": "SOLUSDT-1795752000000",
@@ -15928,9 +15948,9 @@
         "conviction": 65,
         "reason": "Le puissant catalyseur fondamental de la joint-venture japonaise SBI Solana Global et le retour de flux ETF positifs l\u00e9gitiment un achat \u00e0 court terme avec stop sous l'EMA20.",
         "exitBy": 1796025600000,
-        "lastBar": 1795780800000,
-        "markR": -0.2463,
-        "markPrice": 72.26
+        "lastBar": 1795795200000,
+        "markR": -0.3325,
+        "markPrice": 71.91
       }
     ],
     "trades": [
